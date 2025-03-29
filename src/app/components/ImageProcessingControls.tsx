@@ -78,7 +78,7 @@ export default function ImageProcessingControls({
     setApplyToAll(!applyToAll);
   };
 
-  const handleQuickPreset = (preset: 'auto' | 'vivid' | 'sharp' | 'classic') => {
+  const handleQuickPreset = (preset: 'auto' | 'vivid' | 'sharp' | 'classic' | 'clean' | 'white-bg' | 'dramatic' | 'jewelry') => {
     let newAdjustments = { ...defaultAdjustments };
     
     switch (preset) {
@@ -116,6 +116,60 @@ export default function ImageProcessingControls({
           blueScale: 0.9,
           saturation: 90,
           lightness: 105
+        };
+        break;
+      case 'clean':
+        // Product photography preset with clean, neutral colors
+        newAdjustments = {
+          ...newAdjustments,
+          autoLevel: true,
+          contrast: 5,
+          brightness: 10,
+          sharpen: 1.0,
+          redScale: 1.0,
+          greenScale: 1.0,
+          blueScale: 1.0,
+          saturation: 95, // Slightly desaturated
+          lightness: 105  // Slightly brighter
+        };
+        break;
+      case 'white-bg':
+        // Clean white background product photography
+        newAdjustments = {
+          ...newAdjustments,
+          autoLevel: true,
+          autoGamma: true,
+          brightness: 25,
+          contrast: 15,
+          sharpen: 1.2,
+          saturation: 90,
+          lightness: 115
+        };
+        break;
+      case 'dramatic':
+        // High contrast product photography
+        newAdjustments = {
+          ...newAdjustments,
+          contrast: 25,
+          brightness: 5,
+          sharpen: 1.8,
+          saturation: 110,
+          lightness: 95
+        };
+        break;
+      case 'jewelry':
+        // Jewelry and metallic products
+        newAdjustments = {
+          ...newAdjustments,
+          autoLevel: true,
+          contrast: 15,
+          brightness: 10,
+          sharpen: 2.0,
+          redScale: 1.05,
+          greenScale: 1.02,
+          blueScale: 1.1,
+          saturation: 85, // Lower saturation to highlight metal
+          lightness: 108  // Slightly brighter to enhance shine
         };
         break;
     }
@@ -162,8 +216,12 @@ export default function ImageProcessingControls({
           <h3 className="font-bold mb-2">QUICK PRESETS</h3>
           <div className="grid grid-cols-2 gap-2">
             <Button onClick={() => handleQuickPreset('auto')} size="sm">AUTO ENHANCE</Button>
-            <Button onClick={() => handleQuickPreset('vivid')} size="sm">VIVID</Button>
+            <Button onClick={() => handleQuickPreset('clean')} size="sm">CLEAN PRODUCT</Button>
+            <Button onClick={() => handleQuickPreset('white-bg')} size="sm">WHITE BG</Button>
             <Button onClick={() => handleQuickPreset('sharp')} size="sm">SHARP</Button>
+            <Button onClick={() => handleQuickPreset('dramatic')} size="sm">DRAMATIC</Button>
+            <Button onClick={() => handleQuickPreset('jewelry')} size="sm">JEWELRY</Button>
+            <Button onClick={() => handleQuickPreset('vivid')} size="sm">VIBRANT</Button>
             <Button onClick={() => handleQuickPreset('classic')} size="sm">CLASSIC</Button>
           </div>
         </div>
@@ -226,7 +284,7 @@ export default function ImageProcessingControls({
 
               <div>
                 <label htmlFor="sharpen" className="block mb-1 font-bold">
-                  SHARPEN: {adjustments.sharpen.toFixed(1)}
+                  SHARPEN: {adjustments.sharpen?.toFixed(1) || '0.0'}
                 </label>
                 <input
                   id="sharpen"
@@ -234,7 +292,7 @@ export default function ImageProcessingControls({
                   min="0"
                   max="3"
                   step="0.1"
-                  value={adjustments.sharpen}
+                  value={adjustments.sharpen || 0}
                   onChange={(e) => handleSliderChange(e, 'sharpen')}
                   className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                 />
@@ -245,62 +303,76 @@ export default function ImageProcessingControls({
           <>
             {/* Advanced Controls */}
             <div className="space-y-6">
-              {/* Modulate (HSL) controls */}
-              <div>
-                <h3 className="font-bold mb-2">MODULATE (HSL)</h3>
-                <div className="space-y-2">
+              {/* Modulate (HSL) controls - More prominent styling */}
+              <div className="brutalist-border p-3 bg-white">
+                <h3 className="font-bold mb-3 text-lg uppercase">COLOR ADJUST (HSL)</h3>
+                <div className="space-y-4">
                   <div>
-                    <label htmlFor="lightness" className="block mb-1 text-sm">
-                      LIGHTNESS: {adjustments.lightness}%
+                    <label htmlFor="hue" className="block mb-1 font-bold">
+                      HUE: {adjustments.hue?.toFixed(0) || '100'}
                     </label>
-                    <input
-                      id="lightness"
-                      type="range"
-                      min="50"
-                      max="150"
-                      value={adjustments.lightness}
-                      onChange={(e) => handleSliderChange(e, 'lightness')}
-                      className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
-                    />
+                    <div className="flex items-center">
+                      <span className="mr-2 text-xs">COOLER</span>
+                      <input
+                        id="hue"
+                        type="range"
+                        min="0"
+                        max="200"
+                        value={adjustments.hue || 100}
+                        onChange={(e) => handleSliderChange(e, 'hue')}
+                        className="flex-1 brutalist-border bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                      />
+                      <span className="ml-2 text-xs">WARMER</span>
+                    </div>
                   </div>
+                  
                   <div>
-                    <label htmlFor="saturation" className="block mb-1 text-sm">
-                      SATURATION: {adjustments.saturation}%
+                    <label htmlFor="saturation" className="block mb-1 font-bold">
+                      SATURATION: {adjustments.saturation?.toFixed(0) || '100'}
                     </label>
-                    <input
-                      id="saturation"
-                      type="range"
-                      min="0"
-                      max="200"
-                      value={adjustments.saturation}
-                      onChange={(e) => handleSliderChange(e, 'saturation')}
-                      className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
-                    />
+                    <div className="flex items-center">
+                      <span className="mr-2 text-xs">LESS</span>
+                      <input
+                        id="saturation"
+                        type="range"
+                        min="0"
+                        max="200"
+                        value={adjustments.saturation || 100}
+                        onChange={(e) => handleSliderChange(e, 'saturation')}
+                        className="flex-1 brutalist-border bg-gradient-to-r from-gray-400 to-red-600 h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                      />
+                      <span className="ml-2 text-xs">MORE</span>
+                    </div>
                   </div>
+                  
                   <div>
-                    <label htmlFor="hue" className="block mb-1 text-sm">
-                      HUE: {adjustments.hue}%
+                    <label htmlFor="lightness" className="block mb-1 font-bold">
+                      LIGHTNESS: {adjustments.lightness?.toFixed(0) || '100'}
                     </label>
-                    <input
-                      id="hue"
-                      type="range"
-                      min="0"
-                      max="200"
-                      value={adjustments.hue}
-                      onChange={(e) => handleSliderChange(e, 'hue')}
-                      className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
-                    />
+                    <div className="flex items-center">
+                      <span className="mr-2 text-xs">DARKER</span>
+                      <input
+                        id="lightness"
+                        type="range"
+                        min="0"
+                        max="200"
+                        value={adjustments.lightness || 100}
+                        onChange={(e) => handleSliderChange(e, 'lightness')}
+                        className="flex-1 brutalist-border bg-gradient-to-r from-gray-900 to-white h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                      />
+                      <span className="ml-2 text-xs">LIGHTER</span>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              {/* White Balance controls */}
+              
+              {/* RGB Scale controls */}
               <div>
-                <h3 className="font-bold mb-2">WHITE BALANCE</h3>
-                <div className="grid grid-cols-3 gap-2">
-                  <div>
-                    <label htmlFor="redScale" className="block mb-1 text-sm">
-                      RED: {adjustments.redScale.toFixed(1)}
+                <h3 className="font-bold mb-2">RGB SCALING</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center">
+                    <label htmlFor="redScale" className="block w-32 font-bold">
+                      RED: {adjustments.redScale?.toFixed(1) || '1.0'}
                     </label>
                     <input
                       id="redScale"
@@ -308,14 +380,15 @@ export default function ImageProcessingControls({
                       min="0"
                       max="2"
                       step="0.1"
-                      value={adjustments.redScale}
+                      value={adjustments.redScale || 1.0}
                       onChange={(e) => handleSliderChange(e, 'redScale')}
-                      className="w-full brutalist-border p-1 bg-white"
+                      className="w-20 brutalist-border bg-white h-8 px-2"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="greenScale" className="block mb-1 text-sm">
-                      GREEN: {adjustments.greenScale.toFixed(1)}
+                  
+                  <div className="flex items-center">
+                    <label htmlFor="greenScale" className="block w-32 font-bold">
+                      GREEN: {adjustments.greenScale?.toFixed(1) || '1.0'}
                     </label>
                     <input
                       id="greenScale"
@@ -323,14 +396,15 @@ export default function ImageProcessingControls({
                       min="0"
                       max="2"
                       step="0.1"
-                      value={adjustments.greenScale}
+                      value={adjustments.greenScale || 1.0}
                       onChange={(e) => handleSliderChange(e, 'greenScale')}
-                      className="w-full brutalist-border p-1 bg-white"
+                      className="w-20 brutalist-border bg-white h-8 px-2"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="blueScale" className="block mb-1 text-sm">
-                      BLUE: {adjustments.blueScale.toFixed(1)}
+                  
+                  <div className="flex items-center">
+                    <label htmlFor="blueScale" className="block w-32 font-bold">
+                      BLUE: {adjustments.blueScale?.toFixed(1) || '1.0'}
                     </label>
                     <input
                       id="blueScale"
@@ -338,9 +412,9 @@ export default function ImageProcessingControls({
                       min="0"
                       max="2"
                       step="0.1"
-                      value={adjustments.blueScale}
+                      value={adjustments.blueScale || 1.0}
                       onChange={(e) => handleSliderChange(e, 'blueScale')}
-                      className="w-full brutalist-border p-1 bg-white"
+                      className="w-20 brutalist-border bg-white h-8 px-2"
                     />
                   </div>
                 </div>

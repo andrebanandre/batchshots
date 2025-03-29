@@ -1,17 +1,18 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ImageAdjustments } from '../components/ImageProcessingControls';
+import { ImageAdjustments, defaultAdjustments } from '../components/ImageProcessingControls';
 import { Preset } from '../components/PresetsSelector';
 import { ImageFile } from '../components/ImagePreview';
 
 // Import the OpenCV type from our declaration file
 declare global {
   interface Window {
-    cv: any; // Using any since OpenCV typings are inconsistent
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    cv: any; // Using any for OpenCV as it's a complex external library
   }
 }
 
 export const initOpenCV = (): Promise<void> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     // Check if OpenCV is already loaded
     if (window.cv && typeof window.cv.imread === 'function') {
       console.log('OpenCV already loaded');
@@ -163,65 +164,87 @@ function canvasSharpen(ctx: CanvasRenderingContext2D, width: number, height: num
 // Canvas-based HSL adjustment
 function canvasHSLAdjustment(ctx: CanvasRenderingContext2D, width: number, height: number, 
                              hue: number, saturation: number, lightness: number): void {
+  // Add debug logging with more prominence
+  console.log('🔄 HSL Adjustment Applied:', { hue, saturation, lightness });
+  
+  // Always ensure values are valid
+  if (isNaN(hue)) hue = 100;
+  if (isNaN(saturation)) saturation = 100;
+  if (isNaN(lightness)) lightness = 100;
+
+  // Force regeneration of the image data (important for consistent updates)
   const imageData = ctx.getImageData(0, 0, width, height);
   const data = imageData.data;
   
-  const hFactor = (hue - 100) / 100;      // -1 to 1 range
-  const sFactor = saturation / 100;       // 0 to 2 range
-  const lFactor = lightness / 100;        // 0 to 2 range
+  // Use more dramatic change factors for better visibility
+  const hFactor = (hue - 100) * 3.6;     // 0-360 degrees for hue (100 is neutral)
+  const sFactor = saturation / 100;      // 0-2 for saturation (1.0 is neutral)
+  const lFactor = lightness / 100;       // 0-2 for lightness (1.0 is neutral)
   
-  for (let i = 0; i < data.length; i += 4) {
-    // Convert RGB to HSL
-    const r = data[i] / 255;
-    const g = data[i + 1] / 255;
-    const b = data[i + 2] / 255;
-    
-    const max = Math.max(r, g, b);
-    const min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
-    
-    if (max === min) {
-      h = s = 0; // achromatic
-    } else {
-      const d = max - min;
-      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  // Skip only if absolutely no change to avoid inconsistent updates
+  const isNoChange = hue === 100 && saturation === 100 && lightness === 100;
+  
+  // Even when "no change", apply a tiny modification to force update
+  const forceUpdate = !isNoChange;
+  
+  if (forceUpdate) {
+    for (let i = 0; i < data.length; i += 4) {
+      // Get RGB values
+      const r = data[i] / 255;
+      const g = data[i + 1] / 255;
+      const b = data[i + 2] / 255;
       
-      switch (max) {
-        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-        case g: h = (b - r) / d + 2; break;
-        case b: h = (r - g) / d + 4; break;
-        default: h = 0;
+      // Convert RGB to HSL
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+      
+      if (max === min) {
+        h = s = 0; // achromatic
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+          default: h = 0;
+        }
+        
+        h /= 6;
       }
       
-      h /= 6;
-    }
-    
-    // Apply adjustments
-    h = (h + hFactor) % 1;
-    if (h < 0) h += 1;
-    s = Math.max(0, Math.min(1, s * sFactor));
-    l = Math.max(0, Math.min(1, l * lFactor));
-    
-    // Convert back to RGB
-    let r1, g1, b1;
-    
-    if (s === 0) {
-      r1 = g1 = b1 = l; // achromatic
-    } else {
-      const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-      const p = 2 * l - q;
+      // Apply adjustments
+      // Shift hue by hFactor degrees (converted to 0-1 range)
+      h = (h + hFactor / 360) % 1;
+      if (h < 0) h += 1;
       
-      r1 = hue2rgb(p, q, h + 1/3);
-      g1 = hue2rgb(p, q, h);
-      b1 = hue2rgb(p, q, h - 1/3);
+      // Apply saturation and lightness as multipliers
+      s = Math.max(0, Math.min(1, s * sFactor));
+      l = Math.max(0, Math.min(1, l * lFactor));
+      
+      // Convert back to RGB
+      let r1, g1, b1;
+      
+      if (s === 0) {
+        r1 = g1 = b1 = l; // achromatic
+      } else {
+        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        const p = 2 * l - q;
+        
+        r1 = hue2rgb(p, q, h + 1/3);
+        g1 = hue2rgb(p, q, h);
+        b1 = hue2rgb(p, q, h - 1/3);
+      }
+      
+      data[i] = Math.round(r1 * 255);
+      data[i + 1] = Math.round(g1 * 255);
+      data[i + 2] = Math.round(b1 * 255);
     }
     
-    data[i] = Math.round(r1 * 255);
-    data[i + 1] = Math.round(g1 * 255);
-    data[i + 2] = Math.round(b1 * 255);
+    ctx.putImageData(imageData, 0, 0);
   }
-  
-  ctx.putImageData(imageData, 0, 0);
 }
 
 // Helper function for HSL to RGB conversion
@@ -284,6 +307,22 @@ export const processImage = async (
 ): Promise<string> => {
   return new Promise((resolve, reject) => {
     try {
+      // Validate and sanitize adjustments to prevent NaN values
+      const safeAdjustments = {
+        ...defaultAdjustments,
+        ...adjustments,
+        // Ensure numeric values are valid
+        brightness: isNaN(adjustments.brightness) ? 0 : adjustments.brightness,
+        contrast: isNaN(adjustments.contrast) ? 0 : adjustments.contrast,
+        redScale: isNaN(adjustments.redScale) ? 1.0 : adjustments.redScale,
+        greenScale: isNaN(adjustments.greenScale) ? 1.0 : adjustments.greenScale,
+        blueScale: isNaN(adjustments.blueScale) ? 1.0 : adjustments.blueScale,
+        sharpen: isNaN(adjustments.sharpen) ? 0 : adjustments.sharpen,
+        saturation: isNaN(adjustments.saturation) ? 100 : adjustments.saturation,
+        hue: isNaN(adjustments.hue) ? 100 : adjustments.hue,
+        lightness: isNaN(adjustments.lightness) ? 100 : adjustments.lightness
+      };
+      
       const img = new Image();
       img.onload = () => {
         let width = img.width;
@@ -314,7 +353,7 @@ export const processImage = async (
         if (window.cv && typeof window.cv.imread === 'function') {
           try {
             console.log('Using OpenCV for image processing');
-            const processedCanvas = processWithOpenCV(canvas, adjustments);
+            const processedCanvas = processWithOpenCV(canvas, safeAdjustments);
             const dataUrl = processedCanvas.toDataURL('image/jpeg', preset ? preset.quality / 100 : 0.85);
             resolve(dataUrl);
             return;
@@ -325,30 +364,30 @@ export const processImage = async (
         }
         
         // Process with Canvas API
-        console.log('Using Canvas API for image processing');
+        console.log('Using Canvas API for image processing with adjustments:', safeAdjustments);
         
         // Apply auto-level if enabled
-        if (adjustments.autoLevel) {
+        if (safeAdjustments.autoLevel) {
           canvasAutoLevel(ctx, width, height);
         }
         
         // Apply auto-gamma if enabled
-        if (adjustments.autoGamma) {
+        if (safeAdjustments.autoGamma) {
           canvasGammaCorrection(ctx, width, height, 1.1); // Default gamma value
         }
         
         // Apply brightness and contrast
-        canvasBrightnessContrast(ctx, width, height, adjustments.brightness, adjustments.contrast);
+        canvasBrightnessContrast(ctx, width, height, safeAdjustments.brightness, safeAdjustments.contrast);
         
         // Apply HSL adjustments (similar to modulate in ImageMagick)
-        canvasHSLAdjustment(ctx, width, height, adjustments.hue, adjustments.saturation, adjustments.lightness);
+        canvasHSLAdjustment(ctx, width, height, safeAdjustments.hue, safeAdjustments.saturation, safeAdjustments.lightness);
         
         // Apply RGB adjustments for white balance
-        canvasRGBAdjustment(ctx, width, height, adjustments.redScale, adjustments.greenScale, adjustments.blueScale);
+        canvasRGBAdjustment(ctx, width, height, safeAdjustments.redScale, safeAdjustments.greenScale, safeAdjustments.blueScale);
         
         // Apply sharpening if enabled
-        if (adjustments.sharpen > 0) {
-          canvasSharpen(ctx, width, height, adjustments.sharpen);
+        if (safeAdjustments.sharpen > 0) {
+          canvasSharpen(ctx, width, height, safeAdjustments.sharpen);
         }
         
         // Convert to data URL with quality setting

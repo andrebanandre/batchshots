@@ -10,7 +10,8 @@ import {
   initOpenCV, 
   processImage, 
   createImageFile, 
-  downloadAllImages 
+  downloadAllImages,
+  downloadImage
 } from './lib/imageProcessing';
 
 export default function Home() {
