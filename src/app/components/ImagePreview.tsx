@@ -29,9 +29,36 @@ export default function ImagePreview({
     );
   }
 
+  // Find the selected image
+  const selectedImage = selectedImageId 
+    ? images.find(img => img.id === selectedImageId) 
+    : null;
+
   return (
     <div className={`${className}`}>
-      <h3 className="font-bold text-lg uppercase mb-2">PREVIEW</h3>
+      {/* Selected Image (Large View) */}
+      {selectedImage && (
+        <div className="mb-6">
+          <div className="brutalist-accent-card">
+            <div className="relative aspect-video w-full overflow-hidden">
+              <Image
+                src={selectedImage.processedDataUrl || selectedImage.dataUrl}
+                alt={selectedImage.file.name}
+                fill
+                sizes="100vw"
+                className="object-contain"
+              />
+            </div>
+            <div className="mt-4 text-sm truncate">
+              <span className="font-bold">Selected: </span>
+              {selectedImage.file.name}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Thumbnail Grid */}
+      <h3 className="font-bold text-lg uppercase mb-2">ALL IMAGES</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {images.map((image) => (
           <div

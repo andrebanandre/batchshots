@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Card from './components/Card';
 import Button from './components/Button';
 import ImagePreview, { ImageFile } from './components/ImagePreview';
-import ImageProcessingControls, { ImageAdjustments } from './components/ImageProcessingControls';
+import ImageProcessingControls, { ImageAdjustments, defaultAdjustments } from './components/ImageProcessingControls';
 import PresetsSelector, { defaultPresets } from './components/PresetsSelector';
 import { 
   initOpenCV, 
@@ -13,14 +13,6 @@ import {
   downloadAllImages 
 } from './lib/imageProcessing';
 
-const defaultAdjustments: ImageAdjustments = {
-  brightness: 0,
-  contrast: 0,
-  redScale: 1.0,
-  greenScale: 1.0,
-  blueScale: 1.0,
-};
-
 export default function Home() {
   const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
@@ -28,6 +20,7 @@ export default function Home() {
   const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [applyToAll, setApplyToAll] = useState(true);
 
   // Initialize OpenCV.js
   useEffect(() => {
@@ -52,8 +45,8 @@ export default function Home() {
       try {
         const updatedImages = await Promise.all(
           images.map(async (image) => {
-            // Only update the selected image for performance
-            if (selectedImageId && image.id === selectedImageId) {
+            // Only update the selected image (or all images if applyToAll is true)
+            if ((selectedImageId && image.id === selectedImageId) || applyToAll) {
               const preset = selectedPreset 
                 ? defaultPresets.find(p => p.id === selectedPreset) || null
                 : null;
@@ -80,7 +73,7 @@ export default function Home() {
     }, 200); // Debounce
 
     return () => clearTimeout(timeoutId);
-  }, [adjustments, isOpenCVReady, selectedImageId, images, selectedPreset]);
+  }, [adjustments, isOpenCVReady, selectedImageId, images, selectedPreset, applyToAll]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
@@ -112,11 +105,15 @@ export default function Home() {
       
       const processedImages = await Promise.all(
         images.map(async (image) => {
-          const processedDataUrl = await processImage(image, adjustments, preset);
-          return {
-            ...image,
-            processedDataUrl,
-          };
+          // Process selected image or all images based on applyToAll setting
+          if (selectedImageId === image.id || applyToAll) {
+            const processedDataUrl = await processImage(image, adjustments, preset);
+            return {
+              ...image,
+              processedDataUrl,
+            };
+          }
+          return image;
         })
       );
       
@@ -199,6 +196,8 @@ export default function Home() {
                 onProcessImages={handleProcessAllImages}
                 onReset={handleReset}
                 onDownload={canDownload ? handleDownloadAll : () => {}}
+                applyToAll={applyToAll}
+                setApplyToAll={setApplyToAll}
               />
 
               <Card title="SEO PRESETS" variant="accent">
