@@ -1,103 +1,225 @@
-import Image from "next/image";
+'use client';
+
+import { useEffect, useState } from 'react';
+import Card from './components/Card';
+import Button from './components/Button';
+import ImagePreview, { ImageFile } from './components/ImagePreview';
+import ImageProcessingControls, { ImageAdjustments } from './components/ImageProcessingControls';
+import PresetsSelector, { defaultPresets } from './components/PresetsSelector';
+import { 
+  initOpenCV, 
+  processImage, 
+  createImageFile, 
+  downloadAllImages 
+} from './lib/imageProcessing';
+
+const defaultAdjustments: ImageAdjustments = {
+  brightness: 0,
+  contrast: 0,
+  redScale: 1.0,
+  greenScale: 1.0,
+  blueScale: 1.0,
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [images, setImages] = useState<ImageFile[]>([]);
+  const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
+  const [adjustments, setAdjustments] = useState<ImageAdjustments>(defaultAdjustments);
+  const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
+  const [isOpenCVReady, setIsOpenCVReady] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Initialize OpenCV.js
+  useEffect(() => {
+    const loadOpenCV = async () => {
+      try {
+        await initOpenCV();
+        setIsOpenCVReady(true);
+        console.log('OpenCV.js initialized successfully');
+      } catch (error) {
+        console.error('Failed to initialize OpenCV.js', error);
+      }
+    };
+
+    loadOpenCV();
+  }, []);
+
+  // Real-time preview processing with adjustments
+  useEffect(() => {
+    const applyPreviewAdjustments = async () => {
+      if (!isOpenCVReady || images.length === 0) return;
+
+      try {
+        const updatedImages = await Promise.all(
+          images.map(async (image) => {
+            // Only update the selected image for performance
+            if (selectedImageId && image.id === selectedImageId) {
+              const preset = selectedPreset 
+                ? defaultPresets.find(p => p.id === selectedPreset) || null
+                : null;
+              
+              const processedDataUrl = await processImage(image, adjustments, preset);
+              
+              return {
+                ...image,
+                processedDataUrl,
+              };
+            }
+            return image;
+          })
+        );
+
+        setImages(updatedImages);
+      } catch (error) {
+        console.error('Error applying preview adjustments', error);
+      }
+    };
+
+    const timeoutId = setTimeout(() => {
+      applyPreviewAdjustments();
+    }, 200); // Debounce
+
+    return () => clearTimeout(timeoutId);
+  }, [adjustments, isOpenCVReady, selectedImageId, images, selectedPreset]);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+
+    const fileArray = Array.from(e.target.files);
+    
+    try {
+      const newImages = await Promise.all(fileArray.map(createImageFile));
+      setImages([...images, ...newImages]);
+      
+      // Select the first image if none is selected
+      if (!selectedImageId && newImages.length > 0) {
+        setSelectedImageId(newImages[0].id);
+      }
+    } catch (error) {
+      console.error('Error processing uploaded files', error);
+    }
+  };
+
+  const handleProcessAllImages = async () => {
+    if (!isOpenCVReady || images.length === 0 || isProcessing) return;
+    
+    setIsProcessing(true);
+    
+    try {
+      const preset = selectedPreset 
+        ? defaultPresets.find(p => p.id === selectedPreset) || null
+        : null;
+      
+      const processedImages = await Promise.all(
+        images.map(async (image) => {
+          const processedDataUrl = await processImage(image, adjustments, preset);
+          return {
+            ...image,
+            processedDataUrl,
+          };
+        })
+      );
+      
+      setImages(processedImages);
+    } catch (error) {
+      console.error('Error processing images', error);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleReset = () => {
+    setAdjustments(defaultAdjustments);
+    setSelectedPreset(null);
+  };
+
+  const handleDownloadAll = () => {
+    const processedImages = images.filter(img => img.processedDataUrl);
+    if (processedImages.length > 0) {
+      downloadAllImages(processedImages);
+    }
+  };
+
+  const canDownload = images.some(img => img.processedDataUrl);
+
+  return (
+    <main className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="brutalist-accent-card mb-8">
+        <h1 className="text-3xl font-bold text-center uppercase mb-6">
+          PICME: SEO IMAGE OPTIMIZER
+        </h1>
+        
+        <div className="mb-6">
+          <Card variant="accent">
+            <h2 className="text-xl font-bold mb-4 uppercase">UPLOAD IMAGES</h2>
+            <div className="flex flex-col space-y-4">
+              <p className="text-sm">
+                Select product photos to optimize for SEO. Adjust white balance, contrast, and size.
+              </p>
+              <div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleFileChange}
+                  className="hidden"
+                  id="fileInput"
+                />
+                <label htmlFor="fileInput">
+                  <Button as="span" fullWidth variant="accent">
+                    SELECT IMAGES
+                  </Button>
+                </label>
+              </div>
+            </div>
+          </Card>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {!isOpenCVReady && (
+          <div className="brutalist-border p-4 text-center mb-6 bg-white">
+            <p>Loading OpenCV.js... Please wait.</p>
+          </div>
+        )}
+
+        {images.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2">
+              <ImagePreview
+                images={images}
+                selectedImageId={selectedImageId}
+                onSelectImage={setSelectedImageId}
+                className="mb-6"
+              />
+            </div>
+
+            <div className="space-y-6">
+              <ImageProcessingControls
+                adjustments={adjustments}
+                onAdjustmentsChange={setAdjustments}
+                onProcessImages={handleProcessAllImages}
+                onReset={handleReset}
+                onDownload={canDownload ? handleDownloadAll : () => {}}
+              />
+
+              <Card title="SEO PRESETS" variant="accent">
+                <PresetsSelector
+                  presets={defaultPresets}
+                  selectedPreset={selectedPreset}
+                  onSelectPreset={setSelectedPreset}
+                />
+              </Card>
+            </div>
+          </div>
+        )}
+
+        <div className="mt-8 text-center border-t-2 border-black pt-4">
+          <p className="text-sm">
+            All image processing happens in your browser for privacy and speed.
+            <br />
+            Using OpenCV.js for professional-grade image manipulation.
+          </p>
+        </div>
+      </div>
+    </main>
   );
 }

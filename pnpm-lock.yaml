@@ -5,15 +5,24 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@techstark/opencv-js':
+    specifier: 4.10.0-release.1
+    version: 4.10.0-release.1
   next:
     specifier: 15.2.4
     version: 15.2.4(react-dom@19.0.0)(react@19.0.0)
+  next-themes:
+    specifier: ^0.4.6
+    version: 0.4.6(react-dom@19.0.0)(react@19.0.0)
   react:
     specifier: ^19.0.0
     version: 19.0.0
   react-dom:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
+  uuid:
+    specifier: ^11.1.0
+    version: 11.1.0
 
 devDependencies:
   '@eslint/eslintrc':
@@ -31,6 +40,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^19
     version: 19.0.0
+  '@types/uuid':
+    specifier: ^10.0.0
+    version: 10.0.0
   eslint:
     specifier: ^9
     version: 9.0.0
@@ -602,6 +614,10 @@ packages:
       tailwindcss: 4.0.0
     dev: true
 
+  /@techstark/opencv-js@4.10.0-release.1:
+    resolution: {integrity: sha512-S4XELidRiQeA0q1s9VQLo540wCxUo24r1O4C+LqZ6llX+sPCXvZCPv3Ice8dEIr0uavyZ8YZeKXSBdDgMXSXjw==}
+    dev: false
+
   /@tybys/wasm-util@0.9.0:
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
     requiresBuild: true
@@ -628,6 +644,10 @@ packages:
     resolution: {integrity: sha512-MY3oPudxvMYyesqs/kW1Bh8y9VqSmf+tzqw3ae8a9DZW68pUe3zAdHeI1jc6iAysuRdACnVknHP8AhwD4/dxtg==}
     dependencies:
       csstype: 3.1.3
+    dev: true
+
+  /@types/uuid@10.0.0:
+    resolution: {integrity: sha512-7gqG38EyHgyP1S+7+xomFtL+ZNHcKv6DwNaCZmJmo1vgMugyF3TCnXVg4t1uk89mLNwnLtnY3TpOpCOyp1/xHQ==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@8.28.0(@typescript-eslint/parser@8.28.0)(eslint@9.0.0)(typescript@5.0.2):
@@ -2400,6 +2420,16 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
+  /next-themes@0.4.6(react-dom@19.0.0)(react@19.0.0):
+    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    dev: false
+
   /next@15.2.4(react-dom@19.0.0)(react@19.0.0):
     resolution: {integrity: sha512-VwL+LAaPSxEkd3lU2xWbgEOtrM8oedmyhBqaVNmgKB+GvZlCy9rgaEc+y2on0wv+l0oSFqLtYD6dcC1eAedUaQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
@@ -3148,6 +3178,11 @@ packages:
     dependencies:
       punycode: 2.3.1
     dev: true
+
+  /uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
+    dev: false
 
   /which-boxed-primitive@1.1.1:
     resolution: {integrity: sha512-TbX3mj8n0odCBFVlY8AxkqcHASw3L60jIuF8jFP78az3C2YhmGvqbHBpAjTRH2/xqYunrJ9g1jSyjCjpoWzIAA==}
