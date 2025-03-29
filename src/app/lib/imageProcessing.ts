@@ -42,23 +42,6 @@ export const initOpenCV = (): Promise<void> => {
   });
 };
 
-// Check if a specific OpenCV function is available
-const hasOpenCVFunction = (functionName: string): boolean => {
-  if (!window.cv) return false;
-  
-  const parts = functionName.split('.');
-  let obj = window.cv;
-  
-  for (const part of parts) {
-    if (!obj || typeof obj[part] === 'undefined') {
-      return false;
-    }
-    obj = obj[part];
-  }
-  
-  return typeof obj === 'function';
-};
-
 // Canvas-based image processing fallbacks
 
 // Canvas-based auto level (histogram equalization approximation)
@@ -164,87 +147,82 @@ function canvasSharpen(ctx: CanvasRenderingContext2D, width: number, height: num
 // Canvas-based HSL adjustment
 function canvasHSLAdjustment(ctx: CanvasRenderingContext2D, width: number, height: number, 
                              hue: number, saturation: number, lightness: number): void {
-  // Add debug logging with more prominence
-  console.log('🔄 HSL Adjustment Applied:', { hue, saturation, lightness });
+  // Skip if no adjustments needed
+  if (hue === 100 && saturation === 100 && lightness === 100) {
+    return;
+  }
+
+  console.log('🔄 Canvas HSL Adjustment Applied:', { hue, saturation, lightness });
   
-  // Always ensure values are valid
+  // Ensure values are valid
   if (isNaN(hue)) hue = 100;
   if (isNaN(saturation)) saturation = 100;
   if (isNaN(lightness)) lightness = 100;
 
-  // Force regeneration of the image data (important for consistent updates)
+  // Calculate adjustment factors (from 100-based values)
+  const hueShift = (hue - 100) * 3.6;       // Convert to degrees (-360 to +360)
+  const satFactor = saturation / 100;        // 0-2 range
+  const lightFactor = lightness / 100;       // 0-2 range
+
   const imageData = ctx.getImageData(0, 0, width, height);
   const data = imageData.data;
   
-  // Use more dramatic change factors for better visibility
-  const hFactor = (hue - 100) * 3.6;     // 0-360 degrees for hue (100 is neutral)
-  const sFactor = saturation / 100;      // 0-2 for saturation (1.0 is neutral)
-  const lFactor = lightness / 100;       // 0-2 for lightness (1.0 is neutral)
-  
-  // Skip only if absolutely no change to avoid inconsistent updates
-  const isNoChange = hue === 100 && saturation === 100 && lightness === 100;
-  
-  // Even when "no change", apply a tiny modification to force update
-  const forceUpdate = !isNoChange;
-  
-  if (forceUpdate) {
-    for (let i = 0; i < data.length; i += 4) {
-      // Get RGB values
-      const r = data[i] / 255;
-      const g = data[i + 1] / 255;
-      const b = data[i + 2] / 255;
+  for (let i = 0; i < data.length; i += 4) {
+    // Convert RGB to HSL
+    const r = data[i] / 255;
+    const g = data[i + 1] / 255;
+    const b = data[i + 2] / 255;
+    
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0;
+    let s = 0;
+    let l = (max + min) / 2;
+    
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
       
-      // Convert RGB to HSL
-      const max = Math.max(r, g, b);
-      const min = Math.min(r, g, b);
-      let h, s, l = (max + min) / 2;
-      
-      if (max === min) {
-        h = s = 0; // achromatic
-      } else {
-        const d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        
-        switch (max) {
-          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-          case g: h = (b - r) / d + 2; break;
-          case b: h = (r - g) / d + 4; break;
-          default: h = 0;
-        }
-        
-        h /= 6;
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
       }
       
-      // Apply adjustments
-      // Shift hue by hFactor degrees (converted to 0-1 range)
-      h = (h + hFactor / 360) % 1;
-      if (h < 0) h += 1;
-      
-      // Apply saturation and lightness as multipliers
-      s = Math.max(0, Math.min(1, s * sFactor));
-      l = Math.max(0, Math.min(1, l * lFactor));
-      
-      // Convert back to RGB
-      let r1, g1, b1;
-      
-      if (s === 0) {
-        r1 = g1 = b1 = l; // achromatic
-      } else {
-        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-        const p = 2 * l - q;
-        
-        r1 = hue2rgb(p, q, h + 1/3);
-        g1 = hue2rgb(p, q, h);
-        b1 = hue2rgb(p, q, h - 1/3);
-      }
-      
-      data[i] = Math.round(r1 * 255);
-      data[i + 1] = Math.round(g1 * 255);
-      data[i + 2] = Math.round(b1 * 255);
+      h /= 6;
     }
     
-    ctx.putImageData(imageData, 0, 0);
+    // Apply hue shift (in 0-1 range)
+    h = ((h * 360 + hueShift) % 360) / 360;
+    if (h < 0) h += 1;
+    
+    // Apply saturation and lightness scaling
+    s *= satFactor;
+    if (s > 1) s = 1;
+    
+    l *= lightFactor;
+    if (l > 1) l = 1;
+    
+    // Convert back to RGB
+    let r1, g1, b1;
+    
+    if (s === 0) {
+      r1 = g1 = b1 = l;
+    } else {
+      const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      const p = 2 * l - q;
+      
+      r1 = hue2rgb(p, q, h + 1/3);
+      g1 = hue2rgb(p, q, h);
+      b1 = hue2rgb(p, q, h - 1/3);
+    }
+    
+    data[i] = Math.round(r1 * 255);
+    data[i + 1] = Math.round(g1 * 255);
+    data[i + 2] = Math.round(b1 * 255);
   }
+  
+  ctx.putImageData(imageData, 0, 0);
 }
 
 // Helper function for HSL to RGB conversion
@@ -408,19 +386,99 @@ export const processImage = async (
   });
 };
 
-// OpenCV-based processing - this will only be called if OpenCV is available
+// OpenCV-based processing
 function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustments): HTMLCanvasElement {
   try {
-    // Create an OpenCV matrix from the canvas
-    const mat = window.cv.imread(canvas);
+    console.log('🔄 OpenCV Processing with adjustments:', adjustments);
     
-    // Try to apply auto-level if enabled and function exists
-    if (adjustments.autoLevel && hasOpenCVFunction('equalizeHist')) {
+    // Create an OpenCV matrix from the canvas
+    const src = window.cv.imread(canvas);
+    
+    // Apply HSL adjustments (using HLS in OpenCV)
+    const hasHSLAdjustments = 
+      adjustments.hue !== 100 || 
+      adjustments.saturation !== 100 || 
+      adjustments.lightness !== 100;
+      
+    if (hasHSLAdjustments) {
+      try {
+        console.log('🔄 OpenCV HLS Adjustment:', {
+          hue: adjustments.hue, 
+          saturation: adjustments.saturation, 
+          lightness: adjustments.lightness
+        });
+        
+        // Convert BGR to HLS
+        const hls = new window.cv.Mat();
+        window.cv.cvtColor(src, hls, window.cv.COLOR_BGR2HLS);
+        
+        // Split channels
+        const channels = new window.cv.MatVector();
+        window.cv.split(hls, channels);
+        
+        // Get individual channels
+        const hChannel = channels.get(0);  // Hue: 0-180
+        const lChannel = channels.get(1);  // Lightness: 0-255
+        const sChannel = channels.get(2);  // Saturation: 0-255
+        
+        // Adjust hue (add offset, keep within 0-180)
+        const hueOffset = (adjustments.hue - 100) * 180 / 100;
+        if (hueOffset !== 0) {
+          const hueShiftMat = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
+            new window.cv.Scalar(hueOffset));
+          window.cv.add(hChannel, hueShiftMat, hChannel);
+          
+          // Ensure hue values stay within 0-180 range
+          const upperBound = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
+            new window.cv.Scalar(180));
+          const lowerBound = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
+            new window.cv.Scalar(0));
+          
+          window.cv.min(hChannel, upperBound, hChannel);
+          window.cv.max(hChannel, lowerBound, hChannel);
+          
+          hueShiftMat.delete();
+          upperBound.delete();
+          lowerBound.delete();
+        }
+        
+        // Adjust saturation (scale values)
+        const satScale = adjustments.saturation / 100;
+        if (satScale !== 1) {
+          sChannel.convertTo(sChannel, -1, satScale, 0);
+        }
+        
+        // Adjust lightness (scale values)
+        const lightScale = adjustments.lightness / 100;
+        if (lightScale !== 1) {
+          lChannel.convertTo(lChannel, -1, lightScale, 0);
+        }
+        
+        // Merge channels back
+        window.cv.merge(channels, hls);
+        
+        // Convert back to BGR
+        window.cv.cvtColor(hls, src, window.cv.COLOR_HLS2BGR);
+        
+        // Clean up
+        hls.delete();
+        channels.delete();
+        hChannel.delete();
+        lChannel.delete();
+        sChannel.delete();
+        
+      } catch (e) {
+        console.error('OpenCV HLS adjustment failed:', e);
+      }
+    }
+    
+    // Try to apply auto-level if enabled
+    if (adjustments.autoLevel) {
       try {
         // For color images, convert to YCrCb and equalize Y channel
-        if (mat.channels() === 3 && hasOpenCVFunction('cvtColor')) {
+        if (src.channels() === 3) {
           const ycrcbMat = new window.cv.Mat();
-          window.cv.cvtColor(mat, ycrcbMat, window.cv.COLOR_BGR2YCrCb);
+          window.cv.cvtColor(src, ycrcbMat, window.cv.COLOR_BGR2YCrCb);
           
           const channels = new window.cv.MatVector();
           window.cv.split(ycrcbMat, channels);
@@ -428,13 +486,13 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
           window.cv.equalizeHist(channels.get(0), channels.get(0));
           
           window.cv.merge(channels, ycrcbMat);
-          window.cv.cvtColor(ycrcbMat, mat, window.cv.COLOR_YCrCb2BGR);
+          window.cv.cvtColor(ycrcbMat, src, window.cv.COLOR_YCrCb2BGR);
           
           ycrcbMat.delete();
           channels.delete();
-        } else if (mat.channels() === 1) {
+        } else if (src.channels() === 1) {
           // Grayscale image
-          window.cv.equalizeHist(mat, mat);
+          window.cv.equalizeHist(src, src);
         }
       } catch (e) {
         console.warn('OpenCV auto-level failed', e);
@@ -445,19 +503,19 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
     try {
       const alpha = (adjustments.contrast + 100) / 100;
       const beta = adjustments.brightness;
-      window.cv.convertScaleAbs(mat, mat, alpha, beta);
+      window.cv.convertScaleAbs(src, src, alpha, beta);
     } catch (e) {
       console.warn('OpenCV brightness/contrast adjustment failed', e);
     }
     
     // Apply adaptive sharpening if enabled
-    if (adjustments.sharpen > 0 && hasOpenCVFunction('GaussianBlur')) {
+    if (adjustments.sharpen > 0) {
       try {
         const blurred = new window.cv.Mat();
         const ksize = new window.cv.Size(5, 5);
-        window.cv.GaussianBlur(mat, blurred, ksize, 0);
+        window.cv.GaussianBlur(src, blurred, ksize, 0);
         
-        window.cv.addWeighted(mat, 1 + adjustments.sharpen, blurred, -adjustments.sharpen, 0, mat);
+        window.cv.addWeighted(src, 1 + adjustments.sharpen, blurred, -adjustments.sharpen, 0, src);
         
         blurred.delete();
       } catch (e) {
@@ -467,8 +525,8 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
     
     // Create result canvas
     const dstCanvas = document.createElement('canvas');
-    window.cv.imshow(dstCanvas, mat);
-    mat.delete();
+    window.cv.imshow(dstCanvas, src);
+    src.delete();
     
     return dstCanvas;
   } catch (error) {
