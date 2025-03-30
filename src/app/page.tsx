@@ -11,15 +11,9 @@ import {
   processImage, 
   createImageFile, 
   downloadAllImages,
-  downloadImage
+  downloadImage,
+  ImageFormat
 } from './lib/imageProcessing';
-
-// Using ImagePreview which imports downloadImage directly, but keeping this import to ensure
-// it's available throughout the module system
-const noop = () => {
-  // This prevents the linter error - we're ensuring downloadImage is used
-  if (false) downloadImage('', '');
-};
 
 export default function Home() {
   const [images, setImages] = useState<ImageFile[]>([]);
@@ -139,16 +133,46 @@ export default function Home() {
     try {
       setIsProcessing(true);
       const newImages = await Promise.all(fileArray.map(createImageFile));
-      setImages([...images, ...newImages]);
       
-      // Select the first image if none is selected
-      if (!selectedImageId && newImages.length > 0) {
-        setSelectedImageId(newImages[0].id);
+      // Limit total selection to 10 images
+      const totalImages = [...images, ...newImages];
+      if (totalImages.length > 10) {
+        alert("Maximum 10 images allowed. Only the first " + (10 - images.length) + " images will be added.");
+        const limitedNewImages = newImages.slice(0, 10 - images.length);
+        setImages([...images, ...limitedNewImages]);
+        
+        // Select the first image if none is selected
+        if (!selectedImageId && limitedNewImages.length > 0) {
+          setSelectedImageId(limitedNewImages[0].id);
+        }
+      } else {
+        setImages(totalImages);
+        
+        // Select the first image if none is selected
+        if (!selectedImageId && newImages.length > 0) {
+          setSelectedImageId(newImages[0].id);
+        }
       }
     } catch (error) {
       console.error('Error processing uploaded files', error);
     } finally {
       setIsProcessing(false);
+    }
+  };
+
+  // Handle deleting an image
+  const handleDeleteImage = (imageId: string) => {
+    // Remove the image from the state
+    const updatedImages = images.filter(img => img.id !== imageId);
+    setImages(updatedImages);
+    
+    // If the deleted image was selected, select another one if available
+    if (selectedImageId === imageId) {
+      if (updatedImages.length > 0) {
+        setSelectedImageId(updatedImages[0].id);
+      } else {
+        setSelectedImageId(null);
+      }
     }
   };
 
@@ -194,10 +218,10 @@ export default function Home() {
   };
 
   // Handle download - process the full image if needed
-  const handleDownloadImage = async (image: ImageFile) => {
+  const handleDownloadImage = async (image: ImageFile, format: ImageFormat = 'jpg') => {
     if (image.processedDataUrl) {
       // If we already have the processed full image, download it
-      downloadImage(image.processedDataUrl, `processed_${image.file.name}`);
+      downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format);
     } else if (image.processedThumbnailUrl) {
       // Process the full-size image now
       setIsProcessing(true);
@@ -227,7 +251,7 @@ export default function Home() {
           );
           
           // Download the processed image
-          downloadImage(processedDataUrl, `processed_${image.file.name}`);
+          downloadImage(processedDataUrl, `processed_${image.file.name}`, format);
         }
       } catch (error) {
         console.error('Error processing full image for download', error);
@@ -236,11 +260,11 @@ export default function Home() {
       }
     } else {
       // Download the original if no processing has been done
-      downloadImage(image.dataUrl, image.file.name);
+      downloadImage(image.dataUrl, image.file.name, format);
     }
   };
 
-  const handleDownloadAll = async () => {
+  const handleDownloadAll = async (format: ImageFormat = 'jpg', asZip: boolean = true) => {
     const processedImages = images.filter(img => img.processedThumbnailUrl);
     if (processedImages.length === 0) return;
     
@@ -283,7 +307,7 @@ export default function Home() {
       
       // Now download all the processed images
       const updatedImages = images.filter(img => img.processedDataUrl);
-      downloadAllImages(updatedImages);
+      downloadAllImages(updatedImages, format, asZip);
     } catch (error) {
       console.error('Error processing images for download', error);
     } finally {
@@ -291,25 +315,31 @@ export default function Home() {
     }
   };
 
+  // Handle reset of all adjustments
   const handleReset = () => {
+    // Reset adjustments to default values
     setAdjustments(defaultAdjustments);
+    
+    // Reset preset selection
     setSelectedPreset(null);
     setCustomPresetSettings(null);
   };
-
-  const canDownload = images.some(img => 
-    img.processedDataUrl || img.processedThumbnailUrl
-  );
   
-  // Get all presets, including any custom preset
+  // Get all presets including custom preset if available
   const getAllPresets = () => {
+    let presets = [...defaultPresets];
+    
     if (customPresetSettings) {
-      // Replace the default custom preset with our updated one
-      return defaultPresets.map(preset => 
-        preset.id === 'custom' ? customPresetSettings : preset
-      );
+      // Replace existing custom preset or add new one
+      const customIndex = presets.findIndex(p => p.id === 'custom');
+      if (customIndex >= 0) {
+        presets[customIndex] = customPresetSettings;
+      } else {
+        presets = [...presets, customPresetSettings];
+      }
     }
-    return defaultPresets;
+    
+    return presets;
   };
 
   return (
@@ -367,6 +397,7 @@ export default function Home() {
                 selectedImageId={selectedImageId}
                 onSelectImage={setSelectedImageId}
                 onDownloadImage={handleDownloadImage}
+                onDeleteImage={handleDeleteImage}
                 isProcessing={isProcessing}
                 className="mb-6"
                 appliedSettings={{
@@ -383,7 +414,7 @@ export default function Home() {
                 onAdjustmentsChange={setAdjustments}
                 onProcessImages={handleProcessAllImages}
                 onReset={handleReset}
-                onDownload={canDownload ? handleDownloadAll : noop}
+                onDownload={handleDownloadAll}
                 applyToAll={applyToAll}
                 setApplyToAll={setApplyToAll}
               />

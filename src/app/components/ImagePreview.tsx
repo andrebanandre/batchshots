@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Button from './Button';
-import { downloadImage } from '../lib/imageProcessing';
+import { downloadImage, ImageFormat } from '../lib/imageProcessing';
 
 export interface ImageFile {
   id: string;
@@ -23,7 +23,8 @@ interface ImagePreviewProps {
   images: ImageFile[];
   selectedImageId: string | null;
   onSelectImage: (id: string) => void;
-  onDownloadImage?: (image: ImageFile) => void;
+  onDownloadImage?: (image: ImageFile, format?: ImageFormat) => void;
+  onDeleteImage?: (id: string) => void;
   isProcessing?: boolean;
   className?: string;
   appliedSettings?: {
@@ -38,6 +39,7 @@ export default function ImagePreview({
   selectedImageId,
   onSelectImage,
   onDownloadImage,
+  onDeleteImage,
   isProcessing = false,
   className = '',
   appliedSettings
@@ -78,9 +80,17 @@ export default function ImagePreview({
       // Use the external handler if provided (for full image processing)
       onDownloadImage(image);
     } else if (image.processedDataUrl) {
-      downloadImage(image.processedDataUrl, `processed_${image.file.name}`);
+      downloadImage(image.processedDataUrl, `processed_${image.file.name}`, 'jpg');
     } else {
-      downloadImage(image.dataUrl, image.file.name);
+      downloadImage(image.dataUrl, image.file.name, 'jpg');
+    }
+  };
+
+  // Function to handle image deletion
+  const handleDelete = (e: React.MouseEvent, imageId: string) => {
+    e.stopPropagation(); // Prevent triggering the thumbnail selection
+    if (onDeleteImage) {
+      onDeleteImage(imageId);
     }
   };
 
@@ -193,9 +203,9 @@ export default function ImagePreview({
       )}
 
       {/* Thumbnail Grid */}
-      <h3 className="font-bold text-lg uppercase mb-2">ALL IMAGES</h3>
+      <h3 className="font-bold text-lg uppercase mb-2">ALL IMAGES ({images.length}/10)</h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {images.map((image) => {
+        {images.map((image, index) => {
           const dimensions = imageDimensions[image.id];
           return (
             <div
@@ -215,6 +225,20 @@ export default function ImagePreview({
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                   className="object-contain"
                 />
+                {/* Image number indicator */}
+                <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm">
+                  {index + 1}/10
+                </div>
+                {/* Delete button */}
+                {onDeleteImage && (
+                  <button 
+                    onClick={(e) => handleDelete(e, image.id)}
+                    className="absolute top-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded-sm hover:bg-red-700"
+                    disabled={isProcessing}
+                  >
+                    ×
+                  </button>
+                )}
               </div>
               <div className="mt-2 text-xs truncate">{image.file.name}</div>
               {dimensions && (

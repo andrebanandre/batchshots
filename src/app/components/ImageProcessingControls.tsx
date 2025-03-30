@@ -8,10 +8,7 @@ export interface ImageAdjustments {
   redScale: number;
   greenScale: number;
   blueScale: number;
-  // New ImageMagick-like adjustments
   sharpen: number;    // For adaptive sharpen 
-  autoLevel: boolean; // For auto-level
-  autoGamma: boolean; // For auto-gamma
   saturation: number; // For modulate (saturation component)
   hue: number;        // For modulate (hue component)
   lightness: number;  // For modulate (lightness component)
@@ -24,19 +21,19 @@ export const defaultAdjustments: ImageAdjustments = {
   greenScale: 1.0,
   blueScale: 1.0,
   sharpen: 0,
-  autoLevel: false,
-  autoGamma: false,
   saturation: 100,
   hue: 100,
   lightness: 100
 };
 
+export type ImageFormat = 'jpg' | 'webp';
+
 interface ImageProcessingControlsProps {
   adjustments: ImageAdjustments;
   onAdjustmentsChange: (adjustments: ImageAdjustments) => void;
-  onProcessImages: () => void;
+  onProcessImages?: () => void; // Optional now as we don't use it
   onReset: () => void;
-  onDownload: () => void;
+  onDownload: (format: ImageFormat, asZip: boolean) => void;
   applyToAll: boolean;
   setApplyToAll: (value: boolean) => void;
   className?: string;
@@ -45,7 +42,6 @@ interface ImageProcessingControlsProps {
 export default function ImageProcessingControls({
   adjustments,
   onAdjustmentsChange,
-  onProcessImages,
   onReset,
   onDownload,
   applyToAll,
@@ -53,6 +49,7 @@ export default function ImageProcessingControls({
   className = '',
 }: ImageProcessingControlsProps) {
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced'>('basic');
+  const [downloadFormat, setDownloadFormat] = useState<ImageFormat>('jpg');
 
   const handleSliderChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -65,33 +62,22 @@ export default function ImageProcessingControls({
     });
   };
 
-  const handleCheckboxChange = (
-    property: keyof ImageAdjustments
-  ) => {
-    onAdjustmentsChange({
-      ...adjustments,
-      [property]: !adjustments[property as keyof typeof adjustments],
-    });
-  };
-
   const handleApplyAllChange = () => {
     setApplyToAll(!applyToAll);
   };
 
-  const handleQuickPreset = (preset: 'auto' | 'vivid' | 'sharp' | 'classic' | 'clean' | 'white-bg' | 'dramatic' | 'jewelry') => {
+  const handleFormatChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDownloadFormat(e.target.value as ImageFormat);
+  };
+
+  const handleDownload = () => {
+    onDownload(downloadFormat, true);
+  };
+
+  const handleQuickPreset = (preset: 'vivid' | 'sharp' | 'classic' | 'clean' | 'white-bg' | 'dramatic' | 'jewelry' | 'soft-product' | 'textile' | 'food' | 'furniture' | 'transparent') => {
     let newAdjustments = { ...defaultAdjustments };
     
     switch (preset) {
-      case 'auto':
-        newAdjustments = {
-          ...newAdjustments,
-          autoLevel: true,
-          autoGamma: true,
-          brightness: 20,
-          contrast: -10,
-          sharpen: 0.8
-        };
-        break;
       case 'vivid':
         newAdjustments = {
           ...newAdjustments,
@@ -122,7 +108,6 @@ export default function ImageProcessingControls({
         // Product photography preset with clean, neutral colors
         newAdjustments = {
           ...newAdjustments,
-          autoLevel: true,
           contrast: 5,
           brightness: 10,
           sharpen: 1.0,
@@ -137,8 +122,6 @@ export default function ImageProcessingControls({
         // Clean white background product photography
         newAdjustments = {
           ...newAdjustments,
-          autoLevel: true,
-          autoGamma: true,
           brightness: 25,
           contrast: 15,
           sharpen: 1.2,
@@ -161,7 +144,6 @@ export default function ImageProcessingControls({
         // Jewelry and metallic products
         newAdjustments = {
           ...newAdjustments,
-          autoLevel: true,
           contrast: 15,
           brightness: 10,
           sharpen: 2.0,
@@ -170,6 +152,76 @@ export default function ImageProcessingControls({
           blueScale: 1.1,
           saturation: 85, // Lower saturation to highlight metal
           lightness: 108  // Slightly brighter to enhance shine
+        };
+        break;
+      case 'soft-product':
+        // For soft products like pillows, cushions, plush toys
+        newAdjustments = {
+          ...newAdjustments,
+          contrast: 5,
+          brightness: 15,
+          sharpen: 0.6, // Less sharpening for soft appearance
+          saturation: 105,
+          lightness: 110,
+          redScale: 1.02,
+          greenScale: 1.02,
+          blueScale: 1.0
+        };
+        break;
+      case 'textile':
+        // For fabric and textile products - enhances texture and color
+        newAdjustments = {
+          ...newAdjustments,
+          contrast: 12,
+          brightness: 8,
+          sharpen: 1.3, // Moderate sharpening for texture detail
+          saturation: 110, // Slightly boosted saturation for fabric colors
+          lightness: 103,
+          redScale: 1.02,
+          greenScale: 1.0,
+          blueScale: 0.98
+        };
+        break;
+      case 'food':
+        // Food photography - enhances freshness and color appeal
+        newAdjustments = {
+          ...newAdjustments,
+          contrast: 18,
+          brightness: 5,
+          sharpen: 1.6, // Strong sharpening for texture detail
+          saturation: 115, // Boosted saturation for appetizing colors
+          lightness: 105,
+          redScale: 1.05, // Slightly warmer tones
+          greenScale: 1.03,
+          blueScale: 0.97
+        };
+        break;
+      case 'furniture':
+        // Wooden furniture and home decor
+        newAdjustments = {
+          ...newAdjustments,
+          contrast: 10,
+          brightness: 8,
+          sharpen: 1.4, // Good sharpening for wood grain
+          saturation: 95, // Slightly reduced saturation for natural look
+          lightness: 102,
+          redScale: 1.03, // Warmer tones for wood
+          greenScale: 1.0,
+          blueScale: 0.95
+        };
+        break;
+      case 'transparent':
+        // Glass and transparent products
+        newAdjustments = {
+          ...newAdjustments,
+          contrast: 20,
+          brightness: 12,
+          sharpen: 1.1, // Moderate sharpening for edges
+          saturation: 85, // Reduced saturation for clarity
+          lightness: 112, // Brighter for transparency
+          redScale: 0.98,
+          greenScale: 1.0,
+          blueScale: 1.04 // Slight cool tint for glass-like appearance
         };
         break;
     }
@@ -187,7 +239,13 @@ export default function ImageProcessingControls({
               type="checkbox"
               checked={applyToAll}
               onChange={handleApplyAllChange}
-              className="mr-2 brutalist-border w-4 h-4"
+              className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black"
+              style={{
+                backgroundImage: applyToAll ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")" : "",
+                backgroundSize: "100% 100%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat"
+              }}
             />
             <span className="font-bold">APPLY TO ALL IMAGES</span>
           </label>
@@ -212,17 +270,89 @@ export default function ImageProcessingControls({
         </div>
 
         {/* Quick Presets */}
-        <div className="mb-6">
+        <div>
           <h3 className="font-bold mb-2">QUICK PRESETS</h3>
+          <div className="grid grid-cols-2 gap-2 mb-2">
+            <button
+              onClick={() => handleQuickPreset('white-bg')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              WHITE BACKGROUND
+            </button>
+            <button
+              onClick={() => handleQuickPreset('clean')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              CLEAN PRODUCT
+            </button>
+            <button
+              onClick={() => handleQuickPreset('jewelry')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              JEWELRY/METAL
+            </button>
+            <button
+              onClick={() => handleQuickPreset('sharp')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              SHARP DETAIL
+            </button>
+          </div>
+          
+          <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">PRODUCT SPECIALTY</h3>
           <div className="grid grid-cols-2 gap-2">
-            <Button onClick={() => handleQuickPreset('auto')} size="sm">AUTO ENHANCE</Button>
-            <Button onClick={() => handleQuickPreset('clean')} size="sm">CLEAN PRODUCT</Button>
-            <Button onClick={() => handleQuickPreset('white-bg')} size="sm">WHITE BG</Button>
-            <Button onClick={() => handleQuickPreset('sharp')} size="sm">SHARP</Button>
-            <Button onClick={() => handleQuickPreset('dramatic')} size="sm">DRAMATIC</Button>
-            <Button onClick={() => handleQuickPreset('jewelry')} size="sm">JEWELRY</Button>
-            <Button onClick={() => handleQuickPreset('vivid')} size="sm">VIBRANT</Button>
-            <Button onClick={() => handleQuickPreset('classic')} size="sm">CLASSIC</Button>
+            <button
+              onClick={() => handleQuickPreset('textile')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              TEXTILE/FABRIC
+            </button>
+            <button
+              onClick={() => handleQuickPreset('soft-product')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              SOFT PRODUCTS
+            </button>
+            <button
+              onClick={() => handleQuickPreset('furniture')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              FURNITURE/WOOD
+            </button>
+            <button
+              onClick={() => handleQuickPreset('transparent')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              GLASS
+            </button>
+            <button
+              onClick={() => handleQuickPreset('food')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              FOOD PRODUCTS
+            </button>
+            <button
+              onClick={() => handleQuickPreset('dramatic')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              DRAMATIC
+            </button>
+          </div>
+          
+          <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">COLOR STYLE</h3>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              onClick={() => handleQuickPreset('vivid')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              VIVID COLORS
+            </button>
+            <button
+              onClick={() => handleQuickPreset('classic')}
+              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+            >
+              CLASSIC
+            </button>
           </div>
         </div>
 
@@ -258,28 +388,6 @@ export default function ImageProcessingControls({
                   onChange={(e) => handleSliderChange(e, 'contrast')}
                   className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                 />
-              </div>
-
-              {/* Checkboxes for auto adjustments */}
-              <div className="flex flex-col space-y-2">
-                <label className="inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={adjustments.autoLevel}
-                    onChange={() => handleCheckboxChange('autoLevel')}
-                    className="mr-2 brutalist-border w-4 h-4"
-                  />
-                  <span>AUTO LEVEL</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="checkbox"
-                    checked={adjustments.autoGamma}
-                    onChange={() => handleCheckboxChange('autoGamma')}
-                    className="mr-2 brutalist-border w-4 h-4"
-                  />
-                  <span>AUTO GAMMA</span>
-                </label>
               </div>
 
               <div>
@@ -423,15 +531,62 @@ export default function ImageProcessingControls({
           </>
         )}
 
+        {/* Download Options */}
+        <div className="brutalist-border p-3 bg-white">
+          <h3 className="font-bold mb-3 text-sm uppercase">Download Options</h3>
+          <div className="space-y-3">
+            <div>
+              <p className="font-bold mb-2 text-sm">Format:</p>
+              <div className="flex space-x-4">
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="downloadFormat"
+                    value="jpg"
+                    checked={downloadFormat === 'jpg'}
+                    onChange={handleFormatChange}
+                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
+                    style={{
+                      backgroundImage: downloadFormat === 'jpg' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
+                      backgroundSize: "100% 100%",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat"
+                    }}
+                  />
+                  <span>JPG</span>
+                </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="downloadFormat"
+                    value="webp"
+                    checked={downloadFormat === 'webp'}
+                    onChange={handleFormatChange}
+                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
+                    style={{
+                      backgroundImage: downloadFormat === 'webp' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
+                      backgroundSize: "100% 100%",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat"
+                    }}
+                  />
+                  <span>WebP (smaller files, better for web)</span>
+                </label>
+              </div>
+            </div>
+            
+            <div>
+              <p className="text-xs text-gray-600">All images will be packaged as a ZIP file for download</p>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-2 gap-4 pt-4">
           <Button onClick={onReset}>RESET</Button>
-          <Button onClick={onProcessImages} variant="secondary">
-            PROCESS
-          </Button>
           <Button
-            onClick={onDownload}
+            onClick={handleDownload}
             fullWidth
-            className="col-span-2"
+            className="col-span-2 mt-2"
             variant="accent"
           >
             DOWNLOAD ALL

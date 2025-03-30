@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
-import { ImageAdjustments, defaultAdjustments } from '../components/ImageProcessingControls';
+import { ImageAdjustments } from '../components/ImageProcessingControls';
 import { Preset } from '../components/PresetsSelector';
 import { ImageFile } from '../components/ImagePreview';
+import JSZip from 'jszip';
 
 // Import the OpenCV type from our declaration file
 declare global {
@@ -43,66 +44,6 @@ export const initOpenCV = (): Promise<void> => {
 };
 
 // Canvas-based image processing fallbacks
-
-// Canvas-based auto level (histogram equalization approximation)
-function canvasAutoLevel(ctx: CanvasRenderingContext2D, width: number, height: number): void {
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
-  
-  // Find min and max values for each channel
-  let rMin = 255, rMax = 0, gMin = 255, gMax = 0, bMin = 255, bMax = 0;
-  
-  for (let i = 0; i < data.length; i += 4) {
-    const r = data[i];
-    const g = data[i + 1];
-    const b = data[i + 2];
-    
-    rMin = Math.min(rMin, r);
-    rMax = Math.max(rMax, r);
-    gMin = Math.min(gMin, g);
-    gMax = Math.max(gMax, g);
-    bMin = Math.min(bMin, b);
-    bMax = Math.max(bMax, b);
-  }
-  
-  // Apply normalization to stretch the histogram
-  for (let i = 0; i < data.length; i += 4) {
-    data[i] = rMin === rMax ? 
-      data[i] : 
-      Math.round(((data[i] - rMin) / (rMax - rMin)) * 255);
-      
-    data[i + 1] = gMin === gMax ? 
-      data[i + 1] : 
-      Math.round(((data[i + 1] - gMin) / (gMax - gMin)) * 255);
-      
-    data[i + 2] = bMin === bMax ? 
-      data[i + 2] : 
-      Math.round(((data[i + 2] - bMin) / (bMax - bMin)) * 255);
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
-}
-
-// Canvas-based gamma correction
-function canvasGammaCorrection(ctx: CanvasRenderingContext2D, width: number, height: number, gamma: number = 1.0): void {
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
-  
-  // Create gamma lookup table
-  const gammaLookup = new Uint8Array(256);
-  for (let i = 0; i < 256; i++) {
-    gammaLookup[i] = Math.min(255, Math.round(Math.pow(i / 255, 1 / gamma) * 255));
-  }
-  
-  // Apply gamma correction
-  for (let i = 0; i < data.length; i += 4) {
-    data[i] = gammaLookup[data[i]];        // R
-    data[i + 1] = gammaLookup[data[i + 1]]; // G
-    data[i + 2] = gammaLookup[data[i + 2]]; // B
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
-}
 
 // Canvas-based sharpening with convolution
 function canvasSharpen(ctx: CanvasRenderingContext2D, width: number, height: number, amount: number): void {
@@ -286,20 +227,17 @@ export const processImage = async (
 ): Promise<{ processedDataUrl?: string, processedThumbnailUrl: string }> => {
   return new Promise((resolve, reject) => {
     try {
-      // Validate and sanitize adjustments to prevent NaN values
+      // Safety check for adjustments
       const safeAdjustments = {
-        ...defaultAdjustments,
-        ...adjustments,
-        // Ensure numeric values are valid
-        brightness: isNaN(adjustments.brightness) ? 0 : adjustments.brightness,
-        contrast: isNaN(adjustments.contrast) ? 0 : adjustments.contrast,
-        redScale: isNaN(adjustments.redScale) ? 1.0 : adjustments.redScale,
-        greenScale: isNaN(adjustments.greenScale) ? 1.0 : adjustments.greenScale,
-        blueScale: isNaN(adjustments.blueScale) ? 1.0 : adjustments.blueScale,
-        sharpen: isNaN(adjustments.sharpen) ? 0 : adjustments.sharpen,
-        saturation: isNaN(adjustments.saturation) ? 100 : adjustments.saturation,
-        hue: isNaN(adjustments.hue) ? 100 : adjustments.hue,
-        lightness: isNaN(adjustments.lightness) ? 100 : adjustments.lightness
+        brightness: adjustments.brightness || 0,
+        contrast: adjustments.contrast || 0,
+        redScale: adjustments.redScale || 1.0,
+        greenScale: adjustments.greenScale || 1.0,
+        blueScale: adjustments.blueScale || 1.0,
+        sharpen: adjustments.sharpen || 0,
+        saturation: adjustments.saturation || 100,
+        hue: adjustments.hue || 100,
+        lightness: adjustments.lightness || 100
       };
       
       // Process an image from a source data URL
@@ -351,16 +289,6 @@ export const processImage = async (
               
               // Process with Canvas API
               console.log(`Using Canvas API for image processing (${isFullSize ? 'full' : 'thumbnail'})`);
-              
-              // Apply auto-level if enabled
-              if (safeAdjustments.autoLevel) {
-                canvasAutoLevel(ctx, width, height);
-              }
-              
-              // Apply auto-gamma if enabled
-              if (safeAdjustments.autoGamma) {
-                canvasGammaCorrection(ctx, width, height, 1.1); // Default gamma value
-              }
               
               // Apply brightness and contrast
               canvasBrightnessContrast(ctx, width, height, safeAdjustments.brightness, safeAdjustments.contrast);
@@ -506,33 +434,6 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
       }
     }
     
-    // Try to apply auto-level if enabled
-    if (adjustments.autoLevel) {
-      try {
-        // For color images, convert to YCrCb and equalize Y channel
-        if (src.channels() === 3) {
-          const ycrcbMat = new window.cv.Mat();
-          window.cv.cvtColor(src, ycrcbMat, window.cv.COLOR_BGR2YCrCb);
-          
-          const channels = new window.cv.MatVector();
-          window.cv.split(ycrcbMat, channels);
-          
-          window.cv.equalizeHist(channels.get(0), channels.get(0));
-          
-          window.cv.merge(channels, ycrcbMat);
-          window.cv.cvtColor(ycrcbMat, src, window.cv.COLOR_YCrCb2BGR);
-          
-          ycrcbMat.delete();
-          channels.delete();
-        } else if (src.channels() === 1) {
-          // Grayscale image
-          window.cv.equalizeHist(src, src);
-        }
-      } catch (e) {
-        console.warn('OpenCV auto-level failed', e);
-      }
-    }
-    
     // Apply brightness and contrast
     try {
       const alpha = (adjustments.contrast + 100) / 100;
@@ -638,19 +539,134 @@ export const createImageFile = async (file: File): Promise<ImageFile> => {
   });
 };
 
-export const downloadImage = (dataUrl: string, filename: string): void => {
-  const link = document.createElement('a');
-  link.href = dataUrl;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+export type ImageFormat = 'jpg' | 'webp';
+
+// Update downloadImage function to support format selection
+export const downloadImage = (dataUrl: string, filename: string, format: ImageFormat = 'jpg'): void => {
+  // If format is already in the desired format, download directly
+  if ((format === 'jpg' && dataUrl.includes('image/jpeg')) || 
+      (format === 'webp' && dataUrl.includes('image/webp'))) {
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = filename.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    return;
+  }
+  
+  // Need to convert the format
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    ctx.drawImage(img, 0, 0);
+    
+    // Convert to the desired format
+    const mimeType = format === 'webp' ? 'image/webp' : 'image/jpeg';
+    const quality = format === 'webp' ? 0.8 : 0.9; // WebP can use lower quality due to better compression
+    
+    const convertedDataUrl = canvas.toDataURL(mimeType, quality);
+    
+    // Create download link
+    const link = document.createElement('a');
+    link.href = convertedDataUrl;
+    link.download = filename.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  
+  img.src = dataUrl;
 };
 
-export const downloadAllImages = (images: ImageFile[]): void => {
-  images.forEach((image) => {
-    if (image.processedDataUrl) {
-      downloadImage(image.processedDataUrl, `processed_${image.file.name}`);
-    }
-  });
+// Download all images with format selection and ZIP option
+export const downloadAllImages = async (
+  images: ImageFile[], 
+  format: ImageFormat = 'jpg', 
+  asZip: boolean = false
+): Promise<void> => {
+  if (images.length === 0) return;
+  
+  // If not downloading as ZIP, just download each image individually
+  if (!asZip) {
+    images.forEach((image) => {
+      if (image.processedDataUrl) {
+        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format);
+      }
+    });
+    return;
+  }
+  
+  try {
+    // Create a new ZIP file
+    const zip = new JSZip();
+    
+    // Add each image to the ZIP
+    const promises = images.map(async (image, index) => {
+      if (!image.processedDataUrl) return;
+      
+      // Create a temporary Image to load the data URL
+      return new Promise<void>((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            resolve();
+            return;
+          }
+          
+          ctx.drawImage(img, 0, 0);
+          
+          // Convert to the desired format
+          const mimeType = format === 'webp' ? 'image/webp' : 'image/jpeg';
+          const quality = format === 'webp' ? 0.8 : 0.9;
+          
+          canvas.toBlob((blob) => {
+            if (blob) {
+              // Add to zip with numbered filenames if they have the same name
+              const fileName = `processed_${index + 1}_${image.file.name.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`)}`;
+              zip.file(fileName, blob);
+            }
+            resolve();
+          }, mimeType, quality);
+        };
+        
+        img.onerror = () => resolve();
+        img.src = image.processedDataUrl as string;
+      });
+    });
+    
+    await Promise.all(promises);
+    
+    // Generate the ZIP file
+    const zipBlob = await zip.generateAsync({ type: 'blob' });
+    
+    // Create download link for the ZIP
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(zipBlob);
+    link.download = `processed_images_${new Date().toISOString().slice(0, 10)}.zip`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+    
+  } catch (error) {
+    console.error('Error creating ZIP file:', error);
+    // Fallback to individual downloads if ZIP creation fails
+    images.forEach((image) => {
+      if (image.processedDataUrl) {
+        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format);
+      }
+    });
+  }
 }; 
