@@ -7,26 +7,44 @@ export interface ImageFile {
   id: string;
   file: File;
   dataUrl: string;
+  thumbnailDataUrl?: string; // Thumbnail for faster previews
   processedDataUrl?: string;
+  processedThumbnailUrl?: string; // Processed thumbnail for faster previews
   dimensions?: { width: number; height: number; size: string };
+  appliedPreset?: {
+    name: string;
+    width: number;
+    height: number | null;
+    quality: number;
+  };
 }
 
 interface ImagePreviewProps {
   images: ImageFile[];
   selectedImageId: string | null;
   onSelectImage: (id: string) => void;
+  onDownloadImage?: (image: ImageFile) => void;
+  isProcessing?: boolean;
   className?: string;
+  appliedSettings?: {
+    preset: string | null;
+    presetName?: string;
+    applyToAll: boolean;
+  };
 }
 
 export default function ImagePreview({
   images,
   selectedImageId,
   onSelectImage,
+  onDownloadImage,
+  isProcessing = false,
   className = '',
+  appliedSettings
 }: ImagePreviewProps) {
   // State to store image dimensions
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number; size: string }>>({});
-
+  
   // Effect to calculate dimensions for each image
   useEffect(() => {
     images.forEach(image => {
@@ -55,8 +73,11 @@ export default function ImagePreview({
   }, [images, imageDimensions]);
 
   // Function to handle download of a single image
-  const handleDownloadImage = (image: ImageFile) => {
-    if (image.processedDataUrl) {
+  const handleLocalDownloadImage = (image: ImageFile) => {
+    if (onDownloadImage) {
+      // Use the external handler if provided (for full image processing)
+      onDownloadImage(image);
+    } else if (image.processedDataUrl) {
       downloadImage(image.processedDataUrl, `processed_${image.file.name}`);
     } else {
       downloadImage(image.dataUrl, image.file.name);
@@ -79,46 +100,93 @@ export default function ImagePreview({
   // Get dimensions of the selected image
   const selectedDimensions = selectedImage && imageDimensions[selectedImage.id];
 
+  // Get the appropriate image URL to display (thumbnail or full)
+  const getDisplayUrl = (image: ImageFile) => {
+    // Prefer processed thumbnail for previews
+    if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
+    // Fall back to processed full size if available
+    if (image.processedDataUrl) return image.processedDataUrl;
+    // Fall back to thumbnail if available
+    if (image.thumbnailDataUrl) return image.thumbnailDataUrl;
+    // Last resort - original image
+    return image.dataUrl;
+  };
+
   return (
     <div className={`${className}`}>
+      {/* Global settings info */}
+      {appliedSettings && (
+        <div className="brutalist-border p-2 mb-4 bg-slate-50 text-sm">
+          <div className="font-bold uppercase">Applied Settings:</div>
+          <div className="grid grid-cols-2">
+            <div>
+              <span className="font-bold">Preset:</span> {appliedSettings.presetName || 'None'}
+            </div>
+            <div>
+              <span className="font-bold">Apply to:</span> {appliedSettings.applyToAll ? 'All Images' : 'Selected Image'}
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Selected Image (Large View) */}
       {selectedImage && (
-        <div className="mb-6">
-          <div className="brutalist-accent-card">
+        <div className="mb-6 relative">
+          <div className="brutalist-accent-card relative">
             <div className="relative aspect-video w-full overflow-hidden">
               <Image
-                src={selectedImage.processedDataUrl || selectedImage.dataUrl}
+                src={getDisplayUrl(selectedImage)}
                 alt={selectedImage.file.name}
                 fill
                 sizes="100vw"
                 className="object-contain"
+                priority
               />
             </div>
+
             <div className="p-4 flex flex-col space-y-2">
               <div className="flex justify-between items-center">
                 <div className="font-bold truncate flex-1">
                   {selectedImage.file.name}
                 </div>
                 <Button 
-                  onClick={() => handleDownloadImage(selectedImage)}
+                  onClick={() => handleLocalDownloadImage(selectedImage)}
                   size="sm"
                   variant="secondary"
+                  disabled={isProcessing}
                 >
                   DOWNLOAD
                 </Button>
               </div>
-              {selectedDimensions && (
-                <div className="text-sm grid grid-cols-2 gap-x-4">
-                  <div>
-                    <span className="font-bold">Dimensions: </span> 
-                    {selectedDimensions.width} × {selectedDimensions.height}px
-                  </div>
-                  <div>
-                    <span className="font-bold">Size: </span>
-                    {selectedDimensions.size}
-                  </div>
-                </div>
-              )}
+              
+              <div className="text-sm grid grid-cols-2 gap-x-4">
+                {selectedDimensions && (
+                  <>
+                    <div>
+                      <span className="font-bold">Dimensions: </span> 
+                      {selectedDimensions.width} × {selectedDimensions.height}px
+                    </div>
+                    <div>
+                      <span className="font-bold">Size: </span>
+                      {selectedDimensions.size}
+                    </div>
+                  </>
+                )}
+                
+                {/* Applied preset info */}
+                {selectedImage.appliedPreset && (
+                  <>
+                    <div>
+                      <span className="font-bold">Output: </span>
+                      {selectedImage.appliedPreset.width}x{selectedImage.appliedPreset.height || 'auto'}
+                    </div>
+                    <div>
+                      <span className="font-bold">Quality: </span>
+                      {selectedImage.appliedPreset.quality}%
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -141,7 +209,7 @@ export default function ImagePreview({
             >
               <div className="relative aspect-square w-full overflow-hidden">
                 <Image
-                  src={image.processedDataUrl || image.dataUrl}
+                  src={getDisplayUrl(image)}
                   alt={image.file.name}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"

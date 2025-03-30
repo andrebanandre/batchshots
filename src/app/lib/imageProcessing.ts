@@ -281,8 +281,9 @@ function canvasRGBAdjustment(ctx: CanvasRenderingContext2D, width: number, heigh
 export const processImage = async (
   imageFile: ImageFile, 
   adjustments: ImageAdjustments,
-  preset: Preset | null
-): Promise<string> => {
+  preset: Preset | null,
+  processFullSize: boolean = false // Only process full-size when downloading
+): Promise<{ processedDataUrl?: string, processedThumbnailUrl: string }> => {
   return new Promise((resolve, reject) => {
     try {
       // Validate and sanitize adjustments to prevent NaN values
@@ -301,85 +302,118 @@ export const processImage = async (
         lightness: isNaN(adjustments.lightness) ? 100 : adjustments.lightness
       };
       
-      const img = new Image();
-      img.onload = () => {
-        let width = img.width;
-        let height = img.height;
-        
-        // Apply preset dimensions if provided
-        if (preset) {
-          width = preset.width;
-          if (!preset.height) {
-            // Maintain aspect ratio
-            const aspectRatio = img.height / img.width;
-            height = Math.round(width * aspectRatio);
-          } else {
-            height = preset.height;
-          }
-        }
-        
-        // Create a canvas for processing
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d')!;
-        
-        // Draw the original image (resizing if needed)
-        ctx.drawImage(img, 0, 0, width, height);
-        
-        // Try to use OpenCV if available, otherwise fall back to canvas methods
-        if (window.cv && typeof window.cv.imread === 'function') {
-          try {
-            console.log('Using OpenCV for image processing');
-            const processedCanvas = processWithOpenCV(canvas, safeAdjustments);
-            const dataUrl = processedCanvas.toDataURL('image/jpeg', preset ? preset.quality / 100 : 0.85);
-            resolve(dataUrl);
-            return;
-          } catch (error) {
-            console.warn('OpenCV processing failed, falling back to Canvas API', error);
-            // Continue with canvas-based processing
-          }
-        }
-        
-        // Process with Canvas API
-        console.log('Using Canvas API for image processing with adjustments:', safeAdjustments);
-        
-        // Apply auto-level if enabled
-        if (safeAdjustments.autoLevel) {
-          canvasAutoLevel(ctx, width, height);
-        }
-        
-        // Apply auto-gamma if enabled
-        if (safeAdjustments.autoGamma) {
-          canvasGammaCorrection(ctx, width, height, 1.1); // Default gamma value
-        }
-        
-        // Apply brightness and contrast
-        canvasBrightnessContrast(ctx, width, height, safeAdjustments.brightness, safeAdjustments.contrast);
-        
-        // Apply HSL adjustments (similar to modulate in ImageMagick)
-        canvasHSLAdjustment(ctx, width, height, safeAdjustments.hue, safeAdjustments.saturation, safeAdjustments.lightness);
-        
-        // Apply RGB adjustments for white balance
-        canvasRGBAdjustment(ctx, width, height, safeAdjustments.redScale, safeAdjustments.greenScale, safeAdjustments.blueScale);
-        
-        // Apply sharpening if enabled
-        if (safeAdjustments.sharpen > 0) {
-          canvasSharpen(ctx, width, height, safeAdjustments.sharpen);
-        }
-        
-        // Convert to data URL with quality setting
-        const quality = preset ? preset.quality / 100 : 0.85;
-        const dataUrl = canvas.toDataURL('image/jpeg', quality);
-        
-        resolve(dataUrl);
+      // Process an image from a source data URL
+      const processImageWithSource = (sourceDataUrl: string, isFullSize: boolean): Promise<string> => {
+        return new Promise((resolveImg, rejectImg) => {
+          const img = new Image();
+          
+          img.onload = () => {
+            try {
+              let width = img.width;
+              let height = img.height;
+              
+              // Apply preset dimensions if provided and we're processing the full image
+              if (preset && isFullSize) {
+                width = preset.width;
+                if (!preset.height) {
+                  // Maintain aspect ratio
+                  const aspectRatio = img.height / img.width;
+                  height = Math.round(width * aspectRatio);
+                } else {
+                  height = preset.height;
+                }
+              }
+              
+              // Create a canvas for processing
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d')!;
+              
+              // Draw the original image (resizing if needed)
+              ctx.drawImage(img, 0, 0, width, height);
+              
+              // Try to use OpenCV if available, otherwise fall back to canvas methods
+              if (window.cv && typeof window.cv.imread === 'function') {
+                try {
+                  console.log(`Using OpenCV for image processing (${isFullSize ? 'full' : 'thumbnail'})`);
+                  const processedCanvas = processWithOpenCV(canvas, safeAdjustments);
+                  // Higher quality for thumbnails (increased from 0.8)
+                  const quality = preset && isFullSize ? preset.quality / 100 : 0.9;
+                  const dataUrl = processedCanvas.toDataURL('image/jpeg', quality);
+                  resolveImg(dataUrl);
+                  return;
+                } catch (error) {
+                  console.warn('OpenCV processing failed, falling back to Canvas API', error);
+                  // Continue with canvas-based processing
+                }
+              }
+              
+              // Process with Canvas API
+              console.log(`Using Canvas API for image processing (${isFullSize ? 'full' : 'thumbnail'})`);
+              
+              // Apply auto-level if enabled
+              if (safeAdjustments.autoLevel) {
+                canvasAutoLevel(ctx, width, height);
+              }
+              
+              // Apply auto-gamma if enabled
+              if (safeAdjustments.autoGamma) {
+                canvasGammaCorrection(ctx, width, height, 1.1); // Default gamma value
+              }
+              
+              // Apply brightness and contrast
+              canvasBrightnessContrast(ctx, width, height, safeAdjustments.brightness, safeAdjustments.contrast);
+              
+              // Apply HSL adjustments (similar to modulate in ImageMagick)
+              canvasHSLAdjustment(ctx, width, height, safeAdjustments.hue, safeAdjustments.saturation, safeAdjustments.lightness);
+              
+              // Apply RGB adjustments for white balance
+              canvasRGBAdjustment(ctx, width, height, safeAdjustments.redScale, safeAdjustments.greenScale, safeAdjustments.blueScale);
+              
+              // Apply sharpening if enabled
+              if (safeAdjustments.sharpen > 0) {
+                canvasSharpen(ctx, width, height, safeAdjustments.sharpen);
+              }
+              
+              // Convert to data URL with quality setting - higher quality for thumbnails (increased from 0.8)
+              const quality = preset && isFullSize ? preset.quality / 100 : 0.9;
+              const dataUrl = canvas.toDataURL('image/jpeg', quality);
+              
+              resolveImg(dataUrl);
+            } catch (err) {
+              rejectImg(err);
+            }
+          };
+          
+          img.onerror = () => rejectImg(new Error('Error loading image'));
+          img.src = sourceDataUrl;
+        });
       };
       
-      img.onerror = () => {
-        reject(new Error('Error loading image'));
+      // Process images asynchronously
+      const processAsync = async () => {
+        try {
+          // Process the thumbnail version for immediate preview
+          const thumbnailSource = imageFile.thumbnailDataUrl || imageFile.dataUrl;
+          const processedThumbnailUrl = await processImageWithSource(thumbnailSource, false);
+          
+          // If we need the full-size image, process it as well
+          let processedDataUrl: string | undefined;
+          if (processFullSize) {
+            processedDataUrl = await processImageWithSource(imageFile.dataUrl, true);
+          }
+          
+          resolve({
+            processedThumbnailUrl,
+            processedDataUrl
+          });
+        } catch (error) {
+          reject(error);
+        }
       };
       
-      img.src = imageFile.dataUrl;
+      processAsync();
     } catch (error) {
       reject(error);
     }
@@ -536,16 +570,68 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
   }
 }
 
-export const createImageFile = (file: File): Promise<ImageFile> => {
+export const createThumbnail = (dataUrl: string, maxWidth: number = 800): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    try {
+      const img = new Image();
+      
+      img.onload = () => {
+        // Calculate thumbnail dimensions maintaining aspect ratio
+        let width = img.width;
+        let height = img.height;
+        
+        // Resize by the larger dimension to 800px
+        if (width >= height && width > maxWidth) {
+          const aspectRatio = height / width;
+          width = maxWidth;
+          height = Math.round(width * aspectRatio);
+        } else if (height > width && height > maxWidth) {
+          const aspectRatio = width / height;
+          height = maxWidth;
+          width = Math.round(height * aspectRatio);
+        }
+        
+        // Create a canvas to draw the thumbnail
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        
+        // Draw the image at the smaller size
+        const ctx = canvas.getContext('2d')!;
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        // Convert to data URL with better quality (increased from 0.7)
+        const thumbnailDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+        resolve(thumbnailDataUrl);
+      };
+      
+      img.onerror = () => reject(new Error('Error creating thumbnail'));
+      img.src = dataUrl;
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export const createImageFile = async (file: File): Promise<ImageFile> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
-      resolve({
-        id: uuidv4(),
-        file,
-        dataUrl,
-      });
+    reader.onload = async (e) => {
+      try {
+        const dataUrl = e.target?.result as string;
+        
+        // Create a thumbnail version for faster previews
+        const thumbnailDataUrl = await createThumbnail(dataUrl);
+        
+        resolve({
+          id: uuidv4(),
+          file,
+          dataUrl,
+          thumbnailDataUrl,
+        });
+      } catch (error) {
+        reject(error);
+      }
     };
     reader.onerror = reject;
     reader.readAsDataURL(file);
