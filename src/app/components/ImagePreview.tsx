@@ -124,20 +124,7 @@ export default function ImagePreview({
 
   return (
     <div className={`${className}`}>
-      {/* Global settings info */}
-      {appliedSettings && (
-        <div className="brutalist-border p-2 mb-4 bg-slate-50 text-sm">
-          <div className="font-bold uppercase">Applied Settings:</div>
-          <div className="grid grid-cols-2">
-            <div>
-              <span className="font-bold">Preset:</span> {appliedSettings.presetName || 'None'}
-            </div>
-            <div>
-              <span className="font-bold">Apply to:</span> {appliedSettings.applyToAll ? 'All Images' : 'Selected Image'}
-            </div>
-          </div>
-        </div>
-      )}
+
       
       {/* Selected Image (Large View) */}
       {selectedImage && (

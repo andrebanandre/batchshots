@@ -6,13 +6,15 @@ import Button from './components/Button';
 import ImagePreview, { ImageFile } from './components/ImagePreview';
 import ImageProcessingControls, { ImageAdjustments, defaultAdjustments } from './components/ImageProcessingControls';
 import PresetsSelector, { defaultPresets, Preset } from './components/PresetsSelector';
+import DownloadOptions, { ImageFormat } from './components/DownloadOptions';
+import DownloadDialog from './components/DownloadDialog';
 import { 
   initOpenCV, 
   processImage, 
   createImageFile, 
   downloadAllImages,
   downloadImage,
-  ImageFormat
+  ImageFormat as LibImageFormat
 } from './lib/imageProcessing';
 
 export default function Home() {
@@ -24,6 +26,12 @@ export default function Home() {
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [applyToAll, setApplyToAll] = useState(true);
+  
+  // Download dialog state
+  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadComplete, setDownloadComplete] = useState(false);
+  const [downloadFormat, setDownloadFormat] = useState<LibImageFormat>('jpg');
 
   // Initialize OpenCV.js
   useEffect(() => {
@@ -176,49 +184,8 @@ export default function Home() {
     }
   };
 
-  const handleProcessAllImages = async () => {
-    if (!isOpenCVReady || images.length === 0 || isProcessing) return;
-    
-    setIsProcessing(true);
-    
-    try {
-      const currentPreset = getCurrentPreset();
-      
-      const processedImages = await Promise.all(
-        images.map(async (image) => {
-          // Process selected image or all images based on applyToAll setting
-          if (selectedImageId === image.id || applyToAll) {
-            // Process full-size images for the final version
-            const { processedThumbnailUrl, processedDataUrl } = 
-              await processImage(image, adjustments, currentPreset, true);
-            
-            return {
-              ...image,
-              processedThumbnailUrl,
-              processedDataUrl,
-              // Store the applied preset information
-              appliedPreset: currentPreset ? {
-                name: currentPreset.name,
-                width: currentPreset.width,
-                height: currentPreset.height,
-                quality: currentPreset.quality
-              } : undefined
-            };
-          }
-          return image;
-        })
-      );
-      
-      setImages(processedImages);
-    } catch (error) {
-      console.error('Error processing images', error);
-    } finally {
-      setIsProcessing(false);
-    }
-  };
-
   // Handle download - process the full image if needed
-  const handleDownloadImage = async (image: ImageFile, format: ImageFormat = 'jpg') => {
+  const handleDownloadImage = async (image: ImageFile, format: LibImageFormat = 'jpg') => {
     if (image.processedDataUrl) {
       // If we already have the processed full image, download it
       downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format);
@@ -264,50 +231,57 @@ export default function Home() {
     }
   };
 
-  const handleDownloadAll = async (format: ImageFormat = 'jpg', asZip: boolean = true) => {
+  const handleInitiateDownload = (format: ImageFormat) => {
+    setDownloadFormat(format as LibImageFormat);
+    setDownloadComplete(false);
+    setIsDownloadDialogOpen(true);
+  };
+
+  const handleConfirmDownload = async () => {
+    setIsDownloading(true);
+    await handleDownloadAll(downloadFormat);
+    setIsDownloading(false);
+    setDownloadComplete(true);
+  };
+
+  const handleDownloadAll = async (format: LibImageFormat = 'jpg') => {
     const processedImages = images.filter(img => img.processedThumbnailUrl);
     if (processedImages.length === 0) return;
     
     setIsProcessing(true);
     try {
-      // Process any images that only have thumbnails
-      const imagesNeedingFullProcessing = processedImages.filter(img => !img.processedDataUrl);
+      const currentPreset = getCurrentPreset();
       
-      if (imagesNeedingFullProcessing.length > 0) {
-        const currentPreset = getCurrentPreset();
-          
-        // Process full-size versions in parallel
-        await Promise.all(
-          imagesNeedingFullProcessing.map(async (image) => {
-            const { processedDataUrl } = await processImage(image, adjustments, currentPreset, true);
+      // Process full-size versions of all images before download
+      const fullyProcessedImages = await Promise.all(
+        images.map(async (image) => {
+          // Only process images that need processing (either selected or all if applyToAll is true)
+          if (selectedImageId === image.id || applyToAll) {
+            const { processedThumbnailUrl, processedDataUrl } = 
+              await processImage(image, adjustments, currentPreset, true);
             
-            if (processedDataUrl) {
-              // Update the image in state with the full processed version
-              setImages(prev => 
-                prev.map(img => 
-                  img.id === image.id 
-                    ? { 
-                        ...img, 
-                        processedDataUrl,
-                        // Store the applied preset information
-                        appliedPreset: currentPreset ? {
-                          name: currentPreset.name,
-                          width: currentPreset.width,
-                          height: currentPreset.height,
-                          quality: currentPreset.quality
-                        } : undefined
-                      }
-                    : img
-                )
-              );
-            }
-          })
-        );
-      }
+            return {
+              ...image,
+              processedThumbnailUrl,
+              processedDataUrl,
+              appliedPreset: currentPreset ? {
+                name: currentPreset.name,
+                width: currentPreset.width,
+                height: currentPreset.height,
+                quality: currentPreset.quality
+              } : undefined
+            };
+          }
+          return image;
+        })
+      );
       
-      // Now download all the processed images
-      const updatedImages = images.filter(img => img.processedDataUrl);
-      downloadAllImages(updatedImages, format, asZip);
+      // Update state with processed images
+      setImages(fullyProcessedImages);
+      
+      // Download all the processed images
+      const updatedImages = fullyProcessedImages.filter(img => img.processedDataUrl);
+      downloadAllImages(updatedImages, format, true);
     } catch (error) {
       console.error('Error processing images for download', error);
     } finally {
@@ -340,6 +314,21 @@ export default function Home() {
     }
     
     return presets;
+  };
+
+  // Handle starting a new bundle after download
+  const handleStartNewBundle = () => {
+    setImages([]);
+    setSelectedImageId(null);
+    setAdjustments(defaultAdjustments);
+    setSelectedPreset(null);
+    setCustomPresetSettings(null);
+    setIsDownloadDialogOpen(false);
+  };
+
+  // Handle continuing with editing after download
+  const handleContinueEditing = () => {
+    setIsDownloadDialogOpen(false);
   };
 
   return (
@@ -375,14 +364,7 @@ export default function Home() {
           </Card>
         </div>
 
-        <div className="mt-8 text-center border-t-2 border-black pt-4">
-          <p className="text-sm">
-            All image processing happens in your browser for privacy and speed.
-            <br />
-            Processing large images may take a moment as thumbnails are used for previews.
-          </p>
-        </div>
-
+   
         {!isOpenCVReady && (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
             <p>Loading OpenCV.js... Please wait.</p>
@@ -391,7 +373,7 @@ export default function Home() {
 
         {images.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 md:sticky md:top-4 md:self-start">
               <ImagePreview
                 images={images}
                 selectedImageId={selectedImageId}
@@ -412,11 +394,9 @@ export default function Home() {
               <ImageProcessingControls
                 adjustments={adjustments}
                 onAdjustmentsChange={setAdjustments}
-                onProcessImages={handleProcessAllImages}
-                onReset={handleReset}
-                onDownload={handleDownloadAll}
                 applyToAll={applyToAll}
                 setApplyToAll={setApplyToAll}
+                onReset={handleReset}
               />
 
               <Card title="IMAGE OPTIMIZATION" variant="accent">
@@ -427,10 +407,28 @@ export default function Home() {
                   onCustomSettingsChange={handleCustomSettingsChange}
                 />
               </Card>
+
+              <DownloadOptions
+                onDownload={handleInitiateDownload}
+              />
             </div>
           </div>
         )}
       </div>
+
+      {/* Download Dialog */}
+      <DownloadDialog
+        isOpen={isDownloadDialogOpen}
+        onClose={downloadComplete ? handleContinueEditing : handleConfirmDownload}
+        imageCount={images.filter(img => img.processedThumbnailUrl).length}
+        onStartNewBundle={handleStartNewBundle}
+        onContinueEditing={handleContinueEditing}
+        hasAppliedChanges={images.some(img => img.processedThumbnailUrl)}
+        appliedPresetName={getCurrentPresetName()}
+        isDownloading={isDownloading}
+        downloadComplete={downloadComplete}
+        formatType={downloadFormat}
+      />
     </main>
   );
 }

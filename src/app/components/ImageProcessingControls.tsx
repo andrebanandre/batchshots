@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Card from './Card';
-import Button from './Button';
 
 export interface ImageAdjustments {
   brightness: number;
@@ -31,25 +30,21 @@ export type ImageFormat = 'jpg' | 'webp';
 interface ImageProcessingControlsProps {
   adjustments: ImageAdjustments;
   onAdjustmentsChange: (adjustments: ImageAdjustments) => void;
-  onProcessImages?: () => void; // Optional now as we don't use it
-  onReset: () => void;
-  onDownload: (format: ImageFormat, asZip: boolean) => void;
   applyToAll: boolean;
   setApplyToAll: (value: boolean) => void;
   className?: string;
+  onReset?: () => void;
 }
 
 export default function ImageProcessingControls({
   adjustments,
   onAdjustmentsChange,
-  onReset,
-  onDownload,
   applyToAll,
   setApplyToAll,
   className = '',
+  onReset,
 }: ImageProcessingControlsProps) {
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced'>('basic');
-  const [downloadFormat, setDownloadFormat] = useState<ImageFormat>('jpg');
 
   const handleSliderChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -66,12 +61,11 @@ export default function ImageProcessingControls({
     setApplyToAll(!applyToAll);
   };
 
-  const handleFormatChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDownloadFormat(e.target.value as ImageFormat);
-  };
-
-  const handleDownload = () => {
-    onDownload(downloadFormat, true);
+  const handleReset = () => {
+    onAdjustmentsChange(defaultAdjustments);
+    if (onReset) {
+      onReset();
+    }
   };
 
   const handleQuickPreset = (preset: 'vivid' | 'sharp' | 'classic' | 'clean' | 'white-bg' | 'dramatic' | 'jewelry' | 'soft-product' | 'textile' | 'food' | 'furniture' | 'transparent') => {
@@ -230,7 +224,23 @@ export default function ImageProcessingControls({
   };
 
   return (
-    <Card title="IMAGE ADJUSTMENTS" className={className} variant="accent">
+    <Card 
+      title="IMAGE ADJUSTMENTS" 
+      className={className} 
+      variant="accent"
+      headerRight={
+        <button 
+          onClick={handleReset} 
+          className="text-sm font-bold py-1 px-2 brutalist-border hover:bg-slate-100 text-gray-700 flex items-center"
+          title="Reset all adjustments"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+          </svg>
+          RESET
+        </button>
+      }
+    >
       <div className="space-y-6">
         {/* Mode Toggle (Apply to All vs Individual) */}
         <div className="flex justify-between items-center">
@@ -530,68 +540,6 @@ export default function ImageProcessingControls({
             </div>
           </>
         )}
-
-        {/* Download Options */}
-        <div className="brutalist-border p-3 bg-white">
-          <h3 className="font-bold mb-3 text-sm uppercase">Download Options</h3>
-          <div className="space-y-3">
-            <div>
-              <p className="font-bold mb-2 text-sm">Format:</p>
-              <div className="flex space-x-4">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="downloadFormat"
-                    value="jpg"
-                    checked={downloadFormat === 'jpg'}
-                    onChange={handleFormatChange}
-                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
-                    style={{
-                      backgroundImage: downloadFormat === 'jpg' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat"
-                    }}
-                  />
-                  <span>JPG</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="downloadFormat"
-                    value="webp"
-                    checked={downloadFormat === 'webp'}
-                    onChange={handleFormatChange}
-                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
-                    style={{
-                      backgroundImage: downloadFormat === 'webp' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat"
-                    }}
-                  />
-                  <span>WebP (smaller files, better for web)</span>
-                </label>
-              </div>
-            </div>
-            
-            <div>
-              <p className="text-xs text-gray-600">All images will be packaged as a ZIP file for download</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 pt-4">
-          <Button onClick={onReset}>RESET</Button>
-          <Button
-            onClick={handleDownload}
-            fullWidth
-            className="col-span-2 mt-2"
-            variant="accent"
-          >
-            DOWNLOAD ALL
-          </Button>
-        </div>
       </div>
     </Card>
   );
