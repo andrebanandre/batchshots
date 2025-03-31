@@ -266,13 +266,13 @@ export default function ImageProcessingControls({
           <div className="flex">
             <button
               onClick={() => setActiveTab('basic')}
-              className={`py-2 px-4 font-bold ${activeTab === 'basic' ? 'bg-black text-white' : 'bg-white text-black'}`}
+              className={`py-2 px-4 font-bold ${activeTab === 'basic' ? 'bg-primary text-white' : 'bg-white text-black'}`}
             >
               BASIC
             </button>
             <button
               onClick={() => setActiveTab('advanced')}
-              className={`py-2 px-4 font-bold ${activeTab === 'advanced' ? 'bg-black text-white' : 'bg-white text-black'}`}
+              className={`py-2 px-4 font-bold ${activeTab === 'advanced' ? 'bg-primary text-white' : 'bg-white text-black'}`}
             >
               ADVANCED
             </button>

@@ -1,7 +1,7 @@
 import React, { ElementType, ComponentPropsWithoutRef } from 'react';
 
 type ButtonBaseProps = {
-  variant?: 'primary' | 'secondary' | 'accent';
+  variant?: 'primary' | 'secondary' | 'accent' | 'default';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   as?: ElementType;
@@ -35,20 +35,22 @@ export default function Button<T extends ElementType = 'button'>({
   const shadowStyles = {
     primary: { boxShadow: '6px 6px 0 0 #000000' },
     secondary: { boxShadow: '4px 4px 0 0 #ffffff' },
-    accent: { boxShadow: '6px 6px 0 0 rgba(255, 107, 107, 0.5), 10px 10px 0 0 rgba(79, 70, 229, 1)' }
+    accent: { boxShadow: '6px 6px 0 0' },
+    default: { boxShadow: '6px 6px 0 0 #000000' }
   };
   
   const variantStyles = {
     primary: 'bg-white text-black hover:bg-secondary',
     secondary: 'bg-black text-white hover:bg-primary',
-    accent: 'bg-white border-l-accent border-t-primary border-r-black border-b-black hover:bg-secondary'
+    accent: 'bg-primary text-white font-semibold border-l-accent border-t-primary border-r-black border-b-black hover:bg-primary/80',
+    default: 'bg-white text-black hover:bg-secondary'
   };
   
   const widthStyles = fullWidth ? 'w-full' : '';
   
   return (
     <Component
-      className={`${baseStyles} ${variantStyles[variant]} ${widthStyles} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${widthStyles} ${className} cursor-pointer`}
       style={shadowStyles[variant]}
       {...props}
     >

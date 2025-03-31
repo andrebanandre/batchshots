@@ -34,7 +34,7 @@ function hideStatus() {
 
 // OpenCV.js loading status and callback
 function onOpenCvReady() {
-  updateStatus('OpenCV.js is ready!');
+  updateStatus('Ready to process your images!');
   hideStatus();
   
   // Dispatch an event when OpenCV is ready
@@ -47,7 +47,7 @@ function loadOpenCV() {
     return;
   }
   
-  updateStatus('Loading OpenCV.js...');
+  updateStatus('Loading image processing...');
   
   const script = document.createElement('script');
   script.setAttribute('async', '');

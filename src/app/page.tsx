@@ -37,7 +37,6 @@ export default function Home() {
   // SEO name generation state
   const [seoNames, setSeoNames] = useState<SeoImageName[]>([]);
   const [isGeneratingSeoNames, setIsGeneratingSeoNames] = useState(false);
-  const [trendingKeywords, setTrendingKeywords] = useState<string[]>([]);
 
   // Initialize OpenCV.js
   useEffect(() => {
@@ -299,7 +298,7 @@ export default function Home() {
   };
 
   // Generate SEO-friendly names for images
-  const handleGenerateSeoNames = async (description: string) => {
+  const handleGenerateSeoNames = async (description: string, recaptchaToken: string) => {
     if (!description.trim() || images.length === 0) return;
     
     setIsGeneratingSeoNames(true);
@@ -311,7 +310,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ description }),
+        body: JSON.stringify({ description, recaptchaToken }),
       });
       
       if (!response.ok) {
@@ -319,15 +318,10 @@ export default function Home() {
       }
       
       const data = await response.json();
-      const { seoNames: generatedSeoNames, trendingKeywords: fetchedTrendingKeywords } = data;
+      const { seoNames: generatedSeoNames } = data;
       
       if (!generatedSeoNames || !Array.isArray(generatedSeoNames)) {
         throw new Error('Invalid response from SEO names API');
-      }
-      
-      // Store trending keywords if available
-      if (fetchedTrendingKeywords && Array.isArray(fetchedTrendingKeywords)) {
-        setTrendingKeywords(fetchedTrendingKeywords);
       }
       
       // Map the generated SEO names to images
@@ -371,27 +365,6 @@ export default function Home() {
     }
   };
   
-  // Update a specific SEO name
-  const handleUpdateSeoName = (imageId: string, newSeoName: string) => {
-    // Update in SEO names list
-    setSeoNames(prevSeoNames => 
-      prevSeoNames.map(name => 
-        name.id === imageId 
-          ? { ...name, seoName: newSeoName } 
-          : name
-      )
-    );
-    
-    // Update in images list
-    setImages(prevImages => 
-      prevImages.map(image => 
-        image.id === imageId 
-          ? { ...image, seoName: newSeoName } 
-          : image
-      )
-    );
-  };
-
   // Handle reset of all adjustments
   const handleReset = () => {
     // Reset adjustments to default values
@@ -427,7 +400,6 @@ export default function Home() {
     setSelectedPreset(null);
     setCustomPresetSettings(null);
     setSeoNames([]);
-    setTrendingKeywords([]);
     setIsDownloadDialogOpen(false);
   };
 
@@ -443,38 +415,45 @@ export default function Home() {
           PICME: SEO IMAGE OPTIMIZER
         </h1>
         
-        <div className="mb-6">
-          <Card variant="accent">
-            <h2 className="text-xl font-bold mb-4 uppercase">UPLOAD IMAGES</h2>
-            <div className="flex flex-col space-y-4">
-              <p className="text-sm">
-                Select product photos to optimize for SEO. Adjust white balance, contrast, and size.
-              </p>
-              <div>
-                <input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handleFileChange}
-                  className="hidden"
-                  id="fileInput"
-                />
-                <label htmlFor="fileInput">
-                  <Button as="span" fullWidth variant="accent" disabled={isProcessing}>
-                    SELECT IMAGES
-                  </Button>
-                </label>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-   
-        {!isOpenCVReady && (
+        {!isOpenCVReady ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
-            <p>Loading OpenCV.js... Please wait.</p>
+            <div className="flex flex-col items-center justify-center py-8">
+              <div className="relative w-16 h-16 mb-6">
+                <div className="absolute inset-0 w-full h-full border-4 border-[#4F46E5] animate-pulse"></div>
+                <div className="absolute inset-2 w-12 h-12 border-4 border-[#FF6B6B] animate-ping"></div>
+                <div className="absolute inset-4 w-8 h-8 bg-[#4F46E5]"></div>
+              </div>
+              <h3 className="text-lg font-bold mb-2">LOADING APP...</h3>
+              <p className="text-sm text-gray-600">Please wait while we initialize image processing capabilities.</p>
+            </div>
           </div>
-        )}
+        ) : images.length === 0 ? (
+          <div className="flex justify-center mb-6">
+            <Card variant="default" className="max-w-md w-full">
+              <h2 className="text-xl font-bold mb-4 uppercase text-center">UPLOAD IMAGES</h2>
+              <div className="flex flex-col space-y-4">
+                <p className="text-sm text-center">
+                  Select product photos to optimize for SEO. Adjust white balance, contrast, and size.
+                </p>
+                <div className="flex justify-center">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFileChange}
+                    className="hidden"
+                    id="fileInput"
+                  />
+                  <label htmlFor="fileInput" className="w-full flex justify-center">
+                    <Button as="span" variant="accent" disabled={isProcessing}>
+                      SELECT IMAGES
+                    </Button>
+                  </label>
+                </div>
+              </div>
+            </Card>
+          </div>
+        ) : null}
 
         {images.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -485,7 +464,6 @@ export default function Home() {
                 onSelectImage={setSelectedImageId}
                 onDownloadImage={handleDownloadImage}
                 onDeleteImage={handleDeleteImage}
-                onUpdateSeoName={handleUpdateSeoName}
                 isProcessing={isProcessing}
                 className="mb-6"
                 appliedSettings={{
@@ -494,6 +472,26 @@ export default function Home() {
                   applyToAll
                 }}
               />
+              
+              <div className="mb-6 flex justify-start">
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleFileChange}
+                  className="hidden"
+                  id="fileInputMore"
+                />
+                <label htmlFor="fileInputMore">
+                  <Button 
+                    as="span" 
+                    variant="default" 
+                    disabled={isProcessing || images.length >= 10}
+                  >
+                    {images.length >= 10 ? "MAX IMAGES REACHED" : "SELECT MORE IMAGES"}
+                  </Button>
+                </label>
+              </div>
             </div>
 
             <div className="space-y-6">
@@ -515,12 +513,9 @@ export default function Home() {
               </Card>
 
               <SeoNameGenerator
-                images={images}
                 seoNames={seoNames}
                 onGenerateSeoNames={handleGenerateSeoNames}
-                onUpdateSeoName={handleUpdateSeoName}
                 isGenerating={isGeneratingSeoNames}
-                trendingKeywords={trendingKeywords}
               />
 
               <DownloadOptions

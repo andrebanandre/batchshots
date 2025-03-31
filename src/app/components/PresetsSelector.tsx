@@ -262,7 +262,7 @@ export default function PresetsSelector({
             
             <div className="mt-4">
               <Button
-                variant="accent"
+                variant="default"
                 fullWidth
                 onClick={handleApplyCustomSettings}
               >

@@ -58,12 +58,12 @@ export default function DownloadDialog({
                               <div className="flex items-center">
                                 <div className="h-4 w-4 mr-1 flex-shrink-0">
                                   <img 
-                                    src="https://seeklogo.com/images/G/google-gemini-logo-A5013883AD-seeklogo.com.png" 
-                                    alt="Gemini AI" 
+                                    src="/images/ai-icon.svg" 
+                                    alt="AI image processing" 
                                     className="w-full h-full object-contain" 
                                   />
                                 </div>
-                                Gemini AI SEO-optimized filenames included
+                                AI SEO-optimized filenames included
                               </div>
                             </li>
                           )}

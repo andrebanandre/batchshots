@@ -22,31 +22,23 @@ Follow these guidelines for creating optimal SEO image names:
 3. Include key product attributes (color, material, style, etc.)
 4. Keep names under 60 characters
 5. Use only lowercase letters, numbers, and hyphens
-6. Include trending keywords when relevant
-7. Make each name unique and optimized for search engines
-8. Do not include file extensions or special characters
+6. Make each name unique and optimized for search engines
+7. Do not include file extensions or special characters
 
-Analyze the user's product description and incorporate trending keywords to create the most effective SEO image names.
+Analyze the user's product description to create the most effective SEO image names.
 `;
 
 // Function to generate SEO-friendly image names using Gemini with structured output
 export async function generateSeoImageNames(
-  description: string, 
-  trendingKeywords: string[]
+  description: string
 ): Promise<string[]> {
   console.log(`[Gemini] Generating SEO names for description: "${description}"`);
-  console.log(`[Gemini] Using trending keywords: ${JSON.stringify(trendingKeywords)}`);
   
   try {
     const genAI = initGemini();
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     
-    // Combine the description with trending keywords for context
-    const trendsContext = trendingKeywords.length > 0 
-      ? `\n\nTrending keywords to incorporate where appropriate: ${trendingKeywords.join(', ')}`
-      : '';
-    
-    const prompt = `${SEO_IMAGE_NAMES_PROMPT}\n\nProduct description: ${description}${trendsContext}`;
+    const prompt = `${SEO_IMAGE_NAMES_PROMPT}\n\nProduct description: ${description}`;
     
     console.log(`[Gemini] Sending request with responseSchema`);
     

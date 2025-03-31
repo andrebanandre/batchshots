@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Button from './Button';
-import { downloadImage, ImageFormat } from '../lib/imageProcessing';
+import type { ImageFormat } from '../lib/imageProcessing';
 
 export interface ImageFile {
   id: string;
@@ -25,9 +25,8 @@ interface ImagePreviewProps {
   images: ImageFile[];
   selectedImageId: string | null;
   onSelectImage: (id: string) => void;
-  onDownloadImage?: (image: ImageFile, format?: ImageFormat) => void;
-  onDeleteImage?: (id: string) => void;
-  onUpdateSeoName?: (id: string, seoName: string) => void;
+  onDownloadImage: (image: ImageFile, format?: ImageFormat) => void;
+  onDeleteImage: (id: string) => void;
   isProcessing?: boolean;
   className?: string;
   appliedSettings?: {
@@ -43,19 +42,26 @@ export default function ImagePreview({
   onSelectImage,
   onDownloadImage,
   onDeleteImage,
-  onUpdateSeoName,
   isProcessing = false,
   className = '',
+  appliedSettings,
 }: ImagePreviewProps) {
   // State to store image dimensions
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number; size: string }>>({});
   // State for editing SEO name
   const [editingSeoName, setEditingSeoName] = useState<string | null>(null);
   const [seoNameValue, setSeoNameValue] = useState('');
+  // State to store locally updated images
+  const [localImages, setLocalImages] = useState<ImageFile[]>(images);
+  
+  // Update local images when prop changes
+  useEffect(() => {
+    setLocalImages(images);
+  }, [images]);
   
   // Effect to calculate dimensions for each image
   useEffect(() => {
-    images.forEach(image => {
+    localImages.forEach(image => {
       if (!imageDimensions[image.id]) {
         const img = new window.Image();
         img.onload = () => {
@@ -78,26 +84,17 @@ export default function ImagePreview({
         img.src = image.dataUrl;
       }
     });
-  }, [images, imageDimensions]);
+  }, [localImages, imageDimensions]);
 
   // Function to handle download of a single image
   const handleLocalDownloadImage = (image: ImageFile) => {
-    if (onDownloadImage) {
-      // Use the external handler if provided (for full image processing)
-      onDownloadImage(image);
-    } else if (image.processedDataUrl) {
-      downloadImage(image.processedDataUrl, `processed_${image.file.name}`, 'jpg');
-    } else {
-      downloadImage(image.dataUrl, image.file.name, 'jpg');
-    }
+    onDownloadImage(image);
   };
 
   // Function to handle image deletion
   const handleDelete = (e: React.MouseEvent, imageId: string) => {
     e.stopPropagation(); // Prevent triggering the thumbnail selection
-    if (onDeleteImage) {
-      onDeleteImage(imageId);
-    }
+    onDeleteImage(imageId);
   };
 
   // Start editing SEO name
@@ -108,8 +105,15 @@ export default function ImagePreview({
 
   // Save edited SEO name
   const handleSaveSeoName = () => {
-    if (editingSeoName && onUpdateSeoName) {
-      onUpdateSeoName(editingSeoName, seoNameValue);
+    if (editingSeoName) {
+      // Update the SEO name locally
+      setLocalImages(prevImages => 
+        prevImages.map(image => 
+          image.id === editingSeoName
+            ? { ...image, seoName: seoNameValue }
+            : image
+        )
+      );
       setEditingSeoName(null);
     }
   };
@@ -119,7 +123,7 @@ export default function ImagePreview({
     setEditingSeoName(null);
   };
 
-  if (images.length === 0) {
+  if (localImages.length === 0) {
     return (
       <div className={`brutalist-border p-4 text-center ${className}`}>
         <p className="text-lg">No images selected</p>
@@ -129,7 +133,7 @@ export default function ImagePreview({
 
   // Find the selected image
   const selectedImage = selectedImageId 
-    ? images.find(img => img.id === selectedImageId) 
+    ? localImages.find(img => img.id === selectedImageId) 
     : null;
 
   // Get dimensions of the selected image
@@ -217,7 +221,7 @@ export default function ImagePreview({
                 <div className="flex justify-between items-center">
                   <div className="font-bold truncate flex-1">
                     {getDisplayName(selectedImage)}
-                    {selectedImage.seoName && onUpdateSeoName && (
+                    {selectedImage.seoName && (
                       <button
                         onClick={() => handleStartEditSeoName(selectedImage.id, selectedImage.seoName!)}
                         className="ml-2 text-xs font-bold py-1 px-2 brutalist-border hover:bg-slate-100 text-gray-700"
@@ -261,15 +265,17 @@ export default function ImagePreview({
                 )}
                 
                 {/* Applied preset info */}
-                {selectedImage.appliedPreset && (
+                {(selectedImage.appliedPreset || (appliedSettings && selectedImage.id === selectedImageId)) && (
                   <>
                     <div>
                       <span className="font-bold">Output: </span>
-                      {selectedImage.appliedPreset.width}x{selectedImage.appliedPreset.height || 'auto'}
+                      {selectedImage.appliedPreset 
+                        ? `${selectedImage.appliedPreset.width}x${selectedImage.appliedPreset.height || 'auto'}`
+                        : appliedSettings?.presetName ? `[${appliedSettings.presetName}]` : 'Custom'}
                     </div>
                     <div>
                       <span className="font-bold">Quality: </span>
-                      {selectedImage.appliedPreset.quality}%
+                      {selectedImage.appliedPreset ? `${selectedImage.appliedPreset.quality}%` : 'Applied'}
                     </div>
                   </>
                 )}
@@ -307,15 +313,13 @@ export default function ImagePreview({
                   {index + 1}/10
                 </div>
                 {/* Delete button */}
-                {onDeleteImage && (
-                  <button 
-                    onClick={(e) => handleDelete(e, image.id)}
-                    className="absolute top-1 right-1 bg-accent text-white text-xs px-2 py-1 rounded-sm hover:bg-accent-700"
-                    disabled={isProcessing}
-                  >
-                    ×
-                  </button>
-                )}
+                <button 
+                  onClick={(e) => handleDelete(e, image.id)}
+                  className="absolute top-1 right-1 bg-accent text-white text-xs px-2 py-1 rounded-sm hover:bg-accent-700"
+                  disabled={isProcessing}
+                >
+                  ×
+                </button>
               </div>
               <div className="mt-2 text-xs truncate">
                 {getDisplayName(image)}
