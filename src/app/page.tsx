@@ -8,6 +8,7 @@ import ImageProcessingControls, { ImageAdjustments, defaultAdjustments } from '.
 import PresetsSelector, { defaultPresets, Preset } from './components/PresetsSelector';
 import DownloadOptions, { ImageFormat } from './components/DownloadOptions';
 import DownloadDialog from './components/DownloadDialog';
+import SeoNameGenerator, { SeoImageName } from './components/SeoNameGenerator';
 import { 
   initOpenCV, 
   processImage, 
@@ -32,6 +33,11 @@ export default function Home() {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadComplete, setDownloadComplete] = useState(false);
   const [downloadFormat, setDownloadFormat] = useState<LibImageFormat>('jpg');
+  
+  // SEO name generation state
+  const [seoNames, setSeoNames] = useState<SeoImageName[]>([]);
+  const [isGeneratingSeoNames, setIsGeneratingSeoNames] = useState(false);
+  const [trendingKeywords, setTrendingKeywords] = useState<string[]>([]);
 
   // Initialize OpenCV.js
   useEffect(() => {
@@ -174,6 +180,9 @@ export default function Home() {
     const updatedImages = images.filter(img => img.id !== imageId);
     setImages(updatedImages);
     
+    // Remove from SEO names list if present
+    setSeoNames(prevSeoNames => prevSeoNames.filter(name => name.id !== imageId));
+    
     // If the deleted image was selected, select another one if available
     if (selectedImageId === imageId) {
       if (updatedImages.length > 0) {
@@ -188,7 +197,7 @@ export default function Home() {
   const handleDownloadImage = async (image: ImageFile, format: LibImageFormat = 'jpg') => {
     if (image.processedDataUrl) {
       // If we already have the processed full image, download it
-      downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format);
+      downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
     } else if (image.processedThumbnailUrl) {
       // Process the full-size image now
       setIsProcessing(true);
@@ -218,7 +227,7 @@ export default function Home() {
           );
           
           // Download the processed image
-          downloadImage(processedDataUrl, `processed_${image.file.name}`, format);
+          downloadImage(processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
         }
       } catch (error) {
         console.error('Error processing full image for download', error);
@@ -227,7 +236,7 @@ export default function Home() {
       }
     } else {
       // Download the original if no processing has been done
-      downloadImage(image.dataUrl, image.file.name, format);
+      downloadImage(image.dataUrl, image.file.name, format, image.seoName);
     }
   };
 
@@ -289,6 +298,100 @@ export default function Home() {
     }
   };
 
+  // Generate SEO-friendly names for images
+  const handleGenerateSeoNames = async (description: string) => {
+    if (!description.trim() || images.length === 0) return;
+    
+    setIsGeneratingSeoNames(true);
+    
+    try {
+      // Call the API endpoint to generate SEO names
+      const response = await fetch('/api/seo-names', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ description }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to generate SEO names');
+      }
+      
+      const data = await response.json();
+      const { seoNames: generatedSeoNames, trendingKeywords: fetchedTrendingKeywords } = data;
+      
+      if (!generatedSeoNames || !Array.isArray(generatedSeoNames)) {
+        throw new Error('Invalid response from SEO names API');
+      }
+      
+      // Store trending keywords if available
+      if (fetchedTrendingKeywords && Array.isArray(fetchedTrendingKeywords)) {
+        setTrendingKeywords(fetchedTrendingKeywords);
+      }
+      
+      // Map the generated SEO names to images
+      const newSeoNames: SeoImageName[] = images.map((image, index) => {
+        // Use a generated name if available, otherwise create a default one
+        const seoName = index < generatedSeoNames.length 
+          ? generatedSeoNames[index] 
+          : `product-${index + 1}`;
+          
+        return {
+          id: image.id,
+          originalName: image.file.name,
+          seoName: seoName,
+          description,
+          extension: image.file.name.split('.').pop() || 'jpg'
+        };
+      });
+      
+      setSeoNames(newSeoNames);
+      
+      // Update the images with the SEO names
+      setImages(prevImages => 
+        prevImages.map(image => {
+          const seoNameData = newSeoNames.find(seo => seo.id === image.id);
+          if (seoNameData) {
+            return {
+              ...image,
+              seoName: seoNameData.seoName,
+              originalName: image.file.name
+            };
+          }
+          return image;
+        })
+      );
+      
+    } catch (error) {
+      console.error('Error generating SEO names:', error);
+      alert('Failed to generate SEO names. Please try again.');
+    } finally {
+      setIsGeneratingSeoNames(false);
+    }
+  };
+  
+  // Update a specific SEO name
+  const handleUpdateSeoName = (imageId: string, newSeoName: string) => {
+    // Update in SEO names list
+    setSeoNames(prevSeoNames => 
+      prevSeoNames.map(name => 
+        name.id === imageId 
+          ? { ...name, seoName: newSeoName } 
+          : name
+      )
+    );
+    
+    // Update in images list
+    setImages(prevImages => 
+      prevImages.map(image => 
+        image.id === imageId 
+          ? { ...image, seoName: newSeoName } 
+          : image
+      )
+    );
+  };
+
   // Handle reset of all adjustments
   const handleReset = () => {
     // Reset adjustments to default values
@@ -323,6 +426,8 @@ export default function Home() {
     setAdjustments(defaultAdjustments);
     setSelectedPreset(null);
     setCustomPresetSettings(null);
+    setSeoNames([]);
+    setTrendingKeywords([]);
     setIsDownloadDialogOpen(false);
   };
 
@@ -380,6 +485,7 @@ export default function Home() {
                 onSelectImage={setSelectedImageId}
                 onDownloadImage={handleDownloadImage}
                 onDeleteImage={handleDeleteImage}
+                onUpdateSeoName={handleUpdateSeoName}
                 isProcessing={isProcessing}
                 className="mb-6"
                 appliedSettings={{
@@ -408,6 +514,15 @@ export default function Home() {
                 />
               </Card>
 
+              <SeoNameGenerator
+                images={images}
+                seoNames={seoNames}
+                onGenerateSeoNames={handleGenerateSeoNames}
+                onUpdateSeoName={handleUpdateSeoName}
+                isGenerating={isGeneratingSeoNames}
+                trendingKeywords={trendingKeywords}
+              />
+
               <DownloadOptions
                 onDownload={handleInitiateDownload}
               />
@@ -428,6 +543,7 @@ export default function Home() {
         isDownloading={isDownloading}
         downloadComplete={downloadComplete}
         formatType={downloadFormat}
+        hasSeoNames={images.some(img => !!img.seoName)}
       />
     </main>
   );

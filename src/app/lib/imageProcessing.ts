@@ -541,14 +541,28 @@ export const createImageFile = async (file: File): Promise<ImageFile> => {
 
 export type ImageFormat = 'jpg' | 'webp';
 
-// Update downloadImage function to support format selection
-export const downloadImage = (dataUrl: string, filename: string, format: ImageFormat = 'jpg'): void => {
+// Update downloadImage function to support format selection and SEO-friendly filenames
+export const downloadImage = (dataUrl: string, filename: string, format: ImageFormat = 'jpg', seoName?: string): void => {
+  // If SEO name is provided, use it instead of the original filename
+  let finalFilename = filename;
+  
+  if (seoName) {
+    // Extract the extension from the original filename
+    const extMatch = filename.match(/\.([^.]+)$/);
+    const extension = extMatch ? extMatch[1] : format;
+    // Create the new filename with SEO name and original extension
+    finalFilename = `${seoName}.${extension}`;
+  } else {
+    // Keep the original name but ensure correct extension for format conversion
+    finalFilename = finalFilename.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
+  }
+  
   // If format is already in the desired format, download directly
   if ((format === 'jpg' && dataUrl.includes('image/jpeg')) || 
       (format === 'webp' && dataUrl.includes('image/webp'))) {
     const link = document.createElement('a');
     link.href = dataUrl;
-    link.download = filename.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
+    link.download = finalFilename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -576,7 +590,7 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
     // Create download link
     const link = document.createElement('a');
     link.href = convertedDataUrl;
-    link.download = filename.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
+    link.download = finalFilename;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -597,7 +611,9 @@ export const downloadAllImages = async (
   if (!asZip) {
     images.forEach((image) => {
       if (image.processedDataUrl) {
-        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format);
+        // Get the SEO name if available
+        const seoName = image.seoName;
+        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, seoName);
       }
     });
     return;
@@ -633,8 +649,23 @@ export const downloadAllImages = async (
           
           canvas.toBlob((blob) => {
             if (blob) {
-              // Add to zip with numbered filenames if they have the same name
-              const fileName = `processed_${index + 1}_${image.file.name.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`)}`;
+              // Use SEO name if available, otherwise use original name
+              let fileName = image.file.name;
+              
+              // If SEO name is available, use it with the original extension
+              if (image.seoName) {
+                // Extract extension from original filename
+                const extMatch = fileName.match(/\.([^.]+)$/);
+                const ext = extMatch ? extMatch[1] : format;
+                fileName = `${image.seoName}.${ext}`;
+              } else {
+                // Add index prefix to prevent name collisions
+                fileName = `processed_${index + 1}_${fileName}`;
+              }
+              
+              // Ensure correct extension for the chosen format
+              fileName = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
+              
               zip.file(fileName, blob);
             }
             resolve();
@@ -665,7 +696,8 @@ export const downloadAllImages = async (
     // Fallback to individual downloads if ZIP creation fails
     images.forEach((image) => {
       if (image.processedDataUrl) {
-        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format);
+        const seoName = image.seoName;
+        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, seoName);
       }
     });
   }

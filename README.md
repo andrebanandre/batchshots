@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PICME: SEO Image Optimizer
 
-## Getting Started
+A powerful tool to optimize product images for SEO, with AI-powered image naming and visual optimization.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Image Processing**: Adjust brightness, contrast, sharpness, and colors
+- **Image Optimization**: Resize and compress images with presets
+- **AI SEO Image Naming**: Generate SEO-friendly filenames using Google's Gemini 2.0 Flash AI
+- **Google Trends Integration**: Incorporate trending keywords into filenames
+- **Batch Processing**: Process up to 10 images at once
+- **Download Options**: Download optimized images in various formats
+
+## AI-Powered SEO Image Naming with Gemini
+
+This application leverages Google's Gemini 2.0 Flash model to generate SEO-friendly image names for your product images. The AI analyzes your product descriptions and uses Google Trends data to create filenames optimized for search engines.
+
+### How it works:
+
+1. Enter a detailed product description
+2. The app analyzes your description to identify relevant categories
+3. Google Trends data is used to find trending keywords related to your product
+4. Gemini AI generates SEO-optimized filenames incorporating your description and trending keywords
+5. You can edit individual filenames as needed
+6. Download images with the new AI-generated SEO-friendly names
+
+## Structured JSON Output
+
+The application uses Gemini AI's responseSchema capability to ensure properly structured output. This implementation:
+
+1. Uses the SchemaType enum from the official Google Generative AI SDK
+2. Defines a precise schema with an array of strings for consistent output
+3. Generates structured JSON responses with proper validation
+4. Ensures reliable and consistent SEO filename generation
+
+Code example of the structured output implementation:
+
+```typescript
+// Request with responseSchema for structured output
+const request: GenerateContentRequest = {
+  contents: [{ role: 'user', parts: [{ text: prompt }] }],
+  generationConfig: {
+    temperature: 0.2,
+    topP: 0.8,
+    topK: 40,
+    responseMimeType: 'application/json',
+    responseSchema: {
+      type: SchemaType.ARRAY,
+      items: {
+        type: SchemaType.STRING,
+        description: 'SEO-friendly image filename',
+      },
+      description: 'Array of 10 SEO-friendly image filenames',
+    },
+  },
+  // Safety settings and other configurations...
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This approach leverages Gemini's advanced structured output capabilities to create consistent, reliable SEO-friendly image names.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone this repository
+2. Run `npm install` to install dependencies
+3. Create a `.env.local` file based on `.env.local.example` and add your Google AI API key
+4. Run `npm run dev` to start the development server
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env.local` file with the following variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+GOOGLE_AI_API_KEY=your_google_ai_api_key_here
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You can obtain a Google AI API key from the [Google AI Studio](https://makersuite.google.com/).
 
-## Deploy on Vercel
+## Technologies Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js and React for the frontend
+- Tailwind CSS for styling
+- OpenCV.js for image processing
+- Google Gemini 2.0 Flash AI for SEO name generation
+- Google Trends data for keyword optimization
+- Structured JSON output for consistent naming
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT

@@ -17,6 +17,8 @@ export interface ImageFile {
     height: number | null;
     quality: number;
   };
+  seoName?: string; // SEO-friendly filename
+  originalName?: string; // Original filename for reference
 }
 
 interface ImagePreviewProps {
@@ -25,6 +27,7 @@ interface ImagePreviewProps {
   onSelectImage: (id: string) => void;
   onDownloadImage?: (image: ImageFile, format?: ImageFormat) => void;
   onDeleteImage?: (id: string) => void;
+  onUpdateSeoName?: (id: string, seoName: string) => void;
   isProcessing?: boolean;
   className?: string;
   appliedSettings?: {
@@ -40,12 +43,15 @@ export default function ImagePreview({
   onSelectImage,
   onDownloadImage,
   onDeleteImage,
+  onUpdateSeoName,
   isProcessing = false,
   className = '',
-  appliedSettings
 }: ImagePreviewProps) {
   // State to store image dimensions
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number; size: string }>>({});
+  // State for editing SEO name
+  const [editingSeoName, setEditingSeoName] = useState<string | null>(null);
+  const [seoNameValue, setSeoNameValue] = useState('');
   
   // Effect to calculate dimensions for each image
   useEffect(() => {
@@ -94,6 +100,25 @@ export default function ImagePreview({
     }
   };
 
+  // Start editing SEO name
+  const handleStartEditSeoName = (imageId: string, currentSeoName: string) => {
+    setEditingSeoName(imageId);
+    setSeoNameValue(currentSeoName);
+  };
+
+  // Save edited SEO name
+  const handleSaveSeoName = () => {
+    if (editingSeoName && onUpdateSeoName) {
+      onUpdateSeoName(editingSeoName, seoNameValue);
+      setEditingSeoName(null);
+    }
+  };
+
+  // Cancel editing SEO name
+  const handleCancelEditSeoName = () => {
+    setEditingSeoName(null);
+  };
+
   if (images.length === 0) {
     return (
       <div className={`brutalist-border p-4 text-center ${className}`}>
@@ -122,9 +147,23 @@ export default function ImagePreview({
     return image.dataUrl;
   };
 
+  // Get file extension from name
+  const getFileExtension = (filename: string): string => {
+    const parts = filename.split('.');
+    return parts.length > 1 ? parts.pop()!.toLowerCase() : '';
+  };
+
+  // Format display name (SEO name if available, otherwise original filename)
+  const getDisplayName = (image: ImageFile): string => {
+    if (image.seoName) {
+      const extension = getFileExtension(image.file.name);
+      return `${image.seoName}.${extension}`;
+    }
+    return image.file.name;
+  };
+
   return (
     <div className={`${className}`}>
-
       
       {/* Selected Image (Large View) */}
       {selectedImage && (
@@ -142,20 +181,71 @@ export default function ImagePreview({
             </div>
 
             <div className="p-4 flex flex-col space-y-2">
-              <div className="flex justify-between items-center">
-                <div className="font-bold truncate flex-1">
-                  {selectedImage.file.name}
+              {/* File name with SEO name editing capability */}
+              {editingSeoName === selectedImage.id ? (
+                <div className="flex flex-col space-y-2">
+                  <div className="flex flex-col">
+                    <label className="text-xs font-bold">SEO-Friendly Name:</label>
+                    <div className="flex items-center">
+                      <input
+                        type="text"
+                        className="flex-grow p-1 brutalist-border mr-1"
+                        value={seoNameValue}
+                        onChange={(e) => setSeoNameValue(e.target.value)}
+                      />
+                      <span className="text-sm">.{getFileExtension(selectedImage.file.name)}</span>
+                    </div>
+                  </div>
+                  <div className="flex justify-end space-x-2">
+                    <Button 
+                      onClick={handleCancelEditSeoName}
+                      size="sm"
+                      variant="secondary"
+                    >
+                      CANCEL
+                    </Button>
+                    <Button 
+                      onClick={handleSaveSeoName}
+                      size="sm"
+                      variant="accent"
+                    >
+                      SAVE
+                    </Button>
+                  </div>
                 </div>
-                <Button 
-                  onClick={() => handleLocalDownloadImage(selectedImage)}
-                  size="sm"
-                  variant="secondary"
-                  disabled={isProcessing}
-                >
-                  DOWNLOAD
-                </Button>
-              </div>
+              ) : (
+                <div className="flex justify-between items-center">
+                  <div className="font-bold truncate flex-1">
+                    {getDisplayName(selectedImage)}
+                    {selectedImage.seoName && onUpdateSeoName && (
+                      <button
+                        onClick={() => handleStartEditSeoName(selectedImage.id, selectedImage.seoName!)}
+                        className="ml-2 text-xs font-bold py-1 px-2 brutalist-border hover:bg-slate-100 text-gray-700"
+                        title="Edit SEO name"
+                      >
+                        EDIT
+                      </button>
+                    )}
+                  </div>
+                  <Button 
+                    onClick={() => handleLocalDownloadImage(selectedImage)}
+                    size="sm"
+                    variant="secondary"
+                    disabled={isProcessing}
+                  >
+                    DOWNLOAD
+                  </Button>
+                </div>
+              )}
               
+              {/* Original filename if SEO name exists */}
+              {selectedImage.seoName && selectedImage.originalName && !editingSeoName && (
+                <div className="text-xs text-gray-500">
+                  <span className="font-bold">Original name: </span>
+                  {selectedImage.originalName}
+                </div>
+              )}
+
               <div className="text-sm grid grid-cols-2 gap-x-4">
                 {selectedDimensions && (
                   <>
@@ -220,14 +310,16 @@ export default function ImagePreview({
                 {onDeleteImage && (
                   <button 
                     onClick={(e) => handleDelete(e, image.id)}
-                    className="absolute top-1 right-1 bg-red-600 text-white text-xs px-2 py-1 rounded-sm hover:bg-red-700"
+                    className="absolute top-1 right-1 bg-accent text-white text-xs px-2 py-1 rounded-sm hover:bg-accent-700"
                     disabled={isProcessing}
                   >
                     ×
                   </button>
                 )}
               </div>
-              <div className="mt-2 text-xs truncate">{image.file.name}</div>
+              <div className="mt-2 text-xs truncate">
+                {getDisplayName(image)}
+              </div>
               {dimensions && (
                 <div className="mt-1 text-xs">
                   {dimensions.width} × {dimensions.height}px • {dimensions.size}
