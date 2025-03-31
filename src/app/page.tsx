@@ -429,12 +429,39 @@ export default function Home() {
           </div>
         ) : images.length === 0 ? (
           <div className="flex justify-center mb-6">
-            <Card variant="default" className="max-w-md w-full">
-              <h2 className="text-xl font-bold mb-4 uppercase text-center">UPLOAD IMAGES</h2>
-              <div className="flex flex-col space-y-4">
-                <p className="text-sm text-center">
-                  Select product photos to optimize for SEO. Adjust white balance, contrast, and size.
-                </p>
+            <Card variant="accent" className="max-w-xl w-full">
+              <h2 className="text-xl font-bold mb-4 uppercase text-center">TRANSFORM YOUR PRODUCT PHOTOS</h2>
+              <div className="flex flex-col space-y-6">
+                <div className="brutalist-border p-4 bg-white">
+                  <p className="font-medium mb-2">✨ <span className="font-bold">FREE & PRIVACY-FOCUSED</span></p>
+                  <p className="text-sm mb-2">
+                    PICME processes all images directly in your browser. We don&apos;t store your photos or data on our servers.
+                  </p>
+                  <div className="flex justify-between text-xs">
+                    <a href="/privacy" className="underline hover:text-blue-600">Privacy Policy</a>
+                    <a href="/terms" className="underline hover:text-blue-600">Terms of Use</a>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="brutalist-border p-3 bg-white">
+                    <p className="font-bold mb-1">🎯 PROFESSIONAL PRESETS</p>
+                    <p className="text-xs">Apply optimized presets for e-commerce, social media, and web display with a single click.</p>
+                  </div>
+                  <div className="brutalist-border p-3 bg-white">
+                    <p className="font-bold mb-1">🤖 AI-POWERED SEO</p>
+                    <p className="text-xs">Generate SEO-friendly filenames with our AI tools to improve your product discoverability.</p>
+                  </div>
+                  <div className="brutalist-border p-3 bg-white">
+                    <p className="font-bold mb-1">🎚️ ADVANCED CONTROLS</p>
+                    <p className="text-xs">Fine-tune brightness, contrast, white balance, and more to perfect your product images.</p>
+                  </div>
+                  <div className="brutalist-border p-3 bg-white">
+                    <p className="font-bold mb-1">⚡ BATCH PROCESSING</p>
+                    <p className="text-xs">Process multiple images at once to save time and ensure consistent results.</p>
+                  </div>
+                </div>
+
                 <div className="flex justify-center">
                   <input
                     type="file"
@@ -445,8 +472,8 @@ export default function Home() {
                     id="fileInput"
                   />
                   <label htmlFor="fileInput" className="w-full flex justify-center">
-                    <Button as="span" variant="accent" disabled={isProcessing}>
-                      SELECT IMAGES
+                    <Button as="span" variant="accent" size="lg" disabled={isProcessing}>
+                      GET STARTED - SELECT IMAGES
                     </Button>
                   </label>
                 </div>
