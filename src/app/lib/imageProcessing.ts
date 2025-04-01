@@ -43,72 +43,71 @@ export const initOpenCV = (): Promise<void> => {
   });
 };
 
-// Canvas-based image processing fallbacks
+// ============================================================
+// IMAGE PROCESSING UTILITY FUNCTIONS 
+// ============================================================
 
-// Canvas-based sharpening with convolution
-function canvasSharpen(ctx: CanvasRenderingContext2D, width: number, height: number, amount: number): void {
-  if (amount <= 0) return;
+/**
+ * Apply brightness and contrast adjustments to image data
+ * This operates directly on the provided data array
+ */
+function applyBrightnessContrast(
+  data: Uint8ClampedArray, 
+  width: number, 
+  height: number, 
+  brightness: number, 
+  contrast: number,
+  skipTransparent: boolean = false
+): void {
+  if (brightness === 0 && contrast === 0) return;
   
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
-  const tempData = new Uint8ClampedArray(data);
-  
-  // Simple 3x3 sharpen kernel
-  const strength = Math.min(amount, 2);
-  const kernel = [
-    0, -strength, 0,
-    -strength, 1 + 4 * strength, -strength,
-    0, -strength, 0
-  ];
-  
-  // Apply convolution
-  for (let y = 1; y < height - 1; y++) {
-    for (let x = 1; x < width - 1; x++) {
-      const pixelIndex = (y * width + x) * 4;
-      
-      for (let c = 0; c < 3; c++) {  // Only process RGB channels
-        let sum = 0;
-        
-        for (let ky = -1; ky <= 1; ky++) {
-          for (let kx = -1; kx <= 1; kx++) {
-            const kernelIndex = (ky + 1) * 3 + (kx + 1);
-            const pixelPos = ((y + ky) * width + (x + kx)) * 4 + c;
-            sum += tempData[pixelPos] * kernel[kernelIndex];
-          }
-        }
-        
-        data[pixelIndex + c] = Math.min(255, Math.max(0, sum));
-      }
-    }
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
-}
-
-// Canvas-based HSL adjustment
-function canvasHSLAdjustment(ctx: CanvasRenderingContext2D, width: number, height: number, 
-                             hue: number, saturation: number, lightness: number): void {
-  // Skip if no adjustments needed
-  if (hue === 100 && saturation === 100 && lightness === 100) {
-    return;
-  }
-
-  console.log('🔄 Canvas HSL Adjustment Applied:', { hue, saturation, lightness });
-  
-  // Ensure values are valid
-  if (isNaN(hue)) hue = 100;
-  if (isNaN(saturation)) saturation = 100;
-  if (isNaN(lightness)) lightness = 100;
-
-  // Calculate adjustment factors (from 100-based values)
-  const hueShift = (hue - 100) * 3.6;       // Convert to degrees (-360 to +360)
-  const satFactor = saturation / 100;        // 0-2 range
-  const lightFactor = lightness / 100;       // 0-2 range
-
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
+  const factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
   
   for (let i = 0; i < data.length; i += 4) {
+    // Skip fully transparent pixels if requested
+    if (skipTransparent && data[i + 3] === 0) continue;
+    
+    // Apply brightness
+    data[i] += brightness;     // R
+    data[i + 1] += brightness; // G
+    data[i + 2] += brightness; // B
+    
+    // Apply contrast
+    data[i] = factor * (data[i] - 128) + 128;
+    data[i + 1] = factor * (data[i + 1] - 128) + 128;
+    data[i + 2] = factor * (data[i + 2] - 128) + 128;
+    
+    // Ensure values are within bounds
+    data[i] = Math.max(0, Math.min(255, data[i]));
+    data[i + 1] = Math.max(0, Math.min(255, data[i + 1]));
+    data[i + 2] = Math.max(0, Math.min(255, data[i + 2]));
+  }
+}
+
+/**
+ * Apply HSL adjustments to image data
+ * This operates directly on the provided data array
+ */
+function applyHSLAdjustment(
+  data: Uint8ClampedArray,
+  width: number,
+  height: number,
+  hue: number,
+  saturation: number,
+  lightness: number,
+  skipTransparent: boolean = false
+): void {
+  if (hue === 100 && saturation === 100 && lightness === 100) return;
+  
+  // Calculate adjustment factors
+  const hueShift = (hue - 100) * 3.6;      // Convert to degrees (-360 to +360)
+  const satFactor = saturation / 100;       // 0-2 range
+  const lightFactor = lightness / 100;      // 0-2 range
+  
+  for (let i = 0; i < data.length; i += 4) {
+    // Skip fully transparent pixels if requested
+    if (skipTransparent && data[i + 3] === 0) continue;
+    
     // Convert RGB to HSL
     const r = data[i] / 255;
     const g = data[i + 1] / 255;
@@ -161,12 +160,174 @@ function canvasHSLAdjustment(ctx: CanvasRenderingContext2D, width: number, heigh
     data[i] = Math.round(r1 * 255);
     data[i + 1] = Math.round(g1 * 255);
     data[i + 2] = Math.round(b1 * 255);
+    // Alpha channel is preserved
+  }
+}
+
+/**
+ * Apply RGB channel adjustments to image data
+ * This operates directly on the provided data array
+ */
+function applyRGBAdjustment(
+  data: Uint8ClampedArray,
+  width: number,
+  height: number,
+  redScale: number,
+  greenScale: number,
+  blueScale: number,
+  skipTransparent: boolean = false
+): void {
+  if (redScale === 1.0 && greenScale === 1.0 && blueScale === 1.0) return;
+  
+  for (let i = 0; i < data.length; i += 4) {
+    // Skip fully transparent pixels if requested
+    if (skipTransparent && data[i + 3] === 0) continue;
+    
+    data[i] = Math.max(0, Math.min(255, data[i] * redScale));
+    data[i + 1] = Math.max(0, Math.min(255, data[i + 1] * greenScale));
+    data[i + 2] = Math.max(0, Math.min(255, data[i + 2] * blueScale));
+  }
+}
+
+/**
+ * Apply sharpening to image data
+ * This requires a new buffer since it needs to read from the original pixels
+ */
+function applySharpen(
+  data: Uint8ClampedArray,
+  width: number,
+  height: number,
+  amount: number,
+  skipTransparent: boolean = false
+): void {
+  if (amount <= 0) return;
+  
+  // Create a copy of the original data since we need to read from original values
+  const tempData = new Uint8ClampedArray(data.length);
+  for (let i = 0; i < data.length; i++) {
+    tempData[i] = data[i];
   }
   
+  // Simple 3x3 sharpen kernel
+  const strength = Math.min(amount, 2);
+  const kernel = [
+    0, -strength, 0,
+    -strength, 1 + 4 * strength, -strength,
+    0, -strength, 0
+  ];
+  
+  // Apply convolution
+  for (let y = 1; y < height - 1; y++) {
+    for (let x = 1; x < width - 1; x++) {
+      const pixelIndex = (y * width + x) * 4;
+      
+      // Skip fully transparent pixels if requested
+      if (skipTransparent && data[pixelIndex + 3] === 0) continue;
+      
+      for (let c = 0; c < 3; c++) {  // Only process RGB channels
+        let sum = 0;
+        
+        for (let ky = -1; ky <= 1; ky++) {
+          for (let kx = -1; kx <= 1; kx++) {
+            const kernelIndex = (ky + 1) * 3 + (kx + 1);
+            const pixelPos = ((y + ky) * width + (x + kx)) * 4 + c;
+            sum += tempData[pixelPos] * kernel[kernelIndex];
+          }
+        }
+        
+        data[pixelIndex + c] = Math.min(255, Math.max(0, sum));
+      }
+    }
+  }
+}
+
+/**
+ * Process image data with all adjustments
+ * @param ctx Canvas context to process
+ * @param adjustments Image adjustment settings
+ * @param skipTransparent Whether to skip fully transparent pixels
+ */
+function processImageContext(
+  ctx: CanvasRenderingContext2D,
+  width: number,
+  height: number,
+  adjustments: ImageAdjustments,
+  skipTransparent: boolean = false
+): void {
+  // Get the image data once
+  const imageData = ctx.getImageData(0, 0, width, height);
+  const data = imageData.data;
+  
+  // Apply adjustments directly to the image data
+  applyBrightnessContrast(data, width, height, adjustments.brightness, adjustments.contrast, skipTransparent);
+  applyHSLAdjustment(data, width, height, adjustments.hue, adjustments.saturation, adjustments.lightness, skipTransparent);
+  applyRGBAdjustment(data, width, height, adjustments.redScale, adjustments.greenScale, adjustments.blueScale, skipTransparent);
+  
+  if (adjustments.sharpen > 0) {
+    applySharpen(data, width, height, adjustments.sharpen, skipTransparent);
+  }
+  
+  // Put the modified data back to the context
   ctx.putImageData(imageData, 0, 0);
 }
 
-// Helper function for HSL to RGB conversion
+// ============================================================
+// ORIGINAL CANVAS FUNCTIONS (SIMPLIFIED TO USE NEW UTILITIES)
+// ============================================================
+
+function canvasSharpen(ctx: CanvasRenderingContext2D, width: number, height: number, amount: number): void {
+  if (amount <= 0) return;
+  
+  const imageData = ctx.getImageData(0, 0, width, height);
+  applySharpen(imageData.data, width, height, amount);
+  ctx.putImageData(imageData, 0, 0);
+}
+
+function canvasHSLAdjustment(
+  ctx: CanvasRenderingContext2D, 
+  width: number, 
+  height: number, 
+  hue: number, 
+  saturation: number, 
+  lightness: number
+): void {
+  if (hue === 100 && saturation === 100 && lightness === 100) return;
+  
+  const imageData = ctx.getImageData(0, 0, width, height);
+  applyHSLAdjustment(imageData.data, width, height, hue, saturation, lightness);
+  ctx.putImageData(imageData, 0, 0);
+}
+
+function canvasBrightnessContrast(
+  ctx: CanvasRenderingContext2D, 
+  width: number, 
+  height: number, 
+  brightness: number, 
+  contrast: number
+): void {
+  if (brightness === 0 && contrast === 0) return;
+  
+  const imageData = ctx.getImageData(0, 0, width, height);
+  applyBrightnessContrast(imageData.data, width, height, brightness, contrast);
+  ctx.putImageData(imageData, 0, 0);
+}
+
+function canvasRGBAdjustment(
+  ctx: CanvasRenderingContext2D, 
+  width: number, 
+  height: number,
+  redScale: number, 
+  greenScale: number, 
+  blueScale: number
+): void {
+  if (redScale === 1.0 && greenScale === 1.0 && blueScale === 1.0) return;
+  
+  const imageData = ctx.getImageData(0, 0, width, height);
+  applyRGBAdjustment(imageData.data, width, height, redScale, greenScale, blueScale);
+  ctx.putImageData(imageData, 0, 0);
+}
+
+// Helper function to convert hue to RGB component
 function hue2rgb(p: number, q: number, t: number): number {
   if (t < 0) t += 1;
   if (t > 1) t -= 1;
@@ -174,49 +335,6 @@ function hue2rgb(p: number, q: number, t: number): number {
   if (t < 1/2) return q;
   if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
   return p;
-}
-
-// Apply brightness and contrast adjustment using Canvas
-function canvasBrightnessContrast(ctx: CanvasRenderingContext2D, width: number, height: number, 
-                                  brightness: number, contrast: number): void {
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
-  
-  const factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
-  
-  for (let i = 0; i < data.length; i += 4) {
-    // Apply brightness
-    data[i] += brightness;     // R
-    data[i + 1] += brightness; // G
-    data[i + 2] += brightness; // B
-    
-    // Apply contrast
-    data[i] = factor * (data[i] - 128) + 128;
-    data[i + 1] = factor * (data[i + 1] - 128) + 128;
-    data[i + 2] = factor * (data[i + 2] - 128) + 128;
-    
-    // Ensure values are within bounds
-    data[i] = Math.max(0, Math.min(255, data[i]));
-    data[i + 1] = Math.max(0, Math.min(255, data[i + 1]));
-    data[i + 2] = Math.max(0, Math.min(255, data[i + 2]));
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
-}
-
-// Adjust RGB channel scales using Canvas
-function canvasRGBAdjustment(ctx: CanvasRenderingContext2D, width: number, height: number,
-                           redScale: number, greenScale: number, blueScale: number): void {
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
-  
-  for (let i = 0; i < data.length; i += 4) {
-    data[i] = Math.max(0, Math.min(255, data[i] * redScale));
-    data[i + 1] = Math.max(0, Math.min(255, data[i + 1] * greenScale));
-    data[i + 2] = Math.max(0, Math.min(255, data[i + 2] * blueScale));
-  }
-  
-  ctx.putImageData(imageData, 0, 0);
 }
 
 export const processImage = async (
@@ -247,6 +365,10 @@ export const processImage = async (
           
           img.onload = () => {
             try {
+              // Check if this is a PNG with transparency (for background-removed images)
+              const isPngWithTransparency = sourceDataUrl.startsWith('data:image/png') && 
+                                        imageFile.backgroundRemoved;
+              
               let width = img.width;
               let height = img.height;
               
@@ -266,18 +388,76 @@ export const processImage = async (
               const canvas = document.createElement('canvas');
               canvas.width = width;
               canvas.height = height;
-              const ctx = canvas.getContext('2d')!;
+              const ctx = canvas.getContext('2d', { 
+                // Use alpha for transparent PNGs
+                alpha: true
+              })!;
+              
+              // For transparent images, clear canvas before drawing
+              if (isPngWithTransparency) {
+                ctx.clearRect(0, 0, width, height);
+              }
               
               // Draw the original image (resizing if needed)
               ctx.drawImage(img, 0, 0, width, height);
+              
+              // For transparent images with background removed, handle specially
+              if (isPngWithTransparency) {
+                // Apply adjustments that won't destroy transparency
+                
+                // First check if we have the "white background" adjustment
+                // (When redScale, greenScale, and blueScale are all significantly above 1.0)
+                const isWhiteBackgroundEffect = 
+                  safeAdjustments.redScale > 1.2 && 
+                  safeAdjustments.greenScale > 1.2 && 
+                  safeAdjustments.blueScale > 1.2;
+                
+                // Log the resize dimensions being applied
+                if (preset && isFullSize) {
+                  console.log(`Applying resize to transparent image: ${width}x${height}`);
+                }
+                
+                if (isWhiteBackgroundEffect) {
+                  // Apply white background (fill with white and draw image on top with original alpha)
+                  // No need to get imageData here
+                  const newCanvas = document.createElement('canvas');
+                  newCanvas.width = width;
+                  newCanvas.height = height;
+                  const newCtx = newCanvas.getContext('2d', { alpha: true })!;
+                  
+                  // Fill with white
+                  newCtx.fillStyle = 'white';
+                  newCtx.fillRect(0, 0, width, height);
+                  
+                  // Draw the image with its alpha
+                  newCtx.drawImage(img, 0, 0, width, height);
+                  
+                  // Return as JPEG since we no longer need transparency
+                  const quality = preset && isFullSize ? preset.quality / 100 : 0.95;
+                  const dataUrl = newCanvas.toDataURL('image/jpeg', quality);
+                  resolveImg(dataUrl);
+                  return;
+                } else {
+                  // DEBUG - Log adjustments being applied
+                  console.log("Applying adjustments to transparent PNG:", safeAdjustments);
+                  
+                  // Process all adjustments at once, preserving transparency
+                  processImageContext(ctx, width, height, safeAdjustments, true);
+                  
+                  // Return as PNG to preserve transparency
+                  const dataUrl = canvas.toDataURL('image/png', 1.0);
+                  resolveImg(dataUrl);
+                  return;
+                }
+              }
               
               // Try to use OpenCV if available, otherwise fall back to canvas methods
               if (window.cv && typeof window.cv.imread === 'function') {
                 try {
                   console.log(`Using OpenCV for image processing (${isFullSize ? 'full' : 'thumbnail'})`);
                   const processedCanvas = processWithOpenCV(canvas, safeAdjustments);
-                  // Higher quality for thumbnails (increased from 0.8)
-                  const quality = preset && isFullSize ? preset.quality / 100 : 0.9;
+                  // Higher quality for thumbnails
+                  const quality = preset && isFullSize ? preset.quality / 100 : 0.95;
                   const dataUrl = processedCanvas.toDataURL('image/jpeg', quality);
                   resolveImg(dataUrl);
                   return;
@@ -289,6 +469,10 @@ export const processImage = async (
               
               // Process with Canvas API
               console.log(`Using Canvas API for image processing (${isFullSize ? 'full' : 'thumbnail'})`);
+              
+              // Set high quality smoothing
+              ctx.imageSmoothingEnabled = true;
+              ctx.imageSmoothingQuality = 'high';
               
               // Apply brightness and contrast
               canvasBrightnessContrast(ctx, width, height, safeAdjustments.brightness, safeAdjustments.contrast);
@@ -304,8 +488,8 @@ export const processImage = async (
                 canvasSharpen(ctx, width, height, safeAdjustments.sharpen);
               }
               
-              // Convert to data URL with quality setting - higher quality for thumbnails (increased from 0.8)
-              const quality = preset && isFullSize ? preset.quality / 100 : 0.9;
+              // Convert to data URL with quality setting - higher quality for thumbnails
+              const quality = preset && isFullSize ? preset.quality / 100 : 0.95;
               const dataUrl = canvas.toDataURL('image/jpeg', quality);
               
               resolveImg(dataUrl);
@@ -477,6 +661,9 @@ export const createThumbnail = (dataUrl: string, maxWidth: number = 800): Promis
       const img = new Image();
       
       img.onload = () => {
+        // Check if this is a PNG with transparency
+        const isPng = dataUrl.startsWith('data:image/png');
+        
         // Calculate thumbnail dimensions maintaining aspect ratio
         let width = img.width;
         let height = img.height;
@@ -497,13 +684,28 @@ export const createThumbnail = (dataUrl: string, maxWidth: number = 800): Promis
         canvas.width = width;
         canvas.height = height;
         
-        // Draw the image at the smaller size
-        const ctx = canvas.getContext('2d')!;
+        // Get context with alpha channel support for PNGs
+        const ctx = canvas.getContext('2d', { alpha: true })!;
+        
+        // Use better image rendering quality
+        ctx.imageSmoothingQuality = 'high';
+        
+        // For PNGs, clear the canvas to ensure transparency is preserved
+        if (isPng) {
+          ctx.clearRect(0, 0, width, height);
+        }
+        
         ctx.drawImage(img, 0, 0, width, height);
         
-        // Convert to data URL with better quality (increased from 0.7)
-        const thumbnailDataUrl = canvas.toDataURL('image/jpeg', 0.85);
-        resolve(thumbnailDataUrl);
+        // For PNGs, return PNG format to preserve transparency
+        if (isPng) {
+          const thumbnailDataUrl = canvas.toDataURL('image/png', 1.0);
+          resolve(thumbnailDataUrl);
+        } else {
+          // For JPGs, use JPEG format
+          const thumbnailDataUrl = canvas.toDataURL('image/jpeg', 0.95);
+          resolve(thumbnailDataUrl);
+        }
       };
       
       img.onerror = () => reject(new Error('Error creating thumbnail'));
@@ -610,7 +812,20 @@ export const downloadAllImages = async (
   // If not downloading as ZIP, just download each image individually
   if (!asZip) {
     images.forEach((image) => {
-      if (image.processedDataUrl) {
+      // For background-removed images with processing applied
+      if (image.backgroundRemoved && image.processedDataUrl) {
+        // Use the processed version but ensure PNG format
+        downloadImage(image.processedDataUrl, `${image.file.name}`, 'jpg', image.seoName);
+      }
+      // For background-removed images without processing
+      else if (image.backgroundRemoved) {
+        const seoName = image.seoName;
+        // Always use PNG format for transparent images, but have to use 'jpg' or 'webp' from ImageFormat
+        // The image is already a PNG so this parameter doesn't matter, it will preserve the PNG format
+        downloadImage(image.dataUrl, `${image.file.name}`, 'jpg', seoName);
+      } 
+      // For regular processed images
+      else if (image.processedDataUrl) {
         // Get the SEO name if available
         const seoName = image.seoName;
         downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, seoName);
@@ -625,8 +840,63 @@ export const downloadAllImages = async (
     
     // Add each image to the ZIP
     const promises = images.map(async (image, index) => {
-      if (!image.processedDataUrl) return;
+      // Handle background-removed images with processing
+      if (image.backgroundRemoved && image.processedDataUrl) {
+        return new Promise<void>((resolve) => {
+          // For processed background-removed images, make sure processedDataUrl is defined
+          if (!image.processedDataUrl) {
+            resolve();
+            return;
+          }
+          
+          fetch(image.processedDataUrl)
+            .then(res => res.blob())
+            .then(blob => {
+              // Use SEO name if available, otherwise use original name
+              let fileName = image.file.name;
+              
+              // If SEO name is available, use it with PNG extension
+              if (image.seoName) {
+                fileName = `${image.seoName}.png`;
+              } else {
+                // Add index prefix to prevent name collisions
+                fileName = `processed_transparent_${index + 1}_${fileName.replace(/\.[^/.]+$/, '.png')}`;
+              }
+              
+              zip.file(fileName, blob);
+              resolve();
+            })
+            .catch(() => resolve());
+        });
+      }
+      // Handle background-removed images without processing
+      else if (image.backgroundRemoved) {
+        return new Promise<void>((resolve) => {
+          // For background-removed images, use the original data URL which is a PNG
+          fetch(image.dataUrl)
+            .then(res => res.blob())
+            .then(blob => {
+              // Use SEO name if available, otherwise use original name
+              let fileName = image.file.name;
+              
+              // If SEO name is available, use it with PNG extension
+              if (image.seoName) {
+                fileName = `${image.seoName}.png`;
+              } else {
+                // Add index prefix to prevent name collisions
+                fileName = `transparent_${index + 1}_${fileName.replace(/\.[^/.]+$/, '.png')}`;
+              }
+              
+              zip.file(fileName, blob);
+              resolve();
+            })
+            .catch(() => resolve());
+        });
+      }
       
+      if (!image.processedDataUrl && !image.backgroundRemoved) return;
+      
+      // Regular processed images
       // Create a temporary Image to load the data URL
       return new Promise<void>((resolve) => {
         const img = new Image();

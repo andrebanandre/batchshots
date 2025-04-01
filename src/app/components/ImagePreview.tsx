@@ -19,6 +19,12 @@ export interface ImageFile {
   };
   seoName?: string; // SEO-friendly filename
   originalName?: string; // Original filename for reference
+  backgroundRemoved?: boolean; // Flag to indicate if background has been removed
+  
+  // Original image data for reset functionality
+  originalDataUrl?: string;
+  originalFile?: File;
+  originalThumbnailUrl?: string;
 }
 
 interface ImagePreviewProps {
@@ -28,6 +34,7 @@ interface ImagePreviewProps {
   onDownloadImage: (image: ImageFile, format?: ImageFormat) => void;
   onDeleteImage: (id: string) => void;
   isProcessing?: boolean;
+  isRemovingBackground?: boolean;
   className?: string;
   appliedSettings?: {
     preset: string | null;
@@ -43,6 +50,7 @@ export default function ImagePreview({
   onDownloadImage,
   onDeleteImage,
   isProcessing = false,
+  isRemovingBackground = false,
   className = '',
   appliedSettings,
 }: ImagePreviewProps) {
@@ -223,6 +231,17 @@ export default function ImagePreview({
 
   // Get the appropriate image URL to display (thumbnail or full)
   const getDisplayUrl = (image: ImageFile) => {
+    // For transparent images (background removed), prioritize processed PNG sources if available
+    if (image.backgroundRemoved) {
+      // Use processed thumbnail if available
+      if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
+      // Fall back to processed full size if available
+      if (image.processedDataUrl) return image.processedDataUrl;
+      // Fall back to original background-removed data URL
+      return image.dataUrl;
+    }
+    
+    // For regular images, use standard priority order
     // Prefer processed thumbnail for previews
     if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
     // Fall back to processed full size if available
@@ -282,7 +301,7 @@ export default function ImagePreview({
             
             <div 
               ref={imageContainerRef}
-              className="relative aspect-video w-full overflow-hidden cursor-grab touch-none"
+              className={`relative aspect-video w-full overflow-hidden cursor-grab touch-none ${selectedImage.backgroundRemoved ? 'transparent-bg' : ''}`}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -310,9 +329,11 @@ export default function ImagePreview({
                   className="object-contain"
                   priority
                   draggable={false}
+                  unoptimized={selectedImage.backgroundRemoved}
                 />
               </div>
               
+           
               {/* Mobile zoom instructions */}
               <div className="absolute bottom-2 left-2 brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs p-2 md:hidden">
                 Pinch to zoom, drag to move
@@ -322,6 +343,26 @@ export default function ImagePreview({
               <div className="absolute bottom-2 right-2 brutalist-border border-3 bg-white text-black text-xs p-2">
                 {Math.round(scale * 100)}%
               </div>
+
+              {/* Processing indicators */}
+              {isProcessing && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                  <div className="relative w-16 h-16">
+                    <div className="absolute inset-0 w-full h-full border-4 border-t-[#4F46E5] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+                  </div>
+                </div>
+              )}
+              
+              {isRemovingBackground && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                  <div className="flex flex-col items-center space-y-3">
+                    <div className="relative w-16 h-16">
+                      <div className="absolute inset-0 w-full h-full border-4 border-t-[#4F46E5] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
+                    </div>
+                    <p className="text-white font-bold">Removing Background...</p>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="p-4 flex flex-col space-y-2">
@@ -381,7 +422,7 @@ export default function ImagePreview({
                   </Button>
                 </div>
               )}
-              
+
               {/* Original filename if SEO name exists */}
               {selectedImage.seoName && selectedImage.originalName && !editingSeoName && (
                 <div className="text-xs text-gray-500">
@@ -419,6 +460,14 @@ export default function ImagePreview({
                     </div>
                   </>
                 )}
+
+                {/* Background removal info */}
+                {selectedImage.backgroundRemoved && (
+                  <div className="col-span-2">
+                    <span className="font-bold">Background: </span>
+                    <span className="text-green-600">Removed</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -440,13 +489,15 @@ export default function ImagePreview({
               }`}
               onClick={() => onSelectImage(image.id)}
             >
-              <div className="relative aspect-square w-full overflow-hidden">
+              <div className={`relative aspect-square w-full overflow-hidden ${image.backgroundRemoved ? 'transparent-bg' : ''}`}>
+                {/* Show PNG transparency indicator only in thumbnails */}
                 <Image
                   src={getDisplayUrl(image)}
                   alt={image.file.name}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                  className="object-contain"
+                  className="object-contain z-10"
+                  unoptimized={image.backgroundRemoved}
                 />
                 {/* Image number indicator */}
                 <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm">
@@ -455,11 +506,18 @@ export default function ImagePreview({
                 {/* Delete button */}
                 <button 
                   onClick={(e) => handleDelete(e, image.id)}
-                  className="absolute top-1 right-1 bg-accent text-white text-xs px-2 py-1 rounded-sm hover:bg-accent-700"
+                  className="absolute top-1 right-1 brutalist-border border-2 border-black bg-accent text-black text-xs px-2 py-1 shadow-brutalist hover:translate-y-[-2px] transition-transform z-10"
                   disabled={isProcessing}
                 >
                   ×
                 </button>
+                
+                {/* Background removal indicator */}
+                {image.backgroundRemoved && (
+                  <div className="absolute bottom-1 right-1 brutalist-border border-2 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs px-2 py-1 z-10 shadow-brutalist">
+                    BG
+                  </div>
+                )}
               </div>
               <div className="mt-2 text-xs truncate">
                 {getDisplayName(image)}

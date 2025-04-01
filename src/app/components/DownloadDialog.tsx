@@ -13,6 +13,7 @@ interface DownloadDialogProps {
   downloadComplete: boolean;
   formatType: string;
   hasSeoNames?: boolean;
+  hasRemovedBackgrounds?: boolean;
 }
 
 export default function DownloadDialog({
@@ -26,7 +27,8 @@ export default function DownloadDialog({
   isDownloading,
   downloadComplete,
   formatType,
-  hasSeoNames = false
+  hasSeoNames = false,
+  hasRemovedBackgrounds = false
 }: DownloadDialogProps) {
   if (!isOpen) return null;
 
@@ -52,6 +54,11 @@ export default function DownloadDialog({
                           )}
                           {hasAppliedChanges && (
                             <li>Image adjustments have been applied</li>
+                          )}
+                          {hasRemovedBackgrounds && (
+                            <li className="text-purple-600 font-semibold">
+                              Background removal has been applied
+                            </li>
                           )}
                           {hasSeoNames && (
                             <li className="text-green-600 font-semibold">

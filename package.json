@@ -7,13 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
+    "@imgly/background-removal": "^1.6.0",
     "@techstark/opencv-js": "4.10.0-release.1",
     "jszip": "^3.10.1",
     "next": "15.2.4",
+    "onnxruntime-web": "^1.21.0-dev.20250206-d981b153d3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "uuid": "^11.1.0"
@@ -29,6 +32,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "tailwindcss": "^4",
     "ts-jest": "^29.3.0",
     "typescript": "^5"

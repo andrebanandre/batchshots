@@ -9,6 +9,12 @@ import PresetsSelector, { defaultPresets, Preset } from './components/PresetsSel
 import DownloadOptions, { ImageFormat } from './components/DownloadOptions';
 import DownloadDialog from './components/DownloadDialog';
 import SeoNameGenerator, { SeoImageName } from './components/SeoNameGenerator';
+import BackgroundRemovalControl from './components/BackgroundRemovalControl';
+import { 
+  processImageBackground, 
+  getUpdatedImageWithBackground,
+  resetImageBackground
+} from './lib/backgroundRemoval';
 import { 
   initOpenCV, 
   processImage, 
@@ -37,6 +43,10 @@ export default function Home() {
   // SEO name generation state
   const [seoNames, setSeoNames] = useState<SeoImageName[]>([]);
   const [isGeneratingSeoNames, setIsGeneratingSeoNames] = useState(false);
+
+  // Background removal state
+  const [isRemovingBackground, setIsRemovingBackground] = useState(false);
+  const [backgroundRemovalProgress, setBackgroundRemovalProgress] = useState({ processed: 0, total: 0 });
 
   // Initialize OpenCV.js
   useEffect(() => {
@@ -105,6 +115,11 @@ export default function Home() {
             if ((selectedImageId && image.id === selectedImageId) || applyToAll) {
               // Process only thumbnails for preview - much faster
               const { processedThumbnailUrl } = await processImage(image, adjustments, currentPreset, false);
+              
+              // Add debug log for background-removed images
+              if (image.backgroundRemoved) {
+                console.log('Processing background-removed thumbnail for preview:', image.id);
+              }
               
               return {
                 ...image,
@@ -194,6 +209,51 @@ export default function Home() {
 
   // Handle download - process the full image if needed
   const handleDownloadImage = async (image: ImageFile, format: LibImageFormat = 'jpg') => {
+    // For background-removed images with processing applied
+    if (image.backgroundRemoved && image.processedDataUrl) {
+      downloadImage(image.processedDataUrl, image.file.name, 'jpg', image.seoName);
+      return;
+    }
+    // For background-removed images without specific processing, process now
+    else if (image.backgroundRemoved) {
+      setIsProcessing(true);
+      try {
+        const currentPreset = getCurrentPreset();
+        const { processedDataUrl } = await processImage(image, adjustments, currentPreset, true);
+        
+        if (processedDataUrl) {
+          // Update the image in state with the processed version
+          setImages(prev => 
+            prev.map(img => 
+              img.id === image.id 
+                ? { 
+                    ...img, 
+                    processedDataUrl,
+                    // Store the applied preset information
+                    appliedPreset: currentPreset ? {
+                      name: currentPreset.name,
+                      width: currentPreset.width,
+                      height: currentPreset.height,
+                      quality: currentPreset.quality
+                    } : undefined
+                  }
+                : img
+            )
+          );
+          
+          // Download the processed image with adjustments
+          downloadImage(processedDataUrl, image.file.name, 'jpg', image.seoName);
+        }
+      } catch (error) {
+        console.error('Error processing transparent image', error);
+        // Fallback to original
+        downloadImage(image.dataUrl, image.file.name, 'jpg', image.seoName);
+      } finally {
+        setIsProcessing(false);
+      }
+      return;
+    }
+    
     if (image.processedDataUrl) {
       // If we already have the processed full image, download it
       downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
@@ -240,7 +300,11 @@ export default function Home() {
   };
 
   const handleInitiateDownload = (format: ImageFormat) => {
-    setDownloadFormat(format as LibImageFormat);
+    // If any images have background removed, default to PNG
+    const hasRemovedBackgrounds = images.some(img => img.backgroundRemoved);
+    const optimalFormat = hasRemovedBackgrounds ? 'png' as LibImageFormat : format as LibImageFormat;
+    
+    setDownloadFormat(optimalFormat);
     setDownloadComplete(false);
     setIsDownloadDialogOpen(true);
   };
@@ -253,7 +317,8 @@ export default function Home() {
   };
 
   const handleDownloadAll = async (format: LibImageFormat = 'jpg') => {
-    const processedImages = images.filter(img => img.processedThumbnailUrl);
+    // Include both processed images and those with background removed
+    const processedImages = images.filter(img => img.processedThumbnailUrl || img.backgroundRemoved);
     if (processedImages.length === 0) return;
     
     setIsProcessing(true);
@@ -265,6 +330,7 @@ export default function Home() {
         images.map(async (image) => {
           // Only process images that need processing (either selected or all if applyToAll is true)
           if (selectedImageId === image.id || applyToAll) {
+            // Process all images, including those with background removed
             const { processedThumbnailUrl, processedDataUrl } = 
               await processImage(image, adjustments, currentPreset, true);
             
@@ -287,8 +353,8 @@ export default function Home() {
       // Update state with processed images
       setImages(fullyProcessedImages);
       
-      // Download all the processed images
-      const updatedImages = fullyProcessedImages.filter(img => img.processedDataUrl);
+      // Download all the processed images and images with background removed
+      const updatedImages = fullyProcessedImages.filter(img => img.processedDataUrl || img.backgroundRemoved);
       downloadAllImages(updatedImages, format, true);
     } catch (error) {
       console.error('Error processing images for download', error);
@@ -408,6 +474,165 @@ export default function Home() {
     setIsDownloadDialogOpen(false);
   };
 
+  // Handle background removal for a single image
+  const handleRemoveBackground = async (imageId: string) => {
+    const image = images.find(img => img.id === imageId);
+    if (!image) return;
+    
+    setIsRemovingBackground(true);
+    setBackgroundRemovalProgress({ processed: 0, total: 1 });
+    
+    try {
+      // Process image to remove background
+      const processedData = await processImageBackground(image);
+      
+      // Update image state with processed data
+      const updatedImages = images.map(img => 
+        img.id === imageId 
+          ? getUpdatedImageWithBackground(img, processedData)
+          : img
+      );
+      
+      setImages(updatedImages);
+      
+      // Immediately process adjustments for the new transparent image
+      if (isOpenCVReady) {
+        setIsProcessing(true);
+        const updatedImage = updatedImages.find(img => img.id === imageId);
+        if (updatedImage) {
+          try {
+            const currentPreset = getCurrentPreset();
+            console.log('Applying adjustments to newly background-removed image:', imageId);
+            
+            // Process to get thumbnail with adjustments
+            const { processedThumbnailUrl } = await processImage(updatedImage, adjustments, currentPreset, false);
+            
+            // Update the image state with processed thumbnail
+            setImages(prevImages => 
+              prevImages.map(img => 
+                img.id === imageId 
+                  ? { 
+                      ...img, 
+                      processedThumbnailUrl,
+                      appliedPreset: currentPreset ? {
+                        name: currentPreset.name,
+                        width: currentPreset.width,
+                        height: currentPreset.height,
+                        quality: currentPreset.quality
+                      } : undefined
+                    }
+                  : img
+              )
+            );
+          } catch (error) {
+            console.error('Error applying adjustments to transparent image', error);
+          }
+        }
+      }
+
+      setBackgroundRemovalProgress({ processed: 1, total: 1 });
+    } catch (error) {
+      console.error('Error removing background:', error);
+      alert('Failed to remove background. Please try again.');
+    } finally {
+      setIsRemovingBackground(false);
+      setIsProcessing(false);
+    }
+  };
+
+  // Handle background removal for all images
+  const handleRemoveAllBackgrounds = async () => {
+    // Filter for images without background removed already
+    const imagesToProcess = images.filter(img => !img.backgroundRemoved);
+    if (imagesToProcess.length === 0) return;
+    
+    setIsRemovingBackground(true);
+    setBackgroundRemovalProgress({ processed: 0, total: imagesToProcess.length });
+    
+    try {
+      // Process images one by one to avoid overwhelming the browser
+      for (let i = 0; i < imagesToProcess.length; i++) {
+        const image = imagesToProcess[i];
+        
+        // Skip if already processed during this batch
+        if (image.backgroundRemoved) continue;
+        
+        // Process image with background removal
+        const processedData = await processImageBackground(image);
+        
+        // Update image in state with background removed
+        let updatedImages = [...images];
+        updatedImages = updatedImages.map(img => 
+          img.id === image.id 
+            ? getUpdatedImageWithBackground(img, processedData)
+            : img
+        );
+        
+        setImages(updatedImages);
+        
+        // Immediately apply adjustments to the background-removed image
+        if (isOpenCVReady) {
+          try {
+            const currentPreset = getCurrentPreset();
+            console.log('Applying adjustments to newly background-removed image in batch:', image.id);
+            
+            // Get the updated image with background removed
+            const updatedImage = updatedImages.find(img => img.id === image.id);
+            if (updatedImage) {
+              // Process to get thumbnail with adjustments
+              const { processedThumbnailUrl } = await processImage(updatedImage, adjustments, currentPreset, false);
+              
+              // Update the image with processed thumbnail
+              updatedImages = updatedImages.map(img => 
+                img.id === image.id 
+                  ? { 
+                      ...img, 
+                      processedThumbnailUrl,
+                      appliedPreset: currentPreset ? {
+                        name: currentPreset.name,
+                        width: currentPreset.width,
+                        height: currentPreset.height,
+                        quality: currentPreset.quality
+                      } : undefined
+                    }
+                  : img
+              );
+              
+              setImages(updatedImages);
+            }
+          } catch (error) {
+            console.error('Error applying adjustments to batch transparent image', error);
+          }
+        }
+        
+        // Update progress
+        setBackgroundRemovalProgress(prev => ({ ...prev, processed: i + 1 }));
+      }
+    } catch (error) {
+      console.error('Error in batch background removal:', error);
+      alert('Background removal failed for some images. Please try again.');
+    } finally {
+      setIsRemovingBackground(false);
+    }
+  };
+
+  // Reset images back to their original state (before background removal)
+  const handleResetBackgroundRemoval = (imageId: string | null = null) => {
+    // Check if any images have background removed
+    const imagesWithBackgroundRemoved = images.filter(img => img.backgroundRemoved && img.originalDataUrl);
+    if (imagesWithBackgroundRemoved.length === 0) return;
+    
+    setImages(prevImages => 
+      prevImages.map(img => {
+        // Reset only the specified image, or all images if imageId is null
+        if ((imageId === null || img.id === imageId) && img.backgroundRemoved) {
+          return resetImageBackground(img);
+        }
+        return img;
+      })
+    );
+  };
+
   return (
     <main className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="brutalist-accent-card mb-8">
@@ -492,6 +717,7 @@ export default function Home() {
                 onDownloadImage={handleDownloadImage}
                 onDeleteImage={handleDeleteImage}
                 isProcessing={isProcessing}
+                isRemovingBackground={isRemovingBackground}
                 className="mb-6"
                 appliedSettings={{
                   preset: selectedPreset,
@@ -530,6 +756,20 @@ export default function Home() {
                 onReset={handleReset}
               />
 
+              <BackgroundRemovalControl
+                selectedImageId={selectedImageId}
+                isProcessing={isProcessing}
+                isRemovingBackground={isRemovingBackground}
+                hasBackgroundRemoved={selectedImageId ? images.find(img => img.id === selectedImageId)?.backgroundRemoved || false : false}
+                applyToAll={applyToAll}
+                totalImages={backgroundRemovalProgress.total}
+                processedCount={backgroundRemovalProgress.processed}
+                onRemoveBackground={handleRemoveBackground}
+                onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
+                onResetBackground={handleResetBackgroundRemoval}
+                images={images}
+              />
+
               <Card title="IMAGE OPTIMIZATION" variant="accent">
                 <PresetsSelector
                   presets={getAllPresets()}
@@ -547,6 +787,7 @@ export default function Home() {
 
               <DownloadOptions
                 onDownload={handleInitiateDownload}
+                hasBackgroundRemovedImages={images.some(img => img.backgroundRemoved)}
               />
             </div>
           </div>
@@ -557,15 +798,16 @@ export default function Home() {
       <DownloadDialog
         isOpen={isDownloadDialogOpen}
         onClose={downloadComplete ? handleContinueEditing : handleConfirmDownload}
-        imageCount={images.filter(img => img.processedThumbnailUrl).length}
+        imageCount={images.filter(img => img.processedThumbnailUrl || img.backgroundRemoved).length}
         onStartNewBundle={handleStartNewBundle}
         onContinueEditing={handleContinueEditing}
-        hasAppliedChanges={images.some(img => img.processedThumbnailUrl)}
+        hasAppliedChanges={images.some(img => img.processedThumbnailUrl || img.backgroundRemoved)}
         appliedPresetName={getCurrentPresetName()}
         isDownloading={isDownloading}
         downloadComplete={downloadComplete}
         formatType={downloadFormat}
         hasSeoNames={images.some(img => !!img.seoName)}
+        hasRemovedBackgrounds={images.some(img => img.backgroundRemoved)}
       />
     </main>
   );

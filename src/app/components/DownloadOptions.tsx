@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import Card from './Card';
 import Button from './Button';
 
-export type ImageFormat = 'jpg' | 'webp';
+export type ImageFormat = 'jpg' | 'webp' | 'png';
 
 interface DownloadOptionsProps {
   onDownload: (format: ImageFormat) => void;
+  hasBackgroundRemovedImages?: boolean;
   className?: string;
 }
 
 export default function DownloadOptions({
   onDownload,
+  hasBackgroundRemovedImages = false,
   className = '',
 }: DownloadOptionsProps) {
-  const [downloadFormat, setDownloadFormat] = useState<ImageFormat>('jpg');
+  // Set initial format to PNG if background-removed images are present
+  const [downloadFormat, setDownloadFormat] = useState<ImageFormat>(
+    hasBackgroundRemovedImages ? 'png' : 'jpg'
+  );
 
   const handleFormatChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDownloadFormat(e.target.value as ImageFormat);
@@ -66,7 +71,30 @@ export default function DownloadOptions({
                   />
                   <span>WebP</span>
                 </label>
+                <label className="inline-flex items-center">
+                  <input
+                    type="radio"
+                    name="downloadFormat"
+                    value="png"
+                    checked={downloadFormat === 'png'}
+                    onChange={handleFormatChange}
+                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
+                    style={{
+                      backgroundImage: downloadFormat === 'png' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
+                      backgroundSize: "100% 100%",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat"
+                    }}
+                  />
+                  <span>PNG</span>
+                </label>
               </div>
+              
+              {hasBackgroundRemovedImages && (
+                <div className="mt-2 text-xs text-[#4F46E5] font-bold">
+                  PNG format recommended for transparent backgrounds
+                </div>
+              )}
             </div>
           </div>
         </div>

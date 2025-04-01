@@ -1,13 +1,21 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
+/** @type {import('jest').Config} */
+const config = {
   preset: 'ts-jest',
-  testEnvironment: 'node',
-  moduleNameMapper: {
-    // Handle module aliases (if needed)
-    '^@/(.*)$': '<rootDir>/src/$1',
+  testEnvironment: 'jsdom',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  transform: {
+    '^.+\\.(ts|tsx)$': ['ts-jest', {
+      tsconfig: 'tsconfig.json',
+    }],
   },
-  // Add coverage if needed
-  collectCoverage: false,
-  // Setup for Next.js environment
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1'
+  },
+  testMatch: [
+    '**/__tests__/**/*.ts?(x)',
+    '**/?(*.)+(spec|test).ts?(x)'
+  ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-}; 
+};
+
+module.exports = config; 
