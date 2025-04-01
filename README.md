@@ -1,5 +1,8 @@
 # PICME: SEO Image Optimizer
 
+[![CI](https://github.com/username/picme/actions/workflows/ci.yml/badge.svg)](https://github.com/username/picme/actions/workflows/ci.yml)
+[![Tests](https://github.com/username/picme/actions/workflows/test.yml/badge.svg)](https://github.com/username/picme/actions/workflows/test.yml)
+
 A powerful tool to optimize product images for SEO, with AI-powered image naming and visual optimization.
 
 ## Features
