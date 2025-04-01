@@ -21,8 +21,9 @@ document.body.appendChild(statusElement);
 
 // Function to update status
 function updateStatus(message) {
-  statusElement.textContent = message;
-  statusElement.style.display = 'block';
+  // statusElement.textContent = message;
+  // statusElement.style.display = 'block';
+  console.log(message);
 }
 
 // Function to hide status

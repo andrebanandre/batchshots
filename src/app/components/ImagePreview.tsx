@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Button from './Button';
 import type { ImageFormat } from '../lib/imageProcessing';
@@ -53,6 +53,19 @@ export default function ImagePreview({
   const [seoNameValue, setSeoNameValue] = useState('');
   // State to store locally updated images
   const [localImages, setLocalImages] = useState<ImageFile[]>(images);
+  
+  // State for image zoom and pan functionality
+  const [scale, setScale] = useState(1);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Reset zoom and position when selected image changes
+  useEffect(() => {
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+  }, [selectedImageId]);
   
   // Update local images when prop changes
   useEffect(() => {
@@ -123,6 +136,75 @@ export default function ImagePreview({
     setEditingSeoName(null);
   };
 
+  // Zoom handling functions
+  const handleZoomIn = () => {
+    setScale(prev => Math.min(prev + 0.5, 5)); // Limit max zoom to 5x
+  };
+
+  const handleZoomOut = () => {
+    setScale(prev => Math.max(prev - 0.5, 0.5)); // Limit min zoom to 0.5x
+  };
+
+  const handleReset = () => {
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  // Handle mouse/touch events for dragging
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      e.preventDefault();
+      setIsDragging(true);
+      setDragStart({ 
+        x: e.touches[0].clientX - position.x, 
+        y: e.touches[0].clientY - position.y 
+      });
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y,
+      });
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isDragging && e.touches.length === 1) {
+      e.preventDefault();
+      setPosition({
+        x: e.touches[0].clientX - dragStart.x,
+        y: e.touches[0].clientY - dragStart.y,
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Handle wheel event for zooming with mouse wheel
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      setScale(prev => Math.min(prev + 0.1, 5));
+    } else {
+      setScale(prev => Math.max(prev - 0.1, 0.5));
+    }
+  };
+
   if (localImages.length === 0) {
     return (
       <div className={`brutalist-border p-4 text-center ${className}`}>
@@ -173,15 +255,73 @@ export default function ImagePreview({
       {selectedImage && (
         <div className="mb-6 relative">
           <div className="brutalist-accent-card relative">
-            <div className="relative aspect-video w-full overflow-hidden">
-              <Image
-                src={getDisplayUrl(selectedImage)}
-                alt={selectedImage.file.name}
-                fill
-                sizes="100vw"
-                className="object-contain"
-                priority
-              />
+            {/* Zoom controls */}
+            <div className="absolute top-2 right-2 z-10 flex gap-2">
+              <button 
+                onClick={handleZoomIn}
+                className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
+                aria-label="Zoom in"
+              >
+                +
+              </button>
+              <button 
+                onClick={handleZoomOut}
+                className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
+                aria-label="Zoom out"
+              >
+                -
+              </button>
+              <button 
+                onClick={handleReset}
+                className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black w-auto px-2 h-8 flex items-center justify-center text-xs font-bold shadow-brutalist hover:translate-y-[-2px] transition-transform"
+                aria-label="Reset zoom"
+              >
+                RESET
+              </button>
+            </div>
+            
+            <div 
+              ref={imageContainerRef}
+              className="relative aspect-video w-full overflow-hidden cursor-grab touch-none"
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onWheel={handleWheel}
+              style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+            >
+              <div 
+                className="absolute transition-transform duration-75 ease-out"
+                style={{ 
+                  transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                  transformOrigin: 'center',
+                  width: '100%',
+                  height: '100%'
+                }}
+              >
+                <Image
+                  src={getDisplayUrl(selectedImage)}
+                  alt={selectedImage.file.name}
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                  priority
+                  draggable={false}
+                />
+              </div>
+              
+              {/* Mobile zoom instructions */}
+              <div className="absolute bottom-2 left-2 brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs p-2 md:hidden">
+                Pinch to zoom, drag to move
+              </div>
+              
+              {/* Zoom level indicator */}
+              <div className="absolute bottom-2 right-2 brutalist-border border-3 bg-white text-black text-xs p-2">
+                {Math.round(scale * 100)}%
+              </div>
             </div>
 
             <div className="p-4 flex flex-col space-y-2">
