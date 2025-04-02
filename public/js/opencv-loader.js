@@ -1,6 +1,6 @@
 /**
  * OpenCV.js Loader Script
- * This script loads OpenCV.js from CDN and sets up a status indicator.
+ * This script loads OpenCV.js locally and sets up a status indicator.
  */
 
 // Create a status element to show loading progress
@@ -53,7 +53,10 @@ function loadOpenCV() {
   const script = document.createElement('script');
   script.setAttribute('async', '');
   script.setAttribute('type', 'text/javascript');
-  script.setAttribute('src', 'https://docs.opencv.org/4.7.0/opencv.js');
+  
+  // Use the local OpenCV.js file instead of loading from CDN
+  script.setAttribute('src', '/js/opencv/opencv.js');
+  
   script.onload = () => {
     // Check if cv object exists and has imread method
     const checkCv = () => {
