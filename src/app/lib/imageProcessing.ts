@@ -741,7 +741,7 @@ export const createImageFile = async (file: File): Promise<ImageFile> => {
   });
 };
 
-export type ImageFormat = 'jpg' | 'webp';
+export type ImageFormat = 'jpg' | 'webp' | 'png';
 
 // Update downloadImage function to support format selection and SEO-friendly filenames
 export const downloadImage = (dataUrl: string, filename: string, format: ImageFormat = 'jpg', seoName?: string): void => {
@@ -761,7 +761,8 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
   
   // If format is already in the desired format, download directly
   if ((format === 'jpg' && dataUrl.includes('image/jpeg')) || 
-      (format === 'webp' && dataUrl.includes('image/webp'))) {
+      (format === 'webp' && dataUrl.includes('image/webp')) ||
+      (format === 'png' && dataUrl.includes('image/png'))) {
     const link = document.createElement('a');
     link.href = dataUrl;
     link.download = finalFilename;
@@ -784,8 +785,11 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
     ctx.drawImage(img, 0, 0);
     
     // Convert to the desired format
-    const mimeType = format === 'webp' ? 'image/webp' : 'image/jpeg';
-    const quality = format === 'webp' ? 0.8 : 0.9; // WebP can use lower quality due to better compression
+    const mimeType = format === 'webp' ? 'image/webp' : 
+                     format === 'png' ? 'image/png' : 'image/jpeg';
+    // PNG needs full quality for transparency
+    const quality = format === 'png' ? 1.0 : 
+                    format === 'webp' ? 0.8 : 0.9; 
     
     const convertedDataUrl = canvas.toDataURL(mimeType, quality);
     
@@ -814,15 +818,14 @@ export const downloadAllImages = async (
     images.forEach((image) => {
       // For background-removed images with processing applied
       if (image.backgroundRemoved && image.processedDataUrl) {
-        // Use the processed version but ensure PNG format
-        downloadImage(image.processedDataUrl, `${image.file.name}`, 'jpg', image.seoName);
+        // Use the processed version but ensure PNG format for transparency
+        downloadImage(image.processedDataUrl, `${image.file.name}`, 'png', image.seoName);
       }
       // For background-removed images without processing
       else if (image.backgroundRemoved) {
         const seoName = image.seoName;
-        // Always use PNG format for transparent images, but have to use 'jpg' or 'webp' from ImageFormat
-        // The image is already a PNG so this parameter doesn't matter, it will preserve the PNG format
-        downloadImage(image.dataUrl, `${image.file.name}`, 'jpg', seoName);
+        // Always use PNG format for transparent images
+        downloadImage(image.dataUrl, `${image.file.name}`, 'png', seoName);
       } 
       // For regular processed images
       else if (image.processedDataUrl) {

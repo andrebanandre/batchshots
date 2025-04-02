@@ -11,7 +11,7 @@ export async function runSqueezenetModel(preprocessedData: any): Promise<[any, n
                           { executionProviders: ['webgl'], graphOptimizationLevel: 'all' });
   console.log('Inference session created')
   // Run inference and get results.
-  var [results, inferenceTime] =  await runInference(session, preprocessedData);
+  const [results, inferenceTime] =  await runInference(session, preprocessedData);
   return [results, inferenceTime];
 }
 
@@ -31,10 +31,10 @@ async function runInference(session: ort.InferenceSession, preprocessedData: any
   // Get output results with the output name from the model export.
   const output = outputData[session.outputNames[0]];
   //Get the softmax of the output data. The softmax transforms values to be between 0 and 1
-  var outputSoftmax = softmax(Array.prototype.slice.call(output.data));
+  const outputSoftmax = softmax(Array.prototype.slice.call(output.data));
   
   //Get the top 5 results.
-  var results = imagenetClassesTopK(outputSoftmax, 5);
+  const results = imagenetClassesTopK(outputSoftmax, 5);
   console.log('results: ', results);
   return [results, inferenceTime];
 }

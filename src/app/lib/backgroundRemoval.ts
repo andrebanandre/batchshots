@@ -134,6 +134,9 @@ export function getUpdatedImageWithBackground(
     dataUrl: processedData.dataUrl,
     thumbnailDataUrl: processedData.thumbnailUrl,
     file: processedData.file,
+    // Also set as processed versions to ensure they're used in UI and downloads
+    processedDataUrl: processedData.dataUrl,
+    processedThumbnailUrl: processedData.thumbnailUrl,
     // Save original for potential reset
     originalDataUrl: image.originalDataUrl || image.dataUrl,
     originalFile: image.originalFile || image.file,

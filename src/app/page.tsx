@@ -211,10 +211,16 @@ export default function Home() {
   const handleDownloadImage = async (image: ImageFile, format: LibImageFormat = 'jpg') => {
     // For background-removed images with processing applied
     if (image.backgroundRemoved && image.processedDataUrl) {
-      downloadImage(image.processedDataUrl, image.file.name, 'jpg', image.seoName);
+      downloadImage(image.processedDataUrl, image.file.name, 'png', image.seoName);
       return;
     }
-    // For background-removed images without specific processing, process now
+    // For background-removed images without specific processing, use dataUrl directly
+    // This ensures we use the transparent PNG even if there's no processed version
+    else if (image.backgroundRemoved && image.dataUrl) {
+      downloadImage(image.dataUrl, image.file.name, 'png', image.seoName);
+      return;
+    }
+    // For background-removed images that need specific processing, process now
     else if (image.backgroundRemoved) {
       setIsProcessing(true);
       try {
@@ -242,12 +248,12 @@ export default function Home() {
           );
           
           // Download the processed image with adjustments
-          downloadImage(processedDataUrl, image.file.name, 'jpg', image.seoName);
+          downloadImage(processedDataUrl, image.file.name, 'png', image.seoName);
         }
       } catch (error) {
         console.error('Error processing transparent image', error);
         // Fallback to original
-        downloadImage(image.dataUrl, image.file.name, 'jpg', image.seoName);
+        downloadImage(image.dataUrl, image.file.name, 'png', image.seoName);
       } finally {
         setIsProcessing(false);
       }

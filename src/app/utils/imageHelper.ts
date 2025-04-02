@@ -3,16 +3,16 @@ import { Tensor } from 'onnxruntime-web';
 
 export async function getImageTensorFromPath(path: string, dims: number[] =  [1, 3, 224, 224]): Promise<Tensor> {
   // 1. load the image  
-  var image = await loadImageFromPath(path, dims[2], dims[3]);
+  const image = await loadImageFromPath(path, dims[2], dims[3]);
   // 2. convert to tensor
-  var imageTensor = imageDataToTensor(image, dims);
+  const imageTensor = imageDataToTensor(image, dims);
   // 3. return the tensor
   return imageTensor;
 }
 
 async function loadImageFromPath(path: string, width: number = 224, height: number= 224): Promise<Jimp> {
   // Use Jimp to load the image and resize it.
-  var imageData = await Jimp.default.read(path).then((imageBuffer: Jimp) => {
+  const imageData = await Jimp.default.read(path).then((imageBuffer: Jimp) => {
     return imageBuffer.resize(width, height);
   });
 
@@ -21,8 +21,8 @@ async function loadImageFromPath(path: string, width: number = 224, height: numb
 
 function imageDataToTensor(image: Jimp, dims: number[]): Tensor {
   // 1. Get buffer data from image and create R, G, and B arrays.
-  var imageBufferData = image.bitmap.data;
-  const [redArray, greenArray, blueArray] = new Array(new Array<number>(), new Array<number>(), new Array<number>());
+  const imageBufferData = image.bitmap.data;
+  const [redArray, greenArray, blueArray] = [new Array<number>(), new Array<number>(), new Array<number>()];
 
   // 2. Loop through the image buffer and extract the R, G, and B channels
   for (let i = 0; i < imageBufferData.length; i += 4) {
