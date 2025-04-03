@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from './Button';
 import Card from './Card';
-import { ImageFile } from './ImagePreview';
 
 interface BackgroundRemovalControlProps {
   selectedImageId: string | null;
@@ -13,8 +12,6 @@ interface BackgroundRemovalControlProps {
   processedCount: number;
   onRemoveBackground: (id: string) => void;
   onRemoveAllBackgrounds: () => void;
-  onResetBackground: (imageId: string | null) => void;
-  images: ImageFile[];
   className?: string;
 }
 
@@ -28,8 +25,6 @@ export default function BackgroundRemovalControl({
   processedCount,
   onRemoveBackground,
   onRemoveAllBackgrounds,
-  onResetBackground,
-  images,
   className = '',
 }: BackgroundRemovalControlProps) {
   
@@ -38,14 +33,6 @@ export default function BackgroundRemovalControl({
       onRemoveAllBackgrounds();
     } else if (selectedImageId) {
       onRemoveBackground(selectedImageId);
-    }
-  };
-
-  const handleResetBackground = () => {
-    if (applyToAll) {
-      onResetBackground(null); // Reset all images
-    } else if (selectedImageId) {
-      onResetBackground(selectedImageId); // Reset just the selected image
     }
   };
 
@@ -104,18 +91,6 @@ export default function BackgroundRemovalControl({
                   : "REMOVE BACKGROUND"
             }
           </Button>
-
-          {/* Reset Button - Only show when backgrounds have been removed */}
-          {(hasBackgroundRemoved || images.some(img => img.backgroundRemoved)) && (
-            <Button
-              variant="secondary"
-              disabled={isProcessing || isRemovingBackground}
-              onClick={handleResetBackground}
-              className="w-full uppercase"
-            >
-              {applyToAll ? "RESET ALL BACKGROUNDS" : "RESET BACKGROUND"}
-            </Button>
-          )}
         </div>
 
         {/* Progress Indicator */}

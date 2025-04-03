@@ -12,8 +12,7 @@ import SeoNameGenerator, { SeoImageName } from './components/SeoNameGenerator';
 import BackgroundRemovalControl from './components/BackgroundRemovalControl';
 import { 
   processImageBackground, 
-  getUpdatedImageWithBackground,
-  resetImageBackground
+  getUpdatedImageWithBackground
 } from './lib/backgroundRemoval';
 import { 
   initOpenCV, 
@@ -306,11 +305,10 @@ export default function Home() {
   };
 
   const handleInitiateDownload = (format: ImageFormat) => {
-    // If any images have background removed, default to PNG
-    const hasRemovedBackgrounds = images.some(img => img.backgroundRemoved);
-    const optimalFormat = hasRemovedBackgrounds ? 'png' as LibImageFormat : format as LibImageFormat;
+    // Use the format chosen by the user
+    const selectedFormat = format as LibImageFormat;
     
-    setDownloadFormat(optimalFormat);
+    setDownloadFormat(selectedFormat);
     setDownloadComplete(false);
     setIsDownloadDialogOpen(true);
   };
@@ -556,41 +554,45 @@ export default function Home() {
     setBackgroundRemovalProgress({ processed: 0, total: imagesToProcess.length });
     
     try {
+      // Use a local array to track all processed images
+      let allUpdatedImages = [...images];
+      
       // Process images one by one to avoid overwhelming the browser
       for (let i = 0; i < imagesToProcess.length; i++) {
         const image = imagesToProcess[i];
         
-        // Skip if already processed during this batch
-        if (image.backgroundRemoved) continue;
+        // Get the most up-to-date version of this image (in case it changed during processing)
+        const currentImage = allUpdatedImages.find(img => img.id === image.id);
+        if (!currentImage || currentImage.backgroundRemoved) continue;
         
         // Process image with background removal
-        const processedData = await processImageBackground(image);
+        const processedData = await processImageBackground(currentImage);
         
-        // Update image in state with background removed
-        let updatedImages = [...images];
-        updatedImages = updatedImages.map(img => 
-          img.id === image.id 
+        // Update our local tracking array with the background-removed image
+        allUpdatedImages = allUpdatedImages.map(img => 
+          img.id === currentImage.id 
             ? getUpdatedImageWithBackground(img, processedData)
             : img
         );
         
-        setImages(updatedImages);
+        // Update the React state with all processed images so far
+        setImages(allUpdatedImages);
         
         // Immediately apply adjustments to the background-removed image
         if (isOpenCVReady) {
           try {
             const currentPreset = getCurrentPreset();
-            console.log('Applying adjustments to newly background-removed image in batch:', image.id);
+            console.log('Applying adjustments to newly background-removed image in batch:', currentImage.id);
             
             // Get the updated image with background removed
-            const updatedImage = updatedImages.find(img => img.id === image.id);
+            const updatedImage = allUpdatedImages.find(img => img.id === currentImage.id);
             if (updatedImage) {
               // Process to get thumbnail with adjustments
               const { processedThumbnailUrl } = await processImage(updatedImage, adjustments, currentPreset, false);
               
-              // Update the image with processed thumbnail
-              updatedImages = updatedImages.map(img => 
-                img.id === image.id 
+              // Update the local array with processed thumbnail
+              allUpdatedImages = allUpdatedImages.map(img => 
+                img.id === currentImage.id 
                   ? { 
                       ...img, 
                       processedThumbnailUrl,
@@ -604,7 +606,8 @@ export default function Home() {
                   : img
               );
               
-              setImages(updatedImages);
+              // Update the React state again
+              setImages(allUpdatedImages);
             }
           } catch (error) {
             console.error('Error applying adjustments to batch transparent image', error);
@@ -620,23 +623,6 @@ export default function Home() {
     } finally {
       setIsRemovingBackground(false);
     }
-  };
-
-  // Reset images back to their original state (before background removal)
-  const handleResetBackgroundRemoval = (imageId: string | null = null) => {
-    // Check if any images have background removed
-    const imagesWithBackgroundRemoved = images.filter(img => img.backgroundRemoved && img.originalDataUrl);
-    if (imagesWithBackgroundRemoved.length === 0) return;
-    
-    setImages(prevImages => 
-      prevImages.map(img => {
-        // Reset only the specified image, or all images if imageId is null
-        if ((imageId === null || img.id === imageId) && img.backgroundRemoved) {
-          return resetImageBackground(img);
-        }
-        return img;
-      })
-    );
   };
 
   return (
@@ -772,8 +758,7 @@ export default function Home() {
                 processedCount={backgroundRemovalProgress.processed}
                 onRemoveBackground={handleRemoveBackground}
                 onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
-                onResetBackground={handleResetBackgroundRemoval}
-                images={images}
+                className=""
               />
 
               <Card title="IMAGE OPTIMIZATION" variant="accent">

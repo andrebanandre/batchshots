@@ -749,15 +749,15 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
   let finalFilename = filename;
   
   if (seoName) {
-    // Extract the extension from the original filename
-    const extMatch = filename.match(/\.([^.]+)$/);
-    const extension = extMatch ? extMatch[1] : format;
-    // Create the new filename with SEO name and original extension
-    finalFilename = `${seoName}.${extension}`;
+    // Create the new filename with SEO name and format extension
+    finalFilename = `${seoName}.${format}`;
   } else {
     // Keep the original name but ensure correct extension for format conversion
     finalFilename = finalFilename.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
   }
+  
+  // Check if the data URL indicates this is a PNG with transparency
+  const isPngWithTransparency = dataUrl.startsWith('data:image/png');
   
   // If format is already in the desired format, download directly
   if ((format === 'jpg' && dataUrl.includes('image/jpeg')) || 
@@ -772,24 +772,113 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
     return;
   }
   
-  // Need to convert the format
-  const img = new Image();
-  img.onload = () => {
+  // Try to use OpenCV if available
+  if (window.cv && typeof window.cv.imread === 'function') {
+    console.log('Using OpenCV for format conversion');
+    
+    const img = new Image();
+    img.onload = () => {
+      try {
+        // Create a temporary canvas to load the image for OpenCV
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = img.width;
+        tempCanvas.height = img.height;
+        
+        const tempCtx = tempCanvas.getContext('2d', { alpha: true });
+        if (!tempCtx) {
+          throw new Error('Failed to get canvas context');
+        }
+        
+        // Clear canvas first to ensure transparency is preserved
+        tempCtx.clearRect(0, 0, img.width, img.height);
+        tempCtx.drawImage(img, 0, 0);
+        
+        // Read the image into an OpenCV Mat
+        const src = window.cv.imread(tempCanvas);
+        
+        // Create a result canvas
+        const resultCanvas = document.createElement('canvas');
+        resultCanvas.width = img.width;
+        resultCanvas.height = img.height;
+        
+        // Process with OpenCV - we'll use a simpler approach to avoid linter errors
+        try {
+          // Display the OpenCV processed image on our result canvas
+          window.cv.imshow(resultCanvas, src);
+          
+          // Clean up
+          src.delete();
+          
+          // Convert to the desired format using Canvas API
+          const mimeType = format === 'webp' ? 'image/webp' : 
+                          format === 'png' ? 'image/png' : 'image/jpeg';
+          
+          // PNG needs full quality for transparency
+          const quality = format === 'png' ? 1.0 : 
+                        format === 'webp' ? 0.8 : 0.9; 
+          
+          const convertedDataUrl = resultCanvas.toDataURL(mimeType, quality);
+          
+          // Create download link
+          const link = document.createElement('a');
+          link.href = convertedDataUrl;
+          link.download = finalFilename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } catch (e) {
+          console.error('Error during OpenCV processing', e);
+          src.delete();
+          throw e;
+        }
+      } catch (e) {
+        console.error('OpenCV format conversion failed, falling back to Canvas API', e);
+        // Fall back to canvas-based conversion
+        canvasFormatConversion(dataUrl, finalFilename, format, isPngWithTransparency);
+      }
+    };
+    
+    img.onerror = () => {
+      console.error('Failed to load image for OpenCV conversion');
+      // Fall back to canvas-based conversion
+      canvasFormatConversion(dataUrl, finalFilename, format, isPngWithTransparency);
+    };
+    
+    img.src = dataUrl;
+  } else {
+    // Fall back to canvas-based conversion if OpenCV is not available
+    canvasFormatConversion(dataUrl, finalFilename, format, isPngWithTransparency);
+  }
+};
+
+// Helper function for canvas-based format conversion
+function canvasFormatConversion(
+  dataUrl: string | HTMLImageElement, 
+  finalFilename: string, 
+  format: ImageFormat, 
+  isPngWithTransparency = false
+): void {
+  const processImage = (img: HTMLImageElement) => {
     const canvas = document.createElement('canvas');
     canvas.width = img.width;
     canvas.height = img.height;
     
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
     
+    // Clear the canvas first to ensure transparency is preserved
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw the image
     ctx.drawImage(img, 0, 0);
     
     // Convert to the desired format
     const mimeType = format === 'webp' ? 'image/webp' : 
-                     format === 'png' ? 'image/png' : 'image/jpeg';
+                    format === 'png' ? 'image/png' : 'image/jpeg';
+    
     // PNG needs full quality for transparency
     const quality = format === 'png' ? 1.0 : 
-                    format === 'webp' ? 0.8 : 0.9; 
+                  format === 'webp' ? 0.8 : 0.9; 
     
     const convertedDataUrl = canvas.toDataURL(mimeType, quality);
     
@@ -801,9 +890,18 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
     link.click();
     document.body.removeChild(link);
   };
-  
-  img.src = dataUrl;
-};
+
+  // If we already have an image element
+  if (dataUrl instanceof HTMLImageElement) {
+    processImage(dataUrl);
+    return;
+  }
+
+  // Otherwise, we have a dataURL string
+  const img = new Image();
+  img.onload = () => processImage(img);
+  img.src = dataUrl as string;
+}
 
 // Download all images with format selection and ZIP option
 export const downloadAllImages = async (
@@ -818,14 +916,14 @@ export const downloadAllImages = async (
     images.forEach((image) => {
       // For background-removed images with processing applied
       if (image.backgroundRemoved && image.processedDataUrl) {
-        // Use the processed version but ensure PNG format for transparency
-        downloadImage(image.processedDataUrl, `${image.file.name}`, 'png', image.seoName);
+        // Use the processed version with the user-selected format
+        downloadImage(image.processedDataUrl, `${image.file.name}`, format, image.seoName);
       }
       // For background-removed images without processing
       else if (image.backgroundRemoved) {
         const seoName = image.seoName;
-        // Always use PNG format for transparent images
-        downloadImage(image.dataUrl, `${image.file.name}`, 'png', seoName);
+        // Use user-selected format
+        downloadImage(image.dataUrl, `${image.file.name}`, format, seoName);
       } 
       // For regular processed images
       else if (image.processedDataUrl) {
@@ -852,101 +950,45 @@ export const downloadAllImages = async (
             return;
           }
           
-          fetch(image.processedDataUrl)
-            .then(res => res.blob())
-            .then(blob => {
-              // Use SEO name if available, otherwise use original name
-              let fileName = image.file.name;
-              
-              // If SEO name is available, use it with PNG extension
-              if (image.seoName) {
-                fileName = `${image.seoName}.png`;
-              } else {
-                // Add index prefix to prevent name collisions
-                fileName = `processed_transparent_${index + 1}_${fileName.replace(/\.[^/.]+$/, '.png')}`;
-              }
-              
-              zip.file(fileName, blob);
-              resolve();
-            })
-            .catch(() => resolve());
+          // Convert image to the selected format and add to ZIP
+          convertImageAndAddToZip(
+            image.processedDataUrl, 
+            zip, 
+            format, 
+            index, 
+            image.file.name, 
+            image.seoName
+          ).then(() => resolve()).catch(() => resolve());
         });
       }
       // Handle background-removed images without processing
       else if (image.backgroundRemoved) {
         return new Promise<void>((resolve) => {
-          // For background-removed images, use the original data URL which is a PNG
-          fetch(image.dataUrl)
-            .then(res => res.blob())
-            .then(blob => {
-              // Use SEO name if available, otherwise use original name
-              let fileName = image.file.name;
-              
-              // If SEO name is available, use it with PNG extension
-              if (image.seoName) {
-                fileName = `${image.seoName}.png`;
-              } else {
-                // Add index prefix to prevent name collisions
-                fileName = `transparent_${index + 1}_${fileName.replace(/\.[^/.]+$/, '.png')}`;
-              }
-              
-              zip.file(fileName, blob);
-              resolve();
-            })
-            .catch(() => resolve());
+          // Convert image to the selected format and add to ZIP
+          convertImageAndAddToZip(
+            image.dataUrl, 
+            zip, 
+            format, 
+            index, 
+            image.file.name, 
+            image.seoName
+          ).then(() => resolve()).catch(() => resolve());
         });
       }
       
       if (!image.processedDataUrl && !image.backgroundRemoved) return;
       
       // Regular processed images
-      // Create a temporary Image to load the data URL
       return new Promise<void>((resolve) => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          
-          const ctx = canvas.getContext('2d');
-          if (!ctx) {
-            resolve();
-            return;
-          }
-          
-          ctx.drawImage(img, 0, 0);
-          
-          // Convert to the desired format
-          const mimeType = format === 'webp' ? 'image/webp' : 'image/jpeg';
-          const quality = format === 'webp' ? 0.8 : 0.9;
-          
-          canvas.toBlob((blob) => {
-            if (blob) {
-              // Use SEO name if available, otherwise use original name
-              let fileName = image.file.name;
-              
-              // If SEO name is available, use it with the original extension
-              if (image.seoName) {
-                // Extract extension from original filename
-                const extMatch = fileName.match(/\.([^.]+)$/);
-                const ext = extMatch ? extMatch[1] : format;
-                fileName = `${image.seoName}.${ext}`;
-              } else {
-                // Add index prefix to prevent name collisions
-                fileName = `processed_${index + 1}_${fileName}`;
-              }
-              
-              // Ensure correct extension for the chosen format
-              fileName = fileName.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
-              
-              zip.file(fileName, blob);
-            }
-            resolve();
-          }, mimeType, quality);
-        };
-        
-        img.onerror = () => resolve();
-        img.src = image.processedDataUrl as string;
+        // Convert image to the selected format and add to ZIP
+        convertImageAndAddToZip(
+          image.processedDataUrl as string, 
+          zip, 
+          format, 
+          index, 
+          image.file.name, 
+          image.seoName
+        ).then(() => resolve()).catch(() => resolve());
       });
     });
     
@@ -974,4 +1016,78 @@ export const downloadAllImages = async (
       }
     });
   }
-}; 
+};
+
+// Helper function to convert an image to the desired format and add it to the ZIP file
+async function convertImageAndAddToZip(
+  dataUrl: string, 
+  zip: JSZip, 
+  format: ImageFormat, 
+  index: number, 
+  originalFilename: string, 
+  seoName?: string
+): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    
+    img.onload = () => {
+      try {
+        // Create a canvas for the conversion
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        
+        const ctx = canvas.getContext('2d', { alpha: true });
+        if (!ctx) {
+          reject(new Error('Failed to get canvas context'));
+          return;
+        }
+        
+        // Clear the canvas first to ensure transparency is preserved for PNGs
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+        
+        // Convert to the desired format
+        const mimeType = format === 'webp' ? 'image/webp' : 
+                         format === 'png' ? 'image/png' : 'image/jpeg';
+        
+        // PNG needs full quality for transparency
+        const quality = format === 'png' ? 1.0 : 
+                       format === 'webp' ? 0.8 : 0.9;
+        
+        // Get the blob data
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            reject(new Error('Failed to convert image to blob'));
+            return;
+          }
+          
+          // Create filename with proper extension
+          let fileName = originalFilename;
+          
+          // If SEO name is provided, use it with the selected format extension
+          if (seoName) {
+            fileName = `${seoName}.${format}`;
+          } else {
+            // Add index prefix to prevent name collisions and use correct extension
+            fileName = `processed_${index + 1}_${originalFilename.replace(/\.[^/.]+$/, `.${format}`)}`;
+          }
+          
+          // Add the file to the ZIP
+          zip.file(fileName, blob);
+          resolve();
+        }, mimeType, quality);
+      } catch (error) {
+        console.error('Error converting image for ZIP:', error);
+        reject(error);
+      }
+    };
+    
+    img.onerror = (error) => {
+      console.error('Failed to load image for ZIP conversion:', error);
+      reject(error);
+    };
+    
+    img.src = dataUrl;
+  });
+} 

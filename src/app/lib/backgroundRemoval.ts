@@ -137,37 +137,6 @@ export function getUpdatedImageWithBackground(
     // Also set as processed versions to ensure they're used in UI and downloads
     processedDataUrl: processedData.dataUrl,
     processedThumbnailUrl: processedData.thumbnailUrl,
-    // Save original for potential reset
-    originalDataUrl: image.originalDataUrl || image.dataUrl,
-    originalFile: image.originalFile || image.file,
-    originalThumbnailUrl: image.originalThumbnailUrl || image.thumbnailDataUrl,
-    // Keep processed versions if they exist, they will be regenerated on adjustment changes
     backgroundRemoved: true
-  };
-}
-
-/**
- * Reset image to original state
- * @param image Image with background removed
- * @returns Reset image object
- */
-export function resetImageBackground(image: ImageFile): ImageFile {
-  if (!image.backgroundRemoved || !image.originalDataUrl) {
-    return image;
-  }
-
-  return {
-    ...image,
-    dataUrl: image.originalDataUrl,
-    thumbnailDataUrl: image.originalThumbnailUrl,
-    file: image.originalFile!,
-    backgroundRemoved: false,
-    // Reset processed versions
-    processedThumbnailUrl: undefined,
-    processedDataUrl: undefined,
-    // Remove original references
-    originalDataUrl: undefined,
-    originalFile: undefined,
-    originalThumbnailUrl: undefined
   };
 } 

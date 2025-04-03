@@ -20,11 +20,6 @@ export interface ImageFile {
   seoName?: string; // SEO-friendly filename
   originalName?: string; // Original filename for reference
   backgroundRemoved?: boolean; // Flag to indicate if background has been removed
-  
-  // Original image data for reset functionality
-  originalDataUrl?: string;
-  originalFile?: File;
-  originalThumbnailUrl?: string;
 }
 
 interface ImagePreviewProps {

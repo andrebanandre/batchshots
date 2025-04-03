@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import Button from './Button';
 
@@ -19,6 +19,13 @@ export default function DownloadOptions({
   const [downloadFormat, setDownloadFormat] = useState<ImageFormat>(
     hasBackgroundRemovedImages ? 'png' : 'jpg'
   );
+
+  // Update format when background removed status changes
+  useEffect(() => {
+    if (hasBackgroundRemovedImages) {
+      setDownloadFormat('png');
+    }
+  }, [hasBackgroundRemovedImages]);
 
   const handleFormatChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDownloadFormat(e.target.value as ImageFormat);
