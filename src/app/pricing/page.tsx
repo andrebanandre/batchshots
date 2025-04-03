@@ -1,194 +1,152 @@
 'use client';
 
-import React from 'react';
-import Card from '../components/Card';
-import Button from '../components/Button';
-
-const features = [
-  {
-    name: 'Image Optimizer',
-    free: true,
-    pro: true,
-    description: 'Resize, crop, and optimize images for web and social media'
-  },
-  {
-    name: 'Batch Processing',
-    free: true,
-    pro: true,
-    description: 'Process multiple images at once (up to 10)'
-  },
-  {
-    name: 'Custom Presets',
-    free: true,
-    pro: true,
-    description: 'Create and save custom image presets'
-  },
-  {
-    name: 'Advanced Adjustments',
-    free: true,
-    pro: true,
-    description: 'Fine-tune brightness, contrast, saturation, and more'
-  },
-  {
-    name: 'High-Resolution Export',
-    free: true,
-    pro: true,
-    description: 'Export images in various formats and sizes'
-  },
-  {
-    name: 'AI Background Generator',
-    free: false,
-    pro: true,
-    description: 'Generate professional backgrounds for your product photos'
-  },
-  {
-    name: 'Multiple AI Options',
-    free: false,
-    pro: true,
-    description: 'Get 3 different AI-generated backgrounds per upload'
-  },
-  {
-    name: 'Commercial Usage Rights',
-    free: false,
-    pro: true,
-    description: 'Use generated images for commercial purposes'
-  },
-  {
-    name: 'Priority Support',
-    free: false,
-    pro: true,
-    description: 'Get faster responses from our team'
-  }
-];
+import React, { useState } from 'react';
+import { useAuth } from '@clerk/nextjs';
+import { useRouter, useSearchParams } from 'next/navigation';
+import PricingCard from '../components/PricingCard';
+import { useIsPro } from '../hooks/useIsPro';
 
 export default function PricingPage() {
-  return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="brutalist-accent-card mb-8">
-        <h1 className="text-3xl font-bold text-center uppercase mb-6">
-          PRICING PLANS
-        </h1>
-        
-        <div className="mb-10 text-center max-w-3xl mx-auto">
-          <p className="text-lg">
-            Choose the plan that fits your needs. All plans include our core image optimization tools.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-          {/* Free Plan */}
-          <div className="brutalist-border border-3 p-6">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">FREE</h2>
-              <p className="text-sm mb-4">Perfect for basic image optimization needs</p>
-              <div className="flex items-end mb-4">
-                <span className="text-4xl font-bold">$0</span>
-              </div>
-              <Button variant="default" size="lg" className="w-full" href="/">
-                GET STARTED
-              </Button>
-            </div>
-            
-            <div className="space-y-3">
-              <h3 className="font-bold text-sm uppercase">Included Features:</h3>
-              <ul className="space-y-3">
-                {features.filter(f => f.free).map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-green-500 mr-2 font-bold">✓</span>
-                    <div>
-                      <p className="font-bold text-sm">{feature.name}</p>
-                      <p className="text-xs">{feature.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-          {/* Pro Plan */}
-          <div className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black p-6 shadow-brutalist-accent relative">
-            <div className="absolute -top-4 -right-4 brutalist-border bg-accent text-white px-3 py-1 font-bold">
-              MOST POPULAR
-            </div>
-            
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold mb-2">PRO</h2>
-              <p className="text-sm mb-4">Unlock AI-powered features and more</p>
-              <div className="flex items-end mb-4">
-                <span className="text-4xl font-bold">$19</span>
-                <span className="text-sm ml-2 mb-1">one-time payment</span>
-              </div>
-              <Button variant="accent" size="lg" className="w-full" href="/backgrounds">
-                GET PRO
-              </Button>
-            </div>
-            
-            <div className="space-y-3">
-              <h3 className="font-bold text-sm uppercase">Everything in FREE, plus:</h3>
-              <ul className="space-y-3">
-                {features.filter(f => f.pro && !f.free).map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="text-accent mr-2 font-bold">✓</span>
-                    <div>
-                      <p className="font-bold text-sm">{feature.name}</p>
-                      <p className="text-xs">{feature.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        {/* FAQ Section */}
-        <Card title="FREQUENTLY ASKED QUESTIONS" variant="accent" className="mb-8 max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="brutalist-border p-4">
-              <h3 className="font-bold mb-2">Is this really a one-time payment?</h3>
-              <p className="text-sm">Yes! Pay once and get lifetime access to all Pro features. No recurring fees or hidden charges.</p>
-            </div>
-            
-            <div className="brutalist-border p-4">
-              <h3 className="font-bold mb-2">Can I use the images commercially?</h3>
-              <p className="text-sm">Yes, all optimized and AI-generated images come with full commercial usage rights.</p>
-            </div>
-            
-            <div className="brutalist-border p-4">
-              <h3 className="font-bold mb-2">How many images can I process?</h3>
-              <p className="text-sm">Both Free and Pro plans allow up to 10 images per batch. There's no monthly limit.</p>
-            </div>
-            
-            <div className="brutalist-border p-4">
-              <h3 className="font-bold mb-2">Do you store my images?</h3>
-              <p className="text-sm">No. All image processing happens directly in your browser. We don't store your images on our servers.</p>
-            </div>
-            
-            <div className="brutalist-border p-4">
-              <h3 className="font-bold mb-2">Can I request a refund?</h3>
-              <p className="text-sm">We offer a 7-day money-back guarantee if you're not satisfied with the Pro features.</p>
-            </div>
-            
-            <div className="brutalist-border p-4">
-              <h3 className="font-bold mb-2">Do you offer customer support?</h3>
-              <p className="text-sm">Yes, all users receive support. Pro users enjoy priority support with faster response times.</p>
-            </div>
-          </div>
-        </Card>
-        
-        {/* Call to Action */}
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <h2 className="text-2xl font-bold mb-4">Ready to transform your product photos?</h2>
-          <p className="mb-6">Join thousands of businesses already using PICME to improve their online presence.</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button variant="default" href="/">
-              TRY FOR FREE
-            </Button>
-            <Button variant="accent" href="/backgrounds">
-              GET PRO NOW
-            </Button>
-          </div>
+  const { isSignedIn, isLoaded } = useAuth();
+  const { isProUser, isLoading: isLoadingProStatus } = useIsPro();
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const successParam = searchParams.get('success');
+  const canceledParam = searchParams.get('canceled');
+  
+  const handleFreePlan = () => {
+    // Free plan is always available
+    router.push('/');
+  };
+
+  const handleProPlan = async () => {
+    if (!isSignedIn) {
+      // Redirect to sign in
+      router.push('/sign-in');
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      const response = await fetch('/api/checkout-sessions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      const session = await response.json();
+      
+      if (session.url) {
+        window.location.href = session.url;
+      }
+    } catch (error) {
+      console.error('Error creating checkout session:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleManageAccount = async () => {
+    setIsLoading(true);
+    
+    try {
+      const response = await fetch('/api/customer-portal');
+      const data = await response.json();
+      
+      if (data.url) {
+        window.location.href = data.url;
+      } else if (data.error) {
+        alert(data.error);
+      }
+    } catch (error) {
+      console.error('Error accessing customer portal:', error);
+      alert('Failed to access customer portal. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const freeFeatures = [
+    'Basic image optimization',
+    '5 images per day',
+    'Standard quality',
+    'Limited background options',
+  ];
+
+  const proFeatures = [
+    'Advanced image optimization',
+    'Unlimited images',
+    'Premium quality',
+    'All background options',
+    'Priority processing',
+    'Early access to new features',
+  ];
+
+  if (!isLoaded || isLoadingProStatus || isLoading) {
+    return (
+      <div className="container mx-auto px-4 py-12 flex justify-center items-center min-h-[60vh]">
+        <div className="brutalist-border border-3 border-black p-6 text-center">
+          <p className="text-xl font-bold">Loading...</p>
         </div>
       </div>
+    );
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-12">
+      {successParam && (
+        <div className="mb-8 brutalist-border border-3 border-black bg-green-100 p-4">
+          <h2 className="text-xl font-bold">Thank you for your purchase!</h2>
+          <p>You are now a Pro user. Enjoy all the premium features!</p>
+        </div>
+      )}
+      
+      {canceledParam && (
+        <div className="mb-8 brutalist-border border-3 border-black bg-yellow-100 p-4">
+          <h2 className="text-xl font-bold">Payment canceled</h2>
+          <p>Your payment was canceled. Feel free to try again when you&apos;re ready.</p>
+        </div>
+      )}
+      
+      <h1 className="text-4xl font-bold text-center mb-4">Choose Your Plan</h1>
+      <p className="text-center text-lg mb-12">Get access to powerful image tools with our simple pricing</p>
+      
+      <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <PricingCard
+          title="Free"
+          price="FREE"
+          features={freeFeatures}
+          isPro={false}
+          isCurrentPlan={!isProUser}
+          onSelectPlan={handleFreePlan}
+          buttonText="START FREE"
+        />
+        
+        <PricingCard
+          title="Pro"
+          price="$19.99"
+          features={proFeatures}
+          isPro={true}
+          isCurrentPlan={isProUser}
+          onSelectPlan={handleProPlan}
+          buttonText="UPGRADE TO PRO"
+        />
+      </div>
+      
+      {isProUser && (
+        <div className="mt-12 text-center">
+          <h2 className="text-2xl font-bold mb-4">Manage Your Pro Account</h2>
+          <button 
+            onClick={handleManageAccount}
+            className="inline-block brutalist-border border-3 border-black bg-white px-6 py-3 font-bold hover:bg-gray-100 transition-colors"
+          >
+            VIEW BILLING PORTAL
+          </button>
+        </div>
+      )}
     </div>
   );
 } 

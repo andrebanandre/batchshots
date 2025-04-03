@@ -3,6 +3,13 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Button from './Button';
+import {
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs';
+import UserProStatus from './UserProStatus';
 
 // Simple SVG logo component
 const Logo = () => (
@@ -33,6 +40,16 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           <Link href="/pricing" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             PRICING
           </Link>
+          <div className="pt-4 border-t-2 border-black">
+            <SignedOut>
+              <div className="flex flex-col space-y-2">
+                <SignInButton>
+                  <Button variant="primary" size="sm" fullWidth>LOG IN</Button>
+                </SignInButton>
+             
+              </div>
+            </SignedOut>
+          </div>
         </nav>
       </div>
     </div>
@@ -60,7 +77,27 @@ export default function Navbar() {
           <Link href="/pricing" className="font-bold text-lg uppercase hover:text-primary transition-colors">
             Pricing
           </Link>
-          <Button variant="accent" size="sm" as="a" href="/backgrounds">TRY AI NOW</Button>
+          <div className="ml-2 flex items-center space-x-2">
+            <SignedIn>
+              <div className="flex items-center gap-2">
+                <UserProStatus />
+                <UserButton 
+                  appearance={{
+                    elements: {
+                      userButtonAvatarBox: 'border-3 border-black brutalist-border'
+                    }
+                  }}
+                />
+              </div>
+            </SignedIn>
+            <SignedOut>
+              <SignInButton>
+                <Button variant="primary" size="sm">LOG IN</Button>
+              </SignInButton>
+             
+            </SignedOut>
+          </div>
+       
         </nav>
         
         {/* Mobile Menu Button */}
