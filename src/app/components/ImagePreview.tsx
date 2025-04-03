@@ -75,6 +75,31 @@ export default function ImagePreview({
     setPosition({ x: 0, y: 0 });
   }, [selectedImageId]);
   
+  // Add wheel event listener with passive: false to prevent scrolling
+  useEffect(() => {
+    const container = imageContainerRef.current;
+    if (!container) return;
+    
+    const handleWheelEvent = (e: WheelEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Zoom in or out based on wheel direction
+      if (e.deltaY < 0) {
+        setScale(prev => Math.min(prev + 0.1, 5));
+      } else {
+        setScale(prev => Math.max(prev - 0.1, 0.5));
+      }
+    };
+    
+    // Use the capture phase to intercept the event early
+    container.addEventListener('wheel', handleWheelEvent, { passive: false });
+    
+    return () => {
+      container.removeEventListener('wheel', handleWheelEvent);
+    };
+  }, []);
+  
   // Update local images when prop changes
   useEffect(() => {
     setLocalImages(images);
@@ -203,9 +228,11 @@ export default function ImagePreview({
     setIsDragging(false);
   };
 
-  // Handle wheel event for zooming with mouse wheel
+  // Handle wheel event for zooming with mouse wheel - keep this as a backup
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
+    e.stopPropagation();
+    
     if (e.deltaY < 0) {
       setScale(prev => Math.min(prev + 0.1, 5));
     } else {
@@ -500,7 +527,7 @@ export default function ImagePreview({
                   unoptimized={image.backgroundRemoved}
                 />
                 {/* Image number indicator */}
-                <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm">
+                <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
                   {index + 1}/10
                 </div>
                 {/* Delete button */}
