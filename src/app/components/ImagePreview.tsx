@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Button from './Button';
 import type { ImageFormat } from '../lib/imageProcessing';
+import Loader from './Loader';
 
 export interface ImageFile {
   id: string;
@@ -369,19 +370,15 @@ export default function ImagePreview({
               {/* Processing indicators */}
               {isProcessing && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <div className="relative w-16 h-16">
-                    <div className="absolute inset-0 w-full h-full border-4 border-t-[#4F46E5] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
-                  </div>
+                  <Loader size="lg" />
                 </div>
               )}
               
               {isRemovingBackground && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                   <div className="flex flex-col items-center space-y-3">
-                    <div className="relative w-16 h-16">
-                      <div className="absolute inset-0 w-full h-full border-4 border-t-[#4F46E5] border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin"></div>
-                    </div>
-                    <p className="text-white font-bold">Removing Background...</p>
+                    <Loader size="lg" />
+                    <p className="text-white font-semibold">Removing Background...</p>
                   </div>
                 </div>
               )}

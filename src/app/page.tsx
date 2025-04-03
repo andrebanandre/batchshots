@@ -22,6 +22,7 @@ import {
   downloadImage,
   ImageFormat as LibImageFormat
 } from './lib/imageProcessing';
+import Loader from './components/Loader';
 
 export default function Home() {
   const [images, setImages] = useState<ImageFile[]>([]);
@@ -635,11 +636,7 @@ export default function Home() {
         {!isOpenCVReady ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
             <div className="flex flex-col items-center justify-center py-8">
-              <div className="relative w-16 h-16 mb-6">
-                <div className="absolute inset-0 w-full h-full border-4 border-[#4F46E5] animate-pulse"></div>
-                <div className="absolute inset-2 w-12 h-12 border-4 border-[#FF6B6B] animate-ping"></div>
-                <div className="absolute inset-4 w-8 h-8 bg-[#4F46E5]"></div>
-              </div>
+            <Loader size="lg" />
               <h3 className="text-lg font-bold mb-2">LOADING APP...</h3>
               <p className="text-sm text-gray-600">Please wait while we initialize image processing capabilities.</p>
             </div>
