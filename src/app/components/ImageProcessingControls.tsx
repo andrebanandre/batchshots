@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import Card from './Card';
+import ProBadge from './ProBadge';
+import BackgroundRemovalControl from './BackgroundRemovalControl';
+import QuickPresets from './QuickPresets';
+import { useImageProcessing } from '../contexts/ImageProcessingContext';
 
 export interface ImageAdjustments {
   brightness: number;
@@ -28,30 +32,36 @@ export const defaultAdjustments: ImageAdjustments = {
 export type ImageFormat = 'jpg' | 'webp';
 
 interface ImageProcessingControlsProps {
-  adjustments: ImageAdjustments;
-  onAdjustmentsChange: (adjustments: ImageAdjustments) => void;
-  applyToAll: boolean;
-  setApplyToAll: (value: boolean) => void;
   className?: string;
-  onReset?: () => void;
 }
 
 export default function ImageProcessingControls({
-  adjustments,
-  onAdjustmentsChange,
-  applyToAll,
-  setApplyToAll,
   className = '',
-  onReset,
 }: ImageProcessingControlsProps) {
-  const [activeTab, setActiveTab] = useState<'basic' | 'advanced'>('basic');
+  const [activeTab, setActiveTab] = useState<'basic' | 'advanced' | 'ai'>('basic');
+  
+  const {
+    adjustments,
+    setAdjustments,
+    applyToAll,
+    setApplyToAll,
+    handleReset,
+    selectedImageId,
+    isProcessing,
+    isRemovingBackground,
+    hasBackgroundRemoved,
+    totalImages,
+    processedCount,
+    handleRemoveBackground,
+    handleRemoveAllBackgrounds
+  } = useImageProcessing();
 
   const handleSliderChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     property: keyof ImageAdjustments
   ) => {
     const value = parseFloat(e.target.value);
-    onAdjustmentsChange({
+    setAdjustments({
       ...adjustments,
       [property]: value,
     });
@@ -59,168 +69,6 @@ export default function ImageProcessingControls({
 
   const handleApplyAllChange = () => {
     setApplyToAll(!applyToAll);
-  };
-
-  const handleReset = () => {
-    onAdjustmentsChange(defaultAdjustments);
-    if (onReset) {
-      onReset();
-    }
-  };
-
-  const handleQuickPreset = (preset: 'vivid' | 'sharp' | 'classic' | 'clean' | 'white-bg' | 'dramatic' | 'jewelry' | 'soft-product' | 'textile' | 'food' | 'furniture' | 'transparent') => {
-    let newAdjustments = { ...defaultAdjustments };
-    
-    switch (preset) {
-      case 'vivid':
-        newAdjustments = {
-          ...newAdjustments,
-          saturation: 120,
-          lightness: 110,
-          contrast: 10
-        };
-        break;
-      case 'sharp':
-        newAdjustments = {
-          ...newAdjustments,
-          sharpen: 1.5,
-          brightness: 10,
-          contrast: 15
-        };
-        break;
-      case 'classic':
-        newAdjustments = {
-          ...newAdjustments,
-          redScale: 1.1,
-          greenScale: 1.0,
-          blueScale: 0.9,
-          saturation: 90,
-          lightness: 105
-        };
-        break;
-      case 'clean':
-        // Product photography preset with clean, neutral colors
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 5,
-          brightness: 10,
-          sharpen: 1.0,
-          redScale: 1.0,
-          greenScale: 1.0,
-          blueScale: 1.0,
-          saturation: 95, // Slightly desaturated
-          lightness: 105  // Slightly brighter
-        };
-        break;
-      case 'white-bg':
-        // Clean white background product photography
-        newAdjustments = {
-          ...newAdjustments,
-          brightness: 25,
-          contrast: 15,
-          sharpen: 1.2,
-          saturation: 90,
-          lightness: 115
-        };
-        break;
-      case 'dramatic':
-        // High contrast product photography
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 25,
-          brightness: 5,
-          sharpen: 1.8,
-          saturation: 110,
-          lightness: 95
-        };
-        break;
-      case 'jewelry':
-        // Jewelry and metallic products
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 15,
-          brightness: 10,
-          sharpen: 2.0,
-          redScale: 1.05,
-          greenScale: 1.02,
-          blueScale: 1.1,
-          saturation: 85, // Lower saturation to highlight metal
-          lightness: 108  // Slightly brighter to enhance shine
-        };
-        break;
-      case 'soft-product':
-        // For soft products like pillows, cushions, plush toys
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 5,
-          brightness: 15,
-          sharpen: 0.6, // Less sharpening for soft appearance
-          saturation: 105,
-          lightness: 110,
-          redScale: 1.02,
-          greenScale: 1.02,
-          blueScale: 1.0
-        };
-        break;
-      case 'textile':
-        // For fabric and textile products - enhances texture and color
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 12,
-          brightness: 8,
-          sharpen: 1.3, // Moderate sharpening for texture detail
-          saturation: 110, // Slightly boosted saturation for fabric colors
-          lightness: 103,
-          redScale: 1.02,
-          greenScale: 1.0,
-          blueScale: 0.98
-        };
-        break;
-      case 'food':
-        // Food photography - enhances freshness and color appeal
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 18,
-          brightness: 5,
-          sharpen: 1.6, // Strong sharpening for texture detail
-          saturation: 115, // Boosted saturation for appetizing colors
-          lightness: 105,
-          redScale: 1.05, // Slightly warmer tones
-          greenScale: 1.03,
-          blueScale: 0.97
-        };
-        break;
-      case 'furniture':
-        // Wooden furniture and home decor
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 10,
-          brightness: 8,
-          sharpen: 1.4, // Good sharpening for wood grain
-          saturation: 95, // Slightly reduced saturation for natural look
-          lightness: 102,
-          redScale: 1.03, // Warmer tones for wood
-          greenScale: 1.0,
-          blueScale: 0.95
-        };
-        break;
-      case 'transparent':
-        // Glass and transparent products
-        newAdjustments = {
-          ...newAdjustments,
-          contrast: 20,
-          brightness: 12,
-          sharpen: 1.1, // Moderate sharpening for edges
-          saturation: 85, // Reduced saturation for clarity
-          lightness: 112, // Brighter for transparency
-          redScale: 0.98,
-          greenScale: 1.0,
-          blueScale: 1.04 // Slight cool tint for glass-like appearance
-        };
-        break;
-    }
-    
-    onAdjustmentsChange(newAdjustments);
   };
 
   return (
@@ -261,7 +109,7 @@ export default function ImageProcessingControls({
           </label>
         </div>
 
-        {/* Tabs for Basic/Advanced Controls */}
+        {/* Tabs for Basic/Advanced/AI Controls */}
         <div className="border-b-2 border-black mb-4">
           <div className="flex">
             <button
@@ -276,92 +124,11 @@ export default function ImageProcessingControls({
             >
               ADVANCED
             </button>
-          </div>
-        </div>
-
-        {/* Quick Presets */}
-        <div>
-          <h3 className="font-bold mb-2">QUICK PRESETS</h3>
-          <div className="grid grid-cols-2 gap-2 mb-2">
             <button
-              onClick={() => handleQuickPreset('white-bg')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+              onClick={() => setActiveTab('ai')}
+              className={`py-2 px-4 font-bold flex items-center ${activeTab === 'ai' ? 'bg-primary text-white' : 'bg-white text-black'}`}
             >
-              WHITE BACKGROUND
-            </button>
-            <button
-              onClick={() => handleQuickPreset('clean')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              CLEAN PRODUCT
-            </button>
-            <button
-              onClick={() => handleQuickPreset('jewelry')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              JEWELRY/METAL
-            </button>
-            <button
-              onClick={() => handleQuickPreset('sharp')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              SHARP DETAIL
-            </button>
-          </div>
-          
-          <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">PRODUCT SPECIALTY</h3>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => handleQuickPreset('textile')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              TEXTILE/FABRIC
-            </button>
-            <button
-              onClick={() => handleQuickPreset('soft-product')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              SOFT PRODUCTS
-            </button>
-            <button
-              onClick={() => handleQuickPreset('furniture')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              FURNITURE/WOOD
-            </button>
-            <button
-              onClick={() => handleQuickPreset('transparent')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              GLASS
-            </button>
-            <button
-              onClick={() => handleQuickPreset('food')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              FOOD PRODUCTS
-            </button>
-            <button
-              onClick={() => handleQuickPreset('dramatic')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              DRAMATIC
-            </button>
-          </div>
-          
-          <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">COLOR STYLE</h3>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => handleQuickPreset('vivid')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              VIVID COLORS
-            </button>
-            <button
-              onClick={() => handleQuickPreset('classic')}
-              className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
-            >
-              CLASSIC
+              AI <ProBadge className="ml-1" />
             </button>
           </div>
         </div>
@@ -370,7 +137,10 @@ export default function ImageProcessingControls({
           <>
             {/* Basic Controls */}
             <div className="space-y-4">
-              <div>
+              {/* Quick Presets - only in basic tab */}
+              <QuickPresets />
+              
+              <div className="mt-6">
                 <label htmlFor="brightness" className="block mb-1 font-bold">
                   BRIGHTNESS: {adjustments.brightness}
                 </label>
@@ -417,7 +187,7 @@ export default function ImageProcessingControls({
               </div>
             </div>
           </>
-        ) : (
+        ) : activeTab === 'advanced' ? (
           <>
             {/* Advanced Controls */}
             <div className="space-y-6">
@@ -539,6 +309,29 @@ export default function ImageProcessingControls({
               </div>
             </div>
           </>
+        ) : (
+          // AI Tab Content
+          <div className="space-y-4">
+            <div className="text-center mb-2">
+              <h3 className="font-bold text-lg">AI IMAGE ENHANCEMENT</h3>
+              <p className="text-xs text-gray-600">AI-powered tools to transform your product images</p>
+            </div>
+            
+            {/* Compact BackgroundRemoval Component */}
+            <BackgroundRemovalControl
+              selectedImageId={selectedImageId}
+              isProcessing={isProcessing}
+              isRemovingBackground={isRemovingBackground}
+              hasBackgroundRemoved={hasBackgroundRemoved}
+              applyToAll={applyToAll}
+              totalImages={totalImages}
+              processedCount={processedCount}
+              onRemoveBackground={handleRemoveBackground}
+              onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
+              compact={true}
+            />
+         
+          </div>
         )}
       </div>
     </Card>

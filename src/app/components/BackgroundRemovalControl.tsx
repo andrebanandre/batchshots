@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import Card from './Card';
+import ProBadge from './ProBadge';
 
 interface BackgroundRemovalControlProps {
   selectedImageId: string | null;
@@ -13,6 +14,7 @@ interface BackgroundRemovalControlProps {
   onRemoveBackground: (id: string) => void;
   onRemoveAllBackgrounds: () => void;
   className?: string;
+  compact?: boolean;
 }
 
 export default function BackgroundRemovalControl({
@@ -26,6 +28,7 @@ export default function BackgroundRemovalControl({
   onRemoveBackground,
   onRemoveAllBackgrounds,
   className = '',
+  compact = false,
 }: BackgroundRemovalControlProps) {
   
   const handleRemoveBackground = () => {
@@ -39,6 +42,66 @@ export default function BackgroundRemovalControl({
   // Calculate processing progress percentage
   const progressPercentage = totalImages > 0 ? Math.round((processedCount / totalImages) * 100) : 0;
 
+  // For compact mode (used in AI tab)
+  if (compact) {
+    return (
+      <div className={`${className} space-y-3`}>
+        <div className="flex justify-between items-center">
+          <h3 className="font-bold">BACKGROUND REMOVAL <ProBadge className="ml-1" /></h3>
+          <div className="text-xs">
+            <span>{applyToAll ? "All images" : "Selected image only"}</span>
+          </div>
+        </div>
+        
+        {/* Action Button */}
+        <Button
+          variant="accent"
+          disabled={
+            (!selectedImageId && !applyToAll) || 
+            isProcessing || 
+            isRemovingBackground || 
+            (hasBackgroundRemoved && !applyToAll)
+          }
+          onClick={handleRemoveBackground}
+          className="w-full uppercase"
+        >
+          {isRemovingBackground 
+            ? `REMOVING${applyToAll ? ' ALL' : ''}...`
+            : applyToAll
+              ? "REMOVE ALL BACKGROUNDS"
+              : hasBackgroundRemoved
+                ? "BACKGROUND REMOVED"
+                : "REMOVE BACKGROUND"
+          }
+        </Button>
+
+        {/* Progress Indicator (compact) */}
+        {isRemovingBackground && (
+          <div className="space-y-1">
+            <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
+              <div 
+                className="h-full bg-[#4F46E5]"
+                style={{ width: `${progressPercentage}%` }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs">
+              <span>{processedCount} of {totalImages}</span>
+              <span>{progressPercentage}%</span>
+            </div>
+          </div>
+        )}
+        
+        {/* Minimal info note */}
+        {!isRemovingBackground && (
+          <p className="text-xs text-gray-600">
+            Removes background from product images using AI. Processing takes 10-30 seconds.
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  // Original full version (used as standalone card)
   return (
     <Card
       title="BACKGROUND REMOVAL"

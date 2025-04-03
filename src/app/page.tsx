@@ -9,7 +9,6 @@ import PresetsSelector, { defaultPresets, Preset } from './components/PresetsSel
 import DownloadOptions, { ImageFormat } from './components/DownloadOptions';
 import DownloadDialog from './components/DownloadDialog';
 import SeoNameGenerator, { SeoImageName } from './components/SeoNameGenerator';
-import BackgroundRemovalControl from './components/BackgroundRemovalControl';
 import { 
   processImageBackground, 
   getUpdatedImageWithBackground
@@ -23,6 +22,7 @@ import {
   ImageFormat as LibImageFormat
 } from './lib/imageProcessing';
 import Loader from './components/Loader';
+import { ImageProcessingProvider } from './contexts/ImageProcessingContext';
 
 export default function Home() {
   const [images, setImages] = useState<ImageFile[]>([]);
@@ -737,26 +737,23 @@ export default function Home() {
             </div>
 
             <div className="space-y-6">
-              <ImageProcessingControls
+              <ImageProcessingProvider
                 adjustments={adjustments}
                 onAdjustmentsChange={setAdjustments}
                 applyToAll={applyToAll}
                 setApplyToAll={setApplyToAll}
                 onReset={handleReset}
-              />
-
-              <BackgroundRemovalControl
                 selectedImageId={selectedImageId}
                 isProcessing={isProcessing}
                 isRemovingBackground={isRemovingBackground}
                 hasBackgroundRemoved={selectedImageId ? images.find(img => img.id === selectedImageId)?.backgroundRemoved || false : false}
-                applyToAll={applyToAll}
                 totalImages={backgroundRemovalProgress.total}
                 processedCount={backgroundRemovalProgress.processed}
                 onRemoveBackground={handleRemoveBackground}
                 onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
-                className=""
-              />
+              >
+                <ImageProcessingControls />
+              </ImageProcessingProvider>
 
               <Card title="IMAGE OPTIMIZATION" variant="accent">
                 <PresetsSelector

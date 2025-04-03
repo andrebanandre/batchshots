@@ -26,7 +26,8 @@ export default {
   safelist: [
     'shadow-brutalist',
     'shadow-brutalist-accent',
-    'shadow-brutalist-accent-hover'
+    'shadow-brutalist-accent-hover',
+    'text-[10px]'
   ],
   plugins: [],
 }; 
