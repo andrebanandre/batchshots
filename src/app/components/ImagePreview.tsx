@@ -495,7 +495,6 @@ export default function ImagePreview({
       {/* Thumbnail Grid */}
       <h3 className="font-bold text-lg uppercase mb-2">
         ALL IMAGES ({images.length}/{maxImagesAllowed})
-        {isPro && <span className="text-xs ml-2 font-normal">(PRO)</span>}
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {images.map((image, index) => {

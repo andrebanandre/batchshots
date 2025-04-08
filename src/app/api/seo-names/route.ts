@@ -65,9 +65,10 @@ export async function POST(request: NextRequest) {
   
   try {
     const body = await request.json();
-    const { description, recaptchaToken } = body;
+    const { description, recaptchaToken, imageCount } = body;
     
     console.log(`[API] Product description: "${description}"`);
+    console.log(`[API] Image count: ${imageCount}`);
     
     if (!description) {
       console.error('[API] Error: Description is required');
@@ -96,9 +97,12 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    // Use imageCount from request or default to 10
+    const count = imageCount && !isNaN(Number(imageCount)) ? Number(imageCount) : 10;
+    
     // Generate SEO names using Gemini
-    console.log('[API] Generating SEO names');
-    const seoNames = await generateSeoImageNames(description);
+    console.log(`[API] Generating ${count} SEO names`);
+    const seoNames = await generateSeoImageNames(description, count);
     console.log(`[API] Generated ${seoNames.length} SEO names`);
     
     // Return the SEO names

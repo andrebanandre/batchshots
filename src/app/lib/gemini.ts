@@ -12,9 +12,10 @@ export function initGemini() {
 }
 
 // The system prompt that instructs Gemini to generate SEO-friendly image names
-export const SEO_IMAGE_NAMES_PROMPT = `
+export function getSeoNamesPrompt(count: number): string {
+  return `
 You are an expert in SEO optimization for e-commerce product images. 
-Your task is to generate 10 SEO-friendly image filenames based on the user's product description.
+Your task is to generate ${count} SEO-friendly image filenames based on the user's product description.
 
 Follow these guidelines for creating optimal SEO image names:
 1. Use hyphens to separate words (e.g., "black-leather-wallet")
@@ -24,23 +25,26 @@ Follow these guidelines for creating optimal SEO image names:
 5. Use only lowercase letters, numbers, and hyphens
 6. Make each name unique and optimized for search engines
 7. Do not include file extensions or special characters
+8. Generate exactly ${count} unique image filenames
 
 Analyze the user's product description to create the most effective SEO image names.
 `;
+}
 
 // Function to generate SEO-friendly image names using Gemini with structured output
 export async function generateSeoImageNames(
-  description: string
+  description: string,
+  count: number = 10
 ): Promise<string[]> {
-  console.log(`[Gemini] Generating SEO names for description: "${description}"`);
+  console.log(`[Gemini] Generating ${count} SEO names for description: "${description}"`);
   
   try {
     const genAI = initGemini();
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     
-    const prompt = `${SEO_IMAGE_NAMES_PROMPT}\n\nProduct description: ${description}`;
+    const prompt = `${getSeoNamesPrompt(count)}\n\nProduct description: ${description}`;
     
-    console.log(`[Gemini] Sending request with responseSchema`);
+    console.log(`[Gemini] Sending request with responseSchema for ${count} names`);
     
     // Define content generation request with proper types
     const request: GenerateContentRequest = {
@@ -56,7 +60,7 @@ export async function generateSeoImageNames(
             type: SchemaType.STRING,
             description: 'SEO-friendly image filename',
           },
-          description: 'Array of 10 SEO-friendly image filenames',
+          description: `Array of ${count} SEO-friendly image filenames`,
         },
       },
       safetySettings: [
@@ -96,8 +100,8 @@ export async function generateSeoImageNames(
       }
       
       console.log(`[Gemini] Successfully parsed ${seoNames.length} SEO names`);
-      // Return up to 10 names
-      return seoNames.slice(0, 10);
+      // Return exactly the number of names requested
+      return seoNames.slice(0, count);
     } catch (parseError) {
       console.error('[Gemini] Failed to parse response as JSON:', parseError);
       console.error('[Gemini] Raw response:', text);

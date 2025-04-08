@@ -13,9 +13,10 @@ export interface SeoImageName {
 
 interface SeoNameGeneratorProps {
   seoNames: SeoImageName[];
-  onGenerateSeoNames: (description: string, recaptchaToken: string) => void;
+  onGenerateSeoNames: (description: string, recaptchaToken: string, imageCount: number) => void;
   isGenerating: boolean;
   className?: string;
+  imageCount?: number;
 }
 
 export default function SeoNameGenerator({
@@ -23,6 +24,7 @@ export default function SeoNameGenerator({
   onGenerateSeoNames,
   isGenerating,
   className = '',
+  imageCount = 0,
 }: SeoNameGeneratorProps) {
   const [globalDescription, setGlobalDescription] = useState('');
   const [recaptchaError, setRecaptchaError] = useState<string | null>(null);
@@ -40,7 +42,7 @@ export default function SeoNameGenerator({
         return;
       }
       
-      onGenerateSeoNames(globalDescription, token);
+      onGenerateSeoNames(globalDescription, token, imageCount);
     } catch (error) {
       console.error('reCAPTCHA error:', error);
       setRecaptchaError('An error occurred during verification. Please try again.');

@@ -399,7 +399,7 @@ export default function Home() {
   };
 
   // Generate SEO-friendly names for images
-  const handleGenerateSeoNames = async (description: string, recaptchaToken: string) => {
+  const handleGenerateSeoNames = async (description: string, recaptchaToken: string, imageCount: number) => {
     if (!description.trim() || images.length === 0) return;
     
     setIsGeneratingSeoNames(true);
@@ -411,7 +411,11 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ description, recaptchaToken }),
+        body: JSON.stringify({ 
+          description, 
+          recaptchaToken,
+          imageCount: imageCount || images.length // Use provided count or fall back to total images
+        }),
       });
       
       if (!response.ok) {
@@ -862,6 +866,7 @@ export default function Home() {
                 seoNames={seoNames}
                 onGenerateSeoNames={handleGenerateSeoNames}
                 isGenerating={isGeneratingSeoNames}
+                imageCount={images.length}
               />
 
               <DownloadOptions
