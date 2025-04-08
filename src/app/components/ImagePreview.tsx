@@ -37,6 +37,8 @@ interface ImagePreviewProps {
     presetName?: string;
     applyToAll: boolean;
   };
+  maxImagesAllowed?: number;
+  isPro?: boolean;
 }
 
 export default function ImagePreview({
@@ -49,6 +51,8 @@ export default function ImagePreview({
   isRemovingBackground = false,
   className = '',
   appliedSettings,
+  maxImagesAllowed = 10,
+  isPro = false,
 }: ImagePreviewProps) {
   // State to store image dimensions
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number; size: string }>>({});
@@ -489,7 +493,10 @@ export default function ImagePreview({
       )}
 
       {/* Thumbnail Grid */}
-      <h3 className="font-bold text-lg uppercase mb-2">ALL IMAGES ({images.length}/10)</h3>
+      <h3 className="font-bold text-lg uppercase mb-2">
+        ALL IMAGES ({images.length}/{maxImagesAllowed})
+        {isPro && <span className="text-xs ml-2 font-normal">(PRO)</span>}
+      </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {images.map((image, index) => {
           const dimensions = imageDimensions[image.id];
@@ -515,7 +522,7 @@ export default function ImagePreview({
                 />
                 {/* Image number indicator */}
                 <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
-                  {index + 1}/10
+                  {index + 1}/{maxImagesAllowed}
                 </div>
                 {/* Delete button */}
                 <button 

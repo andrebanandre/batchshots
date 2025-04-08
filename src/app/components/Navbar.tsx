@@ -34,6 +34,9 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           <Link href="/" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             IMAGE OPTIMIZER
           </Link>
+          <Link href="/background-removal" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
+            REMOVE BACKGROUNDS
+          </Link>
           <Link href="/backgrounds" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             AI BACKGROUNDS
           </Link>
@@ -70,6 +73,9 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center space-x-6">
           <Link href="/" className="font-bold text-lg uppercase hover:text-primary transition-colors">
             Image Optimizer
+          </Link>
+          <Link href="/background-removal" className="font-bold text-lg uppercase hover:text-primary transition-colors">
+            Remove Backgrounds
           </Link>
           <Link href="/backgrounds" className="font-bold text-lg uppercase hover:text-primary transition-colors">
             AI Backgrounds

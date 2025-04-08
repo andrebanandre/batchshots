@@ -17,73 +17,39 @@ interface PresetsSelectorProps {
   onCustomSettingsChange?: (settings: { width: number; height: number | null; quality: number }) => void;
 }
 
-// Size-based and quality-based presets
+// Combined size and quality presets
 export const defaultPresets: Preset[] = [
-  // Size presets
   {
-    id: 'size-small',
-    name: '720p',
-    width: 720,
-    height: null,
-    quality: 85,
-    description: 'HD resolution (720 pixels on longest side)'
-  },
-  {
-    id: 'size-medium',
-    name: '1080p',
-    width: 1080,
-    height: null,
-    quality: 85,
-    description: 'Full HD resolution (1080 pixels on longest side)'
-  },
-  {
-    id: 'size-large',
-    name: '1440p',
-    width: 1440,
-    height: null,
-    quality: 85,
-    description: 'Quad HD resolution (1440 pixels on longest side)'
-  },
-  {
-    id: 'size-xlarge',
-    name: '2160p (4K)',
-    width: 2160,
-    height: null,
-    quality: 85,
-    description: '4K resolution (2160 pixels on longest side)'
-  },
-  // Quality presets
-  {
-    id: 'quality-web',
+    id: 'web-optimized',
     name: 'Web Optimized',
     width: 1080,
     height: null,
     quality: 75,
-    description: 'Smallest file size, good for web (75% quality)'
+    description: '1080px, 75% quality (Smallest file size, good for web)'
   },
   {
-    id: 'quality-standard',
+    id: 'standard',
     name: 'Standard',
     width: 1080,
     height: null,
     quality: 85,
-    description: 'Balanced file size and quality (85% quality)'
+    description: '1080px, 85% quality (Balanced size and quality)'
   },
   {
-    id: 'quality-high',
+    id: 'high-quality',
     name: 'High Quality',
-    width: 1080,
+    width: 1440, // Updated width for high quality
     height: null,
     quality: 95,
-    description: 'High quality with larger file size (95% quality)'
+    description: '1440px, 95% quality (High quality, larger file size)'
   },
   {
-    id: 'quality-max',
+    id: 'max-quality',
     name: 'Maximum',
-    width: 1080,
+    width: 2160, // Updated width for max quality (4K)
     height: null,
     quality: 100,
-    description: 'Maximum quality with largest file size (100% quality)'
+    description: '2160px, 100% quality (Maximum quality, largest file size)'
   },
   // Custom preset (will be filled by Advanced tab)
   {
@@ -102,7 +68,7 @@ export default function PresetsSelector({
   onSelectPreset,
   onCustomSettingsChange
 }: PresetsSelectorProps) {
-  const [activeTab, setActiveTab] = useState<'size' | 'quality' | 'advanced'>('size');
+  const [activeTab, setActiveTab] = useState<'basic' | 'advanced'>('basic'); // Default to basic tab
   
   // Get the selected preset details
   const selectedPresetDetails = selectedPreset 
@@ -140,14 +106,16 @@ export default function PresetsSelector({
       
       // Select the custom preset
       onSelectPreset('custom');
+      // Switch to advanced tab to show custom settings were applied
+      setActiveTab('advanced'); 
     }
   };
   
   // Filter presets based on the active tab
   const filteredPresets = presets.filter(preset => {
-    if (activeTab === 'size') return preset.id.startsWith('size-');
-    if (activeTab === 'quality') return preset.id.startsWith('quality-');
-    return false; // For advanced tab, we'll handle differently
+    if (activeTab === 'basic') return !preset.id.startsWith('custom'); // Show all non-custom presets
+    // Advanced tab doesn't show presets list, it shows controls
+    return false; 
   });
 
   return (
@@ -155,17 +123,12 @@ export default function PresetsSelector({
       {/* Tab navigation */}
       <div className="flex border-b border-black">
         <button 
-          className={`px-4 py-2 font-bold text-sm ${activeTab === 'size' ? 'bg-primary text-white' : 'bg-white'}`}
-          onClick={() => setActiveTab('size')}
+          className={`px-4 py-2 font-bold text-sm ${activeTab === 'basic' ? 'bg-primary text-white' : 'bg-white'}`}
+          onClick={() => setActiveTab('basic')}
         >
-          SIZE
+          BASIC
         </button>
-        <button 
-          className={`px-4 py-2 font-bold text-sm ${activeTab === 'quality' ? 'bg-primary text-white' : 'bg-white'}`}
-          onClick={() => setActiveTab('quality')}
-        >
-          QUALITY
-        </button>
+        {/* Removed Quality Tab Button */}
         <button 
           className={`px-4 py-2 font-bold text-sm ${activeTab === 'advanced' ? 'bg-primary text-white' : 'bg-white'}`}
           onClick={() => setActiveTab('advanced')}
@@ -174,8 +137,8 @@ export default function PresetsSelector({
         </button>
       </div>
       
-      {/* Size and Quality Presets */}
-      {(activeTab === 'size' || activeTab === 'quality') && (
+      {/* Basic Presets */}
+      {activeTab === 'basic' && (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {filteredPresets.map((preset) => (
             <Button
@@ -187,9 +150,8 @@ export default function PresetsSelector({
               <div>
                 <div className="font-bold">{preset.name}</div>
                 <div className="text-xs">
-                  {activeTab === 'size' 
-                    ? `${preset.width}px (longest side)` 
-                    : `${preset.quality}% quality`}
+                  {/* Display the full description */}
+                  {preset.description}
                 </div>
               </div>
             </Button>
@@ -287,12 +249,12 @@ export default function PresetsSelector({
         </div>
       )}
       
-      {/* Currently selected preset info */}
-      {selectedPresetDetails && (activeTab === 'size' || activeTab === 'quality') && (
+      {/* Currently selected preset info - Simplified display logic */}
+      {selectedPresetDetails && activeTab === 'basic' && (
         <div className="text-xs mt-2 p-2 brutalist-border bg-slate-50">
           <div className="font-bold">Currently Selected:</div>
           <div>{selectedPresetDetails.name} - {selectedPresetDetails.description}</div>
-          <div>Dimensions: {selectedPresetDetails.width}x{selectedPresetDetails.height || 'auto'} @ {selectedPresetDetails.quality}%</div>
+          {/* Removed redundant dimension/quality display here */}
         </div>
       )}
     </div>

@@ -9,6 +9,8 @@ import PresetsSelector, { defaultPresets, Preset } from './components/PresetsSel
 import DownloadOptions, { ImageFormat } from './components/DownloadOptions';
 import DownloadDialog from './components/DownloadDialog';
 import SeoNameGenerator, { SeoImageName } from './components/SeoNameGenerator';
+import { useIsPro } from './hooks/useIsPro';
+import { useRouter } from 'next/navigation';
 import { 
   processImageBackground, 
   getUpdatedImageWithBackground
@@ -23,6 +25,8 @@ import {
 } from './lib/imageProcessing';
 import Loader from './components/Loader';
 import { ImageProcessingProvider } from './contexts/ImageProcessingContext';
+import ProUpgradeDialog from './components/ProUpgradeDialog';
+import ProBadge from './components/ProBadge';
 
 export default function Home() {
   const [images, setImages] = useState<ImageFile[]>([]);
@@ -33,6 +37,14 @@ export default function Home() {
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [applyToAll, setApplyToAll] = useState(true);
+  const { isProUser } = useIsPro();
+  const router = useRouter();
+  
+  // Calculate max images based on pro status
+  const MAX_IMAGES = isProUser ? 100 : 5;
+  
+  // Show upgrade dialog
+  const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
   
   // Download dialog state
   const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
@@ -162,16 +174,34 @@ export default function Home() {
       setIsProcessing(true);
       const newImages = await Promise.all(fileArray.map(createImageFile));
       
-      // Limit total selection to 10 images
+      // Check total images against limit
       const totalImages = [...images, ...newImages];
-      if (totalImages.length > 10) {
-        alert("Maximum 10 images allowed. Only the first " + (10 - images.length) + " images will be added.");
-        const limitedNewImages = newImages.slice(0, 10 - images.length);
-        setImages([...images, ...limitedNewImages]);
-        
-        // Select the first image if none is selected
-        if (!selectedImageId && limitedNewImages.length > 0) {
-          setSelectedImageId(limitedNewImages[0].id);
+      if (totalImages.length > MAX_IMAGES) {
+        // For pro users, just limit the number of images
+        if (isProUser) {
+          alert(`Maximum ${MAX_IMAGES} images allowed. Only the first ${MAX_IMAGES - images.length} images will be added.`);
+          const limitedNewImages = newImages.slice(0, MAX_IMAGES - images.length);
+          setImages([...images, ...limitedNewImages]);
+          
+          // Select the first image if none is selected
+          if (!selectedImageId && limitedNewImages.length > 0) {
+            setSelectedImageId(limitedNewImages[0].id);
+          }
+        } 
+        // For free users, show the upgrade dialog if they try to add more than the limit
+        else {
+          const limitedNewImages = newImages.slice(0, MAX_IMAGES - images.length);
+          setImages([...images, ...limitedNewImages]);
+          
+          // Select the first image if none is selected
+          if (!selectedImageId && limitedNewImages.length > 0) {
+            setSelectedImageId(limitedNewImages[0].id);
+          }
+          
+          // Show dialog for upgrade if user hit the limit with this upload
+          if (images.length === 0 && newImages.length > MAX_IMAGES) {
+            setShowUpgradeDialog(true);
+          }
         }
       } else {
         setImages(totalImages);
@@ -644,7 +674,10 @@ export default function Home() {
         ) : images.length === 0 ? (
           <div className="flex justify-center mb-6">
             <Card variant="accent" className="max-w-xl w-full">
-              <h2 className="text-xl font-bold mb-4 uppercase text-center">TRANSFORM YOUR PRODUCT PHOTOS</h2>
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold uppercase text-center">TRANSFORM YOUR PRODUCT PHOTOS</h2>
+                {isProUser && <ProBadge className="ml-2" />}
+              </div>
               <div className="flex flex-col space-y-6">
                 <div className="brutalist-border p-4 bg-white">
                   <p className="font-medium mb-2">✨ <span className="font-bold">FREE & PRIVACY-FOCUSED</span></p>
@@ -676,6 +709,29 @@ export default function Home() {
                   </div>
                 </div>
 
+                <div className="brutalist-border p-3 bg-white">
+                  <div className="flex items-center mb-2">
+                    <p className="font-bold">{isProUser ? "PRO MODE ACTIVATED" : "FREE PLAN"}</p>
+                    {isProUser && <ProBadge className="ml-2" />}
+                  </div>
+                  <p className="text-xs mb-1">
+                    {isProUser 
+                      ? `Process up to ${MAX_IMAGES} images at once with all premium features unlocked.` 
+                      : `Limited to ${MAX_IMAGES} images. Upgrade to PRO to process up to 100 images at once.`}
+                  </p>
+                  {!isProUser && (
+                    <div className="mt-2">
+                      <Button 
+                        variant="secondary" 
+                        size="sm"
+                        onClick={() => router.push('/pricing')}
+                      >
+                        UPGRADE TO PRO
+                      </Button>
+                    </div>
+                  )}
+                </div>
+
                 <div className="flex justify-center">
                   <input
                     type="file"
@@ -685,11 +741,22 @@ export default function Home() {
                     className="hidden"
                     id="fileInput"
                   />
-                  <label htmlFor="fileInput" className="w-full flex justify-center">
-                    <Button as="span" variant="accent" size="lg" disabled={isProcessing}>
-                      GET STARTED - SELECT IMAGES
-                    </Button>
-                  </label>
+                  <div className="w-full flex justify-center space-x-2">
+                    <label htmlFor="fileInput" className="flex-grow flex justify-center">
+                      <Button as="span" variant="accent" size="lg" disabled={isProcessing}>
+                        {isProUser ? "SELECT IMAGES (UP TO 100)" : "SELECT IMAGES (UP TO 5)"}
+                      </Button>
+                    </label>
+                    {!isProUser && (
+                      <Button 
+                        variant="secondary" 
+                        size="lg"
+                        onClick={() => router.push('/pricing')}
+                      >
+                        UPGRADE TO PRO
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </Card>
@@ -699,6 +766,11 @@ export default function Home() {
         {images.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 md:sticky md:top-4 md:self-start">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-xl font-bold">IMAGE EDITOR</h2>
+                {isProUser && <ProBadge />}
+              </div>
+            
               <ImagePreview
                 images={images}
                 selectedImageId={selectedImageId}
@@ -713,26 +785,48 @@ export default function Home() {
                   presetName: getCurrentPresetName(),
                   applyToAll
                 }}
+                maxImagesAllowed={MAX_IMAGES}
+                isPro={isProUser}
               />
               
-              <div className="mb-6 flex justify-start">
-                <input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handleFileChange}
-                  className="hidden"
-                  id="fileInputMore"
-                />
-                <label htmlFor="fileInputMore">
-                  <Button 
-                    as="span" 
-                    variant="default" 
-                    disabled={isProcessing || images.length >= 10}
-                  >
-                    {images.length >= 10 ? "MAX IMAGES REACHED" : "SELECT MORE IMAGES"}
-                  </Button>
-                </label>
+              <div className="mb-6 flex justify-between items-center">
+                <div className="flex space-x-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFileChange}
+                    className="hidden"
+                    id="fileInputMore"
+                  />
+                  <label htmlFor="fileInputMore">
+                    <Button 
+                      as="span" 
+                      variant="default" 
+                      disabled={isProcessing || (images.length >= MAX_IMAGES && isProUser)}
+                    >
+                      {images.length >= MAX_IMAGES ? "MAX IMAGES REACHED" : "SELECT MORE IMAGES"}
+                    </Button>
+                  </label>
+                  
+                  {!isProUser && images.length >= MAX_IMAGES && (
+                    <Button 
+                      variant="accent"
+                      onClick={() => router.push('/pricing')}
+                    >
+                      UPGRADE TO PRO
+                    </Button>
+                  )}
+                </div>
+                
+                <div className="text-sm">
+                  {images.length}/{MAX_IMAGES} images 
+                  {!isProUser && (
+                    <span className="ml-2 text-xs text-gray-600">
+                      (Upgrade for up to 100)
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -793,6 +887,14 @@ export default function Home() {
         formatType={downloadFormat}
         hasSeoNames={images.some(img => !!img.seoName)}
         hasRemovedBackgrounds={images.some(img => img.backgroundRemoved)}
+      />
+      
+      {/* Pro Upgrade Dialog */}
+      <ProUpgradeDialog
+        isOpen={showUpgradeDialog}
+        onClose={() => setShowUpgradeDialog(false)}
+        feature="Batch Processing"
+        maxImagesCount={100}
       />
     </main>
   );

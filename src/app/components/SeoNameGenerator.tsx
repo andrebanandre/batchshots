@@ -56,15 +56,9 @@ export default function SeoNameGenerator({
           <h3 className="font-bold mb-3 text-sm uppercase">Product Description</h3>
           <div className="space-y-3">
             <div className="flex items-center">
-              <div className="h-8 w-8 mr-2 flex-shrink-0">
-                <img 
-                  src="/images/ai-icon.svg" 
-                  alt="AI" 
-                  className="w-full h-full object-contain" 
-                />
-              </div>
+
               <p className="text-xs">
-                <span className="font-bold">AI-Powered:</span> Enter a detailed product description to generate SEO-optimized image names.
+                 Enter a detailed product description to generate SEO-optimized image names.
               </p>
             </div>
             
