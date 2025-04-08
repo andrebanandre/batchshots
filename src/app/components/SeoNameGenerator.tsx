@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import Button from './Button';
+import ProBadge from './ProBadge';
+import { useIsPro } from '../hooks/useIsPro';
+import { useRouter } from 'next/navigation';
 import { getCaptchaToken } from '../lib/recaptcha';
+import Loader from './Loader';
 
 export interface SeoImageName {
   id: string;
@@ -28,9 +32,18 @@ export default function SeoNameGenerator({
 }: SeoNameGeneratorProps) {
   const [globalDescription, setGlobalDescription] = useState('');
   const [recaptchaError, setRecaptchaError] = useState<string | null>(null);
+  const { isProUser, isLoading: isProLoading } = useIsPro();
+  const [showProDialog, setShowProDialog] = useState(false);
+  const router = useRouter();
 
   const handleGenerateSeoNames = async () => {
     if (globalDescription.trim() === '') return;
+    
+    // Check if user is PRO
+    if (!isProUser && !isProLoading) {
+      setShowProDialog(true);
+      return;
+    }
     
     setRecaptchaError(null);
     
@@ -50,15 +63,19 @@ export default function SeoNameGenerator({
   };
 
   const hasGeneratedNames = seoNames.length > 0;
+  
+  const handleTryFeature = () => {
+    setShowProDialog(false);
+    router.push('/seo-naming');
+  };
 
   return (
-    <Card title="AI SEO IMAGE NAMING" className={className} variant="accent">
+    <Card title="AI SEO IMAGE NAMING" className={className} variant="accent" headerRight={<ProBadge />}>
       <div className="space-y-4">
         <div className="brutalist-border p-3 bg-white">
-          <h3 className="font-bold mb-3 text-sm uppercase">Product Description</h3>
+          <h3 className="font-bold mb-3 text-sm uppercase">Product Description <ProBadge className="ml-1" /></h3>
           <div className="space-y-3">
             <div className="flex items-center">
-
               <p className="text-xs">
                  Enter a detailed product description to generate SEO-optimized image names.
               </p>
@@ -87,7 +104,7 @@ export default function SeoNameGenerator({
           {isGenerating ? (
             <div className="flex items-center justify-center">
               <span className="mr-2">GENERATING NAMES...</span>
-              <div className="animate-spin h-4 w-4 border-2 border-white rounded-full border-t-transparent"></div>
+              <Loader size="sm" />
             </div>
           ) : (
             'GENERATE SEO NAMES'
@@ -115,6 +132,65 @@ export default function SeoNameGenerator({
           </div>
         )}
       </div>
+
+      {/* Pro Upgrade Dialog */}
+      {showProDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white brutalist-border border-3 border-black p-6 max-w-md w-full">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold">UPGRADE TO PRO</h3>
+              <button onClick={() => setShowProDialog(false)} className="text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="mb-6">
+              <div className="flex items-center mb-4">
+                <ProBadge className="mr-2" />
+                <span className="font-bold">PRO FEATURE: AI SEO Image Naming</span>
+              </div>
+              
+              <p className="mb-4 text-sm">
+                Upgrade to PRO to unlock AI-powered SEO name generation for your images! 
+                Improve your product discoverability with optimized image filenames.
+              </p>
+              
+              <div className="brutalist-border p-3 bg-yellow-50 mb-4">
+                <p className="font-bold text-center mb-2">ONE-TIME PAYMENT</p>
+                <p className="text-3xl font-bold text-center">$19.99</p>
+                <p className="text-center text-sm text-gray-600">No subscription, lifetime access</p>
+              </div>
+            </div>
+            
+            <div className="flex flex-col space-y-3">
+              <Button 
+                variant="primary"
+                onClick={() => router.push('/pricing')}
+                className="w-full"
+              >
+                UPGRADE TO PRO
+              </Button>
+              
+              <Button 
+                variant="secondary"
+                onClick={handleTryFeature}
+                className="w-full"
+              >
+                TRY HOW IT WORKS
+              </Button>
+              
+              <button 
+                onClick={() => setShowProDialog(false)}
+                className="text-sm text-gray-600 hover:text-gray-800"
+              >
+                Maybe later
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Card>
   );
 } 
