@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Button from './Button';
 import type { ImageFormat } from '../lib/imageProcessing';
 import Loader from './Loader';
+import { useTranslations } from 'next-intl';
 
 export interface ImageFile {
   id: string;
@@ -38,7 +39,6 @@ interface ImagePreviewProps {
     applyToAll: boolean;
   };
   maxImagesAllowed?: number;
-  isPro?: boolean;
 }
 
 export default function ImagePreview({
@@ -52,8 +52,9 @@ export default function ImagePreview({
   className = '',
   appliedSettings,
   maxImagesAllowed = 10,
-  isPro = false,
 }: ImagePreviewProps) {
+  const t = useTranslations('Components.ImagePreview');
+  
   // State to store image dimensions
   const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number; size: string }>>({});
   // State for editing SEO name
@@ -243,7 +244,7 @@ export default function ImagePreview({
   if (localImages.length === 0) {
     return (
       <div className={`brutalist-border p-4 text-center ${className}`}>
-        <p className="text-lg">No images selected</p>
+        <p className="text-lg">{t('noImages')}</p>
       </div>
     );
   }
@@ -363,12 +364,12 @@ export default function ImagePreview({
            
               {/* Mobile zoom instructions */}
               <div className="absolute bottom-2 left-2 brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs p-2 md:hidden">
-                Pinch to zoom, drag to move
+                {t('zoomInstructions')}
               </div>
               
               {/* Zoom level indicator */}
               <div className="absolute bottom-2 right-2 brutalist-border border-3 bg-white text-black text-xs p-2">
-                {Math.round(scale * 100)}%
+                {t('zoomLevel', { scale: Math.round(scale * 100) })}
               </div>
 
          
@@ -377,7 +378,7 @@ export default function ImagePreview({
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                   <div className="flex flex-col items-center space-y-3">
                     <Loader size="lg" />
-                    <p className="text-white font-semibold">Removing Background...</p>
+                    <p className="text-white font-semibold">{t('removingBackground')}</p>
                   </div>
                 </div>
               )}
@@ -388,7 +389,7 @@ export default function ImagePreview({
               {editingSeoName === selectedImage.id ? (
                 <div className="flex flex-col space-y-2">
                   <div className="flex flex-col">
-                    <label className="text-xs font-bold">SEO-Friendly Name:</label>
+                    <label className="text-xs font-bold">{t('seoName.label')}</label>
                     <div className="flex items-center">
                       <input
                         type="text"
@@ -405,14 +406,14 @@ export default function ImagePreview({
                       size="sm"
                       variant="secondary"
                     >
-                      CANCEL
+                      {t('seoName.cancel')}
                     </Button>
                     <Button 
                       onClick={handleSaveSeoName}
                       size="sm"
                       variant="accent"
                     >
-                      SAVE
+                      {t('seoName.save')}
                     </Button>
                   </div>
                 </div>
@@ -426,7 +427,7 @@ export default function ImagePreview({
                         className="ml-2 text-xs font-bold py-1 px-2 brutalist-border hover:bg-slate-100 text-gray-700"
                         title="Edit SEO name"
                       >
-                        EDIT
+                        {t('seoName.edit')}
                       </button>
                     )}
                   </div>
@@ -436,7 +437,7 @@ export default function ImagePreview({
                     variant="secondary"
                     disabled={isProcessing}
                   >
-                    DOWNLOAD
+                    {t('actions.download')}
                   </Button>
                 </div>
               )}
@@ -444,7 +445,7 @@ export default function ImagePreview({
               {/* Original filename if SEO name exists */}
               {selectedImage.seoName && selectedImage.originalName && !editingSeoName && (
                 <div className="text-xs text-gray-500">
-                  <span className="font-bold">Original name: </span>
+                  <span className="font-bold">{t('originalName')} </span>
                   {selectedImage.originalName}
                 </div>
               )}
@@ -453,11 +454,11 @@ export default function ImagePreview({
                 {selectedDimensions && (
                   <>
                     <div>
-                      <span className="font-bold">Dimensions: </span> 
+                      <span className="font-bold">{t('fileInfo.dimensions')} </span> 
                       {selectedDimensions.width} × {selectedDimensions.height}px
                     </div>
                     <div>
-                      <span className="font-bold">Size: </span>
+                      <span className="font-bold">{t('fileInfo.size')} </span>
                       {selectedDimensions.size}
                     </div>
                   </>
@@ -467,13 +468,13 @@ export default function ImagePreview({
                 {(selectedImage.appliedPreset || (appliedSettings && selectedImage.id === selectedImageId)) && (
                   <>
                     <div>
-                      <span className="font-bold">Output: </span>
+                      <span className="font-bold">{t('fileInfo.output')} </span>
                       {selectedImage.appliedPreset 
-                        ? `${selectedImage.appliedPreset.width}x${selectedImage.appliedPreset.height || 'auto'}`
-                        : appliedSettings?.presetName ? `[${appliedSettings.presetName}]` : 'Custom'}
+                        ? `${selectedImage.appliedPreset.width}x${selectedImage.appliedPreset.height || t('fileInfo.auto')}`
+                        : appliedSettings?.presetName ? `[${appliedSettings.presetName}]` : t('fileInfo.custom')}
                     </div>
                     <div>
-                      <span className="font-bold">Quality: </span>
+                      <span className="font-bold">{t('fileInfo.quality')} </span>
                       {selectedImage.appliedPreset ? `${selectedImage.appliedPreset.quality}%` : 'Applied'}
                     </div>
                   </>
@@ -482,8 +483,8 @@ export default function ImagePreview({
                 {/* Background removal info */}
                 {selectedImage.backgroundRemoved && (
                   <div className="col-span-2">
-                    <span className="font-bold">Background: </span>
-                    <span className="text-green-600">Removed</span>
+                    <span className="font-bold">{t('fileInfo.background')} </span>
+                    <span className="text-green-600">{t('fileInfo.backgroundRemoved')}</span>
                   </div>
                 )}
               </div>
@@ -494,7 +495,7 @@ export default function ImagePreview({
 
       {/* Thumbnail Grid */}
       <h3 className="font-bold text-lg uppercase mb-2">
-        ALL IMAGES ({images.length}/{maxImagesAllowed})
+        {t('allImages', { current: images.length, max: maxImagesAllowed })}
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {images.map((image, index) => {

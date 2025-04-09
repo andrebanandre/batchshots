@@ -111,7 +111,7 @@ export default function BackgroundRemovalControl({
         {/* Minimal info note */}
         {!isRemovingBackground && (
           <p className="text-xs text-gray-600">
-            Removes background from product images using AI. Processing takes 10-30 seconds.
+            {t('compactDescription')}
           </p>
         )}
         
@@ -120,7 +120,7 @@ export default function BackgroundRemovalControl({
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
             <div className="bg-white brutalist-border border-3 border-black p-6 max-w-md w-full">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">UPGRADE TO PRO</h3>
+                <h3 className="text-xl font-bold">{t('proDialog.title')}</h3>
                 <button onClick={() => setShowProDialog(false)} className="text-gray-500 hover:text-gray-700">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -131,18 +131,17 @@ export default function BackgroundRemovalControl({
               <div className="mb-6">
                 <div className="flex items-center mb-4">
                   <ProBadge className="mr-2" />
-                  <span className="font-bold">PRO FEATURE: Background Removal</span>
+                  <span className="font-bold">{t('proDialog.featureTitle')}</span>
                 </div>
                 
                 <p className="mb-4 text-sm">
-                  Upgrade to PRO to unlock background removal for all your images (up to 100 at once)! 
-                  Get professional-looking product photos with transparent backgrounds.
+                  {t('proDialog.description')}
                 </p>
                 
                 <div className="brutalist-border p-3 bg-yellow-50 mb-4">
-                  <p className="font-bold text-center mb-2">ONE-TIME PAYMENT</p>
-                  <p className="text-3xl font-bold text-center">$19.99</p>
-                  <p className="text-center text-sm text-gray-600">No subscription, lifetime access</p>
+                  <p className="font-bold text-center mb-2">{t('proDialog.pricing.title')}</p>
+                  <p className="text-3xl font-bold text-center">{t('proDialog.pricing.price')}</p>
+                  <p className="text-center text-sm text-gray-600">{t('proDialog.pricing.note')}</p>
                 </div>
               </div>
               
@@ -152,7 +151,7 @@ export default function BackgroundRemovalControl({
                   onClick={() => router.push('/pricing')}
                   className="w-full"
                 >
-                  UPGRADE TO PRO
+                  {t('proDialog.actions.upgrade')}
                 </Button>
                 
                 <Button 
@@ -160,14 +159,14 @@ export default function BackgroundRemovalControl({
                   onClick={handleTryFeature}
                   className="w-full"
                 >
-                  TRY HOW IT WORKS
+                  {t('proDialog.actions.try')}
                 </Button>
                 
                 <button 
                   onClick={() => setShowProDialog(false)}
                   className="text-sm text-gray-600 hover:text-gray-800"
                 >
-                  Maybe later
+                  {t('proDialog.actions.later')}
                 </button>
               </div>
             </div>
@@ -189,19 +188,19 @@ export default function BackgroundRemovalControl({
         <div className="brutalist-border p-4 bg-white">
           <h3 className="font-bold mb-2">{t('title')} <ProBadge className="ml-1" /></h3>
           <p className="text-sm mb-2">
-            Remove the background from your product image with AI technology. The process occurs entirely in your browser for privacy.
+            {t('description')}
           </p>
           <div className="text-xs space-y-1">
             <div className="flex justify-between">
-              <span className="font-bold">Process:</span>
-              <span>In-browser AI processing</span>
+              <span className="font-bold">{t('processingInfo.process')}:</span>
+              <span>{t('processingInfo.processValue')}</span>
             </div>
             <div className="flex justify-between">
-              <span className="font-bold">Result:</span>
-              <span>Transparent background PNG</span>
+              <span className="font-bold">{t('processingInfo.result')}:</span>
+              <span>{t('processingInfo.resultValue')}</span>
             </div>
             <div className="flex justify-between">
-              <span className="font-bold">Mode:</span>
+              <span className="font-bold">{t('processingInfo.mode')}:</span>
               <span>{applyToAll ? t('allImages') : t('selected')}</span>
             </div>
           </div>
@@ -236,7 +235,7 @@ export default function BackgroundRemovalControl({
         {isRemovingBackground && (
           <div className="space-y-2">
             <div className="flex justify-between text-xs">
-              <span className="font-bold">Processing:</span>
+              <span className="font-bold">{t('processingInfo.process')}:</span>
               <span>{t('backgroundsRemoved', { count: processedCount, total: totalImages })}</span>
             </div>
             

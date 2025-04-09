@@ -3,6 +3,7 @@
 import React from 'react';
 import { useImageProcessing } from '../contexts/ImageProcessingContext';
 import { defaultAdjustments } from './ImageProcessingControls';
+import { useTranslations } from 'next-intl';
 
 type PresetType = 
   | 'vivid' 
@@ -20,6 +21,7 @@ type PresetType =
 
 export default function QuickPresets() {
   const { setAdjustments } = useImageProcessing();
+  const t = useTranslations('Components.QuickPresets');
   
   const handleQuickPreset = (preset: PresetType) => {
     let newAdjustments = { ...defaultAdjustments };
@@ -178,87 +180,99 @@ export default function QuickPresets() {
 
   return (
     <div>
-      <h3 className="font-bold mb-2">QUICK PRESETS</h3>
+      <h3 className="font-bold mb-2">{t('title')}</h3>
       <div className="grid grid-cols-2 gap-2 mb-2">
         <button
           onClick={() => handleQuickPreset('white-bg')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.white-bg.description')}
         >
-          WHITE BACKGROUND
+          {t('presets.white-bg.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('clean')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.clean.description')}
         >
-          CLEAN PRODUCT
+          {t('presets.clean.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('jewelry')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.jewelry.description')}
         >
-          JEWELRY/METAL
+          {t('presets.jewelry.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('sharp')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.sharp.description')}
         >
-          SHARP DETAIL
+          {t('presets.sharp.name')}
         </button>
       </div>
       
-      <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">PRODUCT SPECIALTY</h3>
+      <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">{t('productSpecialty')}</h3>
       <div className="grid grid-cols-2 gap-2">
         <button
           onClick={() => handleQuickPreset('textile')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.textile.description')}
         >
-          TEXTILE/FABRIC
+          {t('presets.textile.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('soft-product')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.soft-product.description')}
         >
-          SOFT PRODUCTS
+          {t('presets.soft-product.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('furniture')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.furniture.description')}
         >
-          FURNITURE/WOOD
+          {t('presets.furniture.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('transparent')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.transparent.description')}
         >
-          GLASS
+          {t('presets.transparent.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('food')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.food.description')}
         >
-          FOOD PRODUCTS
+          {t('presets.food.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('dramatic')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.dramatic.description')}
         >
-          DRAMATIC
+          {t('presets.dramatic.name')}
         </button>
       </div>
       
-      <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">COLOR STYLE</h3>
+      <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">{t('colorStyle')}</h3>
       <div className="grid grid-cols-2 gap-2">
         <button
           onClick={() => handleQuickPreset('vivid')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.vivid.description')}
         >
-          VIVID COLORS
+          {t('presets.vivid.name')}
         </button>
         <button
           onClick={() => handleQuickPreset('classic')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
+          title={t('presets.classic.description')}
         >
-          CLASSIC
+          {t('presets.classic.name')}
         </button>
       </div>
     </div>

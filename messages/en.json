@@ -103,7 +103,31 @@
             "removeAllBackgrounds": "REMOVE ALL BACKGROUNDS",
             "processing": "Processing...",
             "backgroundRemoved": "Background removed successfully!",
-            "transparent": "Transparent background detected"
+            "transparent": "Transparent background detected",
+            "description": "Remove the background from your product image with AI technology. The process occurs entirely in your browser for privacy.",
+            "processingInfo": {
+                "process": "Process",
+                "processValue": "In-browser AI processing",
+                "result": "Result",
+                "resultValue": "Transparent background PNG",
+                "mode": "Mode"
+            },
+            "proDialog": {
+                "title": "UPGRADE TO PRO",
+                "featureTitle": "PRO FEATURE: Background Removal",
+                "description": "Upgrade to PRO to unlock background removal for all your images (up to 100 at once)! Get professional-looking product photos with transparent backgrounds.",
+                "pricing": {
+                    "title": "ONE-TIME PAYMENT",
+                    "price": "$19.99",
+                    "note": "No subscription, lifetime access"
+                },
+                "actions": {
+                    "upgrade": "UPGRADE TO PRO",
+                    "try": "TRY HOW IT WORKS",
+                    "later": "Maybe later"
+                }
+            },
+            "compactDescription": "Removes background from product images using AI. Processing takes 10-30 seconds."
         },
         "PresetsSelector": {
             "title": "PRESETS",
@@ -113,7 +137,29 @@
             "height": "Height",
             "auto": "auto",
             "quality": "QUALITY",
-            "apply": "APPLY"
+            "apply": "APPLY",
+            "presets": {
+                "web-optimized": {
+                    "name": "Web Optimized",
+                    "description": "1080px, 75% quality (Smallest file size, good for web)"
+                },
+                "standard": {
+                    "name": "Standard",
+                    "description": "1080px, 85% quality (Balanced size and quality)"
+                },
+                "high-quality": {
+                    "name": "High Quality",
+                    "description": "1440px, 95% quality (High quality, larger file size)"
+                },
+                "max-quality": {
+                    "name": "Maximum",
+                    "description": "2160px, 100% quality (Maximum quality, largest file size)"
+                },
+                "custom": {
+                    "name": "Custom",
+                    "description": "Custom dimensions and quality settings"
+                }
+            }
         },
         "DownloadOptions": {
             "title": "DOWNLOAD",
@@ -125,6 +171,11 @@
             "title": "Upgrade to Pro",
             "unlock": "Unlock All Premium Features",
             "description": "Upgrade to Pro to unlock {feature} and process up to {count} images at once.",
+            "pricing": {
+                "title": "ONE-TIME PAYMENT",
+                "price": "$19.99",
+                "note": "No subscription, lifetime access"
+            },
             "learnMore": "LEARN MORE",
             "close": "Close"
         },
@@ -137,7 +188,185 @@
             "generating": "GENERATING...",
             "proLimit": "Generate up to 100 names at once with Pro",
             "originalName": "Original Name",
-            "seoName": "SEO Name"
+            "seoName": "SEO Name",
+            "appliedNames": {
+                "title": "Applied SEO Names",
+                "description": "Our AI has generated SEO-optimized filenames for your images. You can edit individual names in the image preview section."
+            },
+            "tryFeature": "TRY HOW IT WORKS"
+        },
+        "QuickPresets": {
+            "title": "QUICK PRESETS",
+            "productSpecialty": "PRODUCT SPECIALTY",
+            "colorStyle": "COLOR STYLE",
+            "presets": {
+                "white-bg": {
+                    "name": "WHITE BACKGROUND",
+                    "description": "Clean white background product photography"
+                },
+                "clean": {
+                    "name": "CLEAN PRODUCT",
+                    "description": "Product photography with clean, neutral colors"
+                },
+                "jewelry": {
+                    "name": "JEWELRY/METAL",
+                    "description": "Optimized for jewelry and metallic products"
+                },
+                "sharp": {
+                    "name": "SHARP DETAIL",
+                    "description": "Enhanced sharpness and detail"
+                },
+                "textile": {
+                    "name": "TEXTILE/FABRIC",
+                    "description": "For fabric and textile products - enhances texture and color"
+                },
+                "soft-product": {
+                    "name": "SOFT PRODUCTS",
+                    "description": "For soft products like pillows, cushions, plush toys"
+                },
+                "furniture": {
+                    "name": "FURNITURE/WOOD",
+                    "description": "Wooden furniture and home decor"
+                },
+                "transparent": {
+                    "name": "GLASS",
+                    "description": "Glass and transparent products"
+                },
+                "food": {
+                    "name": "FOOD PRODUCTS",
+                    "description": "Food photography - enhances freshness and color appeal"
+                },
+                "dramatic": {
+                    "name": "DRAMATIC",
+                    "description": "High contrast product photography"
+                },
+                "vivid": {
+                    "name": "VIVID COLORS",
+                    "description": "Enhanced color saturation and brightness"
+                },
+                "classic": {
+                    "name": "CLASSIC",
+                    "description": "Classic look with balanced colors"
+                }
+            }
+        },
+        "BackgroundRemovalPage": {
+            "title": "BACKGROUND REMOVAL TOOL",
+            "loading": {
+                "tool": "LOADING TOOL...",
+                "proStatus": "CHECKING PRO STATUS...",
+                "description": "Please wait while we initialize image processing capabilities.",
+                "proDescription": "Please wait while we verify your account status."
+            },
+            "mainCard": {
+                "title": "REMOVE IMAGE BACKGROUNDS",
+                "info": {
+                    "title": "AI BACKGROUND REMOVAL",
+                    "description": "Remove the background from your product images with AI technology. The process occurs entirely in your browser for privacy.",
+                    "freeMode": {
+                        "title": "FREE MODE",
+                        "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
+                    },
+                    "proMode": {
+                        "title": "PRO MODE",
+                        "description": "Process up to 100 images in bulk with your PRO account!"
+                    }
+                },
+                "upload": {
+                    "title": "Select Images",
+                    "buttonFree": "SELECT AN IMAGE",
+                    "buttonPro": "SELECT IMAGES",
+                    "helpTextFree": "Free users can select 1 image at a time.",
+                    "helpTextPro": "You can select up to 100 images at once."
+                },
+                "actions": {
+                    "clear": "CLEAR",
+                    "download": "DOWNLOAD",
+                    "downloadZip": "DOWNLOAD AS ZIP",
+                    "removeBackground": "REMOVE BACKGROUND",
+                    "removeBackgrounds": "REMOVE BACKGROUNDS",
+                    "processing": "REMOVING BACKGROUND...",
+                    "processingMultiple": "REMOVING BACKGROUNDS...",
+                    "tryFullEditor": "TRY FULL EDITOR"
+                },
+                "progress": {
+                    "processing": "Processing...",
+                    "percent": "{percent}%"
+                }
+            },
+            "upgradeCard": {
+                "title": "UPGRADE TO PRO",
+                "plan": {
+                    "title": "PRO PLAN",
+                    "price": "$19.99",
+                    "features": [
+                        "Remove backgrounds from up to 100 images at once",
+                        "Advanced image adjustments and presets",
+                        "SEO name generation for product images",
+                        "Batch processing for all features",
+                        "One-time payment, lifetime access"
+                    ],
+                    "buttonText": "UPGRADE NOW"
+                }
+            },
+            "howItWorks": {
+                "title": "HOW IT WORKS",
+                "step1": {
+                    "title": "1. SELECT YOUR IMAGES",
+                    "description": "Upload one or more product images you want to process.",
+                    "proNote": "PRO users can select up to 100 images at once!"
+                },
+                "step2": {
+                    "title": "2. REMOVE BACKGROUNDS",
+                    "description": "Our AI technology will detect and remove the background from your images, creating transparent PNGs perfect for e-commerce."
+                },
+                "step3": {
+                    "title": "3. DOWNLOAD & USE",
+                    "description": "Download your processed images and use them on your website, marketplace listings, or marketing materials."
+                }
+            },
+            "proDialog": {
+                "title": "UPGRADE TO PRO",
+                "featureTitle": "PRO FEATURE: Bulk Background Removal",
+                "description": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk, saving you hours of work!",
+                "pricing": {
+                    "title": "ONE-TIME PAYMENT",
+                    "price": "$19.99",
+                    "note": "No subscription, lifetime access"
+                },
+                "actions": {
+                    "upgrade": "UPGRADE TO PRO",
+                    "continue": "CONTINUE WITH FREE MODE"
+                }
+            }
+        },
+        "ImagePreview": {
+            "noImages": "No images selected",
+            "zoomInstructions": "Pinch to zoom, drag to move",
+            "zoomLevel": "{scale}%",
+            "removingBackground": "Removing Background...",
+            "seoName": {
+                "label": "SEO-Friendly Name:",
+                "edit": "EDIT",
+                "cancel": "CANCEL",
+                "save": "SAVE"
+            },
+            "originalName": "Original name:",
+            "fileInfo": {
+                "dimensions": "Dimensions:",
+                "size": "Size:",
+                "output": "Output:",
+                "quality": "Quality:",
+                "background": "Background:",
+                "backgroundRemoved": "Removed",
+                "custom": "Custom",
+                "auto": "auto"
+            },
+            "actions": {
+                "download": "DOWNLOAD",
+                "reset": "RESET"
+            },
+            "allImages": "ALL IMAGES ({current}/{max})"
         }
     },
     "Dialogs": {
@@ -165,6 +394,76 @@
         },
         "proUpgrade": {
             "feature": "Batch Processing"
+        }
+    },
+    "Pricing": {
+        "title": "PRICING PLANS",
+        "subtitle": "Choose the perfect plan for your image optimization needs. Our PRO plan offers a lifetime license with a one-time payment.",
+        "alreadyPro": {
+            "title": "You're already a PRO user!",
+            "description": "Thank you for your support. You have access to all PRO features including bulk background removal, advanced image adjustments, and SEO filename generation.",
+            "backToEditor": "BACK TO EDITOR"
+        },
+        "checkout": {
+            "title": "COMPLETE YOUR PURCHASE",
+            "planTitle": "PRO LIFETIME LICENSE",
+            "price": "$19.99",
+            "description": "One-time payment, lifetime access to all PRO features",
+            "email": "EMAIL",
+            "cardInfo": "CARD INFORMATION",
+            "cardNumber": "1234 5678 9012 3456",
+            "expiryDate": "MM/YY",
+            "cvc": "CVC",
+            "completePurchase": "COMPLETE PURCHASE",
+            "goBack": "Go back"
+        },
+        "plans": {
+            "free": {
+                "title": "FREE",
+                "price": "FREE",
+                "features": [
+                    "Process up to 10 images at once",
+                    "Basic image adjustments",
+                    "Single image background removal",
+                    "Standard export options",
+                    "Browser-based processing"
+                ],
+                "buttonText": "CONTINUE WITH FREE"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "$19.99",
+                "features": [
+                    "Process up to 100 images at once",
+                    "Advanced image adjustments and presets",
+                    "Bulk background removal (up to 100 images)",
+                    "SEO filename generation",
+                    "Priority support",
+                    "One-time payment, lifetime access"
+                ],
+                "buttonText": "UPGRADE TO PRO"
+            }
+        },
+        "faq": {
+            "title": "FREQUENTLY ASKED QUESTIONS",
+            "questions": {
+                "oneTime": {
+                    "question": "Is this really a one-time payment?",
+                    "answer": "Yes! Pay once and get lifetime access to all PRO features. No recurring subscriptions."
+                },
+                "backgroundRemoval": {
+                    "question": "How does background removal work?",
+                    "answer": "We use advanced AI algorithms to detect and remove backgrounds from your product images. The entire process happens in your browser - we never store your images on our servers."
+                },
+                "imageLimits": {
+                    "question": "What are the image limits?",
+                    "answer": "Free users can process up to 10 images at once with basic features and remove the background from 1 image at a time. PRO users can process up to 100 images simultaneously, including bulk background removal."
+                },
+                "refund": {
+                    "question": "Can I request a refund?",
+                    "answer": "Yes, we offer a 30-day money-back guarantee if you're not satisfied with the PRO features. Contact our support team for assistance."
+                }
+            }
         }
     }
 }

@@ -103,7 +103,31 @@
             "removeAllBackgrounds": "ALLE HINTERGRÜNDE ENTFERNEN",
             "processing": "Verarbeitung...",
             "backgroundRemoved": "Hintergrund erfolgreich entfernt!",
-            "transparent": "Transparenter Hintergrund erkannt"
+            "transparent": "Transparenter Hintergrund erkannt",
+            "description": "Entfernen Sie den Hintergrund Ihres Produktbildes mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz.",
+            "processingInfo": {
+                "process": "Prozess",
+                "processValue": "KI-Verarbeitung im Browser",
+                "result": "Ergebnis",
+                "resultValue": "Transparenter PNG-Hintergrund",
+                "mode": "Modus"
+            },
+            "proDialog": {
+                "title": "AUF PRO UPGRADEN",
+                "featureTitle": "PRO-FUNKTION: Hintergrundentfernung",
+                "description": "Upgraden Sie auf PRO, um die Hintergrundentfernung für alle Ihre Bilder freizuschalten (bis zu 100 auf einmal)! Erhalten Sie professionell aussehende Produktfotos mit transparentem Hintergrund.",
+                "pricing": {
+                    "title": "EINMALZAHLUNG",
+                    "price": "19,99 €",
+                    "note": "Keine Abonnement, lebenslanger Zugang"
+                },
+                "actions": {
+                    "upgrade": "AUF PRO UPGRADEN",
+                    "try": "TESTEN SIE DIE FUNKTION",
+                    "later": "Vielleicht später"
+                }
+            },
+            "compactDescription": "Entfernt den Hintergrund von Produktbildern mit KI. Die Verarbeitung dauert 10-30 Sekunden."
         },
         "PresetsSelector": {
             "title": "VOREINSTELLUNGEN",
@@ -113,7 +137,29 @@
             "height": "Höhe",
             "auto": "auto",
             "quality": "QUALITÄT",
-            "apply": "ANWENDEN"
+            "apply": "ANWENDEN",
+            "presets": {
+                "web-optimized": {
+                    "name": "Web-optimiert",
+                    "description": "1080px, 75% Qualität (Kleinste Dateigröße, gut für Web)"
+                },
+                "standard": {
+                    "name": "Standard",
+                    "description": "1080px, 85% Qualität (Ausgewogenes Verhältnis von Größe und Qualität)"
+                },
+                "high-quality": {
+                    "name": "Hohe Qualität",
+                    "description": "1440px, 95% Qualität (Hohe Qualität, größere Dateigröße)"
+                },
+                "max-quality": {
+                    "name": "Maximal",
+                    "description": "2160px, 100% Qualität (Maximale Qualität, größte Dateigröße)"
+                },
+                "custom": {
+                    "name": "Benutzerdefiniert",
+                    "description": "Benutzerdefinierte Abmessungen und Qualitätseinstellungen"
+                }
+            }
         },
         "DownloadOptions": {
             "title": "HERUNTERLADEN",
@@ -125,6 +171,11 @@
             "title": "Auf Pro upgraden",
             "unlock": "Alle Premium-Funktionen freischalten",
             "description": "Upgraden Sie auf Pro, um {feature} freizuschalten und bis zu {count} Bilder gleichzeitig zu verarbeiten.",
+            "pricing": {
+                "title": "EINMALZAHLUNG",
+                "price": "19,99 €",
+                "note": "Keine Abonnement, lebenslanger Zugang"
+            },
             "learnMore": "MEHR ERFAHREN",
             "close": "Schließen"
         },
@@ -137,7 +188,185 @@
             "generating": "GENERIEREN...",
             "proLimit": "Generieren Sie bis zu 100 Namen auf einmal mit Pro",
             "originalName": "Originalname",
-            "seoName": "SEO-Name"
+            "seoName": "SEO-Name",
+            "appliedNames": {
+                "title": "Angewendete SEO-Namen",
+                "description": "Unsere KI hat SEO-optimierte Dateinamen für Ihre Bilder generiert. Sie können einzelne Namen im Bildvorschaubereich bearbeiten."
+            },
+            "tryFeature": "TESTEN SIE DIE FUNKTION"
+        },
+        "QuickPresets": {
+            "title": "SCHNELLVOREINSTELLUNGEN",
+            "productSpecialty": "PRODUKTSPEZIALITÄT",
+            "colorStyle": "FARBSTIL",
+            "presets": {
+                "white-bg": {
+                    "name": "WEISSER HINTERGRUND",
+                    "description": "Saubere Produktfotografie mit weißem Hintergrund"
+                },
+                "clean": {
+                    "name": "KLARES PRODUKT",
+                    "description": "Produktfotografie mit klaren, neutralen Farben"
+                },
+                "jewelry": {
+                    "name": "SCHMUCK/METALL",
+                    "description": "Optimiert für Schmuck und metallische Produkte"
+                },
+                "sharp": {
+                    "name": "SCHARFE DETAILS",
+                    "description": "Verbesserte Schärfe und Details"
+                },
+                "textile": {
+                    "name": "TEXTIL/STOFF",
+                    "description": "Für Stoff- und Textilprodukte - verbessert Textur und Farbe"
+                },
+                "soft-product": {
+                    "name": "WEICHE PRODUKTE",
+                    "description": "Für weiche Produkte wie Kissen, Polster, Plüschtiere"
+                },
+                "furniture": {
+                    "name": "MÖBEL/HOLZ",
+                    "description": "Holzmöbel und Wohndekoration"
+                },
+                "transparent": {
+                    "name": "GLAS",
+                    "description": "Glas und transparente Produkte"
+                },
+                "food": {
+                    "name": "LEBENSMITTEL",
+                    "description": "Lebensmittelfotografie - verbessert Frische und Farbappeal"
+                },
+                "dramatic": {
+                    "name": "DRAMATISCH",
+                    "description": "Produktfotografie mit hohem Kontrast"
+                },
+                "vivid": {
+                    "name": "LEBHAFTE FARBEN",
+                    "description": "Verbesserte Farbsättigung und Helligkeit"
+                },
+                "classic": {
+                    "name": "KLASSISCH",
+                    "description": "Klassischer Look mit ausgewogenen Farben"
+                }
+            }
+        },
+        "BackgroundRemovalPage": {
+            "title": "HINTERGRUNDENTFERNUNG",
+            "loading": {
+                "tool": "TOOL WIRD GELADEN...",
+                "proStatus": "PRO-STATUS WIRD ÜBERPRÜFT...",
+                "description": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
+                "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
+            },
+            "mainCard": {
+                "title": "BILDHINTERGRÜNDE ENTFERNEN",
+                "info": {
+                    "title": "KI-HINTERGRUNDENTFERNUNG",
+                    "description": "Entfernen Sie den Hintergrund Ihrer Produktbilder mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz.",
+                    "freeMode": {
+                        "title": "KOSTENLOSER MODUS",
+                        "description": "Verarbeiten Sie 1 Bild gleichzeitig. Upgraden Sie auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten!"
+                    },
+                    "proMode": {
+                        "title": "PRO-MODUS",
+                        "description": "Verarbeiten Sie bis zu 100 Bilder gleichzeitig mit Ihrem PRO-Konto!"
+                    }
+                },
+                "upload": {
+                    "title": "Bilder auswählen",
+                    "buttonFree": "BILD AUSWÄHLEN",
+                    "buttonPro": "BILDER AUSWÄHLEN",
+                    "helpTextFree": "Kostenlose Nutzer können 1 Bild gleichzeitig auswählen.",
+                    "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
+                },
+                "actions": {
+                    "clear": "LÖSCHEN",
+                    "download": "HERUNTERLADEN",
+                    "downloadZip": "ALS ZIP HERUNTERLADEN",
+                    "removeBackground": "HINTERGRUND ENTFERNEN",
+                    "removeBackgrounds": "HINTERGRÜNDE ENTFERNEN",
+                    "processing": "HINTERGRUND WIRD ENTFERNT...",
+                    "processingMultiple": "HINTERGRÜNDE WERDEN ENTFERNT...",
+                    "tryFullEditor": "VOLLSTÄNDIGEN EDITOR TESTEN"
+                },
+                "progress": {
+                    "processing": "Verarbeitung...",
+                    "percent": "{percent}%"
+                },
+                "upgradeCard": {
+                    "title": "AUF PRO UPGRADEN",
+                    "plan": {
+                        "title": "PRO-PLAN",
+                        "price": "19,99 €",
+                        "features": [
+                            "Entfernen Sie Hintergründe von bis zu 100 Bildern gleichzeitig",
+                            "Erweiterte Bildanpassungen und Voreinstellungen",
+                            "SEO-Namensgenerierung für Produktbilder",
+                            "Stapelverarbeitung für alle Funktionen",
+                            "Einmalzahlung, lebenslanger Zugang"
+                        ],
+                        "buttonText": "JETZT UPGRADEN"
+                    }
+                }
+            },
+            "howItWorks": {
+                "title": "SO FUNKTIONIERT'S",
+                "step1": {
+                    "title": "1. BILDER AUSWÄHLEN",
+                    "description": "Laden Sie ein oder mehrere Produktbilder hoch, die Sie verarbeiten möchten.",
+                    "proNote": "PRO-Nutzer können bis zu 100 Bilder gleichzeitig auswählen!"
+                },
+                "step2": {
+                    "title": "2. HINTERGRÜNDE ENTFERNEN",
+                    "description": "Unsere KI-Technologie erkennt und entfernt den Hintergrund Ihrer Bilder und erstellt transparente PNGs, perfekt für E-Commerce."
+                },
+                "step3": {
+                    "title": "3. HERUNTERLADEN & VERWENDEN",
+                    "description": "Laden Sie Ihre verarbeiteten Bilder herunter und verwenden Sie sie auf Ihrer Website, in Marktplatz-Angeboten oder Marketingmaterialien."
+                }
+            },
+            "proDialog": {
+                "title": "AUF PRO UPGRADEN",
+                "featureTitle": "PRO-FUNKTION: Massen-Hintergrundentfernung",
+                "description": "Kostenlose Nutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder gleichzeitig zu verarbeiten und sparen Sie Stunden an Arbeit!",
+                "pricing": {
+                    "title": "EINMALZAHLUNG",
+                    "price": "19,99 €",
+                    "note": "Keine Abonnement, lebenslanger Zugang"
+                },
+                "actions": {
+                    "upgrade": "AUF PRO UPGRADEN",
+                    "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
+                }
+            }
+        },
+        "ImagePreview": {
+            "noImages": "Keine Bilder ausgewählt",
+            "zoomInstructions": "Zum Zoomen zusammenkneifen, zum Bewegen ziehen",
+            "zoomLevel": "{scale}%",
+            "removingBackground": "Hintergrund wird entfernt...",
+            "seoName": {
+                "label": "SEO-freundlicher Name:",
+                "edit": "BEARBEITEN",
+                "cancel": "ABBRECHEN",
+                "save": "SPEICHERN"
+            },
+            "originalName": "Originalname:",
+            "fileInfo": {
+                "dimensions": "Abmessungen:",
+                "size": "Größe:",
+                "output": "Ausgabe:",
+                "quality": "Qualität:",
+                "background": "Hintergrund:",
+                "backgroundRemoved": "Entfernt",
+                "custom": "Benutzerdefiniert",
+                "auto": "auto"
+            },
+            "actions": {
+                "download": "HERUNTERLADEN",
+                "reset": "ZURÜCKSETZEN"
+            },
+            "allImages": "ALLE BILDER ({current}/{max})"
         }
     },
     "Dialogs": {
@@ -165,6 +394,76 @@
         },
         "proUpgrade": {
             "feature": "Stapelverarbeitung"
+        }
+    },
+    "Pricing": {
+        "title": "PREISPLÄNE",
+        "subtitle": "Wählen Sie den perfekten Plan für Ihre Bildoptimierungsbedürfnisse. Unser PRO-Plan bietet eine lebenslange Lizenz mit einmaliger Zahlung.",
+        "alreadyPro": {
+            "title": "Sie sind bereits PRO-Nutzer!",
+            "description": "Vielen Dank für Ihre Unterstützung. Sie haben Zugriff auf alle PRO-Funktionen einschließlich Massen-Hintergrundentfernung, erweiterte Bildanpassungen und SEO-Dateinamensgenerierung.",
+            "backToEditor": "ZURÜCK ZUM EDITOR"
+        },
+        "checkout": {
+            "title": "KAUF ABSCHLIESSEN",
+            "planTitle": "PRO LEBENSLANGE LIZENZ",
+            "price": "19,99 €",
+            "description": "Einmalzahlung, lebenslanger Zugang zu allen PRO-Funktionen",
+            "email": "E-MAIL",
+            "cardInfo": "KARTENDATEN",
+            "cardNumber": "1234 5678 9012 3456",
+            "expiryDate": "MM/JJ",
+            "cvc": "CVC",
+            "completePurchase": "KAUF ABSCHLIESSEN",
+            "goBack": "Zurück"
+        },
+        "plans": {
+            "free": {
+                "title": "KOSTENLOS",
+                "price": "KOSTENLOS",
+                "features": [
+                    "Bis zu 10 Bilder gleichzeitig verarbeiten",
+                    "Grundlegende Bildanpassungen",
+                    "Einzelne Hintergrundentfernung",
+                    "Standard-Exportoptionen",
+                    "Browser-basierte Verarbeitung"
+                ],
+                "buttonText": "KOSTENLOS FORTFAHREN"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "19,99 €",
+                "features": [
+                    "Bis zu 100 Bilder gleichzeitig verarbeiten",
+                    "Erweiterte Bildanpassungen und Voreinstellungen",
+                    "Massen-Hintergrundentfernung (bis zu 100 Bilder)",
+                    "SEO-Dateinamensgenerierung",
+                    "Prioritäts-Support",
+                    "Einmalzahlung, lebenslanger Zugang"
+                ],
+                "buttonText": "AUF PRO UPGRADEN"
+            }
+        },
+        "faq": {
+            "title": "HÄUFIG GESTELLTE FRAGEN",
+            "questions": {
+                "oneTime": {
+                    "question": "Ist dies wirklich eine einmalige Zahlung?",
+                    "answer": "Ja! Zahlen Sie einmal und erhalten Sie lebenslangen Zugang zu allen PRO-Funktionen. Keine wiederkehrenden Abonnements."
+                },
+                "backgroundRemoval": {
+                    "question": "Wie funktioniert die Hintergrundentfernung?",
+                    "answer": "Wir verwenden fortschrittliche KI-Algorithmen, um Hintergründe von Ihren Produktbildern zu erkennen und zu entfernen. Der gesamte Prozess findet in Ihrem Browser statt - wir speichern Ihre Bilder nie auf unseren Servern."
+                },
+                "imageLimits": {
+                    "question": "Was sind die Bildlimits?",
+                    "answer": "Kostenlose Nutzer können bis zu 10 Bilder gleichzeitig mit grundlegenden Funktionen verarbeiten und den Hintergrund von 1 Bild gleichzeitig entfernen. PRO-Nutzer können bis zu 100 Bilder gleichzeitig verarbeiten, einschließlich Massen-Hintergrundentfernung."
+                },
+                "refund": {
+                    "question": "Kann ich eine Rückerstattung beantragen?",
+                    "answer": "Ja, wir bieten eine 30-tägige Geld-zurück-Garantie, wenn Sie mit den PRO-Funktionen nicht zufrieden sind. Kontaktieren Sie unseren Support für Unterstützung."
+                }
+            }
         }
     }
 }

@@ -123,10 +123,9 @@ export default function SeoNameGenerator({
 
         {hasGeneratedNames && (
           <div className="brutalist-border p-3 bg-white mt-4">
-            <h3 className="font-bold mb-3 text-sm uppercase">Applied SEO Names</h3>
+            <h3 className="font-bold mb-3 text-sm uppercase">{t('appliedNames.title')}</h3>
             <p className="text-xs mb-3">
-              Our AI has generated SEO-optimized filenames for your images.
-              You can edit individual names in the image preview section.
+              {t('appliedNames.description')}
             </p>
             <div className="overflow-auto max-h-40">
               <table className="w-full text-xs">
@@ -174,9 +173,9 @@ export default function SeoNameGenerator({
               </p>
               
               <div className="brutalist-border p-3 bg-yellow-50 mb-4">
-                <p className="font-bold text-center mb-2">ONE-TIME PAYMENT</p>
-                <p className="text-3xl font-bold text-center">$19.99</p>
-                <p className="text-center text-sm text-gray-600">No subscription, lifetime access</p>
+                <p className="font-bold text-center mb-2">{tPro('pricing.title')}</p>
+                <p className="text-3xl font-bold text-center">{tPro('pricing.price')}</p>
+                <p className="text-center text-sm text-gray-600">{tPro('pricing.note')}</p>
               </div>
             </div>
             
@@ -194,7 +193,7 @@ export default function SeoNameGenerator({
                 onClick={handleTryFeature}
                 className="w-full"
               >
-                TRY HOW IT WORKS
+                {t('tryFeature')}
               </Button>
               
               <button 

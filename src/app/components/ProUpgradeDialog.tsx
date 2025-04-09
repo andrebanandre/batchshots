@@ -49,9 +49,9 @@ export default function ProUpgradeDialog({
           </p>
           
           <div className="brutalist-border p-3 bg-yellow-50 mb-4">
-            <p className="font-bold text-center mb-2">ONE-TIME PAYMENT</p>
-            <p className="text-3xl font-bold text-center">$19.99</p>
-            <p className="text-center text-sm text-gray-600">No subscription, lifetime access</p>
+            <p className="font-bold text-center mb-2">{t('pricing.title')}</p>
+            <p className="text-3xl font-bold text-center">{t('pricing.price')}</p>
+            <p className="text-center text-sm text-gray-600">{t('pricing.note')}</p>
           </div>
         </div>
         

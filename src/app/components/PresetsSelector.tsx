@@ -22,44 +22,44 @@ interface PresetsSelectorProps {
 export const defaultPresets: Preset[] = [
   {
     id: 'web-optimized',
-    name: 'Web Optimized',
+    name: 'presets.web-optimized.name',
     width: 1080,
     height: null,
     quality: 75,
-    description: '1080px, 75% quality (Smallest file size, good for web)'
+    description: 'presets.web-optimized.description'
   },
   {
     id: 'standard',
-    name: 'Standard',
+    name: 'presets.standard.name',
     width: 1080,
     height: null,
     quality: 85,
-    description: '1080px, 85% quality (Balanced size and quality)'
+    description: 'presets.standard.description'
   },
   {
     id: 'high-quality',
-    name: 'High Quality',
-    width: 1440, // Updated width for high quality
+    name: 'presets.high-quality.name',
+    width: 1440,
     height: null,
     quality: 95,
-    description: '1440px, 95% quality (High quality, larger file size)'
+    description: 'presets.high-quality.description'
   },
   {
     id: 'max-quality',
-    name: 'Maximum',
-    width: 2160, // Updated width for max quality (4K)
+    name: 'presets.max-quality.name',
+    width: 2160,
     height: null,
     quality: 100,
-    description: '2160px, 100% quality (Maximum quality, largest file size)'
+    description: 'presets.max-quality.description'
   },
   // Custom preset (will be filled by Advanced tab)
   {
     id: 'custom',
-    name: 'Custom',
+    name: 'presets.custom.name',
     width: 1080,
     height: null,
     quality: 85,
-    description: 'Custom dimensions and quality settings'
+    description: 'presets.custom.description'
   }
 ];
 
@@ -152,10 +152,9 @@ export default function PresetsSelector({
               onClick={() => onSelectPreset(preset.id)}
             >
               <div>
-                <div className="font-bold">{preset.name}</div>
+                <div className="font-bold">{t(`presets.${preset.id}.name`)}</div>
                 <div className="text-xs">
-                  {/* Display the full description */}
-                  {preset.description}
+                  {t(`presets.${preset.id}.description`)}
                 </div>
               </div>
             </Button>
