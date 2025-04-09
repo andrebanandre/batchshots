@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import LanguageSelector from './LanguageSelector';
 
 export default function Footer() {
   const t = useTranslations('Footer');
@@ -36,6 +37,9 @@ export default function Footer() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
+            </div>
+            <div className="mt-4">
+              <LanguageSelector />
             </div>
           </div>
           
