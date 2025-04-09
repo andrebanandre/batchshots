@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import { useTranslations } from 'next-intl';
 
 interface DownloadDialogProps {
   isOpen: boolean;
@@ -30,6 +31,8 @@ export default function DownloadDialog({
   hasSeoNames = false,
   hasRemovedBackgrounds = false
 }: DownloadDialogProps) {
+  const t = useTranslations('Dialogs.download');
+  
   if (!isOpen) return null;
 
   return (
@@ -41,23 +44,23 @@ export default function DownloadDialog({
               <div className="p-6">
                 {!downloadComplete ? (
                   <>
-                    <h3 className="text-xl font-bold mb-4 uppercase">Confirm Download</h3>
+                    <h3 className="text-xl font-bold mb-4 uppercase">{t('confirmTitle')}</h3>
                     
                     <div className="space-y-4 mb-6">
                       <div className="brutalist-border p-3 bg-slate-50">
-                        <p className="font-bold mb-2">Download Summary:</p>
+                        <p className="font-bold mb-2">{t('summary')}</p>
                         <ul className="list-disc pl-5 space-y-1">
-                          <li><span className="font-bold">{imageCount}</span> {imageCount === 1 ? 'image' : 'images'} will be downloaded</li>
-                          <li>Format: <span className="font-bold uppercase">{formatType}</span></li>
+                          <li>{t('images', { count: imageCount })}</li>
+                          <li>{t('format')} <span className="font-bold uppercase">{formatType}</span></li>
                           {hasAppliedChanges && appliedPresetName && (
-                            <li>Applied preset: <span className="font-bold">{appliedPresetName}</span></li>
+                            <li>{t('appliedPreset')} <span className="font-bold">{appliedPresetName}</span></li>
                           )}
                           {hasAppliedChanges && (
-                            <li>Image adjustments have been applied</li>
+                            <li>{t('adjustmentsApplied')}</li>
                           )}
                           {hasRemovedBackgrounds && (
                             <li className="text-purple-600 font-semibold">
-                              Background removal has been applied
+                              {t('backgroundRemoval')}
                             </li>
                           )}
                           {hasSeoNames && (
@@ -70,16 +73,16 @@ export default function DownloadDialog({
                                     className="w-full h-full object-contain" 
                                   />
                                 </div>
-                                AI SEO-optimized filenames included
+                                {t('seoFilenames')}
                               </div>
                             </li>
                           )}
-                          <li>Files will be packaged as a <span className="font-bold">ZIP archive</span></li>
+                          <li>{t('zipPackage')}</li>
                         </ul>
                       </div>
                       
                       <p className="text-sm text-gray-600">
-                        Processing may take a moment for multiple or large images.
+                        {t('processingNote')}
                       </p>
                     </div>
                     
@@ -90,28 +93,28 @@ export default function DownloadDialog({
                         variant="secondary"
                         disabled={isDownloading}
                       >
-                        CANCEL
+                        {t('cancel')}
                       </Button>
                       <Button 
                         onClick={onClose}
                         variant="accent"
                         disabled={isDownloading}
                       >
-                        {isDownloading ? 'PROCESSING...' : 'DOWNLOAD'}
+                        {isDownloading ? t('processing') : t('download')}
                       </Button>
                     </div>
                   </>
                 ) : (
                   <>
-                    <h3 className="text-xl font-bold mb-4 uppercase">Download Successful</h3>
+                    <h3 className="text-xl font-bold mb-4 uppercase">{t('successTitle')}</h3>
                     
                     <div className="space-y-4 mb-6">
-                      <p>Your images have been successfully downloaded. What would you like to do next?</p>
+                      <p>{t('successMessage')}</p>
                       
                       <div className="brutalist-border p-3 bg-slate-50">
                         <ul className="list-disc pl-5">
-                          <li><span className="font-bold">Start new bundle:</span> Clear current images and start fresh</li>
-                          <li><span className="font-bold">Continue editing:</span> Keep working with current images</li>
+                          <li><span className="font-bold">{t('startNewBundleDesc')}</span></li>
+                          <li><span className="font-bold">{t('continueEditingDesc')}</span></li>
                         </ul>
                       </div>
                     </div>
@@ -121,13 +124,13 @@ export default function DownloadDialog({
                         onClick={onStartNewBundle}
                         variant="secondary"
                       >
-                        START NEW BUNDLE
+                        {t('startNewBundle')}
                       </Button>
                       <Button 
                         onClick={onContinueEditing}
                         variant="accent"
                       >
-                        CONTINUE EDITING
+                        {t('continueEditing')}
                       </Button>
                     </div>
                   </>

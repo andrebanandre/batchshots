@@ -1,0 +1,76 @@
+{
+    "Manifest": {
+        "name": "PICME"
+    },
+    "LocaleSwitcher": {
+        "label": "Sprache ändern",
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Home": {
+        "title": "PICME: SEO BILDOPTIMIERER",
+        "loading": "APP WIRD GELADEN...",
+        "loadingDescription": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
+        "transformTitle": "VERWANDELN SIE IHRE PRODUKTFOTOS",
+        "privacyFocused": "KOSTENLOS & DATENSCHUTZORIENTIERT",
+        "privacyDescription": "PICME verarbeitet alle Bilder direkt in Ihrem Browser. Wir speichern Ihre Fotos oder Daten nicht auf unseren Servern.",
+        "privacyPolicy": "Datenschutzrichtlinie",
+        "termsOfUse": "Nutzungsbedingungen",
+        "features": {
+            "presets": {
+                "title": "PROFESSIONELLE VOREINSTELLUNGEN",
+                "description": "Wenden Sie optimierte Voreinstellungen für E-Commerce, soziale Medien und Webanzeigen mit einem Klick an."
+            },
+            "aiPowered": {
+                "title": "KI-GESTÜTZTE SEO",
+                "description": "Generieren Sie SEO-freundliche Dateinamen mit unseren KI-Tools, um die Auffindbarkeit Ihrer Produkte zu verbessern."
+            },
+            "advancedControls": {
+                "title": "ERWEITERTE STEUERUNG",
+                "description": "Optimieren Sie Helligkeit, Kontrast, Weißabgleich und mehr, um Ihre Produktbilder zu perfektionieren."
+            },
+            "batchProcessing": {
+                "title": "STAPELVERARBEITUNG",
+                "description": "Verarbeiten Sie mehrere Bilder gleichzeitig, um Zeit zu sparen und konsistente Ergebnisse zu gewährleisten."
+            }
+        },
+        "proMode": "PRO-MODUS AKTIVIERT",
+        "freePlan": "KOSTENLOSER PLAN",
+        "proDescription": "Verarbeiten Sie bis zu {maxImages} Bilder gleichzeitig mit allen freigeschalteten Premium-Funktionen.",
+        "freeDescription": "Begrenzt auf {maxImages} Bilder. Upgraden Sie auf PRO, um bis zu 100 Bilder gleichzeitig zu verarbeiten.",
+        "upgradeToPro": "AUF PRO UPGRADEN",
+        "selectImages": "BILDER AUSWÄHLEN (BIS ZU {maxImages})",
+        "imageEditor": "BILDEDITOR",
+        "selectMoreImages": "WEITERE BILDER AUSWÄHLEN",
+        "maxImagesReached": "MAXIMALE BILDANZAHL ERREICHT",
+        "imagesCount": "{current}/{max} Bilder",
+        "upgradeFor": "(Upgrade für bis zu 100)",
+        "imageOptimization": "BILDOPTIMIERUNG"
+    },
+    "Dialogs": {
+        "download": {
+            "title": "Bilder herunterladen",
+            "confirmTitle": "Download bestätigen",
+            "successTitle": "Download erfolgreich",
+            "summary": "Download-Zusammenfassung:",
+            "images": "{count, plural, =1 {# Bild} other {# Bilder}} werden heruntergeladen",
+            "format": "Format:",
+            "appliedPreset": "Angewendete Voreinstellung:",
+            "adjustmentsApplied": "Bildanpassungen wurden angewendet",
+            "backgroundRemoval": "Hintergrundentfernung wurde angewendet",
+            "seoFilenames": "KI-optimierte SEO-Dateinamen enthalten",
+            "zipPackage": "Dateien werden als ZIP-Archiv verpackt",
+            "processingNote": "Die Verarbeitung kann bei mehreren oder großen Bildern einen Moment dauern.",
+            "cancel": "ABBRECHEN",
+            "download": "HERUNTERLADEN",
+            "processing": "VERARBEITUNG...",
+            "successMessage": "Ihre Bilder wurden erfolgreich heruntergeladen. Was möchten Sie als Nächstes tun?",
+            "startNewBundleDesc": "Neues Paket starten: Aktuelle Bilder löschen und neu beginnen",
+            "continueEditingDesc": "Weiter bearbeiten: Mit aktuellen Bildern weiterarbeiten",
+            "startNewBundle": "NEUES PAKET STARTEN",
+            "continueEditing": "WEITER BEARBEITEN"
+        },
+        "proUpgrade": {
+            "feature": "Stapelverarbeitung"
+        }
+    }
+}

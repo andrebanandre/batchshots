@@ -1,7 +1,7 @@
 'use client';
 
-import Classifier from '../models/classifier';
-import Upscaler from '../models/upscaler';
+import Classifier from '../../models/classifier';
+import Upscaler from '../../models/upscaler';
 
 export default function TestPage() {
   return (

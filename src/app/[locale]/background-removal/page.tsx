@@ -2,17 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useIsPro } from '../hooks/useIsPro';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import ProBadge from '../components/ProBadge';
-import PricingCard from '../components/PricingCard';
-import { ImageFile } from '../components/ImagePreview';
-import { createImageFile, processImage, downloadImage, downloadAllImages } from '../lib/imageProcessing';
-import { processImageBackground, getUpdatedImageWithBackground } from '../lib/backgroundRemoval';
-import { initOpenCV } from '../lib/imageProcessing';
-import Loader from '../components/Loader';
-import { defaultAdjustments } from '../components/ImageProcessingControls';
+import { useIsPro } from '../../hooks/useIsPro';
+import Button from '../../components/Button';
+import Card from '../../components/Card';
+import ProBadge from '../../components/ProBadge';
+import PricingCard from '../../components/PricingCard';
+import { ImageFile } from '../../components/ImagePreview';
+import { createImageFile, processImage, downloadImage, downloadAllImages } from '../../lib/imageProcessing';
+import { processImageBackground, getUpdatedImageWithBackground } from '../../lib/backgroundRemoval';
+import { initOpenCV } from '../../lib/imageProcessing';
+import Loader from '../../components/Loader';
+import { defaultAdjustments } from '../../components/ImageProcessingControls';
 
 export default function BackgroundRemovalPage() {
   const { isProUser, isLoading: isProLoading } = useIsPro();

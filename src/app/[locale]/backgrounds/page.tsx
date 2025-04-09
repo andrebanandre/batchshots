@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import Card from '../components/Card';
-import Button from '../components/Button';
-import Image from 'next/image';
+import Card from '../../components/Card';
+import Button from '../../components/Button';
 
 // Sample background types/presets for the feature
 const backgroundPresets = [

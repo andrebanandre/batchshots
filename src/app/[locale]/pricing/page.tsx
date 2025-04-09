@@ -2,11 +2,10 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useIsPro } from '../hooks/useIsPro';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import PricingCard from '../components/PricingCard';
-import ProBadge from '../components/ProBadge';
+import { useIsPro } from '../../hooks/useIsPro';
+import Button from '../../components/Button';
+import PricingCard from '../../components/PricingCard';
+import ProBadge from '../../components/ProBadge';
 
 export default function PricingPage() {
   const router = useRouter();

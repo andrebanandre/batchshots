@@ -1,20 +1,21 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Card from './components/Card';
-import Button from './components/Button';
-import ImagePreview, { ImageFile } from './components/ImagePreview';
-import ImageProcessingControls, { ImageAdjustments, defaultAdjustments } from './components/ImageProcessingControls';
-import PresetsSelector, { defaultPresets, Preset } from './components/PresetsSelector';
-import DownloadOptions, { ImageFormat } from './components/DownloadOptions';
-import DownloadDialog from './components/DownloadDialog';
-import SeoNameGenerator, { SeoImageName } from './components/SeoNameGenerator';
-import { useIsPro } from './hooks/useIsPro';
+import { useTranslations } from 'next-intl';
+import Card from '../components/Card';
+import Button from '../components/Button';
+import ImagePreview, { ImageFile } from '../components/ImagePreview';
+import ImageProcessingControls, { ImageAdjustments, defaultAdjustments } from '../components/ImageProcessingControls';
+import PresetsSelector, { defaultPresets, Preset } from '../components/PresetsSelector';
+import DownloadOptions, { ImageFormat } from '../components/DownloadOptions';
+import DownloadDialog from '../components/DownloadDialog';
+import SeoNameGenerator, { SeoImageName } from '../components/SeoNameGenerator';
+import { useIsPro } from '../hooks/useIsPro';
 import { useRouter } from 'next/navigation';
 import { 
   processImageBackground, 
   getUpdatedImageWithBackground
-} from './lib/backgroundRemoval';
+} from '../lib/backgroundRemoval';
 import { 
   initOpenCV, 
   processImage, 
@@ -22,13 +23,15 @@ import {
   downloadAllImages,
   downloadImage,
   ImageFormat as LibImageFormat
-} from './lib/imageProcessing';
-import Loader from './components/Loader';
-import { ImageProcessingProvider } from './contexts/ImageProcessingContext';
-import ProUpgradeDialog from './components/ProUpgradeDialog';
-import ProBadge from './components/ProBadge';
+} from '../lib/imageProcessing';
+import Loader from '../components/Loader';
+import { ImageProcessingProvider } from '../contexts/ImageProcessingContext';
+import ProUpgradeDialog from '../components/ProUpgradeDialog';
+import ProBadge from '../components/ProBadge';
 
 export default function Home() {
+  const t = useTranslations('Home');
+  const tDialogs = useTranslations('Dialogs');
   const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
   const [adjustments, setAdjustments] = useState<ImageAdjustments>(defaultAdjustments);
@@ -664,64 +667,64 @@ export default function Home() {
     <main className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="brutalist-accent-card mb-8">
         <h1 className="text-3xl font-bold text-center uppercase mb-6">
-          PICME: SEO IMAGE OPTIMIZER
+          {t('title')}
         </h1>
         
         {!isOpenCVReady ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
             <div className="flex flex-col items-center justify-center py-8">
             <Loader size="lg" />
-              <h3 className="text-lg font-bold mb-2">LOADING APP...</h3>
-              <p className="text-sm text-gray-600">Please wait while we initialize image processing capabilities.</p>
+              <h3 className="text-lg font-bold mb-2">{t('loading')}</h3>
+              <p className="text-sm text-gray-600">{t('loadingDescription')}</p>
             </div>
           </div>
         ) : images.length === 0 ? (
           <div className="flex justify-center mb-6">
             <Card variant="accent" className="max-w-xl w-full">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold uppercase text-center">TRANSFORM YOUR PRODUCT PHOTOS</h2>
+                <h2 className="text-xl font-bold uppercase text-center">{t('transformTitle')}</h2>
                 {isProUser && <ProBadge className="ml-2" />}
               </div>
               <div className="flex flex-col space-y-6">
                 <div className="brutalist-border p-4 bg-white">
-                  <p className="font-medium mb-2">✨ <span className="font-bold">FREE & PRIVACY-FOCUSED</span></p>
+                  <p className="font-medium mb-2">✨ <span className="font-bold">{t('privacyFocused')}</span></p>
                   <p className="text-sm mb-2">
-                    PICME processes all images directly in your browser. We don&apos;t store your photos or data on our servers.
+                    {t('privacyDescription')}
                   </p>
                   <div className="flex justify-between text-xs">
-                    <a href="/privacy" className="underline hover:text-blue-600">Privacy Policy</a>
-                    <a href="/terms" className="underline hover:text-blue-600">Terms of Use</a>
+                    <a href="/privacy" className="underline hover:text-blue-600">{t('privacyPolicy')}</a>
+                    <a href="/terms" className="underline hover:text-blue-600">{t('termsOfUse')}</a>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">🎯 PROFESSIONAL PRESETS</p>
-                    <p className="text-xs">Apply optimized presets for e-commerce, social media, and web display with a single click.</p>
+                    <p className="font-bold mb-1">🎯 {t('features.presets.title')}</p>
+                    <p className="text-xs">{t('features.presets.description')}</p>
                   </div>
                   <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">🤖 AI-POWERED SEO</p>
-                    <p className="text-xs">Generate SEO-friendly filenames with our AI tools to improve your product discoverability.</p>
+                    <p className="font-bold mb-1">🤖 {t('features.aiPowered.title')}</p>
+                    <p className="text-xs">{t('features.aiPowered.description')}</p>
                   </div>
                   <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">🎚️ ADVANCED CONTROLS</p>
-                    <p className="text-xs">Fine-tune brightness, contrast, white balance, and more to perfect your product images.</p>
+                    <p className="font-bold mb-1">🎚️ {t('features.advancedControls.title')}</p>
+                    <p className="text-xs">{t('features.advancedControls.description')}</p>
                   </div>
                   <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">⚡ BATCH PROCESSING</p>
-                    <p className="text-xs">Process multiple images at once to save time and ensure consistent results.</p>
+                    <p className="font-bold mb-1">⚡ {t('features.batchProcessing.title')}</p>
+                    <p className="text-xs">{t('features.batchProcessing.description')}</p>
                   </div>
                 </div>
 
                 <div className="brutalist-border p-3 bg-white">
                   <div className="flex items-center mb-2">
-                    <p className="font-bold">{isProUser ? "PRO MODE ACTIVATED" : "FREE PLAN"}</p>
+                    <p className="font-bold">{isProUser ? t('proMode') : t('freePlan')}</p>
                     {isProUser && <ProBadge className="ml-2" />}
                   </div>
                   <p className="text-xs mb-1">
                     {isProUser 
-                      ? `Process up to ${MAX_IMAGES} images at once with all premium features unlocked.` 
-                      : `Limited to ${MAX_IMAGES} images. Upgrade to PRO to process up to 100 images at once.`}
+                      ? t('proDescription', { maxImages: MAX_IMAGES }) 
+                      : t('freeDescription', { maxImages: MAX_IMAGES })}
                   </p>
                   {!isProUser && (
                     <div className="mt-2">
@@ -730,7 +733,7 @@ export default function Home() {
                         size="sm"
                         onClick={() => router.push('/pricing')}
                       >
-                        UPGRADE TO PRO
+                        {t('upgradeToPro')}
                       </Button>
                     </div>
                   )}
@@ -748,7 +751,7 @@ export default function Home() {
                   <div className="w-full flex justify-center space-x-2">
                     <label htmlFor="fileInput" className="flex-grow flex justify-center">
                       <Button as="span" variant="accent" size="lg" disabled={isProcessing}>
-                        {isProUser ? "SELECT IMAGES (UP TO 100)" : "SELECT IMAGES (UP TO 5)"}
+                        {t('selectImages', { maxImages: isProUser ? "100" : "5" })}
                       </Button>
                     </label>
                     {!isProUser && (
@@ -757,7 +760,7 @@ export default function Home() {
                         size="lg"
                         onClick={() => router.push('/pricing')}
                       >
-                        UPGRADE TO PRO
+                        {t('upgradeToPro')}
                       </Button>
                     )}
                   </div>
@@ -771,7 +774,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 md:sticky md:top-4 md:self-start">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold">IMAGE EDITOR</h2>
+                <h2 className="text-xl font-bold">{t('imageEditor')}</h2>
                 {isProUser && <ProBadge />}
               </div>
             
@@ -809,7 +812,7 @@ export default function Home() {
                       variant="default" 
                       disabled={isProcessing || (images.length >= MAX_IMAGES && isProUser)}
                     >
-                      {images.length >= MAX_IMAGES ? "MAX IMAGES REACHED" : "SELECT MORE IMAGES"}
+                      {images.length >= MAX_IMAGES ? t('maxImagesReached') : t('selectMoreImages')}
                     </Button>
                   </label>
                   
@@ -818,16 +821,16 @@ export default function Home() {
                       variant="accent"
                       onClick={() => router.push('/pricing')}
                     >
-                      UPGRADE TO PRO
+                      {t('upgradeToPro')}
                     </Button>
                   )}
                 </div>
                 
                 <div className="text-sm">
-                  {images.length}/{MAX_IMAGES} images 
+                  {t('imagesCount', { current: images.length, max: MAX_IMAGES })}
                   {!isProUser && (
                     <span className="ml-2 text-xs text-gray-600">
-                      (Upgrade for up to 100)
+                      {t('upgradeFor')}
                     </span>
                   )}
                 </div>
@@ -853,7 +856,7 @@ export default function Home() {
                 <ImageProcessingControls />
               </ImageProcessingProvider>
 
-              <Card title="IMAGE OPTIMIZATION" variant="accent">
+              <Card title={t('imageOptimization')} variant="accent">
                 <PresetsSelector
                   presets={getAllPresets()}
                   selectedPreset={selectedPreset}
@@ -898,7 +901,7 @@ export default function Home() {
       <ProUpgradeDialog
         isOpen={showUpgradeDialog}
         onClose={() => setShowUpgradeDialog(false)}
-        feature="Batch Processing"
+        feature={tDialogs('proUpgrade.feature')}
         maxImagesCount={100}
       />
     </main>

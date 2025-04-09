@@ -1,0 +1,76 @@
+{
+    "Manifest": {
+        "name": "PICME"
+    },
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Home": {
+        "title": "PICME: SEO IMAGE OPTIMIZER",
+        "loading": "LOADING APP...",
+        "loadingDescription": "Please wait while we initialize image processing capabilities.",
+        "transformTitle": "TRANSFORM YOUR PRODUCT PHOTOS",
+        "privacyFocused": "FREE & PRIVACY-FOCUSED",
+        "privacyDescription": "PICME processes all images directly in your browser. We don't store your photos or data on our servers.",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfUse": "Terms of Use",
+        "features": {
+            "presets": {
+                "title": "PROFESSIONAL PRESETS",
+                "description": "Apply optimized presets for e-commerce, social media, and web display with a single click."
+            },
+            "aiPowered": {
+                "title": "AI-POWERED SEO",
+                "description": "Generate SEO-friendly filenames with our AI tools to improve your product discoverability."
+            },
+            "advancedControls": {
+                "title": "ADVANCED CONTROLS",
+                "description": "Fine-tune brightness, contrast, white balance, and more to perfect your product images."
+            },
+            "batchProcessing": {
+                "title": "BATCH PROCESSING",
+                "description": "Process multiple images at once to save time and ensure consistent results."
+            }
+        },
+        "proMode": "PRO MODE ACTIVATED",
+        "freePlan": "FREE PLAN",
+        "proDescription": "Process up to {maxImages} images at once with all premium features unlocked.",
+        "freeDescription": "Limited to {maxImages} images. Upgrade to PRO to process up to 100 images at once.",
+        "upgradeToPro": "UPGRADE TO PRO",
+        "selectImages": "SELECT IMAGES (UP TO {maxImages})",
+        "imageEditor": "IMAGE EDITOR",
+        "selectMoreImages": "SELECT MORE IMAGES",
+        "maxImagesReached": "MAX IMAGES REACHED",
+        "imagesCount": "{current}/{max} images",
+        "upgradeFor": "(Upgrade for up to 100)",
+        "imageOptimization": "IMAGE OPTIMIZATION"
+    },
+    "Dialogs": {
+        "download": {
+            "title": "Download Images",
+            "confirmTitle": "Confirm Download",
+            "successTitle": "Download Successful",
+            "summary": "Download Summary:",
+            "images": "{count, plural, =1 {# image} other {# images}} will be downloaded",
+            "format": "Format:",
+            "appliedPreset": "Applied preset:",
+            "adjustmentsApplied": "Image adjustments have been applied",
+            "backgroundRemoval": "Background removal has been applied",
+            "seoFilenames": "AI SEO-optimized filenames included",
+            "zipPackage": "Files will be packaged as a ZIP archive",
+            "processingNote": "Processing may take a moment for multiple or large images.",
+            "cancel": "CANCEL",
+            "download": "DOWNLOAD",
+            "processing": "PROCESSING...",
+            "successMessage": "Your images have been successfully downloaded. What would you like to do next?",
+            "startNewBundleDesc": "Start new bundle: Clear current images and start fresh",
+            "continueEditingDesc": "Continue editing: Keep working with current images",
+            "startNewBundle": "START NEW BUNDLE",
+            "continueEditing": "CONTINUE EDITING"
+        },
+        "proUpgrade": {
+            "feature": "Batch Processing"
+        }
+    }
+}
