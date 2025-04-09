@@ -1,9 +1,11 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
+  const t = useTranslations('Footer');
+  const tNavbar = useTranslations('Navbar');
+  const tHome = useTranslations('Home');
   const currentYear = new Date().getFullYear();
   
   return (
@@ -14,8 +16,7 @@ export default function Footer() {
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-bold uppercase mb-2">PICME</h3>
             <p className="text-sm max-w-sm">
-              Professional image tools for product photographers, marketers, and e-commerce businesses.
-              Simplify your workflow with our brutalist-style tools.
+              {t('about')}
             </p>
             <div className="flex space-x-4 mt-2">
               <a href="https://twitter.com" className="brutalist-border p-2" aria-label="Twitter">
@@ -40,24 +41,24 @@ export default function Footer() {
           
           {/* Second Column - Quick Links */}
           <div>
-            <h3 className="text-lg font-bold uppercase mb-4">QUICK LINKS</h3>
+            <h3 className="text-lg font-bold uppercase mb-4">{t('quickLinks')}</h3>
             <nav className="flex flex-col space-y-2">
-              <Link href="/" className="hover:text-primary text-sm">Image Optimizer</Link>
-              <Link href="/backgrounds" className="hover:text-primary text-sm">AI Backgrounds</Link>
-              <Link href="/pricing" className="hover:text-primary text-sm">Pricing</Link>
-              <Link href="/privacy" className="hover:text-primary text-sm">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-primary text-sm">Terms of Service</Link>
+              <Link href="/" className="hover:text-primary text-sm">{tNavbar('imageOptimizer')}</Link>
+              <Link href="/backgrounds" className="hover:text-primary text-sm">{tNavbar('aiBackgrounds')}</Link>
+              <Link href="/pricing" className="hover:text-primary text-sm">{tNavbar('pricing')}</Link>
+              <Link href="/privacy" className="hover:text-primary text-sm">{tHome('privacyPolicy')}</Link>
+              <Link href="/terms" className="hover:text-primary text-sm">{tHome('termsOfUse')}</Link>
             </nav>
           </div>
           
           {/* Third Column - Newsletter */}
           <div>
-            <h3 className="text-lg font-bold uppercase mb-4">STAY UPDATED</h3>
-            <p className="text-sm mb-4">Subscribe to our newsletter for updates, tips, and special offers.</p>
+            <h3 className="text-lg font-bold uppercase mb-4">{t('stayUpdated')}</h3>
+            <p className="text-sm mb-4">{t('subscribeText')}</p>
             <form className="flex flex-col space-y-3">
               <input 
                 type="email" 
-                placeholder="Your email" 
+                placeholder={t('emailPlaceholder')}
                 className="brutalist-border p-2 w-full text-sm"
                 aria-label="Email for newsletter"
               />
@@ -65,7 +66,7 @@ export default function Footer() {
                 type="submit" 
                 className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white hover:translate-y-[-2px] transition-transform p-2 font-bold text-sm"
               >
-                SUBSCRIBE
+                {t('subscribe')}
               </button>
             </form>
           </div>
@@ -73,8 +74,8 @@ export default function Footer() {
         
         {/* Copyright */}
         <div className="mt-8 pt-4 border-t border-gray-200 text-sm text-center">
-          <p>© {currentYear} PICME. All rights reserved.</p>
-          <p className="mt-2 text-xs">Made with ♥ by the PICME team</p>
+          <p>{t('copyright', { year: currentYear })}</p>
+          <p className="mt-2 text-xs">{t('madeWith')}</p>
         </div>
       </div>
     </footer>

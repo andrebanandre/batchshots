@@ -4,6 +4,7 @@ import ProBadge from './ProBadge';
 import BackgroundRemovalControl from './BackgroundRemovalControl';
 import QuickPresets from './QuickPresets';
 import { useImageProcessing } from '../contexts/ImageProcessingContext';
+import { useTranslations } from 'next-intl';
 
 export interface ImageAdjustments {
   brightness: number;
@@ -38,6 +39,8 @@ interface ImageProcessingControlsProps {
 export default function ImageProcessingControls({
   className = '',
 }: ImageProcessingControlsProps) {
+  const t = useTranslations('Components.ImageProcessingControls');
+  
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced' | 'ai'>('basic');
   
   const {
@@ -73,7 +76,7 @@ export default function ImageProcessingControls({
 
   return (
     <Card 
-      title="IMAGE ADJUSTMENTS" 
+      title={t('title')} 
       className={className} 
       variant="accent"
       headerRight={
@@ -85,7 +88,7 @@ export default function ImageProcessingControls({
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
           </svg>
-          RESET
+          {t('reset')}
         </button>
       }
     >
@@ -105,7 +108,7 @@ export default function ImageProcessingControls({
                 backgroundRepeat: "no-repeat"
               }}
             />
-            <span className="font-bold">APPLY TO ALL IMAGES</span>
+            <span className="font-bold">{t('applyToAll')}</span>
           </label>
         </div>
 
@@ -116,19 +119,19 @@ export default function ImageProcessingControls({
               onClick={() => setActiveTab('basic')}
               className={`py-2 px-4 font-bold ${activeTab === 'basic' ? 'bg-primary text-white' : 'bg-white text-black'}`}
             >
-              BASIC
+              {t('basic')}
             </button>
             <button
               onClick={() => setActiveTab('advanced')}
               className={`py-2 px-4 font-bold ${activeTab === 'advanced' ? 'bg-primary text-white' : 'bg-white text-black'}`}
             >
-              ADVANCED
+              {t('advanced')}
             </button>
             <button
               onClick={() => setActiveTab('ai')}
               className={`py-2 px-4 font-bold flex items-center ${activeTab === 'ai' ? 'bg-primary text-white' : 'bg-white text-black'}`}
             >
-              AI <ProBadge className="ml-1" />
+              {t('ai')} <ProBadge className="ml-1" />
             </button>
           </div>
         </div>
@@ -142,7 +145,7 @@ export default function ImageProcessingControls({
               
               <div className="mt-6">
                 <label htmlFor="brightness" className="block mb-1 font-bold">
-                  BRIGHTNESS: {adjustments.brightness}
+                  {t('brightness')}: {adjustments.brightness}
                 </label>
                 <input
                   id="brightness"
@@ -157,7 +160,7 @@ export default function ImageProcessingControls({
 
               <div>
                 <label htmlFor="contrast" className="block mb-1 font-bold">
-                  CONTRAST: {adjustments.contrast}
+                  {t('contrast')}: {adjustments.contrast}
                 </label>
                 <input
                   id="contrast"
@@ -172,7 +175,7 @@ export default function ImageProcessingControls({
 
               <div>
                 <label htmlFor="sharpen" className="block mb-1 font-bold">
-                  SHARPEN: {adjustments.sharpen?.toFixed(1) || '0.0'}
+                  {t('sharpen')}: {adjustments.sharpen?.toFixed(1) || '0.0'}
                 </label>
                 <input
                   id="sharpen"
@@ -193,14 +196,14 @@ export default function ImageProcessingControls({
             <div className="space-y-6">
               {/* Modulate (HSL) controls - More prominent styling */}
               <div className="brutalist-border p-3 bg-white">
-                <h3 className="font-bold mb-3 text-lg uppercase">COLOR ADJUST (HSL)</h3>
+                <h3 className="font-bold mb-3 text-lg uppercase">{t('colorAdjust')}</h3>
                 <div className="space-y-4">
                   <div>
                     <label htmlFor="hue" className="block mb-1 font-bold">
-                      HUE: {adjustments.hue?.toFixed(0) || '100'}
+                      {t('hue')}: {adjustments.hue?.toFixed(0) || '100'}
                     </label>
                     <div className="flex items-center">
-                      <span className="mr-2 text-xs">COOLER</span>
+                      <span className="mr-2 text-xs">{t('cooler')}</span>
                       <input
                         id="hue"
                         type="range"
@@ -210,16 +213,16 @@ export default function ImageProcessingControls({
                         onChange={(e) => handleSliderChange(e, 'hue')}
                         className="flex-1 brutalist-border bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                       />
-                      <span className="ml-2 text-xs">WARMER</span>
+                      <span className="ml-2 text-xs">{t('warmer')}</span>
                     </div>
                   </div>
                   
                   <div>
                     <label htmlFor="saturation" className="block mb-1 font-bold">
-                      SATURATION: {adjustments.saturation?.toFixed(0) || '100'}
+                      {t('saturation')}: {adjustments.saturation?.toFixed(0) || '100'}
                     </label>
                     <div className="flex items-center">
-                      <span className="mr-2 text-xs">LESS</span>
+                      <span className="mr-2 text-xs">{t('less')}</span>
                       <input
                         id="saturation"
                         type="range"
@@ -229,16 +232,16 @@ export default function ImageProcessingControls({
                         onChange={(e) => handleSliderChange(e, 'saturation')}
                         className="flex-1 brutalist-border bg-gradient-to-r from-gray-400 to-red-600 h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                       />
-                      <span className="ml-2 text-xs">MORE</span>
+                      <span className="ml-2 text-xs">{t('more')}</span>
                     </div>
                   </div>
                   
                   <div>
                     <label htmlFor="lightness" className="block mb-1 font-bold">
-                      LIGHTNESS: {adjustments.lightness?.toFixed(0) || '100'}
+                      {t('lightness')}: {adjustments.lightness?.toFixed(0) || '100'}
                     </label>
                     <div className="flex items-center">
-                      <span className="mr-2 text-xs">DARKER</span>
+                      <span className="mr-2 text-xs">{t('darker')}</span>
                       <input
                         id="lightness"
                         type="range"
@@ -248,61 +251,61 @@ export default function ImageProcessingControls({
                         onChange={(e) => handleSliderChange(e, 'lightness')}
                         className="flex-1 brutalist-border bg-gradient-to-r from-gray-900 to-white h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                       />
-                      <span className="ml-2 text-xs">LIGHTER</span>
+                      <span className="ml-2 text-xs">{t('lighter')}</span>
                     </div>
                   </div>
                 </div>
               </div>
               
-              {/* RGB Scale controls */}
-              <div>
-                <h3 className="font-bold mb-2">RGB SCALING</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center">
-                    <label htmlFor="redScale" className="block w-32 font-bold">
-                      RED: {adjustments.redScale?.toFixed(1) || '1.0'}
+              {/* RGB controls */}
+              <div className="brutalist-border p-3 bg-white">
+                <h3 className="font-bold mb-3 text-lg uppercase">{t('colorBalance')}</h3>
+                <div className="space-y-4">
+                  <div>
+                    <label htmlFor="redScale" className="block mb-1 font-bold">
+                      {t('red')}: {adjustments.redScale?.toFixed(2) || '1.00'}
                     </label>
                     <input
                       id="redScale"
-                      type="number"
+                      type="range"
                       min="0"
                       max="2"
-                      step="0.1"
-                      value={adjustments.redScale || 1.0}
+                      step="0.01"
+                      value={adjustments.redScale || 1}
                       onChange={(e) => handleSliderChange(e, 'redScale')}
-                      className="w-20 brutalist-border bg-white h-8 px-2"
+                      className="w-full brutalist-border bg-gradient-to-r from-gray-200 to-red-600 h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                     />
                   </div>
                   
-                  <div className="flex items-center">
-                    <label htmlFor="greenScale" className="block w-32 font-bold">
-                      GREEN: {adjustments.greenScale?.toFixed(1) || '1.0'}
+                  <div>
+                    <label htmlFor="greenScale" className="block mb-1 font-bold">
+                      {t('green')}: {adjustments.greenScale?.toFixed(2) || '1.00'}
                     </label>
                     <input
                       id="greenScale"
-                      type="number"
+                      type="range"
                       min="0"
                       max="2"
-                      step="0.1"
-                      value={adjustments.greenScale || 1.0}
+                      step="0.01"
+                      value={adjustments.greenScale || 1}
                       onChange={(e) => handleSliderChange(e, 'greenScale')}
-                      className="w-20 brutalist-border bg-white h-8 px-2"
+                      className="w-full brutalist-border bg-gradient-to-r from-gray-200 to-green-600 h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                     />
                   </div>
                   
-                  <div className="flex items-center">
-                    <label htmlFor="blueScale" className="block w-32 font-bold">
-                      BLUE: {adjustments.blueScale?.toFixed(1) || '1.0'}
+                  <div>
+                    <label htmlFor="blueScale" className="block mb-1 font-bold">
+                      {t('blue')}: {adjustments.blueScale?.toFixed(2) || '1.00'}
                     </label>
                     <input
                       id="blueScale"
-                      type="number"
+                      type="range"
                       min="0"
                       max="2"
-                      step="0.1"
-                      value={adjustments.blueScale || 1.0}
+                      step="0.01"
+                      value={adjustments.blueScale || 1}
                       onChange={(e) => handleSliderChange(e, 'blueScale')}
-                      className="w-20 brutalist-border bg-white h-8 px-2"
+                      className="w-full brutalist-border bg-gradient-to-r from-gray-200 to-blue-600 h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
                     />
                   </div>
                 </div>
@@ -310,28 +313,18 @@ export default function ImageProcessingControls({
             </div>
           </>
         ) : (
-          // AI Tab Content
-          <div className="space-y-4">
-            <div className="text-center mb-2">
-              <h3 className="font-bold text-lg">AI IMAGE ENHANCEMENT</h3>
-              <p className="text-xs text-gray-600">AI-powered tools to transform your product images</p>
-            </div>
-            
-            {/* Compact BackgroundRemoval Component */}
-            <BackgroundRemovalControl
-              selectedImageId={selectedImageId}
-              isProcessing={isProcessing}
-              isRemovingBackground={isRemovingBackground}
-              hasBackgroundRemoved={hasBackgroundRemoved}
-              applyToAll={applyToAll}
-              totalImages={totalImages}
-              processedCount={processedCount}
-              onRemoveBackground={handleRemoveBackground}
-              onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
-              compact={true}
-            />
-         
-          </div>
+          // AI Background Removal tab
+          <BackgroundRemovalControl 
+            selectedImageId={selectedImageId}
+            isProcessing={isProcessing}
+            isRemovingBackground={isRemovingBackground}
+            hasBackgroundRemoved={hasBackgroundRemoved}
+            applyToAll={applyToAll}
+            totalImages={totalImages}
+            processedCount={processedCount}
+            onRemoveBackground={handleRemoveBackground}
+            onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
+          />
         )}
       </div>
     </Card>

@@ -46,6 +46,100 @@
         "upgradeFor": "(Upgrade for up to 100)",
         "imageOptimization": "IMAGE OPTIMIZATION"
     },
+    "Navbar": {
+        "imageOptimizer": "Image Optimizer",
+        "removeBackgrounds": "Remove Backgrounds",
+        "aiBackgrounds": "AI Backgrounds",
+        "pricing": "Pricing",
+        "login": "LOG IN"
+    },
+    "Footer": {
+        "about": "Professional image tools for product photographers, marketers, and e-commerce businesses. Simplify your workflow with our brutalist-style tools.",
+        "quickLinks": "QUICK LINKS",
+        "stayUpdated": "STAY UPDATED",
+        "subscribeText": "Subscribe to our newsletter for updates, tips, and special offers.",
+        "emailPlaceholder": "Your email",
+        "subscribe": "SUBSCRIBE",
+        "copyright": "© {year} PICME. All rights reserved.",
+        "madeWith": "Made with ♥ by the PICME team"
+    },
+    "Layout": {
+        "title": "PicMe - SEO-Friendly Image Optimizer",
+        "description": "Optimize your product images for SEO with simple adjustments to white balance, contrast, and size.",
+        "keywords": "image optimization, SEO images, product photos, white balance, image batch processing"
+    },
+    "Components": {
+        "ImageProcessingControls": {
+            "title": "IMAGE ADJUSTMENTS",
+            "reset": "RESET",
+            "applyToAll": "APPLY TO ALL IMAGES",
+            "basic": "BASIC",
+            "advanced": "ADVANCED",
+            "ai": "AI",
+            "brightness": "BRIGHTNESS",
+            "contrast": "CONTRAST",
+            "sharpen": "SHARPEN",
+            "colorAdjust": "COLOR ADJUST (HSL)",
+            "hue": "HUE",
+            "cooler": "COOLER",
+            "warmer": "WARMER",
+            "saturation": "SATURATION",
+            "less": "LESS",
+            "more": "MORE",
+            "lightness": "LIGHTNESS",
+            "darker": "DARKER",
+            "lighter": "LIGHTER",
+            "colorBalance": "COLOR BALANCE (RGB)",
+            "red": "RED",
+            "green": "GREEN",
+            "blue": "BLUE"
+        },
+        "BackgroundRemoval": {
+            "title": "BACKGROUND REMOVAL",
+            "selected": "Selected Image",
+            "removeBackground": "REMOVE BACKGROUND",
+            "allImages": "All Images",
+            "backgroundsRemoved": "{count} of {total} backgrounds removed",
+            "removeAllBackgrounds": "REMOVE ALL BACKGROUNDS",
+            "processing": "Processing...",
+            "backgroundRemoved": "Background removed successfully!",
+            "transparent": "Transparent background detected"
+        },
+        "PresetsSelector": {
+            "title": "PRESETS",
+            "custom": "Custom",
+            "dimensions": "DIMENSIONS",
+            "width": "Width",
+            "height": "Height",
+            "auto": "auto",
+            "quality": "QUALITY",
+            "apply": "APPLY"
+        },
+        "DownloadOptions": {
+            "title": "DOWNLOAD",
+            "format": "FORMAT",
+            "downloadAll": "DOWNLOAD ALL",
+            "transparentNote": "Note: Images with removed backgrounds will be saved as transparent PNGs"
+        },
+        "ProUpgrade": {
+            "title": "Upgrade to Pro",
+            "unlock": "Unlock All Premium Features",
+            "description": "Upgrade to Pro to unlock {feature} and process up to {count} images at once.",
+            "learnMore": "LEARN MORE",
+            "close": "Close"
+        },
+        "SeoNameGenerator": {
+            "title": "AI SEO NAME GENERATOR",
+            "description": "Generate SEO-friendly filenames for your images",
+            "enterDescription": "Enter your product description",
+            "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain...",
+            "generate": "GENERATE SEO NAMES",
+            "generating": "GENERATING...",
+            "proLimit": "Generate up to 100 names at once with Pro",
+            "originalName": "Original Name",
+            "seoName": "SEO Name"
+        }
+    },
     "Dialogs": {
         "download": {
             "title": "Download Images",

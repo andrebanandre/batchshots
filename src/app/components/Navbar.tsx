@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Button from './Button';
+import { useTranslations } from 'next-intl';
 import {
   SignInButton,
   SignedIn,
@@ -22,6 +23,8 @@ const Logo = () => (
 
 // Mobile navigation menu
 const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const t = useTranslations('Navbar');
+  
   if (!isOpen) return null;
   
   return (
@@ -32,22 +35,22 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         </div>
         <nav className="flex flex-col space-y-4">
           <Link href="/" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            IMAGE OPTIMIZER
+            {t('imageOptimizer')}
           </Link>
           <Link href="/background-removal" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            REMOVE BACKGROUNDS
+            {t('removeBackgrounds')}
           </Link>
           <Link href="/backgrounds" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            AI BACKGROUNDS
+            {t('aiBackgrounds')}
           </Link>
           <Link href="/pricing" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            PRICING
+            {t('pricing')}
           </Link>
           <div className="pt-4 border-t-2 border-black">
             <SignedOut>
               <div className="flex flex-col space-y-2">
                 <SignInButton>
-                  <Button variant="primary" size="sm" fullWidth>LOG IN</Button>
+                  <Button variant="primary" size="sm" fullWidth>{t('login')}</Button>
                 </SignInButton>
              
               </div>
@@ -61,6 +64,7 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const t = useTranslations('Navbar');
   
   return (
     <header className="border-b-3 border-black sticky top-0 bg-white z-40">
@@ -72,16 +76,16 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           <Link href="/" className="font-bold text-lg uppercase hover:text-primary transition-colors">
-            Image Optimizer
+            {t('imageOptimizer')}
           </Link>
           <Link href="/background-removal" className="font-bold text-lg uppercase hover:text-primary transition-colors">
-            Remove Backgrounds
+            {t('removeBackgrounds')}
           </Link>
           <Link href="/backgrounds" className="font-bold text-lg uppercase hover:text-primary transition-colors">
-            AI Backgrounds
+            {t('aiBackgrounds')}
           </Link>
           <Link href="/pricing" className="font-bold text-lg uppercase hover:text-primary transition-colors">
-            Pricing
+            {t('pricing')}
           </Link>
           <div className="ml-2 flex items-center space-x-2">
             <SignedIn>
@@ -98,7 +102,7 @@ export default function Navbar() {
             </SignedIn>
             <SignedOut>
               <SignInButton>
-                <Button variant="primary" size="sm">LOG IN</Button>
+                <Button variant="primary" size="sm">{t('login')}</Button>
               </SignInButton>
              
             </SignedOut>

@@ -46,6 +46,100 @@
         "upgradeFor": "(Upgrade für bis zu 100)",
         "imageOptimization": "BILDOPTIMIERUNG"
     },
+    "Navbar": {
+        "imageOptimizer": "Bildoptimierer",
+        "removeBackgrounds": "Hintergründe entfernen",
+        "aiBackgrounds": "KI-Hintergründe",
+        "pricing": "Preise",
+        "login": "ANMELDEN"
+    },
+    "Footer": {
+        "about": "Professionelle Bildwerkzeuge für Produktfotografen, Vermarkter und E-Commerce-Unternehmen. Vereinfachen Sie Ihren Workflow mit unseren brutalistischen Tools.",
+        "quickLinks": "SCHNELLLINKS",
+        "stayUpdated": "BLEIBEN SIE INFORMIERT",
+        "subscribeText": "Abonnieren Sie unseren Newsletter für Updates, Tipps und Sonderangebote.",
+        "emailPlaceholder": "Ihre E-Mail",
+        "subscribe": "ABONNIEREN",
+        "copyright": "© {year} PICME. Alle Rechte vorbehalten.",
+        "madeWith": "Mit ♥ erstellt vom PICME-Team"
+    },
+    "Layout": {
+        "title": "PicMe - SEO-freundlicher Bildoptimierer",
+        "description": "Optimieren Sie Ihre Produktbilder für SEO mit einfachen Anpassungen von Weißabgleich, Kontrast und Größe.",
+        "keywords": "Bildoptimierung, SEO-Bilder, Produktfotos, Weißabgleich, Bildstapelverarbeitung"
+    },
+    "Components": {
+        "ImageProcessingControls": {
+            "title": "BILDANPASSUNGEN",
+            "reset": "ZURÜCKSETZEN",
+            "applyToAll": "AUF ALLE BILDER ANWENDEN",
+            "basic": "EINFACH",
+            "advanced": "ERWEITERT",
+            "ai": "KI",
+            "brightness": "HELLIGKEIT",
+            "contrast": "KONTRAST",
+            "sharpen": "SCHÄRFEN",
+            "colorAdjust": "FARBANPASSUNG (HSL)",
+            "hue": "FARBTON",
+            "cooler": "KÜHLER",
+            "warmer": "WÄRMER",
+            "saturation": "SÄTTIGUNG",
+            "less": "WENIGER",
+            "more": "MEHR",
+            "lightness": "HELLIGKEIT",
+            "darker": "DUNKLER",
+            "lighter": "HELLER",
+            "colorBalance": "FARBBALANCE (RGB)",
+            "red": "ROT",
+            "green": "GRÜN",
+            "blue": "BLAU"
+        },
+        "BackgroundRemoval": {
+            "title": "HINTERGRUNDENTFERNUNG",
+            "selected": "Ausgewähltes Bild",
+            "removeBackground": "HINTERGRUND ENTFERNEN",
+            "allImages": "Alle Bilder",
+            "backgroundsRemoved": "{count} von {total} Hintergründen entfernt",
+            "removeAllBackgrounds": "ALLE HINTERGRÜNDE ENTFERNEN",
+            "processing": "Verarbeitung...",
+            "backgroundRemoved": "Hintergrund erfolgreich entfernt!",
+            "transparent": "Transparenter Hintergrund erkannt"
+        },
+        "PresetsSelector": {
+            "title": "VOREINSTELLUNGEN",
+            "custom": "Benutzerdefiniert",
+            "dimensions": "ABMESSUNGEN",
+            "width": "Breite",
+            "height": "Höhe",
+            "auto": "auto",
+            "quality": "QUALITÄT",
+            "apply": "ANWENDEN"
+        },
+        "DownloadOptions": {
+            "title": "HERUNTERLADEN",
+            "format": "FORMAT",
+            "downloadAll": "ALLE HERUNTERLADEN",
+            "transparentNote": "Hinweis: Bilder mit entferntem Hintergrund werden als transparente PNGs gespeichert"
+        },
+        "ProUpgrade": {
+            "title": "Auf Pro upgraden",
+            "unlock": "Alle Premium-Funktionen freischalten",
+            "description": "Upgraden Sie auf Pro, um {feature} freizuschalten und bis zu {count} Bilder gleichzeitig zu verarbeiten.",
+            "learnMore": "MEHR ERFAHREN",
+            "close": "Schließen"
+        },
+        "SeoNameGenerator": {
+            "title": "KI SEO-NAMENSGENERATOR",
+            "description": "Generieren Sie SEO-freundliche Dateinamen für Ihre Bilder",
+            "enterDescription": "Geben Sie Ihre Produktbeschreibung ein",
+            "placeholder": "z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder...",
+            "generate": "SEO-NAMEN GENERIEREN",
+            "generating": "GENERIEREN...",
+            "proLimit": "Generieren Sie bis zu 100 Namen auf einmal mit Pro",
+            "originalName": "Originalname",
+            "seoName": "SEO-Name"
+        }
+    },
     "Dialogs": {
         "download": {
             "title": "Bilder herunterladen",

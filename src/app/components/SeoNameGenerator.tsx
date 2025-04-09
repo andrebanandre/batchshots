@@ -6,6 +6,7 @@ import { useIsPro } from '../hooks/useIsPro';
 import { useRouter } from 'next/navigation';
 import { getCaptchaToken } from '../lib/recaptcha';
 import Loader from './Loader';
+import { useTranslations } from 'next-intl';
 
 export interface SeoImageName {
   id: string;
@@ -30,6 +31,9 @@ export default function SeoNameGenerator({
   className = '',
   imageCount = 0,
 }: SeoNameGeneratorProps) {
+  const t = useTranslations('Components.SeoNameGenerator');
+  const tPro = useTranslations('Components.ProUpgrade');
+  
   const [globalDescription, setGlobalDescription] = useState('');
   const [recaptchaError, setRecaptchaError] = useState<string | null>(null);
   const { isProUser, isLoading: isProLoading } = useIsPro();
@@ -70,27 +74,27 @@ export default function SeoNameGenerator({
   };
 
   return (
-    <Card title="AI SEO IMAGE NAMING" className={className} variant="accent" headerRight={<ProBadge />}>
+    <Card title={t('title')} className={className} variant="accent" headerRight={<ProBadge />}>
       <div className="space-y-4">
         <div className="brutalist-border p-3 bg-white">
-          <h3 className="font-bold mb-3 text-sm uppercase">Product Description <ProBadge className="ml-1" /></h3>
+          <h3 className="font-bold mb-3 text-sm uppercase">{t('enterDescription')} <ProBadge className="ml-1" /></h3>
           <div className="space-y-3">
             <div className="flex items-center">
               <p className="text-xs">
-                 Enter a detailed product description to generate SEO-optimized image names.
+                {t('description')}
               </p>
             </div>
             
             <textarea
               className="w-full p-2 brutalist-border"
               rows={3}
-              placeholder="E.g. Black snapback hat from New Era, limited edition with discount"
+              placeholder={t('placeholder')}
               value={globalDescription}
               onChange={(e) => setGlobalDescription(e.target.value)}
               disabled={isGenerating}
             ></textarea>
             <p className="text-xs text-gray-500">
-              Include key details like product type, color, brand, materials, and unique features.
+              {t('proLimit')}
             </p>
           </div>
         </div>
@@ -103,11 +107,11 @@ export default function SeoNameGenerator({
         >
           {isGenerating ? (
             <div className="flex items-center justify-center">
-              <span className="mr-2">GENERATING NAMES...</span>
+              <span className="mr-2">{t('generating')}</span>
               <Loader size="sm" />
             </div>
           ) : (
-            'GENERATE SEO NAMES'
+            t('generate')
           )}
         </Button>
 
@@ -124,10 +128,23 @@ export default function SeoNameGenerator({
               Our AI has generated SEO-optimized filenames for your images.
               You can edit individual names in the image preview section.
             </p>
-            <div className="text-xs bg-slate-50 p-2 brutalist-border">
-              <p>✓ AI-generated SEO-optimized names with keywords</p>
-              <p>✓ Search engine friendly format with improved ranking potential</p>
-              <p>✓ Original file extensions preserved</p>
+            <div className="overflow-auto max-h-40">
+              <table className="w-full text-xs">
+                <thead className="bg-slate-100">
+                  <tr>
+                    <th className="text-left p-2 font-bold">{t('originalName')}</th>
+                    <th className="text-left p-2 font-bold">{t('seoName')}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {seoNames.map((name) => (
+                    <tr key={name.id} className="border-t border-gray-200">
+                      <td className="p-2 truncate max-w-[120px]">{name.originalName}</td>
+                      <td className="p-2 text-green-600 font-medium truncate max-w-[120px]">{name.seoName}.{name.extension}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         )}
@@ -138,7 +155,7 @@ export default function SeoNameGenerator({
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white brutalist-border border-3 border-black p-6 max-w-md w-full">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold">UPGRADE TO PRO</h3>
+              <h3 className="text-xl font-bold">{tPro('title')}</h3>
               <button onClick={() => setShowProDialog(false)} className="text-gray-500 hover:text-gray-700">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -149,12 +166,11 @@ export default function SeoNameGenerator({
             <div className="mb-6">
               <div className="flex items-center mb-4">
                 <ProBadge className="mr-2" />
-                <span className="font-bold">PRO FEATURE: AI SEO Image Naming</span>
+                <span className="font-bold">{tPro('unlock')}</span>
               </div>
               
               <p className="mb-4 text-sm">
-                Upgrade to PRO to unlock AI-powered SEO name generation for your images! 
-                Improve your product discoverability with optimized image filenames.
+                {tPro('description', { feature: 'AI SEO Image Naming', count: 100 })}
               </p>
               
               <div className="brutalist-border p-3 bg-yellow-50 mb-4">
@@ -170,7 +186,7 @@ export default function SeoNameGenerator({
                 onClick={() => router.push('/pricing')}
                 className="w-full"
               >
-                UPGRADE TO PRO
+                {tPro('learnMore')}
               </Button>
               
               <Button 
@@ -185,7 +201,7 @@ export default function SeoNameGenerator({
                 onClick={() => setShowProDialog(false)}
                 className="text-sm text-gray-600 hover:text-gray-800"
               >
-                Maybe later
+                {tPro('close')}
               </button>
             </div>
           </div>

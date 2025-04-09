@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import Button from './Button';
+import { useTranslations } from 'next-intl';
 
 export type ImageFormat = 'jpg' | 'webp' | 'png';
 
@@ -15,6 +16,8 @@ export default function DownloadOptions({
   hasBackgroundRemovedImages = false,
   className = '',
 }: DownloadOptionsProps) {
+  const t = useTranslations('Components.DownloadOptions');
+  
   // Set initial format to PNG if background-removed images are present
   const [downloadFormat, setDownloadFormat] = useState<ImageFormat>(
     hasBackgroundRemovedImages ? 'png' : 'jpg'
@@ -36,11 +39,11 @@ export default function DownloadOptions({
   };
 
   return (
-    <Card title="DOWNLOAD OPTIONS" className={className} variant="accent">
+    <Card title={t('title')} className={className} variant="accent">
       <div className="space-y-6">
         {/* Format Selection */}
         <div className="brutalist-border p-3 bg-white">
-          <h3 className="font-bold mb-3 text-sm uppercase">Image Format</h3>
+          <h3 className="font-bold mb-3 text-sm uppercase">{t('format')}</h3>
           <div className="space-y-3">
             <div>
               <div className="flex space-x-4">
@@ -99,7 +102,7 @@ export default function DownloadOptions({
               
               {hasBackgroundRemovedImages && (
                 <div className="mt-2 text-xs text-[#4F46E5] font-bold">
-                  PNG format recommended for transparent backgrounds
+                  {t('transparentNote')}
                 </div>
               )}
             </div>
@@ -111,7 +114,7 @@ export default function DownloadOptions({
           fullWidth
           variant="accent"
         >
-          DOWNLOAD ALL
+          {t('downloadAll')}
         </Button>
       </div>
     </Card>

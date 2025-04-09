@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { getMessages } from 'next-intl/server';
 
 import {
   ClerkProvider,
@@ -22,11 +23,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "PicMe - SEO-Friendly Image Optimizer",
-  description: "Optimize your product images for SEO with simple adjustments to white balance, contrast, and size.",
-  keywords: "image optimization, SEO images, product photos, white balance, image batch processing",
-};
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = await Promise.resolve(params.locale);
+  const messages = await getMessages({ locale });
+  const tLayout = messages?.Layout as Record<string, string> || {};
+
+  return {
+    title: tLayout.title || "PicMe - SEO-Friendly Image Optimizer",
+    description: tLayout.description || "Optimize your product images for SEO with simple adjustments to white balance, contrast, and size.",
+    keywords: tLayout.keywords || "image optimization, SEO images, product photos, white balance, image batch processing",
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -35,14 +42,19 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  const locale = await Promise.resolve(params.locale);
+  
   // Ensure that the incoming `locale` is valid
-  if (!hasLocale(routing.locales, params.locale)) {
+  if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
+  // Get messages for current locale
+  const messages = await getMessages({ locale });
+
   return (
     <ClerkProvider>
-      <html lang={params.locale}>
+      <html lang={locale}>
         <head>
           <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
         </head>
@@ -50,7 +62,7 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
           suppressHydrationWarning
         >
-          <NextIntlClientProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />
             <main className="flex-grow">
               {children}
