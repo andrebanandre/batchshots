@@ -556,6 +556,7 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
         
         // Convert BGR to HLS
         const hls = new window.cv.Mat();
+        // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
         window.cv.cvtColor(src, hls, window.cv.COLOR_BGR2HLS);
         
         // Split channels
@@ -570,17 +571,26 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
         // Adjust hue (add offset, keep within 0-180)
         const hueOffset = (adjustments.hue - 100) * 180 / 100;
         if (hueOffset !== 0) {
+          // @ts-expect-error - Scalar can accept a single value in OpenCV.js
           const hueShiftMat = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
+            // @ts-expect-error - Scalar can accept a single value in OpenCV.js
             new window.cv.Scalar(hueOffset));
+          // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
           window.cv.add(hChannel, hueShiftMat, hChannel);
           
           // Ensure hue values stay within 0-180 range
+          // @ts-expect-error - Scalar can accept a single value in OpenCV.js
           const upperBound = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
+            // @ts-expect-error - Scalar can accept a single value in OpenCV.js
             new window.cv.Scalar(180));
+          // @ts-expect-error - Scalar can accept a single value in OpenCV.js
           const lowerBound = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
+            // @ts-expect-error - Scalar can accept a single value in OpenCV.js
             new window.cv.Scalar(0));
           
+          // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
           window.cv.min(hChannel, upperBound, hChannel);
+          // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
           window.cv.max(hChannel, lowerBound, hChannel);
           
           hueShiftMat.delete();
@@ -834,20 +844,20 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
       } catch (e) {
         console.error('OpenCV format conversion failed, falling back to Canvas API', e);
         // Fall back to canvas-based conversion
-        canvasFormatConversion(dataUrl, finalFilename, format, isPngWithTransparency);
+        canvasFormatConversion(dataUrl, finalFilename, format);
       }
     };
     
     img.onerror = () => {
       console.error('Failed to load image for OpenCV conversion');
       // Fall back to canvas-based conversion
-      canvasFormatConversion(dataUrl, finalFilename, format, isPngWithTransparency);
+      canvasFormatConversion(dataUrl, finalFilename, format);
     };
     
     img.src = dataUrl;
   } else {
     // Fall back to canvas-based conversion if OpenCV is not available
-    canvasFormatConversion(dataUrl, finalFilename, format, isPngWithTransparency);
+    canvasFormatConversion(dataUrl, finalFilename, format);
   }
 };
 
@@ -855,8 +865,7 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
 function canvasFormatConversion(
   dataUrl: string | HTMLImageElement, 
   finalFilename: string, 
-  format: ImageFormat, 
-  isPngWithTransparency = false
+  format: ImageFormat
 ): void {
   const processImage = (img: HTMLImageElement) => {
     const canvas = document.createElement('canvas');

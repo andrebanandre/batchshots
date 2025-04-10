@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
+import { useAuth, SignInButton } from '@clerk/nextjs';
 import Button from './Button';
 import Loader from './Loader';
 
@@ -20,13 +19,11 @@ export default function BuyProButton({
   children = 'UPGRADE TO PRO'
 }: BuyProButtonProps) {
   const { isSignedIn } = useAuth();
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
     if (!isSignedIn) {
-      // Redirect to sign in if not logged in
-      router.push('/sign-in');
+      // Use Clerk's SignInButton to trigger the sign-in flow
       return;
     }
 
@@ -51,6 +48,20 @@ export default function BuyProButton({
       setIsLoading(false);
     }
   };
+
+  if (!isSignedIn) {
+    return (
+      <SignInButton>
+        <Button
+          variant={variant}
+          size={size}
+          className={className}
+        >
+          {children}
+        </Button>
+      </SignInButton>
+    );
+  }
 
   return (
     <Button

@@ -39,6 +39,7 @@ interface ImagePreviewProps {
     applyToAll: boolean;
   };
   maxImagesAllowed?: number;
+  isPro?: boolean;
 }
 
 export default function ImagePreview({

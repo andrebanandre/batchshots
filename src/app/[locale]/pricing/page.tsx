@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useIsPro } from '../../hooks/useIsPro';
@@ -8,25 +8,12 @@ import Button from '../../components/Button';
 import PricingCard from '../../components/PricingCard';
 import ProBadge from '../../components/ProBadge';
 import Loader from '@/app/components/Loader';
+import BuyProButton from '@/app/components/BuyProButton';
 
 export default function PricingPage() {
   const router = useRouter();
   const { isProUser, isLoading } = useIsPro();
-  const [showCheckout, setShowCheckout] = useState(false);
   const t = useTranslations('Pricing');
-  
-  const handleUpgrade = () => {
-    // In a real application, this would show a checkout form or redirect to payment provider
-    setShowCheckout(true);
-  };
-  
-  const handleMockPurchase = () => {
-    // In a real app, this would be handled by a payment provider
-    alert('Thank you for your purchase! In a real application, you would now be redirected to complete payment.');
-    
-    // Redirect to home page
-    router.push('/');
-  };
   
   const handleBackToEditor = () => {
     router.push('/');
@@ -64,67 +51,6 @@ export default function PricingPage() {
               {t('alreadyPro.backToEditor')}
             </Button>
           </div>
-        ) : showCheckout ? (
-          <div className="max-w-lg mx-auto brutalist-border p-6 bg-white">
-            <h2 className="text-2xl font-bold mb-6 text-center">{t('checkout.title')}</h2>
-            
-            <div className="mb-6 brutalist-border p-4 bg-yellow-50">
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-bold">{t('checkout.planTitle')}</span>
-                <span className="text-2xl font-bold">{t('checkout.price')}</span>
-              </div>
-              <p className="text-sm text-gray-600">
-                {t('checkout.description')}
-              </p>
-            </div>
-            
-            {/* This would be replaced with a real payment form */}
-            <div className="space-y-4 mb-6">
-              <div>
-                <label className="block font-bold mb-2">{t('checkout.email')}</label>
-                <input 
-                  type="email" 
-                  className="w-full p-2 brutalist-border" 
-                  placeholder="your@email.com"
-                />
-              </div>
-              
-              <div>
-                <label className="block font-bold mb-2">{t('checkout.cardInfo')}</label>
-                <input 
-                  type="text" 
-                  className="w-full p-2 brutalist-border mb-2" 
-                  placeholder={t('checkout.cardNumber')}
-                />
-                
-                <div className="grid grid-cols-2 gap-2">
-                  <input 
-                    type="text" 
-                    className="p-2 brutalist-border" 
-                    placeholder={t('checkout.expiryDate')}
-                  />
-                  <input 
-                    type="text" 
-                    className="p-2 brutalist-border" 
-                    placeholder={t('checkout.cvc')}
-                  />
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex flex-col space-y-3">
-              <Button variant="primary" onClick={handleMockPurchase}>
-                {t('checkout.completePurchase')}
-              </Button>
-              
-              <button 
-                onClick={() => setShowCheckout(false)}
-                className="text-sm text-gray-600 hover:text-gray-800"
-              >
-                {t('checkout.goBack')}
-              </button>
-            </div>
-          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <PricingCard
@@ -143,8 +69,9 @@ export default function PricingPage() {
               features={proFeatures}
               isPro={true}
               isCurrentPlan={isProUser}
-              onSelectPlan={handleUpgrade}
+              onSelectPlan={() => {}}
               buttonText={t('plans.pro.buttonText')}
+              customButton={<BuyProButton>{t('plans.pro.buttonText')}</BuyProButton>}
             />
           </div>
         )}

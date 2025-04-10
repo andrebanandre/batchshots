@@ -13,14 +13,6 @@ export const config = {
   },
 };
 
-async function buffer(readable: ReadableStream) {
-  const chunks = [];
-  for await (const chunk of readable) {
-    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
-  }
-  return Buffer.concat(chunks);
-}
-
 export async function POST(req: NextRequest) {
   const body = await req.text();
   const sig = headers().get('stripe-signature')!;
@@ -37,10 +29,11 @@ export async function POST(req: NextRequest) {
     }
 
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-  } catch (err: any) {
-    console.error(`Webhook Error: ${err.message}`);
+  } catch (err: unknown) {
+    const error = err as Error;
+    console.error(`Webhook Error: ${error.message}`);
     return NextResponse.json(
-      { error: `Webhook Error: ${err.message}` },
+      { error: `Webhook Error: ${error.message}` },
       { status: 400 }
     );
   }

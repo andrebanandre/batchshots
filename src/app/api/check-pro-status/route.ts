@@ -4,7 +4,7 @@ import { checkProStatus } from '../../utils/check-pro-status';
 
 export async function GET() {
 
-  const { userId, getToken } = await auth()
+  const { userId } = await auth()
   
   if (!userId) {
     return NextResponse.json({ isPro: false });

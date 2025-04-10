@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import ImagePreview, { ImageFile } from '../components/ImagePreview';
@@ -692,8 +693,8 @@ export default function Home() {
                     {t('privacyDescription')}
                   </p>
                   <div className="flex justify-between text-xs">
-                    <a href="/privacy" className="underline hover:text-blue-600">{t('privacyPolicy')}</a>
-                    <a href="/terms" className="underline hover:text-blue-600">{t('termsOfUse')}</a>
+                    <Link href="/privacy" className="underline hover:text-blue-600">{t('privacyPolicy')}</Link>
+                    <Link href="/terms" className="underline hover:text-blue-600">{t('termsOfUse')}</Link>
                   </div>
                 </div>
 

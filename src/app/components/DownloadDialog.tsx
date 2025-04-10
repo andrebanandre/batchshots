@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from './Button';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 interface DownloadDialogProps {
   isOpen: boolean;
@@ -67,10 +68,12 @@ export default function DownloadDialog({
                             <li className="text-green-600 font-semibold">
                               <div className="flex items-center">
                                 <div className="h-4 w-4 mr-1 flex-shrink-0">
-                                  <img 
+                                  <Image 
                                     src="/images/ai-icon.svg" 
                                     alt="AI image processing" 
-                                    className="w-full h-full object-contain" 
+                                    width={16}
+                                    height={16}
+                                    className="object-contain" 
                                   />
                                 </div>
                                 {t('seoFilenames')}

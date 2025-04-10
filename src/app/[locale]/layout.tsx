@@ -1,7 +1,7 @@
 import './../globals.css'
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
@@ -37,6 +37,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin", 'cyrillic'],
+});
+
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = await params;
@@ -77,7 +83,7 @@ export default async function RootLayout({
           <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
         </head>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
+          className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
           suppressHydrationWarning
         >
           <NextIntlClientProvider locale={locale} messages={messages}>

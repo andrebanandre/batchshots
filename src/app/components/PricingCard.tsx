@@ -13,6 +13,7 @@ interface PricingCardProps {
   isCurrentPlan?: boolean;
   onSelectPlan: () => void;
   buttonText: string;
+  customButton?: React.ReactNode;
 }
 
 export default function PricingCard({
@@ -23,6 +24,7 @@ export default function PricingCard({
   isCurrentPlan,
   onSelectPlan,
   buttonText,
+  customButton,
 }: PricingCardProps) {
   const t = useTranslations('Components.PricingCard');
   
@@ -49,15 +51,19 @@ export default function PricingCard({
         ))}
       </ul>
       
-      <Button 
-        variant={isPro ? "primary" : "secondary"} 
-        size="lg" 
-        fullWidth
-        onClick={onSelectPlan}
-        disabled={isCurrentPlan}
-      >
-        {isCurrentPlan ? t('currentPlan') : buttonText}
-      </Button>
+      {customButton ? (
+        customButton
+      ) : (
+        <Button 
+          variant={isPro ? "primary" : "secondary"} 
+          size="lg" 
+          fullWidth
+          onClick={onSelectPlan}
+          disabled={isCurrentPlan}
+        >
+          {isCurrentPlan ? t('currentPlan') : buttonText}
+        </Button>
+      )}
     </div>
   );
 } 
