@@ -367,6 +367,10 @@
                 "reset": "ZURÜCKSETZEN"
             },
             "allImages": "ALLE BILDER ({current}/{max})"
+        },
+        "PricingCard": {
+            "oneTime": "einmalig",
+            "currentPlan": "AKTUELLER PLAN"
         }
     },
     "Dialogs": {
@@ -465,5 +469,38 @@
                 }
             }
         }
+    },
+    "PrivacyPolicy": {
+        "title": "DATENSCHUTZRICHTLINIE",
+        "section1Title": "1. EINFÜHRUNG",
+        "section1P1": "Willkommen bei PICME („wir“, „unser“, „uns“). Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Daten zu gewährleisten.",
+        "section1P2": "Diese Datenschutzrichtlinie erläutert, wie wir Ihre Daten behandeln, wenn Sie unser browserbasiertes Bildoptimierungstool verwenden.",
+        "section2Title": "2. DATENERFASSUNG",
+        "section2P1Bold": "Wir sammeln oder speichern Ihre Bilder nicht.",
+        "section2P2": "PICME arbeitet vollständig in Ihrem Browser. Wenn Sie Bilder zum Optimieren hochladen:",
+        "section2Li1": "Ihre Bilder werden lokal in Ihrem Browser mit clientseitigem JavaScript verarbeitet.",
+        "section2Li2": "Ihre Bilder verlassen Ihr Gerät nie und werden nicht an unsere Server übertragen.",
+        "section2Li3": "Wir speichern keine Kopien Ihrer Original- oder verarbeiteten Bilder.",
+        "section2Li4": "Wir verfolgen den Inhalt Ihrer Bilder nicht.",
+        "section3Title": "3. KI-GESTÜTZTE FUNKTIONEN",
+        "section3P1": "Wenn Sie unsere KI-gestützten Funktionen zur Generierung von SEO-Namen verwenden:",
+        "section3Li1": "Wir senden nur den von Ihnen bereitgestellten Beschreibungstext an unsere API.",
+        "section3Li2": "Wir senden oder verarbeiten Ihre tatsächlichen Bilder nicht über unsere KI-Systeme.",
+        "section3Li3": "Ihre generierten SEO-Namen werden an Ihren Browser zurückgesendet und nicht dauerhaft auf unseren Servern gespeichert.",
+        "section4Title": "4. ANALYTIK & COOKIES",
+        "section4P1": "Wir verwenden minimale Analysen, um zu verstehen, wie unsere Website genutzt wird:",
+        "section4Li1": "Wir sammeln anonyme Nutzungsstatistiken wie Seitenaufrufe und Funktionsnutzung.",
+        "section4Li2": "Wir verwenden notwendige Cookies, um Funktionen wie den reCAPTCHA-Schutz bereitzustellen.",
+        "section4Li3": "Wir verwenden keine Cookies für Werbung oder Tracking auf anderen Websites.",
+        "section5Title": "5. DIENSTE VON DRITTANBIETERN",
+        "section5P1": "Wir nutzen folgende Dienste von Drittanbietern:",
+        "section5Li1": "Google reCAPTCHA zum Spamschutz bei unseren KI-Funktionen.",
+        "section5Li2": "OpenCV.js zur Bildverarbeitung (läuft vollständig in Ihrem Browser).",
+        "section5P2": "Jeder dieser Dienste hat seine eigenen Datenschutzrichtlinien, die regeln, wie sie Daten behandeln.",
+        "section6Title": "6. ÄNDERUNGEN DIESER RICHTLINIE",
+        "section6P1": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen und das Datum „Zuletzt aktualisiert“ aktualisieren.",
+        "section7Title": "7. KONTAKTIEREN SIE UNS",
+        "section7P1": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns bitte unter privacy@picme-app.com.",
+        "returnButton": "ZURÜCK ZUR STARTSEITE"
     }
 }

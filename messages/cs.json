@@ -1,0 +1,506 @@
+{
+    "Manifest": {
+        "name": "PICME"
+    },
+    "LocaleSwitcher": {
+        "label": "Změnit jazyk",
+        "locale": "{locale, select, cs {🇨🇿 Čeština} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Home": {
+        "title": "PICME: SEO OPTIMALIZÁTOR OBRÁZKŮ",
+        "loading": "NAČÍTÁNÍ APLIKACE...",
+        "loadingDescription": "Počkejte prosím, zatímco inicializujeme možnosti zpracování obrázků.",
+        "transformTitle": "UPRAVUJTE FOTOGRAFIE PRODUKTŮ",
+        "privacyFocused": "ZDARMA & SOUSTŘEDĚNÉ NA SOUKROMÍ",
+        "privacyDescription": "PICME zpracovává všechny obrázky přímo ve vašem prohlížeči. Neukládáme vaše fotografie ani data na našich serverech.",
+        "privacyPolicy": "Zásady ochrany osobních údajů",
+        "termsOfUse": "Podmínky použití",
+        "features": {
+            "presets": {
+                "title": "PROFESIONÁLNÍ PŘEDNASTAVENÍ",
+                "description": "Aplikujte optimalizovaná přednastavení pro e-commerce, sociální média a webové zobrazení jedním kliknutím."
+            },
+            "aiPowered": {
+                "title": "SEO POHÁNĚNÉ AI",
+                "description": "Generujte SEO-optimalizované názvy souborů pomocí našich AI nástrojů pro lepší viditelnost vašich produktů."
+            },
+            "advancedControls": {
+                "title": "POKROČILÉ OVLÁDÁNÍ",
+                "description": "Upravujte jas, kontrast, vyvážení bílé a další pro vylepšení vašich produktových fotografií."
+            },
+            "batchProcessing": {
+                "title": "HROMADNÉ ZPRACOVÁNÍ",
+                "description": "Zpracovávejte více obrázků současně pro úsporu času a konzistentní výsledky."
+            }
+        },
+        "proMode": "PRO REŽIM AKTIVOVÁN",
+        "freePlan": "ZDARMA PLÁN",
+        "proDescription": "Zpracovávejte až {maxImages} obrázků současně se všemi prémiovými funkcemi odemčenými.",
+        "freeDescription": "Omezeno na {maxImages} obrázků. Upgradujte na PRO pro zpracování až 100 obrázků současně.",
+        "upgradeToPro": "UPGRADUJTE NA PRO",
+        "selectImages": "VYBERTE OBRÁZKY (AŽ {maxImages})",
+        "imageEditor": "EDITOR OBRÁZKŮ",
+        "selectMoreImages": "VYBERTE VÍCE OBRÁZKŮ",
+        "maxImagesReached": "DOSAŽEN MAXIMÁLNÍ POČET OBRÁZKŮ",
+        "imagesCount": "{current}/{max} obrázků",
+        "upgradeFor": "(Upgradujte na 100)",
+        "imageOptimization": "OPTIMALIZACE OBRÁZKŮ"
+    },
+    "Navbar": {
+        "imageOptimizer": "Optimalizátor obrázků",
+        "removeBackgrounds": "Odstranit pozadí",
+        "aiBackgrounds": "AI pozadí",
+        "pricing": "Ceny",
+        "login": "PŘIHLÁSIT SE"
+    },
+    "Footer": {
+        "about": "Profesionální nástroje pro obrázky pro produktové fotografy, markeťáky a e-commerce firmy. Zjednodušte svůj pracovní postup s našimi brutalistickými nástroji.",
+        "quickLinks": "RYCHLÉ ODKAZY",
+        "stayUpdated": "ZŮSTAŇTE INFORMOVÁNI",
+        "subscribeText": "Přihlaste se k odběru našeho newsletteru pro aktualizace, tipy a speciální nabídky.",
+        "emailPlaceholder": "Váš email",
+        "subscribe": "PŘIHLÁSIT SE",
+        "copyright": "© {year} PICME. Všechna práva vyhrazena.",
+        "madeWith": "Vytvořeno s ♥ týmem PICME"
+    },
+    "Layout": {
+        "title": "PicMe - SEO optimalizátor obrázků",
+        "description": "Optimalizujte své produktové obrázky pro SEO pomocí jednoduchých úprav vyvážení bílé, kontrastu a velikosti.",
+        "keywords": "optimalizace obrázků, SEO obrázky, produktové fotografie, vyvážení bílé, hromadné zpracování obrázků"
+    },
+    "Components": {
+        "ImageProcessingControls": {
+            "title": "NASTAVENÍ OBRÁZKU",
+            "reset": "RESETOVAT",
+            "applyToAll": "POUŽÍT NA VŠECHNY OBRÁZKY",
+            "basic": "ZÁKLADNÍ",
+            "advanced": "POKROČILÉ",
+            "ai": "AI",
+            "brightness": "JAS",
+            "contrast": "KONTRAST",
+            "sharpen": "OSTROST",
+            "colorAdjust": "ÚPRAVA BARVY (HSL)",
+            "hue": "ODSTÍN",
+            "cooler": "CHLADNĚJŠÍ",
+            "warmer": "TEPLEJŠÍ",
+            "saturation": "SATURACE",
+            "less": "MÉNĚ",
+            "more": "VÍCE",
+            "lightness": "SVĚTLOST",
+            "darker": "TMAVŠÍ",
+            "lighter": "SVĚTLEJŠÍ",
+            "colorBalance": "VYVÁŽENÍ BARVY (RGB)",
+            "red": "ČERVENÁ",
+            "green": "ZELENÁ",
+            "blue": "MODRÁ"
+        },
+        "BackgroundRemoval": {
+            "title": "ODSTRANĚNÍ POZADÍ",
+            "selected": "Vybraný obrázek",
+            "removeBackground": "ODSTRANIT POZADÍ",
+            "allImages": "Všechny obrázky",
+            "backgroundsRemoved": "{count} z {total} pozadí odstraněno",
+            "removeAllBackgrounds": "ODSTRANIT VŠECHNA POZADÍ",
+            "processing": "Zpracování...",
+            "backgroundRemoved": "Pozadí bylo úspěšně odstraněno!",
+            "transparent": "Detekováno průhledné pozadí",
+            "description": "Odstraňte pozadí z produktového obrázku pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí.",
+            "processingInfo": {
+                "process": "Proces",
+                "processValue": "AI zpracování v prohlížeči",
+                "result": "Výsledek",
+                "resultValue": "Průhledné PNG pozadí",
+                "mode": "Režim"
+            },
+            "proDialog": {
+                "title": "UPGRADUJTE NA PRO",
+                "featureTitle": "PRO FUNKCE: Odstranění pozadí",
+                "description": "Upgradujte na PRO pro odemčení odstranění pozadí pro všechny vaše obrázky (až 100 současně)! Získejte profesionálně vypadající produktové fotografie s průhledným pozadím.",
+                "pricing": {
+                    "title": "JEDNORÁZOVÁ PLATBA",
+                    "price": "19,99 €",
+                    "note": "Bez předplatného, doživotní přístup"
+                },
+                "actions": {
+                    "upgrade": "UPGRADUJTE NA PRO",
+                    "try": "VYZKOUŠEJTE, JAK TO FUNGUJE",
+                    "later": "Možná později"
+                }
+            },
+            "compactDescription": "Odstraňuje pozadí z produktových obrázků pomocí AI. Zpracování trvá 10-30 sekund."
+        },
+        "PresetsSelector": {
+            "title": "PŘEDNASTAVENÍ",
+            "custom": "Vlastní",
+            "dimensions": "ROZMĚRY",
+            "width": "Šířka",
+            "height": "Výška",
+            "auto": "auto",
+            "quality": "KVALITA",
+            "apply": "POUŽÍT",
+            "presets": {
+                "web-optimized": {
+                    "name": "Optimalizováno pro web",
+                    "description": "1080px, 75% kvalita (Nejmenší velikost souboru, vhodné pro web)"
+                },
+                "standard": {
+                    "name": "Standardní",
+                    "description": "1080px, 85% kvalita (Vyvážená velikost a kvalita)"
+                },
+                "high-quality": {
+                    "name": "Vysoká kvalita",
+                    "description": "1440px, 95% kvalita (Vysoká kvalita, větší velikost souboru)"
+                },
+                "max-quality": {
+                    "name": "Maximální",
+                    "description": "2160px, 100% kvalita (Maximální kvalita, největší velikost souboru)"
+                },
+                "custom": {
+                    "name": "Vlastní",
+                    "description": "Vlastní rozměry a nastavení kvality"
+                }
+            }
+        },
+        "DownloadOptions": {
+            "title": "STÁHNOUT",
+            "format": "FORMÁT",
+            "downloadAll": "STÁHNOUT VŠE",
+            "transparentNote": "Poznámka: Obrázky s odstraněným pozadím budou uloženy jako průhledné PNG"
+        },
+        "ProUpgrade": {
+            "title": "Upgradujte na Pro",
+            "unlock": "Odemkněte všechny prémiové funkce",
+            "description": "Upgradujte na Pro pro odemčení {feature} a zpracování až {count} obrázků současně.",
+            "pricing": {
+                "title": "JEDNORÁZOVÁ PLATBA",
+                "price": "19,99 €",
+                "note": "Bez předplatného, doživotní přístup"
+            },
+            "learnMore": "DOWIEDZ SIĘ WIĘCEJ",
+            "close": "Zavřít"
+        },
+        "SeoNameGenerator": {
+            "title": "GENERÁTOR SEO NÁZVŮ AI",
+            "description": "Generujte SEO-optimalizované názvy souborů pro vaše obrázky",
+            "enterDescription": "Zadejte popis produktu",
+            "placeholder": "Např. vintage kožená peněženka, ručně vyráběná, hnědá, plná zrna...",
+            "generate": "GENEROVAT SEO NÁZVY",
+            "generating": "GENEROVÁNÍ...",
+            "proLimit": "Generujte až 100 názvů současně s Pro",
+            "originalName": "Původní název",
+            "seoName": "SEO název",
+            "appliedNames": {
+                "title": "Použité SEO názvy",
+                "description": "Naše AI vygenerovala SEO-optimalizované názvy souborů pro vaše obrázky. Můžete upravit jednotlivé názvy v sekci náhledu obrázku."
+            },
+            "tryFeature": "VYZKOUŠEJTE, JAK TO FUNGUJE"
+        },
+        "QuickPresets": {
+            "title": "RYCHLÁ PŘEDNASTAVENÍ",
+            "productSpecialty": "SPECIALIZACE PRODUKTU",
+            "colorStyle": "STYL BARVY",
+            "presets": {
+                "white-bg": {
+                    "name": "BÍLÉ POZADÍ",
+                    "description": "Čistá produktová fotografie na bílém pozadí"
+                },
+                "clean": {
+                    "name": "ČISTÝ PRODUKT",
+                    "description": "Produktová fotografie s čistými, neutrálními barvami"
+                },
+                "jewelry": {
+                    "name": "ŠPERKY/KOV",
+                    "description": "Optimalizováno pro šperky a kovové výrobky"
+                },
+                "sharp": {
+                    "name": "OSTRÉ DETAIly",
+                    "description": "Vylepšená ostrost a detaily"
+                },
+                "textile": {
+                    "name": "TEXTIL/LÁTKA",
+                    "description": "Pro textilní a látkové výrobky - zlepšuje texturu a barvu"
+                },
+                "soft-product": {
+                    "name": "MĚKKÉ PRODUKTY",
+                    "description": "Pro měkké výrobky jako polštáře, polštářky, plyšové hračky"
+                },
+                "furniture": {
+                    "name": "NÁBYTEK/DŘEVO",
+                    "description": "Dřevěný nábytek a interiérové dekorace"
+                },
+                "transparent": {
+                    "name": "SKLO",
+                    "description": "Sklo a průhledné výrobky"
+                },
+                "food": {
+                    "name": "POTRAVINY",
+                    "description": "Potravinová fotografie - zlepšuje čerstvost a přitažlivost barev"
+                },
+                "dramatic": {
+                    "name": "DRAMATICKÉ",
+                    "description": "Produktová fotografie s vysokým kontrastem"
+                },
+                "vivid": {
+                    "name": "ŽIVÉ BARVY",
+                    "description": "Vylepšená saturace a jasnost barev"
+                },
+                "classic": {
+                    "name": "KLASICKÉ",
+                    "description": "Klasický vzhled s vyváženými barvami"
+                }
+            }
+        },
+        "BackgroundRemovalPage": {
+            "title": "NÁSTROJ PRO ODSTRANĚNÍ POZADÍ",
+            "loading": {
+                "tool": "NAČÍTÁNÍ NÁSTROJE...",
+                "proStatus": "KONTROLA PRO STATUSU...",
+                "description": "Počkejte prosím, zatímco inicializujeme možnosti zpracování obrázků.",
+                "proDescription": "Počkejte prosím, zatímco kontrolujeme stav vašeho účtu."
+            },
+            "mainCard": {
+                "title": "ODSTRANIT POZADÍ Z OBRÁZKŮ",
+                "info": {
+                    "title": "ODSTRANĚNÍ POZADÍ AI",
+                    "description": "Odstraňte pozadí z produktových obrázků pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí.",
+                    "freeMode": {
+                        "title": "ZDARMA REŽIM",
+                        "description": "Zpracovávejte 1 obrázek současně. Upgradujte na PRO pro zpracování až 100 obrázků hromadně!"
+                    },
+                    "proMode": {
+                        "title": "PRO REŽIM",
+                        "description": "Zpracovávejte až 100 obrázků současně s PRO účtem!"
+                    }
+                },
+                "upload": {
+                    "title": "Vyberte obrázky",
+                    "buttonFree": "VYBRAT OBRÁZEK",
+                    "buttonPro": "VYBRAT OBRÁZKY",
+                    "helpTextFree": "Uživatelé zdarma mohou vybrat 1 obrázek současně.",
+                    "helpTextPro": "Můžete vybrat až 100 obrázků současně."
+                },
+                "actions": {
+                    "clear": "VYMAZAT",
+                    "download": "STÁHNOUT",
+                    "downloadZip": "STÁHNOUT JAKO ZIP",
+                    "removeBackground": "ODSTRANIT POZADÍ",
+                    "removeBackgrounds": "ODSTRANIT POZADÍ",
+                    "processing": "ODSTRAŇOVÁNÍ POZADÍ...",
+                    "processingMultiple": "ODSTRAŇOVÁNÍ POZADÍ...",
+                    "tryFullEditor": "VYZKOUŠEJTE PLNÝ EDITOR"
+                },
+                "progress": {
+                    "processing": "Zpracování...",
+                    "percent": "{percent}%"
+                },
+                "upgradeCard": {
+                    "title": "UPGRADUJTE NA PRO",
+                    "plan": {
+                        "title": "PRO PLÁN",
+                        "price": "19,99 €",
+                        "features": [
+                            "Odstraňujte pozadí z až 100 obrázků současně",
+                            "Pokročilé úpravy obrázků a přednastavení",
+                            "Generování SEO názvů pro produktové obrázky",
+                            "Hromadné zpracování pro všechny funkce",
+                            "Jednorázová platba, doživotní přístup"
+                        ],
+                        "buttonText": "UPGRADUJTE NYNÍ"
+                    }
+                }
+            },
+            "howItWorks": {
+                "title": "JAK TO FUNGUJE",
+                "step1": {
+                    "title": "1. VYBERTE SVÉ OBRÁZKY",
+                    "description": "Nahrajte jeden nebo více produktových obrázků, které chcete zpracovat.",
+                    "proNote": "PRO uživatelé mohou vybrat až 100 obrázků současně!"
+                },
+                "step2": {
+                    "title": "2. ODSTRANIT POZADÍ",
+                    "description": "Naše AI technologie detekuje a odstraňuje pozadí z vašich obrázků, vytvářejíc průhledné PNG ideální pro e-commerce."
+                },
+                "step3": {
+                    "title": "3. STÁHNOUT & POUŽÍT",
+                    "description": "Stáhněte zpracované obrázky a používejte je na svém webu, marketplace aukcích nebo marketingových materiálech."
+                }
+            },
+            "proDialog": {
+                "title": "UPGRADUJTE NA PRO",
+                "featureTitle": "PRO FUNKCE: Hromadné odstranění pozadí",
+                "description": "Uživatelé zdarma mohou zpracovávat pouze 1 obrázek současně. Upgradujte na PRO pro zpracování až 100 obrázků hromadně, ušetřete hodiny práce!",
+                "pricing": {
+                    "title": "JEDNORÁZOVÁ PLATBA",
+                    "price": "19,99 €",
+                    "note": "Bez předplatného, doživotní přístup"
+                },
+                "actions": {
+                    "upgrade": "UPGRADUJTE NA PRO",
+                    "continue": "POKRAČUJTE VE ZDARMA REŽIMU"
+                }
+            }
+        },
+        "ImagePreview": {
+            "noImages": "Nebyly vybrány žádné obrázky",
+            "zoomInstructions": "Štípněte pro přiblížení, táhněte pro posun",
+            "zoomLevel": "{scale}%",
+            "removingBackground": "Odstraňování pozadí...",
+            "seoName": {
+                "label": "SEO-optimalizovaný název:",
+                "edit": "UPRAVIT",
+                "cancel": "ZRUŠIT",
+                "save": "ULOŽIT"
+            },
+            "originalName": "Původní název:",
+            "fileInfo": {
+                "dimensions": "Rozměry:",
+                "size": "Velikost:",
+                "output": "Výstup:",
+                "quality": "Kvalita:",
+                "background": "Pozadí:",
+                "backgroundRemoved": "Odstraněno",
+                "custom": "Vlastní",
+                "auto": "auto"
+            },
+            "actions": {
+                "download": "STÁHNOUT",
+                "reset": "RESETOVAT"
+            },
+            "allImages": "VŠECHNY OBRÁZKY ({current}/{max})"
+        },
+        "PricingCard": {
+            "oneTime": "jednorázově",
+            "currentPlan": "AKTUÁLNÍ PLÁN"
+        }
+    },
+    "Dialogs": {
+        "download": {
+            "title": "Stáhnout obrázky",
+            "confirmTitle": "Potvrdit stahování",
+            "successTitle": "Stahování úspěšně dokončeno",
+            "summary": "Souhrn stahování:",
+            "images": "{count, plural, =1 {# obrázek} other {# obrázků}} bude staženo",
+            "format": "Formát:",
+            "appliedPreset": "Použité přednastavení:",
+            "adjustmentsApplied": "Úpravy obrázku byly použity",
+            "backgroundRemoval": "Odstranění pozadí bylo použito",
+            "seoFilenames": "Zahrnuty SEO-optimalizované názvy souborů AI",
+            "zipPackage": "Soubory budou zabaleny jako ZIP archiv",
+            "processingNote": "Zpracování může chvíli trvat pro mnoho nebo velké obrázky.",
+            "cancel": "ZRUŠIT",
+            "download": "STÁHNOUT",
+            "processing": "ZPRACOVÁVÁNÍ...",
+            "successMessage": "Vaše obrázky byly úspěšně staženy. Co chcete udělat dál?",
+            "startNewBundleDesc": "Začít nový balíček: Vymažte současné obrázky a začněte znovu",
+            "continueEditingDesc": "Pokračovat v úpravách: Pokračujte v práci se současnými obrázky",
+            "startNewBundle": "ZAČÍT NOVÝ BALÍČEK",
+            "continueEditing": "POKRAČOVAT V ÚPRAVÁCH"
+        },
+        "proUpgrade": {
+            "feature": "Hromadné zpracování"
+        }
+    },
+    "Pricing": {
+        "title": "CENOVÉ PLÁNY",
+        "subtitle": "Vyberte ideální plán pro vaše potřeby optimalizace obrázků. Náš PRO plán nabízí doživotní licenci s jednorázovou platbou.",
+        "alreadyPro": {
+            "title": "Již jste PRO uživatel!",
+            "description": "Děkujeme za podporu. Máte přístup ke všem PRO funkcím, včetně hromadného odstranění pozadí, pokročilých úprav obrázků a generování SEO názvů souborů.",
+            "backToEditor": "VRÁTIT SE DO EDITORU"
+        },
+        "checkout": {
+            "title": "DOKONČIT NÁKUP",
+            "planTitle": "DOŽIVOTNÍ PRO LICENCE",
+            "price": "19,99 €",
+            "description": "Jednorázová platba, doživotní přístup ke všem PRO funkcím",
+            "email": "EMAIL",
+            "cardInfo": "INFORMACE O KARTĚ",
+            "cardNumber": "1234 5678 9012 3456",
+            "expiryDate": "MM/RR",
+            "cvc": "CVC",
+            "completePurchase": "DOKONČIT NÁKUP",
+            "goBack": "Zpět"
+        },
+        "plans": {
+            "free": {
+                "title": "ZDARMA",
+                "price": "ZDARMA",
+                "features": [
+                    "Zpracovávejte až 10 obrázků současně",
+                    "Základní úpravy obrázků",
+                    "Odstranění pozadí z jednoho obrázku",
+                    "Standardní možnosti exportu",
+                    "Zpracování v prohlížeči"
+                ],
+                "buttonText": "POKRAČOVAT ZDARMA"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "19,99 €",
+                "features": [
+                    "Zpracovávejte až 100 obrázků současně",
+                    "Pokročilé úpravy obrázků a přednastavení",
+                    "Hromadné odstranění pozadí (až 100 obrázků)",
+                    "Generování SEO názvů souborů",
+                    "Prioritní podpora",
+                    "Jednorázová platba, doživotní přístup"
+                ],
+                "buttonText": "UPGRADUJTE NA PRO"
+            }
+        },
+        "faq": {
+            "title": "ČASTÉ OTÁZKY",
+            "questions": {
+                "oneTime": {
+                    "question": "Je to opravdu jednorázová platba?",
+                    "answer": "Ano! Zaplaťte jednou a získejte doživotní přístup ke všem PRO funkcím. Bez předplatného."
+                },
+                "backgroundRemoval": {
+                    "question": "Jak funguje odstranění pozadí?",
+                    "answer": "Používáme pokročilé AI algoritmy pro detekci a odstranění pozadí z produktových obrázků. Celý proces probíhá ve vašem prohlížeči - nikdy neukládáme vaše obrázky na našich serverech."
+                },
+                "imageLimits": {
+                    "question": "Jaké jsou limity obrázků?",
+                    "answer": "Uživatelé zdarma mohou zpracovávat až 10 obrázků současně se základními funkcemi a odstraňovat pozadí z 1 obrázku současně. PRO uživatelé mohou zpracovávat až 100 obrázků současně, včetně hromadného odstranění pozadí."
+                },
+                "refund": {
+                    "question": "Mohu požádat o vrácení peněz?",
+                    "answer": "Ano, nabízíme 30denní záruku vrácení peněz, pokud nejste spokojeni s PRO funkcemi. Kontaktujte náš tým podpory pro pomoc."
+                }
+            }
+        }
+    },
+    "PrivacyPolicy": {
+        "title": "ZÁSADY OCHRANY OSOBNÍCH ÚDAJŮ",
+        "section1Title": "1. ÚVOD",
+        "section1P1": "Vítejte v PICME („my“, „naše“, „nás“). Zavazujeme se chránit vaše soukromí a zajistit bezpečnost vašich osobních údajů.",
+        "section1P2": "Tyto Zásady ochrany osobních údajů vysvětlují, jak nakládáme s vašimi údaji, když používáte náš nástroj pro optimalizaci obrázků v prohlížeči.",
+        "section2Title": "2. SBĚR DAT",
+        "section2P1Bold": "Neshromažďujeme ani neukládáme vaše obrázky.",
+        "section2P2": "PICME funguje zcela ve vašem prohlížeči. Když nahrajete obrázky k optimalizaci:",
+        "section2Li1": "Vaše obrázky jsou zpracovávány lokálně ve vašem prohlížeči pomocí JavaScriptu na straně klienta.",
+        "section2Li2": "Vaše obrázky nikdy neopustí vaše zařízení a nejsou přenášeny na naše servery.",
+        "section2Li3": "Neukládáme kopie vašich původních ani zpracovaných obrázků.",
+        "section2Li4": "Nesledujeme obsah vašich obrázků.",
+        "section3Title": "3. FUNKCE POHÁNĚNÉ AI",
+        "section3P1": "Když používáte naše funkce generování názvů SEO poháněné AI:",
+        "section3Li1": "Na naše API zasíláme pouze popisný text, který poskytnete.",
+        "section3Li2": "Nezasíláme ani nezpracováváme vaše skutečné obrázky prostřednictvím našich systémů AI.",
+        "section3Li3": "Vygenerované názvy SEO jsou doručeny zpět do vašeho prohlížeče a nejsou trvale uloženy na našich serverech.",
+        "section4Title": "4. ANALYTIKA A COOKIES",
+        "section4P1": "Používáme minimální analytiku, abychom pochopili, jak se naše stránky používají:",
+        "section4Li1": "Shromažďujeme anonymní statistiky používání, jako jsou zobrazení stránek a používání funkcí.",
+        "section4Li2": "Používáme nezbytné soubory cookie k poskytování funkcí, jako je ochrana reCAPTCHA.",
+        "section4Li3": "Nepoužíváme soubory cookie pro reklamu ani sledování na jiných webových stránkách.",
+        "section5Title": "5. SLUŽBY TŘETÍCH STRAN",
+        "section5P1": "Používáme následující služby třetích stran:",
+        "section5Li1": "Google reCAPTCHA pro ochranu před spamem u našich funkcí AI.",
+        "section5Li2": "OpenCV.js pro zpracování obrázků (běží zcela ve vašem prohlížeči).",
+        "section5P2": "Každá z těchto služeb má vlastní zásady ochrany osobních údajů, které upravují, jak nakládají s údaji.",
+        "section6Title": "6. ZMĚNY TĚCHTO ZÁSAD",
+        "section6P1": "Tyto Zásady ochrany osobních údajů můžeme čas od času aktualizovat. O jakýchkoli změnách vás budeme informovat zveřejněním nových Zásad ochrany osobních údajů na této stránce a aktualizací data „Poslední aktualizace“.",
+        "section7Title": "7. KONTAKTUJTE NÁS",
+        "section7P1": "Máte-li jakékoli dotazy týkající se těchto Zásad ochrany osobních údajů, kontaktujte nás na adrese privacy@picme-app.com.",
+        "returnButton": "ZPĚT NA DOMOVSKOU STRÁNKU"
+    }
+} 

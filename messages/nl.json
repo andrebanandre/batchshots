@@ -1,0 +1,506 @@
+{
+    "Manifest": {
+        "name": "PICME"
+    },
+    "LocaleSwitcher": {
+        "label": "Taal wijzigen",
+        "locale": "{locale, select, nl {🇳🇱 Nederlands} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Home": {
+        "title": "PICME: SEO BEELDOPTIMALISATIE",
+        "loading": "APP WORDT GELADEN...",
+        "loadingDescription": "Even geduld terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
+        "transformTitle": "TRANSFORMEER UW PRODUCTFOTO'S",
+        "privacyFocused": "GRATIS & PRIVACY-GERICHT",
+        "privacyDescription": "PICME verwerkt alle afbeeldingen direct in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
+        "privacyPolicy": "Privacybeleid",
+        "termsOfUse": "Gebruiksvoorwaarden",
+        "features": {
+            "presets": {
+                "title": "PROFESSIONELE VOORINSTELLINGEN",
+                "description": "Pas geoptimaliseerde voorinstellingen toe voor e-commerce, sociale media en webweergave met één klik."
+            },
+            "aiPowered": {
+                "title": "AI-GESTUURDE SEO",
+                "description": "Genereer SEO-vriendelijke bestandsnamen met onze AI-tools om de vindbaarheid van uw producten te verbeteren."
+            },
+            "advancedControls": {
+                "title": "GEAVANCEERDE BEDIENING",
+                "description": "Verfijn helderheid, contrast, witbalans en meer om uw productfoto's te perfectioneren."
+            },
+            "batchProcessing": {
+                "title": "BATCHVERWERKING",
+                "description": "Verwerk meerdere afbeeldingen tegelijk om tijd te besparen en consistente resultaten te garanderen."
+            }
+        },
+        "proMode": "PRO-MODUS GEACTIVEERD",
+        "freePlan": "GRATIS PLAN",
+        "proDescription": "Verwerk tot {maxImages} afbeeldingen tegelijk met alle premium functies ontgrendeld.",
+        "freeDescription": "Beperkt tot {maxImages} afbeeldingen. Upgrade naar PRO om tot 100 afbeeldingen tegelijk te verwerken.",
+        "upgradeToPro": "UPGRADE NAAR PRO",
+        "selectImages": "SELECTEER AFBEELDINGEN (TOT {maxImages})",
+        "imageEditor": "AFBEELDINGSEDITOR",
+        "selectMoreImages": "MEER AFBEELDINGEN SELECTEREN",
+        "maxImagesReached": "MAXIMUM AFBEELDINGEN BEREIKT",
+        "imagesCount": "{current}/{max} afbeeldingen",
+        "upgradeFor": "(Upgrade voor tot 100)",
+        "imageOptimization": "AFBEELDINGSOPTIMALISATIE"
+    },
+    "Navbar": {
+        "imageOptimizer": "Afbeeldingen optimaliseren",
+        "removeBackgrounds": "Achtergronden verwijderen",
+        "aiBackgrounds": "AI-achtergronden",
+        "pricing": "Prijzen",
+        "login": "INLOGGEN"
+    },
+    "Footer": {
+        "about": "Professionele beeldtools voor productfotografen, marketeers en e-commerce bedrijven. Vereenvoudig uw workflow met onze brutalistische tools.",
+        "quickLinks": "SNELLE LINKS",
+        "stayUpdated": "BLIJF OP DE HOOGTE",
+        "subscribeText": "Abonneer u op onze nieuwsbrief voor updates, tips en speciale aanbiedingen.",
+        "emailPlaceholder": "Uw e-mail",
+        "subscribe": "ABONNEER",
+        "copyright": "© {year} PICME. Alle rechten voorbehouden.",
+        "madeWith": "Gemaakt met ♥ door het PICME-team"
+    },
+    "Layout": {
+        "title": "PicMe - SEO-vriendelijke beeldoptimalisatie",
+        "description": "Optimaliseer uw productafbeeldingen voor SEO met eenvoudige aanpassingen van witbalans, contrast en grootte.",
+        "keywords": "beeldoptimalisatie, SEO-afbeeldingen, productfoto's, witbalans, batchverwerking van afbeeldingen"
+    },
+    "Components": {
+        "ImageProcessingControls": {
+            "title": "AFBEELDINGSINSTELLINGEN",
+            "reset": "RESET",
+            "applyToAll": "TOEPASSEN OP ALLE AFBEELDINGEN",
+            "basic": "BASIS",
+            "advanced": "GEAVANCEERD",
+            "ai": "AI",
+            "brightness": "HELDERHEID",
+            "contrast": "CONTRAST",
+            "sharpen": "SCHERPEN",
+            "colorAdjust": "KLEURINSTELLING (HSL)",
+            "hue": "KLEURTOON",
+            "cooler": "KOELER",
+            "warmer": "WARMER",
+            "saturation": "VERZADIGING",
+            "less": "MINDER",
+            "more": "MEER",
+            "lightness": "LICHTSTERKTE",
+            "darker": "DONKERDER",
+            "lighter": "LICHTER",
+            "colorBalance": "KLEURBALANS (RGB)",
+            "red": "ROOD",
+            "green": "GROEN",
+            "blue": "BLAUW"
+        },
+        "BackgroundRemoval": {
+            "title": "ACHTERGROND VERWIJDEREN",
+            "selected": "Geselecteerde afbeelding",
+            "removeBackground": "ACHTERGROND VERWIJDEREN",
+            "allImages": "Alle afbeeldingen",
+            "backgroundsRemoved": "{count} van {total} achtergronden verwijderd",
+            "removeAllBackgrounds": "ALLE ACHTERGRONDEN VERWIJDEREN",
+            "processing": "Verwerken...",
+            "backgroundRemoved": "Achtergrond succesvol verwijderd!",
+            "transparent": "Transparante achtergrond gedetecteerd",
+            "description": "Verwijder de achtergrond van uw productafbeelding met AI-technologie. Het proces vindt volledig plaats in uw browser voor privacy.",
+            "processingInfo": {
+                "process": "Proces",
+                "processValue": "AI-verwerking in browser",
+                "result": "Resultaat",
+                "resultValue": "Transparante PNG-achtergrond",
+                "mode": "Modus"
+            },
+            "proDialog": {
+                "title": "UPGRADE NAAR PRO",
+                "featureTitle": "PRO-FUNCTIE: Achtergrond verwijderen",
+                "description": "Upgrade naar PRO om achtergrondverwijdering voor al uw afbeeldingen te ontgrendelen (tot 100 tegelijk)! Krijg professioneel ogende productfoto's met transparante achtergronden.",
+                "pricing": {
+                    "title": "EENMALIGE BETALING",
+                    "price": "€19,99",
+                    "note": "Geen abonnement, levenslange toegang"
+                },
+                "actions": {
+                    "upgrade": "UPGRADE NAAR PRO",
+                    "try": "PROBEER HOE HET WERKT",
+                    "later": "Misschien later"
+                }
+            },
+            "compactDescription": "Verwijdert achtergrond van productafbeeldingen met AI. Verwerking duurt 10-30 seconden."
+        },
+        "PresetsSelector": {
+            "title": "VOORINSTELLINGEN",
+            "custom": "Aangepast",
+            "dimensions": "AFMETINGEN",
+            "width": "Breedte",
+            "height": "Hoogte",
+            "auto": "auto",
+            "quality": "KWALITEIT",
+            "apply": "TOEPASSEN",
+            "presets": {
+                "web-optimized": {
+                    "name": "Web-geoptimaliseerd",
+                    "description": "1080px, 75% kwaliteit (Kleinste bestandsgrootte, goed voor web)"
+                },
+                "standard": {
+                    "name": "Standaard",
+                    "description": "1080px, 85% kwaliteit (Gebalanceerde grootte en kwaliteit)"
+                },
+                "high-quality": {
+                    "name": "Hoge kwaliteit",
+                    "description": "1440px, 95% kwaliteit (Hoge kwaliteit, grotere bestandsgrootte)"
+                },
+                "max-quality": {
+                    "name": "Maximaal",
+                    "description": "2160px, 100% kwaliteit (Maximale kwaliteit, grootste bestandsgrootte)"
+                },
+                "custom": {
+                    "name": "Aangepast",
+                    "description": "Aangepaste afmetingen en kwaliteitsinstellingen"
+                }
+            }
+        },
+        "DownloadOptions": {
+            "title": "DOWNLOADEN",
+            "format": "FORMAT",
+            "downloadAll": "ALLE DOWNLOADEN",
+            "transparentNote": "Opmerking: Afbeeldingen met verwijderde achtergronden worden opgeslagen als transparante PNG's"
+        },
+        "ProUpgrade": {
+            "title": "Upgrade naar Pro",
+            "unlock": "Ontgrendel alle premium functies",
+            "description": "Upgrade naar Pro om {feature} te ontgrendelen en tot {count} afbeeldingen tegelijk te verwerken.",
+            "pricing": {
+                "title": "EENMALIGE BETALING",
+                "price": "€19,99",
+                "note": "Geen abonnement, levenslange toegang"
+            },
+            "learnMore": "MEER INFORMATIE",
+            "close": "Sluiten"
+        },
+        "SeoNameGenerator": {
+            "title": "AI SEO-NAAMGENERATOR",
+            "description": "Genereer SEO-vriendelijke bestandsnamen voor uw afbeeldingen",
+            "enterDescription": "Voer uw productbeschrijving in",
+            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerf...",
+            "generate": "SEO-NAMEN GENEREREN",
+            "generating": "GENEREREN...",
+            "proLimit": "Genereer tot 100 namen tegelijk met Pro",
+            "originalName": "Originele naam",
+            "seoName": "SEO-naam",
+            "appliedNames": {
+                "title": "Toegepaste SEO-namen",
+                "description": "Onze AI heeft SEO-geoptimaliseerde bestandsnamen voor uw afbeeldingen gegenereerd. U kunt individuele namen bewerken in het afbeeldingsvoorbeeldgedeelte."
+            },
+            "tryFeature": "PROBEER HOE HET WERKT"
+        },
+        "QuickPresets": {
+            "title": "SNELLE VOORINSTELLINGEN",
+            "productSpecialty": "PRODUCTSPECIALITEIT",
+            "colorStyle": "KLEURSTIJL",
+            "presets": {
+                "white-bg": {
+                    "name": "WITTE ACHTERGROND",
+                    "description": "Schone productfotografie met witte achtergrond"
+                },
+                "clean": {
+                    "name": "SCHONE PRODUCT",
+                    "description": "Productfotografie met schone, neutrale kleuren"
+                },
+                "jewelry": {
+                    "name": "SIERADEN/METAAL",
+                    "description": "Geoptimaliseerd voor sieraden en metalen producten"
+                },
+                "sharp": {
+                    "name": "SCHERPE DETAILS",
+                    "description": "Verbeterde scherpte en details"
+                },
+                "textile": {
+                    "name": "TEXTIEL/STOF",
+                    "description": "Voor stof- en textielproducten - verbetert textuur en kleur"
+                },
+                "soft-product": {
+                    "name": "ZACHTE PRODUCTEN",
+                    "description": "Voor zachte producten zoals kussens, kussens, knuffels"
+                },
+                "furniture": {
+                    "name": "MEUBELS/HOUT",
+                    "description": "Houten meubels en woondecoratie"
+                },
+                "transparent": {
+                    "name": "GLAS",
+                    "description": "Glas en transparante producten"
+                },
+                "food": {
+                    "name": "VOEDINGSMIDDELEN",
+                    "description": "Voedselfotografie - verbetert versheid en kleuraantrekkingskracht"
+                },
+                "dramatic": {
+                    "name": "DRAMATISCH",
+                    "description": "Productfotografie met hoog contrast"
+                },
+                "vivid": {
+                    "name": "LEVENDIGE KLEUREN",
+                    "description": "Verbeterde kleurverzadiging en helderheid"
+                },
+                "classic": {
+                    "name": "KLASSIEK",
+                    "description": "Klassieke look met gebalanceerde kleuren"
+                }
+            }
+        },
+        "BackgroundRemovalPage": {
+            "title": "ACHTERGRONDVERWIJDERING",
+            "loading": {
+                "tool": "TOOL WORDT GELADEN...",
+                "proStatus": "PRO-STATUS WORDT GECONTROLEERD...",
+                "description": "Even geduld terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
+                "proDescription": "Even geduld terwijl we uw accountstatus controleren."
+            },
+            "mainCard": {
+                "title": "AFBEELDINGSACHTERGRONDEN VERWIJDEREN",
+                "info": {
+                    "title": "AI-ACHTERGRONDVERWIJDERING",
+                    "description": "Verwijder de achtergrond van uw productafbeeldingen met AI-technologie. Het proces vindt volledig plaats in uw browser voor privacy.",
+                    "freeMode": {
+                        "title": "GRATIS MODUS",
+                        "description": "Verwerk 1 afbeelding tegelijk. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!"
+                    },
+                    "proMode": {
+                        "title": "PRO-MODUS",
+                        "description": "Verwerk tot 100 afbeeldingen tegelijk met uw PRO-account!"
+                    }
+                },
+                "upload": {
+                    "title": "Selecteer afbeeldingen",
+                    "buttonFree": "SELECTEER EEN AFBEELDING",
+                    "buttonPro": "SELECTEER AFBEELDINGEN",
+                    "helpTextFree": "Gratis gebruikers kunnen 1 afbeelding tegelijk selecteren.",
+                    "helpTextPro": "U kunt tot 100 afbeeldingen tegelijk selecteren."
+                },
+                "actions": {
+                    "clear": "WISSEN",
+                    "download": "DOWNLOADEN",
+                    "downloadZip": "ALS ZIP DOWNLOADEN",
+                    "removeBackground": "ACHTERGROND VERWIJDEREN",
+                    "removeBackgrounds": "ACHTERGRONDEN VERWIJDEREN",
+                    "processing": "ACHTERGROND WORDT VERWIJDERD...",
+                    "processingMultiple": "ACHTERGRONDEN WORDEN VERWIJDERD...",
+                    "tryFullEditor": "PROBEER VOLLEDIGE EDITOR"
+                },
+                "progress": {
+                    "processing": "Verwerken...",
+                    "percent": "{percent}%"
+                },
+                "upgradeCard": {
+                    "title": "UPGRADE NAAR PRO",
+                    "plan": {
+                        "title": "PRO-PLAN",
+                        "price": "€19,99",
+                        "features": [
+                            "Verwijder achtergronden van tot 100 afbeeldingen tegelijk",
+                            "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
+                            "SEO-naamgeneratie voor productafbeeldingen",
+                            "Batchverwerking voor alle functies",
+                            "Eenmalige betaling, levenslange toegang"
+                        ],
+                        "buttonText": "NU UPGRADEN"
+                    }
+                }
+            },
+            "howItWorks": {
+                "title": "HOE HET WERKT",
+                "step1": {
+                    "title": "1. SELECTEER UW AFBEELDINGEN",
+                    "description": "Upload een of meer productafbeeldingen die u wilt verwerken.",
+                    "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
+                },
+                "step2": {
+                    "title": "2. VERWIJDER ACHTERGRONDEN",
+                    "description": "Onze AI-technologie detecteert en verwijdert de achtergrond van uw afbeeldingen, waardoor transparante PNG's ontstaan die perfect zijn voor e-commerce."
+                },
+                "step3": {
+                    "title": "3. DOWNLOAD & GEBRUIK",
+                    "description": "Download uw verwerkte afbeeldingen en gebruik ze op uw website, marktplaatsvermeldingen of marketingmaterialen."
+                }
+            },
+            "proDialog": {
+                "title": "UPGRADE NAAR PRO",
+                "featureTitle": "PRO-FUNCTIE: Bulk achtergrondverwijdering",
+                "description": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken, wat u uren werk bespaart!",
+                "pricing": {
+                    "title": "EENMALIGE BETALING",
+                    "price": "€19,99",
+                    "note": "Geen abonnement, levenslange toegang"
+                },
+                "actions": {
+                    "upgrade": "UPGRADE NAAR PRO",
+                    "continue": "DOORGAAN MET GRATIS MODUS"
+                }
+            }
+        },
+        "ImagePreview": {
+            "noImages": "Geen afbeeldingen geselecteerd",
+            "zoomInstructions": "Knijp om in te zoomen, sleep om te verplaatsen",
+            "zoomLevel": "{scale}%",
+            "removingBackground": "Achtergrond wordt verwijderd...",
+            "seoName": {
+                "label": "SEO-vriendelijke naam:",
+                "edit": "BEWERKEN",
+                "cancel": "ANNULEREN",
+                "save": "OPSLAAN"
+            },
+            "originalName": "Originele naam:",
+            "fileInfo": {
+                "dimensions": "Afmetingen:",
+                "size": "Grootte:",
+                "output": "Uitvoer:",
+                "quality": "Kwaliteit:",
+                "background": "Achtergrond:",
+                "backgroundRemoved": "Verwijderd",
+                "custom": "Aangepast",
+                "auto": "auto"
+            },
+            "actions": {
+                "download": "DOWNLOADEN",
+                "reset": "RESET"
+            },
+            "allImages": "ALLE AFBEELDINGEN ({current}/{max})"
+        },
+        "PricingCard": {
+            "oneTime": "eenmalig",
+            "currentPlan": "HUIDIGE PLAN"
+        }
+    },
+    "Dialogs": {
+        "download": {
+            "title": "Afbeeldingen downloaden",
+            "confirmTitle": "Download bevestigen",
+            "successTitle": "Download succesvol",
+            "summary": "Download samenvatting:",
+            "images": "{count, plural, =1 {# afbeelding} other {# afbeeldingen}} worden gedownload",
+            "format": "Format:",
+            "appliedPreset": "Toegepaste voorinstelling:",
+            "adjustmentsApplied": "Afbeeldingsaanpassingen zijn toegepast",
+            "backgroundRemoval": "Achtergrondverwijdering is toegepast",
+            "seoFilenames": "AI SEO-geoptimaliseerde bestandsnamen inbegrepen",
+            "zipPackage": "Bestanden worden verpakt als ZIP-archief",
+            "processingNote": "Verwerking kan even duren voor meerdere of grote afbeeldingen.",
+            "cancel": "ANNULEREN",
+            "download": "DOWNLOADEN",
+            "processing": "VERWERKEN...",
+            "successMessage": "Uw afbeeldingen zijn succesvol gedownload. Wat wilt u nu doen?",
+            "startNewBundleDesc": "Nieuw pakket starten: Huidige afbeeldingen wissen en opnieuw beginnen",
+            "continueEditingDesc": "Verder bewerken: Blijf werken met huidige afbeeldingen",
+            "startNewBundle": "NIEUW PAKKET STARTEN",
+            "continueEditing": "VERDER BEWERKEN"
+        },
+        "proUpgrade": {
+            "feature": "Batchverwerking"
+        }
+    },
+    "Pricing": {
+        "title": "PRIJSPLANNEN",
+        "subtitle": "Kies het perfecte plan voor uw beeldoptimalisatiebehoeften. Ons PRO-plan biedt een levenslange licentie met een eenmalige betaling.",
+        "alreadyPro": {
+            "title": "U bent al een PRO-gebruiker!",
+            "description": "Bedankt voor uw ondersteuning. U heeft toegang tot alle PRO-functies inclusief bulk achtergrondverwijdering, geavanceerde afbeeldingsaanpassingen en SEO-bestandsnaamgeneratie.",
+            "backToEditor": "TERUG NAAR EDITOR"
+        },
+        "checkout": {
+            "title": "VOLTOOI UW AANKOOP",
+            "planTitle": "PRO LEVENSLANGE LICENTIE",
+            "price": "€19,99",
+            "description": "Eenmalige betaling, levenslange toegang tot alle PRO-functies",
+            "email": "E-MAIL",
+            "cardInfo": "KAARTINFORMATIE",
+            "cardNumber": "1234 5678 9012 3456",
+            "expiryDate": "MM/JJ",
+            "cvc": "CVC",
+            "completePurchase": "AANKOOP VOLTOOIEN",
+            "goBack": "Terug"
+        },
+        "plans": {
+            "free": {
+                "title": "GRATIS",
+                "price": "GRATIS",
+                "features": [
+                    "Verwerk tot 10 afbeeldingen tegelijk",
+                    "Basis afbeeldingsaanpassingen",
+                    "Enkele achtergrondverwijdering",
+                    "Standaard exportopties",
+                    "Browser-gebaseerde verwerking"
+                ],
+                "buttonText": "GRATIS VERDERGAAN"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "€19,99",
+                "features": [
+                    "Verwerk tot 100 afbeeldingen tegelijk",
+                    "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
+                    "Bulk achtergrondverwijdering (tot 100 afbeeldingen)",
+                    "SEO-bestandsnaamgeneratie",
+                    "Prioriteitsondersteuning",
+                    "Eenmalige betaling, levenslange toegang"
+                ],
+                "buttonText": "UPGRADE NAAR PRO"
+            }
+        },
+        "faq": {
+            "title": "VEELGESTELDE VRAGEN",
+            "questions": {
+                "oneTime": {
+                    "question": "Is dit echt een eenmalige betaling?",
+                    "answer": "Ja! Betaal eenmaal en krijg levenslange toegang tot alle PRO-functies. Geen terugkerende abonnementen."
+                },
+                "backgroundRemoval": {
+                    "question": "Hoe werkt achtergrondverwijdering?",
+                    "answer": "We gebruiken geavanceerde AI-algoritmen om achtergronden van uw productafbeeldingen te detecteren en te verwijderen. Het hele proces vindt plaats in uw browser - we slaan uw afbeeldingen nooit op onze servers op."
+                },
+                "imageLimits": {
+                    "question": "Wat zijn de afbeeldingslimieten?",
+                    "answer": "Gratis gebruikers kunnen tot 10 afbeeldingen tegelijk verwerken met basis functies en de achtergrond van 1 afbeelding tegelijk verwijderen. PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk verwerken, inclusief bulk achtergrondverwijdering."
+                },
+                "refund": {
+                    "question": "Kan ik een terugbetaling aanvragen?",
+                    "answer": "Ja, we bieden een 30-dagen geld-terug-garantie als u niet tevreden bent met de PRO-functies. Neem contact op met ons ondersteuningsteam voor hulp."
+                }
+            }
+        }
+    },
+    "PrivacyPolicy": {
+        "title": "PRIVACYBELEID",
+        "section1Title": "1. INTRODUCTIE",
+        "section1P1": "Welkom bij PICME (“wij”, “ons”, “onze”). Wij zetten ons in om uw privacy te beschermen en de veiligheid van uw persoonlijke gegevens te waarborgen.",
+        "section1P2": "Dit privacybeleid legt uit hoe wij omgaan met uw gegevens wanneer u onze browsergebaseerde beeldoptimalisatietool gebruikt.",
+        "section2Title": "2. GEGEVENSVERZAMELING",
+        "section2P1Bold": "Wij verzamelen of bewaren uw afbeeldingen niet.",
+        "section2P2": "PICME werkt volledig binnen uw browser. Wanneer u afbeeldingen uploadt om te optimaliseren:",
+        "section2Li1": "Uw afbeeldingen worden lokaal in uw browser verwerkt met behulp van client-side JavaScript.",
+        "section2Li2": "Uw afbeeldingen verlaten nooit uw apparaat en worden niet naar onze servers verzonden.",
+        "section2Li3": "Wij slaan geen kopieën op van uw originele of verwerkte afbeeldingen.",
+        "section2Li4": "Wij volgen de inhoud van uw afbeeldingen niet.",
+        "section3Title": "3. AI-GESTUURDE FUNCTIES",
+        "section3P1": "Wanneer u onze AI-gestuurde functies voor het genereren van SEO-namen gebruikt:",
+        "section3Li1": "Wij sturen alleen de beschrijvende tekst die u opgeeft naar onze API.",
+        "section3Li2": "Wij sturen of verwerken uw daadwerkelijke afbeeldingen niet via onze AI-systemen.",
+        "section3Li3": "Uw gegenereerde SEO-namen worden teruggestuurd naar uw browser en worden niet permanent op onze servers opgeslagen.",
+        "section4Title": "4. ANALYTICS & COOKIES",
+        "section4P1": "Wij gebruiken minimale analyses om te begrijpen hoe onze site wordt gebruikt:",
+        "section4Li1": "Wij verzamelen anonieme gebruiksstatistieken zoals paginaweergaven en functiegebruik.",
+        "section4Li2": "Wij gebruiken essentiële cookies om functionaliteit te bieden zoals reCAPTCHA-bescherming.",
+        "section4Li3": "Wij gebruiken geen cookies voor reclame of tracking op andere websites.",
+        "section5Title": "5. DIENSTEN VAN DERDEN",
+        "section5P1": "Wij gebruiken de volgende diensten van derden:",
+        "section5Li1": "Google reCAPTCHA voor spambescherming op onze AI-functies.",
+        "section5Li2": "OpenCV.js voor beeldverwerking (draait volledig in uw browser).",
+        "section5P2": "Elk van deze diensten heeft zijn eigen privacybeleid dat bepaalt hoe zij met gegevens omgaan.",
+        "section6Title": "6. WIJZIGINGEN IN DIT BELEID",
+        "section6P1": "Wij kunnen dit privacybeleid van tijd tot tijd bijwerken. Wij zullen u op de hoogte stellen van eventuele wijzigingen door het nieuwe privacybeleid op deze pagina te publiceren en de datum „Laatst bijgewerkt” bij te werken.",
+        "section7Title": "7. CONTACTEER ONS",
+        "section7P1": "Als u vragen heeft over dit privacybeleid, neem dan contact met ons op via privacy@picme-app.com.",
+        "returnButton": "TERUG NAAR HOME"
+    }
+} 

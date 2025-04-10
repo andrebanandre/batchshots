@@ -292,21 +292,21 @@
                 "progress": {
                     "processing": "Processing...",
                     "percent": "{percent}%"
-                }
-            },
-            "upgradeCard": {
-                "title": "UPGRADE TO PRO",
-                "plan": {
-                    "title": "PRO PLAN",
-                    "price": "$19.99",
-                    "features": [
-                        "Remove backgrounds from up to 100 images at once",
-                        "Advanced image adjustments and presets",
-                        "SEO name generation for product images",
-                        "Batch processing for all features",
-                        "One-time payment, lifetime access"
-                    ],
-                    "buttonText": "UPGRADE NOW"
+                },
+                "upgradeCard": {
+                    "title": "UPGRADE TO PRO",
+                    "plan": {
+                        "title": "PRO PLAN",
+                        "price": "$19.99",
+                        "features": [
+                            "Remove backgrounds from up to 100 images at once",
+                            "Advanced image adjustments and presets",
+                            "SEO name generation for product images",
+                            "Batch processing for all features",
+                            "One-time payment, lifetime access"
+                        ],
+                        "buttonText": "UPGRADE NOW"
+                    }
                 }
             },
             "howItWorks": {
@@ -367,6 +367,10 @@
                 "reset": "RESET"
             },
             "allImages": "ALL IMAGES ({current}/{max})"
+        },
+        "PricingCard": {
+            "oneTime": "one-time",
+            "currentPlan": "CURRENT PLAN"
         }
     },
     "Dialogs": {
@@ -465,5 +469,38 @@
                 }
             }
         }
+    },
+    "PrivacyPolicy": {
+        "title": "PRIVACY POLICY",
+        "section1Title": "1. INTRODUCTION",
+        "section1P1": "Welcome to PICME (“we”, “our”, “us”). We are committed to protecting your privacy and ensuring the security of your personal information.",
+        "section1P2": "This Privacy Policy explains how we handle your data when you use our browser-based image optimization tool.",
+        "section2Title": "2. DATA COLLECTION",
+        "section2P1Bold": "We do not collect or store your images.",
+        "section2P2": "PICME operates entirely within your browser. When you upload images to optimize:",
+        "section2Li1": "Your images are processed locally in your browser using client-side JavaScript.",
+        "section2Li2": "Your images never leave your device and are not transmitted to our servers.",
+        "section2Li3": "We do not store copies of your original or processed images.",
+        "section2Li4": "We do not track the content of your images.",
+        "section3Title": "3. AI-POWERED FEATURES",
+        "section3P1": "When you use our AI-powered SEO name generation features:",
+        "section3Li1": "We send only the descriptive text you provide to our API.",
+        "section3Li2": "We do not send or process your actual images through our AI systems.",
+        "section3Li3": "Your generated SEO names are delivered back to your browser and are not permanently stored on our servers.",
+        "section4Title": "4. ANALYTICS & COOKIES",
+        "section4P1": "We use minimal analytics to understand how our site is used:",
+        "section4Li1": "We collect anonymous usage statistics like page views and feature usage.",
+        "section4Li2": "We use essential cookies to provide functionality like reCAPTCHA protection.",
+        "section4Li3": "We do not use cookies for advertising or tracking across other websites.",
+        "section5Title": "5. THIRD-PARTY SERVICES",
+        "section5P1": "We use the following third-party services:",
+        "section5Li1": "Google reCAPTCHA for spam protection on our AI features.",
+        "section5Li2": "OpenCV.js for image processing (runs entirely in your browser).",
+        "section5P2": "Each of these services has its own privacy policy governing how they handle data.",
+        "section6Title": "6. CHANGES TO THIS POLICY",
+        "section6P1": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date.",
+        "section7Title": "7. CONTACT US",
+        "section7P1": "If you have any questions about this Privacy Policy, please contact us at privacy@picme-app.com.",
+        "returnButton": "RETURN TO HOME"
     }
 }

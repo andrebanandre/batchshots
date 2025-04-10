@@ -1,0 +1,506 @@
+{
+    "Manifest": {
+        "name": "PICME"
+    },
+    "LocaleSwitcher": {
+        "label": "Changer la langue",
+        "locale": "{locale, select, fr {🇫🇷 Français} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Home": {
+        "title": "PICME: OPTIMISATEUR D'IMAGES SEO",
+        "loading": "CHARGEMENT DE L'APPLICATION...",
+        "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'images.",
+        "transformTitle": "TRANSFORMEZ VOS PHOTOS DE PRODUITS",
+        "privacyFocused": "GRATUIT & RESPECTUEUX DE LA VIE PRIVÉE",
+        "privacyDescription": "PICME traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou données sur nos serveurs.",
+        "privacyPolicy": "Politique de confidentialité",
+        "termsOfUse": "Conditions d'utilisation",
+        "features": {
+            "presets": {
+                "title": "PRÉRÉGLAGES PROFESSIONNELS",
+                "description": "Appliquez des préréglages optimisés pour le commerce électronique, les réseaux sociaux et l'affichage web en un clic."
+            },
+            "aiPowered": {
+                "title": "SEO ALIMENTÉ PAR L'IA",
+                "description": "Générez des noms de fichiers SEO avec nos outils d'IA pour améliorer la découvrabilité de vos produits."
+            },
+            "advancedControls": {
+                "title": "CONTRÔLES AVANCÉS",
+                "description": "Ajustez la luminosité, le contraste, la balance des blancs et plus encore pour perfectionner vos photos de produits."
+            },
+            "batchProcessing": {
+                "title": "TRAITEMENT PAR LOTS",
+                "description": "Traitez plusieurs images à la fois pour gagner du temps et garantir des résultats cohérents."
+            }
+        },
+        "proMode": "MODE PRO ACTIVÉ",
+        "freePlan": "PLAN GRATUIT",
+        "proDescription": "Traitez jusqu'à {maxImages} images à la fois avec toutes les fonctionnalités premium débloquées.",
+        "freeDescription": "Limité à {maxImages} images. Passez à PRO pour traiter jusqu'à 100 images à la fois.",
+        "upgradeToPro": "PASSER À PRO",
+        "selectImages": "SÉLECTIONNER DES IMAGES (JUSQU'À {maxImages})",
+        "imageEditor": "ÉDITEUR D'IMAGES",
+        "selectMoreImages": "SÉLECTIONNER PLUS D'IMAGES",
+        "maxImagesReached": "NOMBRE MAXIMAL D'IMAGES ATTEINT",
+        "imagesCount": "{current}/{max} images",
+        "upgradeFor": "(Passez à PRO pour jusqu'à 100)",
+        "imageOptimization": "OPTIMISATION D'IMAGES"
+    },
+    "Navbar": {
+        "imageOptimizer": "Optimiseur d'images",
+        "removeBackgrounds": "Supprimer les arrière-plans",
+        "aiBackgrounds": "Arrière-plans IA",
+        "pricing": "Tarifs",
+        "login": "SE CONNECTER"
+    },
+    "Footer": {
+        "about": "Outils d'image professionnels pour les photographes de produits, les marketeurs et les entreprises de commerce électronique. Simplifiez votre flux de travail avec nos outils brutalistes.",
+        "quickLinks": "LIENS RAPIDES",
+        "stayUpdated": "RESTEZ INFORMÉ",
+        "subscribeText": "Abonnez-vous à notre newsletter pour les mises à jour, conseils et offres spéciales.",
+        "emailPlaceholder": "Votre email",
+        "subscribe": "S'ABONNER",
+        "copyright": "© {year} PICME. Tous droits réservés.",
+        "madeWith": "Fait avec ♥ par l'équipe PICME"
+    },
+    "Layout": {
+        "title": "PicMe - Optimiseur d'images SEO",
+        "description": "Optimisez vos images de produits pour le SEO avec des ajustements simples de la balance des blancs, du contraste et de la taille.",
+        "keywords": "optimisation d'images, images SEO, photos de produits, balance des blancs, traitement par lots d'images"
+    },
+    "Components": {
+        "ImageProcessingControls": {
+            "title": "AJUSTEMENTS D'IMAGE",
+            "reset": "RÉINITIALISER",
+            "applyToAll": "APPLIQUER À TOUTES LES IMAGES",
+            "basic": "BASIQUE",
+            "advanced": "AVANCÉ",
+            "ai": "IA",
+            "brightness": "LUMINOSITÉ",
+            "contrast": "CONTRASTE",
+            "sharpen": "NETTETÉ",
+            "colorAdjust": "AJUSTEMENT DES COULEURS (HSL)",
+            "hue": "TEINTE",
+            "cooler": "PLUS FROID",
+            "warmer": "PLUS CHAUD",
+            "saturation": "SATURATION",
+            "less": "MOINS",
+            "more": "PLUS",
+            "lightness": "LUMINOSITÉ",
+            "darker": "PLUS SOMBRE",
+            "lighter": "PLUS CLAIR",
+            "colorBalance": "BALANCE DES COULEURS (RGB)",
+            "red": "ROUGE",
+            "green": "VERT",
+            "blue": "BLEU"
+        },
+        "BackgroundRemoval": {
+            "title": "SUPPRESSION D'ARRIÈRE-PLAN",
+            "selected": "Image sélectionnée",
+            "removeBackground": "SUPPRIMER L'ARRIÈRE-PLAN",
+            "allImages": "Toutes les images",
+            "backgroundsRemoved": "{count} sur {total} arrière-plans supprimés",
+            "removeAllBackgrounds": "SUPPRIMER TOUS LES ARRIÈRE-PLANS",
+            "processing": "Traitement...",
+            "backgroundRemoved": "Arrière-plan supprimé avec succès !",
+            "transparent": "Arrière-plan transparent détecté",
+            "description": "Supprimez l'arrière-plan de votre image de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité.",
+            "processingInfo": {
+                "process": "Processus",
+                "processValue": "Traitement IA dans le navigateur",
+                "result": "Résultat",
+                "resultValue": "Arrière-plan PNG transparent",
+                "mode": "Mode"
+            },
+            "proDialog": {
+                "title": "PASSER À PRO",
+                "featureTitle": "FONCTION PRO : Suppression d'arrière-plan",
+                "description": "Passez à PRO pour débloquer la suppression d'arrière-plan pour toutes vos images (jusqu'à 100 à la fois) ! Obtenez des photos de produits d'aspect professionnel avec des arrière-plans transparents.",
+                "pricing": {
+                    "title": "PAIEMENT UNIQUE",
+                    "price": "19,99 €",
+                    "note": "Pas d'abonnement, accès à vie"
+                },
+                "actions": {
+                    "upgrade": "PASSER À PRO",
+                    "try": "ESSAYER COMMENT ÇA MARCHE",
+                    "later": "Peut-être plus tard"
+                }
+            },
+            "compactDescription": "Supprime l'arrière-plan des images de produits avec l'IA. Le traitement prend 10-30 secondes."
+        },
+        "PresetsSelector": {
+            "title": "PRÉRÉGLAGES",
+            "custom": "Personnalisé",
+            "dimensions": "DIMENSIONS",
+            "width": "Largeur",
+            "height": "Hauteur",
+            "auto": "auto",
+            "quality": "QUALITÉ",
+            "apply": "APPLIQUER",
+            "presets": {
+                "web-optimized": {
+                    "name": "Optimisé pour le web",
+                    "description": "1080px, 75% qualité (Taille de fichier minimale, bon pour le web)"
+                },
+                "standard": {
+                    "name": "Standard",
+                    "description": "1080px, 85% qualité (Taille et qualité équilibrées)"
+                },
+                "high-quality": {
+                    "name": "Haute qualité",
+                    "description": "1440px, 95% qualité (Haute qualité, taille de fichier plus grande)"
+                },
+                "max-quality": {
+                    "name": "Maximum",
+                    "description": "2160px, 100% qualité (Qualité maximale, taille de fichier la plus grande)"
+                },
+                "custom": {
+                    "name": "Personnalisé",
+                    "description": "Dimensions et paramètres de qualité personnalisés"
+                }
+            }
+        },
+        "DownloadOptions": {
+            "title": "TÉLÉCHARGER",
+            "format": "FORMAT",
+            "downloadAll": "TOUT TÉLÉCHARGER",
+            "transparentNote": "Note : Les images avec arrière-plan supprimé seront enregistrées en PNG transparent"
+        },
+        "ProUpgrade": {
+            "title": "Passer à Pro",
+            "unlock": "Débloquez toutes les fonctionnalités premium",
+            "description": "Passez à Pro pour débloquer {feature} et traiter jusqu'à {count} images à la fois.",
+            "pricing": {
+                "title": "PAIEMENT UNIQUE",
+                "price": "19,99 €",
+                "note": "Pas d'abonnement, accès à vie"
+            },
+            "learnMore": "EN SAVOIR PLUS",
+            "close": "Fermer"
+        },
+        "SeoNameGenerator": {
+            "title": "GÉNÉRATEUR DE NOMS SEO IA",
+            "description": "Générez des noms de fichiers SEO pour vos images",
+            "enterDescription": "Entrez votre description de produit",
+            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, pleine fleur...",
+            "generate": "GÉNÉRER DES NOMS SEO",
+            "generating": "GÉNÉRATION...",
+            "proLimit": "Générez jusqu'à 100 noms à la fois avec Pro",
+            "originalName": "Nom original",
+            "seoName": "Nom SEO",
+            "appliedNames": {
+                "title": "Noms SEO appliqués",
+                "description": "Notre IA a généré des noms de fichiers optimisés SEO pour vos images. Vous pouvez modifier des noms individuels dans la section d'aperçu d'image."
+            },
+            "tryFeature": "ESSAYER COMMENT ÇA MARCHE"
+        },
+        "QuickPresets": {
+            "title": "PRÉRÉGLAGES RAPIDES",
+            "productSpecialty": "SPÉCIALITÉ PRODUIT",
+            "colorStyle": "STYLE DE COULEUR",
+            "presets": {
+                "white-bg": {
+                    "name": "ARRIÈRE-PLAN BLANC",
+                    "description": "Photographie de produit sur fond blanc propre"
+                },
+                "clean": {
+                    "name": "PRODUIT PROPRE",
+                    "description": "Photographie de produit avec des couleurs propres et neutres"
+                },
+                "jewelry": {
+                    "name": "BIJOUX/MÉTAL",
+                    "description": "Optimisé pour les bijoux et produits métalliques"
+                },
+                "sharp": {
+                    "name": "DÉTAILS NETS",
+                    "description": "Netteté et détails améliorés"
+                },
+                "textile": {
+                    "name": "TEXTILE/TISSU",
+                    "description": "Pour les produits en tissu et textile - améliore la texture et la couleur"
+                },
+                "soft-product": {
+                    "name": "PRODUITS DOUX",
+                    "description": "Pour les produits doux comme les coussins, oreillers, peluches"
+                },
+                "furniture": {
+                    "name": "MEUBLES/BOIS",
+                    "description": "Meubles en bois et décoration d'intérieur"
+                },
+                "transparent": {
+                    "name": "VERRE",
+                    "description": "Verre et produits transparents"
+                },
+                "food": {
+                    "name": "PRODUITS ALIMENTAIRES",
+                    "description": "Photographie culinaire - améliore la fraîcheur et l'attrait des couleurs"
+                },
+                "dramatic": {
+                    "name": "DRAMATIQUE",
+                    "description": "Photographie de produit à contraste élevé"
+                },
+                "vivid": {
+                    "name": "COULEURS VIVES",
+                    "description": "Saturation et luminosité des couleurs améliorées"
+                },
+                "classic": {
+                    "name": "CLASSIQUE",
+                    "description": "Look classique avec des couleurs équilibrées"
+                }
+            }
+        },
+        "BackgroundRemovalPage": {
+            "title": "OUTIL DE SUPPRESSION D'ARRIÈRE-PLAN",
+            "loading": {
+                "tool": "CHARGEMENT DE L'OUTIL...",
+                "proStatus": "VÉRIFICATION DU STATUT PRO...",
+                "description": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'images.",
+                "proDescription": "Veuillez patienter pendant que nous vérifions le statut de votre compte."
+            },
+            "mainCard": {
+                "title": "SUPPRIMER LES ARRIÈRE-PLANS D'IMAGES",
+                "info": {
+                    "title": "SUPPRESSION D'ARRIÈRE-PLAN IA",
+                    "description": "Supprimez l'arrière-plan de vos images de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité.",
+                    "freeMode": {
+                        "title": "MODE GRATUIT",
+                        "description": "Traitez 1 image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse !"
+                    },
+                    "proMode": {
+                        "title": "MODE PRO",
+                        "description": "Traitez jusqu'à 100 images à la fois avec votre compte PRO !"
+                    }
+                },
+                "upload": {
+                    "title": "Sélectionner des images",
+                    "buttonFree": "SÉLECTIONNER UNE IMAGE",
+                    "buttonPro": "SÉLECTIONNER DES IMAGES",
+                    "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner 1 image à la fois.",
+                    "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
+                },
+                "actions": {
+                    "clear": "EFFACER",
+                    "download": "TÉLÉCHARGER",
+                    "downloadZip": "TÉLÉCHARGER EN ZIP",
+                    "removeBackground": "SUPPRIMER L'ARRIÈRE-PLAN",
+                    "removeBackgrounds": "SUPPRIMER LES ARRIÈRE-PLANS",
+                    "processing": "SUPPRESSION DE L'ARRIÈRE-PLAN...",
+                    "processingMultiple": "SUPPRESSION DES ARRIÈRE-PLANS...",
+                    "tryFullEditor": "ESSAYER L'ÉDITEUR COMPLET"
+                },
+                "progress": {
+                    "processing": "Traitement...",
+                    "percent": "{percent}%"
+                },
+                "upgradeCard": {
+                    "title": "PASSER À PRO",
+                    "plan": {
+                        "title": "PLAN PRO",
+                        "price": "19,99 €",
+                        "features": [
+                            "Supprimez les arrière-plans de jusqu'à 100 images à la fois",
+                            "Ajustements d'image avancés et préréglages",
+                            "Génération de noms SEO pour les images de produits",
+                            "Traitement par lots pour toutes les fonctionnalités",
+                            "Paiement unique, accès à vie"
+                        ],
+                        "buttonText": "PASSER À PRO MAINTENANT"
+                    }
+                }
+            },
+            "howItWorks": {
+                "title": "COMMENT ÇA MARCHE",
+                "step1": {
+                    "title": "1. SÉLECTIONNEZ VOS IMAGES",
+                    "description": "Téléchargez une ou plusieurs images de produit que vous souhaitez traiter.",
+                    "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
+                },
+                "step2": {
+                    "title": "2. SUPPRIMEZ LES ARRIÈRE-PLANS",
+                    "description": "Notre technologie IA détecte et supprime l'arrière-plan de vos images, créant des PNG transparents parfaits pour le commerce électronique."
+                },
+                "step3": {
+                    "title": "3. TÉLÉCHARGEZ & UTILISEZ",
+                    "description": "Téléchargez vos images traitées et utilisez-les sur votre site web, vos annonces de marketplace ou vos supports marketing."
+                }
+            },
+            "proDialog": {
+                "title": "PASSER À PRO",
+                "featureTitle": "FONCTION PRO : Suppression d'arrière-plan en masse",
+                "description": "Les utilisateurs gratuits ne peuvent traiter qu'1 image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse, vous faisant gagner des heures de travail !",
+                "pricing": {
+                    "title": "PAIEMENT UNIQUE",
+                    "price": "19,99 €",
+                    "note": "Pas d'abonnement, accès à vie"
+                },
+                "actions": {
+                    "upgrade": "PASSER À PRO",
+                    "continue": "CONTINUER EN MODE GRATUIT"
+                }
+            }
+        },
+        "ImagePreview": {
+            "noImages": "Aucune image sélectionnée",
+            "zoomInstructions": "Pincez pour zoomer, faites glisser pour déplacer",
+            "zoomLevel": "{scale}%",
+            "removingBackground": "Suppression de l'arrière-plan...",
+            "seoName": {
+                "label": "Nom SEO :",
+                "edit": "MODIFIER",
+                "cancel": "ANNULER",
+                "save": "ENREGISTRER"
+            },
+            "originalName": "Nom original :",
+            "fileInfo": {
+                "dimensions": "Dimensions :",
+                "size": "Taille :",
+                "output": "Sortie :",
+                "quality": "Qualité :",
+                "background": "Arrière-plan :",
+                "backgroundRemoved": "Supprimé",
+                "custom": "Personnalisé",
+                "auto": "auto"
+            },
+            "actions": {
+                "download": "TÉLÉCHARGER",
+                "reset": "RÉINITIALISER"
+            },
+            "allImages": "TOUTES LES IMAGES ({current}/{max})"
+        },
+        "PricingCard": {
+            "oneTime": "unique",
+            "currentPlan": "FORFAIT ACTUEL"
+        }
+    },
+    "Dialogs": {
+        "download": {
+            "title": "Télécharger des images",
+            "confirmTitle": "Confirmer le téléchargement",
+            "successTitle": "Téléchargement réussi",
+            "summary": "Résumé du téléchargement :",
+            "images": "{count, plural, =1 {# image} other {# images}} seront téléchargées",
+            "format": "Format :",
+            "appliedPreset": "Préréglage appliqué :",
+            "adjustmentsApplied": "Les ajustements d'image ont été appliqués",
+            "backgroundRemoval": "La suppression d'arrière-plan a été appliquée",
+            "seoFilenames": "Noms de fichiers SEO optimisés par IA inclus",
+            "zipPackage": "Les fichiers seront emballés en archive ZIP",
+            "processingNote": "Le traitement peut prendre un moment pour plusieurs ou grandes images.",
+            "cancel": "ANNULER",
+            "download": "TÉLÉCHARGER",
+            "processing": "TRAITEMENT...",
+            "successMessage": "Vos images ont été téléchargées avec succès. Que souhaitez-vous faire ensuite ?",
+            "startNewBundleDesc": "Démarrer un nouveau lot : Effacer les images actuelles et recommencer",
+            "continueEditingDesc": "Continuer l'édition : Continuer à travailler avec les images actuelles",
+            "startNewBundle": "DÉMARRER UN NOUVEAU LOT",
+            "continueEditing": "CONTINUER L'ÉDITION"
+        },
+        "proUpgrade": {
+            "feature": "Traitement par lots"
+        }
+    },
+    "Pricing": {
+        "title": "PLANS TARIFAIRES",
+        "subtitle": "Choisissez le plan parfait pour vos besoins d'optimisation d'images. Notre plan PRO offre une licence à vie avec un paiement unique.",
+        "alreadyPro": {
+            "title": "Vous êtes déjà un utilisateur PRO !",
+            "description": "Merci pour votre soutien. Vous avez accès à toutes les fonctionnalités PRO, y compris la suppression d'arrière-plan en masse, les ajustements d'image avancés et la génération de noms de fichiers SEO.",
+            "backToEditor": "RETOUR À L'ÉDITEUR"
+        },
+        "checkout": {
+            "title": "FINALISER VOTRE ACHAT",
+            "planTitle": "LICENCE PRO À VIE",
+            "price": "19,99 €",
+            "description": "Paiement unique, accès à vie à toutes les fonctionnalités PRO",
+            "email": "EMAIL",
+            "cardInfo": "INFORMATIONS DE CARTE",
+            "cardNumber": "1234 5678 9012 3456",
+            "expiryDate": "MM/AA",
+            "cvc": "CVC",
+            "completePurchase": "FINALISER L'ACHAT",
+            "goBack": "Retour"
+        },
+        "plans": {
+            "free": {
+                "title": "GRATUIT",
+                "price": "GRATUIT",
+                "features": [
+                    "Traitez jusqu'à 10 images à la fois",
+                    "Ajustements d'image de base",
+                    "Suppression d'arrière-plan d'une seule image",
+                    "Options d'export standard",
+                    "Traitement dans le navigateur"
+                ],
+                "buttonText": "CONTINUER GRATUITEMENT"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "19,99 €",
+                "features": [
+                    "Traitez jusqu'à 100 images à la fois",
+                    "Ajustements d'image avancés et préréglages",
+                    "Suppression d'arrière-plan en masse (jusqu'à 100 images)",
+                    "Génération de noms de fichiers SEO",
+                    "Support prioritaire",
+                    "Paiement unique, accès à vie"
+                ],
+                "buttonText": "PASSER À PRO"
+            }
+        },
+        "faq": {
+            "title": "QUESTIONS FRÉQUEMMENT POSÉES",
+            "questions": {
+                "oneTime": {
+                    "question": "Est-ce vraiment un paiement unique ?",
+                    "answer": "Oui ! Payez une fois et obtenez un accès à vie à toutes les fonctionnalités PRO. Pas d'abonnements récurrents."
+                },
+                "backgroundRemoval": {
+                    "question": "Comment fonctionne la suppression d'arrière-plan ?",
+                    "answer": "Nous utilisons des algorithmes IA avancés pour détecter et supprimer les arrière-plans de vos images de produit. Le processus entier se déroule dans votre navigateur - nous ne stockons jamais vos images sur nos serveurs."
+                },
+                "imageLimits": {
+                    "question": "Quelles sont les limites d'images ?",
+                    "answer": "Les utilisateurs gratuits peuvent traiter jusqu'à 10 images à la fois avec les fonctionnalités de base et supprimer l'arrière-plan d'1 image à la fois. Les utilisateurs PRO peuvent traiter jusqu'à 100 images à la fois, y compris la suppression d'arrière-plan en masse."
+                },
+                "refund": {
+                    "question": "Puis-je demander un remboursement ?",
+                    "answer": "Oui, nous offrons une garantie de remboursement de 30 jours si vous n'êtes pas satisfait des fonctionnalités PRO. Contactez notre équipe de support pour assistance."
+                }
+            }
+        }
+    },
+    "PrivacyPolicy": {
+        "title": "POLITIQUE DE CONFIDENTIALITÉ",
+        "section1Title": "1. INTRODUCTION",
+        "section1P1": "Bienvenue chez PICME (« nous », « notre », « nos »). Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
+        "section1P2": "Cette politique de confidentialité explique comment nous traitons vos données lorsque vous utilisez notre outil d'optimisation d'images basé sur navigateur.",
+        "section2Title": "2. COLLECTE DE DONNÉES",
+        "section2P1Bold": "Nous ne collectons ni ne stockons vos images.",
+        "section2P2": "PICME fonctionne entièrement dans votre navigateur. Lorsque vous téléchargez des images à optimiser :",
+        "section2Li1": "Vos images sont traitées localement dans votre navigateur à l'aide de JavaScript côté client.",
+        "section2Li2": "Vos images ne quittent jamais votre appareil et ne sont pas transmises à nos serveurs.",
+        "section2Li3": "Nous ne stockons pas de copies de vos images originales ou traitées.",
+        "section2Li4": "Nous ne suivons pas le contenu de vos images.",
+        "section3Title": "3. FONCTIONNALITÉS ALIMENTÉES PAR L'IA",
+        "section3P1": "Lorsque vous utilisez nos fonctionnalités de génération de noms SEO alimentées par l'IA :",
+        "section3Li1": "Nous envoyons uniquement le texte descriptif que vous fournissez à notre API.",
+        "section3Li2": "Nous n'envoyons ni ne traitons vos images réelles via nos systèmes d'IA.",
+        "section3Li3": "Vos noms SEO générés sont renvoyés à votre navigateur et ne sont pas stockés en permanence sur nos serveurs.",
+        "section4Title": "4. ANALYSES ET COOKIES",
+        "section4P1": "Nous utilisons des analyses minimales pour comprendre comment notre site est utilisé :",
+        "section4Li1": "Nous collectons des statistiques d'utilisation anonymes telles que les pages vues et l'utilisation des fonctionnalités.",
+        "section4Li2": "Nous utilisons des cookies essentiels pour fournir des fonctionnalités telles que la protection reCAPTCHA.",
+        "section4Li3": "Nous n'utilisons pas de cookies pour la publicité ou le suivi sur d'autres sites Web.",
+        "section5Title": "5. SERVICES TIERS",
+        "section5P1": "Nous utilisons les services tiers suivants :",
+        "section5Li1": "Google reCAPTCHA pour la protection contre le spam sur nos fonctionnalités d'IA.",
+        "section5Li2": "OpenCV.js pour le traitement d'images (s'exécute entièrement dans votre navigateur).",
+        "section5P2": "Chacun de ces services a sa propre politique de confidentialité régissant la manière dont ils traitent les données.",
+        "section6Title": "6. MODIFICATIONS DE CETTE POLITIQUE",
+        "section6P1": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique de confidentialité sur cette page et en mettant à jour la date de « Dernière mise à jour ».",
+        "section7Title": "7. CONTACTEZ-NOUS",
+        "section7P1": "Si vous avez des questions sur cette politique de confidentialité, veuillez nous contacter à privacy@picme-app.com.",
+        "returnButton": "RETOUR À L'ACCUEIL"
+    }
+} 

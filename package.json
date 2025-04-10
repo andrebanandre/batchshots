@@ -41,6 +41,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "node-polyfill-webpack-plugin": "^4.1.0",
     "tailwindcss": "^4",
+    "task-master-ai": "^0.9.30",
     "ts-jest": "^29.3.0",
     "typescript": "^5"
   }

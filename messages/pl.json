@@ -1,0 +1,506 @@
+{
+    "Manifest": {
+        "name": "PICME"
+    },
+    "LocaleSwitcher": {
+        "label": "Zmień język",
+        "locale": "{locale, select, pl {🇵🇱 Polski} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Home": {
+        "title": "PICME: OPTYMALIZATOR OBRAZÓW SEO",
+        "loading": "ŁADOWANIE APLIKACJI...",
+        "loadingDescription": "Proszę czekać, podczas gdy inicjalizujemy możliwości przetwarzania obrazów.",
+        "transformTitle": "PRZETWARZAJ ZDJĘCIA PRODUKTÓW",
+        "privacyFocused": "DARMOWY & SKUPIONY NA PRYWATNOŚCI",
+        "privacyDescription": "PICME przetwarza wszystkie obrazy bezpośrednio w Twojej przeglądarce. Nie przechowujemy Twoich zdjęć ani danych na naszych serwerach.",
+        "privacyPolicy": "Polityka prywatności",
+        "termsOfUse": "Warunki korzystania",
+        "features": {
+            "presets": {
+                "title": "PROFESJONALNE PRESETY",
+                "description": "Zastosuj zoptymalizowane presety dla e-commerce, mediów społecznościowych i wyświetlania w sieci jednym kliknięciem."
+            },
+            "aiPowered": {
+                "title": "SEO WSPOMAGANE PRZEZ AI",
+                "description": "Generuj przyjazne dla SEO nazwy plików za pomocą naszych narzędzi AI, aby poprawić widoczność Twoich produktów."
+            },
+            "advancedControls": {
+                "title": "ZAAWANSOWANE KONTROLE",
+                "description": "Dostosuj jasność, kontrast, balans bieli i więcej, aby udoskonalić swoje zdjęcia produktów."
+            },
+            "batchProcessing": {
+                "title": "PRZETWARZANIE ZBIORCZE",
+                "description": "Przetwarzaj wiele obrazów jednocześnie, aby zaoszczędzić czas i zapewnić spójne wyniki."
+            }
+        },
+        "proMode": "TRYB PRO AKTYWOWANY",
+        "freePlan": "PLAN DARMOWY",
+        "proDescription": "Przetwarzaj do {maxImages} obrazów jednocześnie ze wszystkimi funkcjami premium odblokowanymi.",
+        "freeDescription": "Ograniczone do {maxImages} obrazów. Ulepsz do PRO, aby przetwarzać do 100 obrazów jednocześnie.",
+        "upgradeToPro": "ULEPSZ DO PRO",
+        "selectImages": "WYBIERZ OBRAZY (DO {maxImages})",
+        "imageEditor": "EDYTOR OBRAZÓW",
+        "selectMoreImages": "WYBIERZ WIĘCEJ OBRAZÓW",
+        "maxImagesReached": "OSIĄGNIĘTO MAKSYMALNĄ LICZBĘ OBRAZÓW",
+        "imagesCount": "{current}/{max} obrazy",
+        "upgradeFor": "(Ulepsz do 100)",
+        "imageOptimization": "OPTYMALIZACJA OBRAZÓW"
+    },
+    "Navbar": {
+        "imageOptimizer": "Optymalizator obrazów",
+        "removeBackgrounds": "Usuń tła",
+        "aiBackgrounds": "Tła AI",
+        "pricing": "Cennik",
+        "login": "ZALOGUJ SIĘ"
+    },
+    "Footer": {
+        "about": "Profesjonalne narzędzia do obrazów dla fotografów produktowych, marketerów i firm e-commerce. Uprość swój przepływ pracy z naszymi brutalistycznymi narzędziami.",
+        "quickLinks": "SZYBKIE LINKI",
+        "stayUpdated": "BĄDŹ NA BIEŻĄCO",
+        "subscribeText": "Zapisz się do naszego newslettera, aby otrzymywać aktualizacje, porady i specjalne oferty.",
+        "emailPlaceholder": "Twój email",
+        "subscribe": "ZAPISZ SIĘ",
+        "copyright": "© {year} PICME. Wszelkie prawa zastrzeżone.",
+        "madeWith": "Stworzone z ♥ przez zespół PICME"
+    },
+    "Layout": {
+        "title": "PicMe - Przyjazny dla SEO optymalizator obrazów",
+        "description": "Optymalizuj swoje obrazy produktów pod kątem SEO dzięki prostym dostosowaniom balansu bieli, kontrastu i rozmiaru.",
+        "keywords": "optymalizacja obrazów, obrazy SEO, zdjęcia produktów, balans bieli, przetwarzanie zbiorcze obrazów"
+    },
+    "Components": {
+        "ImageProcessingControls": {
+            "title": "USTAWIENIA OBRAZU",
+            "reset": "RESETUJ",
+            "applyToAll": "ZASTOSUJ DO WSZYSTKICH OBRAZÓW",
+            "basic": "PODSTAWOWE",
+            "advanced": "ZAAWANSOWANE",
+            "ai": "AI",
+            "brightness": "JASNOŚĆ",
+            "contrast": "KONTRAST",
+            "sharpen": "WYOSTRZENIE",
+            "colorAdjust": "DOSTOSOWANIE KOLORU (HSL)",
+            "hue": "ODCIEŃ",
+            "cooler": "CHŁODNIEJSZY",
+            "warmer": "CIEPLEJSZY",
+            "saturation": "NASYCENIE",
+            "less": "MNIEJ",
+            "more": "WIĘCEJ",
+            "lightness": "JASNOŚĆ",
+            "darker": "CIEMNIEJSZY",
+            "lighter": "JAŚNIEJSZY",
+            "colorBalance": "BALANS KOLORÓW (RGB)",
+            "red": "CZERWONY",
+            "green": "ZIELONY",
+            "blue": "NIEBIESKI"
+        },
+        "BackgroundRemoval": {
+            "title": "USUWANIE TŁA",
+            "selected": "Wybrany obraz",
+            "removeBackground": "USUŃ TŁO",
+            "allImages": "Wszystkie obrazy",
+            "backgroundsRemoved": "{count} z {total} tła usunięte",
+            "removeAllBackgrounds": "USUŃ WSZYSTKIE TŁA",
+            "processing": "Przetwarzanie...",
+            "backgroundRemoved": "Tło zostało pomyślnie usunięte!",
+            "transparent": "Wykryto przezroczyste tło",
+            "description": "Usuń tło z obrazu produktu za pomocą technologii AI. Przetwarzanie odbywa się całkowicie w Twojej przeglądarce dla zachowania prywatności.",
+            "processingInfo": {
+                "process": "Proces",
+                "processValue": "Przetwarzanie AI w przeglądarce",
+                "result": "Wynik",
+                "resultValue": "Przezroczyste tło PNG",
+                "mode": "Tryb"
+            },
+            "proDialog": {
+                "title": "ULEPSZ DO PRO",
+                "featureTitle": "FUNKCJA PRO: Usuwanie tła",
+                "description": "Ulepsz do PRO, aby odblokować usuwanie tła dla wszystkich Twoich obrazów (do 100 jednocześnie)! Zdobądź profesjonalnie wyglądające zdjęcia produktów z przezroczystym tłem.",
+                "pricing": {
+                    "title": "JEDNORAZOWA PŁATNOŚĆ",
+                    "price": "19,99 €",
+                    "note": "Bez subskrypcji, dostęp dożywotni"
+                },
+                "actions": {
+                    "upgrade": "ULEPSZ DO PRO",
+                    "try": "SPRAWDŹ JAK TO DZIAŁA",
+                    "later": "Może później"
+                }
+            },
+            "compactDescription": "Usuwa tło z obrazów produktów za pomocą AI. Przetwarzanie trwa 10-30 sekund."
+        },
+        "PresetsSelector": {
+            "title": "PRESETY",
+            "custom": "Niestandardowe",
+            "dimensions": "WYMIARY",
+            "width": "Szerokość",
+            "height": "Wysokość",
+            "auto": "auto",
+            "quality": "JAKOŚĆ",
+            "apply": "ZASTOSUJ",
+            "presets": {
+                "web-optimized": {
+                    "name": "Zoptymalizowane dla sieci",
+                    "description": "1080px, 75% jakości (Najmniejszy rozmiar pliku, dobre dla sieci)"
+                },
+                "standard": {
+                    "name": "Standardowe",
+                    "description": "1080px, 85% jakości (Zbalansowany rozmiar i jakość)"
+                },
+                "high-quality": {
+                    "name": "Wysoka jakość",
+                    "description": "1440px, 95% jakości (Wysoka jakość, większy rozmiar pliku)"
+                },
+                "max-quality": {
+                    "name": "Maksymalne",
+                    "description": "2160px, 100% jakości (Maksymalna jakość, największy rozmiar pliku)"
+                },
+                "custom": {
+                    "name": "Niestandardowe",
+                    "description": "Niestandardowe wymiary i ustawienia jakości"
+                }
+            }
+        },
+        "DownloadOptions": {
+            "title": "POBIERZ",
+            "format": "FORMAT",
+            "downloadAll": "POBIERZ WSZYSTKO",
+            "transparentNote": "Uwaga: Obrazy z usuniętym tłem będą zapisane jako przezroczyste PNG"
+        },
+        "ProUpgrade": {
+            "title": "Ulepsz do Pro",
+            "unlock": "Odblokuj wszystkie funkcje premium",
+            "description": "Ulepsz do Pro, aby odblokować {feature} i przetwarzać do {count} obrazów jednocześnie.",
+            "pricing": {
+                "title": "JEDNORAZOWA PŁATNOŚĆ",
+                "price": "19,99 €",
+                "note": "Bez subskrypcji, dostęp dożywotni"
+            },
+            "learnMore": "DOWIEDZ SIĘ WIĘCEJ",
+            "close": "Zamknij"
+        },
+        "SeoNameGenerator": {
+            "title": "GENERATOR NAZW SEO AI",
+            "description": "Generuj przyjazne dla SEO nazwy plików dla swoich obrazów",
+            "enterDescription": "Wprowadź opis produktu",
+            "placeholder": "Np. portfel skórzany vintage, ręcznie robiony, brązowy, pełne ziarno...",
+            "generate": "GENERUJ NAZWY SEO",
+            "generating": "GENEROWANIE...",
+            "proLimit": "Generuj do 100 nazw jednocześnie z Pro",
+            "originalName": "Nazwa oryginalna",
+            "seoName": "Nazwa SEO",
+            "appliedNames": {
+                "title": "Zastosowane nazwy SEO",
+                "description": "Nasze AI wygenerowało zoptymalizowane pod kątem SEO nazwy plików dla Twoich obrazów. Możesz edytować pojedyncze nazwy w sekcji podglądu obrazu."
+            },
+            "tryFeature": "SPRAWDŹ JAK TO DZIAŁA"
+        },
+        "QuickPresets": {
+            "title": "SZYBKIE PRESETY",
+            "productSpecialty": "SPECJALIZACJA PRODUKTU",
+            "colorStyle": "STYL KOLORU",
+            "presets": {
+                "white-bg": {
+                    "name": "BIAŁE TŁO",
+                    "description": "Czysta fotografia produktowa na białym tle"
+                },
+                "clean": {
+                    "name": "CZYSTY PRODUKT",
+                    "description": "Fotografia produktowa z czystymi, neutralnymi kolorami"
+                },
+                "jewelry": {
+                    "name": "BIŻUTERIA/METAL",
+                    "description": "Zoptymalizowane dla biżuterii i produktów metalowych"
+                },
+                "sharp": {
+                    "name": "OSTRE SZCZEGÓŁY",
+                    "description": "Ulepszona ostrość i szczegóły"
+                },
+                "textile": {
+                    "name": "TEKSTYLIA/TKANINA",
+                    "description": "Dla produktów z tkaniny i tekstyliów - poprawia teksturę i kolor"
+                },
+                "soft-product": {
+                    "name": "MIĘKKIE PRODUKTY",
+                    "description": "Dla miękkich produktów jak poduszki, poduszki, pluszaki"
+                },
+                "furniture": {
+                    "name": "MEBLE/DREWNO",
+                    "description": "Meble drewniane i dekoracje wnętrz"
+                },
+                "transparent": {
+                    "name": "SZKŁO",
+                    "description": "Szkło i produkty przezroczyste"
+                },
+                "food": {
+                    "name": "PRODUKTY SPOŻYWCZE",
+                    "description": "Fotografia kulinarna - poprawia świeżość i atrakcyjność kolorów"
+                },
+                "dramatic": {
+                    "name": "DRAMATYCZNE",
+                    "description": "Fotografia produktowa z wysokim kontrastem"
+                },
+                "vivid": {
+                    "name": "ŻYWE KOLORY",
+                    "description": "Ulepszone nasycenie i jasność kolorów"
+                },
+                "classic": {
+                    "name": "KLASYCZNE",
+                    "description": "Klasyczny wygląd ze zbalansowanymi kolorami"
+                }
+            }
+        },
+        "BackgroundRemovalPage": {
+            "title": "NARZĘDZIE DO USUWANIA TŁA",
+            "loading": {
+                "tool": "ŁADOWANIE NARZĘDZIA...",
+                "proStatus": "SPRAWDZANIE STATUSU PRO...",
+                "description": "Proszę czekać, podczas gdy inicjalizujemy możliwości przetwarzania obrazów.",
+                "proDescription": "Proszę czekać, podczas gdy sprawdzamy status Twojego konta."
+            },
+            "mainCard": {
+                "title": "USUŃ TŁA Z OBRAZÓW",
+                "info": {
+                    "title": "USUWANIE TŁA AI",
+                    "description": "Usuń tło z obrazów produktów za pomocą technologii AI. Przetwarzanie odbywa się całkowicie w Twojej przeglądarce dla zachowania prywatności.",
+                    "freeMode": {
+                        "title": "TRYB DARMOWY",
+                        "description": "Przetwarzaj 1 obraz jednocześnie. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!"
+                    },
+                    "proMode": {
+                        "title": "TRYB PRO",
+                        "description": "Przetwarzaj do 100 obrazów jednocześnie z kontem PRO!"
+                    }
+                },
+                "upload": {
+                    "title": "Wybierz obrazy",
+                    "buttonFree": "WYBIERZ OBRAZ",
+                    "buttonPro": "WYBIERZ OBRAZY",
+                    "helpTextFree": "Użytkownicy darmowi mogą wybrać 1 obraz jednocześnie.",
+                    "helpTextPro": "Możesz wybrać do 100 obrazów jednocześnie."
+                },
+                "actions": {
+                    "clear": "WYCZYŚĆ",
+                    "download": "POBIERZ",
+                    "downloadZip": "POBIERZ JAKO ZIP",
+                    "removeBackground": "USUŃ TŁO",
+                    "removeBackgrounds": "USUŃ TŁA",
+                    "processing": "USUWANIE TŁA...",
+                    "processingMultiple": "USUWANIE TŁA...",
+                    "tryFullEditor": "WYPRÓBUJ PEŁNY EDYTOR"
+                },
+                "progress": {
+                    "processing": "Przetwarzanie...",
+                    "percent": "{percent}%"
+                },
+                "upgradeCard": {
+                    "title": "ULEPSZ DO PRO",
+                    "plan": {
+                        "title": "PLAN PRO",
+                        "price": "19,99 €",
+                        "features": [
+                            "Usuwaj tła z do 100 obrazów jednocześnie",
+                            "Zaawansowane dostosowania obrazów i presety",
+                            "Generowanie nazw SEO dla obrazów produktów",
+                            "Przetwarzanie zbiorcze dla wszystkich funkcji",
+                            "Jednorazowa płatność, dostęp dożywotni"
+                        ],
+                        "buttonText": "ULEPSZ TERAZ"
+                    }
+                }
+            },
+            "howItWorks": {
+                "title": "JAK TO DZIAŁA",
+                "step1": {
+                    "title": "1. WYBIERZ SWOJE OBRAZY",
+                    "description": "Prześlij jeden lub więcej obrazów produktów, które chcesz przetworzyć.",
+                    "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów jednocześnie!"
+                },
+                "step2": {
+                    "title": "2. USUŃ TŁA",
+                    "description": "Nasza technologia AI wykrywa i usuwa tło z Twoich obrazów, tworząc przezroczyste PNG idealne dla e-commerce."
+                },
+                "step3": {
+                    "title": "3. POBIERZ & UŻYJ",
+                    "description": "Pobierz przetworzone obrazy i używaj ich na swojej stronie internetowej, aukcjach marketplace lub materiałach marketingowych."
+                }
+            },
+            "proDialog": {
+                "title": "ULEPSZ DO PRO",
+                "featureTitle": "FUNKCJA PRO: Zbiorcze usuwanie tła",
+                "description": "Użytkownicy darmowi mogą przetwarzać tylko 1 obraz jednocześnie. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo, oszczędzając godziny pracy!",
+                "pricing": {
+                    "title": "JEDNORAZOWA PŁATNOŚĆ",
+                    "price": "19,99 €",
+                    "note": "Bez subskrypcji, dostęp dożywotni"
+                },
+                "actions": {
+                    "upgrade": "ULEPSZ DO PRO",
+                    "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
+                }
+            }
+        },
+        "ImagePreview": {
+            "noImages": "Nie wybrano obrazów",
+            "zoomInstructions": "Ściśnij, aby przybliżyć, przeciągnij, aby przesunąć",
+            "zoomLevel": "{scale}%",
+            "removingBackground": "Usuwanie tła...",
+            "seoName": {
+                "label": "Przyjazna dla SEO nazwa:",
+                "edit": "EDYTUJ",
+                "cancel": "ANULUJ",
+                "save": "ZAPISZ"
+            },
+            "originalName": "Nazwa oryginalna:",
+            "fileInfo": {
+                "dimensions": "Wymiary:",
+                "size": "Rozmiar:",
+                "output": "Wyjście:",
+                "quality": "Jakość:",
+                "background": "Tło:",
+                "backgroundRemoved": "Usunięte",
+                "custom": "Niestandardowe",
+                "auto": "auto"
+            },
+            "actions": {
+                "download": "POBIERZ",
+                "reset": "RESETUJ"
+            },
+            "allImages": "WSZYSTKIE OBRAZY ({current}/{max})"
+        },
+        "PricingCard": {
+            "oneTime": "jednorazowo",
+            "currentPlan": "AKTUALNY PLAN"
+        }
+    },
+    "Dialogs": {
+        "download": {
+            "title": "Pobierz obrazy",
+            "confirmTitle": "Potwierdź pobieranie",
+            "successTitle": "Pobieranie zakończone sukcesem",
+            "summary": "Podsumowanie pobierania:",
+            "images": "{count, plural, =1 {# obraz} other {# obrazy}} zostaną pobrane",
+            "format": "Format:",
+            "appliedPreset": "Zastosowany preset:",
+            "adjustmentsApplied": "Dostosowania obrazu zostały zastosowane",
+            "backgroundRemoval": "Usuwanie tła zostało zastosowane",
+            "seoFilenames": "Zoptymalizowane pod kątem SEO nazwy plików AI zawarte",
+            "zipPackage": "Pliki zostaną spakowane jako archiwum ZIP",
+            "processingNote": "Przetwarzanie może chwilę trwać dla wielu lub dużych obrazów.",
+            "cancel": "ANULUJ",
+            "download": "POBIERZ",
+            "processing": "PRZETWARZANIE...",
+            "successMessage": "Twoje obrazy zostały pomyślnie pobrane. Co chcesz zrobić dalej?",
+            "startNewBundleDesc": "Rozpocznij nowy pakiet: Wyczyść obecne obrazy i zacznij od nowa",
+            "continueEditingDesc": "Kontynuuj edycję: Kontynuuj pracę z obecnymi obrazami",
+            "startNewBundle": "ROZPOCZNIJ NOWY PAKIET",
+            "continueEditing": "KONTYNUUJ EDYCJĘ"
+        },
+        "proUpgrade": {
+            "feature": "Przetwarzanie zbiorcze"
+        }
+    },
+    "Pricing": {
+        "title": "PLANY CENOWE",
+        "subtitle": "Wybierz idealny plan dla swoich potrzeb optymalizacji obrazów. Nasz plan PRO oferuje licencję dożywotnią z jednorazową płatnością.",
+        "alreadyPro": {
+            "title": "Jesteś już użytkownikiem PRO!",
+            "description": "Dziękujemy za wsparcie. Masz dostęp do wszystkich funkcji PRO, w tym zbiorczego usuwania tła, zaawansowanych dostosowań obrazów i generowania nazw plików SEO.",
+            "backToEditor": "WRÓĆ DO EDYTORA"
+        },
+        "checkout": {
+            "title": "DOKOŃCZ ZAKUP",
+            "planTitle": "LICENCJA PRO DOŻYWOTNIA",
+            "price": "19,99 €",
+            "description": "Jednorazowa płatność, dostęp dożywotni do wszystkich funkcji PRO",
+            "email": "EMAIL",
+            "cardInfo": "INFORMACJE O KARCIE",
+            "cardNumber": "1234 5678 9012 3456",
+            "expiryDate": "MM/RR",
+            "cvc": "CVC",
+            "completePurchase": "DOKOŃCZ ZAKUP",
+            "goBack": "Wróć"
+        },
+        "plans": {
+            "free": {
+                "title": "DARMOWY",
+                "price": "DARMOWY",
+                "features": [
+                    "Przetwarzaj do 10 obrazów jednocześnie",
+                    "Podstawowe dostosowania obrazów",
+                    "Usuwanie tła z jednego obrazu",
+                    "Standardowe opcje eksportu",
+                    "Przetwarzanie w przeglądarce"
+                ],
+                "buttonText": "KONTYNUUJ DARMOWO"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "19,99 €",
+                "features": [
+                    "Przetwarzaj do 100 obrazów jednocześnie",
+                    "Zaawansowane dostosowania obrazów i presety",
+                    "Zbiorcze usuwanie tła (do 100 obrazów)",
+                    "Generowanie nazw plików SEO",
+                    "Wsparcie priorytetowe",
+                    "Jednorazowa płatność, dostęp dożywotni"
+                ],
+                "buttonText": "ULEPSZ DO PRO"
+            }
+        },
+        "faq": {
+            "title": "CZĘSTO ZADAWANE PYTANIA",
+            "questions": {
+                "oneTime": {
+                    "question": "Czy to naprawdę jednorazowa płatność?",
+                    "answer": "Tak! Zapłać raz i otrzymaj dostęp dożywotni do wszystkich funkcji PRO. Bez subskrypcji."
+                },
+                "backgroundRemoval": {
+                    "question": "Jak działa usuwanie tła?",
+                    "answer": "Używamy zaawansowanych algorytmów AI do wykrywania i usuwania tła z obrazów produktów. Cały proces odbywa się w Twojej przeglądarce - nigdy nie przechowujemy Twoich obrazów na naszych serwerach."
+                },
+                "imageLimits": {
+                    "question": "Jakie są limity obrazów?",
+                    "answer": "Użytkownicy darmowi mogą przetwarzać do 10 obrazów jednocześnie z podstawowymi funkcjami i usuwać tło z 1 obrazu jednocześnie. Użytkownicy PRO mogą przetwarzać do 100 obrazów jednocześnie, w tym zbiorcze usuwanie tła."
+                },
+                "refund": {
+                    "question": "Czy mogę poprosić o zwrot pieniędzy?",
+                    "answer": "Tak, oferujemy 30-dniową gwarancję zwrotu pieniędzy, jeśli nie jesteś zadowolony z funkcji PRO. Skontaktuj się z naszym zespołem wsparcia po pomoc."
+                }
+            }
+        }
+    },
+    "PrivacyPolicy": {
+        "title": "POLITYKA PRYWATNOŚCI",
+        "section1Title": "1. WPROWADZENIE",
+        "section1P1": "Witamy w PICME („my”, „nasz”, „nas”). Zobowiązujemy się do ochrony Twojej prywatności i zapewnienia bezpieczeństwa Twoich danych osobowych.",
+        "section1P2": "Niniejsza Polityka prywatności wyjaśnia, w jaki sposób przetwarzamy Twoje dane podczas korzystania z naszego narzędzia do optymalizacji obrazów opartego na przeglądarce.",
+        "section2Title": "2. GROMADZENIE DANYCH",
+        "section2P1Bold": "Nie gromadzimy ani nie przechowujemy Twoich obrazów.",
+        "section2P2": "PICME działa całkowicie w Twojej przeglądarce. Kiedy przesyłasz obrazy do optymalizacji:",
+        "section2Li1": "Twoje obrazy są przetwarzane lokalnie w Twojej przeglądarce przy użyciu JavaScript po stronie klienta.",
+        "section2Li2": "Twoje obrazy nigdy nie opuszczają Twojego urządzenia i nie są przesyłane na nasze serwery.",
+        "section2Li3": "Nie przechowujemy kopii Twoich oryginalnych ani przetworzonych obrazów.",
+        "section2Li4": "Nie śledzimy zawartości Twoich obrazów.",
+        "section3Title": "3. FUNKCJE WSPIERANE PRZEZ AI",
+        "section3P1": "Gdy korzystasz z naszych funkcji generowania nazw SEO wspieranych przez AI:",
+        "section3Li1": "Wysyłamy do naszego API tylko podany przez Ciebie tekst opisowy.",
+        "section3Li2": "Nie wysyłamy ani nie przetwarzamy Twoich rzeczywistych obrazów za pośrednictwem naszych systemów AI.",
+        "section3Li3": "Wygenerowane nazwy SEO są dostarczane z powrotem do Twojej przeglądarki i nie są trwale przechowywane na naszych serwerach.",
+        "section4Title": "4. ANALITYKA I PLIKI COOKIE",
+        "section4P1": "Używamy minimalnej analityki, aby zrozumieć, w jaki sposób używana jest nasza strona:",
+        "section4Li1": "Gromadzimy anonimowe statystyki użytkowania, takie jak odsłony stron i wykorzystanie funkcji.",
+        "section4Li2": "Używamy niezbędnych plików cookie do zapewnienia funkcjonalności, takich jak ochrona reCAPTCHA.",
+        "section4Li3": "Nie używamy plików cookie do celów reklamowych ani śledzenia na innych stronach internetowych.",
+        "section5Title": "5. USŁUGI STRON TRZECICH",
+        "section5P1": "Korzystamy z następujących usług stron trzecich:",
+        "section5Li1": "Google reCAPTCHA do ochrony przed spamem w naszych funkcjach AI.",
+        "section5Li2": "OpenCV.js do przetwarzania obrazów (działa całkowicie w Twojej przeglądarce).",
+        "section5P2": "Każda z tych usług ma własną politykę prywatności regulującą sposób postępowania z danymi.",
+        "section6Title": "6. ZMIANY W NINIEJSZEJ POLITYCE",
+        "section6P1": "Od czasu do czasu możemy aktualizować niniejszą Politykę prywatności. Powiadomimy Cię o wszelkich zmianach, publikując nową Politykę prywatności na tej stronie i aktualizując datę „Ostatnia aktualizacja”.",
+        "section7Title": "7. SKONTAKTUJ SIĘ Z NAMI",
+        "section7P1": "Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności, skontaktuj się z nami pod adresem privacy@picme-app.com.",
+        "returnButton": "POWRÓT DO STRONY GŁÓWNEJ"
+    }
+} 

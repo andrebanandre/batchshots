@@ -2,99 +2,101 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import Button from '../../components/Button';
 
 export default function PrivacyPolicy() {
+  const t = useTranslations('PrivacyPolicy');
+
   return (
     <main className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="brutalist-accent-card mb-8">
         <h1 className="text-3xl font-bold text-center uppercase mb-6">
-          PRIVACY POLICY
+          {t('title')}
         </h1>
         
         <div className="brutalist-border p-6 bg-white mb-6">
-          <p className="mb-4 text-sm text-right">Last Updated: March 31, 2024</p>
           
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 uppercase">1. INTRODUCTION</h2>
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section1Title')}</h2>
             <p className="mb-2">
-              Welcome to PICME (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;). We are committed to protecting your privacy and ensuring the security of your personal information.
+              {t('section1P1')}
             </p>
             <p>
-              This Privacy Policy explains how we handle your data when you use our browser-based image optimization tool.
+              {t('section1P2')}
             </p>
           </section>
           
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 uppercase">2. DATA COLLECTION</h2>
-            <p className="mb-2 font-bold">We do not collect or store your images.</p>
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section2Title')}</h2>
+            <p className="mb-2 font-bold">{t('section2P1Bold')}</p>
             <p className="mb-4">
-              PICME operates entirely within your browser. When you upload images to optimize:
+              {t('section2P2')}
             </p>
             <ul className="list-disc pl-5 mb-4 space-y-2">
-              <li>Your images are processed locally in your browser using client-side JavaScript.</li>
-              <li>Your images never leave your device and are not transmitted to our servers.</li>
-              <li>We do not store copies of your original or processed images.</li>
-              <li>We do not track the content of your images.</li>
+              <li>{t('section2Li1')}</li>
+              <li>{t('section2Li2')}</li>
+              <li>{t('section2Li3')}</li>
+              <li>{t('section2Li4')}</li>
             </ul>
           </section>
           
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 uppercase">3. AI-POWERED FEATURES</h2>
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section3Title')}</h2>
             <p className="mb-4">
-              When you use our AI-powered SEO name generation features:
+              {t('section3P1')}
             </p>
             <ul className="list-disc pl-5 mb-4 space-y-2">
-              <li>We send only the descriptive text you provide to our API.</li>
-              <li>We do not send or process your actual images through our AI systems.</li>
-              <li>Your generated SEO names are delivered back to your browser and are not permanently stored on our servers.</li>
+              <li>{t('section3Li1')}</li>
+              <li>{t('section3Li2')}</li>
+              <li>{t('section3Li3')}</li>
             </ul>
           </section>
           
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 uppercase">4. ANALYTICS & COOKIES</h2>
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section4Title')}</h2>
             <p className="mb-2">
-              We use minimal analytics to understand how our site is used:
+              {t('section4P1')}
             </p>
             <ul className="list-disc pl-5 mb-4 space-y-2">
-              <li>We collect anonymous usage statistics like page views and feature usage.</li>
-              <li>We use essential cookies to provide functionality like reCAPTCHA protection.</li>
-              <li>We do not use cookies for advertising or tracking across other websites.</li>
+              <li>{t('section4Li1')}</li>
+              <li>{t('section4Li2')}</li>
+              <li>{t('section4Li3')}</li>
             </ul>
           </section>
           
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 uppercase">5. THIRD-PARTY SERVICES</h2>
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section5Title')}</h2>
             <p className="mb-4">
-              We use the following third-party services:
+              {t('section5P1')}
             </p>
             <ul className="list-disc pl-5 mb-4 space-y-2">
-              <li>Google reCAPTCHA for spam protection on our AI features.</li>
-              <li>OpenCV.js for image processing (runs entirely in your browser).</li>
+              <li>{t('section5Li1')}</li>
+              <li>{t('section5Li2')}</li>
             </ul>
             <p>
-              Each of these services has its own privacy policy governing how they handle data.
+              {t('section5P2')}
             </p>
           </section>
           
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 uppercase">6. CHANGES TO THIS POLICY</h2>
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section6Title')}</h2>
             <p>
-              We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+              {t('section6P1')}
             </p>
           </section>
           
           <section className="mb-6">
-            <h2 className="text-xl font-bold mb-3 uppercase">7. CONTACT US</h2>
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section7Title')}</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact us at privacy@picme-app.com.
+              {t('section7P1')}
             </p>
           </section>
         </div>
         
         <div className="flex justify-center">
           <Link href="/">
-            <Button variant="accent">RETURN TO HOME</Button>
+            <Button variant="accent">{t('returnButton')}</Button>
           </Link>
         </div>
       </div>

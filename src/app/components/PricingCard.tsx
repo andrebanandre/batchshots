@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import Button from './Button';
 import ProBadge from './ProBadge';
 
@@ -23,6 +24,8 @@ export default function PricingCard({
   onSelectPlan,
   buttonText,
 }: PricingCardProps) {
+  const t = useTranslations('Components.PricingCard');
+  
   return (
     <div className={`brutalist-border border-3 border-black p-6 ${isPro ? 'bg-yellow-50' : 'bg-white'}`}>
       <div className="flex justify-between items-center mb-4">
@@ -32,7 +35,7 @@ export default function PricingCard({
       
       <div className="mb-6">
         <span className="text-4xl font-bold">{price}</span>
-        {price !== 'FREE' && <span className="text-gray-600 ml-1">one-time</span>}
+        {price !== 'FREE' && <span className="text-gray-600 ml-1">{t('oneTime')}</span>}
       </div>
       
       <ul className="mb-8 space-y-3">
@@ -53,7 +56,7 @@ export default function PricingCard({
         onClick={onSelectPlan}
         disabled={isCurrentPlan}
       >
-        {isCurrentPlan ? 'CURRENT PLAN' : buttonText}
+        {isCurrentPlan ? t('currentPlan') : buttonText}
       </Button>
     </div>
   );
