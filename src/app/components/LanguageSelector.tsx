@@ -3,7 +3,7 @@
 import React from 'react';
 import { useLocale } from 'next-intl';
 import BrutalistSelect from './BrutalistSelect';
-import { useRouter } from '@/i18n/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 
 const languages = [
   { value: 'en', label: 'English', icon: <span>🇺🇸</span> },
@@ -19,10 +19,11 @@ const languages = [
 export default function LanguageSelector() {
   const currentLocale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
   
   const handleLanguageChange = (locale: string) => {
-    // Always redirect to the root path with the new locale
-    router.push('/', { locale });
+    // Redirect to the same path with the new locale
+    router.push(pathname, { locale });
   };
 
   return (

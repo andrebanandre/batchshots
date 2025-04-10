@@ -38,9 +38,7 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-            <div className="mt-4">
-              <LanguageSelector />
-            </div>
+         
           </div>
           
           {/* Second Column - Quick Links */}
@@ -56,24 +54,9 @@ export default function Footer() {
           </div>
           
           {/* Third Column - Newsletter */}
-          <div>
-            <h3 className="text-lg font-bold uppercase mb-4">{t('stayUpdated')}</h3>
-            <p className="text-sm mb-4">{t('subscribeText')}</p>
-            <form className="flex flex-col space-y-3">
-              <input 
-                type="email" 
-                placeholder={t('emailPlaceholder')}
-                className="brutalist-border p-2 w-full text-sm"
-                aria-label="Email for newsletter"
-              />
-              <button 
-                type="submit" 
-                className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white hover:translate-y-[-2px] transition-transform p-2 font-bold text-sm"
-              >
-                {t('subscribe')}
-              </button>
-            </form>
-          </div>
+          <div className="text-right">
+              <LanguageSelector />
+            </div>
         </div>
         
         {/* Copyright */}

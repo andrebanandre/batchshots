@@ -13,6 +13,21 @@ import {
   ClerkProvider,
 } from '@clerk/nextjs'
 
+// Import Clerk localizations
+import { enUS, deDE, frFR, nlNL, plPL, ruRU, ukUA, csCZ } from '@clerk/localizations';
+
+// Map your locale codes to Clerk localizations
+const clerkLocalizations: Record<string, typeof enUS> = {
+  en: enUS,
+  de: deDE,
+  fr: frFR,
+  nl: nlNL,
+  pl: plPL,
+  ru: ruRU,
+  uk: ukUA,
+  cs: csCZ,
+};
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,7 +39,7 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const locale = await Promise.resolve(params.locale);
+  const { locale } = await params;
   const messages = await getMessages({ locale });
   const tLayout = messages?.Layout as Record<string, string> || {};
 
@@ -42,7 +57,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  const locale = await Promise.resolve(params.locale);
+  const { locale } = await params;
   
   // Ensure that the incoming `locale` is valid
   if (!hasLocale(routing.locales, locale)) {
@@ -52,8 +67,11 @@ export default async function RootLayout({
   // Get messages for current locale
   const messages = await getMessages({ locale });
 
+  // Get Clerk localization for current locale
+  const clerkLocalization = clerkLocalizations[locale] || enUS;
+
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={clerkLocalization}>
       <html lang={locale}>
         <head>
           <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />

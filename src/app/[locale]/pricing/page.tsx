@@ -7,6 +7,7 @@ import { useIsPro } from '../../hooks/useIsPro';
 import Button from '../../components/Button';
 import PricingCard from '../../components/PricingCard';
 import ProBadge from '../../components/ProBadge';
+import Loader from '@/app/components/Loader';
 
 export default function PricingPage() {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function PricingPage() {
         </div>
         
         {isLoading ? (
-          <div className="text-center p-8">Loading...</div>
+        <div className="flex justify-center items-center">   <Loader size="sm" /></div>
         ) : isProUser ? (
           <div className="max-w-lg mx-auto text-center p-8 brutalist-border bg-white">
             <div className="flex items-center justify-center mb-4">

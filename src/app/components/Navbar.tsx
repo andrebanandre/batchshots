@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Button from './Button';
 import { useTranslations } from 'next-intl';
+import LanguageSelector from './LanguageSelector';
 import {
   SignInButton,
   SignedIn,
@@ -69,10 +70,12 @@ export default function Navbar() {
   return (
     <header className="border-b-3 border-black sticky top-0 bg-white z-40">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/" className="flex items-center" aria-label="Go to homepage">
-          <Logo />
-        </Link>
-        
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center" aria-label="Go to homepage">
+            <Logo />
+          </Link>
+          <LanguageSelector />
+        </div>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           <Link href="/" className="font-bold text-lg uppercase hover:text-primary transition-colors">
@@ -81,9 +84,9 @@ export default function Navbar() {
           <Link href="/background-removal" className="font-bold text-lg uppercase hover:text-primary transition-colors">
             {t('removeBackgrounds')}
           </Link>
-          <Link href="/backgrounds" className="font-bold text-lg uppercase hover:text-primary transition-colors">
+          {/* <Link href="/backgrounds" className="font-bold text-lg uppercase hover:text-primary transition-colors">
             {t('aiBackgrounds')}
-          </Link>
+          </Link> */}
           <Link href="/pricing" className="font-bold text-lg uppercase hover:text-primary transition-colors">
             {t('pricing')}
           </Link>

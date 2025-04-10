@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Button from './Button';
+import Loader from './Loader';
 
 interface BuyProButtonProps {
   variant?: 'default' | 'primary' | 'secondary' | 'accent';
@@ -59,7 +60,7 @@ export default function BuyProButton({
       onClick={handleClick}
       disabled={isLoading}
     >
-      {isLoading ? 'LOADING...' : children}
+      {isLoading ? <Loader size="sm" /> : children}
     </Button>
   );
 } 
