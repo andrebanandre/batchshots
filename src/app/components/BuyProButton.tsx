@@ -10,13 +10,15 @@ interface BuyProButtonProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   children?: React.ReactNode;
+  locale?: string;
 }
 
 export default function BuyProButton({
   variant = 'primary',
   size = 'md',
   className = '',
-  children = 'UPGRADE TO PRO'
+  children = 'UPGRADE TO PRO',
+  locale = 'en'
 }: BuyProButtonProps) {
   const { isSignedIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
@@ -30,11 +32,15 @@ export default function BuyProButton({
     setIsLoading(true);
     
     try {
+      // If locale is Ukrainian, fallback to Russian
+      const stripeLocale = locale === 'uk' ? 'ru' : locale;
+
       const response = await fetch('/api/checkout-sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ locale: stripeLocale }),
       });
       
       const session = await response.json();

@@ -18,7 +18,7 @@ alwaysApply: true
   - Favor named exports for components.
   
   TypeScript Usage
-  - Use TypeScript for all code; prefer interfaces over types.
+  - Use TypeScript for all code, except workers; prefer interfaces over types.
   - Avoid enums; use maps instead.
   - Use functional components with TypeScript interfaces.
   

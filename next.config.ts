@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from 'next-intl/plugin';
+import path from 'path';
  
  
 const withNextIntl = createNextIntlPlugin();
@@ -15,6 +16,12 @@ const nextConfig: NextConfig = {
       ...config.resolve.fallback,
       fs: false,
       path: false 
+    };
+
+    // Add onnxruntime-web alias
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "onnxruntime-web/all": path.join(__dirname, 'node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs'),
     };
 
     // Only apply these configurations to client-side builds

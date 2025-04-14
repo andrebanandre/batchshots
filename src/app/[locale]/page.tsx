@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
 import Card from '../components/Card';
 import Button from '../components/Button';
@@ -33,6 +33,7 @@ import ProBadge from '../components/ProBadge';
 export default function Home() {
   const t = useTranslations('Home');
   const tDialogs = useTranslations('Dialogs');
+  const locale = useLocale();
   const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
   const [adjustments, setAdjustments] = useState<ImageAdjustments>(defaultAdjustments);
@@ -409,6 +410,8 @@ export default function Home() {
     setIsGeneratingSeoNames(true);
     
     try {
+      console.log(`[Client] Generating SEO names in language: ${locale}`);
+      
       // Call the API endpoint to generate SEO names
       const response = await fetch('/api/seo-names', {
         method: 'POST',
@@ -418,7 +421,8 @@ export default function Home() {
         body: JSON.stringify({ 
           description, 
           recaptchaToken,
-          imageCount: imageCount || images.length // Use provided count or fall back to total images
+          imageCount: imageCount || images.length, // Use provided count or fall back to total images
+          language: locale // Pass the current locale to the API
         }),
       });
       

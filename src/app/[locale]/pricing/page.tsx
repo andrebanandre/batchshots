@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useIsPro } from '../../hooks/useIsPro';
 import Button from '../../components/Button';
 import PricingCard from '../../components/PricingCard';
@@ -14,6 +14,7 @@ export default function PricingPage() {
   const router = useRouter();
   const { isProUser, isLoading } = useIsPro();
   const t = useTranslations('Pricing');
+  const locale = useLocale();
   
   const handleBackToEditor = () => {
     router.push('/');
@@ -71,7 +72,7 @@ export default function PricingPage() {
               isCurrentPlan={isProUser}
               onSelectPlan={() => {}}
               buttonText={t('plans.pro.buttonText')}
-              customButton={<BuyProButton>{t('plans.pro.buttonText')}</BuyProButton>}
+              customButton={<BuyProButton locale={locale}>{t('plans.pro.buttonText')}</BuyProButton>}
             />
           </div>
         )}

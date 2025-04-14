@@ -4,10 +4,11 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
     const { userId } = await auth();
     const user = await currentUser();
+    const { locale = 'en' } = await request.json();
 
     // Check if the user is authenticated
     if (!userId || !user) {
@@ -48,10 +49,13 @@ export async function POST() {
       customer = await stripe.customers.create(customerParams);
     }
 
+    console.log('locale', locale);
+
     // Create a checkout session
     const session = await stripe.checkout.sessions.create({
       customer: customer.id,
       payment_method_types: ['card'],
+      locale: locale,
       line_items: [
         {
           price_data: {
