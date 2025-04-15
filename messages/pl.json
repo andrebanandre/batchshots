@@ -165,7 +165,8 @@
             "title": "POBIERZ",
             "format": "FORMAT",
             "downloadAll": "POBIERZ WSZYSTKO",
-            "transparentNote": "Uwaga: Obrazy z usuniętym tłem będą zapisane jako przezroczyste PNG"
+            "transparentNote": "Uwaga: Obrazy z usuniętym tłem zostaną zapisane jako przezroczysty PNG",
+            "seoProductDescription": "Plik TXT z opisem produktu SEO zostanie dołączony do pobrania ZIP"
         },
         "ProUpgrade": {
             "title": "Ulepsz do Pro",
@@ -181,19 +182,56 @@
         },
         "SeoNameGenerator": {
             "title": "GENERATOR NAZW SEO AI",
-            "description": "Generuj przyjazne dla SEO nazwy plików dla swoich obrazów",
-            "enterDescription": "Wprowadź opis produktu",
-            "placeholder": "Np. portfel skórzany vintage, ręcznie robiony, brązowy, pełne ziarno...",
+            "description": "Generuj zoptymalizowane pod kątem SEO nazwy plików dla swoich obrazów",
+            "enterDescription": "Wprowadź opis swojego produktu",
+            "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista...",
             "generate": "GENERUJ NAZWY SEO",
             "generating": "GENEROWANIE...",
-            "proLimit": "Generuj do 100 nazw jednocześnie z Pro",
-            "originalName": "Nazwa oryginalna",
+            "proLimit": "Generuj do 100 nazw jednocześnie z wersją Pro",
+            "originalName": "Oryginalna nazwa",
             "seoName": "Nazwa SEO",
             "appliedNames": {
                 "title": "Zastosowane nazwy SEO",
-                "description": "Nasze AI wygenerowało zoptymalizowane pod kątem SEO nazwy plików dla Twoich obrazów. Możesz edytować pojedyncze nazwy w sekcji podglądu obrazu."
+                "description": "Nasza sztuczna inteligencja wygenerowała zoptymalizowane pod kątem SEO nazwy plików dla Twoich obrazów. Możesz edytować poszczególne nazwy w obszarze podglądu obrazów."
             },
-            "tryFeature": "SPRAWDŹ JAK TO DZIAŁA"
+            "tryFeature": "WYPRÓBUJ FUNKCJĘ"
+        },
+        "SeoProductDescription": {
+            "title": "OPIS PRODUKTU SEO AI",
+            "description": "Wygeneruj kompletny opis produktu zoptymalizowany pod kątem SEO",
+            "enterDescription": "Wprowadź podstawowe informacje o produkcie",
+            "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista, wiele przegródek na karty...",
+            "generate": "GENERUJ OPIS PRODUKTU",
+            "generating": "GENEROWANIE...",
+            "proFeature": "To jest funkcja PRO",
+            "copyToClipboard": "KOPIUJ DO SCHOWKA",
+            "downloadAsTxt": "POBIERZ JAKO TXT",
+            "copied": "Skopiowano!",
+            "tryFeature": "WYPRÓBUJ FUNKCJĘ",
+            "tabs": {
+                "content": "TREŚĆ",
+                "meta": "META",
+                "categories": "KATEGORIE",
+                "previews": "PODGLĄDY"
+            },
+            "previews": {
+                "googleSearch": "PODGLĄD WYSZUKIWANIA GOOGLE",
+                "ecommerce": "PODGLĄD E-COMMERCE",
+                "productImage": "Zdjęcie produktu",
+                "addToCart": "Dodaj do koszyka",
+                "wishlist": "Lista życzeń"
+            },
+            "sections": {
+                "productTitle": "Tytuł produktu",
+                "metaTitle": "Meta tytuł",
+                "metaDescription": "Meta opis",
+                "shortDescription": "Krótki opis", 
+                "longDescription": "Długi opis",
+                "categories": "Kategorie",
+                "tags": "Tagi",
+                "urlSlug": "URL Slug"
+            },
+            "downloadAll": "POBIERZ WSZYSTKIE DANE"
         },
         "QuickPresets": {
             "title": "SZYBKIE PRESETY",
@@ -394,7 +432,8 @@
             "startNewBundleDesc": "Rozpocznij nowy pakiet: Wyczyść obecne obrazy i zacznij od nowa",
             "continueEditingDesc": "Kontynuuj edycję: Kontynuuj pracę z obecnymi obrazami",
             "startNewBundle": "ROZPOCZNIJ NOWY PAKIET",
-            "continueEditing": "KONTYNUUJ EDYCJĘ"
+            "continueEditing": "KONTYNUUJ EDYCJĘ",
+            "seoProductDescription": "Opis produktu SEO (TXT)"
         },
         "proUpgrade": {
             "feature": "Przetwarzanie zbiorcze"
@@ -498,7 +537,7 @@
         "section5Li2": "OpenCV.js do przetwarzania obrazów (działa całkowicie w Twojej przeglądarce).",
         "section5P2": "Każda z tych usług ma własną politykę prywatności regulującą sposób postępowania z danymi.",
         "section6Title": "6. ZMIANY W NINIEJSZEJ POLITYCE",
-        "section6P1": "Od czasu do czasu możemy aktualizować niniejszą Politykę prywatności. Powiadomimy Cię o wszelkich zmianach, publikując nową Politykę prywatności na tej stronie i aktualizując datę „Ostatnia aktualizacja”.",
+        "section6P1": "Od czasu do czasu możemy aktualizować niniejszą Politykę prywatności. Powiadomimy Cię o wszelkich zmianach, publikując nową Politykę prywatności na tej stronie i aktualizując datę „Ostatnia aktualizacja\".",
         "section7Title": "7. SKONTAKTUJ SIĘ Z NAMI",
         "section7P1": "Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności, skontaktuj się z nami pod adresem privacy@picme-app.com.",
         "returnButton": "POWRÓT DO STRONY GŁÓWNEJ"
@@ -525,7 +564,7 @@
         "section4P1": "Wszelkie oryginalne treści, funkcje i funkcjonalność PICME są naszą własnością i są chronione międzynarodowymi prawami autorskimi, znakami towarowymi i innymi prawami własności intelektualnej.",
         "section4P2": "Zachowujesz wszelkie prawa do swoich oryginalnych obrazów. Nie rościmy sobie żadnych praw własności do obrazów przetwarzanych za pomocą naszej usługi.",
         "section5Title": "5. OGRANICZENIA I WYŁĄCZENIA ODPOWIEDZIALNOŚCI",
-        "section5Li1": "PICME jest dostarczane „takie, jakie jest” i „w miarę dostępności” bez żadnych gwarancji jakiegokolwiek rodzaju.",
+        "section5Li1": "PICME jest dostarczane \"takie, jakie jest\" i \"w miarę dostępności\" bez żadnych gwarancji jakiegokolwiek rodzaju.",
         "section5Li2": "Nie gwarantujemy, że usługa będzie nieprzerwana, bezpieczna ani wolna od błędów.",
         "section5Li3": "Nie ponosimy odpowiedzialności za utratę danych, która może nastąpić podczas przetwarzania.",
         "section5Li4": "Nie udzielamy żadnych gwarancji dotyczących dokładności ani skuteczności funkcji generowania nazw SEO.",
@@ -536,7 +575,7 @@
         "section8Title": "8. PRAWO WŁAŚCIWE",
         "section8P1": "Niniejsze Warunki korzystania podlegają prawu jurysdykcji, w której działamy, i są interpretowane zgodnie z nim, bez względu na przepisy kolizyjne.",
         "section9Title": "9. ZMIANY WARUNKÓW",
-        "section9P1": "Od czasu do czasu możemy aktualizować niniejsze Warunki korzystania. Powiadomimy Cię o wszelkich zmianach, publikując nowe Warunki na tej stronie i aktualizując datę „Ostatnia aktualizacja”.",
+        "section9P1": "Od czasu do czasu możemy aktualizować niniejsze Warunki korzystania. Powiadomimy Cię o wszelkich zmianach, publikując nowe Warunki na tej stronie i aktualizując datę „Ostatnia aktualizacja\".",
         "section10Title": "10. SKONTAKTUJ SIĘ Z NAMI",
         "section10P1": "Jeśli masz jakiekolwiek pytania dotyczące niniejszych Warunków korzystania, skontaktuj się z nami pod adresem terms@picme-app.com.",
         "returnButton": "POWRÓT DO STRONY GŁÓWNEJ"

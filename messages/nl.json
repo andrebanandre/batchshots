@@ -163,9 +163,10 @@
         },
         "DownloadOptions": {
             "title": "DOWNLOADEN",
-            "format": "FORMAT",
-            "downloadAll": "ALLE DOWNLOADEN",
-            "transparentNote": "Opmerking: Afbeeldingen met verwijderde achtergronden worden opgeslagen als transparante PNG's"
+            "format": "FORMAAT",
+            "downloadAll": "ALLES DOWNLOADEN",
+            "transparentNote": "Opmerking: Afbeeldingen met verwijderde achtergrond worden opgeslagen als transparante PNG's",
+            "seoProductDescription": "Een TXT-bestand met de SEO-productbeschrijving wordt meegeleverd in de ZIP-download"
         },
         "ProUpgrade": {
             "title": "Upgrade naar Pro",
@@ -180,20 +181,57 @@
             "close": "Sluiten"
         },
         "SeoNameGenerator": {
-            "title": "AI SEO-NAAMGENERATOR",
+            "title": "AI SEO NAAMGENERATOR",
             "description": "Genereer SEO-vriendelijke bestandsnamen voor uw afbeeldingen",
             "enterDescription": "Voer uw productbeschrijving in",
-            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerf...",
-            "generate": "SEO-NAMEN GENEREREN",
+            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder...",
+            "generate": "GENEREER SEO NAMEN",
             "generating": "GENEREREN...",
             "proLimit": "Genereer tot 100 namen tegelijk met Pro",
             "originalName": "Originele naam",
-            "seoName": "SEO-naam",
+            "seoName": "SEO naam",
             "appliedNames": {
-                "title": "Toegepaste SEO-namen",
+                "title": "Toegepaste SEO namen",
                 "description": "Onze AI heeft SEO-geoptimaliseerde bestandsnamen voor uw afbeeldingen gegenereerd. U kunt individuele namen bewerken in het afbeeldingsvoorbeeldgedeelte."
             },
             "tryFeature": "PROBEER HOE HET WERKT"
+        },
+        "SeoProductDescription": {
+            "title": "AI SEO PRODUCTBESCHRIJVING",
+            "description": "Genereer een complete SEO-geoptimaliseerde productbeschrijving",
+            "enterDescription": "Voer basisproductinformatie in",
+            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder, meerdere kaartvakken...",
+            "generate": "GENEREER PRODUCTBESCHRIJVING",
+            "generating": "GENEREREN...",
+            "proFeature": "Dit is een PRO-functie",
+            "copyToClipboard": "KOPIËREN NAAR KLEMBORD",
+            "downloadAsTxt": "DOWNLOADEN ALS TXT",
+            "copied": "Gekopieerd!",
+            "tryFeature": "PROBEER HOE HET WERKT",
+            "tabs": {
+                "content": "INHOUD",
+                "meta": "META",
+                "categories": "CATEGORIEËN",
+                "previews": "VOORBEELDEN"
+            },
+            "previews": {
+                "googleSearch": "GOOGLE ZOEKVOORBEELD",
+                "ecommerce": "E-COMMERCE VOORBEELD",
+                "productImage": "Productafbeelding",
+                "addToCart": "Toevoegen aan winkelwagen",
+                "wishlist": "Verlanglijst"
+            },
+            "sections": {
+                "productTitle": "Producttitel",
+                "metaTitle": "Meta titel",
+                "metaDescription": "Meta beschrijving",
+                "shortDescription": "Korte beschrijving", 
+                "longDescription": "Lange beschrijving",
+                "categories": "Categorieën",
+                "tags": "Tags",
+                "urlSlug": "URL slug"
+            },
+            "downloadAll": "DOWNLOAD ALLE GEGEVENS"
         },
         "QuickPresets": {
             "title": "SNELLE VOORINSTELLINGEN",
@@ -394,7 +432,8 @@
             "startNewBundleDesc": "Nieuw pakket starten: Huidige afbeeldingen wissen en opnieuw beginnen",
             "continueEditingDesc": "Verder bewerken: Blijf werken met huidige afbeeldingen",
             "startNewBundle": "NIEUW PAKKET STARTEN",
-            "continueEditing": "VERDER BEWERKEN"
+            "continueEditing": "VERDER BEWERKEN",
+            "seoProductDescription": "SEO Productbeschrijving (TXT)"
         },
         "proUpgrade": {
             "feature": "Batchverwerking"

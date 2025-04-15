@@ -11,6 +11,7 @@ import PresetsSelector, { defaultPresets, Preset } from '../components/PresetsSe
 import DownloadOptions, { ImageFormat } from '../components/DownloadOptions';
 import DownloadDialog from '../components/DownloadDialog';
 import SeoNameGenerator, { SeoImageName } from '../components/SeoNameGenerator';
+import SeoProductDescriptionGenerator from '../components/SeoProductDescriptionGenerator';
 import { useIsPro } from '../hooks/useIsPro';
 import { useRouter } from 'next/navigation';
 import { 
@@ -29,6 +30,7 @@ import Loader from '../components/Loader';
 import { ImageProcessingProvider } from '../contexts/ImageProcessingContext';
 import ProUpgradeDialog from '../components/ProUpgradeDialog';
 import ProBadge from '../components/ProBadge';
+import { SeoProductDescription } from '../lib/gemini';
 
 export default function Home() {
   const t = useTranslations('Home');
@@ -60,6 +62,9 @@ export default function Home() {
   // SEO name generation state
   const [seoNames, setSeoNames] = useState<SeoImageName[]>([]);
   const [isGeneratingSeoNames, setIsGeneratingSeoNames] = useState(false);
+  
+  // SEO product description state
+  const [seoProductDescription, setSeoProductDescription] = useState<SeoProductDescription | null>(null);
 
   // Background removal state
   const [isRemovingBackground, setIsRemovingBackground] = useState(false);
@@ -120,6 +125,13 @@ export default function Home() {
 
       // Set processing state to true
       setIsProcessing(true);
+      
+      console.log("Applying preview adjustments:", {
+        adjustments,
+        selectedImageId,
+        applyToAll,
+        hasImages: images.length > 0
+      });
 
       try {
         const currentPreset = getCurrentPreset();
@@ -130,6 +142,12 @@ export default function Home() {
           imagesToProcess.map(async (image) => {
             // Only update the selected image (or all images if applyToAll is true)
             if ((selectedImageId && image.id === selectedImageId) || applyToAll) {
+              console.log(`Processing image ${image.id} with RGB scales:`, {
+                redScale: adjustments.redScale,
+                greenScale: adjustments.greenScale,
+                blueScale: adjustments.blueScale
+              });
+              
               // Process only thumbnails for preview - much faster
               const { processedThumbnailUrl } = await processImage(image, adjustments, currentPreset, false);
               
@@ -155,6 +173,7 @@ export default function Home() {
         );
         
         setImages(updatedImages);
+        console.log("Preview processing complete, images updated");
       } catch (error) {
         console.error('Error applying preview adjustments', error);
       } finally {
@@ -244,21 +263,31 @@ export default function Home() {
 
   // Handle download - process the full image if needed
   const handleDownloadImage = async (image: ImageFile, format: LibImageFormat = 'jpg') => {
+    console.log("Download requested for image:", image.id, "with adjustments:", adjustments);
+    
     // For background-removed images with processing applied
     if (image.backgroundRemoved && image.processedDataUrl) {
+      console.log("Using existing processed data URL for background-removed image");
       downloadImage(image.processedDataUrl, image.file.name, 'png', image.seoName);
       return;
     }
     // For background-removed images without specific processing, use dataUrl directly
     // This ensures we use the transparent PNG even if there's no processed version
     else if (image.backgroundRemoved && image.dataUrl) {
-      downloadImage(image.dataUrl, image.file.name, 'png', image.seoName);
+      console.log("Using original data URL for background-removed image");
+      downloadImage(image.dataUrl, image.file.name, 'png', image.seoName, adjustments);
       return;
     }
     // For background-removed images that need specific processing, process now
     else if (image.backgroundRemoved) {
       setIsProcessing(true);
       try {
+        console.log("Processing background-removed image for download with adjustments:", {
+          redScale: adjustments.redScale,
+          greenScale: adjustments.greenScale,
+          blueScale: adjustments.blueScale
+        });
+        
         const currentPreset = getCurrentPreset();
         const { processedDataUrl } = await processImage(image, adjustments, currentPreset, true);
         
@@ -288,7 +317,7 @@ export default function Home() {
       } catch (error) {
         console.error('Error processing transparent image', error);
         // Fallback to original
-        downloadImage(image.dataUrl, image.file.name, 'png', image.seoName);
+        downloadImage(image.dataUrl, image.file.name, 'png', image.seoName, adjustments);
       } finally {
         setIsProcessing(false);
       }
@@ -297,11 +326,18 @@ export default function Home() {
     
     if (image.processedDataUrl) {
       // If we already have the processed full image, download it
+      console.log("Using existing processed data URL for regular image");
       downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
     } else if (image.processedThumbnailUrl) {
       // Process the full-size image now
       setIsProcessing(true);
       try {
+        console.log("Processing regular image for download with adjustments:", {
+          redScale: adjustments.redScale,
+          greenScale: adjustments.greenScale,
+          blueScale: adjustments.blueScale
+        });
+        
         const currentPreset = getCurrentPreset();
           
         const { processedDataUrl } = await processImage(image, adjustments, currentPreset, true);
@@ -331,12 +367,14 @@ export default function Home() {
         }
       } catch (error) {
         console.error('Error processing full image for download', error);
+        // Download the original with adjustments
+        downloadImage(image.dataUrl, image.file.name, format, image.seoName, adjustments);
       } finally {
         setIsProcessing(false);
       }
     } else {
-      // Download the original if no processing has been done
-      downloadImage(image.dataUrl, image.file.name, format, image.seoName);
+      // Download the original if no processing has been done, but still apply adjustments
+      downloadImage(image.dataUrl, image.file.name, format, image.seoName, adjustments);
     }
   };
 
@@ -395,7 +433,9 @@ export default function Home() {
       
       // Download all the processed images and images with background removed
       const updatedImages = fullyProcessedImages.filter(img => img.processedDataUrl || img.backgroundRemoved);
-      downloadAllImages(updatedImages, format, true);
+      
+      // Include SEO product description if available
+      downloadAllImages(updatedImages, format, true, seoProductDescription, adjustments);
     } catch (error) {
       console.error('Error processing images for download', error);
     } finally {
@@ -668,6 +708,11 @@ export default function Home() {
     }
   };
 
+  // Handle SEO product description generation
+  const handleGenerateSeoProductDescription = (description: SeoProductDescription) => {
+    setSeoProductDescription(description);
+  };
+
   return (
     <main className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="brutalist-accent-card mb-8">
@@ -877,9 +922,15 @@ export default function Home() {
                 imageCount={images.length}
               />
 
+              <SeoProductDescriptionGenerator 
+                onGenerateDescription={handleGenerateSeoProductDescription}
+                downloadWithImages={true}
+              />
+
               <DownloadOptions
                 onDownload={handleInitiateDownload}
                 hasBackgroundRemovedImages={images.some(img => img.backgroundRemoved)}
+                hasSeoProductDescription={seoProductDescription !== null}
               />
             </div>
           </div>
@@ -900,6 +951,7 @@ export default function Home() {
         formatType={downloadFormat}
         hasSeoNames={images.some(img => !!img.seoName)}
         hasRemovedBackgrounds={images.some(img => img.backgroundRemoved)}
+        hasSeoProductDescription={seoProductDescription !== null}
       />
       
       {/* Pro Upgrade Dialog */}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from './Card';
 import Button from './Button';
 import { useTranslations } from 'next-intl';
@@ -8,112 +8,78 @@ export type ImageFormat = 'jpg' | 'webp' | 'png';
 interface DownloadOptionsProps {
   onDownload: (format: ImageFormat) => void;
   hasBackgroundRemovedImages?: boolean;
-  className?: string;
+  hasSeoProductDescription?: boolean;
 }
 
-export default function DownloadOptions({
-  onDownload,
+export default function DownloadOptions({ 
+  onDownload, 
   hasBackgroundRemovedImages = false,
-  className = '',
+  hasSeoProductDescription = false
 }: DownloadOptionsProps) {
   const t = useTranslations('Components.DownloadOptions');
+  const [selectedFormat, setSelectedFormat] = useState<ImageFormat>('jpg');
   
-  // Set initial format to PNG if background-removed images are present
-  const [downloadFormat, setDownloadFormat] = useState<ImageFormat>(
-    hasBackgroundRemovedImages ? 'png' : 'jpg'
-  );
-
-  // Update format when background removed status changes
-  useEffect(() => {
-    if (hasBackgroundRemovedImages) {
-      setDownloadFormat('png');
-    }
-  }, [hasBackgroundRemovedImages]);
-
-  const handleFormatChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDownloadFormat(e.target.value as ImageFormat);
-  };
-
   const handleDownload = () => {
-    onDownload(downloadFormat);
+    onDownload(selectedFormat);
   };
-
+  
   return (
-    <Card title={t('title')} className={className} variant="accent">
-      <div className="space-y-6">
-        {/* Format Selection */}
+    <Card title={t('title')} variant="accent">
+      <div className="space-y-4">
         <div className="brutalist-border p-3 bg-white">
           <h3 className="font-bold mb-3 text-sm uppercase">{t('format')}</h3>
-          <div className="space-y-3">
-            <div>
-              <div className="flex space-x-4">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="downloadFormat"
-                    value="jpg"
-                    checked={downloadFormat === 'jpg'}
-                    onChange={handleFormatChange}
-                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
-                    style={{
-                      backgroundImage: downloadFormat === 'jpg' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat"
-                    }}
-                  />
-                  <span>JPG</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="downloadFormat"
-                    value="webp"
-                    checked={downloadFormat === 'webp'}
-                    onChange={handleFormatChange}
-                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
-                    style={{
-                      backgroundImage: downloadFormat === 'webp' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat"
-                    }}
-                  />
-                  <span>WebP</span>
-                </label>
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="downloadFormat"
-                    value="png"
-                    checked={downloadFormat === 'png'}
-                    onChange={handleFormatChange}
-                    className="mr-2 brutalist-border w-4 h-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black rounded-full"
-                    style={{
-                      backgroundImage: downloadFormat === 'png' ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e\")" : "",
-                      backgroundSize: "100% 100%",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat"
-                    }}
-                  />
-                  <span>PNG</span>
-                </label>
-              </div>
-              
-              {hasBackgroundRemovedImages && (
-                <div className="mt-2 text-xs text-[#4F46E5] font-bold">
-                  {t('transparentNote')}
-                </div>
-              )}
-            </div>
+          <div className="flex space-x-2">
+            <label className={`flex items-center space-x-1 ${selectedFormat === 'jpg' ? 'border-black border-2 p-1' : 'border p-1'}`}>
+              <input
+                type="radio"
+                name="format"
+                value="jpg"
+                checked={selectedFormat === 'jpg'}
+                onChange={() => setSelectedFormat('jpg')}
+                className="form-radio"
+              />
+              <span className="text-sm uppercase">JPG</span>
+            </label>
+            
+            <label className={`flex items-center space-x-1 ${selectedFormat === 'png' ? 'border-black border-2 p-1' : 'border p-1'}`}>
+              <input
+                type="radio"
+                name="format"
+                value="png"
+                checked={selectedFormat === 'png'}
+                onChange={() => setSelectedFormat('png')}
+                className="form-radio"
+              />
+              <span className="text-sm uppercase">PNG</span>
+            </label>
+            
+            <label className={`flex items-center space-x-1 ${selectedFormat === 'webp' ? 'border-black border-2 p-1' : 'border p-1'}`}>
+              <input
+                type="radio"
+                name="format"
+                value="webp"
+                checked={selectedFormat === 'webp'}
+                onChange={() => setSelectedFormat('webp')}
+                className="form-radio"
+              />
+              <span className="text-sm uppercase">WEBP</span>
+            </label>
           </div>
+          
+          {hasBackgroundRemovedImages && (
+            <p className="text-xs mt-2 text-purple-600">
+              {t('transparentNote')}
+            </p>
+          )}
+          
+          {hasSeoProductDescription && (
+            <p className="text-xs mt-2 text-green-600">
+              {t('seoProductDescription')}
+            </p>
+          )}
         </div>
-
-        <Button
-          onClick={handleDownload}
-          fullWidth
-          variant="accent"
-        >
+        
+        <Button onClick={handleDownload} fullWidth variant="accent">
           {t('downloadAll')}
         </Button>
       </div>

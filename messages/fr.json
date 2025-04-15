@@ -165,7 +165,8 @@
             "title": "TÉLÉCHARGER",
             "format": "FORMAT",
             "downloadAll": "TOUT TÉLÉCHARGER",
-            "transparentNote": "Note : Les images avec arrière-plan supprimé seront enregistrées en PNG transparent"
+            "transparentNote": "Note : Les images avec arrière-plan supprimé seront enregistrées en PNG transparent",
+            "seoProductDescription": "Un fichier TXT avec la description de produit SEO sera inclus dans le téléchargement ZIP"
         },
         "ProUpgrade": {
             "title": "Passer à Pro",
@@ -181,19 +182,56 @@
         },
         "SeoNameGenerator": {
             "title": "GÉNÉRATEUR DE NOMS SEO IA",
-            "description": "Générez des noms de fichiers SEO pour vos images",
-            "enterDescription": "Entrez votre description de produit",
-            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, pleine fleur...",
+            "description": "Générez des noms de fichiers optimisés pour le SEO pour vos images",
+            "enterDescription": "Entrez une description de votre produit",
+            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur...",
             "generate": "GÉNÉRER DES NOMS SEO",
-            "generating": "GÉNÉRATION...",
+            "generating": "GÉNÉRATION EN COURS...",
             "proLimit": "Générez jusqu'à 100 noms à la fois avec Pro",
             "originalName": "Nom original",
             "seoName": "Nom SEO",
             "appliedNames": {
                 "title": "Noms SEO appliqués",
-                "description": "Notre IA a généré des noms de fichiers optimisés SEO pour vos images. Vous pouvez modifier des noms individuels dans la section d'aperçu d'image."
+                "description": "Notre IA a généré des noms de fichiers optimisés pour le SEO pour vos images. Vous pouvez modifier les noms individuels dans la zone d'aperçu des images."
             },
-            "tryFeature": "ESSAYER COMMENT ÇA MARCHE"
+            "tryFeature": "ESSAYER LA FONCTIONNALITÉ"
+        },
+        "SeoProductDescription": {
+            "title": "DESCRIPTION DE PRODUIT SEO IA",
+            "description": "Générez une description de produit complète optimisée pour le SEO",
+            "enterDescription": "Entrez les informations de base du produit",
+            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur, plusieurs emplacements pour cartes...",
+            "generate": "GÉNÉRER LA DESCRIPTION DU PRODUIT",
+            "generating": "GÉNÉRATION EN COURS...",
+            "proFeature": "Ceci est une fonctionnalité PRO",
+            "copyToClipboard": "COPIER DANS LE PRESSE-PAPIERS",
+            "downloadAsTxt": "TÉLÉCHARGER AU FORMAT TXT",
+            "copied": "Copié !",
+            "tryFeature": "ESSAYER LA FONCTIONNALITÉ",
+            "tabs": {
+                "content": "CONTENU",
+                "meta": "META",
+                "categories": "CATÉGORIES",
+                "previews": "APERÇUS"
+            },
+            "previews": {
+                "googleSearch": "APERÇU DE RECHERCHE GOOGLE",
+                "ecommerce": "APERÇU E-COMMERCE",
+                "productImage": "Image du produit",
+                "addToCart": "Ajouter au panier",
+                "wishlist": "Liste de souhaits"
+            },
+            "sections": {
+                "productTitle": "Titre du produit",
+                "metaTitle": "Méta-titre",
+                "metaDescription": "Méta-description",
+                "shortDescription": "Description courte", 
+                "longDescription": "Description longue",
+                "categories": "Catégories",
+                "tags": "Tags",
+                "urlSlug": "Slug d'URL"
+            },
+            "downloadAll": "TÉLÉCHARGER TOUTES LES DONNÉES"
         },
         "QuickPresets": {
             "title": "PRÉRÉGLAGES RAPIDES",
@@ -394,7 +432,8 @@
             "startNewBundleDesc": "Démarrer un nouveau lot : Effacer les images actuelles et recommencer",
             "continueEditingDesc": "Continuer l'édition : Continuer à travailler avec les images actuelles",
             "startNewBundle": "DÉMARRER UN NOUVEAU LOT",
-            "continueEditing": "CONTINUER L'ÉDITION"
+            "continueEditing": "CONTINUER L'ÉDITION",
+            "seoProductDescription": "Description de produit SEO (TXT)"
         },
         "proUpgrade": {
             "feature": "Traitement par lots"

@@ -3,6 +3,7 @@ import { ImageAdjustments } from '../components/ImageProcessingControls';
 import { Preset } from '../components/PresetsSelector';
 import { ImageFile } from '../components/ImagePreview';
 import JSZip from 'jszip';
+import { SeoProductDescription } from './gemini';
 
 // Import the OpenCV type from our declaration file
 declare global {
@@ -177,7 +178,12 @@ function applyRGBAdjustment(
   blueScale: number,
   skipTransparent: boolean = false
 ): void {
-  if (redScale === 1.0 && greenScale === 1.0 && blueScale === 1.0) return;
+  if (redScale === 1.0 && greenScale === 1.0 && blueScale === 1.0) {
+    console.log("Skipping RGB adjustment - all scales are 1.0");
+    return;
+  }
+  
+  console.log("Applying RGB adjustments:", { redScale, greenScale, blueScale, width, height, skipTransparent });
   
   for (let i = 0; i < data.length; i += 4) {
     // Skip fully transparent pixels if requested
@@ -187,6 +193,8 @@ function applyRGBAdjustment(
     data[i + 1] = Math.max(0, Math.min(255, data[i + 1] * greenScale));
     data[i + 2] = Math.max(0, Math.min(255, data[i + 2] * blueScale));
   }
+  
+  console.log("RGB adjustment completed");
 }
 
 /**
@@ -254,6 +262,8 @@ function processImageContext(
   adjustments: ImageAdjustments,
   skipTransparent: boolean = false
 ): void {
+  console.log("Processing image context with adjustments:", adjustments, "skipTransparent:", skipTransparent);
+  
   // Get the image data once
   const imageData = ctx.getImageData(0, 0, width, height);
   const data = imageData.data;
@@ -269,63 +279,12 @@ function processImageContext(
   
   // Put the modified data back to the context
   ctx.putImageData(imageData, 0, 0);
+  console.log("Image processing complete, data put back to context");
 }
 
 // ============================================================
 // ORIGINAL CANVAS FUNCTIONS (SIMPLIFIED TO USE NEW UTILITIES)
 // ============================================================
-
-function canvasSharpen(ctx: CanvasRenderingContext2D, width: number, height: number, amount: number): void {
-  if (amount <= 0) return;
-  
-  const imageData = ctx.getImageData(0, 0, width, height);
-  applySharpen(imageData.data, width, height, amount);
-  ctx.putImageData(imageData, 0, 0);
-}
-
-function canvasHSLAdjustment(
-  ctx: CanvasRenderingContext2D, 
-  width: number, 
-  height: number, 
-  hue: number, 
-  saturation: number, 
-  lightness: number
-): void {
-  if (hue === 100 && saturation === 100 && lightness === 100) return;
-  
-  const imageData = ctx.getImageData(0, 0, width, height);
-  applyHSLAdjustment(imageData.data, width, height, hue, saturation, lightness);
-  ctx.putImageData(imageData, 0, 0);
-}
-
-function canvasBrightnessContrast(
-  ctx: CanvasRenderingContext2D, 
-  width: number, 
-  height: number, 
-  brightness: number, 
-  contrast: number
-): void {
-  if (brightness === 0 && contrast === 0) return;
-  
-  const imageData = ctx.getImageData(0, 0, width, height);
-  applyBrightnessContrast(imageData.data, width, height, brightness, contrast);
-  ctx.putImageData(imageData, 0, 0);
-}
-
-function canvasRGBAdjustment(
-  ctx: CanvasRenderingContext2D, 
-  width: number, 
-  height: number,
-  redScale: number, 
-  greenScale: number, 
-  blueScale: number
-): void {
-  if (redScale === 1.0 && greenScale === 1.0 && blueScale === 1.0) return;
-  
-  const imageData = ctx.getImageData(0, 0, width, height);
-  applyRGBAdjustment(imageData.data, width, height, redScale, greenScale, blueScale);
-  ctx.putImageData(imageData, 0, 0);
-}
 
 // Helper function to convert hue to RGB component
 function hue2rgb(p: number, q: number, t: number): number {
@@ -474,24 +433,12 @@ export const processImage = async (
               ctx.imageSmoothingEnabled = true;
               ctx.imageSmoothingQuality = 'high';
               
-              // Apply brightness and contrast
-              canvasBrightnessContrast(ctx, width, height, safeAdjustments.brightness, safeAdjustments.contrast);
+              // Process all adjustments at once using the unified function
+              processImageContext(ctx, width, height, safeAdjustments, false);
               
-              // Apply HSL adjustments (similar to modulate in ImageMagick)
-              canvasHSLAdjustment(ctx, width, height, safeAdjustments.hue, safeAdjustments.saturation, safeAdjustments.lightness);
-              
-              // Apply RGB adjustments for white balance
-              canvasRGBAdjustment(ctx, width, height, safeAdjustments.redScale, safeAdjustments.greenScale, safeAdjustments.blueScale);
-              
-              // Apply sharpening if enabled
-              if (safeAdjustments.sharpen > 0) {
-                canvasSharpen(ctx, width, height, safeAdjustments.sharpen);
-              }
-              
-              // Convert to data URL with quality setting - higher quality for thumbnails
+              // Convert to data URL with quality setting
               const quality = preset && isFullSize ? preset.quality / 100 : 0.95;
               const dataUrl = canvas.toDataURL('image/jpeg', quality);
-              
               resolveImg(dataUrl);
             } catch (err) {
               rejectImg(err);
@@ -628,6 +575,56 @@ function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustme
       }
     }
     
+    // Apply RGB adjustments - THIS IS THE NEW CODE
+    const hasRGBAdjustments = 
+      adjustments.redScale !== 1.0 || 
+      adjustments.greenScale !== 1.0 || 
+      adjustments.blueScale !== 1.0;
+    
+    if (hasRGBAdjustments) {
+      try {
+        console.log('🔄 OpenCV RGB Adjustment:', {
+          redScale: adjustments.redScale,
+          greenScale: adjustments.greenScale,
+          blueScale: adjustments.blueScale
+        });
+        
+        // Split the image into BGR channels
+        const bgr_channels = new window.cv.MatVector();
+        window.cv.split(src, bgr_channels);
+        
+        // Get individual channels (OpenCV uses BGR order)
+        const bChannel = bgr_channels.get(0);  // Blue channel
+        const gChannel = bgr_channels.get(1);  // Green channel
+        const rChannel = bgr_channels.get(2);  // Red channel
+        
+        // Apply scaling to each channel
+        if (adjustments.blueScale !== 1.0) {
+          bChannel.convertTo(bChannel, -1, adjustments.blueScale, 0);
+        }
+        
+        if (adjustments.greenScale !== 1.0) {
+          gChannel.convertTo(gChannel, -1, adjustments.greenScale, 0);
+        }
+        
+        if (adjustments.redScale !== 1.0) {
+          rChannel.convertTo(rChannel, -1, adjustments.redScale, 0);
+        }
+        
+        // Merge channels back
+        window.cv.merge(bgr_channels, src);
+        
+        // Clean up
+        bgr_channels.delete();
+        bChannel.delete();
+        gChannel.delete();
+        rChannel.delete();
+        
+      } catch (e) {
+        console.error('OpenCV RGB adjustment failed:', e);
+      }
+    }
+    
     // Apply brightness and contrast
     try {
       const alpha = (adjustments.contrast + 100) / 100;
@@ -754,7 +751,13 @@ export const createImageFile = async (file: File): Promise<ImageFile> => {
 export type ImageFormat = 'jpg' | 'webp' | 'png';
 
 // Update downloadImage function to support format selection and SEO-friendly filenames
-export const downloadImage = (dataUrl: string, filename: string, format: ImageFormat = 'jpg', seoName?: string): void => {
+export const downloadImage = (
+  dataUrl: string, 
+  filename: string, 
+  format: ImageFormat = 'jpg', 
+  seoName?: string,
+  adjustments?: ImageAdjustments
+): void => {
   // If SEO name is provided, use it instead of the original filename
   let finalFilename = filename;
   
@@ -803,6 +806,12 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
         tempCtx.clearRect(0, 0, img.width, img.height);
         tempCtx.drawImage(img, 0, 0);
         
+        // Apply adjustments if provided
+        if (adjustments) {
+          console.log('Applying adjustments during OpenCV format conversion:', adjustments);
+          processImageContext(tempCtx, img.width, img.height, adjustments, false);
+        }
+        
         // Read the image into an OpenCV Mat
         const src = window.cv.imread(tempCanvas);
         
@@ -844,20 +853,20 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
       } catch (e) {
         console.error('OpenCV format conversion failed, falling back to Canvas API', e);
         // Fall back to canvas-based conversion
-        canvasFormatConversion(dataUrl, finalFilename, format);
+        canvasFormatConversion(dataUrl, finalFilename, format, adjustments);
       }
     };
     
     img.onerror = () => {
       console.error('Failed to load image for OpenCV conversion');
       // Fall back to canvas-based conversion
-      canvasFormatConversion(dataUrl, finalFilename, format);
+      canvasFormatConversion(dataUrl, finalFilename, format, adjustments);
     };
     
     img.src = dataUrl;
   } else {
     // Fall back to canvas-based conversion if OpenCV is not available
-    canvasFormatConversion(dataUrl, finalFilename, format);
+    canvasFormatConversion(dataUrl, finalFilename, format, adjustments);
   }
 };
 
@@ -865,7 +874,8 @@ export const downloadImage = (dataUrl: string, filename: string, format: ImageFo
 function canvasFormatConversion(
   dataUrl: string | HTMLImageElement, 
   finalFilename: string, 
-  format: ImageFormat
+  format: ImageFormat,
+  adjustments?: ImageAdjustments
 ): void {
   const processImage = (img: HTMLImageElement) => {
     const canvas = document.createElement('canvas');
@@ -880,6 +890,12 @@ function canvasFormatConversion(
     
     // Draw the image
     ctx.drawImage(img, 0, 0);
+    
+    // Apply adjustments if provided
+    if (adjustments) {
+      console.log('Applying adjustments during format conversion:', adjustments);
+      processImageContext(ctx, canvas.width, canvas.height, adjustments, false);
+    }
     
     // Convert to the desired format
     const mimeType = format === 'webp' ? 'image/webp' : 
@@ -916,187 +932,207 @@ function canvasFormatConversion(
 export const downloadAllImages = async (
   images: ImageFile[], 
   format: ImageFormat = 'jpg', 
-  asZip: boolean = false
+  asZip: boolean = false,
+  seoProductDescription: SeoProductDescription | null = null,
+  adjustments?: ImageAdjustments
 ): Promise<void> => {
   if (images.length === 0) return;
   
-  // If not downloading as ZIP, just download each image individually
-  if (!asZip) {
-    images.forEach((image) => {
-      // For background-removed images with processing applied
-      if (image.backgroundRemoved && image.processedDataUrl) {
-        // Use the processed version with the user-selected format
-        downloadImage(image.processedDataUrl, `${image.file.name}`, format, image.seoName);
-      }
-      // For background-removed images without processing
-      else if (image.backgroundRemoved) {
-        const seoName = image.seoName;
-        // Use user-selected format
-        downloadImage(image.dataUrl, `${image.file.name}`, format, seoName);
-      } 
-      // For regular processed images
-      else if (image.processedDataUrl) {
-        // Get the SEO name if available
-        const seoName = image.seoName;
-        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, seoName);
-      }
-    });
+  // If there's only one image and we don't need a zip, download it directly
+  if (images.length === 1 && !asZip && !seoProductDescription) {
+    const image = images[0];
+    const dataUrl = image.processedDataUrl || image.dataUrl;
+    const sourceFilename = image.file.name;
+    const seoName = image.seoName;
+    
+    if (image.backgroundRemoved) {
+      // Always use PNG for transparent images
+      downloadImage(dataUrl, sourceFilename, 'png', seoName, adjustments);
+    } else {
+      downloadImage(dataUrl, sourceFilename, format, seoName, adjustments);
+    }
     return;
   }
   
-  try {
-    // Create a new ZIP file
-    const zip = new JSZip();
-    
-    // Add each image to the ZIP
-    const promises = images.map(async (image, index) => {
-      // Handle background-removed images with processing
-      if (image.backgroundRemoved && image.processedDataUrl) {
-        return new Promise<void>((resolve) => {
-          // For processed background-removed images, make sure processedDataUrl is defined
-          if (!image.processedDataUrl) {
-            resolve();
-            return;
-          }
-          
-          // Convert image to the selected format and add to ZIP
-          convertImageAndAddToZip(
-            image.processedDataUrl, 
-            zip, 
-            format, 
-            index, 
-            image.file.name, 
-            image.seoName
-          ).then(() => resolve()).catch(() => resolve());
-        });
-      }
-      // Handle background-removed images without processing
-      else if (image.backgroundRemoved) {
-        return new Promise<void>((resolve) => {
-          // Convert image to the selected format and add to ZIP
-          convertImageAndAddToZip(
-            image.dataUrl, 
-            zip, 
-            format, 
-            index, 
-            image.file.name, 
-            image.seoName
-          ).then(() => resolve()).catch(() => resolve());
-        });
-      }
-      
-      if (!image.processedDataUrl && !image.backgroundRemoved) return;
-      
-      // Regular processed images
-      return new Promise<void>((resolve) => {
-        // Convert image to the selected format and add to ZIP
-        convertImageAndAddToZip(
-          image.processedDataUrl as string, 
-          zip, 
-          format, 
-          index, 
-          image.file.name, 
-          image.seoName
-        ).then(() => resolve()).catch(() => resolve());
-      });
-    });
-    
-    await Promise.all(promises);
-    
-    // Generate the ZIP file
-    const zipBlob = await zip.generateAsync({ type: 'blob' });
-    
-    // Create download link for the ZIP
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(zipBlob);
-    link.download = `processed_images_${new Date().toISOString().slice(0, 10)}.zip`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(link.href);
-    
-  } catch (error) {
-    console.error('Error creating ZIP file:', error);
-    // Fallback to individual downloads if ZIP creation fails
-    images.forEach((image) => {
-      if (image.processedDataUrl) {
-        const seoName = image.seoName;
-        downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, seoName);
-      }
-    });
+  // Create a ZIP file with all images
+  const zip = new JSZip();
+  
+  // Create a directory for the images
+  const imagesDir = zip.folder("images");
+  
+  if (!imagesDir) {
+    console.error("Failed to create images directory in ZIP");
+    return;
   }
+  
+  // Add each image to the ZIP file
+  for (let i = 0; i < images.length; i++) {
+    const image = images[i];
+    const dataUrl = image.processedDataUrl || image.dataUrl;
+    const originalFilename = image.file.name;
+    const seoName = image.seoName;
+    
+    // Use PNG format for images with removed backgrounds
+    const imageFormat = image.backgroundRemoved ? 'png' : format;
+    
+    try {
+      await convertImageAndAddToZip(
+        dataUrl, 
+        imagesDir, 
+        imageFormat, 
+        i, 
+        originalFilename, 
+        seoName,
+        adjustments
+      );
+    } catch (err) {
+      console.error(`Error adding image ${i} to ZIP:`, err);
+    }
+  }
+  
+  // Add SEO product description to ZIP if provided
+  if (seoProductDescription) {
+    // Create a directory for the SEO product description
+    const seoDir = zip.folder("seo-description");
+    
+    if (seoDir) {
+      // Create content for the SEO product description text file
+      let content = '';
+      content += `PRODUCT TITLE:\n${seoProductDescription.productTitle}\n\n`;
+      content += `META TITLE:\n${seoProductDescription.metaTitle}\n\n`;
+      content += `META DESCRIPTION:\n${seoProductDescription.metaDescription}\n\n`;
+      content += `SHORT DESCRIPTION:\n${seoProductDescription.shortDescription}\n\n`;
+      content += `LONG DESCRIPTION:\n${seoProductDescription.longDescription}\n\n`;
+      content += `CATEGORIES:\n${seoProductDescription.categories.join(' > ')}\n\n`;
+      content += `TAGS:\n${seoProductDescription.tags.join(', ')}\n\n`;
+      content += `URL SLUG:\n${seoProductDescription.urlSlug}\n\n`;
+      
+      // Add the text file to the ZIP
+      seoDir.file("product-description.txt", content);
+    }
+  }
+  
+  // Generate the ZIP file and trigger download
+  zip.generateAsync({ type: "blob" })
+    .then(function(content) {
+      // Create a download link
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(content);
+      link.download = `picme-${new Date().toISOString().slice(0, 10)}.zip`;
+      document.body.appendChild(link);
+      link.click();
+      
+      // Clean up
+      setTimeout(() => {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+      }, 100);
+    })
+    .catch(function(err) {
+      console.error("Error generating ZIP file:", err);
+    });
 };
 
 // Helper function to convert an image to the desired format and add it to the ZIP file
 async function convertImageAndAddToZip(
   dataUrl: string, 
-  zip: JSZip, 
+  zip: JSZip | { file: (name: string, data: string, options?: JSZip.JSZipFileOptions) => JSZip }, 
   format: ImageFormat, 
   index: number, 
   originalFilename: string, 
-  seoName?: string
+  seoName?: string,
+  adjustments?: ImageAdjustments
 ): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    
-    img.onload = () => {
-      try {
-        // Create a canvas for the conversion
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        
-        const ctx = canvas.getContext('2d', { alpha: true });
-        if (!ctx) {
-          reject(new Error('Failed to get canvas context'));
-          return;
-        }
-        
-        // Clear the canvas first to ensure transparency is preserved for PNGs
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0);
-        
-        // Convert to the desired format
-        const mimeType = format === 'webp' ? 'image/webp' : 
-                         format === 'png' ? 'image/png' : 'image/jpeg';
-        
-        // PNG needs full quality for transparency
-        const quality = format === 'png' ? 1.0 : 
-                       format === 'webp' ? 0.8 : 0.9;
-        
-        // Get the blob data
-        canvas.toBlob((blob) => {
-          if (!blob) {
-            reject(new Error('Failed to convert image to blob'));
+  return new Promise<void>((resolve, reject) => {
+    try {
+      // Create an image element to load the data URL
+      const img = new Image();
+      
+      img.onload = function() {
+        try {
+          // Create a canvas to draw the image and apply format conversion
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            console.error('Could not get 2D context for canvas');
+            resolve(); // Resolve anyway to continue with other images
             return;
           }
           
-          // Create filename with proper extension
-          let fileName = originalFilename;
-          
-          // If SEO name is provided, use it with the selected format extension
-          if (seoName) {
-            fileName = `${seoName}.${format}`;
-          } else {
-            // Add index prefix to prevent name collisions and use correct extension
-            fileName = `processed_${index + 1}_${originalFilename.replace(/\.[^/.]+$/, `.${format}`)}`;
+          // For PNG, we need to preserve transparency
+          if (format === 'png') {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
           }
           
-          // Add the file to the ZIP
-          zip.file(fileName, blob);
+          // Draw the image to the canvas
+          ctx.drawImage(img, 0, 0);
+          
+          // Apply adjustments if provided
+          if (adjustments) {
+            console.log(`Applying adjustments to image ${index} for ZIP:`, adjustments);
+            processImageContext(ctx, canvas.width, canvas.height, adjustments, format === 'png');
+          }
+          
+          // Convert to the desired format
+          let finalDataUrl: string;
+          let extension: string;
+          let mimeType: string;
+          
+          switch (format) {
+            case 'webp':
+              finalDataUrl = canvas.toDataURL('image/webp', 0.9);
+              extension = 'webp';
+              mimeType = 'image/webp';
+              break;
+            case 'png':
+              finalDataUrl = canvas.toDataURL('image/png');
+              extension = 'png';
+              mimeType = 'image/png';
+              break;
+            case 'jpg':
+            default:
+              finalDataUrl = canvas.toDataURL('image/jpeg', 0.9);
+              extension = 'jpg';
+              mimeType = 'image/jpeg';
+              break;
+          }
+          
+          // Extract base64 content from data URL
+          const base64Data = finalDataUrl.split(',')[1];
+          
+          // Generate filename (use SEO name if available)
+          let filename: string;
+          
+          if (seoName) {
+            filename = `${seoName}.${extension}`;
+          } else {
+            // Replace or remove file extension from original filename
+            const nameWithoutExtension = originalFilename.replace(/\.[^/.]+$/, '');
+            filename = `${nameWithoutExtension}_${index + 1}.${extension}`;
+          }
+          
+          // Add file to ZIP
+          zip.file(filename, base64Data, { base64: true });
+          
           resolve();
-        }, mimeType, quality);
-      } catch (error) {
-        console.error('Error converting image for ZIP:', error);
-        reject(error);
-      }
-    };
-    
-    img.onerror = (error) => {
-      console.error('Failed to load image for ZIP conversion:', error);
-      reject(error);
-    };
-    
-    img.src = dataUrl;
+        } catch (err) {
+          console.error('Error converting image for ZIP:', err);
+          resolve(); // Resolve anyway to continue with other images
+        }
+      };
+      
+      img.onerror = function() {
+        console.error('Error loading image data URL');
+        resolve(); // Resolve anyway to continue with other images
+      };
+      
+      img.src = dataUrl;
+    } catch (err) {
+      console.error('Error in convertImageAndAddToZip:', err);
+      resolve(); // Resolve anyway to continue with other images
+    }
   });
 } 

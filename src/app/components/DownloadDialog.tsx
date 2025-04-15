@@ -16,6 +16,7 @@ interface DownloadDialogProps {
   formatType: string;
   hasSeoNames?: boolean;
   hasRemovedBackgrounds?: boolean;
+  hasSeoProductDescription?: boolean;
 }
 
 export default function DownloadDialog({
@@ -30,7 +31,8 @@ export default function DownloadDialog({
   downloadComplete,
   formatType,
   hasSeoNames = false,
-  hasRemovedBackgrounds = false
+  hasRemovedBackgrounds = false,
+  hasSeoProductDescription = false
 }: DownloadDialogProps) {
   const t = useTranslations('Dialogs.download');
   
@@ -77,6 +79,22 @@ export default function DownloadDialog({
                                   />
                                 </div>
                                 {t('seoFilenames')}
+                              </div>
+                            </li>
+                          )}
+                          {hasSeoProductDescription && (
+                            <li className="text-green-600 font-semibold">
+                              <div className="flex items-center">
+                                <div className="h-4 w-4 mr-1 flex-shrink-0">
+                                  <Image 
+                                    src="/images/ai-icon.svg" 
+                                    alt="AI text generation" 
+                                    width={16}
+                                    height={16}
+                                    className="object-contain" 
+                                  />
+                                </div>
+                                {t('seoProductDescription')}
                               </div>
                             </li>
                           )}

@@ -165,7 +165,8 @@
             "title": "DOWNLOAD",
             "format": "FORMAT",
             "downloadAll": "DOWNLOAD ALL",
-            "transparentNote": "Note: Images with removed backgrounds will be saved as transparent PNGs"
+            "transparentNote": "Note: Images with removed backgrounds will be saved as transparent PNGs",
+            "seoProductDescription": "A TXT file with the SEO product description will be included in the ZIP download"
         },
         "ProUpgrade": {
             "title": "Upgrade to Pro",
@@ -194,6 +195,43 @@
                 "description": "Our AI has generated SEO-optimized filenames for your images. You can edit individual names in the image preview section."
             },
             "tryFeature": "TRY HOW IT WORKS"
+        },
+        "SeoProductDescription": {
+            "title": "AI SEO PRODUCT DESCRIPTION",
+            "description": "Generate complete SEO-optimized product description",
+            "enterDescription": "Enter basic product information",
+            "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
+            "generate": "GENERATE PRODUCT DESCRIPTION",
+            "generating": "GENERATING...",
+            "proFeature": "This is a PRO feature",
+            "copyToClipboard": "COPY TO CLIPBOARD",
+            "downloadAsTxt": "DOWNLOAD AS TXT",
+            "copied": "Copied!",
+            "tryFeature": "TRY HOW IT WORKS",
+            "tabs": {
+                "content": "CONTENT",
+                "meta": "META",
+                "categories": "CATEGORIES",
+                "previews": "PREVIEWS"
+            },
+            "previews": {
+                "googleSearch": "GOOGLE SEARCH PREVIEW",
+                "ecommerce": "E-COMMERCE PREVIEW",
+                "productImage": "Product Image",
+                "addToCart": "Add to Cart",
+                "wishlist": "Wishlist"
+            },
+            "sections": {
+                "productTitle": "Product Title",
+                "metaTitle": "Meta Title",
+                "metaDescription": "Meta Description",
+                "shortDescription": "Short Description", 
+                "longDescription": "Long Description",
+                "categories": "Categories",
+                "tags": "Tags",
+                "urlSlug": "URL Slug"
+            },
+            "downloadAll": "DOWNLOAD ALL DATA"
         },
         "QuickPresets": {
             "title": "QUICK PRESETS",
@@ -376,24 +414,25 @@
     "Dialogs": {
         "download": {
             "title": "Download Images",
-            "confirmTitle": "Confirm Download",
-            "successTitle": "Download Successful",
-            "summary": "Download Summary:",
-            "images": "{count, plural, =1 {# image} other {# images}} will be downloaded",
+            "confirmTitle": "READY TO DOWNLOAD",
+            "successTitle": "DOWNLOAD COMPLETE",
+            "summary": "SUMMARY",
+            "images": "{count, plural, =1 {1 image} other {# images}}",
             "format": "Format:",
             "appliedPreset": "Applied preset:",
-            "adjustmentsApplied": "Image adjustments have been applied",
-            "backgroundRemoval": "Background removal has been applied",
-            "seoFilenames": "AI SEO-optimized filenames included",
-            "zipPackage": "Files will be packaged as a ZIP archive",
-            "processingNote": "Processing may take a moment for multiple or large images.",
+            "adjustmentsApplied": "Image adjustments applied",
+            "backgroundRemoval": "Background removal applied (transparent PNGs)",
+            "seoFilenames": "SEO-optimized filenames",
+            "seoProductDescription": "SEO Product Description (TXT)",
+            "zipPackage": "All files packaged in a ZIP archive",
+            "processingNote": "Please wait while your images are processed. This may take a moment for high-quality images.",
             "cancel": "CANCEL",
             "download": "DOWNLOAD",
             "processing": "PROCESSING...",
-            "successMessage": "Your images have been successfully downloaded. What would you like to do next?",
-            "startNewBundleDesc": "Start new bundle: Clear current images and start fresh",
-            "continueEditingDesc": "Continue editing: Keep working with current images",
-            "startNewBundle": "START NEW BUNDLE",
+            "successMessage": "Your images have been downloaded successfully. What would you like to do next?",
+            "startNewBundleDesc": "Start a new batch of images (clears current images)",
+            "continueEditingDesc": "Continue editing the current images",
+            "startNewBundle": "START NEW BATCH",
             "continueEditing": "CONTINUE EDITING"
         },
         "proUpgrade": {

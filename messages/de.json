@@ -164,8 +164,9 @@
         "DownloadOptions": {
             "title": "HERUNTERLADEN",
             "format": "FORMAT",
-            "downloadAll": "ALLE HERUNTERLADEN",
-            "transparentNote": "Hinweis: Bilder mit entferntem Hintergrund werden als transparente PNGs gespeichert"
+            "downloadAll": "ALLES HERUNTERLADEN",
+            "transparentNote": "Hinweis: Bilder mit entferntem Hintergrund werden als transparente PNGs gespeichert",
+            "seoProductDescription": "Eine TXT-Datei mit der SEO-Produktbeschreibung wird im ZIP-Download enthalten sein"
         },
         "ProUpgrade": {
             "title": "Auf Pro upgraden",
@@ -180,20 +181,57 @@
             "close": "Schließen"
         },
         "SeoNameGenerator": {
-            "title": "KI SEO-NAMENSGENERATOR",
+            "title": "KI SEO NAMENSGENERATOR",
             "description": "Generieren Sie SEO-freundliche Dateinamen für Ihre Bilder",
-            "enterDescription": "Geben Sie Ihre Produktbeschreibung ein",
-            "placeholder": "z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder...",
+            "enterDescription": "Geben Sie eine Beschreibung Ihres Produkts ein",
+            "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder...",
             "generate": "SEO-NAMEN GENERIEREN",
-            "generating": "GENERIEREN...",
+            "generating": "GENERIERE...",
             "proLimit": "Generieren Sie bis zu 100 Namen auf einmal mit Pro",
             "originalName": "Originalname",
             "seoName": "SEO-Name",
             "appliedNames": {
                 "title": "Angewendete SEO-Namen",
-                "description": "Unsere KI hat SEO-optimierte Dateinamen für Ihre Bilder generiert. Sie können einzelne Namen im Bildvorschaubereich bearbeiten."
+                "description": "Unsere KI hat SEO-optimierte Dateinamen für Ihre Bilder generiert. Sie können die einzelnen Namen im Bildvorschaubereich bearbeiten."
             },
-            "tryFeature": "TESTEN SIE DIE FUNKTION"
+            "tryFeature": "FUNKTION TESTEN"
+        },
+        "SeoProductDescription": {
+            "title": "KI SEO PRODUKTBESCHREIBUNG",
+            "description": "Generieren Sie vollständige SEO-optimierte Produktbeschreibungen",
+            "enterDescription": "Geben Sie grundlegende Produktinformationen ein",
+            "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder, mehrere Kartenfächer...",
+            "generate": "PRODUKTBESCHREIBUNG GENERIEREN",
+            "generating": "GENERIERE...",
+            "proFeature": "Dies ist eine PRO-Funktion",
+            "copyToClipboard": "IN DIE ZWISCHENABLAGE KOPIEREN",
+            "downloadAsTxt": "ALS TXT HERUNTERLADEN",
+            "copied": "Kopiert!",
+            "tryFeature": "FUNKTION TESTEN",
+            "tabs": {
+                "content": "INHALT",
+                "meta": "META",
+                "categories": "KATEGORIEN",
+                "previews": "VORSCHAUEN"
+            },
+            "previews": {
+                "googleSearch": "GOOGLE-SUCHE VORSCHAU",
+                "ecommerce": "E-COMMERCE VORSCHAU",
+                "productImage": "Produktbild",
+                "addToCart": "In den Warenkorb",
+                "wishlist": "Wunschliste"
+            },
+            "sections": {
+                "productTitle": "Produkttitel",
+                "metaTitle": "Meta-Titel",
+                "metaDescription": "Meta-Beschreibung",
+                "shortDescription": "Kurzbeschreibung", 
+                "longDescription": "Lange Beschreibung",
+                "categories": "Kategorien",
+                "tags": "Tags",
+                "urlSlug": "URL-Slug"
+            },
+            "downloadAll": "ALLE DATEN HERUNTERLADEN"
         },
         "QuickPresets": {
             "title": "SCHNELLVOREINSTELLUNGEN",
@@ -394,7 +432,8 @@
             "startNewBundleDesc": "Neues Paket starten: Aktuelle Bilder löschen und neu beginnen",
             "continueEditingDesc": "Weiter bearbeiten: Mit aktuellen Bildern weiterarbeiten",
             "startNewBundle": "NEUES PAKET STARTEN",
-            "continueEditing": "WEITER BEARBEITEN"
+            "continueEditing": "WEITER BEARBEITEN",
+            "seoProductDescription": "SEO-Produktbeschreibung (TXT)"
         },
         "proUpgrade": {
             "feature": "Stapelverarbeitung"

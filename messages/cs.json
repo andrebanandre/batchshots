@@ -165,7 +165,8 @@
             "title": "STÁHNOUT",
             "format": "FORMÁT",
             "downloadAll": "STÁHNOUT VŠE",
-            "transparentNote": "Poznámka: Obrázky s odstraněným pozadím budou uloženy jako průhledné PNG"
+            "transparentNote": "Poznámka: Obrázky s odstraněným pozadím budou uloženy jako průhledné PNG",
+            "seoProductDescription": "TXT soubor s SEO popisem produktu bude zahrnut v ZIP souboru ke stažení"
         },
         "ProUpgrade": {
             "title": "Upgradujte na Pro",
@@ -180,20 +181,57 @@
             "close": "Zavřít"
         },
         "SeoNameGenerator": {
-            "title": "GENERÁTOR SEO NÁZVŮ AI",
-            "description": "Generujte SEO-optimalizované názvy souborů pro vaše obrázky",
-            "enterDescription": "Zadejte popis produktu",
-            "placeholder": "Např. vintage kožená peněženka, ručně vyráběná, hnědá, plná zrna...",
+            "title": "AI SEO GENERÁTOR NÁZVŮ",
+            "description": "Generujte SEO přátelské názvy souborů pro vaše obrázky",
+            "enterDescription": "Zadejte popis vašeho produktu",
+            "placeholder": "Např. vintage kožená peněženka, ručně vyrobená, hnědá, z plnozrnné kůže...",
             "generate": "GENEROVAT SEO NÁZVY",
             "generating": "GENEROVÁNÍ...",
-            "proLimit": "Generujte až 100 názvů současně s Pro",
+            "proLimit": "Generujte až 100 názvů najednou s verzí Pro",
             "originalName": "Původní název",
             "seoName": "SEO název",
             "appliedNames": {
                 "title": "Použité SEO názvy",
-                "description": "Naše AI vygenerovala SEO-optimalizované názvy souborů pro vaše obrázky. Můžete upravit jednotlivé názvy v sekci náhledu obrázku."
+                "description": "Naše AI vygenerovala SEO optimalizované názvy souborů pro vaše obrázky. Jednotlivé názvy můžete upravit v sekci náhledu obrázků."
             },
-            "tryFeature": "VYZKOUŠEJTE, JAK TO FUNGUJE"
+            "tryFeature": "VYZKOUŠET JAK TO FUNGUJE"
+        },
+        "SeoProductDescription": {
+            "title": "AI SEO POPIS PRODUKTU",
+            "description": "Generujte kompletní SEO optimalizovaný popis produktu",
+            "enterDescription": "Zadejte základní informace o produktu",
+            "placeholder": "Např. vintage kožená peněženka, ručně vyrobená, hnědá, z plnozrnné kůže, více přihrádek na karty...",
+            "generate": "GENEROVAT POPIS PRODUKTU",
+            "generating": "GENEROVÁNÍ...",
+            "proFeature": "Toto je funkce PRO verze",
+            "copyToClipboard": "KOPÍROVAT DO SCHRÁNKY",
+            "downloadAsTxt": "STÁHNOUT JAKO TXT",
+            "copied": "Zkopírováno!",
+            "tryFeature": "VYZKOUŠET JAK TO FUNGUJE",
+            "tabs": {
+                "content": "OBSAH",
+                "meta": "META",
+                "categories": "KATEGORIE",
+                "previews": "NÁHLEDY"
+            },
+            "previews": {
+                "googleSearch": "NÁHLED VYHLEDÁVÁNÍ GOOGLE",
+                "ecommerce": "NÁHLED E-SHOPU",
+                "productImage": "Obrázek produktu",
+                "addToCart": "Přidat do košíku",
+                "wishlist": "Seznam přání"
+            },
+            "sections": {
+                "productTitle": "Název produktu",
+                "metaTitle": "Meta název",
+                "metaDescription": "Meta popis",
+                "shortDescription": "Krátký popis", 
+                "longDescription": "Dlouhý popis",
+                "categories": "Kategorie",
+                "tags": "Tagy",
+                "urlSlug": "URL slug"
+            },
+            "downloadAll": "STÁHNOUT VŠECHNA DATA"
         },
         "QuickPresets": {
             "title": "RYCHLÁ PŘEDNASTAVENÍ",
@@ -394,7 +432,8 @@
             "startNewBundleDesc": "Začít nový balíček: Vymažte současné obrázky a začněte znovu",
             "continueEditingDesc": "Pokračovat v úpravách: Pokračujte v práci se současnými obrázky",
             "startNewBundle": "ZAČÍT NOVÝ BALÍČEK",
-            "continueEditing": "POKRAČOVAT V ÚPRAVÁCH"
+            "continueEditing": "POKRAČOVAT V ÚPRAVÁCH",
+            "seoProductDescription": "SEO Popis produktu (TXT)"
         },
         "proUpgrade": {
             "feature": "Hromadné zpracování"
