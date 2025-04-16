@@ -1,11 +1,20 @@
-# UltraSharp Model
+# Image Enhancement Models
 
-Place the `4x-UltraSharp-fp16-opset17.onnx` model file in this directory.
+This directory contains ONNX models for image processing:
 
-The model is not included in the repository due to size constraints.
+## UltraSharp Model
+`4x-UltraSharp-fp32-opset17.onnx` - 4x image upscaling with detail enhancement
 
-## How to obtain the model
+## Real-ESRGAN Model
+`Real-ESRGAN-x4plus.onnx` - 4x general purpose upscaler with good photo quality
 
-You can find similar image enhancement models on Hugging Face or other model repositories. 
-Remember to rename the downloaded model to `4x-UltraSharp-fp16-opset17.onnx` or update the reference 
-in the UltraSharp component. 
+## RealWebPhoto Model
+`4xRealWebPhoto_v4_fp32_opset17.onnx` - 4x photography restoration for JPEG/WEBP compression removal
+
+## Super Resolution Model
+`super-resolution-10.onnx` - A lightweight image upscaling model
+
+## Migan Object Removal Model
+`migan_pipeline_v2.onnx` - An image inpainting model that removes objects based on a user-drawn mask
+
+These models are loaded directly from the `/public/models` directory by the application. 
