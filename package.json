@@ -9,9 +9,9 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && wrangler pages dev",
-    "deploy": "npm run pages:build && wrangler pages deploy"
+    "pages:build": "pnpm dlx @cloudflare/next-on-pages",
+    "preview": "pnpm run pages:build && wrangler pages dev",
+    "deploy": "pnpm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@clerk/localizations": "^3.13.8",
@@ -48,6 +48,7 @@
     "node-polyfill-webpack-plugin": "^4.1.0",
     "tailwindcss": "^4",
     "ts-jest": "^29.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.12.0"
   }
 }
