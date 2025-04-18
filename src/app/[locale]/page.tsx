@@ -1,5 +1,7 @@
 'use client';
 
+export const runtime = 'edge';
+
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
@@ -196,6 +198,7 @@ export default function Home() {
     }, 300); // Increased debounce time slightly
 
     return () => clearTimeout(timeoutId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [adjustments, watermarkSettings, isOpenCVReady, selectedImageId, selectedPreset, applyToAll, customPresetSettings]); // Add watermarkSettings dependency
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {

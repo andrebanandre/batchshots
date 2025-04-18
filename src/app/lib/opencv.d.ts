@@ -1,11 +1,15 @@
 declare namespace cv {
   class Mat {
+    constructor(rows: number, cols: number, type: number, scalar: Scalar);
     delete(): void;
+    clone(): Mat;
+    channels(): number;
     cols: number;
     rows: number;
     data: Uint8Array;
     ucharPtr(row: number, col: number): Uint8Array;
     ucharAt(row: number, col: number): number;
+    convertTo(dst: Mat, rtype: number, alpha?: number, beta?: number): void;
   }
   
   class MatVector {
@@ -21,6 +25,10 @@ declare namespace cv {
     height: number;
   }
   
+  class Scalar {
+    constructor(v0: number, v1?: number, v2?: number, v3?: number);
+  }
+  
   // Image processing
   function imread(imageSource: HTMLImageElement | HTMLCanvasElement | string): Mat;
   function imshow(canvasSource: HTMLCanvasElement | string, mat: Mat): void;
@@ -29,6 +37,8 @@ declare namespace cv {
   function resize(src: Mat, dst: Mat, dsize: Size, fx?: number, fy?: number, interpolation?: number): void;
   function split(src: Mat, mv: MatVector): void;
   function merge(mv: MatVector, dst: Mat): void;
+  function GaussianBlur(src: Mat, dst: Mat, ksize: Size, sigmaX: number, sigmaY?: number, borderType?: number): void;
+  function addWeighted(src1: Mat, alpha: number, src2: Mat, beta: number, gamma: number, dst: Mat, dtype?: number): void;
   
   // Constants
   const CV_8U: number;
@@ -40,6 +50,8 @@ declare namespace cv {
   const COLOR_RGBA2BGR: number;
   const COLOR_BGR2GRAY: number;
   const COLOR_GRAY2BGR: number;
+  const COLOR_BGR2HLS: number;
+  const COLOR_HLS2BGR: number;
   const INTER_LINEAR: number;
   const INTER_AREA: number;
 }

@@ -1,9 +1,11 @@
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2023-10-16',
+  apiVersion: '2025-03-31.basil',
 });
 
 // Disable Next.js body parsing
@@ -15,7 +17,8 @@ export const config = {
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
-  const sig = headers().get('stripe-signature')!;
+  const headerList = await headers();
+  const sig = headerList.get('stripe-signature')!;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
   let event: Stripe.Event;

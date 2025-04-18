@@ -7,11 +7,11 @@ import { useTranslations } from 'next-intl';
 import LanguageSelector from './LanguageSelector';
 import {
   SignInButton,
-  SignedIn,
-  SignedOut,
   UserButton,
+  useAuth,
 } from '@clerk/nextjs';
 import UserProStatus from './UserProStatus';
+import MobileMenu from './MobileMenu';
 
 // Simple SVG logo component
 const Logo = () => (
@@ -22,49 +22,9 @@ const Logo = () => (
   </svg>
 );
 
-// Mobile navigation menu
-const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const t = useTranslations('Navbar');
-  
-  if (!isOpen) return null;
-  
-  return (
-    <div className="fixed inset-0 z-50 flex items-start justify-end pt-16 pr-4">
-      <div className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white p-4 w-64 shadow-brutalist">
-        <div className="flex justify-end mb-4">
-          <button onClick={onClose} className="text-2xl font-bold">&times;</button>
-        </div>
-        <nav className="flex flex-col space-y-4">
-          <Link href="/" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            {t('imageOptimizer')}
-          </Link>
-          <Link href="/background-removal" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            {t('removeBackgrounds')}
-          </Link>
-          <Link href="/backgrounds" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            {t('aiBackgrounds')}
-          </Link>
-          <Link href="/pricing" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            {t('pricing')}
-          </Link>
-          <div className="pt-4 border-t-2 border-black">
-            <SignedOut>
-              <div className="flex flex-col space-y-2">
-                <SignInButton>
-                  <Button variant="primary" size="sm" fullWidth>{t('login')}</Button>
-                </SignInButton>
-             
-              </div>
-            </SignedOut>
-          </div>
-        </nav>
-      </div>
-    </div>
-  );
-};
-
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isSignedIn } = useAuth();
   const t = useTranslations('Navbar');
   
   return (
@@ -91,7 +51,7 @@ export default function Navbar() {
             {t('pricing')}
           </Link>
           <div className="ml-2 flex items-center space-x-2">
-            <SignedIn>
+            {isSignedIn && (
               <div className="flex items-center gap-2">
                 <UserProStatus />
                 <UserButton 
@@ -102,13 +62,12 @@ export default function Navbar() {
                   }}
                 />
               </div>
-            </SignedIn>
-            <SignedOut>
+            )}
+            {!isSignedIn && (
               <SignInButton>
                 <Button variant="primary" size="sm">{t('login')}</Button>
               </SignInButton>
-             
-            </SignedOut>
+            )}
           </div>
        
         </nav>

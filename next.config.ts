@@ -69,7 +69,13 @@ const nextConfig: NextConfig = {
 
 // Initialize Cloudflare bindings in dev mode
 if (process.env.NODE_ENV === 'development') {
-  await setupDevPlatform();
+  (async () => {
+    try {
+      await setupDevPlatform();
+    } catch (error) {
+      console.error('Failed to setup Cloudflare dev platform:', error);
+    }
+  })();
 }
 
 export default withNextIntl(nextConfig);

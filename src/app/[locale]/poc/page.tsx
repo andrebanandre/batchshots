@@ -1,3 +1,7 @@
+'use client';
+
+export const runtime = 'edge';
+
 import React from 'react';
 import UltraSharp from './UltraSharp';
 import MiganObjectRemoval from './MiganObjectRemoval';

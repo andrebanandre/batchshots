@@ -1,7 +1,10 @@
 'use client';
 
+export const runtime = 'edge';
+
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useIsPro } from '../../hooks/useIsPro';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
@@ -231,23 +234,26 @@ export default function BackgroundRemovalPage() {
                               {images.map(image => (
                                 <div key={image.id} className="brutalist-border p-1 bg-white">
                                   {image.backgroundRemoved ? (
-                                    <div 
-                                      className="bg-[url('/checkered-bg.png')] bg-repeat"
-                                      style={{ aspectRatio: '1/1' }}
+                                    <div
+                                      className="bg-[url('/checkered-bg.png')] bg-repeat relative"
+                                      style={{ aspectRatio: '1 / 1' }}
                                     >
-                                      <img 
-                                        src={image.thumbnailDataUrl || image.dataUrl} 
+                                      <Image
+                                        src={image.thumbnailDataUrl || image.dataUrl || ''}
                                         alt={image.file.name}
-                                        className="w-full h-auto object-contain"
+                                        className="object-contain"
+                                        fill
                                       />
                                     </div>
                                   ) : (
-                                    <img 
-                                      src={image.thumbnailDataUrl || image.dataUrl} 
-                                      alt={image.file.name}
-                                      className="w-full h-auto object-contain"
-                                      style={{ aspectRatio: '1/1' }}
-                                    />
+                                    <div className="relative" style={{ aspectRatio: '1 / 1' }}>
+                                      <Image
+                                        src={image.thumbnailDataUrl || image.dataUrl || ''}
+                                        alt={image.file.name}
+                                        className="object-contain"
+                                        fill
+                                      />
+                                    </div>
                                   )}
                                   <p className="text-xs truncate mt-1 px-1">{image.file.name}</p>
                                 </div>

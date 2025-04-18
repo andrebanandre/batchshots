@@ -14,7 +14,7 @@ declare module 'onnxruntime-web/all' {
   }
 
   export interface InferenceSessionConstructor {
-    create(modelPath: string, options?: any): Promise<InferenceSession>;
+    create(modelPath: string, options?: Record<string, unknown>): Promise<InferenceSession>;
   }
 
   export interface OrtEnv {

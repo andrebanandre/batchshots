@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Card from './Card';
 import Button from './Button';
 import ProBadge from './ProBadge';
@@ -318,7 +319,14 @@ export default function WatermarkControl({
                     className="w-full p-4 brutalist-border bg-gray-50 text-center cursor-pointer block hover:bg-gray-100"
                   >
                     {watermarkSettings.logoDataUrl ? (
-                      <img src={watermarkSettings.logoDataUrl} alt="Logo Preview" className="max-h-16 mx-auto mb-2 object-contain" />
+                      <Image 
+                        src={watermarkSettings.logoDataUrl} 
+                        alt="Logo Preview" 
+                        width={64} // Example width, adjust as needed
+                        height={64} // Example height, adjust as needed
+                        className="max-h-16 mx-auto mb-2" // Removed object-contain here
+                        style={{ objectFit: 'contain' }} // Added objectFit style
+                      />
                     ) : null}
                     <span className="text-sm text-gray-500">
                         {watermarkSettings.logoDataUrl ? t('uploadLogo') : t('logoPlaceholder')} 

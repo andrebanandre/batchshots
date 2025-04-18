@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { auth } from '@clerk/nextjs/server'
 import { NextResponse } from 'next/server';
 import { checkProStatus } from '../../utils/check-pro-status';

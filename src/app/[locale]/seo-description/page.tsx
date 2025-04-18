@@ -1,7 +1,8 @@
 'use client';
 
+export const runtime = 'edge';
+
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import Card from '../../components/Card';
 import SeoProductDescriptionGenerator from '../../components/SeoProductDescriptionGenerator';
 import { useIsPro } from '../../hooks/useIsPro';
@@ -32,7 +33,7 @@ export default function SeoDescriptionPage() {
               <div className="brutalist-border p-4 bg-white">
                 <p className="font-medium mb-2">✨ <span className="font-bold">WHAT IS THIS TOOL?</span></p>
                 <p className="text-sm mb-2">
-                  This AI-powered tool generates complete, SEO-optimized product descriptions from basic product information. You'll get a professionally written product title, meta title, meta description, short and long descriptions, categories, tags, and URL slug.
+                  This AI-powered tool generates complete, SEO-optimized product descriptions from basic product information. You&apos;ll get a professionally written product title, meta title, meta description, short and long descriptions, categories, tags, and URL slug.
                 </p>
               </div>
               

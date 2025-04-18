@@ -9,8 +9,9 @@ import { SeoProductDescription } from './gemini';
 // Import the OpenCV type from our declaration file
 declare global {
   interface Window {
-    // @ts-expect-error // Allow any type for global cv, accepting potential type conflict risk
-    cv: any; 
+   // Use the specific type from the declaration file
+    // @ts-expect-error - Suppress conflict with potential global 'opencv' type
+    cv: typeof cv;
   }
 }
 
@@ -696,7 +697,8 @@ export const processImage = async (
 // OpenCV Specific Adjustment Function (Refactored)
 // ============================================================
 
-function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments, isTransparent: boolean = false): any {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments, isTransparent: boolean = false): any { // Allow 'any' return type due to OpenCV.js typing
    let dst = srcMat.clone(); // Work on a copy
 
   // --- Brightness/Contrast --- 
@@ -712,7 +714,6 @@ function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments
   // --- HSL Adjustments --- 
   if (adjustments.hue !== 100 || adjustments.saturation !== 100 || adjustments.lightness !== 100) {
     const hls = new window.cv.Mat();
-    // @ts-expect-error // COLOR_BGR2HLS may not be in basic types
     window.cv.cvtColor(dst, hls, window.cv.COLOR_BGR2HLS);
 
     const hueShift = (adjustments.hue - 100);        
@@ -723,7 +724,6 @@ function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments
       for (let j = 0; j < hls.cols; j++) {
          // @ts-expect-error // ucharPtr might not be in basic types
          const pixel = hls.ucharPtr(i, j);
-         // @ts-expect-error // ucharPtr/channels might not be in basic types
          if (isTransparent && srcMat.channels() === 4 && srcMat.ucharPtr(i, j)[3] === 0) {
            continue;
          }
@@ -742,7 +742,6 @@ function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments
       }
     }
 
-    // @ts-expect-error // COLOR_HLS2BGR may not be in basic types
     window.cv.cvtColor(hls, dst, window.cv.COLOR_HLS2BGR);
     hls.delete();
   }
@@ -755,16 +754,12 @@ function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments
        const g = channels.get(1);
        const r = channels.get(2);
        
-       // @ts-expect-error // Mat constructor signature discrepancy
        const bScalar = new window.cv.Mat(dst.rows, dst.cols, window.cv.CV_8U, new window.cv.Scalar(adjustments.blueScale));
-       // @ts-expect-error // Mat constructor signature discrepancy
        const gScalar = new window.cv.Mat(dst.rows, dst.cols, window.cv.CV_8U, new window.cv.Scalar(adjustments.greenScale));
-       // @ts-expect-error // Mat constructor signature discrepancy
        const rScalar = new window.cv.Mat(dst.rows, dst.cols, window.cv.CV_8U, new window.cv.Scalar(adjustments.redScale));
        
        for (let i = 0; i < dst.rows; i++) {
          for (let j = 0; j < dst.cols; j++) {
-            // @ts-expect-error // ucharPtr/channels might not be in basic types
            if (isTransparent && srcMat.channels() === 4 && srcMat.ucharPtr(i, j)[3] === 0) {
               continue;
            }

@@ -4,14 +4,12 @@ import Script from 'next/script'
 import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getMessages } from 'next-intl/server';
-
-import {
-  ClerkProvider,
-} from '@clerk/nextjs'
+import { Providers } from '../providers';
+import { ClerkProvider } from '@clerk/nextjs';
 
 // Import Clerk localizations
 import { enUS, deDE, frFR, nlNL, plPL, ruRU, ukUA, csCZ } from '@clerk/localizations';
@@ -77,16 +75,19 @@ export default async function RootLayout({
   const clerkLocalization = clerkLocalizations[locale] || enUS;
 
   return (
+    // @ts-expect-error TODO: Investigate ClerkProvider type issue with async RootLayout in Next.js 15/React 19
     <ClerkProvider localization={clerkLocalization}>
-      <html lang={locale}>
-        <head>
-          <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
-        </head>
-        <body
-          className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
-          suppressHydrationWarning
-        >
-          <NextIntlClientProvider locale={locale} messages={messages}>
+      <Providers 
+        intlProps={{ locale: locale, messages: messages }}
+      >
+        <html lang={locale}>
+          <head>
+            <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
+          </head>
+          <body
+            className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
+            suppressHydrationWarning
+          >
             <Navbar />
             <main className="flex-grow">
               {children}
@@ -96,9 +97,9 @@ export default async function RootLayout({
               strategy="beforeInteractive"
               src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
             />
-          </NextIntlClientProvider>
-        </body>
-      </html>
+          </body>
+        </html>
+      </Providers>
     </ClerkProvider>
   );
 }
