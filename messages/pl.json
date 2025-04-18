@@ -408,7 +408,34 @@
         },
         "PricingCard": {
             "oneTime": "jednorazowo",
-            "currentPlan": "AKTUALNY PLAN"
+            "currentPlan": "OBECNY PLAN"
+        },
+        "WatermarkControl": {
+            "title": "ZNAK WODNY",
+            "addTab": "DODAJ ZNAK WODNY",
+            "removeTab": "USUŃ ZNAK WODNY (AI)",
+            "type": "TYP",
+            "text": "TEKST",
+            "logo": "LOGO",
+            "enterText": "Wprowadź tekst znaku wodnego",
+            "font": "CZCIONKA",
+            "size": "ROZMIAR",
+            "color": "KOLOR",
+            "opacity": "KRYCIE",
+            "position": "POZYCJA",
+            "uploadLogo": "PRZEŚLIJ LOGO",
+            "logoPlaceholder": "Kliknij lub przeciągnij logo tutaj",
+            "reset": "RESETUJ ZNAK WODNY",
+            "presets": {
+                "bottomRight": "Dół Prawy",
+                "bottomLeft": "Dół Lewy",
+                "topLeft": "Góra Lewy",
+                "topRight": "Góra Prawy",
+                "center": "Środek",
+                "diagonal": "Przekątna",
+                "tile": "Kafel (Wzór)"
+            },
+            "removeDescription": "Usuwanie znaku wodnego wspomagane przez AI już wkrótce!"
         }
     },
     "Dialogs": {
@@ -420,11 +447,12 @@
             "images": "{count, plural, =1 {# obraz} other {# obrazy}} zostaną pobrane",
             "format": "Format:",
             "appliedPreset": "Zastosowany preset:",
-            "adjustmentsApplied": "Dostosowania obrazu zostały zastosowane",
-            "backgroundRemoval": "Usuwanie tła zostało zastosowane",
-            "seoFilenames": "Zoptymalizowane pod kątem SEO nazwy plików AI zawarte",
-            "zipPackage": "Pliki zostaną spakowane jako archiwum ZIP",
-            "processingNote": "Przetwarzanie może chwilę trwać dla wielu lub dużych obrazów.",
+            "adjustmentsApplied": "Zastosowano dostosowania obrazu",
+            "backgroundRemoval": "Zastosowano usuwanie tła",
+            "seoFilenames": "Dołączono zoptymalizowane nazwy plików SEO przez AI",
+            "watermarkApplied": "Znak wodny zastosowany",
+            "zipPackage": "Pliki zostaną spakowane do archiwum ZIP",
+            "processingNote": "Przetwarzanie może chwilę potrwać w przypadku wielu lub dużych obrazów.",
             "cancel": "ANULUJ",
             "download": "POBIERZ",
             "processing": "PRZETWARZANIE...",

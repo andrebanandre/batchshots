@@ -2,14 +2,15 @@ import { v4 as uuidv4 } from 'uuid';
 import { ImageAdjustments } from '../components/ImageProcessingControls';
 import { Preset } from '../components/PresetsSelector';
 import { ImageFile } from '../components/ImagePreview';
+import { WatermarkSettings, WatermarkPosition, defaultWatermarkSettings } from '../components/WatermarkControl';
 import JSZip from 'jszip';
 import { SeoProductDescription } from './gemini';
 
 // Import the OpenCV type from our declaration file
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    cv: any; // Using any for OpenCV as it's a complex external library
+    // @ts-expect-error // Allow any type for global cv, accepting potential type conflict risk
+    cv: any; 
   }
 }
 
@@ -296,370 +297,508 @@ function hue2rgb(p: number, q: number, t: number): number {
   return p;
 }
 
+// ============================================================
+// WATERMARK HELPER FUNCTIONS (Using Canvas API)
+// ============================================================
+
+/**
+ * Loads an image from a data URL
+ */
+function loadImage(dataUrl: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+          const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = dataUrl;
+  });
+}
+
+/**
+ * Calculates the watermark dimensions based on settings and canvas size
+ */
+function getWatermarkDimensions( 
+  watermarkElement: HTMLImageElement | { width: number, height: number }, 
+  canvasWidth: number, 
+  canvasHeight: number, 
+  settings: WatermarkSettings
+): { width: number, height: number } {
+  const baseSize = Math.min(canvasWidth, canvasHeight) * (settings.size / 100);
+  const aspectRatio = watermarkElement.width / watermarkElement.height;
+
+  let width = baseSize;
+  let height = baseSize / aspectRatio;
+
+  // Ensure it doesn't exceed canvas boundaries (adjust if needed)
+  if (width > canvasWidth * 0.9) { 
+    width = canvasWidth * 0.9;
+    height = width / aspectRatio;
+  }
+  if (height > canvasHeight * 0.9) {
+    height = canvasHeight * 0.9;
+    width = height * aspectRatio;
+  }
+
+  return { width: Math.round(width), height: Math.round(height) };
+}
+
+/**
+ * Calculates the watermark position based on settings and dimensions
+ */
+function getWatermarkPosition(
+  canvasWidth: number,
+  canvasHeight: number,
+  watermarkWidth: number,
+  watermarkHeight: number,
+  position: WatermarkPosition
+): { x: number, y: number } {
+  const margin = Math.min(canvasWidth, canvasHeight) * 0.02; // 2% margin
+
+  switch (position) {
+    case 'topLeft':
+      return { x: margin, y: margin };
+    case 'topRight':
+      return { x: canvasWidth - watermarkWidth - margin, y: margin };
+    case 'bottomLeft':
+      return { x: margin, y: canvasHeight - watermarkHeight - margin };
+    case 'center':
+      return { x: (canvasWidth - watermarkWidth) / 2, y: (canvasHeight - watermarkHeight) / 2 };
+    case 'diagonal': // For diagonal, we'll handle drawing differently
+       return { x: 0, y: 0 }; // Placeholder, handled in drawing logic
+    case 'tile': // For tile, we'll handle drawing differently
+       return { x: 0, y: 0 }; // Placeholder, handled in drawing logic
+    case 'bottomRight':
+    default:
+      return { x: canvasWidth - watermarkWidth - margin, y: canvasHeight - watermarkHeight - margin };
+  }
+}
+
+/**
+ * Applies the watermark to the canvas context
+ */
+async function applyWatermarkToCanvas(
+  ctx: CanvasRenderingContext2D,
+  canvasWidth: number,
+  canvasHeight: number,
+  settings: WatermarkSettings
+): Promise<void> {
+  if (!settings.enabled || !settings.type) return;
+
+  ctx.globalAlpha = settings.opacity;
+
+  if (settings.type === 'text') {
+    // --- Text Watermark --- 
+    const fontSize = Math.max(10, Math.min(canvasWidth, canvasHeight) * (settings.size / 100));
+    ctx.font = `${fontSize}px ${settings.font}`;
+    ctx.fillStyle = settings.textColor;
+    ctx.textAlign = 'center'; // Default alignment
+    ctx.textBaseline = 'middle';
+
+    const textMetrics = ctx.measureText(settings.text);
+    // Approximate height - better ways exist but keep it simple for now
+    const textHeight = textMetrics.actualBoundingBoxAscent + textMetrics.actualBoundingBoxDescent;
+    const textWidth = textMetrics.width;
+
+    if (settings.position === 'tile') {
+        // Tiling logic
+        const tileWidth = textWidth * 1.5; 
+        const tileHeight = textHeight * 3;
+        for (let y = 0; y < canvasHeight + tileHeight; y += tileHeight) {
+            for (let x = 0; x < canvasWidth + tileWidth; x += tileWidth) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(-Math.PI / 6); // Rotate slightly for tile
+                ctx.fillText(settings.text, 0, 0);
+                ctx.restore();
+            }
+        }
+    } else if (settings.position === 'diagonal') {
+        // Diagonal logic
+        ctx.save();
+        ctx.translate(canvasWidth / 2, canvasHeight / 2);
+        ctx.rotate(-Math.PI / 4); // Rotate 45 degrees
+        ctx.fillText(settings.text, 0, 0);
+        ctx.restore();
+    } else {
+        const { x, y } = getWatermarkPosition(canvasWidth, canvasHeight, textWidth, textHeight, settings.position);
+        // Adjust position based on textAlign/textBaseline for presets
+        let finalX = x + textWidth / 2;
+        const finalY = y + textHeight / 2;
+         if (settings.position === 'topLeft') { ctx.textAlign = 'left'; finalX = x; } 
+         if (settings.position === 'topRight') { ctx.textAlign = 'right'; finalX = x + textWidth; } 
+         if (settings.position === 'bottomLeft') { ctx.textAlign = 'left'; finalX = x; }
+         if (settings.position === 'bottomRight') { ctx.textAlign = 'right'; finalX = x + textWidth; }
+        
+        ctx.fillText(settings.text, finalX, finalY);
+    }
+
+  } else if (settings.type === 'logo' && settings.logoDataUrl) {
+    // --- Logo Watermark --- 
+    try {
+      const logoImg = await loadImage(settings.logoDataUrl);
+      const { width: logoDrawWidth, height: logoDrawHeight } = getWatermarkDimensions(logoImg, canvasWidth, canvasHeight, settings);
+
+      if (settings.position === 'tile') {
+          // Tiling logic
+          const tileWidth = logoDrawWidth * 1.5;
+          const tileHeight = logoDrawHeight * 1.5;
+          for (let y = 0; y < canvasHeight + tileHeight; y += tileHeight) {
+              for (let x = 0; x < canvasWidth + tileWidth; x += tileWidth) {
+                  ctx.drawImage(logoImg, x, y, logoDrawWidth, logoDrawHeight);
+              }
+          }
+      } else if (settings.position === 'diagonal') {
+           // Diagonal - place in center for now, could be improved
+           const { x, y } = getWatermarkPosition(canvasWidth, canvasHeight, logoDrawWidth, logoDrawHeight, 'center');
+           ctx.drawImage(logoImg, x, y, logoDrawWidth, logoDrawHeight);
+      } else {
+          const { x, y } = getWatermarkPosition(canvasWidth, canvasHeight, logoDrawWidth, logoDrawHeight, settings.position);
+          ctx.drawImage(logoImg, x, y, logoDrawWidth, logoDrawHeight);
+      }
+                } catch (error) {
+      console.error("Error loading or drawing logo watermark:", error);
+    }
+  }
+
+  // Reset alpha
+  ctx.globalAlpha = 1.0;
+}
+
+// ============================================================
+// MAIN IMAGE PROCESSING FUNCTION (MODIFIED)
+// ============================================================
+
+/**
+ * Process an image with adjustments, resizing, and optional watermarking.
+ * Uses OpenCV for adjustments if available, otherwise falls back to Canvas API.
+ */
 export const processImage = async (
   imageFile: ImageFile, 
   adjustments: ImageAdjustments,
   preset: Preset | null,
-  processFullSize: boolean = false // Only process full-size when downloading
+  watermarkSettings: WatermarkSettings = defaultWatermarkSettings,
+  processFullSize: boolean = false
 ): Promise<{ processedDataUrl?: string, processedThumbnailUrl: string }> => {
-  return new Promise((resolve, reject) => {
-    try {
-      // Safety check for adjustments
-      const safeAdjustments = {
-        brightness: adjustments.brightness || 0,
-        contrast: adjustments.contrast || 0,
-        redScale: adjustments.redScale || 1.0,
-        greenScale: adjustments.greenScale || 1.0,
-        blueScale: adjustments.blueScale || 1.0,
-        sharpen: adjustments.sharpen || 0,
-        saturation: adjustments.saturation || 100,
-        hue: adjustments.hue || 100,
-        lightness: adjustments.lightness || 100
-      };
-      
-      // Process an image from a source data URL
-      const processImageWithSource = (sourceDataUrl: string, isFullSize: boolean): Promise<string> => {
-        return new Promise((resolveImg, rejectImg) => {
-          const img = new Image();
-          
-          img.onload = () => {
-            try {
-              // Check if this is a PNG with transparency (for background-removed images)
-              const isPngWithTransparency = sourceDataUrl.startsWith('data:image/png') && 
-                                        imageFile.backgroundRemoved;
-              
-              let width = img.width;
-              let height = img.height;
-              
-              // Apply preset dimensions if provided and we're processing the full image
-              if (preset && isFullSize) {
-                width = preset.width;
-                if (!preset.height) {
-                  // Maintain aspect ratio
-                  const aspectRatio = img.height / img.width;
-                  height = Math.round(width * aspectRatio);
-                } else {
-                  height = preset.height;
-                }
-              }
-              
-              // Create a canvas for processing
-              const canvas = document.createElement('canvas');
-              canvas.width = width;
-              canvas.height = height;
-              const ctx = canvas.getContext('2d', { 
-                // Use alpha for transparent PNGs
-                alpha: true
-              })!;
-              
-              // For transparent images, clear canvas before drawing
-              if (isPngWithTransparency) {
-                ctx.clearRect(0, 0, width, height);
-              }
-              
-              // Draw the original image (resizing if needed)
-              ctx.drawImage(img, 0, 0, width, height);
-              
-              // For transparent images with background removed, handle specially
-              if (isPngWithTransparency) {
-                // Apply adjustments that won't destroy transparency
-                
-                // First check if we have the "white background" adjustment
-                // (When redScale, greenScale, and blueScale are all significantly above 1.0)
-                const isWhiteBackgroundEffect = 
-                  safeAdjustments.redScale > 1.2 && 
-                  safeAdjustments.greenScale > 1.2 && 
-                  safeAdjustments.blueScale > 1.2;
-                
-                // Log the resize dimensions being applied
-                if (preset && isFullSize) {
-                  console.log(`Applying resize to transparent image: ${width}x${height}`);
-                }
-                
-                if (isWhiteBackgroundEffect) {
-                  // Apply white background (fill with white and draw image on top with original alpha)
-                  // No need to get imageData here
-                  const newCanvas = document.createElement('canvas');
-                  newCanvas.width = width;
-                  newCanvas.height = height;
-                  const newCtx = newCanvas.getContext('2d', { alpha: true })!;
-                  
-                  // Fill with white
-                  newCtx.fillStyle = 'white';
-                  newCtx.fillRect(0, 0, width, height);
-                  
-                  // Draw the image with its alpha
-                  newCtx.drawImage(img, 0, 0, width, height);
-                  
-                  // Return as JPEG since we no longer need transparency
-                  const quality = preset && isFullSize ? preset.quality / 100 : 0.95;
-                  const dataUrl = newCanvas.toDataURL('image/jpeg', quality);
-                  resolveImg(dataUrl);
-                  return;
-                } else {
-                  // DEBUG - Log adjustments being applied
-                  console.log("Applying adjustments to transparent PNG:", safeAdjustments);
-                  
-                  // Process all adjustments at once, preserving transparency
-                  processImageContext(ctx, width, height, safeAdjustments, true);
-                  
-                  // Return as PNG to preserve transparency
-                  const dataUrl = canvas.toDataURL('image/png', 1.0);
-                  resolveImg(dataUrl);
-                  return;
-                }
-              }
-              
-              // Try to use OpenCV if available, otherwise fall back to canvas methods
-              if (window.cv && typeof window.cv.imread === 'function') {
-                try {
-                  console.log(`Using OpenCV for image processing (${isFullSize ? 'full' : 'thumbnail'})`);
-                  const processedCanvas = processWithOpenCV(canvas, safeAdjustments);
-                  // Higher quality for thumbnails
-                  const quality = preset && isFullSize ? preset.quality / 100 : 0.95;
-                  const dataUrl = processedCanvas.toDataURL('image/jpeg', quality);
-                  resolveImg(dataUrl);
-                  return;
-                } catch (error) {
-                  console.warn('OpenCV processing failed, falling back to Canvas API', error);
-                  // Continue with canvas-based processing
-                }
-              }
-              
-              // Process with Canvas API
-              console.log(`Using Canvas API for image processing (${isFullSize ? 'full' : 'thumbnail'})`);
-              
-              // Set high quality smoothing
-              ctx.imageSmoothingEnabled = true;
-              ctx.imageSmoothingQuality = 'high';
-              
-              // Process all adjustments at once using the unified function
-              processImageContext(ctx, width, height, safeAdjustments, false);
-              
-              // Convert to data URL with quality setting
-              const quality = preset && isFullSize ? preset.quality / 100 : 0.95;
-              const dataUrl = canvas.toDataURL('image/jpeg', quality);
-              resolveImg(dataUrl);
-            } catch (err) {
-              rejectImg(err);
-            }
-          };
-          
-          img.onerror = () => rejectImg(new Error('Error loading image'));
-          img.src = sourceDataUrl;
-        });
-      };
-      
-      // Process images asynchronously
-      const processAsync = async () => {
-        try {
-          // Process the thumbnail version for immediate preview
-          const thumbnailSource = imageFile.thumbnailDataUrl || imageFile.dataUrl;
-          const processedThumbnailUrl = await processImageWithSource(thumbnailSource, false);
-          
-          // If we need the full-size image, process it as well
-          let processedDataUrl: string | undefined;
-          if (processFullSize) {
-            processedDataUrl = await processImageWithSource(imageFile.dataUrl, true);
-          }
-          
-          resolve({
-            processedThumbnailUrl,
-            processedDataUrl
-          });
-        } catch (error) {
-          reject(error);
-        }
-      };
-      
-      processAsync();
-    } catch (error) {
-      reject(error);
-    }
+  console.log("processImage called with:", { 
+      imageId: imageFile.id, 
+      adjustments, 
+      preset, 
+      watermarkEnabled: watermarkSettings.enabled,
+      watermarkType: watermarkSettings.type,
+      processFullSize 
   });
+
+  const sourceUrl = processFullSize ? imageFile.dataUrl : (imageFile.thumbnailDataUrl || imageFile.dataUrl);
+  const originalThumbnail = imageFile.thumbnailDataUrl || imageFile.dataUrl;
+  
+  if (!sourceUrl) {
+      console.error('No source URL available for processing image:', imageFile.id);
+      return { processedThumbnailUrl: originalThumbnail }; 
+  }
+
+  try {
+      const useOpenCV = typeof window.cv?.imread === 'function';
+
+      // --- Inner processing function using Canvas --- 
+      const processImageWithCanvas = async (sourceDataUrl: string, isFullSize: boolean): Promise<string> => {
+          return new Promise(async (resolve, reject) => {
+              const img = new Image();
+              img.onload = async () => {
+                  let targetWidth = img.width;
+                  let targetHeight = img.height;
+
+                  // Apply preset resizing if available
+                  if (preset) {
+                      if (preset.width && preset.height) {
+                          targetWidth = preset.width;
+                          targetHeight = preset.height;
+                      } else if (preset.width) {
+                          targetWidth = preset.width;
+                          targetHeight = Math.round(img.height * (preset.width / img.width));
+                      } else if (preset.height) { // Should not happen with current presets but handle anyway
+                          targetHeight = preset.height;
+                          targetWidth = Math.round(img.width * (preset.height / img.height));
+                      }
+                  } 
+                   // For thumbnail generation, enforce max width if no preset
+                  else if (!isFullSize && img.width > 800) { 
+                      const scale = 800 / img.width;
+                      targetWidth = 800;
+                      targetHeight = Math.round(img.height * scale);
+                  }
+
+                  const canvas = document.createElement('canvas');
+                  canvas.width = targetWidth;
+                  canvas.height = targetHeight;
+                  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+                  if (!ctx) {
+                      reject(new Error('Could not get canvas context'));
+                      return;
+                  }
+
+                  // Draw the original image onto the canvas, resizing if necessary
+                  ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+                  
+                  // --- Apply Adjustments using Canvas API --- 
+                  const imageData = ctx.getImageData(0, 0, targetWidth, targetHeight);
+                  const data = imageData.data;
+                  const skipTransparent = imageFile.backgroundRemoved || false;
+
+                  applyBrightnessContrast(data, targetWidth, targetHeight, adjustments.brightness, adjustments.contrast, skipTransparent);
+                  applyHSLAdjustment(data, targetWidth, targetHeight, adjustments.hue, adjustments.saturation, adjustments.lightness, skipTransparent);
+                  applyRGBAdjustment(data, targetWidth, targetHeight, adjustments.redScale, adjustments.greenScale, adjustments.blueScale, skipTransparent);
+                  applySharpen(data, targetWidth, targetHeight, adjustments.sharpen, skipTransparent); // Sharpen last
+                  
+                  // Put the modified data back onto the canvas
+                  ctx.putImageData(imageData, 0, 0);
+                  
+                  // --- Apply Watermark --- 
+                  if (watermarkSettings.enabled) {
+                      try {
+                          await applyWatermarkToCanvas(ctx, canvas.width, canvas.height, watermarkSettings);
+                          console.log("Watermark applied successfully for image:", imageFile.id);
+                      } catch (watermarkError) {
+                          console.error("Error applying watermark:", watermarkError);
+                      }
+                  }
+
+                  // Get the final data URL with specified quality
+                  const quality = preset ? preset.quality / 100 : 0.85; // Default 85% quality
+                  const format = imageFile.backgroundRemoved ? 'image/png' : 'image/jpeg'; // Use PNG for transparency
+                  resolve(canvas.toDataURL(format, quality)); 
+              };
+              img.onerror = reject;
+              img.src = sourceDataUrl;
+          });
+      };
+      
+      // --- Inner processing function using OpenCV --- 
+       const processImageWithOpenCV = (sourceDataUrl: string, isFullSize: boolean): Promise<string> => {
+           return new Promise(async (resolve, reject) => {
+               const img = new Image();
+               img.onload = async () => {
+                    let src = window.cv.imread(img);
+                    let targetWidth = src.cols;
+                    let targetHeight = src.rows;
+
+                   // Apply preset resizing if available
+                  if (preset) {
+                      if (preset.width && preset.height) {
+                          targetWidth = preset.width;
+                          targetHeight = preset.height;
+                      } else if (preset.width) {
+                          targetWidth = preset.width;
+                          targetHeight = Math.round(src.rows * (preset.width / src.cols));
+                      } else if (preset.height) { // Should not happen but handle anyway
+                          targetHeight = preset.height;
+                          targetWidth = Math.round(src.cols * (preset.height / src.rows));
+                      }
+                      
+                      if (targetWidth !== src.cols || targetHeight !== src.rows) {
+                          const dsize = new window.cv.Size(targetWidth, targetHeight);
+                          const resizedSrc = new window.cv.Mat();
+                          window.cv.resize(src, resizedSrc, dsize, 0, 0, window.cv.INTER_AREA);
+                          src.delete(); // Delete the old mat
+                          src = resizedSrc; // Assign the resized mat
+                      }
+                  } 
+                   // For thumbnail generation, enforce max width if no preset
+                  else if (!isFullSize && src.cols > 800) { 
+                       const scale = 800 / src.cols;
+                       targetWidth = 800;
+                       targetHeight = Math.round(src.rows * scale);
+                       const dsize = new window.cv.Size(targetWidth, targetHeight);
+                       const resizedSrc = new window.cv.Mat();
+                       window.cv.resize(src, resizedSrc, dsize, 0, 0, window.cv.INTER_AREA);
+                       src.delete();
+                       src = resizedSrc;
+                  }
+                  
+                  const canvas = document.createElement('canvas');
+                  canvas.width = targetWidth;
+                  canvas.height = targetHeight;
+                  
+                  // --- Apply OpenCV Adjustments --- 
+                  const processedMat = processWithOpenCVAdjustments(src, adjustments, imageFile.backgroundRemoved);
+                  
+                  // Draw processed OpenCV Mat to Canvas
+                  window.cv.imshow(canvas, processedMat);
+                  processedMat.delete(); // Clean up the processed matrix
+                  src.delete(); // Clean up the source matrix
+                  
+                   // --- Apply Watermark (on the Canvas AFTER OpenCV) --- 
+                  if (watermarkSettings.enabled) {
+                       const ctx = canvas.getContext('2d');
+                       if (ctx) {
+                           try {
+                              await applyWatermarkToCanvas(ctx, canvas.width, canvas.height, watermarkSettings);
+                              console.log("Watermark applied successfully (OpenCV path) for image:", imageFile.id);
+                           } catch (watermarkError) {
+                              console.error("Error applying watermark (OpenCV path):", watermarkError);
+                           }
+                       } else {
+                           console.error("Could not get canvas context for watermarking after OpenCV processing.");
+                       }
+                  }
+                  
+                  // Get final data URL
+                  const quality = preset ? preset.quality / 100 : 0.85; 
+                  const format = imageFile.backgroundRemoved ? 'image/png' : 'image/jpeg';
+                  resolve(canvas.toDataURL(format, quality));
+               };
+               img.onerror = reject;
+               img.src = sourceDataUrl;
+           });
+       };
+
+      // Determine which processing function to use
+      const processFunction = useOpenCV ? processImageWithOpenCV : processImageWithCanvas;
+
+      // --- Execute Processing --- 
+      let processedDataUrl: string | undefined;
+      let thumbnailResultUrl: string | undefined; // Renamed variable
+
+      // Always process thumbnail first
+      try {
+        thumbnailResultUrl = await processFunction(originalThumbnail, false);
+      } catch (thumbError) {
+        console.error('Error processing thumbnail for image:', imageFile.id, thumbError);
+        thumbnailResultUrl = originalThumbnail; // Fallback to original on thumb error
+      }
+      
+      // Ensure thumbnailResultUrl is a string
+      const finalThumbnailUrl = thumbnailResultUrl || originalThumbnail;
+
+      // Process full size only if requested (for download)
+      if (processFullSize) {
+          try {
+            processedDataUrl = await processFunction(imageFile.dataUrl, true);
+          } catch (fullSizeError) {
+             console.error('Error processing full size image:', imageFile.id, fullSizeError);
+             // processedDataUrl remains undefined
+          }
+      }
+
+      console.log("Processing complete for image:", imageFile.id, { hasFullSize: !!processedDataUrl });
+
+      return {
+          processedDataUrl,
+          processedThumbnailUrl: finalThumbnailUrl // Assign the definite string value
+      };
+
+  } catch (error) {
+      console.error('Error processing image:', imageFile.id, error);
+      return { processedThumbnailUrl: originalThumbnail }; 
+  }
 };
 
-// OpenCV-based processing
-function processWithOpenCV(canvas: HTMLCanvasElement, adjustments: ImageAdjustments): HTMLCanvasElement {
-  try {
-    console.log('🔄 OpenCV Processing with adjustments:', adjustments);
-    
-    // Create an OpenCV matrix from the canvas
-    const src = window.cv.imread(canvas);
-    
-    // Apply HSL adjustments (using HLS in OpenCV)
-    const hasHSLAdjustments = 
-      adjustments.hue !== 100 || 
-      adjustments.saturation !== 100 || 
-      adjustments.lightness !== 100;
-      
-    if (hasHSLAdjustments) {
-      try {
-        console.log('🔄 OpenCV HLS Adjustment:', {
-          hue: adjustments.hue, 
-          saturation: adjustments.saturation, 
-          lightness: adjustments.lightness
-        });
-        
-        // Convert BGR to HLS
-        const hls = new window.cv.Mat();
-        // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
-        window.cv.cvtColor(src, hls, window.cv.COLOR_BGR2HLS);
-        
-        // Split channels
-        const channels = new window.cv.MatVector();
-        window.cv.split(hls, channels);
-        
-        // Get individual channels
-        const hChannel = channels.get(0);  // Hue: 0-180
-        const lChannel = channels.get(1);  // Lightness: 0-255
-        const sChannel = channels.get(2);  // Saturation: 0-255
-        
-        // Adjust hue (add offset, keep within 0-180)
-        const hueOffset = (adjustments.hue - 100) * 180 / 100;
-        if (hueOffset !== 0) {
-          // @ts-expect-error - Scalar can accept a single value in OpenCV.js
-          const hueShiftMat = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
-            // @ts-expect-error - Scalar can accept a single value in OpenCV.js
-            new window.cv.Scalar(hueOffset));
-          // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
-          window.cv.add(hChannel, hueShiftMat, hChannel);
-          
-          // Ensure hue values stay within 0-180 range
-          // @ts-expect-error - Scalar can accept a single value in OpenCV.js
-          const upperBound = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
-            // @ts-expect-error - Scalar can accept a single value in OpenCV.js
-            new window.cv.Scalar(180));
-          // @ts-expect-error - Scalar can accept a single value in OpenCV.js
-          const lowerBound = new window.cv.Mat(hChannel.rows, hChannel.cols, hChannel.type(), 
-            // @ts-expect-error - Scalar can accept a single value in OpenCV.js
-            new window.cv.Scalar(0));
-          
-          // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
-          window.cv.min(hChannel, upperBound, hChannel);
-          // @ts-expect-error - OpenCV.js API doesn't match TypeScript definitions
-          window.cv.max(hChannel, lowerBound, hChannel);
-          
-          hueShiftMat.delete();
-          upperBound.delete();
-          lowerBound.delete();
-        }
-        
-        // Adjust saturation (scale values)
-        const satScale = adjustments.saturation / 100;
-        if (satScale !== 1) {
-          sChannel.convertTo(sChannel, -1, satScale, 0);
-        }
-        
-        // Adjust lightness (scale values)
-        const lightScale = adjustments.lightness / 100;
-        if (lightScale !== 1) {
-          lChannel.convertTo(lChannel, -1, lightScale, 0);
-        }
-        
-        // Merge channels back
-        window.cv.merge(channels, hls);
-        
-        // Convert back to BGR
-        window.cv.cvtColor(hls, src, window.cv.COLOR_HLS2BGR);
-        
-        // Clean up
-        hls.delete();
-        channels.delete();
-        hChannel.delete();
-        lChannel.delete();
-        sChannel.delete();
-        
-      } catch (e) {
-        console.error('OpenCV HLS adjustment failed:', e);
-      }
-    }
-    
-    // Apply RGB adjustments - THIS IS THE NEW CODE
-    const hasRGBAdjustments = 
-      adjustments.redScale !== 1.0 || 
-      adjustments.greenScale !== 1.0 || 
-      adjustments.blueScale !== 1.0;
-    
-    if (hasRGBAdjustments) {
-      try {
-        console.log('🔄 OpenCV RGB Adjustment:', {
-          redScale: adjustments.redScale,
-          greenScale: adjustments.greenScale,
-          blueScale: adjustments.blueScale
-        });
-        
-        // Split the image into BGR channels
-        const bgr_channels = new window.cv.MatVector();
-        window.cv.split(src, bgr_channels);
-        
-        // Get individual channels (OpenCV uses BGR order)
-        const bChannel = bgr_channels.get(0);  // Blue channel
-        const gChannel = bgr_channels.get(1);  // Green channel
-        const rChannel = bgr_channels.get(2);  // Red channel
-        
-        // Apply scaling to each channel
-        if (adjustments.blueScale !== 1.0) {
-          bChannel.convertTo(bChannel, -1, adjustments.blueScale, 0);
-        }
-        
-        if (adjustments.greenScale !== 1.0) {
-          gChannel.convertTo(gChannel, -1, adjustments.greenScale, 0);
-        }
-        
-        if (adjustments.redScale !== 1.0) {
-          rChannel.convertTo(rChannel, -1, adjustments.redScale, 0);
-        }
-        
-        // Merge channels back
-        window.cv.merge(bgr_channels, src);
-        
-        // Clean up
-        bgr_channels.delete();
-        bChannel.delete();
-        gChannel.delete();
-        rChannel.delete();
-        
-      } catch (e) {
-        console.error('OpenCV RGB adjustment failed:', e);
-      }
-    }
-    
-    // Apply brightness and contrast
-    try {
-      const alpha = (adjustments.contrast + 100) / 100;
-      const beta = adjustments.brightness;
-      window.cv.convertScaleAbs(src, src, alpha, beta);
-    } catch (e) {
-      console.warn('OpenCV brightness/contrast adjustment failed', e);
-    }
-    
-    // Apply adaptive sharpening if enabled
-    if (adjustments.sharpen > 0) {
-      try {
-        const blurred = new window.cv.Mat();
-        const ksize = new window.cv.Size(5, 5);
-        window.cv.GaussianBlur(src, blurred, ksize, 0);
-        
-        window.cv.addWeighted(src, 1 + adjustments.sharpen, blurred, -adjustments.sharpen, 0, src);
-        
-        blurred.delete();
-      } catch (e) {
-        console.warn('OpenCV sharpening failed', e);
-      }
-    }
-    
-    // Create result canvas
-    const dstCanvas = document.createElement('canvas');
-    window.cv.imshow(dstCanvas, src);
-    src.delete();
-    
-    return dstCanvas;
-  } catch (error) {
-    console.error('Error in OpenCV processing', error);
-    // Return the original canvas if OpenCV processing fails
-    return canvas;
+// ============================================================
+// OpenCV Specific Adjustment Function (Refactored)
+// ============================================================
+
+function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments, isTransparent: boolean = false): any {
+   let dst = srcMat.clone(); // Work on a copy
+
+  // --- Brightness/Contrast --- 
+  if (adjustments.brightness !== 0 || adjustments.contrast !== 0) {
+    const temp = new window.cv.Mat();
+    const alpha = (adjustments.contrast / 100.0) + 1.0; // Contrast factor (1.0 - 2.0)
+    const beta = adjustments.brightness;              // Brightness offset (-100 to 100)
+    dst.convertTo(temp, -1, alpha, beta); 
+    dst.delete();
+    dst = temp;
   }
+
+  // --- HSL Adjustments --- 
+  if (adjustments.hue !== 100 || adjustments.saturation !== 100 || adjustments.lightness !== 100) {
+    const hls = new window.cv.Mat();
+    // @ts-expect-error // COLOR_BGR2HLS may not be in basic types
+    window.cv.cvtColor(dst, hls, window.cv.COLOR_BGR2HLS);
+
+    const hueShift = (adjustments.hue - 100);        
+    const satScale = adjustments.saturation / 100.0;  
+    const lightScale = adjustments.lightness / 100.0; 
+
+    for (let i = 0; i < hls.rows; i++) {
+      for (let j = 0; j < hls.cols; j++) {
+         // @ts-expect-error // ucharPtr might not be in basic types
+         const pixel = hls.ucharPtr(i, j);
+         // @ts-expect-error // ucharPtr/channels might not be in basic types
+         if (isTransparent && srcMat.channels() === 4 && srcMat.ucharPtr(i, j)[3] === 0) {
+           continue;
+         }
+
+        let h = pixel[0];
+        h = (h + (hueShift * 180 / 200) + 180) % 180; 
+        pixel[0] = h;
+
+        let l = pixel[1];
+        l = Math.min(255, Math.max(0, l * lightScale));
+        pixel[1] = l;
+
+        let s = pixel[2];
+        s = Math.min(255, Math.max(0, s * satScale));
+        pixel[2] = s;
+      }
+    }
+
+    // @ts-expect-error // COLOR_HLS2BGR may not be in basic types
+    window.cv.cvtColor(hls, dst, window.cv.COLOR_HLS2BGR);
+    hls.delete();
+  }
+
+   // --- RGB Scaling --- 
+   if (adjustments.redScale !== 1.0 || adjustments.greenScale !== 1.0 || adjustments.blueScale !== 1.0) {
+       const channels = new window.cv.MatVector();
+       window.cv.split(dst, channels); 
+       const b = channels.get(0);
+       const g = channels.get(1);
+       const r = channels.get(2);
+       
+       // @ts-expect-error // Mat constructor signature discrepancy
+       const bScalar = new window.cv.Mat(dst.rows, dst.cols, window.cv.CV_8U, new window.cv.Scalar(adjustments.blueScale));
+       // @ts-expect-error // Mat constructor signature discrepancy
+       const gScalar = new window.cv.Mat(dst.rows, dst.cols, window.cv.CV_8U, new window.cv.Scalar(adjustments.greenScale));
+       // @ts-expect-error // Mat constructor signature discrepancy
+       const rScalar = new window.cv.Mat(dst.rows, dst.cols, window.cv.CV_8U, new window.cv.Scalar(adjustments.redScale));
+       
+       for (let i = 0; i < dst.rows; i++) {
+         for (let j = 0; j < dst.cols; j++) {
+            // @ts-expect-error // ucharPtr/channels might not be in basic types
+           if (isTransparent && srcMat.channels() === 4 && srcMat.ucharPtr(i, j)[3] === 0) {
+              continue;
+           }
+           // @ts-expect-error // ucharPtr might not be in basic types
+           b.ucharPtr(i, j)[0] = Math.min(255, Math.max(0, b.ucharPtr(i, j)[0] * adjustments.blueScale));
+           // @ts-expect-error // ucharPtr might not be in basic types
+           g.ucharPtr(i, j)[0] = Math.min(255, Math.max(0, g.ucharPtr(i, j)[0] * adjustments.greenScale));
+           // @ts-expect-error // ucharPtr might not be in basic types
+           r.ucharPtr(i, j)[0] = Math.min(255, Math.max(0, r.ucharPtr(i, j)[0] * adjustments.redScale));
+         }
+       }
+       
+       // @ts-expect-error // merge signature discrepancy (MatVector type)
+       window.cv.merge(channels, dst);
+       
+       channels.delete();
+       b.delete(); g.delete(); r.delete();
+       bScalar.delete(); gScalar.delete(); rScalar.delete();
+   }
+
+  // --- Sharpen --- 
+  if (adjustments.sharpen > 0) {
+      const blurred = new window.cv.Mat();
+      const sharpened = new window.cv.Mat();
+      // @ts-expect-error // GaussianBlur might not be in basic types
+      window.cv.GaussianBlur(dst, blurred, new window.cv.Size(0, 0), 3);
+      // @ts-expect-error // addWeighted might not be in basic types
+      window.cv.addWeighted(dst, 1.0 + adjustments.sharpen, blurred, -adjustments.sharpen, 0, sharpened);
+      dst.delete();
+      dst = sharpened;
+      blurred.delete();
+  }
+
+  return dst;
 }
 
 export const createThumbnail = (dataUrl: string, maxWidth: number = 800): Promise<string> => {
@@ -768,9 +907,6 @@ export const downloadImage = (
     // Keep the original name but ensure correct extension for format conversion
     finalFilename = finalFilename.replace(/\.(jpg|jpeg|png|webp)$/i, `.${format}`);
   }
-  
-  // Check if the data URL indicates this is a PNG with transparency
-  const isPngWithTransparency = dataUrl.startsWith('data:image/png');
   
   // If format is already in the desired format, download directly
   if ((format === 'jpg' && dataUrl.includes('image/jpeg')) || 
@@ -1043,7 +1179,7 @@ async function convertImageAndAddToZip(
   seoName?: string,
   adjustments?: ImageAdjustments
 ): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>((resolve /*, reject */) => {
     try {
       // Create an image element to load the data URL
       const img = new Image();
@@ -1079,24 +1215,20 @@ async function convertImageAndAddToZip(
           // Convert to the desired format
           let finalDataUrl: string;
           let extension: string;
-          let mimeType: string;
           
           switch (format) {
             case 'webp':
               finalDataUrl = canvas.toDataURL('image/webp', 0.9);
               extension = 'webp';
-              mimeType = 'image/webp';
               break;
             case 'png':
               finalDataUrl = canvas.toDataURL('image/png');
               extension = 'png';
-              mimeType = 'image/png';
               break;
             case 'jpg':
             default:
               finalDataUrl = canvas.toDataURL('image/jpeg', 0.9);
               extension = 'jpg';
-              mimeType = 'image/jpeg';
               break;
           }
           

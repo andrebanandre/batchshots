@@ -407,24 +407,52 @@
             "allImages": "TOUTES LES IMAGES ({current}/{max})"
         },
         "PricingCard": {
-            "oneTime": "unique",
-            "currentPlan": "FORFAIT ACTUEL"
+            "oneTime": "une fois",
+            "currentPlan": "PLAN ACTUEL"
+        },
+        "WatermarkControl": {
+            "title": "FILIGRANE",
+            "addTab": "AJOUTER UN FILIGRANE",
+            "removeTab": "SUPPRIMER LE FILIGRANE (IA)",
+            "type": "TYPE",
+            "text": "TEXTE",
+            "logo": "LOGO",
+            "enterText": "Saisir le texte du filigrane",
+            "font": "POLICE",
+            "size": "TAILLE",
+            "color": "COULEUR",
+            "opacity": "OPACITÉ",
+            "position": "POSITION",
+            "uploadLogo": "TÉLÉVERSER LE LOGO",
+            "logoPlaceholder": "Cliquez ou glissez le logo ici",
+            "reset": "RÉINITIALISER LE FILIGRANE",
+            "presets": {
+                "bottomRight": "En bas à droite",
+                "bottomLeft": "En bas à gauche",
+                "topLeft": "En haut à gauche",
+                "topRight": "En haut à droite",
+                "center": "Centre",
+                "diagonal": "Diagonale",
+                "tile": "Mosaïque (Motif)"
+            },
+            "removeDescription": "Suppression de filigrane par IA bientôt disponible !"
         }
     },
     "Dialogs": {
         "download": {
-            "title": "Télécharger des images",
+            "title": "Télécharger les images",
             "confirmTitle": "Confirmer le téléchargement",
             "successTitle": "Téléchargement réussi",
             "summary": "Résumé du téléchargement :",
             "images": "{count, plural, =1 {# image} other {# images}} seront téléchargées",
             "format": "Format :",
             "appliedPreset": "Préréglage appliqué :",
-            "adjustmentsApplied": "Les ajustements d'image ont été appliqués",
-            "backgroundRemoval": "La suppression d'arrière-plan a été appliquée",
-            "seoFilenames": "Noms de fichiers SEO optimisés par IA inclus",
-            "zipPackage": "Les fichiers seront emballés en archive ZIP",
-            "processingNote": "Le traitement peut prendre un moment pour plusieurs ou grandes images.",
+            "adjustmentsApplied": "Ajustements d'image appliqués",
+            "backgroundRemoval": "Suppression de l'arrière-plan appliquée",
+            "seoFilenames": "Noms de fichiers SEO optimisés par l'IA inclus",
+            "watermarkApplied": "Filigrane appliqué",
+            "zipPackage": "Les fichiers seront regroupés dans une archive ZIP",
+            "processingNote": "Le traitement peut prendre un moment pour plusieurs images ou des images volumineuses.",
             "cancel": "ANNULER",
             "download": "TÉLÉCHARGER",
             "processing": "TRAITEMENT...",

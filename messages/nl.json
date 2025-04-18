@@ -408,22 +408,50 @@
         },
         "PricingCard": {
             "oneTime": "eenmalig",
-            "currentPlan": "HUIDIGE PLAN"
+            "currentPlan": "HUIDIG PLAN"
+        },
+        "WatermarkControl": {
+            "title": "WATERMERK",
+            "addTab": "WATERMERK TOEVOEGEN",
+            "removeTab": "WATERMERK VERWIJDEREN (AI)",
+            "type": "TYPE",
+            "text": "TEKST",
+            "logo": "LOGO",
+            "enterText": "Voer watermerktekst in",
+            "font": "LETTERTYPE",
+            "size": "GROOTTE",
+            "color": "KLEUR",
+            "opacity": "DEKKING",
+            "position": "POSITIE",
+            "uploadLogo": "LOGO UPLOADEN",
+            "logoPlaceholder": "Klik of sleep logo hier",
+            "reset": "WATERMERK RESETTEN",
+            "presets": {
+                "bottomRight": "Rechtsonder",
+                "bottomLeft": "Linksonder",
+                "topLeft": "Linksboven",
+                "topRight": "Rechtsboven",
+                "center": "Midden",
+                "diagonal": "Diagonaal",
+                "tile": "Tegel (Patroon)"
+            },
+            "removeDescription": "AI-gestuurde watermerkverwijdering komt binnenkort!"
         }
     },
     "Dialogs": {
         "download": {
             "title": "Afbeeldingen downloaden",
             "confirmTitle": "Download bevestigen",
-            "successTitle": "Download succesvol",
+            "successTitle": "Download geslaagd",
             "summary": "Download samenvatting:",
             "images": "{count, plural, =1 {# afbeelding} other {# afbeeldingen}} worden gedownload",
-            "format": "Format:",
-            "appliedPreset": "Toegepaste voorinstelling:",
-            "adjustmentsApplied": "Afbeeldingsaanpassingen zijn toegepast",
-            "backgroundRemoval": "Achtergrondverwijdering is toegepast",
+            "format": "Formaat:",
+            "appliedPreset": "Toegepaste preset:",
+            "adjustmentsApplied": "Beeldaanpassingen toegepast",
+            "backgroundRemoval": "Achtergrondverwijdering toegepast",
             "seoFilenames": "AI SEO-geoptimaliseerde bestandsnamen inbegrepen",
-            "zipPackage": "Bestanden worden verpakt als ZIP-archief",
+            "watermarkApplied": "Watermerk toegepast",
+            "zipPackage": "Bestanden worden verpakt in een ZIP-archief",
             "processingNote": "Verwerking kan even duren voor meerdere of grote afbeeldingen.",
             "cancel": "ANNULEREN",
             "download": "DOWNLOADEN",

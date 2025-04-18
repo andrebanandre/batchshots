@@ -147,19 +147,11 @@ export default function BackgroundRemovalControl({
         {/* Info Section */}
         <div className="brutalist-border p-4 bg-white">
           <h3 className="font-bold mb-2">{t('title')} <ProBadge className="ml-1" /></h3>
-          <p className="text-sm mb-2">
-            {t('description')}
-          </p>
+      
           <div className="text-xs space-y-1">
-            <div className="flex justify-between">
-              <span className="font-bold">{t('processingInfo.process')}:</span>
-              <span>{t('processingInfo.processValue')}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="font-bold">{t('processingInfo.result')}:</span>
-              <span>{t('processingInfo.resultValue')}</span>
-            </div>
-            <div className="flex justify-between">
+     
+       
+            <div className="flex items-center space-x-2">
               <span className="font-bold">{t('processingInfo.mode')}:</span>
               <span>{applyToAll ? t('allImages') : t('selected')}</span>
             </div>

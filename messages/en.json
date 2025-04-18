@@ -409,6 +409,33 @@
         "PricingCard": {
             "oneTime": "one-time",
             "currentPlan": "CURRENT PLAN"
+        },
+        "WatermarkControl": {
+            "title": "WATERMARK",
+            "addTab": "ADD WATERMARK",
+            "removeTab": "REMOVE WATERMARK (AI)",
+            "type": "TYPE",
+            "text": "TEXT",
+            "logo": "LOGO",
+            "enterText": "Enter watermark text",
+            "font": "FONT",
+            "size": "SIZE",
+            "color": "COLOR",
+            "opacity": "OPACITY",
+            "position": "POSITION",
+            "uploadLogo": "UPLOAD LOGO",
+            "logoPlaceholder": "Click or drag logo here",
+            "reset": "RESET WATERMARK",
+            "presets": {
+                "bottomRight": "Bottom-Right",
+                "bottomLeft": "Bottom-Left",
+                "topLeft": "Top-Left",
+                "topRight": "Top-Right",
+                "center": "Center",
+                "diagonal": "Diagonal",
+                "tile": "Tile (Pattern)"
+            },
+            "removeDescription": "AI-powered watermark removal coming soon!"
         }
     },
     "Dialogs": {
@@ -424,6 +451,7 @@
             "backgroundRemoval": "Background removal applied (transparent PNGs)",
             "seoFilenames": "SEO-optimized filenames",
             "seoProductDescription": "SEO Product Description (TXT)",
+            "watermarkApplied": "Watermark applied",
             "zipPackage": "All files packaged in a ZIP archive",
             "processingNote": "Please wait while your images are processed. This may take a moment for high-quality images.",
             "cancel": "CANCEL",

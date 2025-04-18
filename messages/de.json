@@ -409,6 +409,33 @@
         "PricingCard": {
             "oneTime": "einmalig",
             "currentPlan": "AKTUELLER PLAN"
+        },
+        "WatermarkControl": {
+            "title": "WASSERZEICHEN",
+            "addTab": "WASSERZEICHEN HINZUFÜGEN",
+            "removeTab": "WASSERZEICHEN ENTFERNEN (KI)",
+            "type": "TYP",
+            "text": "TEXT",
+            "logo": "LOGO",
+            "enterText": "Wasserzeichentext eingeben",
+            "font": "SCHRIFTART",
+            "size": "GRÖSSE",
+            "color": "FARBE",
+            "opacity": "DECKKRAFT",
+            "position": "POSITION",
+            "uploadLogo": "LOGO HOCHLADEN",
+            "logoPlaceholder": "Klicken oder ziehen Sie das Logo hierher",
+            "reset": "WASSERZEICHEN ZURÜCKSETZEN",
+            "presets": {
+                "bottomRight": "Unten Rechts",
+                "bottomLeft": "Unten Links",
+                "topLeft": "Oben Links",
+                "topRight": "Oben Rechts",
+                "center": "Mitte",
+                "diagonal": "Diagonal",
+                "tile": "Kachel (Muster)"
+            },
+            "removeDescription": "KI-gestützte Wasserzeichenentfernung kommt bald!"
         }
     },
     "Dialogs": {
@@ -423,6 +450,7 @@
             "adjustmentsApplied": "Bildanpassungen wurden angewendet",
             "backgroundRemoval": "Hintergrundentfernung wurde angewendet",
             "seoFilenames": "KI-optimierte SEO-Dateinamen enthalten",
+            "watermarkApplied": "Wasserzeichen angewendet",
             "zipPackage": "Dateien werden als ZIP-Archiv verpackt",
             "processingNote": "Die Verarbeitung kann bei mehreren oder großen Bildern einen Moment dauern.",
             "cancel": "ABBRECHEN",

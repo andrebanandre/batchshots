@@ -8,6 +8,7 @@ import Button from '../components/Button';
 import ImagePreview, { ImageFile } from '../components/ImagePreview';
 import ImageProcessingControls, { ImageAdjustments, defaultAdjustments } from '../components/ImageProcessingControls';
 import PresetsSelector, { defaultPresets, Preset } from '../components/PresetsSelector';
+import WatermarkControl, { WatermarkSettings, defaultWatermarkSettings } from '../components/WatermarkControl';
 import DownloadOptions, { ImageFormat } from '../components/DownloadOptions';
 import DownloadDialog from '../components/DownloadDialog';
 import SeoNameGenerator, { SeoImageName } from '../components/SeoNameGenerator';
@@ -39,6 +40,7 @@ export default function Home() {
   const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
   const [adjustments, setAdjustments] = useState<ImageAdjustments>(defaultAdjustments);
+  const [watermarkSettings, setWatermarkSettings] = useState<WatermarkSettings>(defaultWatermarkSettings);
   const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
   const [customPresetSettings, setCustomPresetSettings] = useState<Preset | null>(null);
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
@@ -118,16 +120,20 @@ export default function Home() {
     return preset?.name;
   };
 
-  // Real-time preview processing with adjustments
+  // Real-time preview processing with adjustments and watermarks
   useEffect(() => {
-    const applyPreviewAdjustments = async () => {
+    const applyPreviewUpdates = async () => {
       if (!isOpenCVReady || images.length === 0) return;
 
-      // Set processing state to true
-      setIsProcessing(true);
+      // Set processing state to true only if changes require processing
+      // Watermark and adjustment changes trigger processing
+      if (adjustments !== defaultAdjustments || watermarkSettings.enabled) {
+          setIsProcessing(true);
+      }
       
-      console.log("Applying preview adjustments:", {
+      console.log("Applying preview updates:", {
         adjustments,
+        watermarkSettings,
         selectedImageId,
         applyToAll,
         hasImages: images.length > 0
@@ -142,14 +148,16 @@ export default function Home() {
           imagesToProcess.map(async (image) => {
             // Only update the selected image (or all images if applyToAll is true)
             if ((selectedImageId && image.id === selectedImageId) || applyToAll) {
-              console.log(`Processing image ${image.id} with RGB scales:`, {
-                redScale: adjustments.redScale,
-                greenScale: adjustments.greenScale,
-                blueScale: adjustments.blueScale
-              });
+              console.log(`Processing image ${image.id} with settings...`);
               
               // Process only thumbnails for preview - much faster
-              const { processedThumbnailUrl } = await processImage(image, adjustments, currentPreset, false);
+              const { processedThumbnailUrl } = await processImage(
+                  image, 
+                  adjustments, 
+                  currentPreset, 
+                  watermarkSettings, // Pass watermark settings
+                  false // Process thumbnail (false)
+              );
               
               // Add debug log for background-removed images
               if (image.backgroundRemoved) {
@@ -158,7 +166,7 @@ export default function Home() {
               
               return {
                 ...image,
-                processedThumbnailUrl,
+                processedThumbnailUrl, // Update thumbnail URL
                 // Store the applied preset information
                 appliedPreset: currentPreset ? {
                   name: currentPreset.name,
@@ -168,26 +176,27 @@ export default function Home() {
                 } : undefined
               };
             }
-            return image;
+            return image; // Return unchanged image if not selected/applyToAll
           })
         );
         
         setImages(updatedImages);
         console.log("Preview processing complete, images updated");
       } catch (error) {
-        console.error('Error applying preview adjustments', error);
+        console.error('Error applying preview adjustments/watermark', error);
       } finally {
         // Set processing state to false when done
         setIsProcessing(false);
       }
     };
 
+    // Debounce the effect to avoid rapid processing on slider changes etc.
     const timeoutId = setTimeout(() => {
-      applyPreviewAdjustments();
-    }, 200); // Debounce
+      applyPreviewUpdates();
+    }, 300); // Increased debounce time slightly
 
     return () => clearTimeout(timeoutId);
-  }, [adjustments, isOpenCVReady, selectedImageId, selectedPreset, applyToAll, customPresetSettings]);
+  }, [adjustments, watermarkSettings, isOpenCVReady, selectedImageId, selectedPreset, applyToAll, customPresetSettings]); // Add watermarkSettings dependency
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
@@ -263,118 +272,66 @@ export default function Home() {
 
   // Handle download - process the full image if needed
   const handleDownloadImage = async (image: ImageFile, format: LibImageFormat = 'jpg') => {
-    console.log("Download requested for image:", image.id, "with adjustments:", adjustments);
+    console.log("Download requested for image:", image.id, "with adjustments:", adjustments, "and watermark:", watermarkSettings);
     
-    // For background-removed images with processing applied
-    if (image.backgroundRemoved && image.processedDataUrl) {
-      console.log("Using existing processed data URL for background-removed image");
-      downloadImage(image.processedDataUrl, image.file.name, 'png', image.seoName);
-      return;
-    }
-    // For background-removed images without specific processing, use dataUrl directly
-    // This ensures we use the transparent PNG even if there's no processed version
-    else if (image.backgroundRemoved && image.dataUrl) {
-      console.log("Using original data URL for background-removed image");
-      downloadImage(image.dataUrl, image.file.name, 'png', image.seoName, adjustments);
-      return;
-    }
-    // For background-removed images that need specific processing, process now
-    else if (image.backgroundRemoved) {
+    // For background-removed images - always download as PNG
+    if (image.backgroundRemoved) {
       setIsProcessing(true);
       try {
-        console.log("Processing background-removed image for download with adjustments:", {
-          redScale: adjustments.redScale,
-          greenScale: adjustments.greenScale,
-          blueScale: adjustments.blueScale
-        });
-        
         const currentPreset = getCurrentPreset();
-        const { processedDataUrl } = await processImage(image, adjustments, currentPreset, true);
+        const { processedDataUrl } = await processImage(
+            image, 
+            adjustments, 
+            currentPreset, 
+            watermarkSettings, // Pass watermark settings
+            true // Process full size
+        );
         
         if (processedDataUrl) {
-          // Update the image in state with the processed version
-          setImages(prev => 
-            prev.map(img => 
-              img.id === image.id 
-                ? { 
-                    ...img, 
-                    processedDataUrl,
-                    // Store the applied preset information
-                    appliedPreset: currentPreset ? {
-                      name: currentPreset.name,
-                      width: currentPreset.width,
-                      height: currentPreset.height,
-                      quality: currentPreset.quality
-                    } : undefined
-                  }
-                : img
-            )
-          );
-          
-          // Download the processed image with adjustments
-          downloadImage(processedDataUrl, image.file.name, 'png', image.seoName);
+          setImages(prev => prev.map(img => img.id === image.id ? { ...img, processedDataUrl } : img));
+          downloadImage(processedDataUrl, image.file.name, 'png', image.seoName); // Force PNG
+        } else {
+           // Fallback to original if processing fails 
+           downloadImage(image.dataUrl, image.file.name, 'png', image.seoName);
         }
       } catch (error) {
-        console.error('Error processing transparent image', error);
-        // Fallback to original
-        downloadImage(image.dataUrl, image.file.name, 'png', image.seoName, adjustments);
+        console.error('Error processing transparent image for download', error);
+        downloadImage(image.dataUrl, image.file.name, 'png', image.seoName);
       } finally {
         setIsProcessing(false);
       }
       return;
     }
     
-    if (image.processedDataUrl) {
-      // If we already have the processed full image, download it
-      console.log("Using existing processed data URL for regular image");
-      downloadImage(image.processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
-    } else if (image.processedThumbnailUrl) {
-      // Process the full-size image now
+    // For regular images - process full size now if needed
+    if (image.processedThumbnailUrl || watermarkSettings.enabled) { // Reprocess if watermark is enabled
       setIsProcessing(true);
       try {
-        console.log("Processing regular image for download with adjustments:", {
-          redScale: adjustments.redScale,
-          greenScale: adjustments.greenScale,
-          blueScale: adjustments.blueScale
-        });
-        
         const currentPreset = getCurrentPreset();
-          
-        const { processedDataUrl } = await processImage(image, adjustments, currentPreset, true);
+        const { processedDataUrl } = await processImage(
+            image, 
+            adjustments, 
+            currentPreset, 
+            watermarkSettings, // Pass watermark settings
+            true // Process full size
+        );
         
         if (processedDataUrl) {
-          // Update the image in state with the full processed version
-          setImages(prev => 
-            prev.map(img => 
-              img.id === image.id 
-                ? { 
-                    ...img, 
-                    processedDataUrl,
-                    // Store the applied preset information
-                    appliedPreset: currentPreset ? {
-                      name: currentPreset.name,
-                      width: currentPreset.width,
-                      height: currentPreset.height,
-                      quality: currentPreset.quality
-                    } : undefined
-                  }
-                : img
-            )
-          );
-          
-          // Download the processed image
-          downloadImage(processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
+           setImages(prev => prev.map(img => img.id === image.id ? { ...img, processedDataUrl } : img));
+           downloadImage(processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
+        } else {
+           // Fallback to original dataUrl but still attempt processing for download (like adjustments only)
+           downloadImage(image.dataUrl, image.file.name, format, image.seoName, adjustments);
         }
       } catch (error) {
         console.error('Error processing full image for download', error);
-        // Download the original with adjustments
         downloadImage(image.dataUrl, image.file.name, format, image.seoName, adjustments);
       } finally {
         setIsProcessing(false);
       }
     } else {
-      // Download the original if no processing has been done, but still apply adjustments
-      downloadImage(image.dataUrl, image.file.name, format, image.seoName, adjustments);
+      // Download the original if no processing has been done
+      downloadImage(image.dataUrl, image.file.name, format, image.seoName);
     }
   };
 
@@ -395,9 +352,8 @@ export default function Home() {
   };
 
   const handleDownloadAll = async (format: LibImageFormat = 'jpg') => {
-    // Include both processed images and those with background removed
-    const processedImages = images.filter(img => img.processedThumbnailUrl || img.backgroundRemoved);
-    if (processedImages.length === 0) return;
+    const imagesToDownload = images; // Download all images
+    if (imagesToDownload.length === 0) return;
     
     setIsProcessing(true);
     try {
@@ -405,39 +361,38 @@ export default function Home() {
       
       // Process full-size versions of all images before download
       const fullyProcessedImages = await Promise.all(
-        images.map(async (image) => {
-          // Only process images that need processing (either selected or all if applyToAll is true)
-          if (selectedImageId === image.id || applyToAll) {
-            // Process all images, including those with background removed
-            const { processedThumbnailUrl, processedDataUrl } = 
-              await processImage(image, adjustments, currentPreset, true);
-            
-            return {
-              ...image,
-              processedThumbnailUrl,
-              processedDataUrl,
-              appliedPreset: currentPreset ? {
-                name: currentPreset.name,
-                width: currentPreset.width,
-                height: currentPreset.height,
-                quality: currentPreset.quality
-              } : undefined
-            };
-          }
-          return image;
+        imagesToDownload.map(async (image) => {
+          // Process all images, including those with background removed
+          const { processedDataUrl, processedThumbnailUrl } = await processImage(
+              image, 
+              adjustments, 
+              currentPreset, 
+              watermarkSettings, // Pass watermark settings
+              true // Process full size
+          );
+          
+          return {
+            ...image,
+            processedThumbnailUrl, // Keep thumbnail updated too
+            processedDataUrl, // Store full processed URL
+            appliedPreset: currentPreset ? {
+              name: currentPreset.name,
+              width: currentPreset.width,
+              height: currentPreset.height,
+              quality: currentPreset.quality
+            } : undefined
+          };
         })
       );
       
-      // Update state with processed images
+      // Update state with processed images (contains processedDataUrl)
       setImages(fullyProcessedImages);
       
-      // Download all the processed images and images with background removed
-      const updatedImages = fullyProcessedImages.filter(img => img.processedDataUrl || img.backgroundRemoved);
+      // Download all the processed images 
+      downloadAllImages(fullyProcessedImages, format, true, seoProductDescription); // Removed adjustments from here as they are baked in
       
-      // Include SEO product description if available
-      downloadAllImages(updatedImages, format, true, seoProductDescription, adjustments);
     } catch (error) {
-      console.error('Error processing images for download', error);
+      console.error('Error processing images for download all', error);
     } finally {
       setIsProcessing(false);
     }
@@ -503,7 +458,7 @@ export default function Home() {
             return {
               ...image,
               seoName: seoNameData.seoName,
-              originalName: image.file.name
+              originalName: image.file.name // Keep original name for reference
             };
           }
           return image;
@@ -518,12 +473,10 @@ export default function Home() {
     }
   };
   
-  // Handle reset of all adjustments
+  // Handle reset of all adjustments and watermarks
   const handleReset = () => {
-    // Reset adjustments to default values
     setAdjustments(defaultAdjustments);
-    
-    // Reset preset selection
+    setWatermarkSettings(defaultWatermarkSettings); // Reset watermark
     setSelectedPreset(null);
     setCustomPresetSettings(null);
   };
@@ -550,9 +503,11 @@ export default function Home() {
     setImages([]);
     setSelectedImageId(null);
     setAdjustments(defaultAdjustments);
+    setWatermarkSettings(defaultWatermarkSettings); // Reset watermark
     setSelectedPreset(null);
     setCustomPresetSettings(null);
     setSeoNames([]);
+    setSeoProductDescription(null); // Reset description
     setIsDownloadDialogOpen(false);
   };
 
@@ -574,46 +529,46 @@ export default function Home() {
       const processedData = await processImageBackground(image);
       
       // Update image state with processed data
-      const updatedImages = images.map(img => 
-        img.id === imageId 
-          ? getUpdatedImageWithBackground(img, processedData)
-          : img
-      );
-      
+      const updatedImageWithBg = getUpdatedImageWithBackground(image, processedData);
+      const updatedImages = images.map(img => img.id === imageId ? updatedImageWithBg : img);
       setImages(updatedImages);
       
-      // Immediately process adjustments for the new transparent image
+      // Immediately process adjustments/watermark for the new transparent image thumbnail
       if (isOpenCVReady) {
         setIsProcessing(true);
-        const updatedImage = updatedImages.find(img => img.id === imageId);
-        if (updatedImage) {
-          try {
-            const currentPreset = getCurrentPreset();
-            console.log('Applying adjustments to newly background-removed image:', imageId);
-            
-            // Process to get thumbnail with adjustments
-            const { processedThumbnailUrl } = await processImage(updatedImage, adjustments, currentPreset, false);
-            
-            // Update the image state with processed thumbnail
-            setImages(prevImages => 
-              prevImages.map(img => 
-                img.id === imageId 
-                  ? { 
-                      ...img, 
-                      processedThumbnailUrl,
-                      appliedPreset: currentPreset ? {
-                        name: currentPreset.name,
-                        width: currentPreset.width,
-                        height: currentPreset.height,
-                        quality: currentPreset.quality
-                      } : undefined
-                    }
-                  : img
-              )
-            );
-          } catch (error) {
-            console.error('Error applying adjustments to transparent image', error);
-          }
+        try {
+          const currentPreset = getCurrentPreset();
+          console.log('Applying preview updates to newly background-removed image:', imageId);
+          
+          const { processedThumbnailUrl } = await processImage(
+              updatedImageWithBg, 
+              adjustments, 
+              currentPreset, 
+              watermarkSettings, // Pass watermark settings
+              false // Process thumbnail
+          );
+          
+          // Update the image state with processed thumbnail
+          setImages(prevImages => 
+            prevImages.map(img => 
+              img.id === imageId 
+                ? { 
+                    ...img, 
+                    processedThumbnailUrl,
+                    appliedPreset: currentPreset ? {
+                      name: currentPreset.name,
+                      width: currentPreset.width,
+                      height: currentPreset.height,
+                      quality: currentPreset.quality
+                    } : undefined
+                  }
+                : img
+            )
+          );
+        } catch (error) {
+          console.error('Error applying preview updates to transparent image', error);
+        } finally {
+           setIsProcessing(false);
         }
       }
 
@@ -623,13 +578,11 @@ export default function Home() {
       alert('Failed to remove background. Please try again.');
     } finally {
       setIsRemovingBackground(false);
-      setIsProcessing(false);
     }
   };
 
   // Handle background removal for all images
   const handleRemoveAllBackgrounds = async () => {
-    // Filter for images without background removed already
     const imagesToProcess = images.filter(img => !img.backgroundRemoved);
     if (imagesToProcess.length === 0) return;
     
@@ -637,67 +590,57 @@ export default function Home() {
     setBackgroundRemovalProgress({ processed: 0, total: imagesToProcess.length });
     
     try {
-      // Use a local array to track all processed images
       let allUpdatedImages = [...images];
       
-      // Process images one by one to avoid overwhelming the browser
       for (let i = 0; i < imagesToProcess.length; i++) {
         const image = imagesToProcess[i];
-        
-        // Get the most up-to-date version of this image (in case it changed during processing)
         const currentImage = allUpdatedImages.find(img => img.id === image.id);
         if (!currentImage || currentImage.backgroundRemoved) continue;
         
-        // Process image with background removal
         const processedData = await processImageBackground(currentImage);
+        const updatedImageWithBg = getUpdatedImageWithBackground(currentImage, processedData);
         
-        // Update our local tracking array with the background-removed image
         allUpdatedImages = allUpdatedImages.map(img => 
-          img.id === currentImage.id 
-            ? getUpdatedImageWithBackground(img, processedData)
-            : img
+          img.id === currentImage.id ? updatedImageWithBg : img
         );
+        setImages(allUpdatedImages); // Update state after each image
         
-        // Update the React state with all processed images so far
-        setImages(allUpdatedImages);
-        
-        // Immediately apply adjustments to the background-removed image
+        // Apply adjustments/watermark to thumbnail immediately
         if (isOpenCVReady) {
           try {
             const currentPreset = getCurrentPreset();
-            console.log('Applying adjustments to newly background-removed image in batch:', currentImage.id);
+            console.log('Applying preview updates to newly background-removed image in batch:', currentImage.id);
             
-            // Get the updated image with background removed
-            const updatedImage = allUpdatedImages.find(img => img.id === currentImage.id);
-            if (updatedImage) {
-              // Process to get thumbnail with adjustments
-              const { processedThumbnailUrl } = await processImage(updatedImage, adjustments, currentPreset, false);
+            const { processedThumbnailUrl } = await processImage(
+                updatedImageWithBg, 
+                adjustments, 
+                currentPreset, 
+                watermarkSettings, // Pass watermark settings
+                false // Process thumbnail
+            );
               
-              // Update the local array with processed thumbnail
-              allUpdatedImages = allUpdatedImages.map(img => 
-                img.id === currentImage.id 
-                  ? { 
-                      ...img, 
-                      processedThumbnailUrl,
-                      appliedPreset: currentPreset ? {
-                        name: currentPreset.name,
-                        width: currentPreset.width,
-                        height: currentPreset.height,
-                        quality: currentPreset.quality
-                      } : undefined
-                    }
-                  : img
-              );
-              
-              // Update the React state again
-              setImages(allUpdatedImages);
-            }
+            // Update local array and state again with thumbnail
+            allUpdatedImages = allUpdatedImages.map(img => 
+              img.id === currentImage.id 
+                ? { 
+                    ...img, 
+                    processedThumbnailUrl,
+                    appliedPreset: currentPreset ? {
+                      name: currentPreset.name,
+                      width: currentPreset.width,
+                      height: currentPreset.height,
+                      quality: currentPreset.quality
+                    } : undefined
+                  }
+                : img
+            );
+            setImages(allUpdatedImages);
+            
           } catch (error) {
-            console.error('Error applying adjustments to batch transparent image', error);
+            console.error('Error applying preview updates to batch transparent image', error);
           }
         }
         
-        // Update progress
         setBackgroundRemovalProgress(prev => ({ ...prev, processed: i + 1 }));
       }
     } catch (error) {
@@ -822,8 +765,8 @@ export default function Home() {
 
         {images.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 md:sticky md:top-4 md:self-start">
-              <div className="flex justify-between items-center mb-4">
+            <div className="md:col-span-2 md:sticky md:top-4 md:self-start space-y-6">
+              <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold">{t('imageEditor')}</h2>
                 {isProUser && <ProBadge />}
               </div>
@@ -891,6 +834,8 @@ export default function Home() {
               <ImageProcessingProvider
                 adjustments={adjustments}
                 onAdjustmentsChange={setAdjustments}
+                watermarkSettings={watermarkSettings}
+                onWatermarkSettingsChange={setWatermarkSettings}
                 applyToAll={applyToAll}
                 setApplyToAll={setApplyToAll}
                 onReset={handleReset}
@@ -904,6 +849,7 @@ export default function Home() {
                 onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
               >
                 <ImageProcessingControls />
+                <WatermarkControl />
               </ImageProcessingProvider>
 
               <Card title={t('imageOptimization')} variant="accent">
@@ -941,10 +887,10 @@ export default function Home() {
       <DownloadDialog
         isOpen={isDownloadDialogOpen}
         onClose={downloadComplete ? handleContinueEditing : handleConfirmDownload}
-        imageCount={images.filter(img => img.processedThumbnailUrl || img.backgroundRemoved).length}
+        imageCount={images.length}
         onStartNewBundle={handleStartNewBundle}
         onContinueEditing={handleContinueEditing}
-        hasAppliedChanges={images.some(img => img.processedThumbnailUrl || img.backgroundRemoved)}
+        hasAppliedChanges={images.some(img => img.processedThumbnailUrl || img.backgroundRemoved || watermarkSettings.enabled)}
         appliedPresetName={getCurrentPresetName()}
         isDownloading={isDownloading}
         downloadComplete={downloadComplete}
@@ -952,6 +898,7 @@ export default function Home() {
         hasSeoNames={images.some(img => !!img.seoName)}
         hasRemovedBackgrounds={images.some(img => img.backgroundRemoved)}
         hasSeoProductDescription={seoProductDescription !== null}
+        hasWatermark={watermarkSettings.enabled}
       />
       
       {/* Pro Upgrade Dialog */}

@@ -17,6 +17,7 @@ interface DownloadDialogProps {
   hasSeoNames?: boolean;
   hasRemovedBackgrounds?: boolean;
   hasSeoProductDescription?: boolean;
+  hasWatermark?: boolean;
 }
 
 export default function DownloadDialog({
@@ -32,7 +33,8 @@ export default function DownloadDialog({
   formatType,
   hasSeoNames = false,
   hasRemovedBackgrounds = false,
-  hasSeoProductDescription = false
+  hasSeoProductDescription = false,
+  hasWatermark = false
 }: DownloadDialogProps) {
   const t = useTranslations('Dialogs.download');
   
@@ -52,7 +54,7 @@ export default function DownloadDialog({
                     <div className="space-y-4 mb-6">
                       <div className="brutalist-border p-3 bg-slate-50">
                         <p className="font-bold mb-2">{t('summary')}</p>
-                        <ul className="list-disc pl-5 space-y-1">
+                        <ul className="list-disc pl-5 space-y-1 text-sm">
                           <li>{t('images', { count: imageCount })}</li>
                           <li>{t('format')} <span className="font-bold uppercase">{formatType}</span></li>
                           {hasAppliedChanges && appliedPresetName && (
@@ -60,6 +62,9 @@ export default function DownloadDialog({
                           )}
                           {hasAppliedChanges && (
                             <li>{t('adjustmentsApplied')}</li>
+                          )}
+                          {hasWatermark && (
+                             <li className="text-blue-600 font-semibold">{t('watermarkApplied')}</li>
                           )}
                           {hasRemovedBackgrounds && (
                             <li className="text-purple-600 font-semibold">
