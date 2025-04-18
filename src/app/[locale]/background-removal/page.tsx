@@ -14,6 +14,7 @@ import { initOpenCV } from '../../lib/imageProcessing';
 import Loader from '../../components/Loader';
 import { defaultAdjustments } from '../../components/ImageProcessingControls';
 import { useTranslations } from 'next-intl';
+import { defaultWatermarkSettings } from '@/app/components/WatermarkControl';
 
 export default function BackgroundRemovalPage() {
   const t = useTranslations('Components.BackgroundRemovalPage');
@@ -98,7 +99,7 @@ export default function BackgroundRemovalPage() {
         const processedImage = getUpdatedImageWithBackground(image, processedData);
         
         // Apply minimal adjustments to the image
-        const { processedThumbnailUrl } = await processImage(processedImage, defaultAdjustments, null, false);
+        const { processedThumbnailUrl } = await processImage(processedImage, defaultAdjustments, null, defaultWatermarkSettings, false);
         
         // Add to processed images
         processed.push({

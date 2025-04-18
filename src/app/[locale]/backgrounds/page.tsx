@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
+import { useRouter } from 'next/navigation';
 
 // Sample background types/presets for the feature
 const backgroundPresets = [
@@ -52,6 +53,8 @@ const sampleResults = [
 ];
 
 export default function BackgroundsPage() {
+  const router = useRouter();
+
   const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
   const [prompt, setPrompt] = useState('');
   const [mockResults, setMockResults] = useState<string[]>([]);
@@ -268,7 +271,7 @@ export default function BackgroundsPage() {
                 </ul>
               </div>
               <div className="flex flex-col space-y-3">
-                <Button variant="accent" href="/pricing">
+                <Button variant="accent"       onClick={() => router.push('/pricing')}>
                   UNLOCK NOW
                 </Button>
                 <button 
