@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Providers } from '../providers';
 import { ClerkProvider } from '@clerk/nextjs';
 
@@ -57,11 +57,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 export default async function RootLayout({
   children,
   params
-}: Readonly<{
+}: {
   children: React.ReactNode;
-  params: { locale: string };
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  // Resolve the locale from the params promise
   const { locale } = await params;
+  
+  // Enable static rendering and provide locale to next-intl
+  setRequestLocale(locale);
   
   // Ensure that the incoming `locale` is valid
   if (!hasLocale(routing.locales, locale)) {
@@ -75,7 +79,6 @@ export default async function RootLayout({
   const clerkLocalization = clerkLocalizations[locale] || enUS;
 
   return (
-    // @ts-expect-error TODO: Investigate ClerkProvider type issue with async RootLayout in Next.js 15/React 19
     <ClerkProvider localization={clerkLocalization}>
       <Providers 
         intlProps={{ locale: locale, messages: messages }}

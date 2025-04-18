@@ -9,9 +9,9 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "pages:build": "pnpm dlx @cloudflare/next-on-pages",
-    "preview": "pnpm run pages:build && wrangler pages dev",
-    "deploy": "pnpm run pages:build && wrangler pages deploy"
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "npm run pages:build && wrangler pages dev",
+    "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@clerk/localizations": "^3.13.8",
@@ -26,7 +26,6 @@
     "next-intl": "^4.0.2",
     "onnxruntime-web": "^1.21.0-dev.20250206-d981b153d3",
     "react": "^19.0.0",
-    "react-canvas-draw": "^1.2.1",
     "react-dom": "^19.0.0",
     "stripe": "^18.0.0",
     "uuid": "^11.1.0"
@@ -48,7 +47,6 @@
     "node-polyfill-webpack-plugin": "^4.1.0",
     "tailwindcss": "^4",
     "ts-jest": "^29.3.0",
-    "typescript": "^5",
-    "wrangler": "^4.12.0"
+    "typescript": "^5"
   }
 }
