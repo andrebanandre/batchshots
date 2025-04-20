@@ -1,4 +1,0 @@
-name = "batchshots"
-compatibility_date = "2024-09-23" # Or a more recent date
-compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".vercel/output/static" 
