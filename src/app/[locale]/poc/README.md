@@ -1,4 +1,4 @@
-<!-- # Image Enhancement POC
+# Image Enhancement POC
 
 This is a proof of concept for image upscaling/enhancement using an ONNX model with WebGPU acceleration.
 
@@ -28,4 +28,4 @@ This is a proof of concept for image upscaling/enhancement using an ONNX model w
 
 - WebGPU is a new technology and requires a compatible browser (Chrome 113+ or Edge 113+)
 - For large models, you may need to increase memory limits in the ONNX runtime configuration
-- Check browser console for detailed error messages  -->
+- Check browser console for detailed error messages 
