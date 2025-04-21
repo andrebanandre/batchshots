@@ -15,10 +15,10 @@ import MobileMenu from './MobileMenu';
 
 // Simple SVG logo component
 const Logo = () => (
-  <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="190" height="40" viewBox="0 0 190 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="5" y="8" width="24" height="24" fill="#FF6B6B" />
     <rect x="10" y="3" width="24" height="24" fill="#4F46E5" />
-    <text x="40" y="26" fontFamily="sans-serif" fontWeight="700" fontSize="20" fill="black">PICME</text>
+    <text x="40" y="26" fontFamily="sans-serif" fontWeight="700" fontSize="20" fill="black">BATCH SHOTS</text>
   </svg>
 );
 

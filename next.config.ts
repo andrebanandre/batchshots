@@ -7,13 +7,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
-  },
+  output: 'standalone',
   webpack: (config, { isServer }) => {
     // Add TypeScript file extensions
     config.resolve.extensions.push(".ts", ".tsx");
