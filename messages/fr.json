@@ -3,48 +3,52 @@
         "name": "Batch Shots"
     },
     "LocaleSwitcher": {
-        "label": "Changer la langue",
-        "locale": "{locale, select, fr {🇫🇷 Français} en {🇺🇸 English} other {Unknown}}"
+        "label": "Changer de langue",
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Inconnu}}"
     },
     "Home": {
-        "title": "Batch Shots: OPTIMISATEUR D'IMAGES SEO",
+        "title": "Batch Shots : OPTIMISEUR D'IMAGES SEO",
         "loading": "CHARGEMENT DE L'APPLICATION...",
-        "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'images.",
+        "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'image.",
         "transformTitle": "TRANSFORMEZ VOS PHOTOS DE PRODUITS",
-        "privacyFocused": "GRATUIT & RESPECTUEUX DE LA VIE PRIVÉE",
-        "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou données sur nos serveurs.",
+        "heroDescription": "Optimisez rapidement vos images de produits pour le web, l'e-commerce et les réseaux sociaux avec notre outil basé sur le navigateur.",
+        "privacyFocused": "GRATUIT ET AXÉ SUR LA CONFIDENTIALITÉ",
+        "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou vos données sur nos serveurs.",
         "privacyPolicy": "Politique de confidentialité",
         "termsOfUse": "Conditions d'utilisation",
         "features": {
             "presets": {
-                "title": "PRÉRÉGLAGES PROFESSIONNELS",
-                "description": "Appliquez des préréglages optimisés pour le commerce électronique, les réseaux sociaux et l'affichage web en un clic."
+                "title": "PRESETS PROFESSIONNELS",
+                "description": "Appliquez des préréglages optimisés pour l'e-commerce, les réseaux sociaux et l'affichage web en un seul clic."
             },
             "aiPowered": {
                 "title": "SEO ALIMENTÉ PAR L'IA",
-                "description": "Générez des noms de fichiers SEO avec nos outils d'IA pour améliorer la découvrabilité de vos produits."
+                "description": "Générez des noms de fichiers optimisés pour le SEO avec nos outils IA pour améliorer la découvrabilité de vos produits."
             },
             "advancedControls": {
                 "title": "CONTRÔLES AVANCÉS",
-                "description": "Ajustez la luminosité, le contraste, la balance des blancs et plus encore pour perfectionner vos photos de produits."
+                "description": "Ajustez la luminosité, le contraste, la balance des blancs et plus encore pour perfectionner vos images de produits."
             },
             "batchProcessing": {
                 "title": "TRAITEMENT PAR LOTS",
                 "description": "Traitez plusieurs images à la fois pour gagner du temps et garantir des résultats cohérents."
             }
         },
+        "upgradeProTitle": "DÉBLOQUER LES FONCTIONNALITÉS PRO",
+        "upgradeProDescription": "Obtenez plus d'images, la suppression de l'arrière-plan et des fonctionnalités avancées avec notre mise à niveau Pro unique.",
         "proMode": "MODE PRO ACTIVÉ",
         "freePlan": "PLAN GRATUIT",
         "proDescription": "Traitez jusqu'à {maxImages} images à la fois avec toutes les fonctionnalités premium débloquées.",
         "freeDescription": "Limité à {maxImages} images. Passez à PRO pour traiter jusqu'à 100 images à la fois.",
         "upgradeToPro": "PASSER À PRO",
+        "learnMoreAboutPro": "EN SAVOIR PLUS SUR PRO",
         "selectImages": "SÉLECTIONNER DES IMAGES (JUSQU'À {maxImages})",
         "imageEditor": "ÉDITEUR D'IMAGES",
         "selectMoreImages": "SÉLECTIONNER PLUS D'IMAGES",
-        "maxImagesReached": "NOMBRE MAXIMAL D'IMAGES ATTEINT",
+        "maxImagesReached": "NOMBRE MAXIMUM D'IMAGES ATTEINT",
         "imagesCount": "{current}/{max} images",
         "upgradeFor": "(Passez à PRO pour jusqu'à 100)",
-        "imageOptimization": "OPTIMISATION D'IMAGES"
+        "imageOptimization": "OPTIMISATION D'IMAGE"
     },
     "Navbar": {
         "imageOptimizer": "Optimiseur d'images",

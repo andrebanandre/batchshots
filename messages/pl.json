@@ -4,46 +4,50 @@
     },
     "LocaleSwitcher": {
         "label": "Zmień język",
-        "locale": "{locale, select, pl {🇵🇱 Polski} en {🇺🇸 English} other {Unknown}}"
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Nieznany}}"
     },
     "Home": {
         "title": "Batch Shots: OPTYMALIZATOR OBRAZÓW SEO",
         "loading": "ŁADOWANIE APLIKACJI...",
-        "loadingDescription": "Proszę czekać, podczas gdy inicjalizujemy możliwości przetwarzania obrazów.",
-        "transformTitle": "PRZETWARZAJ ZDJĘCIA PRODUKTÓW",
-        "privacyFocused": "DARMOWY & SKUPIONY NA PRYWATNOŚCI",
+        "loadingDescription": "Proszę czekać, inicjalizujemy możliwości przetwarzania obrazów.",
+        "transformTitle": "PRZEKSZTAŁĆ SWOJE ZDJĘCIA PRODUKTOWE",
+        "heroDescription": "Szybko optymalizuj swoje zdjęcia produktowe dla internetu, e-commerce i mediów społecznościowych za pomocą naszego narzędzia w przeglądarce.",
+        "privacyFocused": "DARMOWE I SKONCENTROWANE NA PRYWATNOŚCI",
         "privacyDescription": "Batch Shots przetwarza wszystkie obrazy bezpośrednio w Twojej przeglądarce. Nie przechowujemy Twoich zdjęć ani danych na naszych serwerach.",
         "privacyPolicy": "Polityka prywatności",
-        "termsOfUse": "Warunki korzystania",
+        "termsOfUse": "Warunki użytkowania",
         "features": {
             "presets": {
                 "title": "PROFESJONALNE PRESETY",
-                "description": "Zastosuj zoptymalizowane presety dla e-commerce, mediów społecznościowych i wyświetlania w sieci jednym kliknięciem."
+                "description": "Zastosuj zoptymalizowane presety dla e-commerce, mediów społecznościowych i wyświetlania w internecie jednym kliknięciem."
             },
             "aiPowered": {
                 "title": "SEO WSPOMAGANE PRZEZ AI",
                 "description": "Generuj przyjazne dla SEO nazwy plików za pomocą naszych narzędzi AI, aby poprawić widoczność Twoich produktów."
             },
             "advancedControls": {
-                "title": "ZAAWANSOWANE KONTROLE",
-                "description": "Dostosuj jasność, kontrast, balans bieli i więcej, aby udoskonalić swoje zdjęcia produktów."
+                "title": "ZAAWANSOWANE STEROWANIE",
+                "description": "Dostosuj jasność, kontrast, balans bieli i inne parametry, aby udoskonalić swoje zdjęcia produktowe."
             },
             "batchProcessing": {
-                "title": "PRZETWARZANIE ZBIORCZE",
+                "title": "PRZETWARZANIE WSADOWE",
                 "description": "Przetwarzaj wiele obrazów jednocześnie, aby zaoszczędzić czas i zapewnić spójne wyniki."
             }
         },
+        "upgradeProTitle": "ODBLOKUJ FUNKCJE PRO",
+        "upgradeProDescription": "Zyskaj więcej obrazów, usuwanie tła i zaawansowane funkcje dzięki naszej jednorazowej aktualizacji do wersji Pro.",
         "proMode": "TRYB PRO AKTYWOWANY",
-        "freePlan": "PLAN DARMOWY",
-        "proDescription": "Przetwarzaj do {maxImages} obrazów jednocześnie ze wszystkimi funkcjami premium odblokowanymi.",
-        "freeDescription": "Ograniczone do {maxImages} obrazów. Ulepsz do PRO, aby przetwarzać do 100 obrazów jednocześnie.",
-        "upgradeToPro": "ULEPSZ DO PRO",
+        "freePlan": "DARMOWY PLAN",
+        "proDescription": "Przetwarzaj do {maxImages} obrazów jednocześnie ze wszystkimi odblokowanymi funkcjami premium.",
+        "freeDescription": "Ograniczone do {maxImages} obrazów. Zaktualizuj do PRO, aby przetwarzać do 100 obrazów jednocześnie.",
+        "upgradeToPro": "ZAKTUALIZUJ DO PRO",
+        "learnMoreAboutPro": "DOWIEDZ SIĘ WIĘCEJ O PRO",
         "selectImages": "WYBIERZ OBRAZY (DO {maxImages})",
         "imageEditor": "EDYTOR OBRAZÓW",
         "selectMoreImages": "WYBIERZ WIĘCEJ OBRAZÓW",
         "maxImagesReached": "OSIĄGNIĘTO MAKSYMALNĄ LICZBĘ OBRAZÓW",
-        "imagesCount": "{current}/{max} obrazy",
-        "upgradeFor": "(Ulepsz do 100)",
+        "imagesCount": "{current}/{max} obrazów",
+        "upgradeFor": "(Zaktualizuj, aby uzyskać do 100)",
         "imageOptimization": "OPTYMALIZACJA OBRAZÓW"
     },
     "Navbar": {

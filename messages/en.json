@@ -11,6 +11,7 @@
         "loading": "LOADING APP...",
         "loadingDescription": "Please wait while we initialize image processing capabilities.",
         "transformTitle": "TRANSFORM YOUR PRODUCT PHOTOS",
+        "heroDescription": "Quickly optimize your product images for web, e-commerce, and social media with our browser-based tool.",
         "privacyFocused": "FREE & PRIVACY-FOCUSED",
         "privacyDescription": "Batch Shots processes all images directly in your browser. We don't store your photos or data on our servers.",
         "privacyPolicy": "Privacy Policy",
@@ -33,11 +34,14 @@
                 "description": "Process multiple images at once to save time and ensure consistent results."
             }
         },
+        "upgradeProTitle": "UNLOCK PRO FEATURES",
+        "upgradeProDescription": "Get more images, background removal, and advanced features with our one-time Pro upgrade.",
         "proMode": "PRO MODE ACTIVATED",
         "freePlan": "FREE PLAN",
         "proDescription": "Process up to {maxImages} images at once with all premium features unlocked.",
         "freeDescription": "Limited to {maxImages} images. Upgrade to PRO to process up to 100 images at once.",
         "upgradeToPro": "UPGRADE TO PRO",
+        "learnMoreAboutPro": "LEARN MORE ABOUT PRO",
         "selectImages": "SELECT IMAGES (UP TO {maxImages})",
         "imageEditor": "IMAGE EDITOR",
         "selectMoreImages": "SELECT MORE IMAGES",

@@ -4,46 +4,50 @@
     },
     "LocaleSwitcher": {
         "label": "Změnit jazyk",
-        "locale": "{locale, select, cs {🇨🇿 Čeština} en {🇺🇸 English} other {Unknown}}"
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Neznámý}}"
     },
     "Home": {
         "title": "Batch Shots: SEO OPTIMALIZÁTOR OBRÁZKŮ",
         "loading": "NAČÍTÁNÍ APLIKACE...",
-        "loadingDescription": "Počkejte prosím, zatímco inicializujeme možnosti zpracování obrázků.",
-        "transformTitle": "UPRAVUJTE FOTOGRAFIE PRODUKTŮ",
-        "privacyFocused": "ZDARMA & SOUSTŘEDĚNÉ NA SOUKROMÍ",
+        "loadingDescription": "Počkejte prosím, inicializujeme možnosti zpracování obrázků.",
+        "transformTitle": "PŘEMĚŇTE SVÉ PRODUKTOVÉ FOTOGRAFIE",
+        "heroDescription": "Rychle optimalizujte své produktové obrázky pro web, e-commerce a sociální média pomocí našeho nástroje přímo v prohlížeči.",
+        "privacyFocused": "ZDARMA A S DŮRAZEM NA SOUKROMÍ",
         "privacyDescription": "Batch Shots zpracovává všechny obrázky přímo ve vašem prohlížeči. Neukládáme vaše fotografie ani data na našich serverech.",
         "privacyPolicy": "Zásady ochrany osobních údajů",
         "termsOfUse": "Podmínky použití",
         "features": {
             "presets": {
-                "title": "PROFESIONÁLNÍ PŘEDNASTAVENÍ",
-                "description": "Aplikujte optimalizovaná přednastavení pro e-commerce, sociální média a webové zobrazení jedním kliknutím."
+                "title": "PROFESIONÁLNÍ PŘEDVOLBY",
+                "description": "Aplikujte optimalizované předvolby pro e-commerce, sociální média a webové zobrazení jedním kliknutím."
             },
             "aiPowered": {
-                "title": "SEO POHÁNĚNÉ AI",
-                "description": "Generujte SEO-optimalizované názvy souborů pomocí našich AI nástrojů pro lepší viditelnost vašich produktů."
+                "title": "SEO S PODPOROU AI",
+                "description": "Generujte názvy souborů přátelské k SEO pomocí našich AI nástrojů a zlepšete tak objevitelnost vašich produktů."
             },
             "advancedControls": {
                 "title": "POKROČILÉ OVLÁDÁNÍ",
-                "description": "Upravujte jas, kontrast, vyvážení bílé a další pro vylepšení vašich produktových fotografií."
+                "description": "Dolaďte jas, kontrast, vyvážení bílé a další parametry pro dokonalé produktové obrázky."
             },
             "batchProcessing": {
-                "title": "HROMADNÉ ZPRACOVÁNÍ",
-                "description": "Zpracovávejte více obrázků současně pro úsporu času a konzistentní výsledky."
+                "title": "DÁVKOVÉ ZPRACOVÁNÍ",
+                "description": "Zpracujte více obrázků najednou, ušetřete čas a zajistěte konzistentní výsledky."
             }
         },
+        "upgradeProTitle": "ODEMKNOUT PRO FUNKCE",
+        "upgradeProDescription": "Získejte více obrázků, odstranění pozadí a pokročilé funkce s naším jednorázovým Pro upgradem.",
         "proMode": "PRO REŽIM AKTIVOVÁN",
-        "freePlan": "ZDARMA PLÁN",
-        "proDescription": "Zpracovávejte až {maxImages} obrázků současně se všemi prémiovými funkcemi odemčenými.",
-        "freeDescription": "Omezeno na {maxImages} obrázků. Upgradujte na PRO pro zpracování až 100 obrázků současně.",
-        "upgradeToPro": "UPGRADUJTE NA PRO",
-        "selectImages": "VYBERTE OBRÁZKY (AŽ {maxImages})",
+        "freePlan": "PLÁN ZDARMA",
+        "proDescription": "Zpracujte až {maxImages} obrázků najednou se všemi prémiovými funkcemi odemčenými.",
+        "freeDescription": "Omezeno na {maxImages} obrázků. Upgradujte na PRO a zpracujte až 100 obrázků najednou.",
+        "upgradeToPro": "UPGRADOVAT NA PRO",
+        "learnMoreAboutPro": "ZJISTIT VÍCE O PRO",
+        "selectImages": "VYBRAT OBRÁZKY (AŽ {maxImages})",
         "imageEditor": "EDITOR OBRÁZKŮ",
-        "selectMoreImages": "VYBERTE VÍCE OBRÁZKŮ",
-        "maxImagesReached": "DOSAŽEN MAXIMÁLNÍ POČET OBRÁZKŮ",
+        "selectMoreImages": "VYBRAT DALŠÍ OBRÁZKY",
+        "maxImagesReached": "MAXIMÁLNÍ POČET OBRÁZKŮ DOSAŽEN",
         "imagesCount": "{current}/{max} obrázků",
-        "upgradeFor": "(Upgradujte na 100)",
+        "upgradeFor": "(Upgradujte pro až 100)",
         "imageOptimization": "OPTIMALIZACE OBRÁZKŮ"
     },
     "Navbar": {

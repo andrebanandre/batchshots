@@ -4,7 +4,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import Link from 'next/link';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import ImagePreview, { ImageFile } from '../components/ImagePreview';
@@ -662,9 +661,9 @@ export default function Home() {
   return (
     <main className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="brutalist-accent-card mb-8">
-        <h1 className="text-3xl font-bold text-center uppercase mb-6">
+        {images.length === 0 && <h1 className="text-3xl font-bold text-center uppercase mb-6">
           {t('title')}
-        </h1>
+        </h1>}
         
         {!isOpenCVReady ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
@@ -675,94 +674,103 @@ export default function Home() {
             </div>
           </div>
         ) : images.length === 0 ? (
-          <div className="flex justify-center mb-6">
-            <Card variant="accent" className="max-w-xl w-full">
+          <div className="space-y-6">
+            {/* Hero Section */}
+            <div className="brutalist-border p-6 bg-white text-center">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold uppercase text-center">{t('transformTitle')}</h2>
+                <h2 className="text-xl font-bold uppercase">{t('transformTitle')}</h2>
                 {isProUser && <ProBadge className="ml-2" />}
               </div>
-              <div className="flex flex-col space-y-6">
-                <div className="brutalist-border p-4 bg-white">
-                  <p className="font-medium mb-2">✨ <span className="font-bold">{t('privacyFocused')}</span></p>
-                  <p className="text-sm mb-2">
-                    {t('privacyDescription')}
-                  </p>
-                  <div className="flex justify-between text-xs">
-                    <Link href="/privacy" className="underline hover:text-blue-600">{t('privacyPolicy')}</Link>
-                    <Link href="/terms" className="underline hover:text-blue-600">{t('termsOfUse')}</Link>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">🎯 {t('features.presets.title')}</p>
-                    <p className="text-xs">{t('features.presets.description')}</p>
-                  </div>
-                  <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">🤖 {t('features.aiPowered.title')}</p>
-                    <p className="text-xs">{t('features.aiPowered.description')}</p>
-                  </div>
-                  <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">🎚️ {t('features.advancedControls.title')}</p>
-                    <p className="text-xs">{t('features.advancedControls.description')}</p>
-                  </div>
-                  <div className="brutalist-border p-3 bg-white">
-                    <p className="font-bold mb-1">⚡ {t('features.batchProcessing.title')}</p>
-                    <p className="text-xs">{t('features.batchProcessing.description')}</p>
-                  </div>
-                </div>
-
-                <div className="brutalist-border p-3 bg-white">
-                  <div className="flex items-center mb-2">
-                    <p className="font-bold">{isProUser ? t('proMode') : t('freePlan')}</p>
-                    {isProUser && <ProBadge className="ml-2" />}
-                  </div>
-                  <p className="text-xs mb-1">
-                    {isProUser 
-                      ? t('proDescription', { maxImages: MAX_IMAGES }) 
-                      : t('freeDescription', { maxImages: MAX_IMAGES })}
-                  </p>
-                  {!isProUser && (
-                    <div className="mt-2">
-                      <Button 
-                        variant="secondary" 
-                        size="sm"
-                        onClick={() => router.push('/pricing')}
-                      >
-                        {t('upgradeToPro')}
-                      </Button>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex justify-center">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    onChange={handleFileChange}
-                    className="hidden"
-                    id="fileInput"
-                  />
-                  <div className="w-full flex justify-center space-x-2">
-                    <label htmlFor="fileInput" className="flex-grow flex justify-center">
-                      <Button as="span" variant="accent" size="lg" disabled={isProcessing}>
-                        {t('selectImages', { maxImages: isProUser ? "100" : "5" })}
-                      </Button>
-                    </label>
-                    {!isProUser && (
-                      <Button 
-                        variant="secondary" 
-                        size="lg"
-                        onClick={() => router.push('/pricing')}
-                      >
-                        {t('upgradeToPro')}
-                      </Button>
-                    )}
-                  </div>
+              <p className="text-lg mb-6">{t('heroDescription')}</p>
+              
+              {/* Main CTA Button - Sticky on Mobile */}
+              <div className="sticky-cta-container">
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleFileChange}
+                  className="hidden"
+                  id="fileInput"
+                />
+                <div className="w-full flex justify-center space-x-2">
+                  <label htmlFor="fileInput" className="flex-grow flex justify-center">
+                    <Button as="span" variant="accent" size="lg" className="cta-button" disabled={isProcessing}>
+                      {t('selectImages', { maxImages: isProUser ? "100" : "5" })}
+                    </Button>
+                  </label>
                 </div>
               </div>
-            </Card>
+            </div>
+            
+            {/* Privacy Notice */}
+            <div className="brutalist-border p-4 bg-white">
+              <p className="font-medium mb-2">✨ <span className="font-bold">{t('privacyFocused')}</span></p>
+              <p className="text-sm">
+                {t('privacyDescription')}
+              </p>
+            </div>
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="brutalist-border p-3 bg-white">
+                <p className="font-bold mb-1">🎯 {t('features.presets.title')}</p>
+                <p className="text-xs">{t('features.presets.description')}</p>
+              </div>
+              <div className="brutalist-border p-3 bg-white">
+                <p className="font-bold mb-1">🤖 {t('features.aiPowered.title')}</p>
+                <p className="text-xs">{t('features.aiPowered.description')}</p>
+              </div>
+              <div className="brutalist-border p-3 bg-white">
+                <p className="font-bold mb-1">🎚️ {t('features.advancedControls.title')}</p>
+                <p className="text-xs">{t('features.advancedControls.description')}</p>
+              </div>
+              <div className="brutalist-border p-3 bg-white">
+                <p className="font-bold mb-1">⚡ {t('features.batchProcessing.title')}</p>
+                <p className="text-xs">{t('features.batchProcessing.description')}</p>
+              </div>
+            </div>
+
+            {/* Pro Upgrade Call-to-Action - Matching ProBadge colors */}
+            {!isProUser && (
+              <div className="brutalist-border p-6 bg-yellow-400 text-center">
+                <h3 className="text-xl font-bold uppercase mb-2">{t('upgradeProTitle')}</h3>
+                <p className="text-sm mb-4">{t('upgradeProDescription')}</p>
+                <Button 
+                  variant="default" 
+                  size="lg"
+                  className="bg-white text-black hover:bg-gray-100 font-bold border-2 border-black"
+                  onClick={() => router.push('/pricing')}
+                >
+                  {t('upgradeToPro')}
+                </Button>
+              </div>
+            )}
+
+            {/* Pro Upgrade Section */}
+            <div className="brutalist-border p-4 bg-white">
+              <div className="flex items-center mb-2">
+                <p className="font-bold">{isProUser ? t('proMode') : t('freePlan')}</p>
+                {isProUser && <ProBadge className="ml-2" />}
+              </div>
+              <p className="text-sm mb-3">
+                {isProUser 
+                  ? t('proDescription', { maxImages: MAX_IMAGES }) 
+                  : t('freeDescription', { maxImages: MAX_IMAGES })}
+              </p>
+              {!isProUser && (
+                <div className="text-center mt-2">
+                  <Button 
+                    variant="secondary" 
+                    size="md"
+                    onClick={() => router.push('/pricing')}
+                    className="w-full md:w-auto"
+                  >
+                    {t('learnMoreAboutPro')}
+                  </Button>
+                </div>
+              )}
+            </div>
           </div>
         ) : null}
 
@@ -911,6 +919,29 @@ export default function Home() {
         feature={tDialogs('proUpgrade.feature')}
         maxImagesCount={100}
       />
+      
+      {/* Sticky CTA Styles */}
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .sticky-cta-container {
+            position: sticky;
+            bottom: 1rem;
+            z-index: 10;
+            padding: 0.5rem 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            margin: 0 -1rem;
+            padding: 1rem;
+            border-top: 2px solid #000;
+          }
+          
+          .cta-button {
+            width: 100%;
+            font-size: 1.125rem;
+            padding: 0.75rem 1.5rem;
+          }
+        }
+      `}</style>
     </main>
   );
 }

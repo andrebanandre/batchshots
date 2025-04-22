@@ -4,42 +4,46 @@
     },
     "LocaleSwitcher": {
         "label": "Sprache ändern",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Unbekannt}}"
     },
     "Home": {
         "title": "Batch Shots: SEO BILDOPTIMIERER",
         "loading": "APP WIRD GELADEN...",
         "loadingDescription": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
-        "transformTitle": "VERWANDELN SIE IHRE PRODUKTFOTOS",
+        "transformTitle": "VERWANDLE DEINE PRODUKTFOTOS",
+        "heroDescription": "Optimiere schnell deine Produktbilder für Web, E-Commerce und Social Media mit unserem browserbasierten Tool.",
         "privacyFocused": "KOSTENLOS & DATENSCHUTZORIENTIERT",
-        "privacyDescription": "Batch Shots verarbeitet alle Bilder direkt in Ihrem Browser. Wir speichern Ihre Fotos oder Daten nicht auf unseren Servern.",
+        "privacyDescription": "Batch Shots verarbeitet alle Bilder direkt in deinem Browser. Wir speichern deine Fotos oder Daten nicht auf unseren Servern.",
         "privacyPolicy": "Datenschutzrichtlinie",
         "termsOfUse": "Nutzungsbedingungen",
         "features": {
             "presets": {
                 "title": "PROFESSIONELLE VOREINSTELLUNGEN",
-                "description": "Wenden Sie optimierte Voreinstellungen für E-Commerce, soziale Medien und Webanzeigen mit einem Klick an."
+                "description": "Wende optimierte Voreinstellungen für E-Commerce, Social Media und Webanzeige mit einem Klick an."
             },
             "aiPowered": {
-                "title": "KI-GESTÜTZTE SEO",
-                "description": "Generieren Sie SEO-freundliche Dateinamen mit unseren KI-Tools, um die Auffindbarkeit Ihrer Produkte zu verbessern."
+                "title": "KI-GESTÜTZTES SEO",
+                "description": "Generiere SEO-freundliche Dateinamen mit unseren KI-Tools, um die Auffindbarkeit deiner Produkte zu verbessern."
             },
             "advancedControls": {
                 "title": "ERWEITERTE STEUERUNG",
-                "description": "Optimieren Sie Helligkeit, Kontrast, Weißabgleich und mehr, um Ihre Produktbilder zu perfektionieren."
+                "description": "Feinabstimmung von Helligkeit, Kontrast, Weißabgleich und mehr, um deine Produktbilder zu perfektionieren."
             },
             "batchProcessing": {
-                "title": "STAPELVERARBEITUNG",
-                "description": "Verarbeiten Sie mehrere Bilder gleichzeitig, um Zeit zu sparen und konsistente Ergebnisse zu gewährleisten."
+                "title": "BATCH-VERARBEITUNG",
+                "description": "Verarbeite mehrere Bilder gleichzeitig, um Zeit zu sparen und konsistente Ergebnisse zu erzielen."
             }
         },
-        "proMode": "PRO-MODUS AKTIVIERT",
+        "upgradeProTitle": "PRO FUNKTIONEN FREISCHALTEN",
+        "upgradeProDescription": "Erhalte mehr Bilder, Hintergrundentfernung und erweiterte Funktionen mit unserem einmaligen Pro-Upgrade.",
+        "proMode": "PRO MODUS AKTIVIERT",
         "freePlan": "KOSTENLOSER PLAN",
-        "proDescription": "Verarbeiten Sie bis zu {maxImages} Bilder gleichzeitig mit allen freigeschalteten Premium-Funktionen.",
-        "freeDescription": "Begrenzt auf {maxImages} Bilder. Upgraden Sie auf PRO, um bis zu 100 Bilder gleichzeitig zu verarbeiten.",
-        "upgradeToPro": "AUF PRO UPGRADEN",
+        "proDescription": "Verarbeite bis zu {maxImages} Bilder auf einmal mit allen freigeschalteten Premium-Funktionen.",
+        "freeDescription": "Beschränkt auf {maxImages} Bilder. Upgrade auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten.",
+        "upgradeToPro": "UPGRADE AUF PRO",
+        "learnMoreAboutPro": "MEHR ÜBER PRO ERFAHREN",
         "selectImages": "BILDER AUSWÄHLEN (BIS ZU {maxImages})",
-        "imageEditor": "BILDEDITOR",
+        "imageEditor": "BILDBEARBEITUNG",
         "selectMoreImages": "WEITERE BILDER AUSWÄHLEN",
         "maxImagesReached": "MAXIMALE BILDANZAHL ERREICHT",
         "imagesCount": "{current}/{max} Bilder",
@@ -339,7 +343,7 @@
                         "features": [
                             "Entfernen Sie Hintergründe von bis zu 100 Bildern gleichzeitig",
                             "Erweiterte Bildanpassungen und Voreinstellungen",
-                            "SEO-Namensgenerierung für Produktbilder",
+                            "SEO-NAMENSGENERIERUNG FÜR PRODUKTBIlder",
                             "Stapelverarbeitung für alle Funktionen",
                             "Einmalzahlung, lebenslanger Zugang"
                         ],

@@ -4,47 +4,51 @@
     },
     "LocaleSwitcher": {
         "label": "Taal wijzigen",
-        "locale": "{locale, select, nl {🇳🇱 Nederlands} en {🇺🇸 English} other {Unknown}}"
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Onbekend}}"
     },
     "Home": {
-        "title": "Batch Shots: SEO BEELDOPTIMALISATIE",
-        "loading": "APP WORDT GELADEN...",
-        "loadingDescription": "Even geduld terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
+        "title": "Batch Shots: SEO BEELD OPTIMALISATOR",
+        "loading": "APP LADEN...",
+        "loadingDescription": "Wacht alstublieft terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
         "transformTitle": "TRANSFORMEER UW PRODUCTFOTO'S",
-        "privacyFocused": "GRATIS & PRIVACY-GERICHT",
-        "privacyDescription": "Batch Shots verwerkt alle afbeeldingen direct in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
+        "heroDescription": "Optimaliseer snel uw productafbeeldingen voor web, e-commerce en sociale media met onze browsergebaseerde tool.",
+        "privacyFocused": "GRATIS & PRIVACYGERICHT",
+        "privacyDescription": "Batch Shots verwerkt alle afbeeldingen rechtstreeks in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
         "privacyPolicy": "Privacybeleid",
         "termsOfUse": "Gebruiksvoorwaarden",
         "features": {
             "presets": {
-                "title": "PROFESSIONELE VOORINSTELLINGEN",
-                "description": "Pas geoptimaliseerde voorinstellingen toe voor e-commerce, sociale media en webweergave met één klik."
+                "title": "PROFESSIONELE PRESETS",
+                "description": "Pas geoptimaliseerde presets toe voor e-commerce, sociale media en webweergave met één klik."
             },
             "aiPowered": {
-                "title": "AI-GESTUURDE SEO",
+                "title": "AI-AANGEDREVEN SEO",
                 "description": "Genereer SEO-vriendelijke bestandsnamen met onze AI-tools om de vindbaarheid van uw producten te verbeteren."
             },
             "advancedControls": {
-                "title": "GEAVANCEERDE BEDIENING",
-                "description": "Verfijn helderheid, contrast, witbalans en meer om uw productfoto's te perfectioneren."
+                "title": "GEAVANCEERDE CONTROLES",
+                "description": "Verfijn helderheid, contrast, witbalans en meer om uw productafbeeldingen te perfectioneren."
             },
             "batchProcessing": {
                 "title": "BATCHVERWERKING",
                 "description": "Verwerk meerdere afbeeldingen tegelijk om tijd te besparen en consistente resultaten te garanderen."
             }
         },
-        "proMode": "PRO-MODUS GEACTIVEERD",
+        "upgradeProTitle": "PRO FUNCTIES ONTGRENDELEN",
+        "upgradeProDescription": "Krijg meer afbeeldingen, achtergrondverwijdering en geavanceerde functies met onze eenmalige Pro-upgrade.",
+        "proMode": "PRO MODUS GEACTIVEERD",
         "freePlan": "GRATIS PLAN",
         "proDescription": "Verwerk tot {maxImages} afbeeldingen tegelijk met alle premium functies ontgrendeld.",
         "freeDescription": "Beperkt tot {maxImages} afbeeldingen. Upgrade naar PRO om tot 100 afbeeldingen tegelijk te verwerken.",
-        "upgradeToPro": "UPGRADE NAAR PRO",
+        "upgradeToPro": "UPGRADEN NAAR PRO",
+        "learnMoreAboutPro": "MEER LEREN OVER PRO",
         "selectImages": "SELECTEER AFBEELDINGEN (TOT {maxImages})",
-        "imageEditor": "AFBEELDINGSEDITOR",
-        "selectMoreImages": "MEER AFBEELDINGEN SELECTEREN",
-        "maxImagesReached": "MAXIMUM AFBEELDINGEN BEREIKT",
+        "imageEditor": "BEELDBEWERKER",
+        "selectMoreImages": "SELECTEER MEER AFBEELDINGEN",
+        "maxImagesReached": "MAXIMAAL AANTAL AFBEELDINGEN BEREIKT",
         "imagesCount": "{current}/{max} afbeeldingen",
-        "upgradeFor": "(Upgrade voor tot 100)",
-        "imageOptimization": "AFBEELDINGSOPTIMALISATIE"
+        "upgradeFor": "(Upgrade voor maximaal 100)",
+        "imageOptimization": "BEELDOPTIMALISATIE"
     },
     "Navbar": {
         "imageOptimizer": "Afbeeldingen optimaliseren",
