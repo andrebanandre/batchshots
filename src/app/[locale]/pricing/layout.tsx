@@ -1,9 +1,9 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import React from 'react';
 
 // Generate metadata for the Pricing page
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'PricingPage' });
 
@@ -29,6 +29,17 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 // Basic layout component to wrap the page
-export default function PricingLayout({ children }: { children: React.ReactNode }) {
+export default async function PricingLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  // Resolve the locale from the params promise
+  const { locale } = await params;
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   return <>{children}</>;
 } 

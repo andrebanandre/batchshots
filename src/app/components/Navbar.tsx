@@ -34,7 +34,9 @@ export default function Navbar() {
           <Link href="/" className="flex items-center" aria-label="Go to homepage">
             <Logo />
           </Link>
+          <div className="hidden md:block">
           <LanguageSelector />
+          </div>
         </div>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">

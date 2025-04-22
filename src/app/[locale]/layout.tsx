@@ -83,7 +83,11 @@ export default async function RootLayout({
   return (
     <ClerkProvider localization={clerkLocalization}>
       <Providers 
-        intlProps={{ locale: locale, messages: messages }}
+        intlProps={{
+           locale: locale, 
+           messages: messages,
+           timeZone: 'America/New_York'
+        }}
       >
         <html lang={locale}>
           <head>
