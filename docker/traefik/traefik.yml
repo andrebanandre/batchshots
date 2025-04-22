@@ -25,6 +25,60 @@ entryPoints:
     http:
       tls:
         certResolver: letsEncrypt
+  # Mail server entrypoints
+  smtp:
+    address: :25
+    proxyProtocol:
+      trustedIPs:
+        - 127.0.0.1/32
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+        
+  submission:
+    address: :587
+    proxyProtocol:
+      trustedIPs:
+        - 127.0.0.1/32
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+        
+  submissions:
+    address: :465
+    proxyProtocol:
+      trustedIPs:
+        - 127.0.0.1/32
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+        
+  imap:
+    address: :143
+    proxyProtocol:
+      trustedIPs:
+        - 127.0.0.1/32
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+        
+  imaps:
+    address: :993
+    proxyProtocol:
+      trustedIPs:
+        - 127.0.0.1/32
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
+        
+  sieve:
+    address: :4190
+    proxyProtocol:
+      trustedIPs:
+        - 127.0.0.1/32
+        - 10.0.0.0/8
+        - 172.16.0.0/12
+        - 192.168.0.0/16
 
 # Docker configuration backend
 providers:
@@ -32,6 +86,9 @@ providers:
     exposedByDefault: false
     watch: true
     network: batchshots
+  file:
+    directory: /etc/traefik
+    watch: true
 ping: {}
 # API and dashboard configuration
 api:
