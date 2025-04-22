@@ -1,18 +1,18 @@
 {
     "Manifest": {
-        "name": "PICME"
+        "name": "Batch Shots"
     },
     "LocaleSwitcher": {
         "label": "Taal wijzigen",
         "locale": "{locale, select, nl {🇳🇱 Nederlands} en {🇺🇸 English} other {Unknown}}"
     },
     "Home": {
-        "title": "PICME: SEO BEELDOPTIMALISATIE",
+        "title": "Batch Shots: SEO BEELDOPTIMALISATIE",
         "loading": "APP WORDT GELADEN...",
         "loadingDescription": "Even geduld terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
         "transformTitle": "TRANSFORMEER UW PRODUCTFOTO'S",
         "privacyFocused": "GRATIS & PRIVACY-GERICHT",
-        "privacyDescription": "PICME verwerkt alle afbeeldingen direct in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
+        "privacyDescription": "Batch Shots verwerkt alle afbeeldingen direct in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
         "privacyPolicy": "Privacybeleid",
         "termsOfUse": "Gebruiksvoorwaarden",
         "features": {
@@ -54,19 +54,19 @@
         "login": "INLOGGEN"
     },
     "Footer": {
-        "about": "Professionele beeldtools voor productfotografen, marketeers en e-commerce bedrijven. Vereenvoudig uw workflow met onze brutalistische tools.",
+        "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",
         "quickLinks": "SNELLE LINKS",
         "stayUpdated": "BLIJF OP DE HOOGTE",
         "subscribeText": "Abonneer u op onze nieuwsbrief voor updates, tips en speciale aanbiedingen.",
         "emailPlaceholder": "Uw e-mail",
         "subscribe": "ABONNEER",
-        "copyright": "© {year} PICME. Alle rechten voorbehouden.",
-        "madeWith": "Gemaakt met ♥ door het PICME-team"
+        "copyright": "© {year} Batch Shots. Alle rechten voorbehouden.",
+        "madeWith": "Gemaakt met ♥ door het Batch Shots-team"
     },
     "Layout": {
-        "title": "PicMe - SEO-vriendelijke beeldoptimalisatie",
-        "description": "Optimaliseer uw productafbeeldingen voor SEO met eenvoudige aanpassingen van witbalans, contrast en grootte.",
-        "keywords": "beeldoptimalisatie, SEO-afbeeldingen, productfoto's, witbalans, batchverwerking van afbeeldingen"
+        "title": "Batch Afbeeldingseditor & SEO Optimalisatie | Batch Shots",
+        "description": "Bewerk, wijzig het formaat, watermerk en optimaliseer afbeeldingen moeiteloos in bulk voor SEO. AI-aangedreven functies voor productfoto's, achtergrondverwijdering en SEO-naamgeneratie.",
+        "keywords": "afbeeldingseditor, batch afbeeldingen verwerken, seo afbeelding optimalisatie, watermerk foto's, achtergrond verwijderen, productfoto's, ai beeldbewerking, batchshots"
     },
     "Components": {
         "ImageProcessingControls": {
@@ -376,6 +376,11 @@
                     "upgrade": "UPGRADE NAAR PRO",
                     "continue": "DOORGAAN MET GRATIS MODUS"
                 }
+            },
+            "metadata": {
+                "title": "AI Achtergrondverwijderaar | Batch Shots",
+                "description": "Verwijder automatisch achtergronden uit uw afbeeldingen met de AI-tool van Batch Shots. Perfect voor productfoto's, portretten en creatieve projecten. Probeer het gratis!",
+                "keywords": "achtergrondverwijderaar, achtergrond verwijderen, ai achtergrondverwijdering, transparante achtergrond, productfotografie, batch beeldbewerking"
             }
         },
         "ImagePreview": {
@@ -540,11 +545,12 @@
     "PrivacyPolicy": {
         "title": "PRIVACYBELEID",
         "section1Title": "1. INTRODUCTIE",
-        "section1P1": "Welkom bij PICME (“wij”, “ons”, “onze”). Wij zetten ons in om uw privacy te beschermen en de veiligheid van uw persoonlijke gegevens te waarborgen.",
-        "section1P2": "Dit privacybeleid legt uit hoe wij omgaan met uw gegevens wanneer u onze browsergebaseerde beeldoptimalisatietool gebruikt.",
-        "section2Title": "2. GEGEVENSVERZAMELING",
-        "section2P1Bold": "Wij verzamelen of bewaren uw afbeeldingen niet.",
-        "section2P2": "PICME werkt volledig binnen uw browser. Wanneer u afbeeldingen uploadt om te optimaliseren:",
+        "section1P1": "Welkom bij Batch Shots (“wij”, “ons”, “onze”). Wij zetten ons in om uw privacy te beschermen en de veiligheid van uw persoonlijke gegevens te waarborgen.",
+        "section1P2": "Dit privacybeleid legt uit hoe wij uw gegevens verwerken wanneer u onze browsergebaseerde tool voor beeldoptimalisatie gebruikt.",
+        "section2Title": "2. INFORMATIE DIE WE NIET VERZAMELEN",
+        "section2P1Bold": "We verzamelen of slaan uw afbeeldingen niet op.",
+        "section2P1": "Ons kernprincipe is privacy by design.",
+        "section2P2": "Batch Shots werkt volledig binnen uw browser. Wanneer u afbeeldingen uploadt om te optimaliseren:",
         "section2Li1": "Uw afbeeldingen worden lokaal in uw browser verwerkt met behulp van client-side JavaScript.",
         "section2Li2": "Uw afbeeldingen verlaten nooit uw apparaat en worden niet naar onze servers verzonden.",
         "section2Li3": "Wij slaan geen kopieën op van uw originele of verwerkte afbeeldingen.",
@@ -567,45 +573,60 @@
         "section6Title": "6. WIJZIGINGEN IN DIT BELEID",
         "section6P1": "Wij kunnen dit privacybeleid van tijd tot tijd bijwerken. Wij zullen u op de hoogte stellen van eventuele wijzigingen door het nieuwe privacybeleid op deze pagina te publiceren en de datum „Laatst bijgewerkt” bij te werken.",
         "section7Title": "7. CONTACTEER ONS",
-        "section7P1": "Als u vragen heeft over dit privacybeleid, neem dan contact met ons op via privacy@picme-app.com.",
+        "section7P1": "Als u vragen heeft over dit privacybeleid, neem dan contact met ons op via privacy@batchshots.com.",
         "returnButton": "TERUG NAAR HOME"
     },
     "TermsOfUse": {
         "title": "GEBRUIKSVOORWAARDEN",
         "lastUpdated": "Laatst bijgewerkt: 31 maart 2024",
         "section1Title": "1. ACCEPTATIE VAN DE VOORWAARDEN",
-        "section1P1": "Door PICME te openen en te gebruiken, gaat u akkoord gebonden te zijn aan deze Gebruiksvoorwaarden. Als u het niet eens bent met enig deel van deze voorwaarden, mag u onze service niet gebruiken.",
-        "section2Title": "2. SERVICEBESCHRIJVING",
-        "section2P1": "PICME is een browsergebaseerde tool voor beeldoptimalisatie waarmee gebruikers:",
+        "section1P1": "Door Batch Shots te openen en te gebruiken, gaat u akkoord gebonden te zijn aan deze Gebruiksvoorwaarden. Als u het niet eens bent met enig deel van deze voorwaarden, mag u onze service niet gebruiken.",
+        "section2Title": "2. BESCHRIJVING VAN DE SERVICE",
+        "section2P1": "Batch Shots is een browsergebaseerde tool voor beeldoptimalisatie waarmee gebruikers:",
         "section2Li1": "Beeldeigenschappen zoals helderheid, contrast en witbalans aanpassen",
         "section2Li2": "Afbeeldingen vergroten/verkleinen en optimaliseren voor webgebruik",
         "section2Li3": "SEO-vriendelijke bestandsnamen genereren",
         "section2Li4": "Meerdere afbeeldingen tegelijk verwerken",
         "section2P2": "Alle beeldverwerking vindt lokaal plaats in uw browser; er worden geen afbeeldingen geüpload naar of opgeslagen op onze servers.",
         "section3Title": "3. VERANTWOORDELIJKHEDEN VAN DE GEBRUIKER",
-        "section3P1": "Gebruikers van PICME zijn verantwoordelijk voor:",
+        "section3P1": "Gebruikers van Batch Shots zijn verantwoordelijk voor:",
         "section3Li1": "Ervoor zorgen dat ze de nodige rechten en toestemmingen hebben om de afbeeldingen die ze verwerken te wijzigen",
         "section3Li2": "Het gebruik van de service in overeenstemming met toepasselijke wet- en regelgeving",
         "section3Li3": "De service niet gebruiken om ongepaste, beledigende of illegale inhoud te verwerken, maken of verspreiden",
         "section3Li4": "Niet proberen de service te reverse-engineeren, wijzigen of hacken",
         "section4Title": "4. INTELLECTUEEL EIGENDOM",
-        "section4P1": "Alle originele inhoud, functies en functionaliteit van PICME zijn eigendom van ons en worden beschermd door internationale auteursrecht-, handelsmerk- en andere intellectuele eigendomswetten.",
+        "section4P1": "Alle originele inhoud, functies en functionaliteit van Batch Shots zijn eigendom van ons en worden beschermd door internationale auteursrecht-, handelsmerk- en andere intellectuele eigendomswetten.",
         "section4P2": "U behoudt alle rechten op uw originele afbeeldingen. Wij claimen geen eigendom over de afbeeldingen die u verwerkt met onze service.",
         "section5Title": "5. BEPERKINGEN EN DISCLAIMERS",
-        "section5Li1": "PICME wordt geleverd „zoals het is” en „zoals beschikbaar” zonder enige vorm van garantie.",
+        "section5Li1": "Batch Shots wordt geleverd „zoals het is” en „zoals beschikbaar” zonder enige vorm van garantie.",
         "section5Li2": "Wij garanderen niet dat de service ononderbroken, veilig of foutloos zal zijn.",
-        "section5Li3": "Wij zijn niet verantwoordelijk voor enig gegevensverlies dat tijdens de verwerking kan optreden.",
+        "section5Li3": "Wij zijn niet verantwoordelijk voor enig verlies van gegevens dat tijdens de verwerking kan optreden.",
         "section5Li4": "Wij geven geen garanties met betrekking tot de nauwkeurigheid of effectiviteit van de functie voor het genereren van SEO-namen.",
         "section6Title": "6. BEPERKING VAN AANSPRAKELIJKHEID",
-        "section6P1": "Voor zover maximaal toegestaan door de wet, zijn wij niet aansprakelijk voor enige indirecte, incidentele, speciale, gevolg- of punitieve schade die voortvloeit uit uw gebruik van of onvermogen om de service te gebruiken.",
-        "section7Title": "7. SERVICEWIJZIGINGEN",
-        "section7P1": "Wij behouden ons het recht voor om op elk moment zonder voorafgaande kennisgeving of aansprakelijkheid enig deel van PICME te wijzigen, op te schorten of stop te zetten.",
+        "section6P1": "Voor zover maximaal toegestaan door de wet, zijn wij niet aansprakelijk voor enige indirecte, incidentele, speciale, gevolg- of punitieve schade die voortvloeit uit uw gebruik van of onvermogen tot gebruik van de service.",
+        "section7Title": "7. WIJZIGINGEN AAN DE SERVICE",
+        "section7P1": "Wij behouden ons het recht voor om op elk moment zonder voorafgaande kennisgeving of aansprakelijkheid enig deel van Batch Shots te wijzigen, op te schorten of stop te zetten.",
         "section8Title": "8. TOEPASSELIJK RECHT",
-        "section8P1": "Deze Gebruiksvoorwaarden worden beheerst door en geïnterpreteerd in overeenstemming met de wetten van de jurisdictie waarin wij actief zijn, zonder rekening te houden met conflicterende wettelijke bepalingen.",
+        "section8P1": "Deze Gebruiksvoorwaarden worden beheerst door en geïnterpreteerd in overeenstemming met de wetten van de jurisdictie waarin wij opereren, zonder rekening te houden met de conflictenrechtelijke bepalingen.",
         "section9Title": "9. WIJZIGINGEN IN DE VOORWAARDEN",
         "section9P1": "Wij kunnen deze Gebruiksvoorwaarden van tijd tot tijd bijwerken. Wij zullen u op de hoogte stellen van eventuele wijzigingen door de nieuwe Voorwaarden op deze pagina te publiceren en de datum „Laatst bijgewerkt” bij te werken.",
         "section10Title": "10. CONTACTEER ONS",
-        "section10P1": "Als u vragen heeft over deze Gebruiksvoorwaarden, neem dan contact met ons op via terms@picme-app.com.",
+        "section10P1": "Als u vragen heeft over deze Gebruiksvoorwaarden, neem dan contact met ons op via terms@batchshots.com.",
         "returnButton": "TERUG NAAR HOME"
+    },
+    "PrivacyPage": {
+        "title": "Privacybeleid | Batch Shots",
+        "description": "Begrijp hoe Batch Shots uw gegevens behandelt. Ons privacybeleid beschrijft de praktijken voor gegevensverzameling, -gebruik en -bescherming.",
+        "keywords": "privacybeleid, gegevensbescherming, gebruikersgegevens, AVG, batchshots"
+    },
+    "TermsPage": {
+        "title": "Servicevoorwaarden | Batch Shots",
+        "description": "Bekijk de algemene voorwaarden voor het gebruik van Batch Shots. Leer meer over gebruikersverantwoordelijkheden, servicebeperkingen en intellectueel eigendom.",
+        "keywords": "servicevoorwaarden, algemene voorwaarden, gebruikersovereenkomst, batchshots"
+    },
+    "PricingPage": {
+        "title": "Prijsplannen | Batch Shots Pro",
+        "description": "Ontdek de prijsplannen van Batch Shots. Kies het beste plan voor uw beeldbewerkingsbehoeften, van het gratis niveau tot Pro-functies zoals achtergrondverwijdering en verhoogde limieten.",
+        "keywords": "prijzen, batch shots pro, abonnementen, kosten beeldbewerking, prijzen achtergrondverwijdering"
     }
 } 

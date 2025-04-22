@@ -1,18 +1,18 @@
 {
     "Manifest": {
-        "name": "PICME"
+        "name": "Batch Shots"
     },
     "LocaleSwitcher": {
         "label": "Změnit jazyk",
         "locale": "{locale, select, cs {🇨🇿 Čeština} en {🇺🇸 English} other {Unknown}}"
     },
     "Home": {
-        "title": "PICME: SEO OPTIMALIZÁTOR OBRÁZKŮ",
+        "title": "Batch Shots: SEO OPTIMALIZÁTOR OBRÁZKŮ",
         "loading": "NAČÍTÁNÍ APLIKACE...",
         "loadingDescription": "Počkejte prosím, zatímco inicializujeme možnosti zpracování obrázků.",
         "transformTitle": "UPRAVUJTE FOTOGRAFIE PRODUKTŮ",
         "privacyFocused": "ZDARMA & SOUSTŘEDĚNÉ NA SOUKROMÍ",
-        "privacyDescription": "PICME zpracovává všechny obrázky přímo ve vašem prohlížeči. Neukládáme vaše fotografie ani data na našich serverech.",
+        "privacyDescription": "Batch Shots zpracovává všechny obrázky přímo ve vašem prohlížeči. Neukládáme vaše fotografie ani data na našich serverech.",
         "privacyPolicy": "Zásady ochrany osobních údajů",
         "termsOfUse": "Podmínky použití",
         "features": {
@@ -54,19 +54,19 @@
         "login": "PŘIHLÁSIT SE"
     },
     "Footer": {
-        "about": "Profesionální nástroje pro obrázky pro produktové fotografy, markeťáky a e-commerce firmy. Zjednodušte svůj pracovní postup s našimi brutalistickými nástroji.",
+        "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
         "quickLinks": "RYCHLÉ ODKAZY",
         "stayUpdated": "ZŮSTAŇTE INFORMOVÁNI",
         "subscribeText": "Přihlaste se k odběru našeho newsletteru pro aktualizace, tipy a speciální nabídky.",
         "emailPlaceholder": "Váš email",
         "subscribe": "PŘIHLÁSIT SE",
-        "copyright": "© {year} PICME. Všechna práva vyhrazena.",
-        "madeWith": "Vytvořeno s ♥ týmem PICME"
+        "copyright": "© {year} Batch Shots. Všechna práva vyhrazena.",
+        "madeWith": "Vytvořeno s ♥ týmem Batch Shots"
     },
     "Layout": {
-        "title": "PicMe - SEO optimalizátor obrázků",
-        "description": "Optimalizujte své produktové obrázky pro SEO pomocí jednoduchých úprav vyvážení bílé, kontrastu a velikosti.",
-        "keywords": "optimalizace obrázků, SEO obrázky, produktové fotografie, vyvážení bílé, hromadné zpracování obrázků"
+        "title": "Hromadný Editor Obrázků & SEO Optimalizátor | Batch Shots",
+        "description": "Snadno upravujte, měňte velikost, přidávejte vodoznaky a optimalizujte obrázky hromadně pro SEO. Funkce s podporou AI pro produktové fotografie, odstranění pozadí a generování SEO názvů.",
+        "keywords": "editor obrázků, hromadné zpracování obrázků, seo optimalizace obrázků, vodoznak na fotkách, odstranění pozadí, produktové fotografie, ai úprava fotek, batchshots"
     },
     "Components": {
         "ImageProcessingControls": {
@@ -364,16 +364,16 @@
                 }
             },
             "proDialog": {
-                "title": "UPGRADUJTE NA PRO",
+                "title": "PŘEJÍT NA PRO",
                 "featureTitle": "PRO FUNKCE: Hromadné odstranění pozadí",
-                "description": "Uživatelé zdarma mohou zpracovávat pouze 1 obrázek současně. Upgradujte na PRO pro zpracování až 100 obrázků hromadně, ušetřete hodiny práce!",
+                "description": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Přejděte na PRO a zpracujte až 100 obrázků hromadně, ušetříte hodiny práce!",
                 "pricing": {
                     "title": "JEDNORÁZOVÁ PLATBA",
                     "price": "19,99 €",
-                    "note": "Bez předplatného, doživotní přístup"
+                    "note": "Žádné předplatné, doživotní přístup"
                 },
                 "actions": {
-                    "upgrade": "UPGRADUJTE NA PRO",
+                    "upgrade": "PŘEJÍT NA PRO",
                     "continue": "POKRAČUJTE VE ZDARMA REŽIMU"
                 }
             }
@@ -540,11 +540,12 @@
     "PrivacyPolicy": {
         "title": "ZÁSADY OCHRANY OSOBNÍCH ÚDAJŮ",
         "section1Title": "1. ÚVOD",
-        "section1P1": "Vítejte v PICME („my“, „naše“, „nás“). Zavazujeme se chránit vaše soukromí a zajistit bezpečnost vašich osobních údajů.",
+        "section1P1": "Vítejte v Batch Shots („my“, „naše“, „nás“). Zavazujeme se chránit vaše soukromí a zajistit bezpečnost vašich osobních údajů.",
         "section1P2": "Tyto Zásady ochrany osobních údajů vysvětlují, jak nakládáme s vašimi údaji, když používáte náš nástroj pro optimalizaci obrázků v prohlížeči.",
-        "section2Title": "2. SBĚR DAT",
-        "section2P1Bold": "Neshromažďujeme ani neukládáme vaše obrázky.",
-        "section2P2": "PICME funguje zcela ve vašem prohlížeči. Když nahrajete obrázky k optimalizaci:",
+        "section2Title": "2. INFORMACE, KTERÉ NESBÍRÁME",
+        "section2P1Bold": "Vaše obrázky nesbíráme ani neukládáme.",
+        "section2P1": "Naším základním principem je ochrana soukromí již od návrhu.",
+        "section2P2": "Batch Shots funguje zcela ve vašem prohlížeči. Když nahráváte obrázky k optimalizaci:",
         "section2Li1": "Vaše obrázky jsou zpracovávány lokálně ve vašem prohlížeči pomocí JavaScriptu na straně klienta.",
         "section2Li2": "Vaše obrázky nikdy neopustí vaše zařízení a nejsou přenášeny na naše servery.",
         "section2Li3": "Neukládáme kopie vašich původních ani zpracovaných obrázků.",
@@ -567,45 +568,67 @@
         "section6Title": "6. ZMĚNY TĚCHTO ZÁSAD",
         "section6P1": "Tyto Zásady ochrany osobních údajů můžeme čas od času aktualizovat. O jakýchkoli změnách vás budeme informovat zveřejněním nových Zásad ochrany osobních údajů na této stránce a aktualizací data „Poslední aktualizace“.",
         "section7Title": "7. KONTAKTUJTE NÁS",
-        "section7P1": "Máte-li jakékoli dotazy týkající se těchto Zásad ochrany osobních údajů, kontaktujte nás na adrese privacy@picme-app.com.",
+        "section7P1": "Máte-li jakékoli dotazy týkající se těchto Zásad ochrany osobních údajů, kontaktujte nás na adrese privacy@batchshots.com.",
         "returnButton": "ZPĚT NA DOMOVSKOU STRÁNKU"
     },
     "TermsOfUse": {
         "title": "PODMÍNKY POUŽITÍ",
         "lastUpdated": "Poslední aktualizace: 31. března 2024",
         "section1Title": "1. PŘIJETÍ PODMÍNEK",
-        "section1P1": "Přístupem a používáním PICME souhlasíte s tím, že budete vázáni těmito Podmínkami použití. Pokud nesouhlasíte s jakoukoli částí těchto podmínek, nesmíte naši službu používat.",
+        "section1P1": "Přístupem a používáním Batch Shots souhlasíte s tím, že budete vázáni těmito Podmínkami použití. Pokud nesouhlasíte s jakoukoli částí těchto podmínek, nesmíte naši službu používat.",
         "section2Title": "2. POPIS SLUŽBY",
-        "section2P1": "PICME je nástroj pro optimalizaci obrázků založený na prohlížeči, který uživatelům umožňuje:",
+        "section2P1": "Batch Shots je nástroj pro optimalizaci obrázků založený na prohlížeči, který uživatelům umožňuje:",
         "section2Li1": "Upravovat vlastnosti obrázku, jako je jas, kontrast a vyvážení bílé",
         "section2Li2": "Měnit velikost a optimalizovat obrázky pro použití na webu",
         "section2Li3": "Generovat názvy souborů přátelské pro SEO",
         "section2Li4": "Zpracovávat více obrázků současně",
         "section2P2": "Veškeré zpracování obrázků probíhá lokálně ve vašem prohlížeči; žádné obrázky nejsou nahrávány ani ukládány na našich serverech.",
         "section3Title": "3. ODPOVĚDNOSTI UŽIVATELE",
-        "section3P1": "Uživatelé PICME jsou zodpovědní za:",
+        "section3P1": "Uživatelé Batch Shots jsou zodpovědní za:",
         "section3Li1": "Zajištění, že mají potřebná práva a oprávnění k úpravě obrázků, které zpracovávají",
         "section3Li2": "Používání služby v souladu s platnými zákony a předpisy",
         "section3Li3": "Nepoužívání služby ke zpracování, vytváření nebo distribuci nevhodného, urážlivého nebo nezákonného obsahu",
         "section3Li4": "Nepokoušení se o zpětné inženýrství, úpravu nebo hacknutí služby",
         "section4Title": "4. DUŠEVNÍ VLASTNICTVÍ",
-        "section4P1": "Veškerý původní obsah, funkce a funkčnost PICME jsou naším vlastnictvím a jsou chráněny mezinárodními zákony o autorských právech, ochranných známkách a dalším duševním vlastnictví.",
+        "section4P1": "Veškerý původní obsah, funkce a funkčnost Batch Shots jsou naším vlastnictvím a jsou chráněny mezinárodními zákony o autorských právech, ochranných známkách a dalším duševním vlastnictví.",
         "section4P2": "Zachováváte si všechna práva ke svým původním obrázkům. Nevznášíme žádné nároky na vlastnictví obrázků, které zpracováváte pomocí naší služby.",
         "section5Title": "5. OMEZENÍ A ODMÍTNUTÍ ODPOVĚDNOSTI",
-        "section5Li1": "PICME je poskytován „tak, jak je“ a „jak je k dispozici“ bez jakýchkoli záruk jakéhokoli druhu.",
+        "section5Li1": "Batch Shots je poskytován „tak, jak je“ a „jak je k dispozici“ bez jakýchkoli záruk jakéhokoli druhu.",
         "section5Li2": "Nezaručujeme, že služba bude nepřerušovaná, bezpečná nebo bezchybná.",
         "section5Li3": "Neneseme odpovědnost za žádnou ztrátu dat, ke které může dojít během zpracování.",
         "section5Li4": "Neposkytujeme žádné záruky týkající se přesnosti nebo účinnosti funkce generování názvů SEO.",
         "section6Title": "6. OMEZENÍ ODPOVĚDNOSTI",
         "section6P1": "V maximálním rozsahu povoleném zákonem neneseme odpovědnost za žádné nepřímé, náhodné, zvláštní, následné nebo represivní škody vyplývající z vašeho používání nebo nemožnosti používat službu.",
         "section7Title": "7. ÚPRAVY SLUŽBY",
-        "section7P1": "Vyhrazujeme si právo kdykoli upravit, pozastavit nebo ukončit jakoukoli část PICME bez předchozího upozornění nebo odpovědnosti.",
+        "section7P1": "Vyhrazujeme si právo kdykoli upravit, pozastavit nebo ukončit jakoukoli část Batch Shots bez předchozího upozornění nebo odpovědnosti.",
         "section8Title": "8. ROZHODNÉ PRÁVO",
         "section8P1": "Tyto Podmínky použití se řídí a vykládají v souladu se zákony jurisdikce, ve které působíme, bez ohledu na její kolizní ustanovení.",
         "section9Title": "9. ZMĚNY PODMÍNEK",
         "section9P1": "Tyto Podmínky použití můžeme čas od času aktualizovat. O jakýchkoli změnách vás budeme informovat zveřejněním nových Podmínek na této stránce a aktualizací data „Poslední aktualizace“.",
         "section10Title": "10. KONTAKTUJTE NÁS",
-        "section10P1": "Máte-li jakékoli dotazy týkající se těchto Podmínek použití, kontaktujte nás na adrese terms@picme-app.com.",
+        "section10P1": "Máte-li jakékoli dotazy týkající se těchto Podmínek použití, kontaktujte nás na adrese terms@batchshots.com.",
         "returnButton": "ZPĚT NA DOMOVSKOU STRÁNKU"
+    },
+    "PrivacyPage": {
+        "title": "Zásady Ochrany Osobních Údajů | Batch Shots",
+        "description": "Pochopte, jak Batch Shots nakládá s vašimi údaji. Naše zásady ochrany osobních údajů podrobně popisují postupy sběru, používání a ochrany údajů.",
+        "keywords": "zásady ochrany osobních údajů, ochrana údajů, uživatelská data, GDPR, batchshots"
+    },
+    "TermsPage": {
+        "title": "Podmínky Služby | Batch Shots",
+        "description": "Přečtěte si podmínky používání Batch Shots. Zjistěte více o povinnostech uživatele, omezeních služby a duševním vlastnictví.",
+        "keywords": "podmínky služby, obchodní podmínky, uživatelská smlouva, batchshots"
+    },
+    "PricingPage": {
+        "title": "Cenové Plány | Batch Shots Pro",
+        "description": "Prozkoumejte cenové plány Batch Shots. Vyberte si nejlepší plán pro vaše potřeby úpravy obrázků, od bezplatné úrovně po funkce Pro, jako je odstranění pozadí a zvýšené limity.",
+        "keywords": "ceník, batch shots pro, předplatné plány, náklady na úpravu obrázků, ceník odstranění pozadí"
+    },
+    "BackgroundRemovalPage": {
+        "metadata": {
+            "title": "AI Odstraňovač Pozadí | Batch Shots",
+            "description": "Automaticky odstraňujte pozadí z vašich obrázků pomocí AI nástroje Batch Shots. Ideální pro produktové fotografie, portréty a kreativní projekty. Vyzkoušejte zdarma!",
+            "keywords": "odstraňovač pozadí, odstranit pozadí, ai odstranění pozadí, průhledné pozadí, produktová fotografie, hromadná úprava obrázků"
+        }
     }
 } 

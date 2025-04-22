@@ -1,18 +1,18 @@
 {
     "Manifest": {
-        "name": "PICME"
+        "name": "Batch Shots"
     },
     "LocaleSwitcher": {
         "label": "Changer la langue",
         "locale": "{locale, select, fr {🇫🇷 Français} en {🇺🇸 English} other {Unknown}}"
     },
     "Home": {
-        "title": "PICME: OPTIMISATEUR D'IMAGES SEO",
+        "title": "Batch Shots: OPTIMISATEUR D'IMAGES SEO",
         "loading": "CHARGEMENT DE L'APPLICATION...",
         "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'images.",
         "transformTitle": "TRANSFORMEZ VOS PHOTOS DE PRODUITS",
         "privacyFocused": "GRATUIT & RESPECTUEUX DE LA VIE PRIVÉE",
-        "privacyDescription": "PICME traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou données sur nos serveurs.",
+        "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou données sur nos serveurs.",
         "privacyPolicy": "Politique de confidentialité",
         "termsOfUse": "Conditions d'utilisation",
         "features": {
@@ -54,19 +54,19 @@
         "login": "SE CONNECTER"
     },
     "Footer": {
-        "about": "Outils d'image professionnels pour les photographes de produits, les marketeurs et les entreprises de commerce électronique. Simplifiez votre flux de travail avec nos outils brutalistes.",
+        "about": "Batch Shots vous aide à optimiser rapidement et facilement les images de produits pour le SEO, directement dans votre navigateur.",
         "quickLinks": "LIENS RAPIDES",
         "stayUpdated": "RESTEZ INFORMÉ",
         "subscribeText": "Abonnez-vous à notre newsletter pour les mises à jour, conseils et offres spéciales.",
         "emailPlaceholder": "Votre email",
         "subscribe": "S'ABONNER",
-        "copyright": "© {year} PICME. Tous droits réservés.",
-        "madeWith": "Fait avec ♥ par l'équipe PICME"
+        "copyright": "© {year} Batch Shots. Tous droits réservés.",
+        "madeWith": "Fait avec ♥ par l'équipe Batch Shots"
     },
     "Layout": {
-        "title": "PicMe - Optimiseur d'images SEO",
-        "description": "Optimisez vos images de produits pour le SEO avec des ajustements simples de la balance des blancs, du contraste et de la taille.",
-        "keywords": "optimisation d'images, images SEO, photos de produits, balance des blancs, traitement par lots d'images"
+        "title": "Éditeur d'Images par Lots & Optimiseur SEO | Batch Shots",
+        "description": "Modifiez, redimensionnez, ajoutez des filigranes et optimisez facilement les images en masse pour le SEO. Fonctionnalités IA pour les photos de produits, la suppression d'arrière-plan et la génération de noms SEO.",
+        "keywords": "éditeur d'images, traitement d'images par lots, optimisation d'images seo, filigrane photos, suppression d'arrière-plan, photos de produits, édition d'images ia, batchshots"
     },
     "Components": {
         "ImageProcessingControls": {
@@ -365,8 +365,8 @@
             },
             "proDialog": {
                 "title": "PASSER À PRO",
-                "featureTitle": "FONCTION PRO : Suppression d'arrière-plan en masse",
-                "description": "Les utilisateurs gratuits ne peuvent traiter qu'1 image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse, vous faisant gagner des heures de travail !",
+                "featureTitle": "FONCTIONNALITÉ PRO : Suppression d'arrière-plan en masse",
+                "description": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse, économisant des heures de travail !",
                 "pricing": {
                     "title": "PAIEMENT UNIQUE",
                     "price": "19,99 €",
@@ -540,11 +540,12 @@
     "PrivacyPolicy": {
         "title": "POLITIQUE DE CONFIDENTIALITÉ",
         "section1Title": "1. INTRODUCTION",
-        "section1P1": "Bienvenue chez PICME (« nous », « notre », « nos »). Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
-        "section1P2": "Cette politique de confidentialité explique comment nous traitons vos données lorsque vous utilisez notre outil d'optimisation d'images basé sur navigateur.",
-        "section2Title": "2. COLLECTE DE DONNÉES",
+        "section1P1": "Bienvenue chez Batch Shots (« nous », « notre », « nos »). Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
+        "section1P2": "Cette Politique de confidentialité explique comment nous traitons vos données lorsque vous utilisez notre outil d'optimisation d'images basé sur navigateur.",
+        "section2Title": "2. INFORMATIONS QUE NOUS NE COLLECTONS PAS",
         "section2P1Bold": "Nous ne collectons ni ne stockons vos images.",
-        "section2P2": "PICME fonctionne entièrement dans votre navigateur. Lorsque vous téléchargez des images à optimiser :",
+        "section2P1": "Notre principe fondamental est la confidentialité dès la conception.",
+        "section2P2": "Batch Shots fonctionne entièrement dans votre navigateur. Lorsque vous téléchargez des images à optimiser :",
         "section2Li1": "Vos images sont traitées localement dans votre navigateur à l'aide de JavaScript côté client.",
         "section2Li2": "Vos images ne quittent jamais votre appareil et ne sont pas transmises à nos serveurs.",
         "section2Li3": "Nous ne stockons pas de copies de vos images originales ou traitées.",
@@ -567,45 +568,67 @@
         "section6Title": "6. MODIFICATIONS DE CETTE POLITIQUE",
         "section6P1": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique de confidentialité sur cette page et en mettant à jour la date de « Dernière mise à jour ».",
         "section7Title": "7. CONTACTEZ-NOUS",
-        "section7P1": "Si vous avez des questions sur cette politique de confidentialité, veuillez nous contacter à privacy@picme-app.com.",
+        "section7P1": "Si vous avez des questions sur cette politique de confidentialité, veuillez nous contacter à privacy@batchshots.com.",
         "returnButton": "RETOUR À L'ACCUEIL"
     },
     "TermsOfUse": {
         "title": "CONDITIONS D'UTILISATION",
         "lastUpdated": "Dernière mise à jour : 31 mars 2024",
         "section1Title": "1. ACCEPTATION DES CONDITIONS",
-        "section1P1": "En accédant et en utilisant PICME, vous acceptez d'être lié par les présentes Conditions d'utilisation. Si vous n'êtes pas d'accord avec une partie de ces conditions, vous ne pouvez pas utiliser notre service.",
+        "section1P1": "En accédant et en utilisant Batch Shots, vous acceptez d'être lié par les présentes Conditions d'utilisation. Si vous n'êtes pas d'accord avec une partie de ces conditions, vous ne pouvez pas utiliser notre service.",
         "section2Title": "2. DESCRIPTION DU SERVICE",
-        "section2P1": "PICME est un outil d'optimisation d'images basé sur un navigateur qui permet aux utilisateurs de :",
+        "section2P1": "Batch Shots est un outil d'optimisation d'images basé sur un navigateur qui permet aux utilisateurs de :",
         "section2Li1": "Ajuster les propriétés de l'image telles que la luminosité, le contraste et la balance des blancs",
         "section2Li2": "Redimensionner et optimiser les images pour une utilisation sur le Web",
         "section2Li3": "Générer des noms de fichiers optimisés pour le référencement",
         "section2Li4": "Traiter plusieurs images simultanément",
         "section2P2": "Tout le traitement des images se fait localement dans votre navigateur ; aucune image n'est téléchargée ou stockée sur nos serveurs.",
         "section3Title": "3. RESPONSABILITÉS DE L'UTILISATEUR",
-        "section3P1": "Les utilisateurs de PICME sont responsables de :",
+        "section3P1": "Les utilisateurs de Batch Shots sont responsables de :",
         "section3Li1": "S'assurer qu'ils disposent des droits et autorisations nécessaires pour modifier les images qu'ils traitent",
         "section3Li2": "Utiliser le service conformément aux lois et réglementations applicables",
         "section3Li3": "Ne pas utiliser le service pour traiter, créer ou distribuer du contenu inapproprié, offensant ou illégal",
         "section3Li4": "Ne pas tenter de désosser, modifier ou pirater le service",
         "section4Title": "4. PROPRIÉTÉ INTELLECTUELLE",
-        "section4P1": "Tout le contenu original, les caractéristiques et les fonctionnalités de PICME nous appartiennent et sont protégés par le droit d'auteur international, les marques de commerce et d'autres lois sur la propriété intellectuelle.",
+        "section4P1": "Tout le contenu original, les caractéristiques et les fonctionnalités de Batch Shots nous appartiennent et sont protégés par le droit d'auteur international, les marques de commerce et d'autres lois sur la propriété intellectuelle.",
         "section4P2": "Vous conservez tous les droits sur vos images originales. Nous ne revendiquons aucune propriété sur les images que vous traitez à l'aide de notre service.",
         "section5Title": "5. LIMITATIONS ET EXCLUSIONS DE RESPONSABILITÉ",
-        "section5Li1": "PICME est fourni « tel quel » et « tel que disponible » sans aucune garantie d'aucune sorte.",
+        "section5Li1": "Batch Shots est fourni « tel quel » et « tel que disponible » sans aucune garantie d'aucune sorte.",
         "section5Li2": "Nous ne garantissons pas que le service sera ininterrompu, sécurisé ou sans erreur.",
         "section5Li3": "Nous ne sommes pas responsables de toute perte de données pouvant survenir pendant le traitement.",
         "section5Li4": "Nous n'offrons aucune garantie quant à l'exactitude ou à l'efficacité de la fonction de génération de noms SEO.",
         "section6Title": "6. LIMITATION DE RESPONSABILITÉ",
         "section6P1": "Dans la mesure maximale permise par la loi, nous ne serons pas responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs résultant de votre utilisation ou de votre incapacité à utiliser le service.",
         "section7Title": "7. MODIFICATIONS DU SERVICE",
-        "section7P1": "Nous nous réservons le droit de modifier, suspendre ou interrompre toute partie de PICME à tout moment sans préavis ni responsabilité.",
+        "section7P1": "Nous nous réservons le droit de modifier, suspendre ou interrompre toute partie de Batch Shots à tout moment sans préavis ni responsabilité.",
         "section8Title": "8. LOI APPLICABLE",
         "section8P1": "Les présentes Conditions d'utilisation seront régies et interprétées conformément aux lois de la juridiction dans laquelle nous opérons, sans égard à ses dispositions relatives aux conflits de lois.",
         "section9Title": "9. MODIFICATIONS DES CONDITIONS",
         "section9P1": "Nous pouvons mettre à jour ces Conditions d'utilisation de temps à autre. Nous vous informerons de tout changement en publiant les nouvelles Conditions sur cette page et en mettant à jour la date de « Dernière mise à jour ».",
         "section10Title": "10. CONTACTEZ-NOUS",
-        "section10P1": "Si vous avez des questions concernant ces Conditions d'utilisation, veuillez nous contacter à terms@picme-app.com.",
+        "section10P1": "Si vous avez des questions concernant ces Conditions d'utilisation, veuillez nous contacter à terms@batchshots.com.",
         "returnButton": "RETOUR À L'ACCUEIL"
+    },
+    "PrivacyPage": {
+        "title": "Politique de Confidentialité | Batch Shots",
+        "description": "Comprenez comment Batch Shots traite vos données. Notre politique de confidentialité détaille les pratiques de collecte, d'utilisation et de protection des données.",
+        "keywords": "politique de confidentialité, protection des données, données utilisateur, RGPD, batchshots"
+    },
+    "TermsPage": {
+        "title": "Conditions d'Utilisation | Batch Shots",
+        "description": "Consultez les termes et conditions d'utilisation de Batch Shots. Apprenez-en davantage sur les responsabilités des utilisateurs, les limitations de service et la propriété intellectuelle.",
+        "keywords": "conditions d'utilisation, termes et conditions, accord utilisateur, batchshots"
+    },
+    "PricingPage": {
+        "title": "Plans Tarifaires | Batch Shots Pro",
+        "description": "Découvrez les plans tarifaires de Batch Shots. Choisissez le meilleur plan pour vos besoins d'édition d'images, du niveau gratuit aux fonctionnalités Pro comme la suppression d'arrière-plan et les limites augmentées.",
+        "keywords": "tarification, batch shots pro, plans d'abonnement, coût d'édition d'image, tarification suppression d'arrière-plan"
+    },
+    "BackgroundRemovalPage": {
+        "metadata": {
+            "title": "Suppresseur d'Arrière-plan IA | Batch Shots",
+            "description": "Supprimez automatiquement les arrière-plans de vos images avec l'outil IA de Batch Shots. Parfait pour les photos de produits, les portraits et les projets créatifs. Essayez gratuitement !",
+            "keywords": "suppresseur d'arrière-plan, supprimer arrière-plan, suppression d'arrière-plan ia, arrière-plan transparent, photographie de produit, édition d'images par lots"
+        }
     }
 } 

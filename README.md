@@ -1,4 +1,4 @@
-# PICME: SEO Image Optimizer
+# Batch Shots: SEO Image Optimizer
 
 [![CI](https://github.com/username/picme/actions/workflows/ci.yml/badge.svg)](https://github.com/username/picme/actions/workflows/ci.yml)
 [![Tests](https://github.com/username/picme/actions/workflows/test.yml/badge.svg)](https://github.com/username/picme/actions/workflows/test.yml)

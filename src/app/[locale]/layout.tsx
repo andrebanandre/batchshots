@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Providers } from '../providers';
 import { ClerkProvider } from '@clerk/nextjs';
 
@@ -44,13 +44,15 @@ const montserrat = Montserrat({
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = await params;
-  const messages = await getMessages({ locale });
-  const tLayout = messages?.Layout as Record<string, string> || {};
+  // No need to fetch all messages, just get the translations function
+  const t = await getTranslations({ locale, namespace: 'Layout' });
 
   return {
-    title: tLayout.title || "PicMe - SEO-Friendly Image Optimizer",
-    description: tLayout.description || "Optimize your product images for SEO with simple adjustments to white balance, contrast, and size.",
-    keywords: tLayout.keywords || "image optimization, SEO images, product photos, white balance, image batch processing",
+    metadataBase: new URL('https://batchshots.com'),
+    // Use specific keys from the 'Layout' namespace
+    title: t('title'),
+    description: t('description'),
+    keywords: t('keywords'),
   };
 }
 

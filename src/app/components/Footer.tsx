@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* First Column - Logo and About */}
           <div className="flex flex-col space-y-4">
-            <h3 className="text-lg font-bold uppercase mb-2">PICME</h3>
+            <h3 className="text-lg font-bold uppercase mb-2">Batch Shots</h3>
             <p className="text-sm max-w-sm">
               {t('about')}
             </p>

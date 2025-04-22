@@ -25,7 +25,7 @@ export interface WatermarkSettings {
 export const defaultWatermarkSettings: WatermarkSettings = {
   enabled: false,
   type: null,
-  text: 'PICME',
+  text: 'BatchShots.com',
   font: 'Arial',
   textColor: '#ffffff',
   logoDataUrl: null,

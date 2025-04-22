@@ -1,18 +1,18 @@
 {
     "Manifest": {
-        "name": "PICME"
+        "name": "Batch Shots"
     },
     "LocaleSwitcher": {
         "label": "Change language",
         "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
     },
     "Home": {
-        "title": "PICME: SEO IMAGE OPTIMIZER",
+        "title": "Batch Shots: SEO IMAGE OPTIMIZER",
         "loading": "LOADING APP...",
         "loadingDescription": "Please wait while we initialize image processing capabilities.",
         "transformTitle": "TRANSFORM YOUR PRODUCT PHOTOS",
         "privacyFocused": "FREE & PRIVACY-FOCUSED",
-        "privacyDescription": "PICME processes all images directly in your browser. We don't store your photos or data on our servers.",
+        "privacyDescription": "Batch Shots processes all images directly in your browser. We don't store your photos or data on our servers.",
         "privacyPolicy": "Privacy Policy",
         "termsOfUse": "Terms of Use",
         "features": {
@@ -54,19 +54,129 @@
         "login": "LOG IN"
     },
     "Footer": {
-        "about": "Professional image tools for product photographers, marketers, and e-commerce businesses. Simplify your workflow with our brutalist-style tools.",
+        "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
         "quickLinks": "QUICK LINKS",
         "stayUpdated": "STAY UPDATED",
         "subscribeText": "Subscribe to our newsletter for updates, tips, and special offers.",
         "emailPlaceholder": "Your email",
         "subscribe": "SUBSCRIBE",
-        "copyright": "© {year} PICME. All rights reserved.",
-        "madeWith": "Made with ♥ by the PICME team"
+        "copyright": "© {year} Batch Shots. All rights reserved.",
+        "madeWith": "Made with ♥ by the Batch Shots team"
     },
     "Layout": {
-        "title": "PicMe - SEO-Friendly Image Optimizer",
-        "description": "Optimize your product images for SEO with simple adjustments to white balance, contrast, and size.",
-        "keywords": "image optimization, SEO images, product photos, white balance, image batch processing"
+        "title": "Batch Image Editor & SEO Optimizer | Batch Shots",
+        "description": "Effortlessly edit, resize, watermark, and optimize images in bulk for SEO. AI-powered features for product photos, background removal, and SEO name generation.",
+        "keywords": "image editor, batch image processing, seo image optimization, watermark photos, background removal, product photos, ai image editing, batchshots"
+    },
+    "PrivacyPage": {
+        "title": "Privacy Policy | Batch Shots",
+        "description": "Understand how Batch Shots handles your data. Our privacy policy details data collection, usage, and protection practices.",
+        "keywords": "privacy policy, data protection, user data, GDPR, batchshots"
+    },
+    "TermsPage": {
+        "title": "Terms of Service | Batch Shots",
+        "description": "Review the terms and conditions for using Batch Shots. Learn about user responsibilities, service limitations, and intellectual property.",
+        "keywords": "terms of service, terms and conditions, user agreement, batchshots"
+    },
+    "PricingPage": {
+        "title": "Pricing Plans | Batch Shots Pro",
+        "description": "Explore Batch Shots pricing plans. Choose the best plan for your image editing needs, from free tier to Pro features like background removal and increased limits.",
+        "keywords": "pricing, batch shots pro, subscription plans, image editing cost, background removal pricing"
+    },
+    "BackgroundRemovalPage": {
+        "metadata": {
+            "title": "AI Background Remover | Batch Shots",
+            "description": "Automatically remove backgrounds from your images with Batch Shots' AI-powered tool. Perfect for product photos, portraits, and creative projects. Try it free!",
+            "keywords": "background remover, remove background, ai background removal, transparent background, product photography, batch image editing"
+        },
+        "title": "BACKGROUND REMOVAL TOOL",
+        "loading": {
+            "tool": "LOADING TOOL...",
+            "proStatus": "CHECKING PRO STATUS...",
+            "description": "Please wait while we initialize image processing capabilities.",
+            "proDescription": "Please wait while we verify your account status."
+        },
+        "mainCard": {
+            "title": "REMOVE IMAGE BACKGROUNDS",
+            "info": {
+                "title": "AI BACKGROUND REMOVAL",
+                "description": "Remove the background from your product images with AI technology. The process occurs entirely in your browser for privacy.",
+                "freeMode": {
+                    "title": "FREE MODE",
+                    "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
+                },
+                "proMode": {
+                    "title": "PRO MODE",
+                    "description": "Process up to 100 images in bulk with your PRO account!"
+                }
+            },
+            "upload": {
+                "title": "Select Images",
+                "buttonFree": "SELECT AN IMAGE",
+                "buttonPro": "SELECT IMAGES",
+                "helpTextFree": "Free users can select 1 image at a time.",
+                "helpTextPro": "You can select up to 100 images at once."
+            },
+            "actions": {
+                "clear": "CLEAR",
+                "download": "DOWNLOAD",
+                "downloadZip": "DOWNLOAD AS ZIP",
+                "removeBackground": "REMOVE BACKGROUND",
+                "removeBackgrounds": "REMOVE BACKGROUNDS",
+                "processing": "REMOVING BACKGROUND...",
+                "processingMultiple": "REMOVING BACKGROUNDS...",
+                "tryFullEditor": "TRY FULL EDITOR"
+            },
+            "progress": {
+                "processing": "Processing...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "UPGRADE TO PRO",
+                "plan": {
+                    "title": "PRO PLAN",
+                    "price": "$19.99",
+                    "features": [
+                        "Remove backgrounds from up to 100 images at once",
+                        "Advanced image adjustments and presets",
+                        "SEO name generation for product images",
+                        "Batch processing for all features",
+                        "One-time payment, lifetime access"
+                    ],
+                    "buttonText": "UPGRADE NOW"
+                }
+            }
+        },
+        "howItWorks": {
+            "title": "HOW IT WORKS",
+            "step1": {
+                "title": "1. SELECT YOUR IMAGES",
+                "description": "Upload one or more product images you want to process.",
+                "proNote": "PRO users can select up to 100 images at once!"
+            },
+            "step2": {
+                "title": "2. REMOVE BACKGROUNDS",
+                "description": "Our AI technology will detect and remove the background from your images, creating transparent PNGs perfect for e-commerce."
+            },
+            "step3": {
+                "title": "3. DOWNLOAD & USE",
+                "description": "Download your processed images and use them on your website, marketplace listings, or marketing materials."
+            }
+        },
+        "proDialog": {
+            "title": "UPGRADE TO PRO",
+            "featureTitle": "PRO FEATURE: Bulk Background Removal",
+            "description": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk, saving you hours of work!",
+            "pricing": {
+                "title": "ONE-TIME PAYMENT",
+                "price": "$19.99",
+                "note": "No subscription, lifetime access"
+            },
+            "actions": {
+                "upgrade": "UPGRADE TO PRO",
+                "continue": "CONTINUE WITH FREE MODE"
+            }
+        }
     },
     "Components": {
         "ImageProcessingControls": {
@@ -288,6 +398,65 @@
                 }
             }
         },
+        "ImagePreview": {
+            "noImages": "No images selected",
+            "zoomInstructions": "Pinch to zoom, drag to move",
+            "zoomLevel": "{scale}%",
+            "removingBackground": "Removing Background...",
+            "seoName": {
+                "label": "SEO-Friendly Name:",
+                "edit": "EDIT",
+                "cancel": "CANCEL",
+                "save": "SAVE"
+            },
+            "originalName": "Original name:",
+            "fileInfo": {
+                "dimensions": "Dimensions:",
+                "size": "Size:",
+                "output": "Output:",
+                "quality": "Quality:",
+                "background": "Background:",
+                "backgroundRemoved": "Removed",
+                "custom": "Custom",
+                "auto": "auto"
+            },
+            "actions": {
+                "download": "DOWNLOAD",
+                "reset": "RESET"
+            },
+            "allImages": "ALL IMAGES ({current}/{max})"
+        },
+        "PricingCard": {
+            "oneTime": "one-time",
+            "currentPlan": "CURRENT PLAN"
+        },
+        "WatermarkControl": {
+            "title": "WATERMARK",
+            "addTab": "ADD WATERMARK",
+            "removeTab": "REMOVE WATERMARK (AI)",
+            "type": "TYPE",
+            "text": "TEXT",
+            "logo": "LOGO",
+            "enterText": "Enter watermark text",
+            "font": "FONT",
+            "size": "SIZE",
+            "color": "COLOR",
+            "opacity": "OPACITY",
+            "position": "POSITION",
+            "uploadLogo": "UPLOAD LOGO",
+            "logoPlaceholder": "Click or drag logo here",
+            "reset": "RESET WATERMARK",
+            "presets": {
+                "bottomRight": "Bottom-Right",
+                "bottomLeft": "Bottom-Left",
+                "topLeft": "Top-Left",
+                "topRight": "Top-Right",
+                "center": "Center",
+                "diagonal": "Diagonal",
+                "tile": "Tile (Pattern)"
+            },
+            "removeDescription": "AI-powered watermark removal coming soon!"
+        },
         "BackgroundRemovalPage": {
             "title": "BACKGROUND REMOVAL TOOL",
             "loading": {
@@ -377,65 +546,6 @@
                     "continue": "CONTINUE WITH FREE MODE"
                 }
             }
-        },
-        "ImagePreview": {
-            "noImages": "No images selected",
-            "zoomInstructions": "Pinch to zoom, drag to move",
-            "zoomLevel": "{scale}%",
-            "removingBackground": "Removing Background...",
-            "seoName": {
-                "label": "SEO-Friendly Name:",
-                "edit": "EDIT",
-                "cancel": "CANCEL",
-                "save": "SAVE"
-            },
-            "originalName": "Original name:",
-            "fileInfo": {
-                "dimensions": "Dimensions:",
-                "size": "Size:",
-                "output": "Output:",
-                "quality": "Quality:",
-                "background": "Background:",
-                "backgroundRemoved": "Removed",
-                "custom": "Custom",
-                "auto": "auto"
-            },
-            "actions": {
-                "download": "DOWNLOAD",
-                "reset": "RESET"
-            },
-            "allImages": "ALL IMAGES ({current}/{max})"
-        },
-        "PricingCard": {
-            "oneTime": "one-time",
-            "currentPlan": "CURRENT PLAN"
-        },
-        "WatermarkControl": {
-            "title": "WATERMARK",
-            "addTab": "ADD WATERMARK",
-            "removeTab": "REMOVE WATERMARK (AI)",
-            "type": "TYPE",
-            "text": "TEXT",
-            "logo": "LOGO",
-            "enterText": "Enter watermark text",
-            "font": "FONT",
-            "size": "SIZE",
-            "color": "COLOR",
-            "opacity": "OPACITY",
-            "position": "POSITION",
-            "uploadLogo": "UPLOAD LOGO",
-            "logoPlaceholder": "Click or drag logo here",
-            "reset": "RESET WATERMARK",
-            "presets": {
-                "bottomRight": "Bottom-Right",
-                "bottomLeft": "Bottom-Left",
-                "topLeft": "Top-Left",
-                "topRight": "Top-Right",
-                "center": "Center",
-                "diagonal": "Diagonal",
-                "tile": "Tile (Pattern)"
-            },
-            "removeDescription": "AI-powered watermark removal coming soon!"
         }
     },
     "Dialogs": {
@@ -539,12 +649,13 @@
     },
     "PrivacyPolicy": {
         "title": "PRIVACY POLICY",
-        "section1Title": "1. INTRODUCTION",
-        "section1P1": "Welcome to PICME (“we”, “our”, “us”). We are committed to protecting your privacy and ensuring the security of your personal information.",
+        "section1Title": "1. Introduction",
+        "section1P1": "Welcome to Batch Shots (“we”, “our”, “us”). We are committed to protecting your privacy and ensuring the security of your personal information.",
         "section1P2": "This Privacy Policy explains how we handle your data when you use our browser-based image optimization tool.",
-        "section2Title": "2. DATA COLLECTION",
+        "section2Title": "2. Information We Do Not Collect",
         "section2P1Bold": "We do not collect or store your images.",
-        "section2P2": "PICME operates entirely within your browser. When you upload images to optimize:",
+        "section2P1": "Our core principle is privacy by design.",
+        "section2P2": "Batch Shots operates entirely within your browser. When you upload images to optimize:",
         "section2Li1": "Your images are processed locally in your browser using client-side JavaScript.",
         "section2Li2": "Your images never leave your device and are not transmitted to our servers.",
         "section2Li3": "We do not store copies of your original or processed images.",
@@ -566,46 +677,46 @@
         "section5P2": "Each of these services has its own privacy policy governing how they handle data.",
         "section6Title": "6. CHANGES TO THIS POLICY",
         "section6P1": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date.",
-        "section7Title": "7. CONTACT US",
-        "section7P1": "If you have any questions about this Privacy Policy, please contact us at privacy@picme-app.com.",
+        "section7Title": "7. Contact Us",
+        "section7P1": "If you have any questions about this Privacy Policy, please contact us at privacy@batchshots.com.",
         "returnButton": "RETURN TO HOME"
     },
     "TermsOfUse": {
         "title": "TERMS OF USE",
         "lastUpdated": "Last Updated: March 31, 2024",
-        "section1Title": "1. ACCEPTANCE OF TERMS",
-        "section1P1": "By accessing and using PICME, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you may not use our service.",
-        "section2Title": "2. SERVICE DESCRIPTION",
-        "section2P1": "PICME is a browser-based image optimization tool that allows users to:",
+        "section1Title": "1. Acceptance of Terms",
+        "section1P1": "By accessing and using Batch Shots, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you may not use our service.",
+        "section2Title": "2. Description of Service",
+        "section2P1": "Batch Shots is a browser-based image optimization tool that allows users to:",
         "section2Li1": "Adjust image properties such as brightness, contrast, and white balance",
         "section2Li2": "Resize and optimize images for web use",
         "section2Li3": "Generate SEO-friendly filenames",
         "section2Li4": "Process multiple images simultaneously",
         "section2P2": "All image processing occurs locally in your browser; no images are uploaded to or stored on our servers.",
-        "section3Title": "3. USER RESPONSIBILITIES",
-        "section3P1": "Users of PICME are responsible for:",
+        "section3Title": "3. User Responsibilities",
+        "section3P1": "Users of Batch Shots are responsible for:",
         "section3Li1": "Ensuring they have the necessary rights and permissions to modify the images they process",
         "section3Li2": "Using the service in compliance with applicable laws and regulations",
         "section3Li3": "Not using the service to process, create, or distribute inappropriate, offensive, or illegal content",
         "section3Li4": "Not attempting to reverse engineer, modify, or hack the service",
-        "section4Title": "4. INTELLECTUAL PROPERTY",
-        "section4P1": "All original content, features, and functionality of PICME are owned by us and are protected by international copyright, trademark, and other intellectual property laws.",
+        "section4Title": "4. Intellectual Property",
+        "section4P1": "All original content, features, and functionality of Batch Shots are owned by us and are protected by international copyright, trademark, and other intellectual property laws.",
         "section4P2": "You retain all rights to your original images. We claim no ownership over the images you process using our service.",
-        "section5Title": "5. LIMITATIONS AND DISCLAIMERS",
-        "section5Li1": "PICME is provided “as is” and “as available” without any warranties of any kind.",
+        "section5Title": "5. Disclaimers",
+        "section5Li1": "Batch Shots is provided “as is” and “as available” without any warranties of any kind.",
         "section5Li2": "We do not guarantee that the service will be uninterrupted, secure, or error-free.",
         "section5Li3": "We are not responsible for any loss of data that may occur during processing.",
         "section5Li4": "We make no warranties regarding the accuracy or effectiveness of the SEO name generation feature.",
-        "section6Title": "6. LIMITATION OF LIABILITY",
+        "section6Title": "6. Limitation of Liability",
         "section6P1": "To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.",
-        "section7Title": "7. SERVICE MODIFICATIONS",
-        "section7P1": "We reserve the right to modify, suspend, or discontinue any part of PICME at any time without prior notice or liability.",
-        "section8Title": "8. GOVERNING LAW",
+        "section7Title": "7. Modifications to Service",
+        "section7P1": "We reserve the right to modify, suspend, or discontinue any part of Batch Shots at any time without prior notice or liability.",
+        "section8Title": "8. Governing Law",
         "section8P1": "These Terms of Use shall be governed by and construed in accordance with the laws of the jurisdiction in which we operate, without regard to its conflict of law provisions.",
-        "section9Title": "9. CHANGES TO TERMS",
+        "section9Title": "9. Changes to Terms",
         "section9P1": "We may update these Terms of Use from time to time. We will notify you of any changes by posting the new Terms on this page and updating the “Last Updated” date.",
-        "section10Title": "10. CONTACT US",
-        "section10P1": "If you have any questions about these Terms of Use, please contact us at terms@picme-app.com.",
+        "section10Title": "10. Contact Us",
+        "section10P1": "If you have any questions about these Terms of Use, please contact us at terms@batchshots.com.",
         "returnButton": "RETURN TO HOME"
     }
 }

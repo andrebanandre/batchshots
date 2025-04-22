@@ -889,7 +889,7 @@ export const downloadImage = (
   dataUrl: string, 
   filename: string, 
   format: ImageFormat = 'jpg', 
-  seoName?: string,
+  seoName?: string, 
   adjustments?: ImageAdjustments
 ): void => {
   // If SEO name is provided, use it instead of the original filename
@@ -1149,7 +1149,7 @@ export const downloadAllImages = async (
       // Create a download link
       const link = document.createElement("a");
       link.href = URL.createObjectURL(content);
-      link.download = `picme-${new Date().toISOString().slice(0, 10)}.zip`;
+      link.download = `batchshots.com-${new Date().toISOString().slice(0, 10)}.zip`;
       document.body.appendChild(link);
       link.click();
       
