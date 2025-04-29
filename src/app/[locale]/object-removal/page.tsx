@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useIsPro } from '../../hooks/useIsPro';
 import Button from '../../components/Button';
@@ -59,11 +59,16 @@ export default function ObjectRemovalPage() {
   // -- State for Multi-Image --
   const [images, setImages] = useState<ProcessingImageState[]>([]); // Ensure this is correctly defined
   const [activeImageId, setActiveImageId] = useState<string | null>(null);
+  const [applyMaskToAll, setApplyMaskToAll] = useState(true);
+  const [processingProgress, setProcessingProgress] = useState(0);
+  
+  // Track if canvas needs to be cleared when switching images
+  const [shouldClearCanvas, setShouldClearCanvas] = useState(false);
 
   // Canvas refs
-  const originalCanvasRef = useRef<HTMLCanvasElement>(null);
-  // const outputCanvasRef = useRef<HTMLCanvasElement>(null); // REMOVE
+  const originalCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const drawingCanvasRef = useRef<ReactSketchCanvasRef>(null); // Main interaction canvas
+  const previousMaskDrawnRef = useRef<boolean>(false);
 
   // Image state using the new interface (initialized)
   const [imageState, setImageState] = useState<ProcessingImageState>({
@@ -78,11 +83,14 @@ export default function ObjectRemovalPage() {
       processingStage: t('processing.readingFile'),
       errorMessage: null,
   });
-
+  
   // Drawing Canvas state
   const [backgroundImage, setBackgroundImage] = useState<string>(""); // For sketch canvas bg
   const [brushSize, setBrushSize] = useState<number>(15);
   const [brushColor] = useState<string>("rgba(255,0,0,0.5)");
+
+  // Add a ref to track first draw without causing re-renders
+  const maskDrawnRef = useRef<boolean>(false);
 
   // --- Effects --- 
 
@@ -144,7 +152,7 @@ export default function ObjectRemovalPage() {
   // Effect 1: Load image, calculate dimensions, set state (including background)
   useEffect(() => {
     // Only run if we have a URL but no dimensions yet
-    if (imageState.originalDataUrl && !imageState.dimensions) {
+    if (imageState?.originalDataUrl && !imageState?.dimensions) {
       console.log("Effect 1: originalDataUrl changed, loading image for dimensions...");
       const img = new Image();
       img.onload = () => {
@@ -184,19 +192,19 @@ export default function ObjectRemovalPage() {
         setProcessingStage("");
       };
       img.src = imageState.originalDataUrl;
-    } else if (!imageState.originalDataUrl) {
+    } else if (imageState && !imageState.originalDataUrl) {
         // Clean up background if URL is removed (reset)
          if (backgroundImage !== "") {
               console.log("Effect 1: Cleaning up background image due to null URL");
               setBackgroundImage("");
          }
     }
-  }, [imageState.originalDataUrl, imageState.dimensions, backgroundImage, t]); // Add backgroundImage to deps
+  }, [imageState?.originalDataUrl, imageState?.dimensions, backgroundImage, t]); // Use optional chaining to handle null imageState
 
   // Effect 2: Resize and draw to hidden canvas once dimensions are set
   useEffect(() => {
       // Run only when dimensions are set AND the hidden canvas needs drawing
-      if (imageState.dimensions && imageState.originalDataUrl) {
+      if (imageState?.dimensions && imageState?.originalDataUrl) {
           console.log("Effect 2: Dimensions available, attempting draw to hidden canvas...");
           const canvas = originalCanvasRef.current;
           const { width: drawWidth, height: drawHeight } = imageState.dimensions;
@@ -253,17 +261,157 @@ export default function ObjectRemovalPage() {
           }
       }
   // Depend on dimensions. The canvas ref itself shouldn't be a dependency.
-  }, [imageState.dimensions, imageState.originalDataUrl, isProcessing, processingStage, t]); 
+  }, [imageState?.dimensions, imageState?.originalDataUrl, isProcessing, processingStage, t]);
 
   // Sync activeImageId with imageState
   useEffect(() => {
-    if (activeImageId && images.length > 0) {
-      const activeImage = images.find(img => img.id === activeImageId);
-      if (activeImage) {
-        setImageState(activeImage);
+    if (!activeImageId || images.length === 0) return;
+    
+    const activeImage = images.find(img => img.id === activeImageId);
+    if (!activeImage) return;
+    
+    // Avoid unnecessary operations if we're already on this image
+    if (imageState?.id === activeImage.id) return;
+    
+    console.log("Switching to image:", activeImage.id);
+    
+    // Reset maskDrawnRef when switching images
+    maskDrawnRef.current = activeImage.maskDrawn || false;
+    
+    // Handle saving mask from current image before switching
+    const saveMaskBeforeSwitching = async () => {
+      try {
+        if (drawingCanvasRef.current && imageState?.id && imageState?.maskDrawn) {
+          const dataUrl = await drawingCanvasRef.current.exportImage('png');
+          setImages(prevImages => prevImages.map(img => 
+            img.id === imageState.id 
+              ? { ...img, maskDataUrl: dataUrl, maskDrawn: true } 
+              : img
+          ));
+        }
+      } catch (error) {
+        console.error("Error saving mask before switching:", error);
+      }
+      
+      // Switch to the new image
+      setImageState(activeImage);
+      if (activeImage.originalDataUrl) {
+        setBackgroundImage(activeImage.originalDataUrl);
+      }
+      
+      // Signal that canvas should be cleared when switching
+      setShouldClearCanvas(true);
+    };
+    
+    saveMaskBeforeSwitching();
+  }, [activeImageId, images]);
+  
+  // Handle canvas clearing/restoring when switching images
+  useEffect(() => {
+    if (!drawingCanvasRef.current || !imageState?.id) return;
+    
+    // Only clear canvas when shouldClearCanvas is true (image just switched)
+    if (shouldClearCanvas) {
+      try {
+        console.log("Clearing canvas for new image");
+        drawingCanvasRef.current.clearCanvas();
+        setShouldClearCanvas(false);
+      } catch (error) {
+        console.error("Error clearing canvas:", error);
+        setShouldClearCanvas(false);
       }
     }
-  }, [activeImageId, images]);
+    
+    // Restore mask if this image had one stored
+    if (imageState.maskDataUrl && !imageState.maskDrawn) {
+      console.log("Image has stored mask, restoring it");
+      setImageState(prev => prev ? {...prev, maskDrawn: true} : prev);
+    }
+  }, [imageState?.id, shouldClearCanvas]);
+
+  // Update effect for images state
+  useEffect(() => {
+    if (images.length > 0 && !activeImageId) {
+      setActiveImageId(images[0].id);
+    }
+  }, [images, activeImageId]);
+
+  // Add detailed logging for imageState changes
+  useEffect(() => {
+    if (imageState) {
+      console.log(`ImageState updated for id: ${imageState.id}`, {
+        hasOriginalDataUrl: !!imageState.originalDataUrl,
+        maskDrawn: imageState.maskDrawn,
+        isProcessing: imageState.isProcessing
+      });
+      
+      // Log when original image is loaded to canvas
+      if (imageState.originalDataUrl && originalCanvasRef.current) {
+        console.log('Loading original image to canvas');
+        loadImageToCanvas(imageState.originalDataUrl, originalCanvasRef.current);
+      }
+      
+      // Check if mask was drawn but is now reset
+      if (previousMaskDrawnRef.current && !imageState.maskDrawn) {
+        console.warn('Mask was drawn but is now reset to false. This may indicate an unexpected state reset.');
+      }
+      
+      // Update previous mask state
+      previousMaskDrawnRef.current = imageState.maskDrawn;
+    }
+  }, [imageState]);
+
+  // Effect to redraw canvas when imageState changes
+  useEffect(() => {
+    console.log('imageState changed:', imageState);
+    if (!imageState || !originalCanvasRef.current) return;
+    
+    const canvas = originalCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Check if dimensions need to be updated
+    if (imageState.dimensions && 
+        (canvas.width !== imageState.dimensions.width || 
+         canvas.height !== imageState.dimensions.height)) {
+      
+      // Only update dimensions if they've changed
+      console.log('Updating canvas dimensions:', imageState.dimensions);
+      canvas.width = imageState.dimensions.width;
+      canvas.height = imageState.dimensions.height;
+      
+      if (imageState.originalDataUrl) {
+        const img = new Image();
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          console.log('Image redrawn on canvas after dimension change');
+        };
+        img.src = imageState.originalDataUrl;
+      }
+    }
+  }, [imageState]);
+
+  // Effect to handle immediate canvas update after processing
+  useEffect(() => {
+    // This ensures the canvas updates properly after processing is done
+    if (!isProcessing && imageState?.originalDataUrl && originalCanvasRef.current) {
+      console.log('Forced canvas redraw after processing finished');
+      const canvas = originalCanvasRef.current;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        const img = new Image();
+        img.onload = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          
+          // Force update backgroundImage to ensure canvas reflects new image
+          setBackgroundImage(imageState.originalDataUrl || "");
+        };
+        img.src = imageState.originalDataUrl;
+      }
+    }
+  }, [isProcessing, imageState?.originalDataUrl]);
 
   // --- Handlers --- 
 
@@ -274,14 +422,28 @@ export default function ObjectRemovalPage() {
       console.log("No files selected");
       return;
     }
-    console.log(`Files selected: ${files.length}`);
+    
+    let fileArray = Array.from(files);
+    console.log(`Files selected: ${fileArray.length}`);
 
-    // --- TODO: Add Free/Pro limit checks here (e.g., max total images) ---
+    // Handle Pro/Free limits
+    if (!isProUser && !isProLoading) {
+      if (fileArray.length > 1) {
+        setErrorMessage(t('errors.freeLimit'));
+        fileArray = [fileArray[0]]; // Keep only the first file for free users
+      }
+    } else {
+      // For PRO users, limit to 100 images
+      if (fileArray.length > 100) {
+        setErrorMessage(t('errors.tooManyImages'));
+        fileArray = fileArray.slice(0, 100);
+      }
+    }
 
     const newImageObjects: ProcessingImageState[] = [];
     const fileReaders: Promise<void>[] = [];
 
-    for (const file of Array.from(files)) { // Iterate through all selected files
+    for (const file of fileArray) { // Iterate through all selected files
         if (!file.type.startsWith('image/')) { // Basic type check
              console.warn(`Skipping non-image file: ${file.name}`);
              continue;
@@ -365,6 +527,12 @@ export default function ObjectRemovalPage() {
     e.target.value = ""; 
   };
 
+  const handleSelectImage = (imageId: string) => {
+    if (imageId !== activeImageId) {
+      setActiveImageId(imageId);
+    }
+  };
+
   const handleRemoveObjects = async () => {
     // --- Prerequisites Check --- 
     console.log("handleRemoveObjects triggered");
@@ -405,14 +573,32 @@ export default function ObjectRemovalPage() {
     setIsProcessing(true);
     setProcessingStage(t('processing.exportingMask'));
     setErrorMessage(null);
-    setImageState(prevState => ({ ...prevState, processedDataUrl: null })); // Clear previous output URL state *after* checks
-
+    
     // Use local variable for the ref that passed the check
     const validOriginalCanvas = originalCanvasRef.current;
 
     try {
       // 1. Export mask drawing from ReactSketchCanvas
-      const maskDataUrl = await drawingCanvasRef.current.exportImage('png');
+      let maskDataUrl: string;
+      try {
+        maskDataUrl = await drawingCanvasRef.current.exportImage('png');
+        // Store mask for current image
+        setImages(prevImages => prevImages.map(img => 
+          img.id === imageState.id 
+            ? { ...img, maskDataUrl: maskDataUrl, maskDrawn: true } 
+            : img
+        ));
+      } catch (error) {
+        console.error("Error exporting mask from canvas:", error);
+        // If there's an error with the sketch canvas, try using the stored mask if available
+        if (imageState.maskDataUrl) {
+          console.log("Using stored mask instead of canvas export");
+          maskDataUrl = imageState.maskDataUrl;
+        } else {
+          throw new Error("Failed to export mask from canvas and no stored mask available.");
+        }
+      }
+      
       if (!maskDataUrl) {
           throw new Error("Failed to export mask from canvas.");
       }
@@ -425,95 +611,695 @@ export default function ObjectRemovalPage() {
           maskImage.onerror = (err) => reject(new Error(`Failed to load mask image: ${err}`));
       });
       console.log("Mask image loaded from data URL");
-
-      // 3. Call the processing utility function
-      setProcessingStage(t('processing.runningModel'));
-      const resultDataUrl = await processImageWithObjectRemoval(
+      
+      // Apply to a single image or multiple
+      if (applyMaskToAll && images.length > 1) {
+        // --- Batch processing for all images ---
+        setProcessingStage(t('processing.preparingBatch'));
+        
+        // First, make sure all images have their dimensions loaded
+        const imagesToProcess = [...images];
+        let allImagesReady = true;
+        
+        // Check if all images have dimensions
+        for (const img of imagesToProcess) {
+          if (img.originalDataUrl && !img.dimensions) {
+            allImagesReady = false;
+            break;
+          }
+        }
+        
+        // If not all images are ready, load dimensions for all
+        if (!allImagesReady) {
+          setProcessingStage(t('processing.loadingDimensions'));
+          
+          // Load dimensions for all images in parallel
+          const loadImagePromises = imagesToProcess.map(img => {
+            if (img.originalDataUrl && !img.dimensions) {
+              return new Promise<ProcessingImageState>((resolve) => {
+                const imgElement = new Image();
+                imgElement.onload = () => {
+                  const maxDim = 512;
+                  let drawWidth = imgElement.width;
+                  let drawHeight = imgElement.height;
+                  const aspectRatio = imgElement.width / imgElement.height;
+                  
+                  if (drawWidth > maxDim || drawHeight > maxDim) {
+                    if (aspectRatio >= 1) {
+                      drawWidth = maxDim;
+                      drawHeight = Math.round(maxDim / aspectRatio);
+                    } else {
+                      drawHeight = maxDim;
+                      drawWidth = Math.round(maxDim * aspectRatio);
+                    }
+                  }
+                  
+                  resolve({
+                    ...img,
+                    dimensions: { width: drawWidth, height: drawHeight }
+                  });
+                };
+                imgElement.onerror = () => {
+                  // On error, resolve with original
+                  resolve(img);
+                };
+                // Ensure we don't pass null to img.src (TypeScript safety)
+                if (img.originalDataUrl) {
+                  imgElement.src = img.originalDataUrl;
+                }
+              });
+            }
+            return Promise.resolve(img);
+          });
+          
+          // Update all images with dimensions
+          const updatedImages = await Promise.all(loadImagePromises);
+          setImages(updatedImages);
+          
+          // Process all images in sequence
+          const processedImages = [...updatedImages];
+          
+          // Process all images with dimensions
+          for (let i = 0; i < processedImages.length; i++) {
+            const image = processedImages[i];
+            setProcessingProgress(Math.round((i / processedImages.length) * 100));
+            
+            if (!image.originalDataUrl || !image.dimensions) {
+              console.warn(`Skipping image ${image.id} - missing data`);
+              continue;
+            }
+            
+            setProcessingStage(t('processing.processingImage', { current: i+1, total: processedImages.length }));
+            
+            // Create a temporary canvas to draw this image
+            const tempCanvas = document.createElement('canvas');
+            const { width, height } = image.dimensions;
+            tempCanvas.width = width;
+            tempCanvas.height = height;
+            
+            // Draw the image on the temp canvas
+            const ctx = tempCanvas.getContext('2d');
+            if (!ctx) {
+              console.warn(`Skipping image ${image.id} - can't get 2D context`);
+              continue;
+            }
+            
+            const img = new Image();
+            if (image.originalDataUrl) {
+              img.src = image.originalDataUrl;
+              await new Promise(resolve => {
+                img.onload = resolve;
+              });
+              
+              ctx.fillStyle = "#ffffff";
+              ctx.fillRect(0, 0, width, height);
+              ctx.drawImage(img, 0, 0, width, height);
+              
+              // Process this image with the mask
+              try {
+                const resultDataUrl = await processImageWithObjectRemoval(
+                  ort,
+                  session as unknown as SessionAPI,
+                  tempCanvas,
+                  maskImage
+                );
+                
+                processedImages[i] = {
+                  ...image,
+                  originalDataUrl: resultDataUrl,
+                  processedDataUrl: resultDataUrl,
+                  maskDrawn: false,
+                  maskDataUrl: null // Clear the mask since it's been applied
+                };
+              } catch (error) {
+                console.error(`Error processing image ${image.id}:`, error);
+                // Continue with the next image
+              }
+            }
+          }
+          
+          setProcessingProgress(100);
+          setProcessingStage(t('processing.finishingBatch'));
+          setImages(processedImages);
+          
+          // Update active image state
+          const updatedActiveImage = processedImages.find(img => img.id === activeImageId);
+          if (updatedActiveImage) {
+            setImageState(updatedActiveImage);
+            setBackgroundImage(updatedActiveImage.originalDataUrl || "");
+          }
+        } else {
+          // All images already have dimensions
+          const processedImages = [...imagesToProcess];
+          
+          // Process all images with dimensions
+          for (let i = 0; i < processedImages.length; i++) {
+            const image = processedImages[i];
+            setProcessingProgress(Math.round((i / processedImages.length) * 100));
+            
+            if (!image.originalDataUrl || !image.dimensions) {
+              console.warn(`Skipping image ${image.id} - missing data`);
+              continue;
+            }
+            
+            setProcessingStage(t('processing.processingImage', { current: i+1, total: processedImages.length }));
+            
+            // Create a temporary canvas to draw this image
+            const tempCanvas = document.createElement('canvas');
+            const { width, height } = image.dimensions;
+            tempCanvas.width = width;
+            tempCanvas.height = height;
+            
+            // Draw the image on the temp canvas
+            const ctx = tempCanvas.getContext('2d');
+            if (!ctx) {
+              console.warn(`Skipping image ${image.id} - can't get 2D context`);
+              continue;
+            }
+            
+            const img = new Image();
+            if (image.originalDataUrl) {
+              img.src = image.originalDataUrl;
+              await new Promise(resolve => {
+                img.onload = resolve;
+              });
+              
+              ctx.fillStyle = "#ffffff";
+              ctx.fillRect(0, 0, width, height);
+              ctx.drawImage(img, 0, 0, width, height);
+              
+              // Process this image with the mask
+              try {
+                const resultDataUrl = await processImageWithObjectRemoval(
+                  ort,
+                  session as unknown as SessionAPI,
+                  tempCanvas,
+                  maskImage
+                );
+                
+                processedImages[i] = {
+                  ...image,
+                  originalDataUrl: resultDataUrl,
+                  processedDataUrl: resultDataUrl,
+                  maskDrawn: false,
+                  maskDataUrl: null // Clear the mask since it's been applied
+                };
+              } catch (error) {
+                console.error(`Error processing image ${image.id}:`, error);
+                // Continue with the next image
+              }
+            }
+          }
+          
+          setProcessingProgress(100);
+          setProcessingStage(t('processing.finishingBatch'));
+          setImages(processedImages);
+          
+          // Update active image state
+          const updatedActiveImage = processedImages.find(img => img.id === activeImageId);
+          if (updatedActiveImage) {
+            setImageState(updatedActiveImage);
+            setBackgroundImage(updatedActiveImage.originalDataUrl || "");
+          }
+        }
+      } else {
+        // --- Single image processing (original logic) ---
+        setProcessingStage(t('processing.runningModel'));
+        const resultDataUrl = await processImageWithObjectRemoval(
           ort,
           session as unknown as SessionAPI, 
-          validOriginalCanvas, // Use the validated canvas element
+          validOriginalCanvas,
           maskImage 
-      );
-      console.log("Object removal processing complete, received result URL.");
+        );
+        console.log("Object removal processing complete, received result URL.");
 
-      // 4. Update state: Make the result the new source image
-      setProcessingStage(t('processing.rendering'));
-
-      // Update state directly. Effect 2 will handle redrawing the hidden canvas.
-      setImageState(prevState => ({
+        // Update single image state
+        setProcessingStage(t('processing.rendering'));
+        
+        // Update active image state
+        setImageState(prevState => ({
           ...prevState,
-          originalDataUrl: resultDataUrl, // Treat the result as the new original
-          processedDataUrl: resultDataUrl, // Keep track of the latest result
-          maskDrawn: false 
-      }));
-      setBackgroundImage(resultDataUrl); // Update visible canvas background
-      clearMask(); // Clear the mask drawn on the previous step
+          originalDataUrl: resultDataUrl,
+          processedDataUrl: resultDataUrl,
+          maskDrawn: false,
+          maskDataUrl: null // Clear mask since it's been applied
+        }));
+        
+        // Update the image in the images array
+        setImages(prevImages => prevImages.map(img => 
+          img.id === activeImageId
+            ? {
+                ...img,
+                originalDataUrl: resultDataUrl,
+                processedDataUrl: resultDataUrl,
+                maskDrawn: false,
+                maskDataUrl: null // Clear mask since it's been applied
+              }
+            : img
+        ));
+        
+        // Force immediate update to background image to show result
+        setBackgroundImage(resultDataUrl);
+        
+        // Reset mask drawn state for next drawing
+        maskDrawnRef.current = false;
+      }
+      
+      // Clear the mask regardless of single/batch mode
+      try {
+        if (drawingCanvasRef.current) {
+          drawingCanvasRef.current.clearCanvas();
+        }
+      } catch (error) {
+        console.error("Error clearing canvas in handleRemoveObjects:", error);
+      }
       
       console.log("State updated, result is new source, background updated, mask cleared.");
-      setProcessingStage("");
-      setIsProcessing(false); // Stop processing indicator
+      
+      // Ensure the UI has a chance to update before removing the processing state
+      // This will make sure users see the new image before the loader disappears
+      setTimeout(() => {
+        setProcessingStage("");
+        setIsProcessing(false);
+        setProcessingProgress(0);
+      }, 500); // Short delay to ensure UI updates
 
     } catch (error) {
         console.error('Object removal failed:', error);
         const errorMsg = error instanceof Error ? error.message : 'Unknown error';
         setErrorMessage(`${t('errors.processingFailed')}: ${errorMsg}`);
-        // Ensure processing stops on error caught before image loading starts
-        if (isProcessing) setIsProcessing(false); 
-        if (processingStage) setProcessingStage("");
+        // Ensure processing stops on error
+        setIsProcessing(false); 
+        setProcessingStage("");
+        setProcessingProgress(0);
     }
   };
 
-  const handleMaskDraw = useCallback(() => {
-      setImageState({
-          ...imageState,
-          maskDrawn: true,
-      });
-  }, [imageState]);
-
-  const clearMask = () => {
-    if (drawingCanvasRef.current) {
-      drawingCanvasRef.current.clearCanvas();
-      setImageState({
-          ...imageState,
-          maskDrawn: false,
-      });
+  const clearMask = useCallback(() => {
+    console.log('clearMask called with activeImageId:', activeImageId);
+    if (!activeImageId || !originalCanvasRef.current) return;
+    
+    // Reset maskDrawnRef when clearing the mask
+    maskDrawnRef.current = false;
+    
+    const canvas = originalCanvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    console.log('Clearing mask on canvas');
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Redraw the original image
+    if (imageState?.originalDataUrl) {
+      const img = new Image();
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        console.log('Original image redrawn after clearing mask');
+      };
+      img.src = imageState.originalDataUrl;
     }
-  };
+    
+    // Try to clear the drawing canvas
+    try {
+      if (drawingCanvasRef.current) {
+        drawingCanvasRef.current.clearCanvas();
+      }
+    } catch (error) {
+      console.error("Error clearing drawing canvas:", error);
+    }
+    
+    // Update state to reflect mask is no longer drawn
+    setImages(prevImages => {
+      const updatedImages = prevImages.map(img => {
+        if (img.id === activeImageId) {
+          console.log('Setting maskDrawn to false for image:', img.id);
+          return { ...img, maskDrawn: false };
+        }
+        return img;
+      });
+      return updatedImages;
+    });
+    
+    setImageState(prev => {
+      if (prev) {
+        console.log('Updating imageState maskDrawn to false');
+        return { ...prev, maskDrawn: false };
+      }
+      return prev;
+    });
+  }, [activeImageId, imageState, originalCanvasRef]);
+
+  // Effect to handle changes in activeImageId
+  useEffect(() => {
+    console.log('activeImageId changed to:', activeImageId);
+    if (!activeImageId) {
+      // Initialize with default empty object instead of null
+      setImageState({
+        id: "",
+        file: null,
+        originalDataUrl: null,
+        processedDataUrl: null,
+        dimensions: null,
+        maskDrawn: false,
+        isSelected: false,
+        isProcessing: false,
+        processingStage: "",
+        errorMessage: null,
+      });
+      return;
+    }
+
+    const activeImage = images.find(img => img.id === activeImageId);
+    console.log('Found active image:', activeImage);
+    if (activeImage) {
+      setImageState(activeImage);
+    }
+  }, [activeImageId, images]);
 
   const handleDownload = () => {
-    // Download based on processedDataUrl state, not canvas ref
-    const sourceFilename = imageState.file?.name || 'image';
-    
-    if (!imageState.processedDataUrl) {
-        console.error("Download failed: No processed image data available.");
-        setErrorMessage(t('errors.noDownloadData'));
-        return;
-    }
+    // If multiple images and at least one is processed
+    if (images.length > 1 && images.some(img => img.processedDataUrl)) {
+      downloadBatchImages();
+    } else {
+      // Download single image (original logic)
+      const sourceFilename = imageState.file?.name || 'image';
+      
+      if (!imageState.processedDataUrl) {
+          console.error("Download failed: No processed image data available.");
+          setErrorMessage(t('errors.noDownloadData'));
+          return;
+      }
 
-    try {
-        const link = document.createElement('a');
-        link.href = imageState.processedDataUrl; // Use the state URL
-        
-        const nameWithoutExtension = sourceFilename.replace(/\.[^/.]+$/, "");
-        link.download = `${nameWithoutExtension}-inpainted.png`;
-        
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        console.log("Download initiated for:", link.download);
-    } catch (error) {
-        console.error("Error initiating download:", error);
-        setErrorMessage(t('errors.downloadFailed'));
+      try {
+          const link = document.createElement('a');
+          link.href = imageState.processedDataUrl;
+          
+          const nameWithoutExtension = sourceFilename.replace(/\.[^/.]+$/, "");
+          link.download = `${nameWithoutExtension}-inpainted.png`;
+          
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          console.log("Download initiated for:", link.download);
+      } catch (error) {
+          console.error("Error initiating download:", error);
+          setErrorMessage(t('errors.downloadFailed'));
+      }
     }
+  };
+  
+  const downloadBatchImages = async () => {
+    try {
+      setIsProcessing(true);
+      setProcessingStage(t('processing.preparingDownload'));
+      
+      // Use JSZip if available, otherwise show error
+      const JSZip = (await import('jszip')).default;
+      const zip = new JSZip();
+      
+      images.forEach((image, index) => {
+        if (image.processedDataUrl) {
+          // Extract base64 data from data URL
+          const base64Data = image.processedDataUrl.split(",")[1];
+          
+          // Get filename
+          const sourceFilename = image.file?.name || `image-${index + 1}.png`;
+          const nameWithoutExtension = sourceFilename.replace(/\.[^/.]+$/, "");
+          const filename = `${nameWithoutExtension}-inpainted.png`;
+          
+          // Add to zip
+          zip.file(filename, base64Data, { base64: true });
+        }
+      });
+      
+      // Generate zip
+      const zipBlob = await zip.generateAsync({ type: "blob" });
+      
+      // Create download link
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(zipBlob);
+      link.download = "object-removal-batch.zip";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      setIsProcessing(false);
+      setProcessingStage("");
+      
+    } catch (error) {
+      console.error("Error creating ZIP file:", error);
+      setErrorMessage(t('errors.downloadFailed'));
+      setIsProcessing(false);
+      setProcessingStage("");
+    }
+  };
+
+  const handleClearAll = () => {
+    // Reset everything
+    setImages([]);
+    setActiveImageId(null);
+    setImageState({
+      id: "",
+      file: null,
+      originalDataUrl: null,
+      processedDataUrl: null,
+      dimensions: null,
+      maskDrawn: false,
+      isSelected: false,
+      isProcessing: true,
+      processingStage: t('processing.readingFile'),
+      errorMessage: null,
+    });
+    setBackgroundImage("");
+    clearMask();
+    setErrorMessage(null);
+    setProcessingStage("");
+    setIsProcessing(false);
+    setProcessingProgress(0);
   };
 
   // --- Render --- 
 
   // Check if an image is loaded based on the new state
   const isImageLoaded = !!imageState.originalDataUrl;
+  const hasMultipleImages = images.length > 1;
   
   // Define isLoading based on required states
   const isLoading = !isOrtLoaded || !isOpenCVReady || isProLoading || (isOrtLoaded && !session);
+
+  // Helper function to load image to canvas
+  const loadImageToCanvas = (dataUrl: string, canvas: HTMLCanvasElement) => {
+    const img = new Image();
+    img.onload = () => {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      }
+    };
+    img.src = dataUrl;
+  };
+
+  // Modify the ReactSketchCanvas component with proper key and error handling
+  // This ensures it unmounts and remounts properly when the active image changes
+  const CanvasComponent = useMemo(() => {
+    if (!imageState?.dimensions) return null;
+    
+    return (
+      <ReactSketchCanvas
+        key={imageState.id} // Add a key to ensure proper remounting only when image changes
+        ref={drawingCanvasRef}
+        strokeWidth={brushSize}
+        strokeColor={brushColor}
+        canvasColor="transparent"
+        width={`${imageState.dimensions.width}px`}
+        height={`${imageState.dimensions.height}px`}
+        backgroundImage={backgroundImage || ""}
+        preserveBackgroundImageAspectRatio="none"
+        className="relative z-10 block"
+        onStroke={() => {
+          // Only update state if this is the first stroke
+          if (!maskDrawnRef.current && activeImageId) {
+            console.log('First stroke - updating mask drawn state');
+            maskDrawnRef.current = true;
+            
+            // Use requestAnimationFrame to defer state updates until after rendering
+            // This prevents flickering during drawing
+            requestAnimationFrame(() => {
+              // Update images state
+              setImages(prevImages => {
+                const updatedImages = prevImages.map(img => {
+                  if (img.id === activeImageId && !img.maskDrawn) {
+                    console.log('Setting maskDrawn to true for image:', img.id);
+                    return { ...img, maskDrawn: true };
+                  }
+                  return img;
+                });
+                return updatedImages;
+              });
+              
+              // Update imageState
+              setImageState(prev => {
+                if (prev && !prev.maskDrawn) {
+                  console.log('Updating imageState maskDrawn to true');
+                  return { ...prev, maskDrawn: true };
+                }
+                return prev;
+              });
+            });
+          }
+        }}
+        exportWithBackgroundImage={false}
+      />
+    );
+  // Only depend on properties that should cause a canvas remount
+  }, [imageState?.id, imageState?.dimensions, brushSize, brushColor, backgroundImage, activeImageId]);
+
+  // Modified Canvas Display Area section with improved loading indicator
+  const canvasDisplaySection = useMemo(() => {
+    if (!isImageLoaded || !imageState?.dimensions) {
+      return null;
+    }
+    
+    return (
+      <div className="space-y-4 flex flex-col items-center">
+        <div className="flex flex-col items-center">
+          <p className="text-sm font-medium mb-2">{t('mainCard.canvas.drawTitle')}</p> 
+          <div 
+            className="overflow-hidden relative shadow-brutalist bg-white p-1" 
+            style={{ 
+              width: (imageState.dimensions.width + 2), 
+              height: (imageState.dimensions.height + 2) 
+            }}
+          >
+            {/* Hidden Original Canvas - Used as source for processing */}
+            <canvas 
+              ref={originalCanvasRef} 
+              style={{ display: 'none' }} 
+              width={imageState.dimensions.width} 
+              height={imageState.dimensions.height} 
+            />
+            {/* Drawing Canvas (Visible) */}
+            {CanvasComponent}
+            
+            {/* Loading Overlay - Visible during processing */}
+            {isProcessing && (
+              <div 
+                className="absolute inset-0 flex flex-col items-center justify-center z-20 bg-white bg-opacity-80"
+              >
+                <Loader size="md" className="mb-2" />
+                <p className="text-center text-sm font-medium">
+                  {processingStage || t('processing.generic')}
+                </p>
+              </div>
+            )}
+          </div>
+          <div className="mt-2 flex items-center justify-between w-full max-w-sm space-x-2 px-1">
+            <div className='flex items-center space-x-2'>
+              <label className="block text-xs text-gray-600 whitespace-nowrap">
+                {t('mainCard.canvas.brushSize')}
+              </label>
+              <input
+                type="range"
+                min="5"
+                max="70"
+                value={brushSize}
+                onChange={(e) => setBrushSize(parseInt(e.target.value))}
+                className="w-24 h-4 brutalist-border bg-white appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                disabled={isProcessing}
+              />
+              <span className="text-xs w-4 text-right">{brushSize}</span>
+            </div>
+            <Button
+              variant='default'
+              size='sm'
+              onClick={clearMask}
+              disabled={isProcessing || !imageState.maskDrawn}
+              className="text-xs !px-2 !py-1 shadow-brutalist-sm"
+            >
+              {t('mainCard.canvas.clearMask')}
+            </Button>
+          </div>
+        </div>
+
+        {/* Action Buttons */} 
+        <div className="brutalist-border bg-white p-4 mt-4">
+          <div className="flex flex-wrap justify-center items-center gap-4">
+            <div className="relative flex items-center">
+              <Button
+                variant="accent"
+                onClick={handleRemoveObjects}
+                disabled={isProcessing || !imageState.maskDrawn || !session}
+                className="flex items-center gap-2"
+              >
+                {isProcessing && <Loader size="sm" className="w-5 h-5"/>}
+                {isProcessing 
+                  ? t('mainCard.actions.processing') 
+                  : hasMultipleImages && applyMaskToAll 
+                    ? t('mainCard.actions.removeAllObjects') 
+                    : t('mainCard.actions.remove')
+                }
+              </Button>
+            </div>
+            <Button
+              variant="primary"
+              onClick={handleDownload}
+              disabled={isProcessing || (!imageState.processedDataUrl && !images.some(img => img.processedDataUrl))}
+            >
+              {hasMultipleImages && images.some(img => img.processedDataUrl) 
+                ? t('mainCard.actions.downloadAll') 
+                : t('mainCard.actions.download')
+              }
+            </Button>
+          </div>
+          
+          {/* Progress bar for batch processing */}
+          {isProcessing && hasMultipleImages && (
+            <div className="mt-4 space-y-2">
+              <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
+                <div 
+                  className="h-full bg-[#4F46E5]"
+                  style={{ width: `${processingProgress}%` }}
+                ></div>
+              </div>
+              <div className="flex justify-between text-xs">
+                <span>{t('processing.batchProgress')}</span>
+                <span>{processingProgress}%</span>
+              </div>
+            </div>
+          )}
+          
+          {processingStage && (
+            <div className="mt-3 p-2 bg-blue-50 border border-blue-200">
+              <p className='text-center text-sm font-medium'>{processingStage}</p>
+            </div>
+          )}
+          
+          {errorMessage && (
+            <div className="mt-3 p-2 bg-red-50 border border-red-200">
+              <p className="text-red-500 text-center text-sm">{errorMessage}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }, [
+    isImageLoaded, 
+    imageState?.dimensions, 
+    imageState?.maskDrawn, 
+    imageState?.processedDataUrl,
+    brushSize, 
+    isProcessing, 
+    processingStage, 
+    processingProgress,
+    errorMessage,
+    hasMultipleImages,
+    applyMaskToAll,
+    session,
+    CanvasComponent,
+    t
+  ]);
 
   return (
     <>
@@ -577,13 +1363,13 @@ export default function ObjectRemovalPage() {
                      </div>
 
                      {/* Upload Area */}
-                     {!isImageLoaded && (
+                     {images.length === 0 && (
                        <div className="brutalist-border p-6 bg-white text-center">
                          <p className="text-lg font-bold mb-4">{t('mainCard.upload.title')}</p>
                          <input
                            type="file"
                            accept="image/*"
-                           // multiple={isProUser} // Enable later for multi-image
+                           multiple={isProUser}
                            onChange={handleFileChange}
                            className="hidden"
                            id="fileInputObjRemove"
@@ -600,106 +1386,70 @@ export default function ObjectRemovalPage() {
                        </div>
                      )}
 
-                     {/* Canvas Display Area */}
-                     {isImageLoaded && imageState.dimensions && (
-                        <div className="space-y-4 flex flex-col items-center"> {/* Center the single canvas area */} 
-                          {/* Remove lg:flex-row justify-around */}
-                          {/* <div className="flex flex-col lg:flex-row justify-around items-center lg:items-start gap-6 w-full"> */} 
-                              {/* Drawing Canvas Section (Now the main view) */} 
-                              <div className="flex flex-col items-center">
-                                {/* Combine titles maybe? Or adjust wording */} 
-                                <p className="text-sm font-medium mb-2">{t('mainCard.canvas.drawTitle')}</p> 
-                                <div className="overflow-hidden relative shadow-brutalist bg-white p-1" style={{ width: imageState.dimensions.width + 2, height: imageState.dimensions.height + 2 }}>
-                                   {/* Hidden Original Canvas - Used as source for processing */}
-                                   <canvas 
-                                      ref={originalCanvasRef} 
-                                      style={{ display: 'none' }} 
-                                      width={imageState.dimensions.width} 
-                                      height={imageState.dimensions.height} 
-                                   />
-                                   {/* Drawing Canvas (Visible) */} 
-                                   <ReactSketchCanvas
-                                      ref={drawingCanvasRef}
-                                      strokeWidth={brushSize}
-                                      strokeColor={brushColor}
-                                      canvasColor="transparent"
-                                      width={imageState.dimensions.width + "px"}
-                                      height={imageState.dimensions.height + "px"}
-                                      backgroundImage={backgroundImage} // This now changes
-                                      preserveBackgroundImageAspectRatio="contain"
-                                      className="relative z-10 block"
-                                      onStroke={handleMaskDraw}
-                                   />
-                                </div>
-                                <div className="mt-2 flex items-center justify-between w-full max-w-sm space-x-2 px-1">
-                                  <div className='flex items-center space-x-2'>
-                                    <label className="block text-xs text-gray-600 whitespace-nowrap">{t('mainCard.canvas.brushSize')}</label>
-                                    <input
-                                      type="range"
-                                      min="5"
-                                      max="70" // Increased max size
-                                      value={brushSize}
-                                      onChange={(e) => setBrushSize(parseInt(e.target.value))}
-                                      className="w-24 h-4 brutalist-border bg-white appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
-                                      disabled={isProcessing}
-                                    />
-                                     <span className="text-xs w-4 text-right">{brushSize}</span>
-                                  </div>
-                                  <Button
-                                    variant='default'
-                                    size='sm'
-                                    onClick={clearMask}
-                                    disabled={isProcessing || !imageState.maskDrawn}
-                                    className="text-xs !px-2 !py-1 shadow-brutalist-sm"
-                                  >
-                                    {t('mainCard.canvas.clearMask')}
-                                  </Button>
-                                </div>
-                              </div>
-
-                              {/* REMOVE Processed Image Output Section */} 
-                              {/* 
-                              <div className="flex flex-col items-center">
-                                  <p>{t('mainCard.canvas.outputTitle')}</p>
-                                  <div style={{ width: imageState.dimensions.width + 2, height: imageState.dimensions.height + 2 }}>
-                                      <canvas ref={outputCanvasRef} ... />
-                                      {!imageState.processedDataUrl && ( ... placeholder ... )}
-                                  </div>
-                              </div>
-                              */}
-                          {/* </div> */} 
-
-                          {/* Action Buttons */} 
-                          <div className="brutalist-border bg-white p-4 mt-4">
-                              <div className="flex flex-wrap justify-center items-center gap-4">
-                                  <div className="relative flex items-center">
-                                      <Button
-                                          variant="accent"
-                                          onClick={handleRemoveObjects}
-                                          disabled={isProcessing || !imageState.maskDrawn || !session}
-                                          className="flex items-center gap-2"
-                                      >
-                                          {isProcessing && <Loader size="sm" className="w-5 h-5"/>}
-                                          {isProcessing ? t('mainCard.actions.processing') : t('mainCard.actions.remove')}
-                                      </Button>
-                                  </div>
-                                  <Button
-                                      variant="primary"
-                                      onClick={handleDownload}
-                                      disabled={isProcessing || !imageState.processedDataUrl}
-                                  >
-                                      {t('mainCard.actions.download')}
-                                  </Button>
-                              </div>
-                              {isProcessing && processingStage && (
-                                  <p className='text-center text-sm mt-3'>{processingStage}</p>
-                              )}
-                              {errorMessage && (
-                                  <p className="text-red-500 text-center text-sm mt-3">{errorMessage}</p>
-                              )}
-                          </div>
-                        </div>
+                     {/* Image Gallery for Multi-Image (Pro users) */}
+                     {images.length > 0 && (
+                       <div className="brutalist-border p-4 bg-white mb-4">
+                         <div className="flex justify-between mb-3">
+                           <h3 className="font-medium text-sm">
+                             {hasMultipleImages 
+                               ? `${t('imageGallery.selectedImages')} (${images.length})` 
+                               : t('imageGallery.selectedImage')}
+                           </h3>
+                           <button 
+                             onClick={handleClearAll} 
+                             className="text-xs text-red-600 hover:underline"
+                             disabled={isProcessing}
+                           >
+                             {t('imageGallery.clearAll')}
+                           </button>
+                         </div>
+                         
+                         {hasMultipleImages && (
+                           <div className="grid grid-cols-6 gap-2 mb-3 max-h-40 overflow-y-auto p-1">
+                             {images.map(image => (
+                               <div 
+                                 key={image.id} 
+                                 className={`relative cursor-pointer border-2 overflow-hidden ${activeImageId === image.id ? 'border-blue-500' : 'border-transparent'} ${image.maskDrawn ? 'bg-red-50' : ''}`}
+                                 onClick={() => handleSelectImage(image.id)}
+                               >
+                                 {image.originalDataUrl && (
+                                   <div style={{ width: '100%', paddingBottom: '100%', position: 'relative' }}>
+                                     <img 
+                                       src={image.originalDataUrl} 
+                                       alt={image.file?.name || 'Image'}
+                                       className="absolute inset-0 w-full h-full object-cover"
+                                     />
+                                     {image.maskDrawn && (
+                                       <div className="absolute top-0 right-0 bg-red-500 rounded-full w-3 h-3 m-1" 
+                                            title={t('imageGallery.hasMask')}></div>
+                                     )}
+                                   </div>
+                                 )}
+                               </div>
+                             ))}
+                           </div>
+                         )}
+                         
+                         {isProUser && hasMultipleImages && (
+                           <div className="flex items-center mb-2">
+                             <input
+                               type="checkbox"
+                               id="applyMaskToAll"
+                               checked={applyMaskToAll}
+                               onChange={(e) => setApplyMaskToAll(e.target.checked)}
+                               className="mr-2 h-4 w-4 brutalist-border"
+                               disabled={isProcessing}
+                             />
+                             <label htmlFor="applyMaskToAll" className="text-sm">
+                               {t('imageGallery.applyMaskToAll')}
+                             </label>
+                           </div>
+                         )}
+                       </div>
                      )}
+
+                     {/* Canvas Display Area */}
+                     {canvasDisplaySection}
                    </div>
                 </Card>
               </div>
@@ -725,6 +1475,9 @@ export default function ObjectRemovalPage() {
                        <p>3. {t('instructionsCard.step3')}</p>
                        <p>4. {t('instructionsCard.step4')}</p>
                        <p>5. {t('instructionsCard.step5')}</p>
+                       {isProUser && (
+                         <p>6. {t('instructionsCard.step6')}</p>
+                       )}
                        <p className='mt-2 text-xs'><strong>{t('instructionsCard.noteTitle')}</strong> {t('instructionsCard.noteText')}</p>
                     </div>
                  </Card>
@@ -732,7 +1485,6 @@ export default function ObjectRemovalPage() {
             </div>
           )}
         </div>
-         {/* TODO: Add Pro Upgrade Dialog for specific actions if needed */}
       </main>
     </>
   );

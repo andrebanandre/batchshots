@@ -743,14 +743,14 @@
                 },
                 "proMode": {
                     "title": "PRO MODE",
-                    "description": "Process 1 image currently. Batch processing up to 100 images is coming soon!"
+                    "description": "Process up to 100 images in batch mode. Draw a mask once and apply it to all your images!"
                 }
             },
             "upload": {
                 "title": "Upload Your Image",
                 "button": "SELECT IMAGE",
                 "helpTextFree": "Select the image you want to edit.",
-                "helpTextPro": "Select the image you want to edit (Batch processing coming soon!)."
+                "helpTextPro": "Select up to 100 images for batch processing."
             },
             "canvas": {
                 "drawTitle": "1. DRAW MASK OVER OBJECTS",
@@ -762,13 +762,15 @@
             "actions": {
                 "reset": "RESET",
                 "remove": "REMOVE OBJECTS",
+                "removeAllObjects": "REMOVE FROM ALL IMAGES",
                 "processing": "PROCESSING...",
-                "download": "DOWNLOAD"
+                "download": "DOWNLOAD",
+                "downloadAll": "DOWNLOAD ALL"
             }
         },
         "upgradeCard": {
             "title": "UPGRADE TO PRO",
-            "description": "Unlock batch object removal (coming soon!) and other PRO features like bulk background removal and advanced editing.",
+            "description": "Unlock batch object removal for up to 100 images and other PRO features like bulk background removal and advanced editing.",
             "button": "LEARN MORE & UPGRADE"
         },
         "instructionsCard": {
@@ -778,21 +780,35 @@
             "step3": "Adjust the Brush Size slider for precision.",
             "step4": "Click the 'Remove Objects' button and wait for the AI to process.",
             "step5": "Once processed, download your clean image using the 'Download' button.",
+            "step6": "For batch processing, check 'Apply mask to all images' to remove similar objects from all selected images.",
             "noteTitle": "Note:",
             "noteText": "Processing can take 15-60 seconds depending on image size and your device. Ensure your mask fully covers the object for best results."
+        },
+        "imageGallery": {
+            "selectedImages": "Selected Images",
+            "selectedImage": "Selected Image",
+            "clearAll": "Clear All",
+            "applyMaskToAll": "Apply mask to all images (batch processing)",
+            "hasMask": "Has mask drawn"
         },
         "processing": {
             "readingFile": "Reading file...",
             "loadingImage": "Loading image...",
             "exportingMask": "Preparing mask...",
             "runningModel": "Running AI model...",
-            "rendering": "Rendering result..."
+            "rendering": "Rendering result...",
+            "preparingBatch": "Preparing batch processing...",
+            "processingImage": "Processing image {current} of {total}...",
+            "finishingBatch": "Finalizing results...",
+            "preparingDownload": "Preparing download...",
+            "batchProgress": "Batch progress",
+            "loadingDimensions": "Calculating image dimensions..."
         },
         "errors": {
             "ortLoad": "Failed to load AI Engine. Please try refreshing the page.",
             "sessionCreate": "Failed to initialize the object removal model.",
-            "freeLimit": "Free users can only process 1 image at a time. Please upgrade to PRO for batch processing (coming soon!).",
-            "multiImageSoon": "Batch processing for multiple images is coming soon! Please select only one image for now.",
+            "freeLimit": "Free users can only process 1 image at a time. Please upgrade to PRO for batch processing.",
+            "tooManyImages": "Maximum 100 images allowed. Only the first 100 images will be processed.",
             "imageLoad": "Error loading the selected image.",
             "fileRead": "Error reading the selected file.",
             "canvasError": "Error accessing the image canvas.",
