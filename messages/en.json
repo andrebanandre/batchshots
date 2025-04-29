@@ -722,5 +722,86 @@
         "section10Title": "10. Contact Us",
         "section10P1": "If you have any questions about these Terms of Use, please contact us at terms@batchshots.com.",
         "returnButton": "RETURN TO HOME"
+    },
+    "ObjectRemovalPage": {
+        "title": "AI OBJECT REMOVER",
+        "loading": {
+            "ort": "Loading AI Engine...",
+            "opencv": "Loading Image Tools...",
+            "model": "Loading Object Removal Model...",
+            "proStatus": "Checking Account Status...",
+            "generic": "Loading..."
+        },
+        "mainCard": {
+            "title": "AI OBJECT REMOVAL CANVAS",
+            "info": {
+                "title": "HOW IT WORKS",
+                "description": "Remove unwanted objects, people, or text from your images using AI. The processing happens entirely in your browser.",
+                "freeMode": {
+                    "title": "FREE MODE",
+                    "description": "Process 1 image at a time. Upgrade to PRO for batch processing (coming soon!)."
+                },
+                "proMode": {
+                    "title": "PRO MODE",
+                    "description": "Process 1 image currently. Batch processing up to 100 images is coming soon!"
+                }
+            },
+            "upload": {
+                "title": "Upload Your Image",
+                "button": "SELECT IMAGE",
+                "helpTextFree": "Select the image you want to edit.",
+                "helpTextPro": "Select the image you want to edit (Batch processing coming soon!)."
+            },
+            "canvas": {
+                "drawTitle": "1. DRAW MASK OVER OBJECTS",
+                "brushSize": "Brush Size",
+                "clearMask": "CLEAR MASK",
+                "outputTitle": "2. VIEW RESULT",
+                "outputPlaceholder": "Result will appear here"
+            },
+            "actions": {
+                "reset": "RESET",
+                "remove": "REMOVE OBJECTS",
+                "processing": "PROCESSING...",
+                "download": "DOWNLOAD"
+            }
+        },
+        "upgradeCard": {
+            "title": "UPGRADE TO PRO",
+            "description": "Unlock batch object removal (coming soon!) and other PRO features like bulk background removal and advanced editing.",
+            "button": "LEARN MORE & UPGRADE"
+        },
+        "instructionsCard": {
+            "title": "INSTRUCTIONS",
+            "step1": "Upload your image using the 'Select Image' button.",
+            "step2": "Carefully paint over the object(s) you want to remove using the red brush.",
+            "step3": "Adjust the Brush Size slider for precision.",
+            "step4": "Click the 'Remove Objects' button and wait for the AI to process.",
+            "step5": "Once processed, download your clean image using the 'Download' button.",
+            "noteTitle": "Note:",
+            "noteText": "Processing can take 15-60 seconds depending on image size and your device. Ensure your mask fully covers the object for best results."
+        },
+        "processing": {
+            "readingFile": "Reading file...",
+            "loadingImage": "Loading image...",
+            "exportingMask": "Preparing mask...",
+            "runningModel": "Running AI model...",
+            "rendering": "Rendering result..."
+        },
+        "errors": {
+            "ortLoad": "Failed to load AI Engine. Please try refreshing the page.",
+            "sessionCreate": "Failed to initialize the object removal model.",
+            "freeLimit": "Free users can only process 1 image at a time. Please upgrade to PRO for batch processing (coming soon!).",
+            "multiImageSoon": "Batch processing for multiple images is coming soon! Please select only one image for now.",
+            "imageLoad": "Error loading the selected image.",
+            "fileRead": "Error reading the selected file.",
+            "canvasError": "Error accessing the image canvas.",
+            "prerequisites": "Cannot process. Missing required components: {missing}",
+            "noMask": "Please draw a mask over the object you want to remove first.",
+            "processingFailed": "Object removal failed",
+            "resultLoadFailed": "Failed to display the processed image result.",
+            "noDownloadData": "No processed image available to download.",
+            "downloadFailed": "Failed to prepare image for download."
+        }
     }
 }

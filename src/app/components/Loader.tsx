@@ -4,9 +4,10 @@ import React from 'react';
 
 interface LoaderProps {
   size?: 'sm' | 'md' | 'lg';
+  className?: string;
 }
 
-const Loader: React.FC<LoaderProps> = ({ size = 'md' }) => {
+const Loader: React.FC<LoaderProps> = ({ size = 'md', className = '' }) => {
   // Size configurations
   const dimensions = {
     sm: { width: 60, height: 20, rectSize: 12 },
@@ -37,7 +38,7 @@ const Loader: React.FC<LoaderProps> = ({ size = 'md' }) => {
   };
   
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className={className}>
       <div 
         style={{
           ...rectStyle,

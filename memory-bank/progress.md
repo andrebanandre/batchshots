@@ -40,3 +40,47 @@
     - `techContext.md`: Added details on OpenCV conditional usage, functions, initialization, and relationship with ONNX.
     - `systemPatterns.md`: Added details on the conditional processing pipeline, ONNX interaction, Canvas fallbacks, and POC experiments.
 - **Next Steps:** Update `tasks.md`; Conclude Memory Bank population or identify further deep dives. 
+
+## [Current Date] - Planning Object Removal Feature (PLAN Mode)
+
+- **Task:** Create implementation plan for Object Removal feature based on POC (`MiganObjectRemoval.tsx`).
+- **Complexity Level:** Level 3 (New feature integration, UI/state complexity).
+- **Plan Summary:**
+    - Create new page `src/app/[locale]/object-removal/page.tsx`.
+    - Adapt core ONNX/Canvas logic from POC into `src/app/lib/objectRemovalProcessing.ts`.
+    - Implement UI using `Card`, `Button`, `ReactSketchCanvas`.
+    - Handle state for image, mask, processing status.
+    - Integrate core logic (upload, remove, reset, download).
+    - Handle Free/Pro limits (start with single image focus).
+    - Add translations to `messages/en.json`.
+    - Style consistently.
+- **Next Steps:** Update `tasks.md`, Transition to IMPLEMENT Mode.
+
+## [Current Date] - Implement Object Removal Feature (IMPLEMENT Mode - Level 3)
+
+- **Task:** Implement the single-image object removal feature page.
+- **Status:** Core functionality COMPLETE.
+- **Known Issue:** Iterative removal on the same image does not correctly use the previously processed result as the source for the next operation.
+- **Implementation Details:**
+    - Created `src/app/[locale]/object-removal/page.tsx`.
+    - Created `src/app/lib/objectRemovalProcessing.ts` with core ONNX/Canvas logic.
+    - Implemented UI using `Card`, `Button`, `ReactSketchCanvas`, handling state with `useState`.
+    - Integrated control flow: image upload, mask drawing, object removal processing, reset, download.
+    - Added English translations to `messages/en.json` under `ObjectRemovalPage` namespace.
+    - Applied basic Brutalist styling and added instructions.
+    - Enforced single-image limit for free users.
+- **Files Modified:**
+    - `src/app/[locale]/object-removal/page.tsx` (Created & Implemented)
+    - `src/app/lib/objectRemovalProcessing.ts` (Created & Implemented)
+    - `messages/en.json` (Added translations)
+    - `src/app/components/Loader.tsx` (Added className prop)
+- **Next Steps:** Update `tasks.md`. Transition to PLAN mode to define multi-image support.
+
+## [Current Date] - Implement Object Removal Feature - Single Image Complete (IMPLEMENT Mode - Level 3)
+
+- **Task:** Implement the single-image object removal feature page.
+- **Status:** CORE COMPLETE. 
+- **Known Issue:** Iterative removal on the same image does not correctly use the previously processed result as the source for the next operation.
+- **Implementation Details:** (As previously documented)
+- **Files Modified:** (As previously documented)
+- **Next Steps:** Update `tasks.md`. Transition to PLAN mode to define multi-image support. 
