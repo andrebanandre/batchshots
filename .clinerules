@@ -1,0 +1,12 @@
+# Cline Rules for Batch Shots Project
+
+# This file captures project-specific patterns, user preferences, and other intelligence
+# learned during development to improve consistency and efficiency.
+
+# (No specific rules identified yet during initial analysis)
+
+# --- Examples of potential future rules ---
+# - "Always use client-side processing for tasks X, Y, Z unless explicitly stated otherwise."
+# - "Prefer using `useIsPro` hook for gating Pro features on the client-side."
+# - "When adding new API routes requiring authentication, use Clerk's `authMiddleware`."
+# - "Follow [Specific Naming Convention] for image processing utility functions."
