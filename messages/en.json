@@ -57,7 +57,8 @@
         "pricing": "Pricing",
         "login": "LOG IN",
         "objectRemoval": "Object Removal",
-        "tools": "Tools"
+        "tools": "Tools",
+        "addWatermark": "Add Watermark"
     },
     "Footer": {
         "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
@@ -439,7 +440,7 @@
         "WatermarkControl": {
             "title": "WATERMARK",
             "addTab": "ADD WATERMARK",
-            "removeTab": "REMOVE WATERMARK (AI)",
+            "removeTab": "REMOVE OBJECTS",
             "type": "TYPE",
             "text": "TEXT",
             "logo": "LOGO",
@@ -826,6 +827,107 @@
             "resultLoadFailed": "Failed to display the processed image result.",
             "noDownloadData": "No processed image available to download.",
             "downloadFailed": "Failed to prepare image for download."
+        }
+    },
+    "WatermarkPage": {
+        "metadata": {
+            "title": "Add Watermark to Images | Batch Shots",
+            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
+            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+        },
+        "title": "ADD WATERMARK TO IMAGES",
+        "loading": {
+            "proStatus": "CHECKING PRO STATUS...",
+            "proDescription": "Please wait while we verify your account status."
+        },
+        "preview": {
+            "title": "IMAGE PREVIEW"
+        },
+        "alerts": {
+            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
+            "maxImagesLimit": "Maximum 100 images allowed at once.",
+            "watermarkFailed": "Watermark application failed. Please try again."
+        },
+        "mainCard": {
+            "title": "WATERMARK YOUR IMAGES",
+            "info": {
+                "title": "ADD CUSTOM WATERMARKS",
+                "description": "Protect your images with custom text or logo watermarks. Customize opacity, size, and position to match your branding needs.",
+                "freeMode": {
+                    "title": "FREE MODE",
+                    "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
+                },
+                "proMode": {
+                    "title": "PRO MODE",
+                    "description": "Process up to 100 images in bulk with your PRO account!"
+                }
+            },
+            "upload": {
+                "title": "Select Images",
+                "buttonFree": "SELECT AN IMAGE",
+                "buttonPro": "SELECT IMAGES",
+                "helpTextFree": "Free users can select 1 image at a time.",
+                "helpTextPro": "You can select up to 100 images at once."
+            },
+            "actions": {
+                "clear": "CLEAR",
+                "download": "DOWNLOAD",
+                "downloadZip": "DOWNLOAD AS ZIP",
+                "applyWatermark": "APPLY WATERMARK",
+                "applyWatermarks": "APPLY WATERMARKS",
+                "processing": "APPLYING WATERMARK...",
+                "processingMultiple": "APPLYING WATERMARKS...",
+                "tryFullEditor": "TRY FULL EDITOR"
+            },
+            "progress": {
+                "processing": "Processing...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "UPGRADE TO PRO",
+                "plan": {
+                    "title": "PRO PLAN",
+                    "price": "$19.99",
+                    "features": [
+                        "Watermark up to 100 images at once",
+                        "Advanced image adjustments and presets",
+                        "Background removal for product images",
+                        "Batch processing for all features",
+                        "One-time payment, lifetime access"
+                    ],
+                    "buttonText": "UPGRADE NOW"
+                }
+            }
+        },
+        "howItWorks": {
+            "title": "HOW IT WORKS",
+            "step1": {
+                "title": "1. SELECT YOUR IMAGES",
+                "description": "Upload one or more images you want to watermark.",
+                "proNote": "PRO users can select up to 100 images at once!"
+            },
+            "step2": {
+                "title": "2. CUSTOMIZE WATERMARK",
+                "description": "Choose between text or logo watermarks. Adjust opacity, size, and position to your preferences."
+            },
+            "step3": {
+                "title": "3. DOWNLOAD & USE",
+                "description": "Apply your watermark and download the processed images ready for web, social media, or portfolio use."
+            }
+        },
+        "proDialog": {
+            "title": "UPGRADE TO PRO",
+            "featureTitle": "PRO FEATURE: Bulk Watermarking",
+            "description": "Free users can only process 1 image at a time. Upgrade to PRO to watermark up to 100 images in bulk, saving you hours of work!",
+            "pricing": {
+                "title": "ONE-TIME PAYMENT",
+                "price": "$19.99",
+                "note": "No subscription, lifetime access"
+            },
+            "actions": {
+                "upgrade": "UPGRADE TO PRO",
+                "continue": "CONTINUE WITH FREE MODE"
+            }
         }
     }
 }

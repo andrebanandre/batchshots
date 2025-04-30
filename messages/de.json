@@ -57,7 +57,8 @@
         "pricing": "Preise",
         "login": "ANMELDEN",
         "objectRemoval": "Objektentfernung",
-        "tools": "Werkzeuge"
+        "tools": "Werkzeuge",
+        "addWatermark": "Wasserzeichen hinzufügen"
     },
     "Footer": {
         "about": "Batch Shots hilft Ihnen, Produktbilder schnell und einfach für SEO zu optimieren, direkt in Ihrem Browser.",
@@ -738,6 +739,25 @@
             "resultLoadFailed": "Fehler beim Anzeigen des verarbeiteten Bildergebnisses.",
             "noDownloadData": "Keine verarbeiteten Bilder zum Herunterladen verfügbar.",
             "downloadFailed": "Fehler bei der Vorbereitung des Bildes zum Herunterladen."
+        }
+    },
+    "WatermarkPage": {
+        "metadata": {
+            "title": "Add Watermark to Images | Batch Shots",
+            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
+            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+        },
+        "title": "ADD WATERMARK TO IMAGES",
+        "loading": {
+            "proStatus": "CHECKING PRO STATUS...",
+            "proDescription": "Please wait while we verify your account status."
+        },
+        "preview": {
+            "title": "BILDVORSCHAU"
+        },
+        "alerts": {
+            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
+            "proUserLimit": "PRO users can process up to 100 images in bulk."
         }
     }
 }

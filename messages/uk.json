@@ -52,12 +52,13 @@
     },
     "Navbar": {
         "imageOptimizer": "Оптимізатор зображень",
-        "removeBackgrounds": "Видалити фон",
-        "aiBackgrounds": "ШІ фон",
+        "removeBackgrounds": "Видалення фону",
+        "aiBackgrounds": "ШІ-фони",
         "pricing": "Ціни",
         "login": "УВІЙТИ",
         "objectRemoval": "Видалення об'єктів",
-        "tools": "Інструменти"
+        "tools": "Інструменти",
+        "addWatermark": "Додати водяний знак"
     },
     "Footer": {
         "about": "Batch Shots допомагає швидко та легко оптимізувати зображення продуктів для SEO прямо у вашому браузері.",
@@ -230,8 +231,8 @@
             "sections": {
                 "productTitle": "Назва товару",
                 "metaTitle": "Мета-назва",
-                "metaDescription": "Мета-опис",
-                "shortDescription": "Короткий опис", 
+                "metaDescription": "Мета-опис", 
+                "shortDescription": "Короткий опис",
                 "longDescription": "Повний опис",
                 "categories": "Категорії",
                 "tags": "Теги",
@@ -737,6 +738,25 @@
             "resultLoadFailed": "Помилка відображення обробленого результату.",
             "noDownloadData": "Немає обробленого зображення для завантаження.",
             "downloadFailed": "Помилка підготовки завантаження."
+        }
+    },
+    "WatermarkPage": {
+        "metadata": {
+            "title": "Add Watermark to Images | Batch Shots",
+            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
+            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+        },
+        "title": "ADD WATERMARK TO IMAGES",
+        "loading": {
+            "proStatus": "CHECKING PRO STATUS...",
+            "proDescription": "Please wait while we verify your account status."
+        },
+        "preview": {
+            "title": "ПЕРЕГЛЯД ЗОБРАЖЕННЯ"
+        },
+        "alerts": {
+            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
+            "proUserLimit": "PRO users can process up to 100 images at a time."
         }
     }
 } 

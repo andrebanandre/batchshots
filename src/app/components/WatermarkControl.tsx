@@ -3,7 +3,6 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Card from './Card';
 import Button from './Button';
-import ProBadge from './ProBadge';
 import { useImageProcessing } from '../contexts/ImageProcessingContext'; // Import context hook
 
 export type WatermarkType = 'text' | 'logo' | null;
@@ -47,7 +46,6 @@ export default function WatermarkControl({
 }: WatermarkControlProps) {
   const t = useTranslations('Components.WatermarkControl');
   const tPresets = useTranslations('Components.WatermarkControl.presets');
-  const [activeTab, setActiveTab] = useState<'add' | 'remove'>('add');
   const [addTypeTab, setAddTypeTab] = useState<WatermarkType>('text');
 
   const { watermarkSettings, setWatermarkSettings, handleReset: contextHandleReset } = useImageProcessing();
@@ -161,26 +159,9 @@ export default function WatermarkControl({
       }
     >
       <div className="space-y-4">
-        {/* Main Tabs (Add / Remove) */}
-        <div className="border-b-2 border-black mb-4">
-          <div className="flex">
-            <button
-              onClick={() => setActiveTab('add')}
-              className={`py-2 px-4 font-bold ${activeTab === 'add' ? 'bg-primary text-white' : 'bg-white text-black'}`}
-            >
-              {t('addTab')}
-            </button>
-            <button
-              onClick={() => setActiveTab('remove')}
-              className={`py-2 px-4 font-bold flex items-center ${activeTab === 'remove' ? 'bg-primary text-white' : 'bg-white text-black'}`}
-            >
-              {t('removeTab')} <ProBadge className="ml-1" />
-            </button>
-          </div>
-        </div>
+  
 
         {/* Add Watermark Content */}
-        {activeTab === 'add' && (
           <div className="space-y-4">
             {/* Type Tabs (Text / Logo) */}
             <div className="flex space-x-2 mb-4">
@@ -337,16 +318,7 @@ export default function WatermarkControl({
             )}
 
           </div>
-        )}
 
-        {/* Remove Watermark Content (Placeholder) */}
-        {activeTab === 'remove' && (
-          <div className="p-4 brutalist-border bg-gray-100 text-center">
-            <p className="font-bold mb-2">{t('removeTab')}</p>
-            <p className="text-sm text-gray-600">{t('removeDescription')}</p>
-            {/* Add Pro promotion if needed */}
-          </div>
-        )}
       </div>
     </Card>
   );

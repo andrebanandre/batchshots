@@ -51,13 +51,14 @@
         "imageOptimization": "BEELDOPTIMALISATIE"
     },
     "Navbar": {
-        "imageOptimizer": "Afbeeldingen optimaliseren",
+        "imageOptimizer": "Afbeeldingsoptimalisatie",
         "removeBackgrounds": "Achtergronden verwijderen",
         "aiBackgrounds": "AI-achtergronden",
         "pricing": "Prijzen",
         "login": "INLOGGEN",
-        "objectRemoval": "Objecten verwijderen",
-        "tools": "Hulpmiddelen"
+        "objectRemoval": "Objectverwijdering",
+        "tools": "Gereedschappen",
+        "addWatermark": "Watermerk toevoegen"
     },
     "Footer": {
         "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",
@@ -447,6 +448,25 @@
                 "tile": "Tegel (Patroon)"
             },
             "removeDescription": "AI-gestuurde watermerkverwijdering komt binnenkort!"
+        },
+        "WatermarkPage": {
+            "metadata": {
+                "title": "Watermerk toevoegen aan afbeeldingen | Batch Shots",
+                "description": "Voeg eenvoudig aangepaste tekst- of logowatermerken toe aan uw afbeeldingen. Bescherm uw foto's met watermerken met controle over transparantie, positie en grootte.",
+                "keywords": "watermerk, watermerk toevoegen aan afbeeldingen, foto watermerk, afbeelding watermerk, logo watermerk, tekst watermerk, afbeelding branding, watermerken foto's"
+            },
+            "title": "WATERMERK TOEVOEGEN AAN AFBEELDINGEN",
+            "loading": {
+                "proStatus": "PRO-STATUS CONTROLEREN...",
+                "proDescription": "Even geduld terwijl we uw accountstatus verifiëren."
+            },
+            "preview": {
+                "title": "AFBEELDINGSVOORBEELD"
+            },
+            "alerts": {
+                "freeUserLimit": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!",
+                "proUserLimit": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk verwerken."
+            }
         }
     },
     "Dialogs": {

@@ -57,7 +57,8 @@
         "pricing": "Цены",
         "login": "ВОЙТИ",
         "objectRemoval": "Удаление объектов",
-        "tools": "Инструменты"
+        "tools": "Инструменты",
+        "addWatermark": "Добавить водяной знак"
     },
     "Footer": {
         "about": "Batch Shots помогает быстро и легко оптимизировать изображения продуктов для SEO прямо в вашем браузере.",
@@ -737,6 +738,24 @@
             "resultLoadFailed": "Ошибка при отображении результата обработанного изображения.",
             "noDownloadData": "Нет доступного обработанного изображения для скачивания.",
             "downloadFailed": "Ошибка при подготовке изображения для скачивания."
+        }
+    },
+    "WatermarkPage": {
+        "metadata": {
+            "title": "Add Watermark to Images | Batch Shots",
+            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
+            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+        },
+        "title": "ADD WATERMARK TO IMAGES",
+        "loading": {
+            "proStatus": "CHECKING PRO STATUS...",
+            "proDescription": "Please wait while we verify your account status."
+        },
+        "preview": {
+            "title": "ПРЕДПРОСМОТР ИЗОБРАЖЕНИЯ"
+        },
+        "alerts": {
+            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
         }
     }
 } 

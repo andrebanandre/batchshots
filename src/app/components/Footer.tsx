@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t-3 border-black py-6 px-4">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* First Column - Logo and About */}
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-bold uppercase mb-2">Batch Shots</h3>
@@ -46,14 +46,29 @@ export default function Footer() {
             <h3 className="text-lg font-bold uppercase mb-4">{t('quickLinks')}</h3>
             <nav className="flex flex-col space-y-2">
               <Link href="/" className="hover:text-primary text-sm">{tNavbar('imageOptimizer')}</Link>
-              <Link href="/backgrounds" className="hover:text-primary text-sm">{tNavbar('aiBackgrounds')}</Link>
+              <Link href="/background-removal" className="hover:text-primary text-sm">{tNavbar('removeBackgrounds')}</Link>
+              <Link href="/add-watermark" className="hover:text-primary text-sm">{tNavbar('addWatermark')}</Link>
+              {/* <Link href="/backgrounds" className="hover:text-primary text-sm">{tNavbar('aiBackgrounds')}</Link> */}
               <Link href="/pricing" className="hover:text-primary text-sm">{tNavbar('pricing')}</Link>
               <Link href="/privacy" className="hover:text-primary text-sm">{tHome('privacyPolicy')}</Link>
               <Link href="/terms" className="hover:text-primary text-sm">{tHome('termsOfUse')}</Link>
             </nav>
           </div>
           
-          {/* Third Column - Newsletter */}
+          {/* Third Column - Tools */}
+          <div>
+            <h3 className="text-lg font-bold uppercase mb-4">{tNavbar('tools')}</h3>
+            <nav className="flex flex-col space-y-2">
+              <Link href="/background-removal" className="hover:text-primary text-sm">{tNavbar('removeBackgrounds')}</Link>
+              <Link href="/add-watermark" className="hover:text-primary text-sm">{tNavbar('addWatermark')}</Link>
+              <Link href="/object-removal" className="hover:text-primary text-sm flex items-center gap-2">
+                {tNavbar('objectRemoval')}
+                <span className="ml-2 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
+              </Link>
+            </nav>
+          </div>
+          
+          {/* Fourth Column - Language */}
           <div className="text-right">
               <LanguageSelector />
             </div>
