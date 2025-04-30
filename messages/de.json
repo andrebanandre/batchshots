@@ -55,7 +55,9 @@
         "removeBackgrounds": "Hintergründe entfernen",
         "aiBackgrounds": "KI-Hintergründe",
         "pricing": "Preise",
-        "login": "ANMELDEN"
+        "login": "ANMELDEN",
+        "objectRemoval": "Objektentfernung",
+        "tools": "Werkzeuge"
     },
     "Footer": {
         "about": "Batch Shots hilft Ihnen, Produktbilder schnell und einfach für SEO zu optimieren, direkt in Ihrem Browser.",
@@ -633,6 +635,109 @@
             "title": "KI-Hintergrundentferner | Batch Shots",
             "description": "Entfernen Sie Hintergründe automatisch aus Ihren Bildern mit dem KI-Tool von Batch Shots. Perfekt für Produktfotos, Porträts und kreative Projekte. Kostenlos testen!",
             "keywords": "Hintergrundentferner, Hintergrund entfernen, KI Hintergrundentfernung, transparenter Hintergrund, Produktfotografie, Stapelbildbearbeitung"
+        }
+    },
+    "ObjectRemovalPage": {
+        "metadata": {
+            "title": "KI-Objektentfernungstool | Batch Shots",
+            "description": "Entfernen Sie unerwünschte Objekte, Personen oder Texte aus Ihren Bildern mit unserem KI-gestützten Tool. Arbeitet komplett in Ihrem Browser für maximale Privatsphäre. Probieren Sie es kostenlos aus!",
+            "keywords": "objektentfernung, ki-objektentfernung, objekte aus bild entfernen, text aus bild entfernen, personen aus foto entfernen, inpainting, bildbearbeitungstool"
+        },
+        "title": "KI-OBJEKTENTFERNUNG",
+        "loading": {
+            "ort": "KI-Engine wird geladen...",
+            "opencv": "Bildverarbeitungswerkzeuge werden geladen...",
+            "model": "Objektentfernungsmodell wird geladen...",
+            "proStatus": "Kontostatus wird überprüft...",
+            "generic": "Wird geladen..."
+        },
+        "mainCard": {
+            "title": "KI-OBJEKTENTFERNUNG",
+            "info": {
+                "title": "SO FUNKTIONIERT ES",
+                "description": "Entfernen Sie unerwünschte Objekte, Personen oder Text aus Ihren Bildern mit KI. Die Verarbeitung erfolgt vollständig in Ihrem Browser.",
+                "freeMode": {
+                    "title": "KOSTENLOSER MODUS",
+                    "description": "Verarbeiten Sie 1 Bild gleichzeitig. Upgraden Sie auf PRO für Batch-Verarbeitung (bald verfügbar!)."
+                },
+                "proMode": {
+                    "title": "PRO-MODUS",
+                    "description": "Verarbeiten Sie bis zu 100 Bilder im Batch. Zeichnen Sie eine Maske einmal und wenden Sie sie auf alle Ihre Bilder an!"
+                }
+            },
+            "upload": {
+                "title": "Bild hochladen",
+                "button": "BILD AUSWÄHLEN",
+                "helpTextFree": "Wählen Sie das Bild aus, das Sie bearbeiten möchten.",
+                "helpTextPro": "Wählen Sie bis zu 100 Bilder für die Batch-Verarbeitung aus."
+            },
+            "canvas": {
+                "drawTitle": "MASKE AUF OBJEKTE ZEICHNEN",
+                "brushSize": "Pinselgröße",
+                "clearMask": "MASKE LÖSCHEN",
+                "outputTitle": "2. ERGEBNIS SEHEN",
+                "outputPlaceholder": "Das Ergebnis wird hier angezeigt"
+            },
+            "actions": {
+                "reset": "ZURÜCKSETZEN",
+                "remove": "OBJEKTE ENTFERNEN",
+                "removeAllObjects": "AUS ALLEN BILDERN ENTFERNEN",
+                "processing": "WIRD VERARBEITET...",
+                "download": "HERUNTERLADEN",
+                "downloadAll": "ALLE HERUNTERLADEN"
+            }
+        },
+        "upgradeCard": {
+            "title": "AUF PRO UPGRADEN",
+            "description": "Schalten Sie Batch-Objektentfernung für bis zu 100 Bilder und andere PRO-Funktionen wie Massen-Hintergrundentfernung und erweiterte Bearbeitung frei.",
+            "button": "MEHR ERFAHREN UND AUF PRO UPGRADEN"
+        },
+        "instructionsCard": {
+            "title": "ANLEITUNG",
+            "step1": "Laden Sie ein Bild mit der Schaltfläche 'Bild auswählen' hoch.",
+            "step2": "Zeichnen Sie sorgfältig über die Objekte, die Sie entfernen möchten, mit dem roten Pinsel.",
+            "step3": "Passen Sie den Pinselgrößenregler für mehr Präzision an.",
+            "step4": "Klicken Sie auf die Schaltfläche 'Objekte entfernen' und warten Sie, bis die KI-Verarbeitung abgeschlossen ist.",
+            "step5": "Sobald die Verarbeitung abgeschlossen ist, können Sie Ihr bereinigtes Bild mit der Schaltfläche 'Herunterladen' herunterladen.",
+            "step6": "Für die Batch-Verarbeitung aktivieren Sie 'Maske auf alle Bilder anwenden', um ähnliche Objekte aus allen ausgewählten Bildern zu entfernen.",
+            "noteTitle": "Hinweis:",
+            "noteText": "Die Verarbeitung kann je nach Bildgröße und Ihrem Gerät 15-60 Sekunden dauern. Stellen Sie sicher, dass Ihre Maske das Objekt vollständig abdeckt, um die besten Ergebnisse zu erzielen."
+        },
+        "imageGallery": {
+            "selectedImages": "Ausgewählte Bilder",
+            "selectedImage": "Ausgewähltes Bild",
+            "clearAll": "Alle löschen",
+            "applyMaskToAll": "Maske auf alle Bilder anwenden (Batch-Verarbeitung)",
+            "hasMask": "Maske gezeichnet"
+        },
+        "processing": {
+            "readingFile": "Datei wird gelesen...",
+            "loadingImage": "Bild wird geladen...",
+            "exportingMask": "Maske wird vorbereitet...",
+            "runningModel": "KI-Modell wird ausgeführt...",
+            "rendering": "Ergebnis wird gerendert...",
+            "preparingBatch": "Batch-Verarbeitung wird vorbereitet...",
+            "processingImage": "Verarbeite Bild {current} von {total}...",
+            "finishingBatch": "Ergebnisse werden finalisiert...",
+            "preparingDownload": "Download wird vorbereitet...",
+            "batchProgress": "Batch-Fortschritt",
+            "loadingDimensions": "Bildabmessungen werden berechnet...",
+            "generic": "Bild wird verarbeitet..."
+        },
+        "errors": {
+            "ortLoad": "KI-Engine konnte nicht geladen werden. Bitte aktualisieren Sie die Seite.",
+            "sessionCreate": "Objektentfernungsmodell konnte nicht initialisiert werden.",
+            "freeLimit": "Kostenlose Nutzer können nur ein Bild gleichzeitig verarbeiten. Bitte upgraden Sie auf PRO für Batch-Verarbeitung.",
+            "tooManyImages": "Maximal 100 Bilder erlaubt. Nur die ersten 100 Bilder werden verarbeitet.",
+            "imageLoad": "Fehler beim Laden des ausgewählten Bildes.",
+            "fileRead": "Fehler beim Lesen der ausgewählten Datei.",
+            "canvasError": "Fehler beim Zugriff auf die Bildleinwand.",
+            "prerequisites": "Verarbeitung nicht möglich. Fehlende erforderliche Komponenten: {missing}",
+            "noMask": "Bitte zeichnen Sie zuerst eine Maske über das Objekt, das Sie entfernen möchten.",
+            "processingFailed": "Objektentfernung fehlgeschlagen",
+            "resultLoadFailed": "Fehler beim Anzeigen des verarbeiteten Bildergebnisses.",
+            "noDownloadData": "Keine verarbeiteten Bilder zum Herunterladen verfügbar.",
+            "downloadFailed": "Fehler bei der Vorbereitung des Bildes zum Herunterladen."
         }
     }
 }

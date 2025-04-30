@@ -55,7 +55,9 @@
         "removeBackgrounds": "Usuń tła",
         "aiBackgrounds": "Tła AI",
         "pricing": "Cennik",
-        "login": "ZALOGUJ SIĘ"
+        "login": "ZALOGUJ SIĘ",
+        "objectRemoval": "Usuwanie obiektów",
+        "tools": "Narzędzia"
     },
     "Footer": {
         "about": "Batch Shots pomaga szybko i łatwo zoptymalizować obrazy produktów pod kątem SEO, bezpośrednio w przeglądarce.",
@@ -633,6 +635,109 @@
             "title": "Usuwanie Tła AI | Batch Shots",
             "description": "Automatycznie usuwaj tła ze swoich obrazów za pomocą narzędzia AI Batch Shots. Idealne do zdjęć produktów, portretów i projektów kreatywnych. Wypróbuj za darmo!",
             "keywords": "usuwanie tła, usuń tło, usuwanie tła ai, przezroczyste tło, fotografia produktowa, edycja zbiorcza obrazów"
+        }
+    },
+    "ObjectRemovalPage": {
+        "metadata": {
+            "title": "Narzędzie AI do Usuwania Obiektów | Batch Shots",
+            "description": "Usuń niechciane obiekty, osoby lub tekst ze swoich zdjęć dzięki naszemu narzędziu opartemu na AI. Działa całkowicie w Twojej przeglądarce dla zachowania prywatności. Wypróbuj za darmo!",
+            "keywords": "usuwanie obiektów, usuwanie obiektów ai, usunąć obiekty ze zdjęcia, usunąć tekst ze zdjęcia, usunąć osoby ze zdjęcia, inpainting, narzędzie do edycji zdjęć"
+        },
+        "title": "AI USUWANIE OBIEKTÓW",
+        "loading": {
+            "ort": "Ładowanie silnika AI...",
+            "opencv": "Ładowanie narzędzi do przetwarzania obrazów...",
+            "model": "Ładowanie modelu usuwania obiektów...",
+            "proStatus": "Sprawdzanie statusu konta...",
+            "generic": "Ładowanie..."
+        },
+        "mainCard": {
+            "title": "USUWANIE OBIEKTÓW",
+            "info": {
+                "title": "JAK TO DZIAŁA",
+                "description": "Usuń niechciane obiekty, osoby lub tekst ze swoich zdjęć za pomocą AI. Przetwarzanie odbywa się w całości w Twojej przeglądarce.",
+                "freeMode": {
+                    "title": "TRYB DARMOWY",
+                    "description": "Przetwarzaj 1 zdjęcie na raz. Przejdź na PRO, aby korzystać z przetwarzania wsadowego (wkrótce!)."
+                },
+                "proMode": {
+                    "title": "TRYB PRO",
+                    "description": "Przetwarzaj do 100 zdjęć wsadowo. Narysuj maskę raz i zastosuj ją do wszystkich zdjęć!"
+                }
+            },
+            "upload": {
+                "title": "Wgraj zdjęcie",
+                "button": "WYBIERZ ZDJĘCIE",
+                "helpTextFree": "Wybierz zdjęcie do edycji.",
+                "helpTextPro": "Wybierz do 100 zdjęć do przetwarzania wsadowego."
+            },
+            "canvas": {
+                "drawTitle": "NARYSUJ MASKĘ NA OBIEKTACH",
+                "brushSize": "Rozmiar pędzla",
+                "clearMask": "WYCZYŚĆ MASKĘ",
+                "outputTitle": "2. ZOBACZ WYNIK",
+                "outputPlaceholder": "Wynik pojawi się tutaj"
+            },
+            "actions": {
+                "reset": "RESETUJ",
+                "remove": "USUŃ OBIEKTY",
+                "removeAllObjects": "USUŃ ZE WSZYSTKICH ZDJĘĆ",
+                "processing": "PRZETWARZANIE...",
+                "download": "POBIERZ",
+                "downloadAll": "POBIERZ WSZYSTKO"
+            }
+        },
+        "upgradeCard": {
+            "title": "PRZEJDŹ NA PRO",
+            "description": "Odblokuj wsadowe usuwanie obiektów dla nawet 100 zdjęć i inne funkcje PRO, takie jak masowe usuwanie tła i zaawansowana edycja.",
+            "button": "DOWIEDZ SIĘ WIĘCEJ I PRZEJDŹ NA PRO"
+        },
+        "instructionsCard": {
+            "title": "INSTRUKCJE",
+            "step1": "Wgraj zdjęcie używając przycisku 'Wybierz zdjęcie'.",
+            "step2": "Ostrożnie narysuj czerwonym pędzlem na obiektach, które chcesz usunąć.",
+            "step3": "Dostosuj rozmiar pędzla dla większej precyzji.",
+            "step4": "Kliknij przycisk 'Usuń obiekty' i poczekaj, aż AI zakończy przetwarzanie.",
+            "step5": "Po zakończeniu przetwarzania możesz pobrać oczyszczone zdjęcie używając przycisku 'Pobierz'.",
+            "step6": "Dla przetwarzania wsadowego włącz 'Zastosuj maskę do wszystkich zdjęć', aby usunąć podobne obiekty ze wszystkich wybranych zdjęć.",
+            "noteTitle": "Uwaga:",
+            "noteText": "Przetwarzanie może zająć 15-60 sekund w zależności od rozmiaru zdjęcia i Twojego urządzenia. Upewnij się, że maska całkowicie pokrywa obiekt dla najlepszych rezultatów."
+        },
+        "imageGallery": {
+            "selectedImages": "Wybrane zdjęcia",
+            "selectedImage": "Wybrane zdjęcie",
+            "clearAll": "Wyczyść wszystko",
+            "applyMaskToAll": "Zastosuj maskę do wszystkich zdjęć (przetwarzanie wsadowe)",
+            "hasMask": "Maska narysowana"
+        },
+        "processing": {
+            "readingFile": "Odczytywanie pliku...",
+            "loadingImage": "Ładowanie zdjęcia...",
+            "exportingMask": "Przygotowywanie maski...",
+            "runningModel": "Uruchamianie modelu AI...",
+            "rendering": "Renderowanie wyniku...",
+            "preparingBatch": "Przygotowywanie przetwarzania wsadowego...",
+            "processingImage": "Przetwarzanie zdjęcia {current} z {total}...",
+            "finishingBatch": "Finalizowanie wyników...",
+            "preparingDownload": "Przygotowywanie pobierania...",
+            "batchProgress": "Postęp przetwarzania wsadowego",
+            "loadingDimensions": "Obliczanie wymiarów zdjęcia...",
+            "generic": "Przetwarzanie zdjęcia..."
+        },
+        "errors": {
+            "ortLoad": "Nie udało się załadować silnika AI. Proszę odświeżyć stronę.",
+            "sessionCreate": "Nie udało się zainicjować modelu usuwania obiektów.",
+            "freeLimit": "Użytkownicy darmowi mogą przetwarzać tylko 1 zdjęcie na raz. Przejdź na PRO, aby korzystać z przetwarzania wsadowego.",
+            "tooManyImages": "Maksymalnie dozwolone jest 100 zdjęć. Tylko pierwsze 100 zdjęć zostanie przetworzonych.",
+            "imageLoad": "Błąd podczas ładowania wybranego zdjęcia.",
+            "fileRead": "Błąd podczas odczytywania wybranego pliku.",
+            "canvasError": "Błąd podczas dostępu do płótna zdjęcia.",
+            "prerequisites": "Nie można przetworzyć. Brakujące wymagane komponenty: {missing}",
+            "noMask": "Najpierw narysuj maskę na obiekcie, który chcesz usunąć.",
+            "processingFailed": "Usuwanie obiektu nie powiodło się",
+            "resultLoadFailed": "Błąd podczas wyświetlania przetworzonego wyniku.",
+            "noDownloadData": "Brak przetworzonego zdjęcia do pobrania.",
+            "downloadFailed": "Błąd podczas przygotowywania pobierania."
         }
     }
 } 

@@ -55,7 +55,9 @@
         "removeBackgrounds": "Odstranit pozadí",
         "aiBackgrounds": "AI pozadí",
         "pricing": "Ceny",
-        "login": "PŘIHLÁSIT SE"
+        "login": "PŘIHLÁSIT SE",
+        "objectRemoval": "Odstranění objektu",
+        "tools": "Nástroje"
     },
     "Footer": {
         "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
@@ -633,6 +635,109 @@
             "title": "AI Odstraňovač Pozadí | Batch Shots",
             "description": "Automaticky odstraňujte pozadí z vašich obrázků pomocí AI nástroje Batch Shots. Ideální pro produktové fotografie, portréty a kreativní projekty. Vyzkoušejte zdarma!",
             "keywords": "odstraňovač pozadí, odstranit pozadí, ai odstranění pozadí, průhledné pozadí, produktová fotografie, hromadná úprava obrázků"
+        }
+    },
+    "ObjectRemovalPage": {
+        "metadata": {
+            "title": "AI Nástroj pro Odstranění Objektů | Batch Shots",
+            "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí našeho nástroje s umělou inteligencí. Funguje kompletně ve vašem prohlížeči pro zachování soukromí. Vyzkoušejte zdarma!",
+            "keywords": "odstranění objektů, ai odstranění objektů, odstranit objekty z obrázku, odstranit text z obrázku, odstranit osoby z fotografie, inpainting, nástroj pro úpravu obrázků"
+        },
+        "title": "AI ODSTRAŇOVAČ OBJEKTŮ",
+        "loading": {
+            "ort": "Načítání AI enginu...",
+            "opencv": "Načítání nástrojů pro zpracování obrazu...",
+            "model": "Načítání modelu pro odstranění objektů...",
+            "proStatus": "Kontrola stavu účtu...",
+            "generic": "Načítání..."
+        },
+        "mainCard": {
+            "title": "ODSTRANĚNÍ OBJEKTŮ",
+            "info": {
+                "title": "JAK TO FUNGUJE",
+                "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí AI. Zpracování probíhá zcela ve vašem prohlížeči.",
+                "freeMode": {
+                    "title": "BEZPLATNÝ REŽIM",
+                    "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování (již brzy!)."
+                },
+                "proMode": {
+                    "title": "PRO REŽIM",
+                    "description": "Zpracujte až 100 obrázků v dávce. Nakreslete masku jednou a aplikujte ji na všechny obrázky!"
+                }
+            },
+            "upload": {
+                "title": "Nahrát obrázek",
+                "button": "VYBRAT OBRÁZEK",
+                "helpTextFree": "Vyberte obrázek k úpravě.",
+                "helpTextPro": "Vyberte až 100 obrázků pro dávkové zpracování."
+            },
+            "canvas": {
+                "drawTitle": "NAKRESLETE MASKU NA OBJEKTY",
+                "brushSize": "Velikost štětce",
+                "clearMask": "VYMAZAT MASKU",
+                "outputTitle": "2. ZOBRAZIT VÝSLEDEK",
+                "outputPlaceholder": "Výsledek se zobrazí zde"
+            },
+            "actions": {
+                "reset": "RESET",
+                "remove": "ODSTRANIT OBJEKTY",
+                "removeAllObjects": "ODSTRANIT ZE VŠECH OBRÁZKŮ",
+                "processing": "ZPRACOVÁNÍ...",
+                "download": "STÁHNOUT",
+                "downloadAll": "STÁHNOUT VŠE"
+            }
+        },
+        "upgradeCard": {
+            "title": "UPGRADE NA PRO",
+            "description": "Odemkněte dávkové odstranění objektů až pro 100 obrázků a další PRO funkce jako hromadné odstranění pozadí a pokročilé úpravy.",
+            "button": "ZJISTIT VÍCE A UPGRADOVAT NA PRO"
+        },
+        "instructionsCard": {
+            "title": "INSTRUKCE",
+            "step1": "Nahrajte obrázek pomocí tlačítka 'Vybrat obrázek'.",
+            "step2": "Pečlivě nakreslete červeným štětcem přes objekty, které chcete odstranit.",
+            "step3": "Upravte velikost štětce pro větší přesnost.",
+            "step4": "Klikněte na tlačítko 'Odstranit objekty' a počkejte, až AI dokončí zpracování.",
+            "step5": "Po dokončení zpracování můžete stáhnout vyčištěný obrázek pomocí tlačítka 'Stáhnout'.",
+            "step6": "Pro dávkové zpracování povolte 'Aplikovat masku na všechny obrázky' pro odstranění podobných objektů ze všech vybraných obrázků.",
+            "noteTitle": "Poznámka:",
+            "noteText": "Zpracování může trvat 15-60 sekund v závislosti na velikosti obrázku a vašem zařízení. Ujistěte se, že maska plně pokrývá objekt pro nejlepší výsledky."
+        },
+        "imageGallery": {
+            "selectedImages": "Vybrané obrázky",
+            "selectedImage": "Vybraný obrázek",
+            "clearAll": "Vymazat vše",
+            "applyMaskToAll": "Aplikovat masku na všechny obrázky (dávkové zpracování)",
+            "hasMask": "Maska nakreslena"
+        },
+        "processing": {
+            "readingFile": "Čtení souboru...",
+            "loadingImage": "Načítání obrázku...",
+            "exportingMask": "Příprava masky...",
+            "runningModel": "Spouštění AI modelu...",
+            "rendering": "Vykreslování výsledku...",
+            "preparingBatch": "Příprava dávkového zpracování...",
+            "processingImage": "Zpracování obrázku {current} z {total}...",
+            "finishingBatch": "Dokončování výsledků...",
+            "preparingDownload": "Příprava stahování...",
+            "batchProgress": "Průběh dávkového zpracování",
+            "loadingDimensions": "Výpočet rozměrů obrázku...",
+            "generic": "Zpracování obrázku..."
+        },
+        "errors": {
+            "ortLoad": "Nepodařilo se načíst AI engine. Prosím obnovte stránku.",
+            "sessionCreate": "Nepodařilo se inicializovat model pro odstranění objektů.",
+            "freeLimit": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování.",
+            "tooManyImages": "Maximálně povoleno 100 obrázků. Bude zpracováno pouze prvních 100 obrázků.",
+            "imageLoad": "Chyba při načítání vybraného obrázku.",
+            "fileRead": "Chyba při čtení vybraného souboru.",
+            "canvasError": "Chyba při přístupu k plátnu obrázku.",
+            "prerequisites": "Nelze zpracovat. Chybí požadované komponenty: {missing}",
+            "noMask": "Nejprve nakreslete masku přes objekt, který chcete odstranit.",
+            "processingFailed": "Odstranění objektu selhalo",
+            "resultLoadFailed": "Chyba při zobrazování zpracovaného výsledku.",
+            "noDownloadData": "Žádný zpracovaný obrázek k dispozici ke stažení.",
+            "downloadFailed": "Chyba při přípravě stahování."
         }
     }
 } 

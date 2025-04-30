@@ -55,7 +55,9 @@
         "removeBackgrounds": "Remove Backgrounds",
         "aiBackgrounds": "AI Backgrounds",
         "pricing": "Pricing",
-        "login": "LOG IN"
+        "login": "LOG IN",
+        "objectRemoval": "Object Removal",
+        "tools": "Tools"
     },
     "Footer": {
         "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
@@ -724,6 +726,11 @@
         "returnButton": "RETURN TO HOME"
     },
     "ObjectRemovalPage": {
+        "metadata": {
+            "title": "AI Object Removal Tool | Batch Shots",
+            "description": "Remove unwanted objects, people, or text from your images with our AI-powered tool. Works entirely in your browser for privacy. Try it for free!",
+            "keywords": "object removal, ai object removal, remove objects from image, remove text from image, remove people from photo, inpainting, image editing tool"
+        },
         "title": "AI OBJECT REMOVER",
         "loading": {
             "ort": "Loading AI Engine...",
@@ -753,7 +760,7 @@
                 "helpTextPro": "Select up to 100 images for batch processing."
             },
             "canvas": {
-                "drawTitle": "1. DRAW MASK OVER OBJECTS",
+                "drawTitle": "DRAW MASK OVER OBJECTS",
                 "brushSize": "Brush Size",
                 "clearMask": "CLEAR MASK",
                 "outputTitle": "2. VIEW RESULT",
@@ -802,7 +809,8 @@
             "finishingBatch": "Finalizing results...",
             "preparingDownload": "Preparing download...",
             "batchProgress": "Batch progress",
-            "loadingDimensions": "Calculating image dimensions..."
+            "loadingDimensions": "Calculating image dimensions...",
+            "generic": "Processing image..."
         },
         "errors": {
             "ortLoad": "Failed to load AI Engine. Please try refreshing the page.",

@@ -55,7 +55,9 @@
         "removeBackgrounds": "Supprimer les arrière-plans",
         "aiBackgrounds": "Arrière-plans IA",
         "pricing": "Tarifs",
-        "login": "SE CONNECTER"
+        "login": "SE CONNECTER",
+        "objectRemoval": "Suppression d'objets",
+        "tools": "Outils"
     },
     "Footer": {
         "about": "Batch Shots vous aide à optimiser rapidement et facilement les images de produits pour le SEO, directement dans votre navigateur.",
@@ -633,6 +635,109 @@
             "title": "Suppresseur d'Arrière-plan IA | Batch Shots",
             "description": "Supprimez automatiquement les arrière-plans de vos images avec l'outil IA de Batch Shots. Parfait pour les photos de produits, les portraits et les projets créatifs. Essayez gratuitement !",
             "keywords": "suppresseur d'arrière-plan, supprimer arrière-plan, suppression d'arrière-plan ia, arrière-plan transparent, photographie de produit, édition d'images par lots"
+        }
+    },
+    "ObjectRemovalPage": {
+        "metadata": {
+            "title": "Outil de Suppression d'Objets IA | Batch Shots",
+            "description": "Supprimez les objets, personnes ou textes indésirables de vos images grâce à notre outil alimenté par l'IA. Fonctionne entièrement dans votre navigateur pour préserver votre confidentialité. Essayez gratuitement !",
+            "keywords": "suppression d'objets, suppression d'objets ia, enlever objets d'image, enlever texte d'image, enlever personnes de photo, inpainting, outil d'édition d'image"
+        },
+        "title": "SUPPRESSION D'OBJETS IA",
+        "loading": {
+            "ort": "Chargement du moteur d'IA...",
+            "opencv": "Chargement des outils de traitement d'image...",
+            "model": "Chargement du modèle de suppression d'objets...",
+            "proStatus": "Vérification du statut du compte...",
+            "generic": "Chargement en cours..."
+        },
+        "mainCard": {
+            "title": "SUPPRESSION D'OBJETS IA",
+            "info": {
+                "title": "COMMENT ÇA FONCTIONNE",
+                "description": "Supprimez les objets indésirables, les personnes ou le texte de vos images grâce à l'IA. Le traitement se fait entièrement dans votre navigateur.",
+                "freeMode": {
+                    "title": "MODE GRATUIT",
+                    "description": "Traitez 1 image à la fois. Passez au PRO pour le traitement par lots (bientôt disponible!)."
+                },
+                "proMode": {
+                    "title": "MODE PRO",
+                    "description": "Traitez jusqu'à 100 images par lot. Dessinez un masque une fois et appliquez-le à toutes vos images!"
+                }
+            },
+            "upload": {
+                "title": "Télécharger une image",
+                "button": "SÉLECTIONNER UNE IMAGE",
+                "helpTextFree": "Sélectionnez l'image que vous souhaitez modifier.",
+                "helpTextPro": "Sélectionnez jusqu'à 100 images pour le traitement par lots."
+            },
+            "canvas": {
+                "drawTitle": "DESSINEZ UN MASQUE SUR LES OBJETS",
+                "brushSize": "Taille du pinceau",
+                "clearMask": "EFFACER LE MASQUE",
+                "outputTitle": "2. VOIR LE RÉSULTAT",
+                "outputPlaceholder": "Le résultat apparaîtra ici"
+            },
+            "actions": {
+                "reset": "RÉINITIALISER",
+                "remove": "SUPPRIMER LES OBJETS",
+                "removeAllObjects": "SUPPRIMER DE TOUTES LES IMAGES",
+                "processing": "TRAITEMENT EN COURS...",
+                "download": "TÉLÉCHARGER",
+                "downloadAll": "TOUT TÉLÉCHARGER"
+            }
+        },
+        "upgradeCard": {
+            "title": "PASSER AU PRO",
+            "description": "Débloquez la suppression d'objets par lots pour jusqu'à 100 images et d'autres fonctionnalités PRO comme la suppression d'arrière-plan en masse et l'édition avancée.",
+            "button": "EN SAVOIR PLUS ET PASSER AU PRO"
+        },
+        "instructionsCard": {
+            "title": "INSTRUCTIONS",
+            "step1": "Téléchargez une image en utilisant le bouton 'Sélectionner une image'.",
+            "step2": "Dessinez soigneusement sur les objets que vous souhaitez supprimer en utilisant le pinceau rouge.",
+            "step3": "Ajustez le curseur de taille du pinceau pour plus de précision.",
+            "step4": "Cliquez sur le bouton 'Supprimer les objets' et attendez que le traitement par IA se termine.",
+            "step5": "Une fois le traitement terminé, vous pouvez télécharger votre image nettoyée en utilisant le bouton 'Télécharger'.",
+            "step6": "Pour le traitement par lots, activez 'Appliquer le masque à toutes les images' pour supprimer des objets similaires de toutes les images sélectionnées.",
+            "noteTitle": "Remarque:",
+            "noteText": "Le traitement peut prendre de 15 à 60 secondes selon la taille de l'image et votre appareil. Assurez-vous que votre masque couvre complètement l'objet pour obtenir les meilleurs résultats."
+        },
+        "imageGallery": {
+            "selectedImages": "Images sélectionnées",
+            "selectedImage": "Image sélectionnée",
+            "clearAll": "Tout effacer",
+            "applyMaskToAll": "Appliquer le masque à toutes les images (traitement par lots)",
+            "hasMask": "Masque dessiné"
+        },
+        "processing": {
+            "readingFile": "Lecture du fichier...",
+            "loadingImage": "Chargement de l'image...",
+            "exportingMask": "Préparation du masque...",
+            "runningModel": "Exécution du modèle d'IA...",
+            "rendering": "Rendu du résultat...",
+            "preparingBatch": "Préparation du traitement par lots...",
+            "processingImage": "Traitement de l'image {current} sur {total}...",
+            "finishingBatch": "Finalisation des résultats...",
+            "preparingDownload": "Préparation du téléchargement...",
+            "batchProgress": "Progression du lot",
+            "loadingDimensions": "Calcul des dimensions de l'image...",
+            "generic": "Traitement de l'image..."
+        },
+        "errors": {
+            "ortLoad": "Impossible de charger le moteur d'IA. Veuillez rafraîchir la page.",
+            "sessionCreate": "Impossible d'initialiser le modèle de suppression d'objets.",
+            "freeLimit": "Les utilisateurs gratuits ne peuvent traiter qu'une seule image à la fois. Veuillez passer au PRO pour le traitement par lots.",
+            "tooManyImages": "Maximum de 100 images autorisées. Seules les 100 premières images seront traitées.",
+            "imageLoad": "Erreur lors du chargement de l'image sélectionnée.",
+            "fileRead": "Erreur lors de la lecture du fichier sélectionné.",
+            "canvasError": "Erreur lors de l'accès au canevas de l'image.",
+            "prerequisites": "Traitement impossible. Composants requis manquants: {missing}",
+            "noMask": "Veuillez d'abord dessiner un masque sur l'objet que vous souhaitez supprimer.",
+            "processingFailed": "Échec de la suppression de l'objet",
+            "resultLoadFailed": "Erreur lors de l'affichage du résultat de l'image traitée.",
+            "noDownloadData": "Aucune image traitée disponible pour le téléchargement.",
+            "downloadFailed": "Erreur lors de la préparation de l'image pour le téléchargement."
         }
     }
 } 

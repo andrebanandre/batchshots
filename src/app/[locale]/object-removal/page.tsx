@@ -1306,7 +1306,8 @@ export default function ObjectRemovalPage() {
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="brutalist-accent-card mb-8">
           <h1 className="text-3xl font-bold text-center uppercase mb-6">
-             {t('title')}
+            {t('title')}
+            <span className="ml-3 align-middle px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
           </h1>
 
           {isLoading ? (
@@ -1364,7 +1365,7 @@ export default function ObjectRemovalPage() {
 
                      {/* Upload Area */}
                      {images.length === 0 && (
-                       <div className="brutalist-border p-6 bg-white text-center">
+                       <div className="brutalist-border p-6 bg-white text-center space-y-6">
                          <p className="text-lg font-bold mb-4">{t('mainCard.upload.title')}</p>
                          <input
                            type="file"

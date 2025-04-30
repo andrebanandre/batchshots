@@ -55,7 +55,9 @@
         "removeBackgrounds": "Achtergronden verwijderen",
         "aiBackgrounds": "AI-achtergronden",
         "pricing": "Prijzen",
-        "login": "INLOGGEN"
+        "login": "INLOGGEN",
+        "objectRemoval": "Objecten verwijderen",
+        "tools": "Hulpmiddelen"
     },
     "Footer": {
         "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",
@@ -632,5 +634,108 @@
         "title": "Prijsplannen | Batch Shots Pro",
         "description": "Ontdek de prijsplannen van Batch Shots. Kies het beste plan voor uw beeldbewerkingsbehoeften, van het gratis niveau tot Pro-functies zoals achtergrondverwijdering en verhoogde limieten.",
         "keywords": "prijzen, batch shots pro, abonnementen, kosten beeldbewerking, prijzen achtergrondverwijdering"
+    },
+    "ObjectRemovalPage": {
+        "metadata": {
+            "title": "AI Objectverwijderingstool | Batch Shots",
+            "description": "Verwijder ongewenste objecten, personen of tekst uit uw afbeeldingen met onze AI-gestuurde tool. Werkt volledig in uw browser voor privacy. Probeer het gratis!",
+            "keywords": "objecten verwijderen, ai objectverwijdering, objecten uit afbeelding verwijderen, tekst uit afbeelding verwijderen, personen uit foto verwijderen, inpainting, beeldbewerkingstool"
+        },
+        "title": "AI OBJECTVERWIJDERING",
+        "loading": {
+            "ort": "AI-engine laden...",
+            "opencv": "Beeldverwerkingstools laden...",
+            "model": "Objectverwijderingsmodel laden...",
+            "proStatus": "Accountstatus controleren...",
+            "generic": "Laden..."
+        },
+        "mainCard": {
+            "title": "OBJECTEN VERWIJDEREN (AI)",
+            "info": {
+                "title": "HOE HET WERKT",
+                "description": "Verwijder ongewenste objecten, personen of tekst uit uw afbeeldingen met AI. De verwerking gebeurt volledig in uw browser.",
+                "freeMode": {
+                    "title": "GRATIS MODUS",
+                    "description": "Verwerk 1 afbeelding tegelijk. Upgrade naar PRO voor batchverwerking (binnenkort beschikbaar!)."
+                },
+                "proMode": {
+                    "title": "PRO MODUS",
+                    "description": "Verwerk tot 100 afbeeldingen in batch. Teken één masker en pas het toe op al uw afbeeldingen!"
+                }
+            },
+            "upload": {
+                "title": "Afbeelding uploaden",
+                "button": "SELECTEER AFBEELDING",
+                "helpTextFree": "Selecteer de afbeelding die u wilt bewerken.",
+                "helpTextPro": "Selecteer tot 100 afbeeldingen voor batchverwerking."
+            },
+            "canvas": {
+                "drawTitle": "TEKEN EEN MASKER OP OBJECTEN",
+                "brushSize": "Kwastgrootte",
+                "clearMask": "MASKER WISSEN",
+                "outputTitle": "2. BEKIJK RESULTAAT",
+                "outputPlaceholder": "Resultaat wordt hier getoond"
+            },
+            "actions": {
+                "reset": "RESETTEN",
+                "remove": "OBJECTEN VERWIJDEREN",
+                "removeAllObjects": "VERWIJDER UIT ALLE AFBEELDINGEN",
+                "processing": "VERWERKEN...",
+                "download": "DOWNLOADEN",
+                "downloadAll": "ALLES DOWNLOADEN"
+            }
+        },
+        "upgradeCard": {
+            "title": "UPGRADE NAAR PRO",
+            "description": "Ontgrendel batch objectverwijdering voor maximaal 100 afbeeldingen en andere PRO-functies zoals bulk achtergrondverwijdering en geavanceerde bewerking.",
+            "button": "MEER INFORMATIE EN UPGRADE NAAR PRO"
+        },
+        "instructionsCard": {
+            "title": "INSTRUCTIES",
+            "step1": "Upload een afbeelding met de knop 'Selecteer Afbeelding'.",
+            "step2": "Teken zorgvuldig over de objecten die u wilt verwijderen met de rode kwast.",
+            "step3": "Pas de kwastgrootte aan voor meer precisie.",
+            "step4": "Klik op de knop 'Objecten Verwijderen' en wacht tot de AI klaar is.",
+            "step5": "Na verwerking kunt u uw opgeschoonde afbeelding downloaden met de knop 'Downloaden'.",
+            "step6": "Voor batchverwerking: schakel 'Masker toepassen op alle afbeeldingen' in om vergelijkbare objecten uit alle geselecteerde afbeeldingen te verwijderen.",
+            "noteTitle": "Let op:",
+            "noteText": "De verwerking kan 15-60 seconden duren, afhankelijk van de afbeeldingsgrootte en uw apparaat. Zorg dat uw masker het object volledig bedekt voor het beste resultaat."
+        },
+        "imageGallery": {
+            "selectedImages": "Geselecteerde afbeeldingen",
+            "selectedImage": "Geselecteerde afbeelding",
+            "clearAll": "Alles wissen",
+            "applyMaskToAll": "Masker toepassen op alle afbeeldingen (batchverwerking)",
+            "hasMask": "Masker getekend"
+        },
+        "processing": {
+            "readingFile": "Bestand lezen...",
+            "loadingImage": "Afbeelding laden...",
+            "exportingMask": "Masker voorbereiden...",
+            "runningModel": "AI-model uitvoeren...",
+            "rendering": "Resultaat weergeven...",
+            "preparingBatch": "Batchverwerking voorbereiden...",
+            "processingImage": "Afbeelding {current} van {total} verwerken...",
+            "finishingBatch": "Resultaten afronden...",
+            "preparingDownload": "Download voorbereiden...",
+            "batchProgress": "Batchvoortgang",
+            "loadingDimensions": "Afbeeldingsafmetingen berekenen...",
+            "generic": "Afbeelding verwerken..."
+        },
+        "errors": {
+            "ortLoad": "AI-engine laden mislukt. Vernieuw de pagina.",
+            "sessionCreate": "Objectverwijderingsmodel initialiseren mislukt.",
+            "freeLimit": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO voor batchverwerking.",
+            "tooManyImages": "Maximaal 100 afbeeldingen toegestaan. Alleen de eerste 100 worden verwerkt.",
+            "imageLoad": "Fout bij het laden van de geselecteerde afbeelding.",
+            "fileRead": "Fout bij het lezen van het geselecteerde bestand.",
+            "canvasError": "Fout bij toegang tot het afbeeldingscanvas.",
+            "prerequisites": "Kan niet verwerken. Vereiste componenten ontbreken: {missing}",
+            "noMask": "Teken eerst een masker over het object dat u wilt verwijderen.",
+            "processingFailed": "Objectverwijdering mislukt",
+            "resultLoadFailed": "Fout bij het weergeven van het verwerkte resultaat.",
+            "noDownloadData": "Geen verwerkte afbeelding beschikbaar om te downloaden.",
+            "downloadFailed": "Fout bij het voorbereiden van de download."
+        }
     }
 } 
