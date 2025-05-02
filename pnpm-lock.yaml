@@ -29,6 +29,12 @@ dependencies:
   '@techstark/opencv-js':
     specifier: 4.10.0-release.1
     version: 4.10.0-release.1
+  heic-to:
+    specifier: ^1.1.12
+    version: 1.1.12
+  heic2any:
+    specifier: ^0.0.4
+    version: 0.0.4
   jszip:
     specifier: ^3.10.1
     version: 3.10.1
@@ -3880,6 +3886,14 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       function-bind: 1.1.2
+
+  /heic-to@1.1.12:
+    resolution: {integrity: sha512-qkvjvvgbb0DtyBJts9RIy7Rka8ZnhJIPVG4uneNLiLD0OOJogzCjsLF4howhuu0JJ0Y8w77bfJ1X3j+ebZgtMA==}
+    dev: false
+
+  /heic2any@0.0.4:
+    resolution: {integrity: sha512-3lLnZiDELfabVH87htnRolZ2iehX9zwpRyGNz22GKXIu0fznlblf0/ftppXKNqS26dqFSeqfIBhAmAj/uSp0cA==}
+    dev: false
 
   /hmac-drbg@1.0.1:
     resolution: {integrity: sha512-Tti3gMqLdZfhOQY1Mzf/AanLiqh1WTiJgEj26ZuYQ9fbkLomzGchCws4FyrSd4VkpBfiNhaE1On+lOz894jvXg==}

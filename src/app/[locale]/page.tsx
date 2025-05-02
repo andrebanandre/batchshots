@@ -1,7 +1,5 @@
 'use client';
 
-
-
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Card from '../components/Card';
@@ -16,6 +14,8 @@ import SeoNameGenerator, { SeoImageName } from '../components/SeoNameGenerator';
 import SeoProductDescriptionGenerator from '../components/SeoProductDescriptionGenerator';
 import { useIsPro } from '../hooks/useIsPro';
 import { useRouter } from 'next/navigation';
+// Import heic-to for HEIC conversion
+import { heicTo, isHeic } from 'heic-to';
 import { 
   processImageBackground, 
   getUpdatedImageWithBackground
@@ -33,6 +33,60 @@ import { ImageProcessingProvider } from '../contexts/ImageProcessingContext';
 import ProUpgradeDialog from '../components/ProUpgradeDialog';
 import ProBadge from '../components/ProBadge';
 import { SeoProductDescription } from '../lib/gemini';
+
+// Helper function to detect HEIC/HEIF files
+const isHeicFormat = async (file: File): Promise<boolean> => {
+  // Check extension first for efficiency
+  if (file.name.toLowerCase().endsWith('.heic') || 
+      file.name.toLowerCase().endsWith('.heif') ||
+      file.type === 'image/heic' || 
+      file.type === 'image/heif') {
+    return true;
+  }
+  
+  // Try the heic-to library detection
+  try {
+    return await isHeic(file);
+  } catch (error) {
+    console.warn('heic-to detection failed, falling back to header check', error);
+    
+    // If heic-to detection fails, examine file header bytes
+    try {
+      const arr = new Uint8Array(await file.slice(0, 12).arrayBuffer());
+      const header = Array.from(arr).map(byte => byte.toString(16).padStart(2, '0')).join('');
+      
+      // HEIC files typically start with a "ftyp" box with brand "heic" or "heix" or "hevc" or "hevx"
+      return (
+        header.includes('66747970686569') || // ftyp + heic/heis/heif
+        header.includes('6674797068656a') || // ftyp + hejs/hejk
+        header.includes('66747970686576')    // ftyp + hevc/hevs/hevx
+      );
+    } catch (headerError) {
+      console.error('Error checking file header:', headerError);
+      return false;
+    }
+  }
+};
+
+// Helper function to convert HEIC to PNG using heic-to
+const convertHeicToPng = async (file: File): Promise<File | null> => {
+  try {
+    console.log('Converting HEIC image to PNG:', file.name);
+    
+    // Convert using heic-to
+    const pngBlob = await heicTo({
+      blob: file,
+      type: 'image/png',
+      quality: 1
+    });
+    
+    const pngFileName = file.name.replace(/\.(heic|heif)$/i, '.png');
+    return new File([pngBlob], pngFileName, { type: 'image/png' });
+  } catch (error) {
+    console.error('HEIC conversion failed:', error);
+    return null;
+  }
+};
 
 export default function Home() {
   const t = useTranslations('Home');
@@ -207,7 +261,38 @@ export default function Home() {
     
     try {
       setIsProcessing(true);
-      const newImages = await Promise.all(fileArray.map(createImageFile));
+      
+      // Process each file, converting HEIC files to PNG first
+      const processedFiles = await Promise.all(fileArray.map(async (file) => {
+        // Check if file is HEIC/HEIF format
+        const isHeic = await isHeicFormat(file);
+        
+        if (isHeic) {
+          // Use the heic-to library for HEIC conversion
+          const convertedFile = await convertHeicToPng(file);
+          if (convertedFile) {
+            console.log('HEIC conversion complete:', convertedFile.name);
+            return convertedFile;
+          } else {
+            // Alert user about failed conversion and skip this file
+            alert(t('heicConversionFailed', { fileName: file.name }));
+            return null;
+          }
+        }
+        
+        // Return original file for non-HEIC formats
+        return file;
+      }));
+      
+      // Filter out null values (failed conversions)
+      const validFiles = processedFiles.filter(file => file !== null) as File[];
+      
+      if (validFiles.length === 0) {
+        setIsProcessing(false);
+        return; // No valid files to process
+      }
+      
+      const newImages = await Promise.all(validFiles.map(createImageFile));
       
       // Check total images against limit
       const totalImages = [...images, ...newImages];
@@ -685,7 +770,7 @@ export default function Home() {
                     {/* Upload area with drag and drop */}
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/*,.heic,.heif"
                       multiple
                       onChange={handleFileChange}
                       className="hidden"
@@ -836,7 +921,7 @@ export default function Home() {
                 <div className="flex space-x-2">
                   <input
                     type="file"
-                    accept="image/*"
+                    accept="image/*,.heic,.heif"
                     multiple
                     onChange={handleFileChange}
                     className="hidden"

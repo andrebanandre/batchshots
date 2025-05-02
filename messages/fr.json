@@ -49,7 +49,8 @@
         "maxImagesReached": "NOMBRE MAXIMUM D'IMAGES ATTEINT",
         "imagesCount": "{current}/{max} images",
         "upgradeFor": "(Passez à PRO pour jusqu'à 100)",
-        "imageOptimization": "OPTIMISATION D'IMAGE"
+        "imageOptimization": "OPTIMISATION D'IMAGE",
+        "heicConversionFailed": "Échec de la conversion de l'image HEIC : {fileName}. Le format de fichier peut ne pas être pris en charge ou le fichier peut être corrompu."
     },
     "Navbar": {
         "imageOptimizer": "Optimiseur d'images",

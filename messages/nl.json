@@ -49,7 +49,8 @@
         "imagesCount": "{current}/{max} afbeeldingen",
         "upgradeFor": "(Upgrade voor maximaal 100)",
         "imageOptimization": "BEELDOPTIMALISATIE",
-        "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong> Uw privacy en veiligheid zijn gegarandeerd."
+        "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong> Uw privacy en veiligheid zijn gegarandeerd.",
+        "heicConversionFailed": "HEIC-afbeelding kan niet worden geconverteerd: {fileName}. Het bestandsformaat wordt mogelijk niet ondersteund of het bestand is beschadigd."
     },
     "Navbar": {
         "imageOptimizer": "Afbeeldingsoptimalisatie",

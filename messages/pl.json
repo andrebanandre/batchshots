@@ -49,7 +49,8 @@
         "imagesCount": "{current}/{max} obrazów",
         "upgradeFor": "(Zaktualizuj, aby uzyskać do 100)",
         "imageOptimization": "OPTYMALIZACJA OBRAZÓW",
-        "dragAndDropPrivacy": "Przeciągnij i upuść obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong> Twoja prywatność i bezpieczeństwo są gwarantowane."
+        "dragAndDropPrivacy": "Przeciągnij i upuść obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong> Twoja prywatność i bezpieczeństwo są gwarantowane.",
+        "heicConversionFailed": "Nie udało się przekonwertować obrazu HEIC: {fileName}. Format pliku może nie być obsługiwany lub plik może być uszkodzony."
     },
     "Navbar": {
         "imageOptimizer": "Optymalizator obrazów",

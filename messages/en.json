@@ -16,6 +16,7 @@
         "privacyDescription": "Batch Shots processes all images directly in your browser. We don't store your photos or data on our servers.",
         "privacyPolicy": "Privacy Policy",
         "termsOfUse": "Terms of Use",
+        "heicConversionFailed": "Failed to convert HEIC image: {fileName}. The file format may not be supported or the file may be corrupted.",
         "features": {
             "presets": {
                 "title": "PROFESSIONAL PRESETS",
