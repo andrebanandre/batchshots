@@ -53,15 +53,16 @@
         "heicConversionFailed": "HEIC-afbeelding kan niet worden geconverteerd: {fileName}. Het bestandsformaat wordt mogelijk niet ondersteund of het bestand is beschadigd."
     },
     "Navbar": {
-        "imageOptimizer": "Afbeeldingsoptimalisatie",
+        "imageOptimizer": "Beeldoptimalisatie",
         "removeBackgrounds": "Achtergronden verwijderen",
         "aiBackgrounds": "AI-achtergronden",
         "pricing": "Prijzen",
         "login": "INLOGGEN",
         "objectRemoval": "Objectverwijdering",
-        "tools": "Gereedschappen",
+        "tools": "Hulpmiddelen",
         "addWatermark": "Watermerk toevoegen",
-        "seoDescription": "SEO Beschrijving"
+        "seoDescription": "SEO-beschrijving",
+        "imageFormatConvertor": "Afbeeldingsformaat Converter"
     },
     "Footer": {
         "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",
@@ -959,5 +960,149 @@
             "noDownloadData": "Geen verwerkte afbeelding beschikbaar om te downloaden.",
             "downloadFailed": "Fout bij het voorbereiden van de download."
         }
+    },
+    "ImageFormatConvertorPage": {
+        "metadata": {
+            "title": "Afbeeldingsformaat Converter | Batch Shots",
+            "description": "Converteer afbeeldingen tussen formaten (JPG, PNG, WebP, AVIF) met onze gebruiksvriendelijke tool. Ondersteunt HEIC-conversie en batchverwerking.",
+            "keywords": "afbeeldingsformaat converter, jpg naar png converteren, heic naar jpg converteren, webp converter, afbeeldingsformaatconversie, batch afbeeldingen converteren, heic converteren"
+        },
+        "title": "AFBEELDINGSFORMAAT CONVERTER",
+        "loading": {
+            "tool": "CONVERTER LADEN...",
+            "proStatus": "PRO-STATUS CONTROLEREN...",
+            "description": "Wacht alstublieft terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
+            "proDescription": "Wacht alstublieft terwijl we uw accountstatus verifiëren."
+        },
+        "uploadArea": {
+            "title": "CONVERTEER UW AFBEELDINGEN",
+            "description": "Converteer uw afbeeldingen naar verschillende formaten met slechts een paar klikken.",
+            "selectImages": "SELECTEER AFBEELDINGEN (TOT {maxImages})",
+            "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong>",
+            "freeLimitInfo": "Gratis gebruikers kunnen maximaal {maxImages} afbeeldingen tegelijk converteren.",
+            "upgradeLink": "Upgrade naar PRO"
+        },
+        "selectedImages": {
+            "title": "GESELECTEERDE AFBEELDINGEN ({count})"
+        },
+        "formatChanged": {
+            "title": "FORMAAT GEWIJZIGD",
+            "description": "U heeft het doelformaat gewijzigd. Klik op Reset om uw afbeeldingen naar het nieuwe formaat te converteren."
+        },
+        "mainCard": {
+            "title": "CONVERTEER AFBEELDINGEN NAAR ELK FORMAAT",
+            "info": {
+                "title": "AFBEELDINGSFORMAATCONVERSIE",
+                "description": "Converteer uw afbeeldingen tussen formaten zoals JPG, PNG, WebP en AVIF. U kunt uw afbeeldingen ook tijdens de conversie vergroten of verkleinen.",
+                "freeMode": {
+                    "title": "GRATIS MODUS",
+                    "description": "Verwerk maximaal {maxImages} afbeeldingen tegelijk. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren!"
+                },
+                "proMode": {
+                    "title": "PRO MODUS",
+                    "description": "Verwerk tot 100 afbeeldingen in bulk met uw PRO-account!"
+                }
+            },
+            "upload": {
+                "title": "Selecteer afbeeldingen om te converteren",
+                "buttonFree": "SELECTEER AFBEELDINGEN",
+                "buttonPro": "SELECTEER AFBEELDINGEN",
+                "helpTextFree": "Gratis gebruikers kunnen maximaal {maxImages} afbeeldingen tegelijk selecteren.",
+                "helpTextPro": "U kunt maximaal 100 afbeeldingen tegelijk selecteren."
+            },
+            "actions": {
+                "clear": "WISSEN",
+                "addMore": "MEER TOEVOEGEN",
+                "download": "GECONVERTEERDE DOWNLOADEN",
+                "downloadZip": "ALLES DOWNLOADEN ALS ZIP",
+                "convertImageTo": "CONVERTEREN NAAR {format}",
+                "convertImagesTo": "ALLES CONVERTEREN NAAR {format}",
+                "converting": "CONVERTEREN...",
+                "convertingMultiple": "AFBEELDINGEN CONVERTEREN...",
+                "resetConversion": "RESETTEN"
+            },
+            "progress": {
+                "processing": "Verwerken...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "UPGRADE NAAR PRO",
+                "plan": {
+                    "title": "PRO PLAN",
+                    "price": "$19.99",
+                    "features": [
+                        "Converteer tot 100 afbeeldingen tegelijk",
+                        "Afbeeldingen vergroten/verkleinen tijdens conversie",
+                        "Converteer van HEIC/HEIF naar elk formaat",
+                        "Achtergrondverwijdering voor productfoto's",
+                        "Eenmalige betaling, levenslange toegang"
+                    ],
+                    "buttonText": "NU UPGRADEN"
+                }
+            }
+        },
+        "targetFormat": {
+            "title": "SELECTEER DOELFORMAAT"
+        },
+        "resize": {
+            "title": "FORMAAT WIJZIGEN TIJDENS CONVERSIE (OPTIONEEL)"
+        },
+        "convertedImages": {
+            "title": "GECONVERTEERDE AFBEELDINGEN",
+            "description": "Uw afbeeldingen zijn succesvol geconverteerd. Klik op Downloaden om ze op te slaan."
+        },
+        "howItWorks": {
+            "title": "HOE HET WERKT",
+            "step1": {
+                "title": "1. SELECTEER UW AFBEELDINGEN",
+                "description": "Upload een of meer afbeeldingen die u wilt converteren.",
+                "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
+            },
+            "step2": {
+                "title": "2. KIES DOELFORMAAT",
+                "description": "Selecteer het gewenste uitvoerformaat (JPG, PNG, WebP of AVIF)."
+            },
+            "step3": {
+                "title": "3. FORMAAT WIJZIGEN (OPTIONEEL)",
+                "description": "Selecteer optioneel een voorinstelling om uw afbeeldingen tijdens de conversie van formaat te wijzigen."
+            },
+            "step4": {
+                "title": "4. DOWNLOADEN & GEBRUIKEN",
+                "description": "Converteer uw afbeeldingen en download ze afzonderlijk of als ZIP-archief."
+            }
+        },
+        "supportedFormats": {
+            "title": "ONDERSTEUNDE FORMATEN",
+            "input": {
+                "title": "INVOERFORMATEN",
+                "description": "U kunt afbeeldingen in deze formaten uploaden:"
+            },
+            "output": {
+                "title": "UITVOERFORMATEN",
+                "description": "Converteer uw afbeeldingen naar een van deze formaten:"
+            }
+        },
+        "alerts": {
+            "freeUserLimit": "Gratis gebruikers kunnen maximaal 5 afbeeldingen tegelijk converteren. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren!",
+            "maxImagesLimit": "Maximaal 100 afbeeldingen tegelijk toegestaan.",
+            "conversionFailed": "Formaatconversie mislukt. Probeer het opnieuw."
+        },
+        "proDialog": {
+            "title": "UPGRADE NAAR PRO",
+            "featureTitle": "PRO-FUNCTIE: Batch Formaatconversie",
+            "description": "Gratis gebruikers kunnen slechts {maxImages} afbeeldingen tegelijk converteren. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren, wat u uren werk bespaart!",
+            "pricing": {
+                "title": "EENMALIGE BETALING",
+                "price": "$19.99",
+                "note": "Geen abonnement, levenslange toegang"
+            },
+            "actions": {
+                "upgrade": "UPGRADE NAAR PRO",
+                "continue": "DOORGAAN MET GRATIS MODUS"
+            }
+        },
+        "allImages": "ALLE AFBEELDINGEN ({current}/{max})",
+        "imagesCount": "{current}/{max} afbeeldingen",
+        "upgradeFor": "(Upgrade voor maximaal 100)"
     }
 } 

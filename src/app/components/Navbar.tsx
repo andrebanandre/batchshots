@@ -91,12 +91,15 @@ export default function Navbar() {
                 <Link href="/add-watermark" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
                   {t('addWatermark')}
                 </Link>
-                <Link href="/object-removal" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black flex items-center gap-2">
-                  {t('objectRemoval')}
-                  <span className="ml-2 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
+                <Link href="/image-format-convertor" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
+                  {t('imageFormatConvertor')}
                 </Link>
                 <Link href="/seo-description" className="block px-4 py-2 text-sm hover:bg-slate-100 flex items-center gap-2">
                   {t('seoDescription')}
+                </Link>
+                <Link href="/object-removal" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black flex items-center gap-2">
+                  {t('objectRemoval')}
+                  <span className="ml-2 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
                 </Link>
               </div>
             )}

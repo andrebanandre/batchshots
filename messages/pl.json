@@ -61,7 +61,8 @@
         "objectRemoval": "Usuwanie obiektów",
         "tools": "Narzędzia",
         "addWatermark": "Dodaj znak wodny",
-        "seoDescription": "Opis SEO"
+        "seoDescription": "Opis SEO",
+        "imageFormatConvertor": "Konwerter formatu obrazu"
     },
     "Footer": {
         "about": "Batch Shots pomaga szybko i łatwo zoptymalizować obrazy produktów pod kątem SEO, bezpośrednio w przeglądarce.",
@@ -659,7 +660,7 @@
                 },
                 "refund": {
                     "question": "Czy mogę poprosić o zwrot pieniędzy?",
-                    "answer": "Tak, oferujemy 30-dniową gwarancję zwrotu pieniędzy, jeśli nie jesteś zadowolony z funkcji PRO. Skontaktuj się z naszym zespołem wsparcia po pomoc."
+                    "answer": "Tak, oferujemy 30-dniową gwarancję zwrotu pieniędzy, jeśli nie jesteś zadowolony z funkcji PRO. Skontaktuj się z nami pod adresem privacy@batchshots.com."
                 }
             }
         }
@@ -884,7 +885,7 @@
             "title": "ZNAKUJ WODNIE SWOJE ZDJĘCIA",
             "info": {
                 "title": "DODAJ NIESTANDARDOWE ZNAKI WODNE",
-                "description": "Chroń swoje obrazy za pomocą niestandardowych znaków wodnych tekstowych lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich potrzeb brandingowych.",
+                "description": "Chroń swoje obrazy za pomocą niestandardowych znaków wodnych tekstowych lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich preferencji brandingowych.",
                 "freeMode": {
                     "title": "TRYB DARMOWY",
                     "description": "Przetwarzaj 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!"
@@ -961,5 +962,149 @@
                 "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
             }
         }
+    },
+    "ImageFormatConvertorPage": {
+        "metadata": {
+            "title": "Konwerter formatów obrazów | Batch Shots",
+            "description": "Konwertuj obrazy między formatami (JPG, PNG, WebP, AVIF) za pomocą naszego łatwego w użyciu narzędzia. Obsługuje konwersję HEIC i przetwarzanie wsadowe.",
+            "keywords": "konwerter formatów obrazów, konwertuj jpg na png, konwertuj heic na jpg, konwerter webp, konwersja formatu obrazu, wsadowa konwersja obrazów, konwertuj heic"
+        },
+        "title": "KONWERTER FORMATÓW OBRAZÓW",
+        "loading": {
+            "tool": "ŁADOWANIE KONWERTERA...",
+            "proStatus": "SPRAWDZANIE STATUSU PRO...",
+            "description": "Poczekaj, aż zainicjujemy możliwości przetwarzania obrazów.",
+            "proDescription": "Poczekaj, aż zweryfikujemy status Twojego konta."
+        },
+        "uploadArea": {
+            "title": "KONWERTUJ SWOJE OBRAZY",
+            "description": "Konwertuj swoje obrazy do różnych formatów za pomocą kilku kliknięć.",
+            "selectImages": "WYBIERZ OBRAZY (DO {maxImages})",
+            "dragAndDropPrivacy": "Przeciągnij obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong>",
+            "freeLimitInfo": "Darmowi użytkownicy mogą konwertować do {maxImages} obrazów naraz.",
+            "upgradeLink": "Uaktualnij do PRO"
+        },
+        "selectedImages": {
+            "title": "WYBRANE OBRAZY ({count})"
+        },
+        "formatChanged": {
+            "title": "FORMAT ZMIENIONY",
+            "description": "Zmieniłeś format docelowy. Kliknij Resetuj, aby przekonwertować obrazy do nowego formatu."
+        },
+        "mainCard": {
+            "title": "KONWERTUJ OBRAZY DO DOWOLNEGO FORMATU",
+            "info": {
+                "title": "KONWERSJA FORMATU OBRAZU",
+                "description": "Konwertuj swoje obrazy między formatami takimi jak JPG, PNG, WebP i AVIF. Możesz także zmieniać rozmiar obrazów podczas konwersji.",
+                "freeMode": {
+                    "title": "TRYB DARMOWY",
+                    "description": "Przetwarzaj do {maxImages} obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo!"
+                },
+                "proMode": {
+                    "title": "TRYB PRO",
+                    "description": "Przetwarzaj do 100 obrazów wsadowo za pomocą swojego konta PRO!"
+                }
+            },
+            "upload": {
+                "title": "Wybierz obrazy do konwersji",
+                "buttonFree": "WYBIERZ OBRAZY",
+                "buttonPro": "WYBIERZ OBRAZY",
+                "helpTextFree": "Darmowi użytkownicy mogą wybrać do {maxImages} obrazów naraz.",
+                "helpTextPro": "Możesz wybrać do 100 obrazów naraz."
+            },
+            "actions": {
+                "clear": "WYCZYŚĆ",
+                "addMore": "DODAJ WIĘCEJ",
+                "download": "POBIERZ SKONWERTOWANE",
+                "downloadZip": "POBIERZ WSZYSTKO JAKO ZIP",
+                "convertImageTo": "KONWERTUJ DO {format}",
+                "convertImagesTo": "KONWERTUJ WSZYSTKO DO {format}",
+                "converting": "KONWERSJA...",
+                "convertingMultiple": "KONWERSJA OBRAZÓW...",
+                "resetConversion": "RESETUJ"
+            },
+            "progress": {
+                "processing": "Przetwarzanie...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "UAKTUALNIJ DO PRO",
+                "plan": {
+                    "title": "PLAN PRO",
+                    "price": "$19.99",
+                    "features": [
+                        "Konwertuj do 100 obrazów naraz",
+                        "Zmieniaj rozmiar obrazów podczas konwersji",
+                        "Konwertuj z HEIC/HEIF do dowolnego formatu",
+                        "Usuwanie tła dla zdjęć produktów",
+                        "Jednorazowa opłata, dożywotni dostęp"
+                    ],
+                    "buttonText": "UAKTUALNIJ TERAZ"
+                }
+            }
+        },
+        "targetFormat": {
+            "title": "WYBIERZ FORMAT DOCELOWY"
+        },
+        "resize": {
+            "title": "ZMIEŃ ROZMIAR PODCZAS KONWERSJI (OPCJONALNIE)"
+        },
+        "convertedImages": {
+            "title": "SKONWERTOWANE OBRAZY",
+            "description": "Twoje obrazy zostały pomyślnie przekonwertowane. Kliknij Pobierz, aby je zapisać."
+        },
+        "howItWorks": {
+            "title": "JAK TO DZIAŁA",
+            "step1": {
+                "title": "1. WYBIERZ SWOJE OBRAZY",
+                "description": "Prześlij jeden lub więcej obrazów, które chcesz przekonwertować.",
+                "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów naraz!"
+            },
+            "step2": {
+                "title": "2. WYBIERZ FORMAT DOCELOWY",
+                "description": "Wybierz żądany format wyjściowy (JPG, PNG, WebP lub AVIF)."
+            },
+            "step3": {
+                "title": "3. ZMIEŃ ROZMIAR (OPCJONALNIE)",
+                "description": "Opcjonalnie wybierz ustawienie wstępne, aby zmienić rozmiar obrazów podczas konwersji."
+            },
+            "step4": {
+                "title": "4. POBIERZ I UŻYWAJ",
+                "description": "Konwertuj swoje obrazy i pobieraj je pojedynczo lub jako archiwum ZIP."
+            }
+        },
+        "supportedFormats": {
+            "title": "OBSŁUGIWANE FORMATY",
+            "input": {
+                "title": "FORMATY WEJŚCIOWE",
+                "description": "Możesz przesyłać obrazy w tych formatach:"
+            },
+            "output": {
+                "title": "FORMATY WYJŚCIOWE",
+                "description": "Konwertuj swoje obrazy do dowolnego z tych formatów:"
+            }
+        },
+        "alerts": {
+            "freeUserLimit": "Darmowi użytkownicy mogą konwertować do 5 obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo!",
+            "maxImagesLimit": "Maksymalnie 100 obrazów dozwolonych naraz.",
+            "conversionFailed": "Konwersja formatu nie powiodła się. Spróbuj ponownie."
+        },
+        "proDialog": {
+            "title": "UAKTUALNIJ DO PRO",
+            "featureTitle": "FUNKCJA PRO: Wsadowa konwersja formatu",
+            "description": "Darmowi użytkownicy mogą konwertować tylko {maxImages} obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo, oszczędzając godziny pracy!",
+            "pricing": {
+                "title": "JEDNORAZOWA OPŁATA",
+                "price": "$19.99",
+                "note": "Bez subskrypcji, dożywotni dostęp"
+            },
+            "actions": {
+                "upgrade": "UAKTUALNIJ DO PRO",
+                "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
+            }
+        },
+        "allImages": "WSZYSTKIE OBRAZY ({current}/{max})",
+        "imagesCount": "{current}/{max} obrazów",
+        "upgradeFor": "(Uaktualnij do 100)"
     }
 } 

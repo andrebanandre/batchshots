@@ -61,11 +61,12 @@ export default function Footer() {
             <nav className="flex flex-col space-y-2">
               <Link href="/background-removal" className="hover:text-primary text-sm">{tNavbar('removeBackgrounds')}</Link>
               <Link href="/add-watermark" className="hover:text-primary text-sm">{tNavbar('addWatermark')}</Link>
+              <Link href="/image-format-convertor" className="hover:text-primary text-sm">{tNavbar('imageFormatConvertor')}</Link>
+              <Link href="/seo-description" className="hover:text-primary text-sm">{tNavbar('seoDescription')}</Link>
               <Link href="/object-removal" className="hover:text-primary text-sm flex items-center gap-2">
                 {tNavbar('objectRemoval')}
                 <span className="ml-2 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
               </Link>
-              <Link href="/seo-description" className="hover:text-primary text-sm">{tNavbar('seoDescription')}</Link>
             </nav>
           </div>
           

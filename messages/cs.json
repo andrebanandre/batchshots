@@ -54,14 +54,15 @@
     },
     "Navbar": {
         "imageOptimizer": "Optimalizátor obrázků",
-        "removeBackgrounds": "Odstranění pozadí",
+        "removeBackgrounds": "Odstranit pozadí",
         "aiBackgrounds": "AI pozadí",
         "pricing": "Ceny",
         "login": "PŘIHLÁSIT SE",
-        "objectRemoval": "Odstranění objektu",
+        "objectRemoval": "Odstranění objektů",
         "tools": "Nástroje",
         "addWatermark": "Přidat vodoznak",
-        "seoDescription": "SEO Popis"
+        "seoDescription": "SEO popis",
+        "imageFormatConvertor": "Konvertor formátů obrázků"
     },
     "Footer": {
         "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
@@ -559,103 +560,247 @@
     },
     "WatermarkPage": {
         "metadata": {
-            "title": "Add Watermark to Images | Batch Shots",
-            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
-            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+            "title": "Přidat vodotisk k obrázkům | Batch Shots",
+            "description": "Snadno přidejte vlastní textové nebo logové vodotisky k vašim obrázkům. Chraňte své fotografie vodotisky s kontrolou nad krytím, pozicí a velikostí.",
+            "keywords": "vodotisk, přidat vodotisk k obrázkům, vodotisk fotografií, vodotisk obrázků, vodotisk loga, textový vodotisk, značení obrázků, vodotisk fotografií"
         },
-        "title": "ADD WATERMARK TO IMAGES",
+        "title": "PŘIDAT VODOTISK K OBRÁZKŮM",
         "loading": {
-            "proStatus": "CHECKING PRO STATUS...",
-            "proDescription": "Please wait while we verify your account status."
+            "proStatus": "KONTROLA PRO STATUSU...",
+            "proDescription": "Počkejte prosím, zatímco ověřujeme stav vašeho účtu."
         },
         "preview": {
-            "title": "IMAGE PREVIEW"
+            "title": "NÁHLED OBRÁZKU"
         },
         "alerts": {
-            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
-            "maxImagesLimit": "Maximum 100 images allowed at once.",
-            "watermarkFailed": "Watermark application failed. Please try again."
+            "freeUserLimit": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro zpracování až 100 obrázků najednou!",
+            "maxImagesLimit": "Maximálně 100 obrázků najednou.",
+            "watermarkFailed": "Aplikace vodotisku selhala. Prosím zkuste to znovu."
         },
         "mainCard": {
-            "title": "WATERMARK YOUR IMAGES",
+            "title": "VODOTISK NA OBRÁZKY",
             "info": {
-                "title": "ADD CUSTOM WATERMARKS",
-                "description": "Protect your images with custom text or logo watermarks. Customize opacity, size, and position to match your branding needs.",
+                "title": "PŘIDAT VLASTNÍ VODOTISKY",
+                "description": "Chraňte své obrázky vlastními textovými nebo logovými vodotisky. Přizpůsobte krytí, velikost a pozici podle vašich potřeb značky.",
                 "freeMode": {
-                    "title": "FREE MODE",
-                    "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
+                    "title": "BEZPLATNÝ REŽIM",
+                    "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro zpracování až 100 obrázků najednou!"
                 },
                 "proMode": {
-                    "title": "PRO MODE",
-                    "description": "Process up to 100 images in bulk with your PRO account!"
+                    "title": "PRO REŽIM",
+                    "description": "Zpracujte až 100 obrázků najednou s vaším PRO účtem!"
                 }
             },
             "upload": {
-                "title": "Select Images",
-                "buttonFree": "SELECT AN IMAGE",
-                "buttonPro": "SELECT IMAGES",
-                "helpTextFree": "Free users can select 1 image at a time.",
-                "helpTextPro": "You can select up to 100 images at once."
+                "title": "Vybrat obrázky",
+                "buttonFree": "VYBRAT OBRÁZEK",
+                "buttonPro": "VYBRAT OBRÁZKY",
+                "helpTextFree": "Bezplatní uživatelé mohou vybrat 1 obrázek najednou.",
+                "helpTextPro": "Můžete vybrat až 100 obrázků najednou."
             },
             "actions": {
-                "clear": "CLEAR",
-                "download": "DOWNLOAD",
-                "downloadZip": "DOWNLOAD AS ZIP",
-                "applyWatermark": "APPLY WATERMARK",
-                "applyWatermarks": "APPLY WATERMARKS",
-                "processing": "APPLYING WATERMARK...",
-                "processingMultiple": "APPLYING WATERMARKS...",
-                "tryFullEditor": "TRY FULL EDITOR"
+                "clear": "VYMAZAT",
+                "download": "STÁHNOUT",
+                "downloadZip": "STÁHNOUT JAKO ZIP",
+                "applyWatermark": "POUŽÍT VODOTISK",
+                "applyWatermarks": "POUŽÍT VODOTISKY",
+                "processing": "POUŽÍVÁNÍ VODOTISKU...",
+                "processingMultiple": "POUŽÍVÁNÍ VODOTISKŮ...",
+                "tryFullEditor": "VYZKOUŠET PLNÝ EDITOR"
             },
             "progress": {
-                "processing": "Processing...",
+                "processing": "Zpracování...",
                 "percent": "{percent}%"
             },
             "upgradeCard": {
-                "title": "UPGRADE TO PRO",
+                "title": "UPGRADE NA PRO",
                 "plan": {
-                    "title": "PRO PLAN",
+                    "title": "PRO PLÁN",
                     "price": "$19.99",
                     "features": [
-                        "Watermark up to 100 images at once",
-                        "Advanced image adjustments and presets",
-                        "Background removal for product images",
-                        "Batch processing for all features",
-                        "One-time payment, lifetime access"
+                        "Vodotisk až 100 obrázků najednou",
+                        "Pokročilé úpravy obrázků a předvolby",
+                        "Odstranění pozadí pro produktové fotografie",
+                        "Hromadné zpracování pro všechny funkce",
+                        "Jednorázová platba, doživotní přístup"
                     ],
-                    "buttonText": "UPGRADE NOW"
+                    "buttonText": "UPGRADE NYNÍ"
                 }
             }
         },
         "howItWorks": {
-            "title": "HOW IT WORKS",
+            "title": "JAK TO FUNGUJE",
             "step1": {
-                "title": "1. SELECT YOUR IMAGES",
-                "description": "Upload one or more images you want to watermark.",
-                "proNote": "PRO users can select up to 100 images at once!"
+                "title": "1. VYBERTE OBRÁZKY",
+                "description": "Nahrajte jeden nebo více obrázků, ke kterým chcete přidat vodotisk.",
+                "proNote": "PRO uživatelé mohou vybrat až 100 obrázků najednou!"
             },
             "step2": {
-                "title": "2. CUSTOMIZE WATERMARK",
-                "description": "Choose between text or logo watermarks. Adjust opacity, size, and position to your preferences."
+                "title": "2. PŘIZPŮSOBTE VODOTISK",
+                "description": "Vyberte mezi textovým nebo logovým vodotiskem. Upravte krytí, velikost a pozici podle vašich preferencí."
             },
             "step3": {
-                "title": "3. DOWNLOAD & USE",
-                "description": "Apply your watermark and download the processed images ready for web, social media, or portfolio use."
+                "title": "3. STÁHNOUT A POUŽÍT",
+                "description": "Použijte vodotisk a stáhněte zpracované obrázky připravené pro web, sociální sítě nebo portfolio."
             }
         },
         "proDialog": {
-            "title": "UPGRADE TO PRO",
-            "featureTitle": "PRO FEATURE: Bulk Watermarking",
-            "description": "Free users can only process 1 image at a time. Upgrade to PRO to watermark up to 100 images in bulk, saving you hours of work!",
+            "title": "UPGRADE NA PRO",
+            "featureTitle": "PRO FUNKCE: Hromadné vodotisky",
+            "description": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro vodotisk až 100 obrázků najednou, ušetříte tak hodiny práce!",
             "pricing": {
-                "title": "ONE-TIME PAYMENT",
+                "title": "JEDNORÁZOVÁ PLATBA",
                 "price": "$19.99",
-                "note": "No subscription, lifetime access"
+                "note": "Bez předplatného, doživotní přístup"
             },
             "actions": {
-                "upgrade": "UPGRADE TO PRO",
-                "continue": "CONTINUE WITH FREE MODE"
+                "upgrade": "UPGRADE NA PRO",
+                "continue": "POKRAČOVAT V BEZPLATNÉM REŽIMU"
             }
         }
+    },
+    "ImageFormatConvertorPage": {
+        "metadata": {
+            "title": "Konvertor formátů obrázků | Batch Shots",
+            "description": "Konvertujte obrázky mezi formáty (JPG, PNG, WebP, AVIF) pomocí našeho snadno použitelného nástroje. Podporuje konverzi HEIC a dávkové zpracování.",
+            "keywords": "konvertor formátů obrázků, konvertovat jpg na png, konvertovat heic na jpg, webp konvertor, konverze formátu obrázku, dávková konverze obrázků, konvertovat heic"
+        },
+        "title": "KONVERTOR FORMÁTŮ OBRÁZKŮ",
+        "loading": {
+            "tool": "NAČÍTÁNÍ KONVERTORU...",
+            "proStatus": "KONTROLA STAVU PRO...",
+            "description": "Počkejte prosím, než inicializujeme možnosti zpracování obrázků.",
+            "proDescription": "Počkejte prosím, než ověříme stav vašeho účtu."
+        },
+        "uploadArea": {
+            "title": "KONVERTUJTE SVÉ OBRÁZKY",
+            "description": "Převeďte své obrázky do různých formátů pomocí několika kliknutí.",
+            "selectImages": "VYBRAT OBRÁZKY (AŽ {maxImages})",
+            "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Nikdy nenahráváme vaše obrázky na naše servery.</strong>",
+            "freeLimitInfo": "Bezplatní uživatelé mohou najednou převést až {maxImages} obrázků.",
+            "upgradeLink": "Upgradovat na PRO"
+        },
+        "selectedImages": {
+            "title": "VYBRANÉ OBRÁZKY ({count})"
+        },
+        "formatChanged": {
+            "title": "FORMÁT ZMĚNĚN",
+            "description": "Změnili jste cílový formát. Klikněte na Reset pro konverzi obrázků do nového formátu."
+        },
+        "mainCard": {
+            "title": "KONVERTOVAT OBRÁZKY DO LIBOVOLNÉHO FORMÁTU",
+            "info": {
+                "title": "KONVERZE FORMÁTU OBRÁZKU",
+                "description": "Převeďte své obrázky mezi formáty jako JPG, PNG, WebP a AVIF. Během konverze můžete také změnit velikost obrázků.",
+                "freeMode": {
+                    "title": "BEZPLATNÝ REŽIM",
+                    "description": "Zpracujte až {maxImages} obrázků najednou. Upgradujte na PRO pro konverzi až 100 obrázků hromadně!"
+                },
+                "proMode": {
+                    "title": "PRO REŽIM",
+                    "description": "Zpracujte až 100 obrázků hromadně s vaším PRO účtem!"
+                }
+            },
+            "upload": {
+                "title": "Vyberte obrázky k převodu",
+                "buttonFree": "VYBRAT OBRÁZKY",
+                "buttonPro": "VYBRAT OBRÁZKY",
+                "helpTextFree": "Bezplatní uživatelé mohou najednou vybrat až {maxImages} obrázků.",
+                "helpTextPro": "Najednou můžete vybrat až 100 obrázků."
+            },
+            "actions": {
+                "clear": "VYMAZAT",
+                "addMore": "PŘIDAT DALŠÍ",
+                "download": "STÁHNOUT PŘEVEDENÉ",
+                "downloadZip": "STÁHNOUT VŠE JAKO ZIP",
+                "convertImageTo": "KONVERTOVAT DO {format}",
+                "convertImagesTo": "KONVERTOVAT VŠE DO {format}",
+                "converting": "KONVERZE...",
+                "convertingMultiple": "KONVERZE OBRÁZKŮ...",
+                "resetConversion": "RESETOVAT"
+            },
+            "progress": {
+                "processing": "Zpracovávání...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "UPGRADOVAT NA PRO",
+                "plan": {
+                    "title": "PRO PLÁN",
+                    "price": "$19.99",
+                    "features": [
+                        "Převeďte až 100 obrázků najednou",
+                        "Změňte velikost obrázků během konverze",
+                        "Převeďte z HEIC/HEIF do libovolného formátu",
+                        "Odstranění pozadí pro produktové fotografie",
+                        "Jednorázová platba, doživotní přístup"
+                    ],
+                    "buttonText": "UPGRADOVAT NYNÍ"
+                }
+            }
+        },
+        "targetFormat": {
+            "title": "VYBRAT CÍLOVÝ FORMÁT"
+        },
+        "resize": {
+            "title": "ZMĚNIT VELIKOST BĚHEM KONVERZE (VOLITELNÉ)"
+        },
+        "convertedImages": {
+            "title": "PŘEVEDENÉ OBRÁZKY",
+            "description": "Vaše obrázky byly úspěšně převedeny. Klikněte na Stáhnout pro jejich uložení."
+        },
+        "howItWorks": {
+            "title": "JAK TO FUNGUJE",
+            "step1": {
+                "title": "1. VYBERTE SVÉ OBRÁZKY",
+                "description": "Nahrajte jeden nebo více obrázků, které chcete převést.",
+                "proNote": "PRO uživatelé mohou najednou vybrat až 100 obrázků!"
+            },
+            "step2": {
+                "title": "2. ZVOLTE CÍLOVÝ FORMÁT",
+                "description": "Vyberte požadovaný výstupní formát (JPG, PNG, WebP nebo AVIF)."
+            },
+            "step3": {
+                "title": "3. ZMĚNIT VELIKOST (VOLITELNÉ)",
+                "description": "Volitelně vyberte přednastavení pro změnu velikosti obrázků během konverze."
+            },
+            "step4": {
+                "title": "4. STÁHNOUT A POUŽÍT",
+                "description": "Převeďte své obrázky a stáhněte je jednotlivě nebo jako ZIP archiv."
+            }
+        },
+        "supportedFormats": {
+            "title": "PODPOROVANÉ FORMÁTY",
+            "input": {
+                "title": "VSTUPNÍ FORMÁTY",
+                "description": "Můžete nahrát obrázky v těchto formátech:"
+            },
+            "output": {
+                "title": "VÝSTUPNÍ FORMÁTY",
+                "description": "Převeďte své obrázky do libovolného z těchto formátů:"
+            }
+        },
+        "alerts": {
+            "freeUserLimit": "Bezplatní uživatelé mohou najednou převést až 5 obrázků. Upgradujte na PRO pro konverzi až 100 obrázků hromadně!",
+            "maxImagesLimit": "Najednou je povoleno maximálně 100 obrázků.",
+            "conversionFailed": "Konverze formátu selhala. Zkuste to prosím znovu."
+        },
+        "proDialog": {
+            "title": "UPGRADOVAT NA PRO",
+            "featureTitle": "PRO FUNKCE: Hromadná konverze formátu",
+            "description": "Bezplatní uživatelé mohou najednou převést pouze {maxImages} obrázků. Upgradujte na PRO pro konverzi až 100 obrázků hromadně, což vám ušetří hodiny práce!",
+            "pricing": {
+                "title": "JEDNORÁZOVÁ PLATBA",
+                "price": "$19.99",
+                "note": "Bez předplatného, doživotní přístup"
+            },
+            "actions": {
+                "upgrade": "UPGRADOVAT NA PRO",
+                "continue": "POKRAČOVAT V BEZPLATNÉM REŽIMU"
+            }
+        },
+        "allImages": "VŠECHNY OBRÁZKY ({current}/{max})",
+        "imagesCount": "{current}/{max} obrázků",
+        "upgradeFor": "(Upgrade pro až 100)"
     }
 }

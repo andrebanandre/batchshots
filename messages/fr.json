@@ -61,7 +61,8 @@
         "objectRemoval": "Suppression d'objets",
         "tools": "Outils",
         "addWatermark": "Ajouter un filigrane",
-        "seoDescription": "Description SEO"
+        "seoDescription": "Description SEO",
+        "imageFormatConvertor": "Convertisseur de format d'image"
     },
     "Footer": {
         "about": "Batch Shots vous aide à optimiser rapidement et facilement les images de produits pour le SEO, directement dans votre navigateur.",
@@ -961,5 +962,149 @@
                 "continue": "CONTINUER EN MODE GRATUIT"
             }
         }
+    },
+    "ImageFormatConvertorPage": {
+        "metadata": {
+            "title": "Convertisseur de formats d'image | Batch Shots",
+            "description": "Convertissez des images entre les formats (JPG, PNG, WebP, AVIF) avec notre outil facile à utiliser. Prend en charge la conversion HEIC et le traitement par lots.",
+            "keywords": "convertisseur de formats d'image, convertir jpg en png, convertir heic en jpg, convertisseur webp, conversion de format d'image, conversion d'images par lots, convertir heic"
+        },
+        "title": "CONVERTISSEUR DE FORMATS D'IMAGE",
+        "loading": {
+            "tool": "CHARGEMENT DU CONVERTISSEUR...",
+            "proStatus": "VÉRIFICATION DU STATUT PRO...",
+            "description": "Veuillez patienter pendant l'initialisation des capacités de traitement d'image.",
+            "proDescription": "Veuillez patienter pendant la vérification du statut de votre compte."
+        },
+        "uploadArea": {
+            "title": "CONVERTISSEZ VOS IMAGES",
+            "description": "Convertissez vos images dans différents formats en quelques clics.",
+            "selectImages": "SÉLECTIONNER DES IMAGES (JUSQU'À {maxImages})",
+            "dragAndDropPrivacy": "Faites glisser et déposez des images ici, ou cliquez pour sélectionner des fichiers. <strong>Tout le traitement se fait dans votre navigateur. Nous ne téléchargeons jamais vos images sur nos serveurs.</strong>",
+            "freeLimitInfo": "Les utilisateurs gratuits peuvent convertir jusqu'à {maxImages} images à la fois.",
+            "upgradeLink": "Passer à PRO"
+        },
+        "selectedImages": {
+            "title": "IMAGES SÉLECTIONNÉES ({count})"
+        },
+        "formatChanged": {
+            "title": "FORMAT MODIFIÉ",
+            "description": "Vous avez modifié le format cible. Cliquez sur Réinitialiser pour convertir vos images au nouveau format."
+        },
+        "mainCard": {
+            "title": "CONVERTIR DES IMAGES DANS N'IMPORTE QUEL FORMAT",
+            "info": {
+                "title": "CONVERSION DE FORMAT D'IMAGE",
+                "description": "Convertissez vos images entre des formats comme JPG, PNG, WebP et AVIF. Vous pouvez également redimensionner vos images pendant la conversion.",
+                "freeMode": {
+                    "title": "MODE GRATUIT",
+                    "description": "Traitez jusqu'à {maxImages} images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse !"
+                },
+                "proMode": {
+                    "title": "MODE PRO",
+                    "description": "Traitez jusqu'à 100 images en masse avec votre compte PRO !"
+                }
+            },
+            "upload": {
+                "title": "Sélectionner les images à convertir",
+                "buttonFree": "SÉLECTIONNER DES IMAGES",
+                "buttonPro": "SÉLECTIONNER DES IMAGES",
+                "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner jusqu'à {maxImages} images à la fois.",
+                "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
+            },
+            "actions": {
+                "clear": "EFFACER",
+                "addMore": "AJOUTER PLUS",
+                "download": "TÉLÉCHARGER CONVERTIES",
+                "downloadZip": "TÉLÉCHARGER TOUT EN ZIP",
+                "convertImageTo": "CONVERTIR EN {format}",
+                "convertImagesTo": "CONVERTIR TOUT EN {format}",
+                "converting": "CONVERSION...",
+                "convertingMultiple": "CONVERSION DES IMAGES...",
+                "resetConversion": "RÉINITIALISER"
+            },
+            "progress": {
+                "processing": "Traitement...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "PASSER À PRO",
+                "plan": {
+                    "title": "PLAN PRO",
+                    "price": "$19.99",
+                    "features": [
+                        "Convertissez jusqu'à 100 images à la fois",
+                        "Redimensionnez les images pendant la conversion",
+                        "Convertissez depuis HEIC/HEIF vers n'importe quel format",
+                        "Suppression de l'arrière-plan pour les photos de produits",
+                        "Paiement unique, accès à vie"
+                    ],
+                    "buttonText": "METTRE À NIVEAU MAINTENANT"
+                }
+            }
+        },
+        "targetFormat": {
+            "title": "SÉLECTIONNER LE FORMAT CIBLE"
+        },
+        "resize": {
+            "title": "REDIMENSIONNER PENDANT LA CONVERSION (FACULTATIF)"
+        },
+        "convertedImages": {
+            "title": "IMAGES CONVERTIES",
+            "description": "Vos images ont été converties avec succès. Cliquez sur Télécharger pour les enregistrer."
+        },
+        "howItWorks": {
+            "title": "COMMENT ÇA MARCHE",
+            "step1": {
+                "title": "1. SÉLECTIONNEZ VOS IMAGES",
+                "description": "Téléchargez une ou plusieurs images que vous souhaitez convertir.",
+                "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
+            },
+            "step2": {
+                "title": "2. CHOISISSEZ LE FORMAT CIBLE",
+                "description": "Sélectionnez le format de sortie souhaité (JPG, PNG, WebP ou AVIF)."
+            },
+            "step3": {
+                "title": "3. REDIMENSIONNER (FACULTATIF)",
+                "description": "Sélectionnez éventuellement un préréglage pour redimensionner vos images pendant la conversion."
+            },
+            "step4": {
+                "title": "4. TÉLÉCHARGER ET UTILISER",
+                "description": "Convertissez vos images et téléchargez-les individuellement ou sous forme d'archive ZIP."
+            }
+        },
+        "supportedFormats": {
+            "title": "FORMATS PRIS EN CHARGE",
+            "input": {
+                "title": "FORMATS D'ENTRÉE",
+                "description": "Vous pouvez télécharger des images dans ces formats :"
+            },
+            "output": {
+                "title": "FORMATS DE SORTIE",
+                "description": "Convertissez vos images dans l'un de ces formats :"
+            }
+        },
+        "alerts": {
+            "freeUserLimit": "Les utilisateurs gratuits peuvent convertir jusqu'à 5 images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse !",
+            "maxImagesLimit": "Maximum de 100 images autorisées à la fois.",
+            "conversionFailed": "La conversion du format a échoué. Veuillez réessayer."
+        },
+        "proDialog": {
+            "title": "PASSER À PRO",
+            "featureTitle": "FONCTIONNALITÉ PRO : Conversion de format en masse",
+            "description": "Les utilisateurs gratuits ne peuvent convertir que {maxImages} images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse, ce qui vous fera gagner des heures de travail !",
+            "pricing": {
+                "title": "PAIEMENT UNIQUE",
+                "price": "$19.99",
+                "note": "Pas d'abonnement, accès à vie"
+            },
+            "actions": {
+                "upgrade": "PASSER À PRO",
+                "continue": "CONTINUER AVEC LE MODE GRATUIT"
+            }
+        },
+        "allImages": "TOUTES LES IMAGES ({current}/{max})",
+        "imagesCount": "{current}/{max} images",
+        "upgradeFor": "(Mettre à niveau pour jusqu'à 100)"
     }
 } 

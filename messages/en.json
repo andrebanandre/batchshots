@@ -61,7 +61,8 @@
         "objectRemoval": "Object Removal",
         "tools": "Tools",
         "addWatermark": "Add Watermark",
-        "seoDescription": "SEO Description"
+        "seoDescription": "SEO Description",
+        "imageFormatConvertor": "Image Format Convertor"
     },
     "Footer": {
         "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
@@ -1015,5 +1016,149 @@
                 "continue": "CONTINUE WITH FREE MODE"
             }
         }
+    },
+    "ImageFormatConvertorPage": {
+        "metadata": {
+            "title": "Image Format Convertor | Batch Shots",
+            "description": "Convert images between formats (JPG, PNG, WebP, AVIF) with our easy-to-use tool. Supports HEIC conversion and batch processing.",
+            "keywords": "image format converter, convert jpg to png, convert heic to jpg, webp converter, image format conversion, batch convert images, convert heic"
+        },
+        "title": "IMAGE FORMAT CONVERTER",
+        "loading": {
+            "tool": "LOADING CONVERTER...",
+            "proStatus": "CHECKING PRO STATUS...",
+            "description": "Please wait while we initialize image processing capabilities.",
+            "proDescription": "Please wait while we verify your account status."
+        },
+        "uploadArea": {
+            "title": "CONVERT YOUR IMAGES",
+            "description": "Convert your images to different formats with just a few clicks.",
+            "selectImages": "SELECT IMAGES (UP TO {maxImages})",
+            "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong>",
+            "freeLimitInfo": "Free users can convert up to {maxImages} images at a time.",
+            "upgradeLink": "Upgrade to PRO"
+        },
+        "selectedImages": {
+            "title": "SELECTED IMAGES ({count})"
+        },
+        "formatChanged": {
+            "title": "FORMAT CHANGED",
+            "description": "You've changed the target format. Click Reset to convert your images to the new format."
+        },
+        "mainCard": {
+            "title": "CONVERT IMAGES TO ANY FORMAT",
+            "info": {
+                "title": "IMAGE FORMAT CONVERSION",
+                "description": "Convert your images between formats like JPG, PNG, WebP, and AVIF. You can also resize your images during conversion.",
+                "freeMode": {
+                    "title": "FREE MODE",
+                    "description": "Process up to {maxImages} images at a time. Upgrade to PRO to convert up to 100 images in bulk!"
+                },
+                "proMode": {
+                    "title": "PRO MODE",
+                    "description": "Process up to 100 images in bulk with your PRO account!"
+                }
+            },
+            "upload": {
+                "title": "Select Images to Convert",
+                "buttonFree": "SELECT IMAGES",
+                "buttonPro": "SELECT IMAGES",
+                "helpTextFree": "Free users can select up to {maxImages} images at a time.",
+                "helpTextPro": "You can select up to 100 images at once."
+            },
+            "actions": {
+                "clear": "CLEAR",
+                "addMore": "ADD MORE",
+                "download": "DOWNLOAD CONVERTED",
+                "downloadZip": "DOWNLOAD ALL AS ZIP",
+                "convertImageTo": "CONVERT TO {format}",
+                "convertImagesTo": "CONVERT ALL TO {format}",
+                "converting": "CONVERTING...",
+                "convertingMultiple": "CONVERTING IMAGES...",
+                "resetConversion": "RESET"
+            },
+            "progress": {
+                "processing": "Processing...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "UPGRADE TO PRO",
+                "plan": {
+                    "title": "PRO PLAN",
+                    "price": "$19.99",
+                    "features": [
+                        "Convert up to 100 images at once",
+                        "Resize images during conversion",
+                        "Convert from HEIC/HEIF to any format",
+                        "Background removal for product images",
+                        "One-time payment, lifetime access"
+                    ],
+                    "buttonText": "UPGRADE NOW"
+                }
+            }
+        },
+        "targetFormat": {
+            "title": "SELECT TARGET FORMAT"
+        },
+        "resize": {
+            "title": "RESIZE DURING CONVERSION (OPTIONAL)"
+        },
+        "convertedImages": {
+            "title": "CONVERTED IMAGES",
+            "description": "Your images have been successfully converted. Click Download to save them."
+        },
+        "howItWorks": {
+            "title": "HOW IT WORKS",
+            "step1": {
+                "title": "1. SELECT YOUR IMAGES",
+                "description": "Upload one or more images you want to convert.",
+                "proNote": "PRO users can select up to 100 images at once!"
+            },
+            "step2": {
+                "title": "2. CHOOSE TARGET FORMAT",
+                "description": "Select the desired output format (JPG, PNG, WebP, or AVIF)."
+            },
+            "step3": {
+                "title": "3. RESIZE (OPTIONAL)",
+                "description": "Optionally select a preset to resize your images during conversion."
+            },
+            "step4": {
+                "title": "4. DOWNLOAD & USE",
+                "description": "Convert your images and download them individually or as a ZIP archive."
+            }
+        },
+        "supportedFormats": {
+            "title": "SUPPORTED FORMATS",
+            "input": {
+                "title": "INPUT FORMATS",
+                "description": "You can upload images in these formats:"
+            },
+            "output": {
+                "title": "OUTPUT FORMATS",
+                "description": "Convert your images to any of these formats:"
+            }
+        },
+        "alerts": {
+            "freeUserLimit": "Free users can convert up to 5 images at a time. Upgrade to PRO to convert up to 100 images in bulk!",
+            "maxImagesLimit": "Maximum 100 images allowed at once.",
+            "conversionFailed": "Format conversion failed. Please try again."
+        },
+        "proDialog": {
+            "title": "UPGRADE TO PRO",
+            "featureTitle": "PRO FEATURE: Bulk Format Conversion",
+            "description": "Free users can only convert up to {maxImages} images at a time. Upgrade to PRO to convert up to 100 images in bulk, saving you hours of work!",
+            "pricing": {
+                "title": "ONE-TIME PAYMENT",
+                "price": "$19.99",
+                "note": "No subscription, lifetime access"
+            },
+            "actions": {
+                "upgrade": "UPGRADE TO PRO",
+                "continue": "CONTINUE WITH FREE MODE"
+            }
+        },
+        "allImages": "ALL IMAGES ({current}/{max})",
+        "imagesCount": "{current}/{max} images",
+        "upgradeFor": "(Upgrade for up to 100)"
     }
 }

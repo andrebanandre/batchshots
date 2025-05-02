@@ -61,7 +61,8 @@
         "objectRemoval": "Objektentfernung",
         "tools": "Werkzeuge",
         "addWatermark": "Wasserzeichen hinzufügen",
-        "seoDescription": "SEO Beschreibung"
+        "seoDescription": "SEO Beschreibung",
+        "imageFormatConvertor": "Bildformat-Konverter"
     },
     "Footer": {
         "about": "Batch Shots hilft Ihnen, Produktbilder schnell und einfach für SEO zu optimieren, direkt in Ihrem Browser.",
@@ -703,7 +704,7 @@
         "section5Li2": "OpenCV.js zur Bildverarbeitung (läuft vollständig in Ihrem Browser).",
         "section5P2": "Jeder dieser Dienste hat seine eigenen Datenschutzrichtlinien, die regeln, wie sie Daten behandeln.",
         "section6Title": "6. ÄNDERUNGEN DIESER RICHTLINIE",
-        "section6P1": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen und das Datum „Zuletzt aktualisiert“ aktualisieren.",
+        "section6P1": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren.",
         "section7Title": "7. KONTAKTIEREN SIE UNS",
         "section7P1": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns bitte unter privacy@batchshots.com.",
         "returnButton": "ZURÜCK ZUR STARTSEITE"
@@ -730,7 +731,7 @@
         "section4P1": "Alle ursprünglichen Inhalte, Funktionen und Funktionalitäten von Batch Shots sind unser Eigentum und durch internationale Urheber-, Marken- und andere Gesetze zum Schutz geistigen Eigentums geschützt.",
         "section4P2": "Sie behalten alle Rechte an Ihren Originalbildern. Wir erheben keinen Anspruch auf Eigentum an den Bildern, die Sie mit unserem Dienst verarbeiten.",
         "section5Title": "5. EINSCHRÄNKUNGEN UND HAFTUNGSAUSSCHLÜSSE",
-        "section5Li1": "Batch Shots wird „wie besehen“ und „wie verfügbar“ ohne jegliche Gewährleistung bereitgestellt.",
+        "section5Li1": "Batch Shots wird \"wie besehen\" und \"wie verfügbar\" ohne jegliche Gewährleistung bereitgestellt.",
         "section5Li2": "Wir garantieren nicht, dass der Dienst ununterbrochen, sicher oder fehlerfrei ist.",
         "section5Li3": "Wir sind nicht verantwortlich für Datenverluste, die während der Verarbeitung auftreten können.",
         "section5Li4": "Wir übernehmen keine Gewähr für die Genauigkeit oder Wirksamkeit der Funktion zur Generierung von SEO-Namen.",
@@ -741,7 +742,7 @@
         "section8Title": "8. GELTENDES RECHT",
         "section8P1": "Diese Nutzungsbedingungen unterliegen den Gesetzen der Gerichtsbarkeit, in der wir tätig sind, und werden entsprechend ausgelegt, ohne Rücksicht auf Kollisionsnormen.",
         "section9Title": "9. ÄNDERUNGEN DER BEDINGUNGEN",
-        "section9P1": "Wir können diese Nutzungsbedingungen von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neuen Bedingungen auf dieser Seite veröffentlichen und das Datum „Zuletzt aktualisiert“ aktualisieren.",
+        "section9P1": "Wir können diese Nutzungsbedingungen von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neuen Bedingungen auf dieser Seite veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren.",
         "section10Title": "10. KONTAKTIEREN SIE UNS",
         "section10P1": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter terms@batchshots.com.",
         "returnButton": "ZURÜCK ZUR STARTSEITE"
@@ -971,5 +972,149 @@
                 "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
             }
         }
+    },
+    "ImageFormatConvertorPage": {
+        "metadata": {
+            "title": "Bildformat-Konverter | Batch Shots",
+            "description": "Konvertieren Sie Bilder zwischen Formaten (JPG, PNG, WebP, AVIF) mit unserem benutzerfreundlichen Werkzeug. Unterstützt HEIC-Konvertierung und Stapelverarbeitung.",
+            "keywords": "Bildformat-Konverter, jpg in png konvertieren, heic in jpg konvertieren, webp konverter, bildformatkonvertierung, stapelbildkonvertierung, heic konvertieren"
+        },
+        "title": "BILDFORMATKONVERTER",
+        "loading": {
+            "tool": "KONVERTER WIRD GELADEN...",
+            "proStatus": "PRO-STATUS WIRD GEPRÜFT...",
+            "description": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
+            "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
+        },
+        "uploadArea": {
+            "title": "KONVERTIEREN SIE IHRE BILDER",
+            "description": "Konvertieren Sie Ihre Bilder mit nur wenigen Klicks in verschiedene Formate.",
+            "selectImages": "BILDER AUSWÄHLEN (BIS ZU {maxImages})",
+            "dragAndDropPrivacy": "Ziehen Sie Bilder hierher oder klicken Sie, um Dateien auszuwählen. <strong>Die gesamte Verarbeitung erfolgt in Ihrem Browser. Wir laden Ihre Bilder niemals auf unsere Server hoch.</strong>",
+            "freeLimitInfo": "Kostenlose Benutzer können bis zu {maxImages} Bilder gleichzeitig konvertieren.",
+            "upgradeLink": "Auf PRO upgraden"
+        },
+        "selectedImages": {
+            "title": "AUSGEWÄHLTE BILDER ({count})"
+        },
+        "formatChanged": {
+            "title": "FORMAT GEÄNDERT",
+            "description": "Sie haben das Zielformat geändert. Klicken Sie auf Zurücksetzen, um Ihre Bilder in das neue Format zu konvertieren."
+        },
+        "mainCard": {
+            "title": "BILDER IN JEDES FORMAT KONVERTIEREN",
+            "info": {
+                "title": "BILDFORMATKONVERTIERUNG",
+                "description": "Konvertieren Sie Ihre Bilder zwischen Formaten wie JPG, PNG, WebP und AVIF. Sie können Ihre Bilder auch während der Konvertierung in der Größe ändern.",
+                "freeMode": {
+                    "title": "KOSTENLOSER MODUS",
+                    "description": "Verarbeiten Sie bis zu {maxImages} Bilder gleichzeitig. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren!"
+                },
+                "proMode": {
+                    "title": "PRO-MODUS",
+                    "description": "Verarbeiten Sie bis zu 100 Bilder im Stapel mit Ihrem PRO-Konto!"
+                }
+            },
+            "upload": {
+                "title": "Zu konvertierende Bilder auswählen",
+                "buttonFree": "BILDER AUSWÄHLEN",
+                "buttonPro": "BILDER AUSWÄHLEN",
+                "helpTextFree": "Kostenlose Benutzer können bis zu {maxImages} Bilder gleichzeitig auswählen.",
+                "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
+            },
+            "actions": {
+                "clear": "LÖSCHEN",
+                "addMore": "MEHR HINZUFÜGEN",
+                "download": "KONVERTIERTE HERUNTERLADEN",
+                "downloadZip": "ALLES ALS ZIP HERUNTERLADEN",
+                "convertImageTo": "IN {format} KONVERTIEREN",
+                "convertImagesTo": "ALLE IN {format} KONVERTIEREN",
+                "converting": "KONVERTIERUNG...",
+                "convertingMultiple": "BILDER WERDEN KONVERTIERT...",
+                "resetConversion": "ZURÜCKSETZEN"
+            },
+            "progress": {
+                "processing": "Verarbeitung...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "AUF PRO UPGRADEN",
+                "plan": {
+                    "title": "PRO-PLAN",
+                    "price": "$19.99",
+                    "features": [
+                        "Konvertieren Sie bis zu 100 Bilder gleichzeitig",
+                        "Ändern Sie die Größe von Bildern während der Konvertierung",
+                        "Konvertieren Sie von HEIC/HEIF in jedes Format",
+                        "Hintergrundentfernung für Produktfotos",
+                        "Einmalige Zahlung, lebenslanger Zugriff"
+                    ],
+                    "buttonText": "JETZT UPGRADEN"
+                }
+            }
+        },
+        "targetFormat": {
+            "title": "ZIELFORMAT AUSWÄHLEN"
+        },
+        "resize": {
+            "title": "GRÖSSE WÄHREND DER KONVERTIERUNG ÄNDERN (OPTIONAL)"
+        },
+        "convertedImages": {
+            "title": "KONVERTIERTE BILDER",
+            "description": "Ihre Bilder wurden erfolgreich konvertiert. Klicken Sie auf Herunterladen, um sie zu speichern."
+        },
+        "howItWorks": {
+            "title": "SO FUNKTIONIERT'S",
+            "step1": {
+                "title": "1. WÄHLEN SIE IHRE BILDER AUS",
+                "description": "Laden Sie ein oder mehrere Bilder hoch, die Sie konvertieren möchten.",
+                "proNote": "PRO-Benutzer können bis zu 100 Bilder gleichzeitig auswählen!"
+            },
+            "step2": {
+                "title": "2. ZIELFORMAT WÄHLEN",
+                "description": "Wählen Sie das gewünschte Ausgabeformat (JPG, PNG, WebP oder AVIF)."
+            },
+            "step3": {
+                "title": "3. GRÖSSE ÄNDERN (OPTIONAL)",
+                "description": "Wählen Sie optional eine Voreinstellung aus, um die Größe Ihrer Bilder während der Konvertierung zu ändern."
+            },
+            "step4": {
+                "title": "4. HERUNTERLADEN & VERWENDEN",
+                "description": "Konvertieren Sie Ihre Bilder und laden Sie sie einzeln oder als ZIP-Archiv herunter."
+            }
+        },
+        "supportedFormats": {
+            "title": "UNTERSTÜTZTE FORMATE",
+            "input": {
+                "title": "EINGABEFORMATE",
+                "description": "Sie können Bilder in diesen Formaten hochladen:"
+            },
+            "output": {
+                "title": "AUSGABEFORMATE",
+                "description": "Konvertieren Sie Ihre Bilder in eines dieser Formate:"
+            }
+        },
+        "alerts": {
+            "freeUserLimit": "Kostenlose Benutzer können bis zu 5 Bilder gleichzeitig konvertieren. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren!",
+            "maxImagesLimit": "Maximal 100 Bilder gleichzeitig erlaubt.",
+            "conversionFailed": "Formatkonvertierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+        },
+        "proDialog": {
+            "title": "AUF PRO UPGRADEN",
+            "featureTitle": "PRO-FUNKTION: Stapel-Formatkonvertierung",
+            "description": "Kostenlose Benutzer können nur bis zu {maxImages} Bilder gleichzeitig konvertieren. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren und Stunden an Arbeit zu sparen!",
+            "pricing": {
+                "title": "EINMALIGE ZAHLUNG",
+                "price": "$19.99",
+                "note": "Kein Abonnement, lebenslanger Zugriff"
+            },
+            "actions": {
+                "upgrade": "AUF PRO UPGRADEN",
+                "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
+            }
+        },
+        "allImages": "ALLE BILDER ({current}/{max})",
+        "imagesCount": "{current}/{max} Bilder",
+        "upgradeFor": "(Upgrade für bis zu 100)"
     }
 }
