@@ -12,7 +12,7 @@
         "loadingDescription": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
         "transformTitle": "VERWANDLE DEINE PRODUKTFOTOS",
         "heroDescription": "Optimiere schnell deine Produktbilder für Web, E-Commerce und Social Media mit unserem browserbasierten Tool.",
-        "privacyFocused": "KOSTENLOS & DATENSCHUTZORIENTIERT",
+        "privacyFocused": "DATENSCHUTZORIENTIERT",
         "privacyDescription": "Batch Shots verarbeitet alle Bilder direkt in deinem Browser. Wir speichern deine Fotos oder Daten nicht auf unseren Servern.",
         "privacyPolicy": "Datenschutzrichtlinie",
         "termsOfUse": "Nutzungsbedingungen",
@@ -744,21 +744,103 @@
     },
     "WatermarkPage": {
         "metadata": {
-            "title": "Add Watermark to Images | Batch Shots",
-            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
-            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+            "title": "Wasserzeichen zu Bildern hinzufügen | Batch Shots",
+            "description": "Fügen Sie Ihren Bildern einfach benutzerdefinierte Text- oder Logo-Wasserzeichen hinzu. Schützen Sie Ihre Fotos mit Wasserzeichen mit Kontrolle über Deckkraft, Position und Größe.",
+            "keywords": "Wasserzeichen, Wasserzeichen zu Bildern hinzufügen, Foto-Wasserzeichen, Bildwasserzeichen, Logo-Wasserzeichen, Textwasserzeichen, Bild-Branding, Wasserzeichen Fotos"
         },
-        "title": "ADD WATERMARK TO IMAGES",
+        "title": "WASSERZEICHEN ZU BILDERN HINZUFÜGEN",
         "loading": {
-            "proStatus": "CHECKING PRO STATUS...",
-            "proDescription": "Please wait while we verify your account status."
+            "proStatus": "PRO-STATUS WIRD ÜBERPRÜFT...",
+            "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
         },
         "preview": {
             "title": "BILDVORSCHAU"
         },
         "alerts": {
-            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
-            "proUserLimit": "PRO users can process up to 100 images in bulk."
+            "freeUserLimit": "Kostenlose Nutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten!",
+            "maxImagesLimit": "Maximal 100 Bilder gleichzeitig erlaubt.",
+            "watermarkFailed": "Anwendung des Wasserzeichens fehlgeschlagen. Bitte versuchen Sie es erneut."
+        },
+        "mainCard": {
+            "title": "WASSERZEICHEN SIE IHRE BILDER",
+            "info": {
+                "title": "BENUTZERDEFINIERTE WASSERZEICHEN HINZUFÜGEN",
+                "description": "Schützen Sie Ihre Bilder mit benutzerdefinierten Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position an Ihre Markenbedürfnisse an.",
+                "freeMode": {
+                    "title": "KOSTENLOSER MODUS",
+                    "description": "Verarbeiten Sie 1 Bild gleichzeitig. Upgraden Sie auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten!"
+                },
+                "proMode": {
+                    "title": "PRO-MODUS",
+                    "description": "Verarbeiten Sie bis zu 100 Bilder gleichzeitig mit Ihrem PRO-Konto!"
+                }
+            },
+            "upload": {
+                "title": "Bilder auswählen",
+                "buttonFree": "BILD AUSWÄHLEN",
+                "buttonPro": "BILDER AUSWÄHLEN",
+                "helpTextFree": "Kostenlose Nutzer können 1 Bild gleichzeitig auswählen.",
+                "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
+            },
+            "actions": {
+                "clear": "LÖSCHEN",
+                "download": "HERUNTERLADEN",
+                "downloadZip": "ALS ZIP HERUNTERLADEN",
+                "applyWatermark": "WASSERZEICHEN ANWENDEN",
+                "applyWatermarks": "WASSERZEICHEN ANWENDEN",
+                "processing": "WASSERZEICHEN WIRD ANGEWENDET...",
+                "processingMultiple": "WASSERZEICHEN WERDEN ANGEWENDET...",
+                "tryFullEditor": "VOLLSTÄNDIGEN EDITOR TESTEN"
+            },
+            "progress": {
+                "processing": "Verarbeitung...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "AUF PRO UPGRADEN",
+                "plan": {
+                    "title": "PRO-PLAN",
+                    "price": "19,99 €",
+                    "features": [
+                        "Bis zu 100 Bilder gleichzeitig mit Wasserzeichen versehen",
+                        "Erweiterte Bildanpassungen und Voreinstellungen",
+                        "Hintergrundentfernung für Produktbilder",
+                        "Stapelverarbeitung für alle Funktionen",
+                        "Einmalzahlung, lebenslanger Zugang"
+                    ],
+                    "buttonText": "JETZT UPGRADEN"
+                }
+            }
+        },
+        "howItWorks": {
+            "title": "SO FUNKTIONIERT'S",
+            "step1": {
+                "title": "1. BILDER AUSWÄHLEN",
+                "description": "Laden Sie ein oder mehrere Bilder hoch, die Sie mit Wasserzeichen versehen möchten.",
+                "proNote": "PRO-Nutzer können bis zu 100 Bilder gleichzeitig auswählen!"
+            },
+            "step2": {
+                "title": "2. WASSERZEICHEN ANPASSEN",
+                "description": "Wählen Sie zwischen Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position nach Ihren Wünschen an."
+            },
+            "step3": {
+                "title": "3. HERUNTERLADEN & VERWENDEN",
+                "description": "Wenden Sie Ihr Wasserzeichen an und laden Sie die verarbeiteten Bilder herunter, bereit für Web, soziale Medien oder Portfolio-Nutzung."
+            }
+        },
+        "proDialog": {
+            "title": "AUF PRO UPGRADEN",
+            "featureTitle": "PRO-FUNKTION: Massen-Wasserzeichen",
+            "description": "Kostenlose Benutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder stapelweise mit Wasserzeichen zu versehen und Stunden an Arbeit zu sparen!",
+            "pricing": {
+                "title": "EINMALZAHLUNG",
+                "price": "19,99 €",
+                "note": "Kein Abonnement, lebenslanger Zugriff"
+            },
+            "actions": {
+                "upgrade": "AUF PRO UPGRADEN",
+                "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
+            }
         }
     }
 }

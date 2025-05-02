@@ -12,7 +12,7 @@
         "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'image.",
         "transformTitle": "TRANSFORMEZ VOS PHOTOS DE PRODUITS",
         "heroDescription": "Optimisez rapidement vos images de produits pour le web, l'e-commerce et les réseaux sociaux avec notre outil basé sur le navigateur.",
-        "privacyFocused": "GRATUIT ET AXÉ SUR LA CONFIDENTIALITÉ",
+        "privacyFocused": "AXÉ SUR LA CONFIDENTIALITÉ",
         "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou vos données sur nos serveurs.",
         "privacyPolicy": "Politique de confidentialité",
         "termsOfUse": "Conditions d'utilisation",
@@ -744,21 +744,103 @@
     },
     "WatermarkPage": {
         "metadata": {
-            "title": "Add Watermark to Images | Batch Shots",
-            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
-            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+            "title": "Ajouter un filigrane aux images | Batch Shots",
+            "description": "Ajoutez facilement des filigranes texte ou logo personnalisés à vos images. Protégez vos photos avec des filigranes avec contrôle de l'opacité, de la position et de la taille.",
+            "keywords": "filigrane, ajouter filigrane aux images, filigrane photo, filigrane image, filigrane logo, filigrane texte, image de marque, filigraner photos"
         },
-        "title": "ADD WATERMARK TO IMAGES",
+        "title": "AJOUTER UN FILIGRANE AUX IMAGES",
         "loading": {
-            "proStatus": "CHECKING PRO STATUS...",
-            "proDescription": "Please wait while we verify your account status."
+            "proStatus": "VÉRIFICATION DU STATUT PRO...",
+            "proDescription": "Veuillez patienter pendant que nous vérifions le statut de votre compte."
         },
         "preview": {
             "title": "APERÇU DE L'IMAGE"
         },
         "alerts": {
-            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
-            "proUserLimit": "PRO users can process up to 100 images in bulk. Upgrade to PRO if you need to process more images."
+            "freeUserLimit": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse !",
+            "maxImagesLimit": "Maximum 100 images autorisées à la fois.",
+            "watermarkFailed": "Échec de l'application du filigrane. Veuillez réessayer."
+        },
+        "mainCard": {
+            "title": "FILIGRANEZ VOS IMAGES",
+            "info": {
+                "title": "AJOUTER DES FILIGRANES PERSONNALISÉS",
+                "description": "Protégez vos images avec des filigranes texte ou logo personnalisés. Personnalisez l'opacité, la taille et la position pour répondre à vos besoins de marque.",
+                "freeMode": {
+                    "title": "MODE GRATUIT",
+                    "description": "Traitez 1 image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse !"
+                },
+                "proMode": {
+                    "title": "MODE PRO",
+                    "description": "Traitez jusqu'à 100 images en masse avec votre compte PRO !"
+                }
+            },
+            "upload": {
+                "title": "Sélectionner des images",
+                "buttonFree": "SÉLECTIONNER UNE IMAGE",
+                "buttonPro": "SÉLECTIONNER DES IMAGES",
+                "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner 1 image à la fois.",
+                "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
+            },
+            "actions": {
+                "clear": "EFFACER",
+                "download": "TÉLÉCHARGER",
+                "downloadZip": "TÉLÉCHARGER EN ZIP",
+                "applyWatermark": "APPLIQUER LE FILIGRANE",
+                "applyWatermarks": "APPLIQUER LES FILIGRANES",
+                "processing": "APPLICATION DU FILIGRANE...",
+                "processingMultiple": "APPLICATION DES FILIGRANES...",
+                "tryFullEditor": "ESSAYER L'ÉDITEUR COMPLET"
+            },
+            "progress": {
+                "processing": "Traitement...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "PASSER À PRO",
+                "plan": {
+                    "title": "PLAN PRO",
+                    "price": "19,99 €",
+                    "features": [
+                        "Filigranez jusqu'à 100 images à la fois",
+                        "Ajustements d'image avancés et préréglages",
+                        "Suppression de l'arrière-plan pour les images de produits",
+                        "Traitement par lots pour toutes les fonctionnalités",
+                        "Paiement unique, accès à vie"
+                    ],
+                    "buttonText": "PASSER À PRO MAINTENANT"
+                }
+            }
+        },
+        "howItWorks": {
+            "title": "COMMENT ÇA MARCHE",
+            "step1": {
+                "title": "1. SÉLECTIONNEZ VOS IMAGES",
+                "description": "Téléchargez une ou plusieurs images que vous souhaitez filigraner.",
+                "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
+            },
+            "step2": {
+                "title": "2. PERSONNALISEZ LE FILIGRANE",
+                "description": "Choisissez entre des filigranes texte ou logo. Ajustez l'opacité, la taille et la position selon vos préférences."
+            },
+            "step3": {
+                "title": "3. TÉLÉCHARGEZ & UTILISEZ",
+                "description": "Appliquez votre filigrane et téléchargez les images traitées prêtes pour le web, les réseaux sociaux ou l'utilisation en portfolio."
+            }
+        },
+        "proDialog": {
+            "title": "PASSER À PRO",
+            "featureTitle": "FONCTIONNALITÉ PRO : Filigrane en masse",
+            "description": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour filigraner jusqu'à 100 images en masse, économisant des heures de travail !",
+            "pricing": {
+                "title": "PAIEMENT UNIQUE",
+                "price": "19,99 €",
+                "note": "Pas d'abonnement, accès à vie"
+            },
+            "actions": {
+                "upgrade": "PASSER À PRO",
+                "continue": "CONTINUER EN MODE GRATUIT"
+            }
         }
     }
 } 

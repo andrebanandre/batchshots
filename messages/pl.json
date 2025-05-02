@@ -12,7 +12,7 @@
         "loadingDescription": "Proszę czekać, inicjalizujemy możliwości przetwarzania obrazów.",
         "transformTitle": "PRZEKSZTAŁĆ SWOJE ZDJĘCIA PRODUKTOWE",
         "heroDescription": "Szybko optymalizuj swoje zdjęcia produktowe dla internetu, e-commerce i mediów społecznościowych za pomocą naszego narzędzia w przeglądarce.",
-        "privacyFocused": "DARMOWE I SKONCENTROWANE NA PRYWATNOŚCI",
+        "privacyFocused": "SKONCENTROWANE NA PRYWATNOŚCI",
         "privacyDescription": "Batch Shots przetwarza wszystkie obrazy bezpośrednio w Twojej przeglądarce. Nie przechowujemy Twoich zdjęć ani danych na naszych serwerach.",
         "privacyPolicy": "Polityka prywatności",
         "termsOfUse": "Warunki użytkowania",
@@ -744,20 +744,103 @@
     },
     "WatermarkPage": {
         "metadata": {
-            "title": "Add Watermark to Images | Batch Shots",
-            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
-            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+            "title": "Dodaj znak wodny do zdjęć | Batch Shots",
+            "description": "Łatwo dodawaj niestandardowe znaki wodne tekstowe lub logo do swoich zdjęć. Chroń swoje zdjęcia za pomocą znaków wodnych z kontrolą przezroczystości, pozycji i rozmiaru.",
+            "keywords": "znak wodny, dodaj znak wodny do zdjęć, znak wodny na zdjęciu, znak wodny obrazu, znak wodny logo, znak wodny tekstowy, branding obrazu, znakowanie zdjęć"
         },
-        "title": "ADD WATERMARK TO IMAGES",
+        "title": "DODAJ ZNAK WODNY DO ZDJĘĆ",
         "loading": {
-            "proStatus": "CHECKING PRO STATUS...",
-            "proDescription": "Please wait while we verify your account status."
+            "proStatus": "SPRAWDZANIE STATUSU PRO...",
+            "proDescription": "Proszę czekać, weryfikujemy status Twojego konta."
         },
         "preview": {
             "title": "PODGLĄD OBRAZU"
         },
         "alerts": {
-            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
+            "freeUserLimit": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!",
+            "maxImagesLimit": "Maksymalnie dozwolone jest 100 obrazów na raz.",
+            "watermarkFailed": "Zastosowanie znaku wodnego nie powiodło się. Proszę spróbować ponownie."
+        },
+        "mainCard": {
+            "title": "ZNAKUJ WODNIE SWOJE ZDJĘCIA",
+            "info": {
+                "title": "DODAJ NIESTANDARDOWE ZNAKI WODNE",
+                "description": "Chroń swoje obrazy za pomocą niestandardowych znaków wodnych tekstowych lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich potrzeb brandingowych.",
+                "freeMode": {
+                    "title": "TRYB DARMOWY",
+                    "description": "Przetwarzaj 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!"
+                },
+                "proMode": {
+                    "title": "TRYB PRO",
+                    "description": "Przetwarzaj do 100 obrazów zbiorczo za pomocą swojego konta PRO!"
+                }
+            },
+            "upload": {
+                "title": "Wybierz obrazy",
+                "buttonFree": "WYBIERZ OBRAZ",
+                "buttonPro": "WYBIERZ OBRAZY",
+                "helpTextFree": "Darmowi użytkownicy mogą wybrać 1 obraz na raz.",
+                "helpTextPro": "Możesz wybrać do 100 obrazów na raz."
+            },
+            "actions": {
+                "clear": "WYCZYŚĆ",
+                "download": "POBIERZ",
+                "downloadZip": "POBIERZ JAKO ZIP",
+                "applyWatermark": "ZASTOSUJ ZNAK WODNY",
+                "applyWatermarks": "ZASTOSUJ ZNAKI WODNE",
+                "processing": "STOSOWANIE ZNAKU WODNEGO...",
+                "processingMultiple": "STOSOWANIE ZNAKÓW WODNYCH...",
+                "tryFullEditor": "WYPRÓBUJ PEŁNY EDYTOR"
+            },
+            "progress": {
+                "processing": "Przetwarzanie...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "ULEPSZ DO PRO",
+                "plan": {
+                    "title": "PLAN PRO",
+                    "price": "19,99 €",
+                    "features": [
+                        "Znakuj wodnie do 100 obrazów na raz",
+                        "Zaawansowane dostosowania obrazów i presety",
+                        "Usuwanie tła dla zdjęć produktów",
+                        "Przetwarzanie zbiorcze dla wszystkich funkcji",
+                        "Jednorazowa płatność, dostęp dożywotni"
+                    ],
+                    "buttonText": "ULEPSZ TERAZ"
+                }
+            }
+        },
+        "howItWorks": {
+            "title": "JAK TO DZIAŁA",
+            "step1": {
+                "title": "1. WYBIERZ SWOJE OBRAZY",
+                "description": "Prześlij jeden lub więcej obrazów, które chcesz oznaczyć znakiem wodnym.",
+                "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów na raz!"
+            },
+            "step2": {
+                "title": "2. DOSTOSUJ ZNAK WODNY",
+                "description": "Wybierz między znakami wodnymi tekstowymi lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich preferencji."
+            },
+            "step3": {
+                "title": "3. POBIERZ I UŻYJ",
+                "description": "Zastosuj znak wodny i pobierz przetworzone obrazy gotowe do użycia w sieci, mediach społecznościowych lub portfolio."
+            }
+        },
+        "proDialog": {
+            "title": "ULEPSZ DO PRO",
+            "featureTitle": "FUNKCJA PRO: Zbiorcze znakowanie wodne",
+            "description": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby oznaczać znakiem wodnym do 100 obrazów zbiorczo, oszczędzając godziny pracy!",
+            "pricing": {
+                "title": "JEDNORAZOWA PŁATNOŚĆ",
+                "price": "19,99 €",
+                "note": "Brak subskrypcji, dostęp dożywotni"
+            },
+            "actions": {
+                "upgrade": "ULEPSZ DO PRO",
+                "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
+            }
         }
     }
 } 

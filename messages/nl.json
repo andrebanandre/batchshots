@@ -12,7 +12,7 @@
         "loadingDescription": "Wacht alstublieft terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
         "transformTitle": "TRANSFORMEER UW PRODUCTFOTO'S",
         "heroDescription": "Optimaliseer snel uw productafbeeldingen voor web, e-commerce en sociale media met onze browsergebaseerde tool.",
-        "privacyFocused": "GRATIS & PRIVACYGERICHT",
+        "privacyFocused": "PRIVACYGERICHT",
         "privacyDescription": "Batch Shots verwerkt alle afbeeldingen rechtstreeks in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
         "privacyPolicy": "Privacybeleid",
         "termsOfUse": "Gebruiksvoorwaarden",
@@ -466,7 +466,89 @@
             },
             "alerts": {
                 "freeUserLimit": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!",
-                "proUserLimit": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk verwerken."
+                "maxImagesLimit": "Maximaal 100 afbeeldingen tegelijk toegestaan.",
+                "watermarkFailed": "Toepassen van watermerk mislukt. Probeer het opnieuw."
+            },
+            "mainCard": {
+                "title": "WATERMERK UW AFBEELDINGEN",
+                "info": {
+                    "title": "VOEG AANGEPASTE WATERMERKEN TOE",
+                    "description": "Bescherm uw afbeeldingen met aangepaste tekst- of logowatermerken. Pas transparantie, grootte en positie aan uw merkbehoeften aan.",
+                    "freeMode": {
+                        "title": "GRATIS MODUS",
+                        "description": "Verwerk 1 afbeelding tegelijk. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!"
+                    },
+                    "proMode": {
+                        "title": "PRO-MODUS",
+                        "description": "Verwerk tot 100 afbeeldingen in bulk met uw PRO-account!"
+                    }
+                },
+                "upload": {
+                    "title": "Selecteer afbeeldingen",
+                    "buttonFree": "SELECTEER EEN AFBEELDING",
+                    "buttonPro": "SELECTEER AFBEELDINGEN",
+                    "helpTextFree": "Gratis gebruikers kunnen 1 afbeelding tegelijk selecteren.",
+                    "helpTextPro": "U kunt tot 100 afbeeldingen tegelijk selecteren."
+                },
+                "actions": {
+                    "clear": "WISSEN",
+                    "download": "DOWNLOADEN",
+                    "downloadZip": "ALS ZIP DOWNLOADEN",
+                    "applyWatermark": "WATERMERK TOEPASSEN",
+                    "applyWatermarks": "WATERMERKEN TOEPASSEN",
+                    "processing": "WATERMERK TOEPASSEN...",
+                    "processingMultiple": "WATERMERKEN TOEPASSEN...",
+                    "tryFullEditor": "PROBEER VOLLEDIGE EDITOR"
+                },
+                "progress": {
+                    "processing": "Verwerken...",
+                    "percent": "{percent}%"
+                },
+                "upgradeCard": {
+                    "title": "UPGRADE NAAR PRO",
+                    "plan": {
+                        "title": "PRO-PLAN",
+                        "price": "€19,99",
+                        "features": [
+                            "Watermerk tot 100 afbeeldingen tegelijk",
+                            "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
+                            "Achtergrondverwijdering voor productafbeeldingen",
+                            "Batchverwerking voor alle functies",
+                            "Eenmalige betaling, levenslange toegang"
+                        ],
+                        "buttonText": "NU UPGRADEN"
+                    }
+                }
+            },
+            "howItWorks": {
+                "title": "HOE HET WERKT",
+                "step1": {
+                    "title": "1. SELECTEER UW AFBEELDINGEN",
+                    "description": "Upload een of meer afbeeldingen die u wilt watermerken.",
+                    "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
+                },
+                "step2": {
+                    "title": "2. PAS WATERMERK AAN",
+                    "description": "Kies tussen tekst- of logowatermerken. Pas transparantie, grootte en positie naar wens aan."
+                },
+                "step3": {
+                    "title": "3. DOWNLOAD & GEBRUIK",
+                    "description": "Pas uw watermerk toe en download de verwerkte afbeeldingen, klaar voor web-, social media- of portfoliogebruik."
+                }
+            },
+            "proDialog": {
+                "title": "UPGRADE NAAR PRO",
+                "featureTitle": "PRO-FUNCTIE: Bulk watermerken",
+                "description": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te watermerken, wat u uren werk bespaart!",
+                "pricing": {
+                    "title": "EENMALIGE BETALING",
+                    "price": "€19,99",
+                    "note": "Geen abonnement, levenslange toegang"
+                },
+                "actions": {
+                    "upgrade": "UPGRADE NAAR PRO",
+                    "continue": "DOORGAAN MET GRATIS MODUS"
+                }
             }
         }
     },

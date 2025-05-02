@@ -12,7 +12,7 @@
         "loadingDescription": "Počkejte prosím, inicializujeme možnosti zpracování obrázků.",
         "transformTitle": "PŘEMĚŇTE SVÉ PRODUKTOVÉ FOTOGRAFIE",
         "heroDescription": "Rychle optimalizujte své produktové obrázky pro web, e-commerce a sociální média pomocí našeho nástroje přímo v prohlížeči.",
-        "privacyFocused": "ZDARMA A S DŮRAZEM NA SOUKROMÍ",
+        "privacyFocused": "S DŮRAZEM NA SOUKROMÍ",
         "privacyDescription": "Batch Shots zpracovává všechny obrázky přímo ve vašem prohlížeči. Neukládáme vaše fotografie ani data na našich serverech.",
         "privacyPolicy": "Zásady ochrany osobních údajů",
         "termsOfUse": "Podmínky použití",
@@ -185,7 +185,7 @@
                 "price": "19,99 €",
                 "note": "Bez předplatného, doživotní přístup"
             },
-            "learnMore": "DOWIEDZ SIĘ WIĘCEJ",
+            "learnMore": "DOWIEDZ SIĚ WIĘCEJ",
             "close": "Zavřít"
         },
         "SeoNameGenerator": {
@@ -475,273 +475,6 @@
             "feature": "Hromadné zpracování"
         }
     },
-    "Pricing": {
-        "title": "CENOVÉ PLÁNY",
-        "subtitle": "Vyberte ideální plán pro vaše potřeby optimalizace obrázků. Náš PRO plán nabízí doživotní licenci s jednorázovou platbou.",
-        "alreadyPro": {
-            "title": "Již jste PRO uživatel!",
-            "description": "Děkujeme za podporu. Máte přístup ke všem PRO funkcím, včetně hromadného odstranění pozadí, pokročilých úprav obrázků a generování SEO názvů souborů.",
-            "backToEditor": "VRÁTIT SE DO EDITORU"
-        },
-        "checkout": {
-            "title": "DOKONČIT NÁKUP",
-            "planTitle": "DOŽIVOTNÍ PRO LICENCE",
-            "price": "19,99 €",
-            "description": "Jednorázová platba, doživotní přístup ke všem PRO funkcím",
-            "email": "EMAIL",
-            "cardInfo": "INFORMACE O KARTĚ",
-            "cardNumber": "1234 5678 9012 3456",
-            "expiryDate": "MM/RR",
-            "cvc": "CVC",
-            "completePurchase": "DOKONČIT NÁKUP",
-            "goBack": "Zpět"
-        },
-        "plans": {
-            "free": {
-                "title": "ZDARMA",
-                "price": "ZDARMA",
-                "features": [
-                    "Zpracovávejte až 10 obrázků současně",
-                    "Základní úpravy obrázků",
-                    "Odstranění pozadí z jednoho obrázku",
-                    "Standardní možnosti exportu",
-                    "Zpracování v prohlížeči"
-                ],
-                "buttonText": "POKRAČOVAT ZDARMA"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "19,99 €",
-                "features": [
-                    "Zpracovávejte až 100 obrázků současně",
-                    "Pokročilé úpravy obrázků a přednastavení",
-                    "Hromadné odstranění pozadí (až 100 obrázků)",
-                    "Generování SEO názvů souborů",
-                    "Prioritní podpora",
-                    "Jednorázová platba, doživotní přístup"
-                ],
-                "buttonText": "UPGRADUJTE NA PRO"
-            }
-        },
-        "faq": {
-            "title": "ČASTÉ OTÁZKY",
-            "questions": {
-                "oneTime": {
-                    "question": "Je to opravdu jednorázová platba?",
-                    "answer": "Ano! Zaplaťte jednou a získejte doživotní přístup ke všem PRO funkcím. Bez předplatného."
-                },
-                "backgroundRemoval": {
-                    "question": "Jak funguje odstranění pozadí?",
-                    "answer": "Používáme pokročilé AI algoritmy pro detekci a odstranění pozadí z produktových obrázků. Celý proces probíhá ve vašem prohlížeči - nikdy neukládáme vaše obrázky na našich serverech."
-                },
-                "imageLimits": {
-                    "question": "Jaké jsou limity obrázků?",
-                    "answer": "Uživatelé zdarma mohou zpracovávat až 10 obrázků současně se základními funkcemi a odstraňovat pozadí z 1 obrázku současně. PRO uživatelé mohou zpracovávat až 100 obrázků současně, včetně hromadného odstranění pozadí."
-                },
-                "refund": {
-                    "question": "Mohu požádat o vrácení peněz?",
-                    "answer": "Ano, nabízíme 30denní záruku vrácení peněz, pokud nejste spokojeni s PRO funkcemi. Kontaktujte náš tým podpory pro pomoc."
-                }
-            }
-        }
-    },
-    "PrivacyPolicy": {
-        "title": "ZÁSADY OCHRANY OSOBNÍCH ÚDAJŮ",
-        "section1Title": "1. ÚVOD",
-        "section1P1": "Vítejte v Batch Shots („my“, „naše“, „nás“). Zavazujeme se chránit vaše soukromí a zajistit bezpečnost vašich osobních údajů.",
-        "section1P2": "Tyto Zásady ochrany osobních údajů vysvětlují, jak nakládáme s vašimi údaji, když používáte náš nástroj pro optimalizaci obrázků v prohlížeči.",
-        "section2Title": "2. INFORMACE, KTERÉ NESBÍRÁME",
-        "section2P1Bold": "Vaše obrázky nesbíráme ani neukládáme.",
-        "section2P1": "Naším základním principem je ochrana soukromí již od návrhu.",
-        "section2P2": "Batch Shots funguje zcela ve vašem prohlížeči. Když nahráváte obrázky k optimalizaci:",
-        "section2Li1": "Vaše obrázky jsou zpracovávány lokálně ve vašem prohlížeči pomocí JavaScriptu na straně klienta.",
-        "section2Li2": "Vaše obrázky nikdy neopustí vaše zařízení a nejsou přenášeny na naše servery.",
-        "section2Li3": "Neukládáme kopie vašich původních ani zpracovaných obrázků.",
-        "section2Li4": "Nesledujeme obsah vašich obrázků.",
-        "section3Title": "3. FUNKCE POHÁNĚNÉ AI",
-        "section3P1": "Když používáte naše funkce generování názvů SEO poháněné AI:",
-        "section3Li1": "Na naše API zasíláme pouze popisný text, který poskytnete.",
-        "section3Li2": "Nezasíláme ani nezpracováváme vaše skutečné obrázky prostřednictvím našich systémů AI.",
-        "section3Li3": "Vygenerované názvy SEO jsou doručeny zpět do vašeho prohlížeče a nejsou trvale uloženy na našich serverech.",
-        "section4Title": "4. ANALYTIKA A COOKIES",
-        "section4P1": "Používáme minimální analytiku, abychom pochopili, jak se naše stránky používají:",
-        "section4Li1": "Shromažďujeme anonymní statistiky používání, jako jsou zobrazení stránek a používání funkcí.",
-        "section4Li2": "Používáme nezbytné soubory cookie k poskytování funkcí, jako je ochrana reCAPTCHA.",
-        "section4Li3": "Nepoužíváme soubory cookie pro reklamu ani sledování na jiných webových stránkách.",
-        "section5Title": "5. SLUŽBY TŘETÍCH STRAN",
-        "section5P1": "Používáme následující služby třetích stran:",
-        "section5Li1": "Google reCAPTCHA pro ochranu před spamem u našich funkcí AI.",
-        "section5Li2": "OpenCV.js pro zpracování obrázků (běží zcela ve vašem prohlížeči).",
-        "section5P2": "Každá z těchto služeb má vlastní zásady ochrany osobních údajů, které upravují, jak nakládají s údaji.",
-        "section6Title": "6. ZMĚNY TĚCHTO ZÁSAD",
-        "section6P1": "Tyto Zásady ochrany osobních údajů můžeme čas od času aktualizovat. O jakýchkoli změnách vás budeme informovat zveřejněním nových Zásad ochrany osobních údajů na této stránce a aktualizací data „Poslední aktualizace“.",
-        "section7Title": "7. KONTAKTUJTE NÁS",
-        "section7P1": "Máte-li jakékoli dotazy týkající se těchto Zásad ochrany osobních údajů, kontaktujte nás na adrese privacy@batchshots.com.",
-        "returnButton": "ZPĚT NA DOMOVSKOU STRÁNKU"
-    },
-    "TermsOfUse": {
-        "title": "PODMÍNKY POUŽITÍ",
-        "lastUpdated": "Poslední aktualizace: 31. března 2024",
-        "section1Title": "1. PŘIJETÍ PODMÍNEK",
-        "section1P1": "Přístupem a používáním Batch Shots souhlasíte s tím, že budete vázáni těmito Podmínkami použití. Pokud nesouhlasíte s jakoukoli částí těchto podmínek, nesmíte naši službu používat.",
-        "section2Title": "2. POPIS SLUŽBY",
-        "section2P1": "Batch Shots je nástroj pro optimalizaci obrázků založený na prohlížeči, který uživatelům umožňuje:",
-        "section2Li1": "Upravovat vlastnosti obrázku, jako je jas, kontrast a vyvážení bílé",
-        "section2Li2": "Měnit velikost a optimalizovat obrázky pro použití na webu",
-        "section2Li3": "Generovat názvy souborů přátelské pro SEO",
-        "section2Li4": "Zpracovávat více obrázků současně",
-        "section2P2": "Veškeré zpracování obrázků probíhá lokálně ve vašem prohlížeči; žádné obrázky nejsou nahrávány ani ukládány na našich serverech.",
-        "section3Title": "3. ODPOVĚDNOSTI UŽIVATELE",
-        "section3P1": "Uživatelé Batch Shots jsou zodpovědní za:",
-        "section3Li1": "Zajištění, že mají potřebná práva a oprávnění k úpravě obrázků, které zpracovávají",
-        "section3Li2": "Používání služby v souladu s platnými zákony a předpisy",
-        "section3Li3": "Nepoužívání služby ke zpracování, vytváření nebo distribuci nevhodného, urážlivého nebo nezákonného obsahu",
-        "section3Li4": "Nepokoušení se o zpětné inženýrství, úpravu nebo hacknutí služby",
-        "section4Title": "4. DUŠEVNÍ VLASTNICTVÍ",
-        "section4P1": "Veškerý původní obsah, funkce a funkčnost Batch Shots jsou naším vlastnictvím a jsou chráněny mezinárodními zákony o autorských právech, ochranných známkách a dalším duševním vlastnictví.",
-        "section4P2": "Zachováváte si všechna práva ke svým původním obrázkům. Nevznášíme žádné nároky na vlastnictví obrázků, které zpracováváte pomocí naší služby.",
-        "section5Title": "5. OMEZENÍ A ODMÍTNUTÍ ODPOVĚDNOSTI",
-        "section5Li1": "Batch Shots je poskytován „tak, jak je“ a „jak je k dispozici“ bez jakýchkoli záruk jakéhokoli druhu.",
-        "section5Li2": "Nezaručujeme, že služba bude nepřerušovaná, bezpečná nebo bezchybná.",
-        "section5Li3": "Neneseme odpovědnost za žádnou ztrátu dat, ke které může dojít během zpracování.",
-        "section5Li4": "Neposkytujeme žádné záruky týkající se přesnosti nebo účinnosti funkce generování názvů SEO.",
-        "section6Title": "6. OMEZENÍ ODPOVĚDNOSTI",
-        "section6P1": "V maximálním rozsahu povoleném zákonem neneseme odpovědnost za žádné nepřímé, náhodné, zvláštní, následné nebo represivní škody vyplývající z vašeho používání nebo nemožnosti používat službu.",
-        "section7Title": "7. ÚPRAVY SLUŽBY",
-        "section7P1": "Vyhrazujeme si právo kdykoli upravit, pozastavit nebo ukončit jakoukoli část Batch Shots bez předchozího upozornění nebo odpovědnosti.",
-        "section8Title": "8. ROZHODNÉ PRÁVO",
-        "section8P1": "Tyto Podmínky použití se řídí a vykládají v souladu se zákony jurisdikce, ve které působíme, bez ohledu na její kolizní ustanovení.",
-        "section9Title": "9. ZMĚNY PODMÍNEK",
-        "section9P1": "Tyto Podmínky použití můžeme čas od času aktualizovat. O jakýchkoli změnách vás budeme informovat zveřejněním nových Podmínek na této stránce a aktualizací data „Poslední aktualizace“.",
-        "section10Title": "10. KONTAKTUJTE NÁS",
-        "section10P1": "Máte-li jakékoli dotazy týkající se těchto Podmínek použití, kontaktujte nás na adrese terms@batchshots.com.",
-        "returnButton": "ZPĚT NA DOMOVSKOU STRÁNKU"
-    },
-    "PrivacyPage": {
-        "title": "Zásady Ochrany Osobních Údajů | Batch Shots",
-        "description": "Pochopte, jak Batch Shots nakládá s vašimi údaji. Naše zásady ochrany osobních údajů podrobně popisují postupy sběru, používání a ochrany údajů.",
-        "keywords": "zásady ochrany osobních údajů, ochrana údajů, uživatelská data, GDPR, batchshots"
-    },
-    "TermsPage": {
-        "title": "Podmínky Služby | Batch Shots",
-        "description": "Přečtěte si podmínky používání Batch Shots. Zjistěte více o povinnostech uživatele, omezeních služby a duševním vlastnictví.",
-        "keywords": "podmínky služby, obchodní podmínky, uživatelská smlouva, batchshots"
-    },
-    "PricingPage": {
-        "title": "Cenové Plány | Batch Shots Pro",
-        "description": "Prozkoumejte cenové plány Batch Shots. Vyberte si nejlepší plán pro vaše potřeby úpravy obrázků, od bezplatné úrovně po funkce Pro, jako je odstranění pozadí a zvýšené limity.",
-        "keywords": "ceník, batch shots pro, předplatné plány, náklady na úpravu obrázků, ceník odstranění pozadí"
-    },
-    "BackgroundRemovalPage": {
-        "metadata": {
-            "title": "AI Odstraňovač Pozadí | Batch Shots",
-            "description": "Automaticky odstraňujte pozadí z vašich obrázků pomocí AI nástroje Batch Shots. Ideální pro produktové fotografie, portréty a kreativní projekty. Vyzkoušejte zdarma!",
-            "keywords": "odstraňovač pozadí, odstranit pozadí, ai odstranění pozadí, průhledné pozadí, produktová fotografie, hromadná úprava obrázků"
-        }
-    },
-    "ObjectRemovalPage": {
-        "metadata": {
-            "title": "AI Nástroj pro Odstranění Objektů | Batch Shots",
-            "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí našeho nástroje s umělou inteligencí. Funguje kompletně ve vašem prohlížeči pro zachování soukromí. Vyzkoušejte zdarma!",
-            "keywords": "odstranění objektů, ai odstranění objektů, odstranit objekty z obrázku, odstranit text z obrázku, odstranit osoby z fotografie, inpainting, nástroj pro úpravu obrázků"
-        },
-        "title": "AI ODSTRAŇOVAČ OBJEKTŮ",
-        "loading": {
-            "ort": "Načítání AI enginu...",
-            "opencv": "Načítání nástrojů pro zpracování obrazu...",
-            "model": "Načítání modelu pro odstranění objektů...",
-            "proStatus": "Kontrola stavu účtu...",
-            "generic": "Načítání..."
-        },
-        "mainCard": {
-            "title": "ODSTRANĚNÍ OBJEKTŮ",
-            "info": {
-                "title": "JAK TO FUNGUJE",
-                "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí AI. Zpracování probíhá zcela ve vašem prohlížeči.",
-                "freeMode": {
-                    "title": "BEZPLATNÝ REŽIM",
-                    "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování (již brzy!)."
-                },
-                "proMode": {
-                    "title": "PRO REŽIM",
-                    "description": "Zpracujte až 100 obrázků v dávce. Nakreslete masku jednou a aplikujte ji na všechny obrázky!"
-                }
-            },
-            "upload": {
-                "title": "Nahrát obrázek",
-                "button": "VYBRAT OBRÁZEK",
-                "helpTextFree": "Vyberte obrázek k úpravě.",
-                "helpTextPro": "Vyberte až 100 obrázků pro dávkové zpracování."
-            },
-            "canvas": {
-                "drawTitle": "NAKRESLETE MASKU NA OBJEKTY",
-                "brushSize": "Velikost štětce",
-                "clearMask": "VYMAZAT MASKU",
-                "outputTitle": "2. ZOBRAZIT VÝSLEDEK",
-                "outputPlaceholder": "Výsledek se zobrazí zde"
-            },
-            "actions": {
-                "reset": "RESET",
-                "remove": "ODSTRANIT OBJEKTY",
-                "removeAllObjects": "ODSTRANIT ZE VŠECH OBRÁZKŮ",
-                "processing": "ZPRACOVÁNÍ...",
-                "download": "STÁHNOUT",
-                "downloadAll": "STÁHNOUT VŠE"
-            }
-        },
-        "upgradeCard": {
-            "title": "UPGRADE NA PRO",
-            "description": "Odemkněte dávkové odstranění objektů až pro 100 obrázků a další PRO funkce jako hromadné odstranění pozadí a pokročilé úpravy.",
-            "button": "ZJISTIT VÍCE A UPGRADOVAT NA PRO"
-        },
-        "instructionsCard": {
-            "title": "INSTRUKCE",
-            "step1": "Nahrajte obrázek pomocí tlačítka 'Vybrat obrázek'.",
-            "step2": "Pečlivě nakreslete červeným štětcem přes objekty, které chcete odstranit.",
-            "step3": "Upravte velikost štětce pro větší přesnost.",
-            "step4": "Klikněte na tlačítko 'Odstranit objekty' a počkejte, až AI dokončí zpracování.",
-            "step5": "Po dokončení zpracování můžete stáhnout vyčištěný obrázek pomocí tlačítka 'Stáhnout'.",
-            "step6": "Pro dávkové zpracování povolte 'Aplikovat masku na všechny obrázky' pro odstranění podobných objektů ze všech vybraných obrázků.",
-            "noteTitle": "Poznámka:",
-            "noteText": "Zpracování může trvat 15-60 sekund v závislosti na velikosti obrázku a vašem zařízení. Ujistěte se, že maska plně pokrývá objekt pro nejlepší výsledky."
-        },
-        "imageGallery": {
-            "selectedImages": "Vybrané obrázky",
-            "selectedImage": "Vybraný obrázek",
-            "clearAll": "Vymazat vše",
-            "applyMaskToAll": "Aplikovat masku na všechny obrázky (dávkové zpracování)",
-            "hasMask": "Maska nakreslena"
-        },
-        "processing": {
-            "readingFile": "Čtení souboru...",
-            "loadingImage": "Načítání obrázku...",
-            "exportingMask": "Příprava masky...",
-            "runningModel": "Spouštění AI modelu...",
-            "rendering": "Vykreslování výsledku...",
-            "preparingBatch": "Příprava dávkového zpracování...",
-            "processingImage": "Zpracování obrázku {current} z {total}...",
-            "finishingBatch": "Dokončování výsledků...",
-            "preparingDownload": "Příprava stahování...",
-            "batchProgress": "Průběh dávkového zpracování",
-            "loadingDimensions": "Výpočet rozměrů obrázku...",
-            "generic": "Zpracování obrázku..."
-        },
-        "errors": {
-            "ortLoad": "Nepodařilo se načíst AI engine. Prosím obnovte stránku.",
-            "sessionCreate": "Nepodařilo se inicializovat model pro odstranění objektů.",
-            "freeLimit": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování.",
-            "tooManyImages": "Maximálně povoleno 100 obrázků. Bude zpracováno pouze prvních 100 obrázků.",
-            "imageLoad": "Chyba při načítání vybraného obrázku.",
-            "fileRead": "Chyba při čtení vybraného souboru.",
-            "canvasError": "Chyba při přístupu k plátnu obrázku.",
-            "prerequisites": "Nelze zpracovat. Chybí požadované komponenty: {missing}",
-            "noMask": "Nejprve nakreslete masku přes objekt, který chcete odstranit.",
-            "processingFailed": "Odstranění objektu selhalo",
-            "resultLoadFailed": "Chyba při zobrazování zpracovaného výsledku.",
-            "noDownloadData": "Žádný zpracovaný obrázek k dispozici ke stažení.",
-            "downloadFailed": "Chyba při přípravě stahování."
-        }
-    },
     "WatermarkPage": {
         "metadata": {
             "title": "Add Watermark to Images | Batch Shots",
@@ -754,10 +487,93 @@
             "proDescription": "Please wait while we verify your account status."
         },
         "preview": {
-            "title": "NÁHLED OBRÁZKU"
+            "title": "IMAGE PREVIEW"
         },
         "alerts": {
-            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
+            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
+            "maxImagesLimit": "Maximum 100 images allowed at once.",
+            "watermarkFailed": "Watermark application failed. Please try again."
+        },
+        "mainCard": {
+            "title": "WATERMARK YOUR IMAGES",
+            "info": {
+                "title": "ADD CUSTOM WATERMARKS",
+                "description": "Protect your images with custom text or logo watermarks. Customize opacity, size, and position to match your branding needs.",
+                "freeMode": {
+                    "title": "FREE MODE",
+                    "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
+                },
+                "proMode": {
+                    "title": "PRO MODE",
+                    "description": "Process up to 100 images in bulk with your PRO account!"
+                }
+            },
+            "upload": {
+                "title": "Select Images",
+                "buttonFree": "SELECT AN IMAGE",
+                "buttonPro": "SELECT IMAGES",
+                "helpTextFree": "Free users can select 1 image at a time.",
+                "helpTextPro": "You can select up to 100 images at once."
+            },
+            "actions": {
+                "clear": "CLEAR",
+                "download": "DOWNLOAD",
+                "downloadZip": "DOWNLOAD AS ZIP",
+                "applyWatermark": "APPLY WATERMARK",
+                "applyWatermarks": "APPLY WATERMARKS",
+                "processing": "APPLYING WATERMARK...",
+                "processingMultiple": "APPLYING WATERMARKS...",
+                "tryFullEditor": "TRY FULL EDITOR"
+            },
+            "progress": {
+                "processing": "Processing...",
+                "percent": "{percent}%"
+            },
+            "upgradeCard": {
+                "title": "UPGRADE TO PRO",
+                "plan": {
+                    "title": "PRO PLAN",
+                    "price": "$19.99",
+                    "features": [
+                        "Watermark up to 100 images at once",
+                        "Advanced image adjustments and presets",
+                        "Background removal for product images",
+                        "Batch processing for all features",
+                        "One-time payment, lifetime access"
+                    ],
+                    "buttonText": "UPGRADE NOW"
+                }
+            }
+        },
+        "howItWorks": {
+            "title": "HOW IT WORKS",
+            "step1": {
+                "title": "1. SELECT YOUR IMAGES",
+                "description": "Upload one or more images you want to watermark.",
+                "proNote": "PRO users can select up to 100 images at once!"
+            },
+            "step2": {
+                "title": "2. CUSTOMIZE WATERMARK",
+                "description": "Choose between text or logo watermarks. Adjust opacity, size, and position to your preferences."
+            },
+            "step3": {
+                "title": "3. DOWNLOAD & USE",
+                "description": "Apply your watermark and download the processed images ready for web, social media, or portfolio use."
+            }
+        },
+        "proDialog": {
+            "title": "UPGRADE TO PRO",
+            "featureTitle": "PRO FEATURE: Bulk Watermarking",
+            "description": "Free users can only process 1 image at a time. Upgrade to PRO to watermark up to 100 images in bulk, saving you hours of work!",
+            "pricing": {
+                "title": "ONE-TIME PAYMENT",
+                "price": "$19.99",
+                "note": "No subscription, lifetime access"
+            },
+            "actions": {
+                "upgrade": "UPGRADE TO PRO",
+                "continue": "CONTINUE WITH FREE MODE"
+            }
         }
     }
-} 
+}
