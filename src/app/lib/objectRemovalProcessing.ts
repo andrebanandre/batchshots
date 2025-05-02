@@ -27,6 +27,12 @@ export interface SessionAPI {
   run: (feeds: TensorFeed) => Promise<Record<string, ortBaseType.Tensor>>;
 }
 
+// Define enhanced InferenceSession that includes input/output names
+interface EnhancedInferenceSession extends ortAllType.InferenceSession {
+  inputNames?: string[];
+  outputNames?: string[];
+}
+
 /**
  * Converts an HTMLCanvasElement's content to a Uint8Array in NCHW format.
  * Assumes RGB format and handles transparency by blending with white.
@@ -332,13 +338,13 @@ export async function getObjectRemovalORTSession(
     ort: OrtType, // Use OrtType derived from /all
     modelPath: string,
     preferredEPs: string[] = ["webgpu", "cpu"]
-): Promise<[ortBaseType.InferenceSession | null, string | null]> { // Return base InferenceSession type
+): Promise<[EnhancedInferenceSession | null, string | null]> { // Use enhanced session type
     if (!ort) {
          console.error("ORT instance not available for session creation.");
          return [null, null];
     }
 
-    let session: ortBaseType.InferenceSession | null = null;
+    let session: EnhancedInferenceSession | null = null;
     let lastError: Error | unknown = null;
     let usedEP: string | null = null;
 
@@ -359,16 +365,19 @@ export async function getObjectRemovalORTSession(
     for (const ep of uniqueEPs) {
         try {
             console.log(`Trying execution provider: ${ep}`);
-            const options: ortBaseType.InferenceSession.SessionOptions = { executionProviders: [ep] };
+            // Use a generic Record type that works with ortAllType.InferenceSession.create
+            const options: Record<string, unknown> = { executionProviders: [ep] };
             const startTime = performance.now();
-            session = await ort.InferenceSession.create(modelPath, options);
+            session = await ort.InferenceSession.create(modelPath, options) as EnhancedInferenceSession;
             const endTime = performance.now();
             usedEP = ep;
             console.log(`Successfully created session with ${ep} in ${(endTime - startTime).toFixed(2)}ms`);
 
             try {
-                console.log('Model Input Names:', session.inputNames);
-                console.log('Model Output Names:', session.outputNames);
+                if (session && session.inputNames && session.outputNames) {
+                    console.log('Model Input Names:', session.inputNames);
+                    console.log('Model Output Names:', session.outputNames);
+                }
             } catch (metaError) {
                  console.warn('Could not log model input/output names:', metaError);
             }

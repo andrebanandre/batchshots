@@ -6,18 +6,14 @@ export async function checkProStatus(userId: string | null): Promise<boolean> {
   if (!userId) return false;
 
   try {
-    // Find the customer associated with the Clerk ID by searching all customers
-    const params: Stripe.CustomerListParams = {
-      limit: 100, // Get a reasonable number of customers
+    // Use search API to find customer by metadata directly
+    const searchResults = await stripe.customers.search({
+      query: `metadata['clerkId']:'${userId}'`,
+      limit: 1,
       expand: ['data.subscriptions'],
-    };
+    });
     
-    const customers = await stripe.customers.list(params);
-    
-    // Filter customers by metadata manually
-    const customer = customers.data.find(
-      (cust) => cust.metadata?.clerkId === userId
-    );
+    const customer = searchResults.data[0];
     
     if (!customer) return false;
 
@@ -31,8 +27,23 @@ export async function checkProStatus(userId: string | null): Promise<boolean> {
       (payment) => payment.status === 'succeeded'
     );
 
-    // Check if there are any successful payments
-    return successfulPayments.length > 0;
+    // If there are successful payments, return true
+    if (successfulPayments.length > 0) {
+      return true;
+    }
+    
+    // If no successful payments, check for successfully paid invoices
+    const invoices = await stripe.invoices.list({
+      customer: customer.id,
+      limit: 100,
+    });
+    
+    const paidInvoices = invoices.data.filter(
+      (invoice) => invoice.status === 'paid'
+    );
+    
+    // Return true if there are paid invoices, false otherwise
+    return paidInvoices.length > 0;
   } catch (error) {
     console.error('Error checking pro status:', error);
     return false;

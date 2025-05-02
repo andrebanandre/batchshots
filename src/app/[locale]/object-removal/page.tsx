@@ -132,7 +132,7 @@ export default function ObjectRemovalPage() {
               try {
                   const [loadedSession, usedProvider] = await getObjectRemovalORTSession(ort, '/models/migan_pipeline_v2.onnx');
                   if (loadedSession) {
-                      setSession(loadedSession);
+                      setSession(loadedSession as InferenceSession);
                       // setSessionEP(usedProvider); // Set state if needed elsewhere
                       console.log(`Object removal session created with ${usedProvider}`); // Log the EP
                   } else {

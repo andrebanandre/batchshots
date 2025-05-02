@@ -48,7 +48,8 @@
         "maxImagesReached": "OSIĄGNIĘTO MAKSYMALNĄ LICZBĘ OBRAZÓW",
         "imagesCount": "{current}/{max} obrazów",
         "upgradeFor": "(Zaktualizuj, aby uzyskać do 100)",
-        "imageOptimization": "OPTYMALIZACJA OBRAZÓW"
+        "imageOptimization": "OPTYMALIZACJA OBRAZÓW",
+        "dragAndDropPrivacy": "Przeciągnij i upuść obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong> Twoja prywatność i bezpieczeństwo są gwarantowane."
     },
     "Navbar": {
         "imageOptimizer": "Optymalizator obrazów",

@@ -16,6 +16,7 @@
         "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou vos données sur nos serveurs.",
         "privacyPolicy": "Politique de confidentialité",
         "termsOfUse": "Conditions d'utilisation",
+        "dragAndDropPrivacy": "Glissez-déposez des images ici ou cliquez pour sélectionner des fichiers. <strong>Tous les traitements s'effectuent dans votre navigateur. Nous ne téléversons jamais vos images sur nos serveurs.</strong> Votre confidentialité et votre sécurité sont garanties.",
         "features": {
             "presets": {
                 "title": "PRESETS PROFESSIONNELS",

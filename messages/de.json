@@ -48,7 +48,8 @@
         "maxImagesReached": "MAXIMALE BILDANZAHL ERREICHT",
         "imagesCount": "{current}/{max} Bilder",
         "upgradeFor": "(Upgrade für bis zu 100)",
-        "imageOptimization": "BILDOPTIMIERUNG"
+        "imageOptimization": "BILDOPTIMIERUNG",
+        "dragAndDropPrivacy": "Bilder hierher ziehen oder klicken, um Dateien auszuwählen. <strong>Die gesamte Verarbeitung erfolgt in deinem Browser. Wir laden deine Bilder niemals auf unsere Server hoch.</strong> Deine Privatsphäre und Sicherheit sind garantiert."
     },
     "Navbar": {
         "imageOptimizer": "Bildoptimierer",

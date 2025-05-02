@@ -661,10 +661,6 @@ export default function Home() {
   return (
     <main className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="brutalist-accent-card mb-8">
-        {images.length === 0 && <h1 className="text-3xl font-bold text-center uppercase mb-6">
-          {t('title')}
-        </h1>}
-        
         {!isOpenCVReady ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
             <div className="flex flex-col items-center justify-center py-8">
@@ -673,108 +669,144 @@ export default function Home() {
               <p className="text-sm text-gray-600">{t('loadingDescription')}</p>
             </div>
           </div>
-        ) : images.length === 0 ? (
-          <div className="space-y-6">
-            {/* Hero Section */}
-            <div className="brutalist-border p-6 bg-white text-center">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold uppercase">{t('transformTitle')}</h2>
-                {isProUser && <ProBadge className="ml-2" />}
-              </div>
-              <p className="text-lg mb-6">{t('heroDescription')}</p>
-              
-              {/* Main CTA Button - Sticky on Mobile */}
-              <div className="sticky-cta-container">
-                <input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handleFileChange}
-                  className="hidden"
-                  id="fileInput"
-                />
-                <div className="w-full flex justify-center space-x-2">
-                  <label htmlFor="fileInput" className="flex-grow flex justify-center">
-                    <Button as="span" variant="accent" size="lg" className="cta-button" disabled={isProcessing}>
-                      {t('selectImages', { maxImages: isProUser ? "100" : "5" })}
-                    </Button>
-                  </label>
+        ) : (
+          <>
+            {images.length === 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Left column - Upload area with hero content only */}
+                <div className="md:col-span-2">
+                  <div className="brutalist-border p-6 bg-white">
+                    <div className="flex justify-between items-center mb-4">
+                      <h2 className="text-xl font-bold uppercase">{t('transformTitle')}</h2>
+                      {isProUser && <ProBadge className="ml-2" />}
+                    </div>
+                    <p className="text-lg mb-6">{t('heroDescription')}</p>
+                    
+                    {/* Upload area with drag and drop */}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={handleFileChange}
+                      className="hidden"
+                      id="fileInput"
+                    />
+                    
+                    <label 
+                      htmlFor="fileInput"
+                      className="brutalist-border border-3 border-dotted border-primary flex flex-col items-center justify-center w-full aspect-video bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
+                      onDragOver={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }}
+                      onDrop={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const files = e.dataTransfer.files;
+                        if (files && files.length > 0) {
+                          const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+                          if (fileInput) {
+                            fileInput.files = files;
+                            const event = new Event('change', { bubbles: true });
+                            fileInput.dispatchEvent(event);
+                          }
+                        }
+                      }}
+                    >
+                      <div className="text-center p-6">
+                        {/* Minimalist image upload icon with brand colors and black border */}
+                        <svg className="w-16 h-16 mx-auto mb-4" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          {/* Image frame in primary color with black border */}
+                          <rect x="8" y="16" width="48" height="40" fill="#4F46E5" stroke="#000" strokeWidth="1.5" />
+                          {/* Mountains in #fdc700 with black border */}
+                          <polygon points="14,52 28,36 38,46 50,28 56,56 8,56" fill="#fdc700" stroke="#000" strokeWidth="1.5" />
+                          {/* Sun in accent color with black border */}
+                          <circle cx="48" cy="24" r="6" fill="#FF6B6B" stroke="#000" strokeWidth="1.5" />
+                          {/* Up arrow in accent color, above the frame, with black border */}
+                          <path d="M32 6L40 16H36V28H28V16H24L32 6Z" fill="#FF6B6B" stroke="#000" strokeWidth="1.5" />
+                        </svg>
+                        <p className="font-medium mb-2">{t('selectImages', { maxImages: isProUser ? "100" : "5" })}</p>
+                        <p className="text-sm text-gray-500">
+                          {t.rich('dragAndDropPrivacy', {
+                            strong: (chunks) => <strong>{chunks}</strong>
+                          })}
+                        </p>
+                      </div>
+                    </label>
+
+                    {/* Pro status - FREE PLAN card for non-pro users */}
+                    {!isProUser && (
+                      <>
+                        <div className="brutalist-border p-4 bg-white mt-6">
+                          <div className="flex items-center mb-2">
+                            <p className="font-bold">{t('freePlan')}</p>
+                          </div>
+                          <p className="text-sm mb-3">{t('freeDescription', { maxImages: MAX_IMAGES })}</p>
+                          <div className="text-center mt-2">
+                            <Button 
+                              variant="secondary" 
+                              size="md"
+                              onClick={() => router.push('/pricing')}
+                              className="w-full md:w-auto"
+                            >
+                              {t('learnMoreAboutPro')}
+                            </Button>
+                          </div>
+                        </div>
+                        <div className="brutalist-border p-6 bg-yellow-400 text-center mt-6">
+                          <h3 className="text-xl font-bold uppercase mb-2">{t('upgradeProTitle')}</h3>
+                          <p className="text-sm mb-4">{t('upgradeProDescription')}</p>
+                          <Button 
+                            variant="default" 
+                            size="lg"
+                            className="bg-white text-black hover:bg-gray-100 font-bold border-2 border-black"
+                            onClick={() => router.push('/pricing')}
+                          >
+                            {t('upgradeToPro')}
+                          </Button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Right column - Features showcase and information */}
+                <div className="space-y-4">
+                  {/* Features showcase grid */}
+                  <div >
+                    <div className="space-y-4">
+                      <div className="brutalist-border p-3 bg-gray-50">
+                        <p className="font-bold mb-1">🎯 {t('features.presets.title')}</p>
+                        <p className="text-sm">{t('features.presets.description')}</p>
+                      </div>
+                      <div className="brutalist-border p-3 bg-gray-50">
+                        <p className="font-bold mb-1">🤖 {t('features.aiPowered.title')}</p>
+                        <p className="text-sm">{t('features.aiPowered.description')}</p>
+                      </div>
+                      <div className="brutalist-border p-3 bg-gray-50">
+                        <p className="font-bold mb-1">🎚️ {t('features.advancedControls.title')}</p>
+                        <p className="text-sm">{t('features.advancedControls.description')}</p>
+                      </div>
+                      <div className="brutalist-border p-3 bg-gray-50">
+                        <p className="font-bold mb-1">⚡ {t('features.batchProcessing.title')}</p>
+                        <p className="text-sm">{t('features.batchProcessing.description')}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Privacy notice - Moved from left column */}
+                  <div className="brutalist-border p-4 bg-white">
+                    <p className="font-medium mb-2">✨ <span className="font-bold">{t('privacyFocused')}</span></p>
+                    <p className="text-sm">
+                      {t('privacyDescription')}
+                    </p>
+                  </div>
+                  
+               
                 </div>
               </div>
-            </div>
-            
-            {/* Privacy Notice */}
-            <div className="brutalist-border p-4 bg-white">
-              <p className="font-medium mb-2">✨ <span className="font-bold">{t('privacyFocused')}</span></p>
-              <p className="text-sm">
-                {t('privacyDescription')}
-              </p>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="brutalist-border p-3 bg-white">
-                <p className="font-bold mb-1">🎯 {t('features.presets.title')}</p>
-                <p className="text-xs">{t('features.presets.description')}</p>
-              </div>
-              <div className="brutalist-border p-3 bg-white">
-                <p className="font-bold mb-1">🤖 {t('features.aiPowered.title')}</p>
-                <p className="text-xs">{t('features.aiPowered.description')}</p>
-              </div>
-              <div className="brutalist-border p-3 bg-white">
-                <p className="font-bold mb-1">🎚️ {t('features.advancedControls.title')}</p>
-                <p className="text-xs">{t('features.advancedControls.description')}</p>
-              </div>
-              <div className="brutalist-border p-3 bg-white">
-                <p className="font-bold mb-1">⚡ {t('features.batchProcessing.title')}</p>
-                <p className="text-xs">{t('features.batchProcessing.description')}</p>
-              </div>
-            </div>
-
-            {/* Pro Upgrade Call-to-Action - Matching ProBadge colors */}
-            {!isProUser && (
-              <div className="brutalist-border p-6 bg-yellow-400 text-center">
-                <h3 className="text-xl font-bold uppercase mb-2">{t('upgradeProTitle')}</h3>
-                <p className="text-sm mb-4">{t('upgradeProDescription')}</p>
-                <Button 
-                  variant="default" 
-                  size="lg"
-                  className="bg-white text-black hover:bg-gray-100 font-bold border-2 border-black"
-                  onClick={() => router.push('/pricing')}
-                >
-                  {t('upgradeToPro')}
-                </Button>
-              </div>
-            )}
-
-            {/* Pro Upgrade Section */}
-            <div className="brutalist-border p-4 bg-white">
-              <div className="flex items-center mb-2">
-                <p className="font-bold">{isProUser ? t('proMode') : t('freePlan')}</p>
-                {isProUser && <ProBadge className="ml-2" />}
-              </div>
-              <p className="text-sm mb-3">
-                {isProUser 
-                  ? t('proDescription', { maxImages: MAX_IMAGES }) 
-                  : t('freeDescription', { maxImages: MAX_IMAGES })}
-              </p>
-              {!isProUser && (
-                <div className="text-center mt-2">
-                  <Button 
-                    variant="secondary" 
-                    size="md"
-                    onClick={() => router.push('/pricing')}
-                    className="w-full md:w-auto"
-                  >
-                    {t('learnMoreAboutPro')}
-                  </Button>
-                </div>
-              )}
-            </div>
-          </div>
-        ) : null}
-
-        {images.length > 0 && (
+            ) : (
+              // Existing editor layout for when images are uploaded
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 md:sticky md:top-4 md:self-start space-y-6">
               <div className="flex justify-between items-center">
@@ -891,6 +923,8 @@ export default function Home() {
               />
             </div>
           </div>
+            )}
+          </>
         )}
       </div>
 

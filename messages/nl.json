@@ -48,7 +48,8 @@
         "maxImagesReached": "MAXIMAAL AANTAL AFBEELDINGEN BEREIKT",
         "imagesCount": "{current}/{max} afbeeldingen",
         "upgradeFor": "(Upgrade voor maximaal 100)",
-        "imageOptimization": "BEELDOPTIMALISATIE"
+        "imageOptimization": "BEELDOPTIMALISATIE",
+        "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong> Uw privacy en veiligheid zijn gegarandeerd."
     },
     "Navbar": {
         "imageOptimizer": "Afbeeldingsoptimalisatie",

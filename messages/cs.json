@@ -48,7 +48,8 @@
         "maxImagesReached": "MAXIMÁLNÍ POČET OBRÁZKŮ DOSAŽEN",
         "imagesCount": "{current}/{max} obrázků",
         "upgradeFor": "(Upgradujte pro až 100)",
-        "imageOptimization": "OPTIMALIZACE OBRÁZKŮ"
+        "imageOptimization": "OPTIMALIZACE OBRÁZKŮ",
+        "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Vaše obrázky nikdy nenahráváme na naše servery.</strong> Vaše soukromí a bezpečnost jsou zaručeny."
     },
     "Navbar": {
         "imageOptimizer": "Optimalizátor obrázků",

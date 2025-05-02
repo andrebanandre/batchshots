@@ -48,7 +48,8 @@
         "maxImagesReached": "MAX IMAGES REACHED",
         "imagesCount": "{current}/{max} images",
         "upgradeFor": "(Upgrade for up to 100)",
-        "imageOptimization": "IMAGE OPTIMIZATION"
+        "imageOptimization": "IMAGE OPTIMIZATION",
+        "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong> Your privacy and security are guaranteed."
     },
     "Navbar": {
         "imageOptimizer": "Image Optimizer",
