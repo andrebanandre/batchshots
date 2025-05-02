@@ -59,7 +59,8 @@
         "login": "PŘIHLÁSIT SE",
         "objectRemoval": "Odstranění objektu",
         "tools": "Nástroje",
-        "addWatermark": "Přidat vodoznak"
+        "addWatermark": "Přidat vodoznak",
+        "seoDescription": "SEO Popis"
     },
     "Footer": {
         "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
@@ -239,7 +240,87 @@
                 "tags": "Tagy",
                 "urlSlug": "URL slug"
             },
-            "downloadAll": "STÁHNOUT VŠECHNA DATA"
+            "downloadAll": "STÁHNOUT VŠECHNA DATA",
+            "keywords": "SEO popis produktu, generátor obsahu AI, SEO pro e-commerce, optimalizace výpisů produktů, meta popisy",
+            "instructionsCard": {
+                "title": "JAK POUŽÍVAT",
+                "step1": "Zadejte základní údaje o vašem produktu (název, vlastnosti, materiály atd.).",
+                "step2": "Klikněte na tlačítko 'Generovat popis produktu'.",
+                "step3": "Zkontrolujte vygenerovaný obsah (název, meta, popisy atd.).",
+                "step4": "Zkopírujte obsah nebo jej stáhněte jako textový soubor.",
+                "step5": "Použijte vygenerovaný SEO obsah ve svém e-shopu nebo na webových stránkách."
+            },
+            "mainCard": {
+                "title": "GENERUJTE SEO OBSAH",
+                "info": {
+                    "title": "CO JE TENTO NÁSTROJ?",
+                    "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače.",
+                    "freeMode": {
+                        "title": "REŽIM ZDARMA",
+                        "description": "Omezený přístup ke generování několika popisů. Upgradujte na PRO pro neomezené generování a přístup ke všem polím SEO obsahu."
+                    },
+                    "proMode": {
+                        "title": "REŽIM PRO",
+                        "description": "Neomezený přístup ke generování kompletních SEO popisů produktů se všemi odemčenými prémiovými funkcemi."
+                    }
+                },
+                "benefits": {
+                    "complete": "KOMPLETNÍ SEO BALÍČEK",
+                    "completeDesc": "Získejte kompletní sadu SEO obsahu pro váš produkt, připravenou k použití.",
+                    "aiPowered": "OBSAH S PODPOROU AI",
+                    "aiPoweredDesc": "Generuje jedinečné, přesvědčivé a na klíčová slova bohaté popisy.",
+                    "bestPractices": "NEJLEPŠÍ POSTUPY SEO",
+                    "bestPracticesDesc": "Dodržuje pokyny pro počet znaků, umístění klíčových slov a čitelnost.",
+                    "quickEasy": "RYCHLE & SNADNO",
+                    "quickEasyDesc": "Ušetřete hodiny generováním profesionálních popisů během několika sekund."
+                }
+            }
+        },
+        "SeoDescriptionPage": {
+            "metadata": {
+                "title": "AI SEO Generátor popisu produktu | Batch Shots",
+                "description": "Generujte kompletní, SEO optimalizované popisy produktů (název, meta název/popis, krátký/dlouhý popis, kategorie, tagy, URL slug) ze základních informací.",
+                "keywords": "seo popis produktu, ai popis produktu, ecommerce seo, generátor popisu produktu, generátor meta popisu, generátor názvu produktu"
+            },
+            "title": "AI SEO GENERÁTOR POPISU PRODUKTU",
+            "mainCard": {
+                "title": "GENERUJTE SEO OBSAH",
+                "info": {
+                    "title": "CO JE TENTO NÁSTROJ?",
+                    "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače.",
+                    "freeMode": {
+                        "title": "REŽIM ZDARMA",
+                        "description": "Omezený přístup ke generování několika popisů. Upgradujte na PRO pro neomezené generování a přístup ke všem polím SEO obsahu."
+                    },
+                    "proMode": {
+                        "title": "REŽIM PRO",
+                        "description": "Neomezený přístup ke generování kompletních SEO popisů produktů se všemi odemčenými prémiovými funkcemi."
+                    }
+                },
+                "benefits": {
+                    "complete": "KOMPLETNÍ SEO BALÍČEK",
+                    "completeDesc": "Získejte kompletní sadu SEO obsahu pro váš produkt, připravenou k použití.",
+                    "aiPowered": "OBSAH S PODPOROU AI",
+                    "aiPoweredDesc": "Generuje jedinečné, přesvědčivé a na klíčová slova bohaté popisy.",
+                    "bestPractices": "NEJLEPŠÍ POSTUPY SEO",
+                    "bestPracticesDesc": "Dodržuje pokyny pro počet znaků, umístění klíčových slov a čitelnost.",
+                    "quickEasy": "RYCHLE & SNADNO",
+                    "quickEasyDesc": "Ušetřete hodiny generováním profesionálních popisů během několika sekund."
+                }
+            },
+            "upgradeCard": {
+                "title": "UPGRADUJTE NA PRO",
+                "description": "Odemkněte neomezené generování SEO popisů produktů a získejte přístup ke všem funkcím.",
+                "button": "UPGRADUJTE NYNÍ"
+            },
+            "instructionsCard": {
+                "title": "JAK POUŽÍVAT",
+                "step1": "Zadejte základní údaje o vašem produktu (název, vlastnosti, materiály atd.).",
+                "step2": "Klikněte na tlačítko 'Generovat popis produktu'.",
+                "step3": "Zkontrolujte vygenerovaný obsah (název, meta, popisy atd.).",
+                "step4": "Zkopírujte obsah nebo jej stáhněte jako textový soubor.",
+                "step5": "Použijte vygenerovaný SEO obsah ve svém e-shopu nebo na webových stránkách."
+            }
         },
         "QuickPresets": {
             "title": "RYCHLÁ PŘEDNASTAVENÍ",

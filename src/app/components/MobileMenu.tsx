@@ -38,6 +38,9 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {t('objectRemoval')}
             <span className="ml-2 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
           </Link>
+          <Link href="/seo-description" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
+            {t('seoDescription')}
+          </Link>
           {/* <Link href="/backgrounds" className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             {t('aiBackgrounds')}
           </Link> */}

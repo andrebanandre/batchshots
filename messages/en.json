@@ -59,7 +59,8 @@
         "login": "LOG IN",
         "objectRemoval": "Object Removal",
         "tools": "Tools",
-        "addWatermark": "Add Watermark"
+        "addWatermark": "Add Watermark",
+        "seoDescription": "SEO Description"
     },
     "Footer": {
         "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
@@ -553,6 +554,89 @@
                     "upgrade": "UPGRADE TO PRO",
                     "continue": "CONTINUE WITH FREE MODE"
                 }
+            }
+        },
+        "SeoProductDescriptionGenerator": {
+            "title": "AI SEO PRODUCT DESCRIPTION",
+            "description": "Generate complete SEO-optimized product description",
+            "enterDescription": "Enter basic product information",
+            "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
+            "generate": "GENERATE PRODUCT DESCRIPTION",
+            "generating": "GENERATING...",
+            "proFeature": "This is a PRO feature",
+            "copyToClipboard": "COPY TO CLIPBOARD",
+            "downloadAsTxt": "DOWNLOAD AS TXT",
+            "copied": "Copied!",
+            "tryFeature": "TRY HOW IT WORKS",
+            "tabs": {
+                "content": "CONTENT",
+                "meta": "META",
+                "categories": "CATEGORIES",
+                "previews": "PREVIEWS"
+            },
+            "previews": {
+                "googleSearch": "GOOGLE SEARCH PREVIEW",
+                "ecommerce": "E-COMMERCE PREVIEW",
+                "productImage": "Product Image",
+                "addToCart": "Add to Cart",
+                "wishlist": "Wishlist"
+            },
+            "sections": {
+                "productTitle": "Product Title",
+                "metaTitle": "Meta Title",
+                "metaDescription": "Meta Description",
+                "shortDescription": "Short Description", 
+                "longDescription": "Long Description",
+                "categories": "Categories",
+                "tags": "Tags",
+                "urlSlug": "URL Slug"
+            },
+            "downloadAll": "DOWNLOAD ALL DATA"
+        },
+        "SeoDescriptionPage": {
+            "metadata": {
+                "title": "AI SEO Product Description Generator | Batch Shots",
+                "description": "Generate complete, SEO-optimized product descriptions (title, meta title/description, short/long description, categories, tags, URL slug) from basic info.",
+                "keywords": "seo product description, ai product description, ecommerce seo, product description generator, meta description generator, product title generator"
+            },
+            "title": "AI SEO PRODUCT DESCRIPTION GENERATOR",
+            "mainCard": {
+                "title": "GENERATE SEO CONTENT",
+                "info": {
+                    "title": "WHAT IS THIS TOOL?",
+                    "description": "This AI-powered tool generates a complete SEO package for your products from basic information. You'll receive a product title, meta title, meta description, short and long descriptions, categories, tags, and a URL slug, all optimized for search engines.",
+                    "freeMode": {
+                        "title": "FREE MODE",
+                        "description": "Limited access to generate a few descriptions. Upgrade to PRO for unlimited generation and access to all SEO content fields."
+                    },
+                    "proMode": {
+                        "title": "PRO MODE",
+                        "description": "Unlimited access to generate complete SEO product descriptions with all premium features unlocked."
+                    }
+                },
+                "benefits": {
+                    "complete": "COMPLETE SEO PACKAGE",
+                    "completeDesc": "Get a full set of SEO content for your product, ready to use.",
+                    "aiPowered": "AI-POWERED CONTENT",
+                    "aiPoweredDesc": "Generates unique, compelling, and keyword-rich descriptions.",
+                    "bestPractices": "SEO BEST PRACTICES",
+                    "bestPracticesDesc": "Follows guidelines for character counts, keyword placement, and readability.",
+                    "quickEasy": "QUICK & EASY",
+                    "quickEasyDesc": "Save hours by generating professional descriptions in seconds."
+                }
+            },
+            "upgradeCard": {
+                "title": "UPGRADE TO PRO",
+                "description": "Unlock unlimited SEO product description generation and access all features.",
+                "button": "UPGRADE NOW"
+            },
+            "instructionsCard": {
+                "title": "HOW TO USE",
+                "step1": "Enter basic details about your product (name, features, materials, etc.).",
+                "step2": "Click the 'Generate Product Description' button.",
+                "step3": "Review the generated content (title, meta, descriptions, etc.).",
+                "step4": "Copy the content or download it as a text file.",
+                "step5": "Use the generated SEO content on your e-commerce store or website."
             }
         }
     },

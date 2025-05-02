@@ -59,7 +59,8 @@
         "login": "INLOGGEN",
         "objectRemoval": "Objectverwijdering",
         "tools": "Gereedschappen",
-        "addWatermark": "Watermerk toevoegen"
+        "addWatermark": "Watermerk toevoegen",
+        "seoDescription": "SEO Beschrijving"
     },
     "Footer": {
         "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",
@@ -233,7 +234,124 @@
                 "productTitle": "Producttitel",
                 "metaTitle": "Meta titel",
                 "metaDescription": "Meta beschrijving",
-                "shortDescription": "Korte beschrijving", 
+                "shortDescription": "Korte beschrijving",
+                "longDescription": "Lange beschrijving",
+                "categories": "Categorieën",
+                "tags": "Tags",
+                "urlSlug": "URL slug"
+            },
+            "downloadAll": "DOWNLOAD ALLE GEGEVENS",
+            "keywords": "SEO productbeschrijving, AI content generator, e-commerce SEO, productvermeldingen optimaliseren, metabeschrijvingen",
+            "instructionsCard": {
+                "title": "HOE TE GEBRUIKEN",
+                "step1": "Voer basisgegevens over uw product in (naam, kenmerken, materialen, enz.).",
+                "step2": "Klik op de knop 'Productbeschrijving genereren'.",
+                "step3": "Bekijk de gegenereerde inhoud (titel, meta, beschrijvingen, enz.).",
+                "step4": "Kopieer de inhoud of download deze als een tekstbestand.",
+                "step5": "Gebruik de gegenereerde SEO-inhoud in uw e-commerce winkel of website."
+            },
+            "mainCard": {
+                "title": "GENEREER SEO-INHOUD",
+                "info": {
+                    "title": "WAT IS DEZE TOOL?",
+                    "description": "Deze AI-gestuurde tool genereert een compleet SEO-pakket voor uw producten op basis van basisinformatie. U ontvangt een producttitel, metatitel, metabeschrijving, korte en lange beschrijvingen, categorieën, tags en een URL-slug, allemaal geoptimaliseerd voor zoekmachines.",
+                    "freeMode": {
+                        "title": "GRATIS MODUS",
+                        "description": "Beperkte toegang om enkele beschrijvingen te genereren. Upgrade naar PRO voor onbeperkte generatie en toegang tot alle SEO-inhoudsvelden."
+                    },
+                    "proMode": {
+                        "title": "PRO-MODUS",
+                        "description": "Onbeperkte toegang om volledige SEO-productbeschrijvingen te genereren met alle premium functies ontgrendeld."
+                    }
+                },
+                "benefits": {
+                    "complete": "COMPLEET SEO-PAKKET",
+                    "completeDesc": "Ontvang een volledige set SEO-content voor uw product, klaar voor gebruik.",
+                    "aiPowered": "AI-GEGENEREERDE INHOUD",
+                    "aiPoweredDesc": "Genereert unieke, overtuigende en trefwoordrijke beschrijvingen.",
+                    "bestPractices": "BESTE SEO-PRAKTIJKEN",
+                    "bestPracticesDesc": "Volgt richtlijnen voor tekenaantallen, trefwoordplaatsing en leesbaarheid.",
+                    "quickEasy": "SNEL & GEMAKKELIJK",
+                    "quickEasyDesc": "Bespaar uren door professionele beschrijvingen in seconden te genereren."
+                }
+            }
+        },
+        "SeoDescriptionPage": {
+            "metadata": {
+                "title": "AI SEO Productbeschrijving Generator | Batch Shots",
+                "description": "Genereer complete, SEO-geoptimaliseerde productbeschrijvingen (titel, metatitel/beschrijving, korte/lange beschrijving, categorieën, tags, URL-slug) uit basisinformatie.",
+                "keywords": "seo productbeschrijving, ai productbeschrijving, ecommerce seo, productbeschrijving generator, metabeschrijving generator, producttitel generator"
+            },
+            "title": "AI SEO PRODUCTBESCHRIJVING GENERATOR",
+            "mainCard": {
+                "title": "GENEREER SEO-INHOUD",
+                "info": {
+                    "title": "WAT IS DEZE TOOL?",
+                    "description": "Deze AI-gestuurde tool genereert een compleet SEO-pakket voor uw producten op basis van basisinformatie. U ontvangt een producttitel, metatitel, metabeschrijving, korte en lange beschrijvingen, categorieën, tags en een URL-slug, allemaal geoptimaliseerd voor zoekmachines.",
+                    "freeMode": {
+                        "title": "GRATIS MODUS",
+                        "description": "Beperkte toegang om enkele beschrijvingen te genereren. Upgrade naar PRO voor onbeperkte generatie en toegang tot alle SEO-inhoudsvelden."
+                    },
+                    "proMode": {
+                        "title": "PRO-MODUS",
+                        "description": "Onbeperkte toegang om volledige SEO-productbeschrijvingen te genereren met alle premium functies ontgrendeld."
+                    }
+                },
+                "benefits": {
+                    "complete": "COMPLEET SEO-PAKKET",
+                    "completeDesc": "Ontvang een volledige set SEO-content voor uw product, klaar voor gebruik.",
+                    "aiPowered": "AI-GEGENEREERDE INHOUD",
+                    "aiPoweredDesc": "Genereert unieke, overtuigende en trefwoordrijke beschrijvingen.",
+                    "bestPractices": "BESTE SEO-PRAKTIJKEN",
+                    "bestPracticesDesc": "Volgt richtlijnen voor tekenaantallen, trefwoordplaatsing en leesbaarheid.",
+                    "quickEasy": "SNEL & GEMAKKELIJK",
+                    "quickEasyDesc": "Bespaar uren door professionele beschrijvingen in seconden te genereren."
+                }
+            },
+            "upgradeCard": {
+                "title": "UPGRADE NAAR PRO",
+                "description": "Ontgrendel onbeperkte generatie van SEO-productbeschrijvingen en krijg toegang tot alle functies.",
+                "button": "NU UPGRADEN"
+            },
+            "instructionsCard": {
+                "title": "HOE TE GEBRUIKEN",
+                "step1": "Voer basisgegevens over uw product in (naam, kenmerken, materialen, enz.).",
+                "step2": "Klik op de knop 'Productbeschrijving genereren'.",
+                "step3": "Bekijk de gegenereerde inhoud (titel, meta, beschrijvingen, enz.).",
+                "step4": "Kopieer de inhoud of download deze als een tekstbestand.",
+                "step5": "Gebruik de gegenereerde SEO-inhoud in uw e-commerce winkel of website."
+            }
+        },
+        "SeoProductDescriptionGenerator": {
+            "title": "AI SEO PRODUCTBESCHRIJVING",
+            "description": "Genereer een complete SEO-geoptimaliseerde productbeschrijving",
+            "enterDescription": "Voer basisproductinformatie in",
+            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder, meerdere kaartvakken...",
+            "generate": "GENEREER PRODUCTBESCHRIJVING",
+            "generating": "GENEREREN...",
+            "proFeature": "Dit is een PRO-functie",
+            "copyToClipboard": "KOPIËREN NAAR KLEMBORD",
+            "downloadAsTxt": "DOWNLOADEN ALS TXT",
+            "copied": "Gekopieerd!",
+            "tryFeature": "PROBEER HOE HET WERKT",
+            "tabs": {
+                "content": "INHOUD",
+                "meta": "META",
+                "categories": "CATEGORIEËN",
+                "previews": "VOORBEELDEN"
+            },
+            "previews": {
+                "googleSearch": "GOOGLE ZOEKVOORBEELD",
+                "ecommerce": "E-COMMERCE VOORBEELD",
+                "productImage": "Productafbeelding",
+                "addToCart": "Toevoegen aan winkelwagen",
+                "wishlist": "Verlanglijst"
+            },
+            "sections": {
+                "productTitle": "Producttitel",
+                "metaTitle": "Meta titel",
+                "metaDescription": "Meta beschrijving",
+                "shortDescription": "Korte beschrijving",
                 "longDescription": "Lange beschrijving",
                 "categories": "Categorieën",
                 "tags": "Tags",

@@ -59,7 +59,8 @@
         "login": "ANMELDEN",
         "objectRemoval": "Objektentfernung",
         "tools": "Werkzeuge",
-        "addWatermark": "Wasserzeichen hinzufügen"
+        "addWatermark": "Wasserzeichen hinzufügen",
+        "seoDescription": "SEO Beschreibung"
     },
     "Footer": {
         "about": "Batch Shots hilft Ihnen, Produktbilder schnell und einfach für SEO zu optimieren, direkt in Ihrem Browser.",
@@ -205,6 +206,133 @@
             "tryFeature": "FUNKTION TESTEN"
         },
         "SeoProductDescription": {
+            "title": "KI SEO PRODUKTBESCHREIBUNG GENERATOR",
+            "description": "Generieren Sie vollständige SEO-optimierte Produktbeschreibungen",
+            "enterDescription": "Geben Sie grundlegende Produktinformationen ein",
+            "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder, mehrere Kartenfächer...",
+            "generate": "PRODUKTBESCHREIBUNG GENERIEREN",
+            "generating": "GENERIERE...",
+            "proFeature": "Dies ist eine PRO-Funktion",
+            "copyToClipboard": "IN DIE ZWISCHENABLAGE KOPIEREN",
+            "downloadAsTxt": "ALS TXT HERUNTERLADEN",
+            "copied": "Kopiert!",
+            "tryFeature": "FUNKTION TESTEN",
+            "tabs": {
+                "content": "INHALT",
+                "meta": "META",
+                "categories": "KATEGORIEN",
+                "previews": "VORSCHAUEN"
+            },
+            "previews": {
+                "googleSearch": "GOOGLE-SUCHE VORSCHAU",
+                "ecommerce": "E-COMMERCE VORSCHAU",
+                "productImage": "Produktbild",
+                "addToCart": "In den Warenkorb",
+                "wishlist": "Wunschliste"
+            },
+            "sections": {
+                "productTitle": "Produkttitel",
+                "metaTitle": "Meta-Titel",
+                "metaDescription": "Meta-Beschreibung",
+                "shortDescription": "Kurzbeschreibung",
+                "longDescription": "Lange Beschreibung",
+                "categories": "Kategorien",
+                "tags": "Tags",
+                "urlSlug": "URL-Slug"
+            },
+            "downloadAll": "ALLE DATEN HERUNTERLADEN",
+            "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator",
+            "metadata": {
+                "title": "KI SEO Produktbeschreibungsgenerator | Batch Shots",
+                "description": "Generieren Sie vollständige, SEO-optimierte Produktbeschreibungen (Titel, Meta-Titel/Beschreibung, kurze/lange Beschreibung, Kategorien, Tags, URL-Slug) aus Basisinformationen.",
+                "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator"
+            },
+            "instructionsCard": {
+                "title": "ANLEITUNG",
+                "step1": "Geben Sie grundlegende Details zu Ihrem Produkt ein (Name, Eigenschaften, Materialien usw.).",
+                "step2": "Klicken Sie auf die Schaltfläche 'Produktbeschreibung generieren'.",
+                "step3": "Überprüfen Sie den generierten Inhalt (Titel, Meta, Beschreibungen usw.).",
+                "step4": "Kopieren Sie den Inhalt oder laden Sie ihn als Textdatei herunter.",
+                "step5": "Verwenden Sie den generierten SEO-Inhalt in Ihrem E-Commerce-Shop oder auf Ihrer Website."
+            },
+            "mainCard": {
+                "title": "SEO-INHALT GENERIEREN",
+                "info": {
+                    "title": "WAS IST DIESES TOOL?",
+                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen.",
+                    "freeMode": {
+                        "title": "KOSTENLOSER MODUS",
+                        "description": "Begrenzter Zugriff zum Generieren einiger Beschreibungen. Upgraden Sie auf PRO für unbegrenzte Generierung und Zugriff auf alle SEO-Inhaltsfelder."
+                    },
+                    "proMode": {
+                        "title": "PRO-MODUS",
+                        "description": "Unbegrenzter Zugriff zum Generieren vollständiger SEO-Produktbeschreibungen mit allen freigeschalteten Premium-Funktionen."
+                    }
+                },
+                "benefits": {
+                    "complete": "KOMPLETTES SEO-PAKET",
+                    "completeDesc": "Erhalten Sie ein vollständiges Set an SEO-Inhalten für Ihr Produkt, bereit zur Verwendung.",
+                    "aiPowered": "KI-GESTÜTZTER INHALT",
+                    "aiPoweredDesc": "Generiert einzigartige, überzeugende und keyword-reiche Beschreibungen.",
+                    "bestPractices": "BESTE SEO-PRAKTIKEN",
+                    "bestPracticesDesc": "Folgt Richtlinien für Zeichenanzahl, Keyword-Platzierung und Lesbarkeit.",
+                    "quickEasy": "SCHNELL & EINFACH",
+                    "quickEasyDesc": "Sparen Sie Stunden, indem Sie professionelle Beschreibungen in Sekunden generieren."
+                }
+            },
+            "upgradeCard": {
+                "title": "AUF PRO UPGRADEN",
+                "description": "Schalten Sie die unbegrenzte Generierung von SEO-Produktbeschreibungen frei und greifen Sie auf alle Funktionen zu.",
+                "button": "JETZT UPGRADEN"
+            }
+        },
+        "SeoDescriptionPage": {
+            "metadata": {
+                "title": "KI SEO Produktbeschreibungsgenerator | Batch Shots",
+                "description": "Generieren Sie vollständige, SEO-optimierte Produktbeschreibungen (Titel, Meta-Titel/Beschreibung, kurze/lange Beschreibung, Kategorien, Tags, URL-Slug) aus Basisinformationen.",
+                "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator"
+            },
+            "title": "KI SEO PRODUKTBESCHREIBUNG GENERATOR",
+            "mainCard": {
+                "title": "SEO-INHALT GENERIEREN",
+                "info": {
+                    "title": "WAS IST DIESES TOOL?",
+                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen.",
+                    "freeMode": {
+                        "title": "KOSTENLOSER MODUS",
+                        "description": "Begrenzter Zugriff zum Generieren einiger Beschreibungen. Upgraden Sie auf PRO für unbegrenzte Generierung und Zugriff auf alle SEO-Inhaltsfelder."
+                    },
+                    "proMode": {
+                        "title": "PRO-MODUS",
+                        "description": "Unbegrenzter Zugriff zum Generieren vollständiger SEO-Produktbeschreibungen mit allen freigeschalteten Premium-Funktionen."
+                    }
+                },
+                "benefits": {
+                    "complete": "KOMPLETTES SEO-PAKET",
+                    "completeDesc": "Erhalten Sie ein vollständiges Set an SEO-Inhalten für Ihr Produkt, bereit zur Verwendung.",
+                    "aiPowered": "KI-GESTÜTZTER INHALT",
+                    "aiPoweredDesc": "Generiert einzigartige, überzeugende und keyword-reiche Beschreibungen.",
+                    "bestPractices": "BESTE SEO-PRAKTIKEN",
+                    "bestPracticesDesc": "Folgt Richtlinien für Zeichenanzahl, Keyword-Platzierung und Lesbarkeit.",
+                    "quickEasy": "SCHNELL & EINFACH",
+                    "quickEasyDesc": "Sparen Sie Stunden, indem Sie professionelle Beschreibungen in Sekunden generieren."
+                }
+            },
+            "upgradeCard": {
+                "title": "AUF PRO UPGRADEN",
+                "description": "Schalten Sie die unbegrenzte Generierung von SEO-Produktbeschreibungen frei und greifen Sie auf alle Funktionen zu.",
+                "button": "JETZT UPGRADEN"
+            },
+            "instructionsCard": {
+                "title": "ANLEITUNG",
+                "step1": "Geben Sie grundlegende Details zu Ihrem Produkt ein (Name, Eigenschaften, Materialien usw.).",
+                "step2": "Klicken Sie auf die Schaltfläche 'Produktbeschreibung generieren'.",
+                "step3": "Überprüfen Sie den generierten Inhalt (Titel, Meta, Beschreibungen usw.).",
+                "step4": "Kopieren Sie den Inhalt oder laden Sie ihn als Textdatei herunter.",
+                "step5": "Verwenden Sie den generierten SEO-Inhalt in Ihrem E-Commerce-Shop oder auf Ihrer Website."
+            }
+        },
+        "SeoProductDescriptionGenerator": {
             "title": "KI SEO PRODUKTBESCHREIBUNG",
             "description": "Generieren Sie vollständige SEO-optimierte Produktbeschreibungen",
             "enterDescription": "Geben Sie grundlegende Produktinformationen ein",
@@ -233,7 +361,7 @@
                 "productTitle": "Produkttitel",
                 "metaTitle": "Meta-Titel",
                 "metaDescription": "Meta-Beschreibung",
-                "shortDescription": "Kurzbeschreibung", 
+                "shortDescription": "Kurzbeschreibung",
                 "longDescription": "Lange Beschreibung",
                 "categories": "Kategorien",
                 "tags": "Tags",

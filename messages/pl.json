@@ -59,7 +59,8 @@
         "login": "ZALOGUJ SIĘ",
         "objectRemoval": "Usuwanie obiektów",
         "tools": "Narzędzia",
-        "addWatermark": "Dodaj znak wodny"
+        "addWatermark": "Dodaj znak wodny",
+        "seoDescription": "Opis SEO"
     },
     "Footer": {
         "about": "Batch Shots pomaga szybko i łatwo zoptymalizować obrazy produktów pod kątem SEO, bezpośrednio w przeglądarce.",
@@ -239,7 +240,87 @@
                 "tags": "Tagi",
                 "urlSlug": "URL Slug"
             },
-            "downloadAll": "POBIERZ WSZYSTKIE DANE"
+            "downloadAll": "POBIERZ WSZYSTKIE DANE",
+            "keywords": "opis produktu SEO, generator treści AI, SEO e-commerce, optymalizacja list produktów, meta opisy",
+            "instructionsCard": {
+                "title": "JAK UŻYWAĆ",
+                "step1": "Wprowadź podstawowe informacje o swoim produkcie (nazwa, cechy, materiały itp.).",
+                "step2": "Kliknij przycisk 'Generuj opis produktu'.",
+                "step3": "Przejrzyj wygenerowaną treść (tytuł, meta, opisy itp.).",
+                "step4": "Skopiuj treść lub pobierz ją jako plik tekstowy.",
+                "step5": "Użyj wygenerowanej treści SEO w swoim sklepie e-commerce lub na stronie internetowej."
+            },
+            "mainCard": {
+                "title": "GENERUJ TREŚCI SEO",
+                "info": {
+                    "title": "CZYM JEST TO NARZĘDZIE?",
+                    "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek.",
+                    "freeMode": {
+                        "title": "TRYB DARMOWY",
+                        "description": "Ograniczony dostęp do generowania kilku opisów. Przejdź na PRO, aby uzyskać nieograniczone generowanie i dostęp do wszystkich pól treści SEO."
+                    },
+                    "proMode": {
+                        "title": "TRYB PRO",
+                        "description": "Nieograniczony dostęp do generowania kompletnych opisów produktów SEO ze wszystkimi odblokowanymi funkcjami premium."
+                    }
+                },
+                "benefits": {
+                    "complete": "KOMPLETNY PAKIET SEO",
+                    "completeDesc": "Otrzymaj pełny zestaw treści SEO dla swojego produktu, gotowy do użycia.",
+                    "aiPowered": "TREŚĆ GENEROWANA PRZEZ AI",
+                    "aiPoweredDesc": "Generuje unikalne, przekonujące i bogate w słowa kluczowe opisy.",
+                    "bestPractices": "NAJLEPSZE PRAKTYKI SEO",
+                    "bestPracticesDesc": "Przestrzega wytycznych dotyczących liczby znaków, rozmieszczenia słów kluczowych i czytelności.",
+                    "quickEasy": "SZYBKO I ŁATWO",
+                    "quickEasyDesc": "Oszczędź godziny, generując profesjonalne opisy w kilka sekund."
+                }
+            }
+        },
+        "SeoDescriptionPage": {
+            "metadata": {
+                "title": "Generator opisów produktów SEO AI | Batch Shots",
+                "description": "Generuj kompletne, zoptymalizowane pod kątem SEO opisy produktów (tytuł, meta tytuł/opis, krótki/długi opis, kategorie, tagi, slug URL) na podstawie podstawowych informacji.",
+                "keywords": "opis produktu seo, opis produktu ai, seo ecommerce, generator opisów produktów, generator meta opisów, generator tytułów produktów"
+            },
+            "title": "GENERATOR OPISÓW PRODUKTÓW SEO AI",
+            "mainCard": {
+                "title": "GENERUJ TREŚCI SEO",
+                "info": {
+                    "title": "CZYM JEST TO NARZĘDZIE?",
+                    "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek.",
+                    "freeMode": {
+                        "title": "TRYB DARMOWY",
+                        "description": "Ograniczony dostęp do generowania kilku opisów. Przejdź na PRO, aby uzyskać nieograniczone generowanie i dostęp do wszystkich pól treści SEO."
+                    },
+                    "proMode": {
+                        "title": "TRYB PRO",
+                        "description": "Nieograniczony dostęp do generowania kompletnych opisów produktów SEO ze wszystkimi odblokowanymi funkcjami premium."
+                    }
+                },
+                "benefits": {
+                    "complete": "KOMPLETNY PAKIET SEO",
+                    "completeDesc": "Otrzymaj pełny zestaw treści SEO dla swojego produktu, gotowy do użycia.",
+                    "aiPowered": "TREŚĆ GENEROWANA PRZEZ AI",
+                    "aiPoweredDesc": "Generuje unikalne, przekonujące i bogate w słowa kluczowe opisy.",
+                    "bestPractices": "NAJLEPSZE PRAKTYKI SEO",
+                    "bestPracticesDesc": "Przestrzega wytycznych dotyczących liczby znaków, rozmieszczenia słów kluczowych i czytelności.",
+                    "quickEasy": "SZYBKO I ŁATWO",
+                    "quickEasyDesc": "Oszczędź godziny, generując profesjonalne opisy w kilka sekund."
+                }
+            },
+            "upgradeCard": {
+                "title": "PRZEJDŹ NA PRO",
+                "description": "Odblokuj nieograniczone generowanie opisów produktów SEO i uzyskaj dostęp do wszystkich funkcji.",
+                "button": "ULEPSZ TERAZ"
+            },
+            "instructionsCard": {
+                "title": "JAK UŻYWAĆ",
+                "step1": "Wprowadź podstawowe informacje o swoim produkcie (nazwa, cechy, materiały itp.).",
+                "step2": "Kliknij przycisk 'Generuj opis produktu'.",
+                "step3": "Przejrzyj wygenerowaną treść (tytuł, meta, opisy itp.).",
+                "step4": "Skopiuj treść lub pobierz ją jako plik tekstowy.",
+                "step5": "Użyj wygenerowanej treści SEO w swoim sklepie e-commerce lub na stronie internetowej."
+            }
         },
         "QuickPresets": {
             "title": "SZYBKIE PRESETY",
@@ -444,6 +525,43 @@
                 "tile": "Kafel (Wzór)"
             },
             "removeDescription": "Usuwanie znaku wodnego wspomagane przez AI już wkrótce!"
+        },
+        "SeoProductDescriptionGenerator": {
+            "title": "OPIS PRODUKTU SEO AI",
+            "description": "Wygeneruj kompletny opis produktu zoptymalizowany pod kątem SEO",
+            "enterDescription": "Wprowadź podstawowe informacje o produkcie",
+            "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista, wiele przegródek na karty...",
+            "generate": "GENERUJ OPIS PRODUKTU",
+            "generating": "GENEROWANIE...",
+            "proFeature": "To jest funkcja PRO",
+            "copyToClipboard": "KOPIUJ DO SCHOWKA",
+            "downloadAsTxt": "POBIERZ JAKO TXT",
+            "copied": "Skopiowano!",
+            "tryFeature": "WYPRÓBUJ FUNKCJĘ",
+            "tabs": {
+                "content": "TREŚĆ",
+                "meta": "META",
+                "categories": "KATEGORIE",
+                "previews": "PODGLĄDY"
+            },
+            "previews": {
+                "googleSearch": "PODGLĄD WYSZUKIWANIA GOOGLE",
+                "ecommerce": "PODGLĄD E-COMMERCE",
+                "productImage": "Zdjęcie produktu",
+                "addToCart": "Dodaj do koszyka",
+                "wishlist": "Lista życzeń"
+            },
+            "sections": {
+                "productTitle": "Tytuł produktu",
+                "metaTitle": "Meta tytuł",
+                "metaDescription": "Meta opis",
+                "shortDescription": "Krótki opis",
+                "longDescription": "Długi opis",
+                "categories": "Kategorie",
+                "tags": "Tagi",
+                "urlSlug": "URL Slug"
+            },
+            "downloadAll": "POBIERZ WSZYSTKIE DANE"
         }
     },
     "Dialogs": {
@@ -549,7 +667,7 @@
         "title": "POLITYKA PRYWATNOŚCI",
         "section1Title": "1. WPROWADZENIE",
         "section1P1": "Witamy w Batch Shots („my”, „nasz”, „nas”). Zobowiązujemy się do ochrony Twojej prywatności i zapewnienia bezpieczeństwa Twoich danych osobowych.",
-        "section1P2": "Ta Polityka Prywatności wyjaśnia, jak przetwarzamy Twoje dane podczas korzystania z naszego narzędzia do optymalizacji obrazów działającego w przeglądarce.",
+        "section1P2": "Ta Polityka Prywatności wyjaśnia, jak przetwarzamy Twoje dane podczas korystania z naszego narzędzia do optymalizacji obrazów działającego w przeglądarce.",
         "section2Title": "2. INFORMACJE, KTÓRYCH NIE ZBIERAMY",
         "section2P1Bold": "Nie zbieramy ani nie przechowujemy Twoich obrazów.",
         "section2P1": "Naszą podstawową zasadą jest prywatność przez projekt.",
@@ -559,7 +677,7 @@
         "section2Li3": "Nie przechowujemy kopii Twoich oryginalnych ani przetworzonych obrazów.",
         "section2Li4": "Nie śledzimy zawartości Twoich obrazów.",
         "section3Title": "3. FUNKCJE WSPIERANE PRZEZ AI",
-        "section3P1": "Gdy korzystasz z naszych funkcji generowania nazw SEO wspieranych przez AI:",
+        "section3P1": "Gdy korystasz z naszych funkcji generowania nazw SEO wspieranych przez AI:",
         "section3Li1": "Wysyłamy do naszego API tylko podany przez Ciebie tekst opisowy.",
         "section3Li2": "Nie wysyłamy ani nie przetwarzamy Twoich rzeczywistych obrazów za pośrednictwem naszych systemów AI.",
         "section3Li3": "Wygenerowane nazwy SEO są dostarczane z powrotem do Twojej przeglądarki i nie są trwale przechowywane na naszych serwerach.",
@@ -583,7 +701,7 @@
         "title": "WARUNKI UŻYTKOWANIA",
         "lastUpdated": "Ostatnia aktualizacja: 31 marca 2024",
         "section1Title": "1. AKCEPTACJA WARUNKÓW",
-        "section1P1": "Uzyskując dostęp do Batch Shots i korzystając z niego, zgadzasz się na przestrzeganie niniejszych Warunków użytkowania. Jeśli nie zgadzasz się z jakąkolwiek częścią tych warunków, nie możesz korzystać z naszej usługi.",
+        "section1P1": "Uzyskując dostęp do Batch Shots i korzystając z niego, zgadzasz się na przestrzeganie niniejszych Warunków użytkowania. Jeśli nie zgadzasz się z jakąkolwiek częścią tych warunków, nie możesz korystać z naszej usługi.",
         "section2Title": "2. OPIS USŁUGI",
         "section2P1": "Batch Shots to narzędzie do optymalizacji obrazów oparte na przeglądarce, które umożliwia użytkownikom:",
         "section2Li1": "Dostosowywać właściwości obrazu, takie jak jasność, kontrast i balans bieli",

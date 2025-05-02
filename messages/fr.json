@@ -59,7 +59,8 @@
         "login": "SE CONNECTER",
         "objectRemoval": "Suppression d'objets",
         "tools": "Outils",
-        "addWatermark": "Ajouter un filigrane"
+        "addWatermark": "Ajouter un filigrane",
+        "seoDescription": "Description SEO"
     },
     "Footer": {
         "about": "Batch Shots vous aide à optimiser rapidement et facilement les images de produits pour le SEO, directement dans votre navigateur.",
@@ -233,7 +234,124 @@
                 "productTitle": "Titre du produit",
                 "metaTitle": "Méta-titre",
                 "metaDescription": "Méta-description",
-                "shortDescription": "Description courte", 
+                "shortDescription": "Description courte",
+                "longDescription": "Description longue",
+                "categories": "Catégories",
+                "tags": "Tags",
+                "urlSlug": "Slug d'URL"
+            },
+            "downloadAll": "TÉLÉCHARGER TOUTES LES DONNÉES",
+            "keywords": "description de produit SEO, générateur de contenu IA, SEO e-commerce, optimiser les listes de produits, méta descriptions",
+            "instructionsCard": {
+                "title": "COMMENT UTILISER",
+                "step1": "Saisissez les détails de base de votre produit (nom, caractéristiques, matériaux, etc.).",
+                "step2": "Cliquez sur le bouton 'Générer la description du produit'.",
+                "step3": "Examinez le contenu généré (titre, méta, descriptions, etc.).",
+                "step4": "Copiez le contenu ou téléchargez-le sous forme de fichier texte.",
+                "step5": "Utilisez le contenu SEO généré sur votre boutique en ligne ou votre site web."
+            },
+            "mainCard": {
+                "title": "GÉNÉRER DU CONTENU SEO",
+                "info": {
+                    "title": "QU'EST-CE QUE CET OUTIL ?",
+                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche.",
+                    "freeMode": {
+                        "title": "MODE GRATUIT",
+                        "description": "Accès limité pour générer quelques descriptions. Passez à PRO pour une génération illimitée et l'accès à tous les champs de contenu SEO."
+                    },
+                    "proMode": {
+                        "title": "MODE PRO",
+                        "description": "Accès illimité pour générer des descriptions de produits SEO complètes avec toutes les fonctionnalités premium débloquées."
+                    }
+                },
+                "benefits": {
+                    "complete": "PACKAGE SEO COMPLET",
+                    "completeDesc": "Obtenez un ensemble complet de contenu SEO pour votre produit, prêt à l'emploi.",
+                    "aiPowered": "CONTENU GÉNÉRÉ PAR IA",
+                    "aiPoweredDesc": "Génère des descriptions uniques, convaincantes et riches en mots-clés.",
+                    "bestPractices": "MEILLEURES PRATIQUES SEO",
+                    "bestPracticesDesc": "Suit les directives concernant le nombre de caractères, le placement des mots-clés et la lisibilité.",
+                    "quickEasy": "RAPIDE & FACILE",
+                    "quickEasyDesc": "Gagnez des heures en générant des descriptions professionnelles en quelques secondes."
+                }
+            }
+        },
+        "SeoDescriptionPage": {
+            "metadata": {
+                "title": "Générateur de description de produit SEO IA | Batch Shots",
+                "description": "Générez des descriptions de produits complètes et optimisées pour le SEO (titre, méta-titre/description, description courte/longue, catégories, tags, slug d'URL) à partir d'informations de base.",
+                "keywords": "description de produit seo, description de produit ia, seo ecommerce, générateur de description de produit, générateur de méta description, générateur de titre de produit"
+            },
+            "title": "GÉNÉRATEUR DE DESCRIPTION DE PRODUIT SEO IA",
+            "mainCard": {
+                "title": "GÉNÉRER DU CONTENU SEO",
+                "info": {
+                    "title": "QU'EST-CE QUE CET OUTIL ?",
+                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche.",
+                    "freeMode": {
+                        "title": "MODE GRATUIT",
+                        "description": "Accès limité pour générer quelques descriptions. Passez à PRO pour une génération illimitée et l'accès à tous les champs de contenu SEO."
+                    },
+                    "proMode": {
+                        "title": "MODE PRO",
+                        "description": "Accès illimité pour générer des descriptions de produits SEO complètes avec toutes les fonctionnalités premium débloquées."
+                    }
+                },
+                "benefits": {
+                    "complete": "PACKAGE SEO COMPLET",
+                    "completeDesc": "Obtenez un ensemble complet de contenu SEO pour votre produit, prêt à l'emploi.",
+                    "aiPowered": "CONTENU GÉNÉRÉ PAR IA",
+                    "aiPoweredDesc": "Génère des descriptions uniques, convaincantes et riches en mots-clés.",
+                    "bestPractices": "MEILLEURES PRATIQUES SEO",
+                    "bestPracticesDesc": "Suit les directives concernant le nombre de caractères, le placement des mots-clés et la lisibilité.",
+                    "quickEasy": "RAPIDE & FACILE",
+                    "quickEasyDesc": "Gagnez des heures en générant des descriptions professionnelles en quelques secondes."
+                }
+            },
+            "upgradeCard": {
+                "title": "PASSER À PRO",
+                "description": "Débloquez la génération illimitée de descriptions de produits SEO et accédez à toutes les fonctionnalités.",
+                "button": "PASSER À PRO MAINTENANT"
+            },
+            "instructionsCard": {
+                "title": "COMMENT UTILISER",
+                "step1": "Saisissez les détails de base de votre produit (nom, caractéristiques, matériaux, etc.).",
+                "step2": "Cliquez sur le bouton 'Générer la description du produit'.",
+                "step3": "Examinez le contenu généré (titre, méta, descriptions, etc.).",
+                "step4": "Copiez le contenu ou téléchargez-le sous forme de fichier texte.",
+                "step5": "Utilisez le contenu SEO généré sur votre boutique en ligne ou votre site web."
+            }
+        },
+        "SeoProductDescriptionGenerator": {
+            "title": "DESCRIPTION DE PRODUIT SEO IA",
+            "description": "Générez une description de produit complète optimisée pour le SEO",
+            "enterDescription": "Entrez les informations de base du produit",
+            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur, plusieurs emplacements pour cartes...",
+            "generate": "GÉNÉRER LA DESCRIPTION DU PRODUIT",
+            "generating": "GÉNÉRATION EN COURS...",
+            "proFeature": "Ceci est une fonctionnalité PRO",
+            "copyToClipboard": "COPIER DANS LE PRESSE-PAPIERS",
+            "downloadAsTxt": "TÉLÉCHARGER AU FORMAT TXT",
+            "copied": "Copié !",
+            "tryFeature": "ESSAYER LA FONCTIONNALITÉ",
+            "tabs": {
+                "content": "CONTENU",
+                "meta": "META",
+                "categories": "CATÉGORIES",
+                "previews": "APERÇUS"
+            },
+            "previews": {
+                "googleSearch": "APERÇU DE RECHERCHE GOOGLE",
+                "ecommerce": "APERÇU E-COMMERCE",
+                "productImage": "Image du produit",
+                "addToCart": "Ajouter au panier",
+                "wishlist": "Liste de souhaits"
+            },
+            "sections": {
+                "productTitle": "Titre du produit",
+                "metaTitle": "Méta-titre",
+                "metaDescription": "Méta-description",
+                "shortDescription": "Description courte",
                 "longDescription": "Description longue",
                 "categories": "Catégories",
                 "tags": "Tags",
