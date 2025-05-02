@@ -1,9 +1,11 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ReactNode } from 'react';
+import type { Metadata } from 'next';
+import React from 'react';
 
 // Generate metadata for the Format Conversion page
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
-  // Corrected namespace
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'ImageFormatConvertorPage.metadata' }); 
 
   return {
@@ -28,6 +30,15 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 }
 
 // Basic layout component to wrap the page
-export default function FormatConversionLayout({ children }: { children: ReactNode }) {
+export default async function ImageFormatConvertorLayout({ 
+  children,
+  params 
+}: { 
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return <>{children}</>;
 } 

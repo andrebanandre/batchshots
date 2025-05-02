@@ -8,7 +8,7 @@ import Button from '../../components/Button';
 import Card from '../../components/Card';
 import ProBadge from '../../components/ProBadge';
 import PricingCard from '../../components/PricingCard';
-import { ImageFile } from '@/app/types/imageFile';
+import { ImageFile } from '../../components/ImagePreview';
 import { createImageFile, downloadAllImages, downloadImage, ImageFormat } from '../../lib/imageProcessing';
 import { initOpenCV } from '../../lib/imageProcessing';
 import Loader from '../../components/Loader';
@@ -16,7 +16,6 @@ import { useTranslations } from 'next-intl';
 import PresetsSelector, { Preset, defaultPresets } from '../../components/PresetsSelector';
 import { convertImageFormat, supportedOutputFormats, isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter';
 import DownloadDialog from '../../components/DownloadDialog';
-import { useProStatus } from '../../hooks/useProStatus';
 
 // Extend ImageFile type to include format conversion properties
 interface FormatConversionImageFile extends ImageFile {
