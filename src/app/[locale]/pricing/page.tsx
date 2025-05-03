@@ -72,12 +72,12 @@ export default function PricingPage() {
               isCurrentPlan={isProUser}
               onSelectPlan={() => {}}
               buttonText={t('plans.pro.buttonText')}
-              customButton={<BuyProButton locale={locale}>{t('plans.pro.buttonText')}</BuyProButton>}
+              customButton={<BuyProButton locale={locale} variant="accent" size="lg">{t('plans.pro.buttonText')}</BuyProButton>}
             />
           </div>
         )}
         
-        <div className="mt-12 bg-white brutalist-border p-6 max-w-4xl mx-auto">
+        {/* <div className="mt-12 bg-white brutalist-border p-6 max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('faq.title')}</h2>
           
           <div className="space-y-4">
@@ -109,7 +109,7 @@ export default function PricingPage() {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   );

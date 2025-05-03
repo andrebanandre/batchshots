@@ -47,7 +47,7 @@
         "selectMoreImages": "VYBRAT DALŠÍ OBRÁZKY",
         "maxImagesReached": "MAXIMÁLNÍ POČET OBRÁZKŮ DOSAŽEN",
         "imagesCount": "{current}/{max} obrázků",
-        "upgradeFor": "(Upgradujte pro až 100)",
+        "upgradeFor": "(Upgrade pro až 100)",
         "imageOptimization": "OPTIMALIZACE OBRÁZKŮ",
         "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Vaše obrázky nikdy nenahráváme na naše servery.</strong> Vaše soukromí a bezpečnost jsou zaručeny.",
         "heicConversionFailed": "Nepodařilo se převést HEIC obrázek: {fileName}. Formát souboru nemusí být podporován nebo je soubor poškozený."
@@ -72,7 +72,8 @@
         "emailPlaceholder": "Váš email",
         "subscribe": "PŘIHLÁSIT SE",
         "copyright": "© {year} Batch Shots. Všechna práva vyhrazena.",
-        "madeWith": "Vytvořeno s ♥ týmem Batch Shots"
+        "madeWith": "Vytvořeno s ♥ týmem Batch Shots",
+        "contactUs": "Kontaktujte nás"
     },
     "Layout": {
         "title": "Hromadný Editor Obrázků & SEO Optimalizátor | Batch Shots",
@@ -801,6 +802,111 @@
         },
         "allImages": "VŠECHNY OBRÁZKY ({current}/{max})",
         "imagesCount": "{current}/{max} obrázků",
-        "upgradeFor": "(Upgrade pro až 100)"
+        "upgradeFor": "(Upgrade pro až 100)",
+        "plans": {
+            "free": {
+                "title": "ZDARMA",
+                "price": "ZDARMA",
+                "features": [
+                    "Dávkové zpracování max 5 obrázků",
+                    "Odstranění pozadí AI jednoho obrázku (náhled)",
+                    "Odstranění objektů AI z jednoho obrázku",
+                    "Přidání vodoznaku max 5 obrázků",
+                    "Konvertor obrázků max 5 obrázků dávkově",
+                    "Generování názvů obrázků SEO AI (Není k dispozici)",
+                    "Popis SEO AI a metatagy (Není k dispozici)"
+                ],
+                "buttonText": "POKRAČOVAT ZDARMA"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "$19.99",
+                "features": [
+                    "Dávkové zpracování max 100 obrázků",
+                    "Až 100 odstranění pozadí AI v jedné dávce",
+                    "Odstranění objektů AI až 100 obrázků",
+                    "Přidání vodoznaku 100 obrázků v jedné dávce",
+                    "Konvertor obrázků max 100 obrázků dávkově",
+                    "Generování názvů obrázků SEO AI (až 100)",
+                    "Popis SEO AI a metatagy k dispozici",
+                    "**Jednorázová platba, doživotní přístup**"
+                ],
+                "buttonText": "PŘEJÍT NA PRO"
+            }
+        }
+    },
+    "Pricing": {
+        "title": "CENOVÉ PLÁNY",
+        "subtitle": "Vyberte si perfektní plán pro vaše potřeby optimalizace obrázků. Náš PRO plán nabízí doživotní licenci s jednorázovou platbou.",
+        "alreadyPro": {
+            "title": "Už jste PRO uživatel!",
+            "description": "Děkujeme za vaši podporu. Máte přístup ke všem PRO funkcím včetně hromadného odstranění pozadí, pokročilých úprav obrázků a generování SEO názvů souborů.",
+            "backToEditor": "ZPĚT DO EDITORU"
+        },
+        "checkout": {
+            "title": "DOKONČETE NÁKUP",
+            "planTitle": "PRO DOŽIVOTNÍ LICENCE",
+            "price": "$19.99",
+            "description": "Jednorázová platba, doživotní přístup ke všem PRO funkcím",
+            "email": "EMAIL",
+            "cardInfo": "INFORMACE O KARTĚ",
+            "cardNumber": "1234 5678 9012 3456",
+            "expiryDate": "MM/RR",
+            "cvc": "CVC",
+            "completePurchase": "DOKONČIT NÁKUP",
+            "goBack": "Jít zpět"
+        },
+        "plans": {
+            "free": {
+                "title": "ZDARMA",
+                "price": "ZDARMA",
+                "features": [
+                    "Dávkové zpracování max 5 obrázků",
+                    "Odstranění pozadí AI jednoho obrázku (náhled)",
+                    "Odstranění objektů AI z jednoho obrázku",
+                    "Přidání vodoznaku max 5 obrázků",
+                    "Konvertor obrázků max 5 obrázků dávkově",
+                    "Generování názvů obrázků SEO AI (Není k dispozici)",
+                    "Popis SEO AI a metatagy (Není k dispozici)"
+                ],
+                "buttonText": "POKRAČOVAT ZDARMA"
+            },
+            "pro": {
+                "title": "PRO",
+                "price": "$19.99",
+                "features": [
+                    "Dávkové zpracování max 100 obrázků",
+                    "Až 100 odstranění pozadí AI v jedné dávce",
+                    "Odstranění objektů AI až 100 obrázků",
+                    "Přidání vodoznaku 100 obrázků v jedné dávce",
+                    "Konvertor obrázků max 100 obrázků dávkově",
+                    "Generování názvů obrázků SEO AI (až 100)",
+                    "Popis SEO AI a metatagy k dispozici",
+                    "**Jednorázová platba, doživotní přístup**"
+                ],
+                "buttonText": "PŘEJÍT NA PRO"
+            }
+        },
+        "faq": {
+            "title": "ČASTO KLADENÉ DOTAZY",
+            "questions": {
+                "oneTime": {
+                    "question": "Je to opravdu jednorázová platba?",
+                    "answer": "Ano! Zaplatíte jednou a získáte doživotní přístup ke všem PRO funkcím. Žádné opakované předplatné."
+                },
+                "backgroundRemoval": {
+                    "question": "Jak funguje odstranění pozadí?",
+                    "answer": "Používáme pokročilé AI algoritmy k detekci a odstranění pozadí z vašich produktových obrázků. Celý proces probíhá ve vašem prohlížeči – vaše obrázky nikdy neukládáme na naše servery."
+                },
+                "imageLimits": {
+                    "question": "Jaké jsou limity obrázků?",
+                    "answer": "Bezplatní uživatelé mohou zpracovat až 10 obrázků najednou se základními funkcemi a odstranit pozadí z 1 obrázku najednou. PRO uživatelé mohou zpracovat až 100 obrázků současně, včetně hromadného odstranění pozadí."
+                },
+                "refund": {
+                    "question": "Mohu požádat o vrácení peněz?",
+                    "answer": "Ano, nabízíme 30denní záruku vrácení peněz, pokud nejste spokojeni s PRO funkcemi. Kontaktujte náš tým podpory pro pomoc."
+                }
+            }
+        }
     }
 }

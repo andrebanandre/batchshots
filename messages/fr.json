@@ -72,7 +72,8 @@
         "emailPlaceholder": "Votre email",
         "subscribe": "S'ABONNER",
         "copyright": "© {year} Batch Shots. Tous droits réservés.",
-        "madeWith": "Fait avec ♥ par l'équipe Batch Shots"
+        "madeWith": "Fait avec ♥ par l'équipe Batch Shots",
+        "contactUs": "Contactez-nous"
     },
     "Layout": {
         "title": "Éditeur d'Images par Lots & Optimiseur SEO | Batch Shots",
@@ -621,24 +622,28 @@
                 "title": "GRATUIT",
                 "price": "GRATUIT",
                 "features": [
-                    "Traitez jusqu'à 10 images à la fois",
-                    "Ajustements d'image de base",
-                    "Suppression d'arrière-plan d'une seule image",
-                    "Options d'export standard",
-                    "Traitement dans le navigateur"
+                    "Traitement par lots max 5 images",
+                    "Suppression de l'arrière-plan IA image unique (aperçu)",
+                    "Suppression d'objets IA image unique",
+                    "Ajout de filigrane max 5 images",
+                    "Convertisseur d'images max 5 images en lot",
+                    "Génération de noms d'images SEO IA (Non disponible)",
+                    "Description et métatags SEO IA (Non disponible)"
                 ],
-                "buttonText": "CONTINUER GRATUITEMENT"
+                "buttonText": "CONTINUER EN GRATUIT"
             },
             "pro": {
                 "title": "PRO",
-                "price": "19,99 €",
+                "price": "$19.99",
                 "features": [
-                    "Traitez jusqu'à 100 images à la fois",
-                    "Ajustements d'image avancés et préréglages",
-                    "Suppression d'arrière-plan en masse (jusqu'à 100 images)",
-                    "Génération de noms de fichiers SEO",
-                    "Support prioritaire",
-                    "Paiement unique, accès à vie"
+                    "Traitement par lots max 100 images",
+                    "Jusqu'à 100 suppressions d'arrière-plan IA en un lot",
+                    "Suppression d'objets IA jusqu'à 100 images",
+                    "Ajout de filigrane 100 images en un lot",
+                    "Convertisseur d'images max 100 images en lot",
+                    "Génération de noms d'images SEO IA (jusqu'à 100)",
+                    "Description et métatags SEO IA disponibles",
+                    "**Paiement unique, accès à vie**"
                 ],
                 "buttonText": "PASSER À PRO"
             }

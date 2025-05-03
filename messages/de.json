@@ -72,7 +72,8 @@
         "emailPlaceholder": "Ihre E-Mail",
         "subscribe": "ABONNIEREN",
         "copyright": "© {year} Batch Shots. Alle Rechte vorbehalten.",
-        "madeWith": "Mit ♥ erstellt vom Batch Shots-Team"
+        "madeWith": "Mit ♥ erstellt vom Batch Shots-Team",
+        "contactUs": "Kontaktieren Sie uns"
     },
     "Layout": {
         "title": "Batch-Bildbearbeitung & SEO-Optimierer | Batch Shots",
@@ -631,24 +632,28 @@
                 "title": "KOSTENLOS",
                 "price": "KOSTENLOS",
                 "features": [
-                    "Bis zu 10 Bilder gleichzeitig verarbeiten",
-                    "Grundlegende Bildanpassungen",
-                    "Einzelne Hintergrundentfernung",
-                    "Standard-Exportoptionen",
-                    "Browser-basierte Verarbeitung"
+                    "Batch-Verarbeitung max. 5 Bilder",
+                    "Einzelbild KI-Hintergrundentfernung (Vorschau)",
+                    "KI-Objektentfernung aus Einzelbild",
+                    "Wasserzeichen hinzufügen max. 5 Bilder",
+                    "Bildkonverter max. 5 Bilder im Stapel",
+                    "KI SEO Bildnamensgenerierung (Nicht verfügbar)",
+                    "KI SEO Beschreibung und Metatags (Nicht verfügbar)"
                 ],
-                "buttonText": "KOSTENLOS FORTFAHREN"
+                "buttonText": "MIT KOSTENLOS FORTFAHREN"
             },
             "pro": {
                 "title": "PRO",
-                "price": "19,99 €",
+                "price": "$19.99",
                 "features": [
-                    "Bis zu 100 Bilder gleichzeitig verarbeiten",
-                    "Erweiterte Bildanpassungen und Voreinstellungen",
-                    "Massen-Hintergrundentfernung (bis zu 100 Bilder)",
-                    "SEO-Dateinamensgenerierung",
-                    "Prioritäts-Support",
-                    "Einmalzahlung, lebenslanger Zugang"
+                    "Batch-Verarbeitung max. 100 Bilder",
+                    "Bis zu 100 KI-Hintergrundentfernungen in einem Stapel",
+                    "KI-Objektentfernung bis zu 100 Bilder",
+                    "Wasserzeichen hinzufügen 100 Bilder in einem Stapel",
+                    "Bildkonverter max. 100 Bilder im Stapel",
+                    "KI SEO Bildnamensgenerierung (bis zu 100)",
+                    "KI SEO Beschreibung und Metatags verfügbar",
+                    "**Einmalzahlung, lebenslanger Zugriff**"
                 ],
                 "buttonText": "AUF PRO UPGRADEN"
             }

@@ -70,10 +70,14 @@ export default function Footer() {
             </nav>
           </div>
           
-          {/* Fourth Column - Language */}
-          <div className="text-right">
-              <LanguageSelector />
+          {/* Fourth Column - Contact & Language */}
+          <div className="text-right flex flex-col items-end space-y-2">
+            <div>
+              <div className="font-bold uppercase text-sm mb-1">{t('contactUs')}</div>
+              <a href="mailto:contact@batchshots.com" className="text-sm hover:underline">contact@batchshots.com</a>
             </div>
+            <LanguageSelector />
+          </div>
         </div>
         
         {/* Copyright */}

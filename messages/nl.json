@@ -72,7 +72,8 @@
         "emailPlaceholder": "Uw e-mail",
         "subscribe": "ABONNEER",
         "copyright": "© {year} Batch Shots. Alle rechten voorbehouden.",
-        "madeWith": "Gemaakt met ♥ door het Batch Shots-team"
+        "madeWith": "Gemaakt met ♥ door het Batch Shots-team",
+        "contactUs": "Neem contact op"
     },
     "Layout": {
         "title": "Batch Afbeeldingseditor & SEO Optimalisatie | Batch Shots",
@@ -727,26 +728,30 @@
                 "title": "GRATIS",
                 "price": "GRATIS",
                 "features": [
-                    "Verwerk tot 10 afbeeldingen tegelijk",
-                    "Basis afbeeldingsaanpassingen",
-                    "Enkele achtergrondverwijdering",
-                    "Standaard exportopties",
-                    "Browser-gebaseerde verwerking"
+                    "Batchverwerking max 5 afbeeldingen",
+                    "AI achtergrondverwijdering enkele afbeelding (preview)",
+                    "AI objectenverwijdering enkele afbeelding",
+                    "Watermerk toevoegen max 5 afbeeldingen",
+                    "Afbeeldingsconverter max 5 afbeeldingen in bulk",
+                    "AI SEO afbeeldingsnaamgeneratie (Niet beschikbaar)",
+                    "AI SEO beschrijving en metatags (Niet beschikbaar)"
                 ],
-                "buttonText": "GRATIS VERDERGAAN"
+                "buttonText": "DOORGAAN MET GRATIS"
             },
             "pro": {
                 "title": "PRO",
-                "price": "€19,99",
+                "price": "$19.99",
                 "features": [
-                    "Verwerk tot 100 afbeeldingen tegelijk",
-                    "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
-                    "Bulk achtergrondverwijdering (tot 100 afbeeldingen)",
-                    "SEO-bestandsnaamgeneratie",
-                    "Prioriteitsondersteuning",
-                    "Eenmalige betaling, levenslange toegang"
+                    "Batchverwerking max 100 afbeeldingen",
+                    "Tot 100 AI achtergrondverwijderingen in één batch",
+                    "AI objectenverwijdering tot 100 afbeeldingen",
+                    "Watermerk toevoegen 100 afbeeldingen in één batch",
+                    "Afbeeldingsconverter max 100 afbeeldingen in bulk",
+                    "AI SEO afbeeldingsnaamgeneratie (tot 100)",
+                    "AI SEO beschrijving en metatags beschikbaar",
+                    "**Eenmalige betaling, levenslange toegang**"
                 ],
-                "buttonText": "UPGRADE NAAR PRO"
+                "buttonText": "UPGRADEN NAAR PRO"
             }
         },
         "faq": {

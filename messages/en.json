@@ -72,10 +72,11 @@
         "emailPlaceholder": "Your email",
         "subscribe": "SUBSCRIBE",
         "copyright": "© {year} Batch Shots. All rights reserved.",
-        "madeWith": "Made with ♥ by the Batch Shots team"
+        "madeWith": "Made with ♥ by the Batch Shots team",
+        "contactUs": "Contact Us"
     },
     "Layout": {
-        "title": "Batch Image Editor & SEO Optimizer | Batch Shots",
+        "title": "AI Batch Image Editor & SEO Optimizer | Batch Shots",
         "description": "Effortlessly edit, resize, watermark, and optimize images in bulk for SEO. AI-powered features for product photos, background removal, and SEO name generation.",
         "keywords": "image editor, batch image processing, seo image optimization, watermark photos, background removal, product photos, ai image editing, batchshots"
     },
@@ -697,11 +698,13 @@
                 "title": "FREE",
                 "price": "FREE",
                 "features": [
-                    "Process up to 10 images at once",
-                    "Basic image adjustments",
-                    "Single image background removal",
-                    "Standard export options",
-                    "Browser-based processing"
+                    "Batch process max 5 images",
+                    "Single image AI background removal (preview)",
+                    "AI objects removal from single image",
+                    "Watermark adding max 5 images",
+                    "Image converter max 5 images in bulk",
+                    "AI SEO images naming generation (Not available)",
+                    "AI SEO description and metatags (Not available)"
                 ],
                 "buttonText": "CONTINUE WITH FREE"
             },
@@ -709,12 +712,14 @@
                 "title": "PRO",
                 "price": "$19.99",
                 "features": [
-                    "Process up to 100 images at once",
-                    "Advanced image adjustments and presets",
-                    "Bulk background removal (up to 100 images)",
-                    "SEO filename generation",
-                    "Priority support",
-                    "One-time payment, lifetime access"
+                    "Batch process max 100 images",
+                    "Up to 100 AI background removals in one batch",
+                    "AI objects removal up to 100 images",
+                    "Watermark adding 100 images in one batch",
+                    "Image converter max 100 images in bulk",
+                    "AI SEO images naming generation (up to 100)",
+                    "AI SEO description and metatags available",
+                    "**One-time payment, lifetime access**"
                 ],
                 "buttonText": "UPGRADE TO PRO"
             }

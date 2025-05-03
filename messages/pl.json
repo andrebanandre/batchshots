@@ -72,7 +72,8 @@
         "emailPlaceholder": "Twój email",
         "subscribe": "ZAPISZ SIĘ",
         "copyright": "© {year} Batch Shots. Wszelkie prawa zastrzeżone.",
-        "madeWith": "Stworzone z ♥ przez zespół Batch Shots"
+        "madeWith": "Stworzone z ♥ przez zespół Batch Shots",
+        "contactUs": "Skontaktuj się z nami"
     },
     "Layout": {
         "title": "Edytor Obrazów Zbiorczych i Optymalizator SEO | Batch Shots",
@@ -621,26 +622,30 @@
                 "title": "DARMOWY",
                 "price": "DARMOWY",
                 "features": [
-                    "Przetwarzaj do 10 obrazów jednocześnie",
-                    "Podstawowe dostosowania obrazów",
-                    "Usuwanie tła z jednego obrazu",
-                    "Standardowe opcje eksportu",
-                    "Przetwarzanie w przeglądarce"
+                    "Przetwarzanie wsadowe max 5 obrazów",
+                    "Usuwanie tła AI pojedynczego obrazu (podgląd)",
+                    "Usuwanie obiektów AI z pojedynczego obrazu",
+                    "Dodawanie znaku wodnego max 5 obrazów",
+                    "Konwerter obrazów max 5 obrazów wsadowo",
+                    "Generowanie nazw obrazów SEO AI (Niedostępne)",
+                    "Opis SEO AI i metatagi (Niedostępne)"
                 ],
-                "buttonText": "KONTYNUUJ DARMOWO"
+                "buttonText": "KONTYNUUJ Z DARMOWYM"
             },
             "pro": {
                 "title": "PRO",
-                "price": "19,99 €",
+                "price": "$19.99",
                 "features": [
-                    "Przetwarzaj do 100 obrazów jednocześnie",
-                    "Zaawansowane dostosowania obrazów i presety",
-                    "Zbiorcze usuwanie tła (do 100 obrazów)",
-                    "Generowanie nazw plików SEO",
-                    "Wsparcie priorytetowe",
-                    "Jednorazowa płatność, dostęp dożywotni"
+                    "Przetwarzanie wsadowe max 100 obrazów",
+                    "Do 100 usunięć tła AI w jednej partii",
+                    "Usuwanie obiektów AI do 100 obrazów",
+                    "Dodawanie znaku wodnego 100 obrazów w jednej partii",
+                    "Konwerter obrazów max 100 obrazów wsadowo",
+                    "Generowanie nazw obrazów SEO AI (do 100)",
+                    "Opis SEO AI i metatagi dostępne",
+                    "**Jednorazowa płatność, dożywotni dostęp**"
                 ],
-                "buttonText": "ULEPSZ DO PRO"
+                "buttonText": "PRZEJDŹ NA PRO"
             }
         },
         "faq": {
