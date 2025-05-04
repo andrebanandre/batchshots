@@ -53,8 +53,8 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
     const score = 'score' in captchaData ? captchaData.score : 0;
     console.log(`[API] reCAPTCHA score: ${score}`);
 
-    // Consider a score >= 0.5 as passing verification (adjust as needed)
-    return score >= 0.5;
+    // Consider a score >= 0.1 as passing verification (adjust as needed)
+    return score >= 0.1;
     
   } catch (error) {
     console.error('[API] Error verifying reCAPTCHA:', error);

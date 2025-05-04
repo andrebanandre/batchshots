@@ -1,14 +1,15 @@
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, GenerateContentRequest, SchemaType } from '@google/generative-ai';
+import { GoogleGenAI, HarmCategory, HarmBlockThreshold, Type } from '@google/genai';
 
 // Initialize the Google Generative AI with API key
 export function initGemini() {
   const apiKey = process.env.GOOGLE_AI_API_KEY;
-  
+
   if (!apiKey) {
     throw new Error('GOOGLE_AI_API_KEY is not defined in environment variables');
   }
   
-  return new GoogleGenerativeAI(apiKey);
+  // Use the new SDK initialization with a configuration object
+  return new GoogleGenAI({ apiKey: apiKey });
 }
 
 // The system prompt that instructs Gemini to generate SEO-friendly image names
@@ -57,48 +58,52 @@ export async function generateSeoImageNames(
   
   try {
     const genAI = initGemini();
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-    
+
     const prompt = `${getSeoNamesPrompt(count, language)}\n\nProduct description: ${description}`;
     
-    console.log(`[Gemini] Sending request with responseSchema for ${count} names in ${language}`);
+    console.log(`[Gemini] Sending request for ${count} names in ${language}`);
     
-    // Define content generation request with proper types
-    const request: GenerateContentRequest = {
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      generationConfig: {
+    // Define content generation request inline following SDK structure
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.0-flash-lite-001", // Model name at top level
+      contents: [{ role: 'user', parts: [{ text: prompt }] }], // Contents at top level
+      // Config parameters are nested within a 'config' object
+      config: { 
         temperature: 0.2,
         topP: 0.8,
         topK: 40,
         responseMimeType: 'application/json',
         responseSchema: {
-          type: SchemaType.ARRAY,
+          type: Type.ARRAY,
           items: {
-            type: SchemaType.STRING,
+            type: Type.STRING,
             description: 'SEO-friendly image filename',
           },
           description: `Array of ${count} SEO-friendly image filenames`,
         },
-      },
-      safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-      ],
-    };
+        // Safety settings are also nested within 'config'
+        safetySettings: [ 
+          {
+            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+          },
+          {
+            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+          },
+        ],
+      }
+    });
     
-    // Request using proper responseSchema
-    const result = await model.generateContent(request);
+    // Access the text content using the result.text getter
+    const text = result.text; 
     
-    const response = await result.response;
-    const text = response.text();
-    
-    console.log(`[Gemini] Received response: ${text}`);
+    if (!text) {
+      console.error('[Gemini] Received null or undefined text response');
+      throw new Error('Received empty text response from Gemini API');
+    }
+
+    console.log(`[Gemini] Received response text: ${text}`);
     
     try {
       // Parse the JSON response
@@ -193,87 +198,91 @@ export async function generateSeoProductDescription(
   
   try {
     const genAI = initGemini();
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
     
     const prompt = `${getSeoProductDescriptionPrompt(language)}\n\nBasic product information: ${baseDescription}`;
     
-    console.log(`[Gemini] Sending request with responseSchema for SEO product description in ${language}`);
+    console.log(`[Gemini] Sending request for SEO product description in ${language}`);
     
-    // Define structured response schema
-    const request: GenerateContentRequest = {
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      generationConfig: {
+    // Define content generation request inline following SDK structure
+    const result = await genAI.models.generateContent({
+      model: "gemini-2.0-flash-lite-001", // Model name at top level
+      contents: [{ role: 'user', parts: [{ text: prompt }] }], // Contents at top level
+      // Config parameters are nested within a 'config' object
+      config: { 
         temperature: 0.2,
         topP: 0.8,
         topK: 40,
         responseMimeType: 'application/json',
         responseSchema: {
-          type: SchemaType.OBJECT,
+          type: Type.OBJECT,
           properties: {
             productTitle: {
-              type: SchemaType.STRING,
+              type: Type.STRING,
               description: 'Descriptive product title with primary keywords (max 60 characters)'
             },
             metaTitle: {
-              type: SchemaType.STRING,
+              type: Type.STRING,
               description: 'SEO-optimized meta title (30-60 characters)'
             },
             metaDescription: {
-              type: SchemaType.STRING,
+              type: Type.STRING,
               description: 'Compelling meta description with call-to-action (70-155 characters)'
             },
             shortDescription: {
-              type: SchemaType.STRING,
+              type: Type.STRING,
               description: 'Brief product summary with key features (1-2 sentences)'
             },
             longDescription: {
-              type: SchemaType.STRING,
+              type: Type.STRING,
               description: 'Detailed product description with specifications, features, and benefits (300-500 words)'
             },
             categories: {
-              type: SchemaType.ARRAY,
+              type: Type.ARRAY,
               items: {
-                type: SchemaType.STRING,
+                type: Type.STRING,
                 description: 'Product category'
               },
               description: 'Hierarchical product categories (2-3 levels)'
             },
             tags: {
-              type: SchemaType.ARRAY,
+              type: Type.ARRAY,
               items: {
-                type: SchemaType.STRING,
+                type: Type.STRING,
                 description: 'Relevant product tag or keyword'
               },
               description: 'Relevant product tags and keywords (5-10)'
             },
             urlSlug: {
-              type: SchemaType.STRING,
+              type: Type.STRING,
               description: 'SEO-friendly URL slug with hyphens'
             }
           },
           required: ['productTitle', 'metaTitle', 'metaDescription', 'shortDescription', 'longDescription', 'categories', 'tags', 'urlSlug'],
           description: 'Complete SEO product description structure'
         },
-      },
-      safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-          threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
-        },
-      ],
-    };
-    
-    // Request using proper responseSchema
-    const result = await model.generateContent(request);
-    
-    const response = await result.response;
-    const text = response.text();
-    
-    console.log(`[Gemini] Received response: ${text}`);
+        // Safety settings are also nested within 'config'
+        safetySettings: [ 
+          {
+            category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+          },
+          {
+            category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+          },
+        ],
+      }
+    });
+
+    // Access the text content using the result.text getter
+    const text = result.text;
+
+    if (!text) {
+      console.error('[Gemini] Received null or undefined text response');
+      throw new Error('Received empty text response from Gemini API');
+    }
+
+    console.log(`[Gemini] Received response text: ${text}`);
     
     try {
       // Parse the JSON response

@@ -3,7 +3,7 @@
 SERVICE_NAME=batchshots
 echo "service: $SERVICE_NAME"
 
-BG_HOST=168.119.171.184
+BG_HOST=5.78.107.245
 TAG=0.1
 echo "tag: $TAG"
 

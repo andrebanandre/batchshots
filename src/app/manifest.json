@@ -1,6 +1,11 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Batch Shots - AI Image Editor & SEO Tools",
+  "short_name": "Batch Shots",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

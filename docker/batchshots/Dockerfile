@@ -4,6 +4,9 @@ FROM node:23-alpine AS builder
 # Set working directory
 WORKDIR /app
 
+# Install essential packages
+RUN apk update && apk add --no-cache curl ca-certificates
+
 # Copy package.json and package-lock.json (if available)
 COPY package*.json ./
 
@@ -23,6 +26,9 @@ RUN npm run build
 FROM node:23-alpine AS runner
 
 WORKDIR /app
+
+# Install essential packages
+RUN apk update && apk add --no-cache curl ca-certificates
 
 # Set NODE_ENV to production
 ENV NODE_ENV=production

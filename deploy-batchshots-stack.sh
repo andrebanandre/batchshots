@@ -1,4 +1,4 @@
-BG_HOST=168.119.171.184
+BG_HOST=5.78.107.245
 IMAGE_NAME="$BG_HOST:5000/batchshots:latest"
 
 echo "Copy files to $BG_HOST"
