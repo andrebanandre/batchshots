@@ -69,7 +69,7 @@ export async function generateSeoImageNames(
       contents: [{ role: 'user', parts: [{ text: prompt }] }], // Contents at top level
       // Config parameters are nested within a 'config' object
       config: { 
-        temperature: 0.2,
+        temperature: 0.7,
         topP: 0.8,
         topK: 40,
         responseMimeType: 'application/json',
@@ -209,7 +209,7 @@ export async function generateSeoProductDescription(
       contents: [{ role: 'user', parts: [{ text: prompt }] }], // Contents at top level
       // Config parameters are nested within a 'config' object
       config: { 
-        temperature: 0.2,
+        temperature: 0.7,
         topP: 0.8,
         topK: 40,
         responseMimeType: 'application/json',
