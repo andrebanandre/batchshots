@@ -17,6 +17,7 @@
         "privacyPolicy": "Privacy Policy",
         "termsOfUse": "Terms of Use",
         "heicConversionFailed": "Failed to convert HEIC image: {fileName}. The file format may not be supported or the file may be corrupted.",
+        "preparingImagesPreview": "Preparing images...",
         "features": {
             "presets": {
                 "title": "PROFESSIONAL PRESETS",

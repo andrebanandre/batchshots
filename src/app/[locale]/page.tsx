@@ -100,6 +100,7 @@ export default function Home() {
   const [customPresetSettings, setCustomPresetSettings] = useState<Preset | null>(null);
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [applyToAll, setApplyToAll] = useState(true);
   const { isProUser } = useIsPro();
   const router = useRouter();
@@ -260,6 +261,7 @@ export default function Home() {
     const fileArray = Array.from(e.target.files);
     
     try {
+      setIsUploading(true);
       setIsProcessing(true);
       
       // Process each file, converting HEIC files to PNG first
@@ -289,6 +291,7 @@ export default function Home() {
       
       if (validFiles.length === 0) {
         setIsProcessing(false);
+        setIsUploading(false);
         return; // No valid files to process
       }
       
@@ -335,6 +338,7 @@ export default function Home() {
       console.error('Error processing uploaded files', error);
     } finally {
       setIsProcessing(false);
+      setIsUploading(false);
     }
   };
 
@@ -759,7 +763,13 @@ export default function Home() {
             {images.length === 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Left column - Upload area with hero content only */}
-                <div className="md:col-span-2">
+                <div className="md:col-span-2 relative">
+                  {isUploading && (
+                    <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                      <Loader size="lg" />
+                      <p className="mt-4 text-lg font-bold text-gray-700">{t('preparingImagesPreview')}</p>
+                    </div>
+                  )}
                   <div className="brutalist-border p-6 bg-white">
                     <div className="flex justify-between items-center mb-4">
                       <h2 className="text-xl font-bold uppercase">{t('transformTitle')}</h2>
@@ -893,7 +903,13 @@ export default function Home() {
             ) : (
               // Existing editor layout for when images are uploaded
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 md:sticky md:top-4 md:self-start space-y-6">
+            <div className="md:col-span-2 md:sticky md:top-4 md:self-start space-y-6 relative">
+              {isUploading && (
+                <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                  <Loader size="lg" />
+                  <p className="mt-4 text-lg font-bold text-gray-700">{t('preparingImagesPreview')}</p>
+                </div>
+              )}
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold">{t('imageEditor')}</h2>
                 {isProUser && <ProBadge />}

@@ -10,12 +10,13 @@
         "title": "Batch Shots: SEO BILDOPTIMIERER",
         "loading": "APP WIRD GELADEN...",
         "loadingDescription": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
-        "transformTitle": "VERWANDLE DEINE PRODUKTFOTOS",
-        "heroDescription": "Optimiere schnell deine Produktbilder für Web, E-Commerce und Social Media mit unserem browserbasierten Tool.",
+        "transformTitle": "VERWANDELN SIE IHRE PRODUKTFOTOS",
+        "heroDescription": "Optimieren Sie Ihre Produktbilder schnell für Web, E-Commerce und Social Media mit unserem browserbasierten Tool.",
         "privacyFocused": "DATENSCHUTZORIENTIERT",
-        "privacyDescription": "Batch Shots verarbeitet alle Bilder direkt in deinem Browser. Wir speichern deine Fotos oder Daten nicht auf unseren Servern.",
+        "privacyDescription": "Batch Shots verarbeitet alle Bilder direkt in Ihrem Browser. Wir speichern Ihre Fotos oder Daten nicht auf unseren Servern.",
         "privacyPolicy": "Datenschutzrichtlinie",
         "termsOfUse": "Nutzungsbedingungen",
+        "preparingImagesPreview": "Bilder werden vorbereitet...",
         "features": {
             "presets": {
                 "title": "PROFESSIONELLE VOREINSTELLUNGEN",

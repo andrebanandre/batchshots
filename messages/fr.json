@@ -7,19 +7,20 @@
         "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Inconnu}}"
     },
     "Home": {
-        "title": "Batch Shots : OPTIMISEUR D'IMAGES SEO",
+        "title": "Batch Shots : OPTIMISEUR D'IMAGE SEO",
         "loading": "CHARGEMENT DE L'APPLICATION...",
         "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'image.",
         "transformTitle": "TRANSFORMEZ VOS PHOTOS DE PRODUITS",
-        "heroDescription": "Optimisez rapidement vos images de produits pour le web, l'e-commerce et les réseaux sociaux avec notre outil basé sur le navigateur.",
+        "heroDescription": "Optimisez rapidement vos images de produits pour le web, le commerce électronique et les médias sociaux grâce à notre outil basé sur navigateur.",
         "privacyFocused": "AXÉ SUR LA CONFIDENTIALITÉ",
-        "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou vos données sur nos serveurs.",
+        "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou données sur nos serveurs.",
         "privacyPolicy": "Politique de confidentialité",
         "termsOfUse": "Conditions d'utilisation",
         "dragAndDropPrivacy": "Glissez-déposez des images ici ou cliquez pour sélectionner des fichiers. <strong>Tous les traitements s'effectuent dans votre navigateur. Nous ne téléversons jamais vos images sur nos serveurs.</strong> Votre confidentialité et votre sécurité sont garanties.",
+        "preparingImagesPreview": "Préparation des images...",
         "features": {
             "presets": {
-                "title": "PRESETS PROFESSIONNELS",
+                "title": "PRÉRÉGLAGES PROFESSIONNELS",
                 "description": "Appliquez des préréglages optimisés pour l'e-commerce, les réseaux sociaux et l'affichage web en un seul clic."
             },
             "aiPowered": {
