@@ -10,6 +10,9 @@ import { useTranslations } from 'next-intl';
 import ProDialog from './ProDialog';
 import { SeoProductDescription } from '../lib/gemini';
 import BrutalistSelect from './BrutalistSelect';
+import Markdown from 'react-markdown'
+import { renderToString } from 'react-dom/server';
+import ReactMarkdown from 'react-markdown';
 
 // Language options for the selector - popular languages + supported locales
 const LANGUAGES = {
@@ -140,11 +143,35 @@ export default function SeoProductDescriptionGenerator({
     router.push('/seo-description');
   };
   
-  // Copy content to clipboard
-  const copyToClipboard = (text: string, field: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedField(field);
-    setTimeout(() => setCopiedField(null), 2000);
+  // Modify the copyToClipboard function to support both markdown and HTML formats
+  const copyToClipboard = async (text: string, field: string, asHtml: boolean = false) => {
+    if (asHtml) {
+      // Convert markdown to HTML for rich editors, and also provide plain markdown
+      const htmlContent = renderToString(<ReactMarkdown>{text}</ReactMarkdown>);
+      try {
+        // Use ClipboardItem to copy both HTML and plain text
+        await navigator.clipboard.write([
+          new window.ClipboardItem({
+            'text/html': new Blob([htmlContent], { type: 'text/html' }),
+            'text/plain': new Blob([text], { type: 'text/plain' })
+          })
+        ]);
+        setCopiedField(field);
+        setTimeout(() => setCopiedField(''), 2000);
+      } catch (err) {
+        console.error('Failed to copy rich content:', err);
+      }
+    } else {
+      // Original implementation for raw markdown
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          setCopiedField(field);
+          setTimeout(() => setCopiedField(''), 2000);
+        })
+        .catch(err => {
+          console.error('Failed to copy:', err);
+        });
+    }
   };
   
   // Download a single field as a text file
@@ -236,6 +263,8 @@ export default function SeoProductDescriptionGenerator({
 
         {seoDescription && (
           <div className="space-y-4">
+      
+            
             {!downloadWithImages && (
               <Button 
                 onClick={downloadAllData} 
@@ -345,14 +374,14 @@ export default function SeoProductDescriptionGenerator({
                   <p className="text-sm">{seoDescription.shortDescription}</p>
                 </div>
                 
-                {/* Long Description */}
+                {/* Long Description - Always render as HTML */}
                 <div className="brutalist-border p-3 bg-white">
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="font-bold text-sm uppercase">{t('sections.longDescription')}</h3>
                     <div className="flex space-x-2">
                       <button 
                         className="brutalist-border p-1 hover:bg-gray-100"
-                        onClick={() => copyToClipboard(seoDescription.longDescription, 'longDescription')}
+                        onClick={() => copyToClipboard(seoDescription.longDescription, 'longDescription', true)}
                         aria-label={t('copyToClipboard')}
                         title={t('copyToClipboard')}
                       >
@@ -365,6 +394,7 @@ export default function SeoProductDescriptionGenerator({
                           </svg>
                         )}
                       </button>
+               
                       <button 
                         className="brutalist-border p-1 hover:bg-gray-100"
                         onClick={() => downloadAsText(seoDescription.longDescription, 'long-description')}
@@ -377,10 +407,11 @@ export default function SeoProductDescriptionGenerator({
                           <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
                       </button>
+              
                     </div>
                   </div>
-                  <div className="text-sm whitespace-pre-line brutalist-border p-2" style={{ maxHeight: '200px', overflowY: 'auto' }}>
-                    {seoDescription.longDescription}
+                  <div className="text-sm brutalist-border p-2" style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                    <Markdown>{seoDescription.longDescription}</Markdown>
                   </div>
                 </div>
               </div>
