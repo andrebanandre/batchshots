@@ -37,6 +37,7 @@ export default function DownloadDialog({
   hasWatermark = false
 }: DownloadDialogProps) {
   const t = useTranslations('Dialogs.download');
+  const tPresets = useTranslations('Components.PresetsSelector');
   
   if (!isOpen) return null;
 
@@ -58,7 +59,7 @@ export default function DownloadDialog({
                           <li>{t('images', { count: imageCount })}</li>
                           <li>{t('format')} <span className="font-bold uppercase">{formatType}</span></li>
                           {hasAppliedChanges && appliedPresetName && (
-                            <li>{t('appliedPreset')} <span className="font-bold">{appliedPresetName}</span></li>
+                            <li>{t('appliedPreset')} <span className="font-bold">{tPresets(appliedPresetName)}</span></li>
                           )}
                           {hasAppliedChanges && (
                             <li>{t('adjustmentsApplied')}</li>
