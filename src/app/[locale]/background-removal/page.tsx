@@ -162,6 +162,7 @@ export default function BackgroundRemovalPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="md:col-span-2">
                 <Card 
+                  collapsible={false}
                   title={t('mainCard.title')}
                   variant="accent"
                   headerRight={

@@ -933,7 +933,7 @@ export default function Home() {
                 isPro={isProUser}
               />
               
-              <div className="mb-6 flex justify-between items-center flex-col space-y-2">
+              <div className="mb-6 flex justify-between items-center flex-col space-y-4">
                 <div className="flex space-x-2 justify-between items-center">
                   <input
                     type="file"

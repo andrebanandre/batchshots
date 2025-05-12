@@ -43,7 +43,7 @@ export default function SeoDescriptionPage() {
           <div className="space-y-6">
             {/* Pro Upgrade Card (Conditional) */}
             {!isProUser && (
-              <Card title={tPage('upgradeCard.title')} variant="accent">
+              <Card title={tPage('upgradeCard.title')} variant="accent" collapsible={false}>
                 <p className="text-sm mb-4">{tPage('upgradeCard.description')}</p>
                 <Button variant='primary' onClick={() => router.push('/pricing')} fullWidth>
                   {tPage('upgradeCard.button')}
@@ -52,7 +52,7 @@ export default function SeoDescriptionPage() {
             )}
 
             {/* Instructions Card */}
-            <Card title={tPage('instructionsCard.title')} variant="accent">
+            <Card title={tPage('instructionsCard.title')} variant="accent" collapsible={false}>
               <div className="space-y-2 text-sm p-3 bg-white brutalist-border">
                 <p>1. {tPage('instructionsCard.step1')}</p>
                 <p>2. {tPage('instructionsCard.step2')}</p>

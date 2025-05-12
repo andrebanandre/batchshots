@@ -354,6 +354,7 @@ export default function ImageFormatConvertorPage() {
             <div className="md:col-span-2 space-y-6">
               {/* Main card with image selection */}
               <Card 
+                collapsible={false}
                 title={t('mainCard.title')}
                 variant="accent"
                 headerRight={

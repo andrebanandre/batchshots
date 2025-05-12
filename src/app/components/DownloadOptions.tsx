@@ -24,7 +24,7 @@ export default function DownloadOptions({
   };
   
   return (
-    <Card title={t('title')} variant="accent">
+    <Card title={t('title')} variant="accent" collapsible={false}>
       <div className="space-y-4">
         <div className="brutalist-border p-3 bg-white">
           <h3 className="font-bold mb-3 text-sm uppercase">{t('format')}</h3>
