@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import Button from './Button';
 import ProBadge from './ProBadge';
@@ -9,6 +9,33 @@ import Loader from './Loader';
 import { useTranslations } from 'next-intl';
 import ProDialog from './ProDialog';
 import { SeoProductDescription } from '../lib/gemini';
+import BrutalistSelect from './BrutalistSelect';
+
+// Language options for the selector - popular languages + supported locales
+const LANGUAGES = {
+  // Currently supported locales
+  en: "English",
+  de: "German",
+  fr: "French",
+  nl: "Dutch",
+  pl: "Polish",
+  ru: "Russian",
+  uk: "Ukrainian",
+  cs: "Czech",
+  
+  // Other popular languages
+  es: "Spanish",
+  zh: "Chinese",
+  ja: "Japanese",
+  ko: "Korean",
+  pt: "Portuguese",
+  it: "Italian",
+  ar: "Arabic",
+  hi: "Hindi",
+  tr: "Turkish",
+  id: "Indonesian",
+  vi: "Vietnamese"
+};
 
 interface SeoProductDescriptionGeneratorProps {
   className?: string;
@@ -33,7 +60,20 @@ export default function SeoProductDescriptionGenerator({
   const [showProDialog, setShowProDialog] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>('content');
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
   const router = useRouter();
+
+  // Get current locale and set it as default language
+  useEffect(() => {
+    const locale = document.documentElement.lang || 'en';
+    setSelectedLanguage(locale);
+  }, []);
+
+  // Convert LANGUAGES object to array format for BrutalistSelect
+  const languageOptions = Object.entries(LANGUAGES).map(([code, name]) => ({
+    value: code,
+    label: name,
+  }));
 
   // Fetch SEO product description from the API
   const handleGenerateDescription = async () => {
@@ -57,9 +97,6 @@ export default function SeoProductDescriptionGenerator({
         return;
       }
       
-      // Get the current locale from the URL or context
-      const locale = document.documentElement.lang || 'en';
-      
       // Call the API to generate the SEO product description
       const response = await fetch('/api/seo-product-description', {
         method: 'POST',
@@ -69,7 +106,7 @@ export default function SeoProductDescriptionGenerator({
         body: JSON.stringify({
           baseDescription,
           recaptchaToken: token,
-          language: locale
+          language: selectedLanguage
         }),
       });
       
@@ -146,10 +183,19 @@ export default function SeoProductDescriptionGenerator({
             {t('enterDescription')} <ProBadge className="ml-1" />
           </h3>
           <div className="space-y-3">
-            <div className="flex items-center">
+            <div className="flex flex-col space-y-2">
               <p className="text-xs">
                 {t('description')}
               </p>
+              <div className="flex items-center">
+                <span className="text-xs mr-2">Language:</span>
+                <BrutalistSelect
+                  options={languageOptions}
+                  value={selectedLanguage}
+                  onChange={setSelectedLanguage}
+                  className="w-36"
+                />
+              </div>
             </div>
             
             <textarea
