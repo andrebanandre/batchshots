@@ -59,7 +59,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 5,
           brightness: 10,
-          sharpen: 1.0,
+          sharpen: 0.2,
           redScale: 1.0,
           greenScale: 1.0,
           blueScale: 1.0,
@@ -73,7 +73,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           brightness: 25,
           contrast: 15,
-          sharpen: 1.2,
+          sharpen: 0.2,
           saturation: 90,
           lightness: 115
         };
@@ -84,7 +84,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 25,
           brightness: 5,
-          sharpen: 1.8,
+          sharpen: 0.3,
           saturation: 110,
           lightness: 95
         };
@@ -95,7 +95,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 15,
           brightness: 10,
-          sharpen: 2.0,
+          sharpen: 0.4,
           redScale: 1.05,
           greenScale: 1.02,
           blueScale: 1.1,
@@ -109,7 +109,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 5,
           brightness: 15,
-          sharpen: 0.6, // Less sharpening for soft appearance
+          sharpen: 0, // Less sharpening for soft appearance
           saturation: 105,
           lightness: 110,
           redScale: 1.02,
@@ -123,7 +123,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 12,
           brightness: 8,
-          sharpen: 1.3, // Moderate sharpening for texture detail
+          sharpen: 0.2, // Moderate sharpening for texture detail
           saturation: 110, // Slightly boosted saturation for fabric colors
           lightness: 103,
           redScale: 1.02,
@@ -137,7 +137,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 18,
           brightness: 5,
-          sharpen: 1.6, // Strong sharpening for texture detail
+          sharpen: 0.2, // Strong sharpening for texture detail
           saturation: 115, // Boosted saturation for appetizing colors
           lightness: 105,
           redScale: 1.05, // Slightly warmer tones
@@ -151,7 +151,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 10,
           brightness: 8,
-          sharpen: 1.4, // Good sharpening for wood grain
+          sharpen: 0.5, // Good sharpening for wood grain
           saturation: 95, // Slightly reduced saturation for natural look
           lightness: 102,
           redScale: 1.03, // Warmer tones for wood
@@ -165,7 +165,7 @@ export default function QuickPresets() {
           ...newAdjustments,
           contrast: 20,
           brightness: 12,
-          sharpen: 1.1, // Moderate sharpening for edges
+          sharpen: 0.3, // Moderate sharpening for edges
           saturation: 85, // Reduced saturation for clarity
           lightness: 112, // Brighter for transparency
           redScale: 0.98,
