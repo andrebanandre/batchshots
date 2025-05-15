@@ -10,6 +10,7 @@ import {
   UserButton,
   useAuth,
 } from '@clerk/nextjs';
+import { neobrutalism } from '@clerk/themes';
 import UserProStatus from './UserProStatus';
 import MobileMenu from './MobileMenu';
 
@@ -116,6 +117,7 @@ export default function Navbar() {
                 <UserProStatus />
                 <UserButton 
                   appearance={{
+                    baseTheme: neobrutalism,
                     elements: {
                       userButtonAvatarBox: 'border-3 border-black brutalist-border'
                     }

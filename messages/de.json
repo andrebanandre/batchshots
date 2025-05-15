@@ -60,10 +60,12 @@
         "pricing": "Preise",
         "login": "ANMELDEN",
         "objectRemoval": "Objektentfernung",
-        "tools": "Werkzeuge",
+        "tools": "Tools",
         "addWatermark": "Wasserzeichen hinzufügen",
         "seoDescription": "SEO Beschreibung",
-        "imageFormatConvertor": "Bildformat-Konverter"
+        "imageFormatConvertor": "Bildformat-Konverter",
+        "profile": "Profil",
+        "logout": "Abmelden"
     },
     "Footer": {
         "about": "Batch Shots hilft Ihnen, Produktbilder schnell und einfach für SEO zu optimieren, direkt in Ihrem Browser.",

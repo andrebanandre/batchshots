@@ -63,7 +63,9 @@
         "tools": "Інструменти",
         "addWatermark": "Додати водяний знак",
         "seoDescription": "SEO опис",
-        "imageFormatConvertor": "Конвертер форматів зображень"
+        "imageFormatConvertor": "Конвертер форматів зображень",
+        "profile": "Профіль",
+        "logout": "Вийти"
     },
     "Footer": {
         "about": "Batch Shots допомагає швидко та легко оптимізувати зображення продуктів для SEO прямо у вашому браузері.",

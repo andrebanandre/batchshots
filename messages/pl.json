@@ -63,7 +63,9 @@
         "tools": "Narzędzia",
         "addWatermark": "Dodaj znak wodny",
         "seoDescription": "Opis SEO",
-        "imageFormatConvertor": "Konwerter formatu obrazu"
+        "imageFormatConvertor": "Konwerter formatu obrazu",
+        "profile": "Profil",
+        "logout": "Wyloguj się"
     },
     "Footer": {
         "about": "Batch Shots pomaga szybko i łatwo zoptymalizować obrazy produktów pod kątem SEO, bezpośrednio w przeglądarce.",

@@ -11,6 +11,9 @@ dependencies:
   '@clerk/nextjs':
     specifier: ^6.16.0
     version: 6.16.0(next@15.3.1)(react-dom@19.1.0)(react@19.1.0)
+  '@clerk/themes':
+    specifier: ^2.2.43
+    version: 2.2.43
   '@google/genai':
     specifier: ^0.12.0
     version: 0.12.0
@@ -44,6 +47,9 @@ dependencies:
   onnxruntime-web:
     specifier: ^1.21.0-dev.20250206-d981b153d3
     version: 1.21.0
+  posthog-js:
+    specifier: ^1.242.1
+    version: 1.242.1
   react:
     specifier: ^19.1.0
     version: 19.1.0
@@ -436,7 +442,7 @@ packages:
         optional: true
     dependencies:
       '@clerk/shared': 3.7.2(react-dom@19.1.0)(react@19.1.0)
-      '@clerk/types': 4.54.2
+      '@clerk/types': 4.58.0
       cookie: 1.0.2
       snakecase-keys: 8.0.1
       tslib: 2.8.1
@@ -453,7 +459,7 @@ packages:
       react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-0
     dependencies:
       '@clerk/shared': 3.7.2(react-dom@19.1.0)(react@19.1.0)
-      '@clerk/types': 4.54.2
+      '@clerk/types': 4.58.0
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       tslib: 2.8.1
@@ -500,7 +506,7 @@ packages:
       react-dom:
         optional: true
     dependencies:
-      '@clerk/types': 4.54.2
+      '@clerk/types': 4.58.0
       dequal: 2.0.3
       glob-to-regexp: 0.4.1
       js-cookie: 3.0.5
@@ -510,8 +516,23 @@ packages:
       swr: 2.3.3(react@19.1.0)
     dev: false
 
+  /@clerk/themes@2.2.43:
+    resolution: {integrity: sha512-BH7Q2Zbgz1DhVUjVjm/sKgwdHJDymLLiieBwmWIbWyMjJaORXJZVqlxICMRUeyRD9sO8zY6XaA8rgvN1FR0F5w==}
+    engines: {node: '>=18.17.0'}
+    dependencies:
+      '@clerk/types': 4.58.0
+      tslib: 2.8.1
+    dev: false
+
   /@clerk/types@4.54.2:
     resolution: {integrity: sha512-9z2odfkK58b8aa9GM6G5CmDefXKoGE8UG8f9cDp//Z4qYMqq2/uPHzDFYawJMu1Da2sUwgNeXEFqoaatXaBoXA==}
+    engines: {node: '>=18.17.0'}
+    dependencies:
+      csstype: 3.1.3
+    dev: false
+
+  /@clerk/types@4.58.0:
+    resolution: {integrity: sha512-P30Vnqaw2UzoSZivNG61NvF9WiAVbKItOvkVJzUbwqDkISdmNOio8mWCeFuKq+bxjPESvS+S615Uplm7dl6jpg==}
     engines: {node: '>=18.17.0'}
     dependencies:
       csstype: 3.1.3
@@ -2786,6 +2807,11 @@ packages:
       webpack: 5.99.6
     dev: true
 
+  /core-js@3.42.0:
+    resolution: {integrity: sha512-Sz4PP4ZA+Rq4II21qkNqOEDTDrCvcANId3xpIgB34NDkWc3UduWj2dqEtN9yZIq8Dk3HyPI33x9sqqU5C8sr0g==}
+    requiresBuild: true
+    dev: false
+
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
@@ -3710,6 +3736,10 @@ packages:
     dependencies:
       picomatch: 4.0.2
     dev: true
+
+  /fflate@0.4.8:
+    resolution: {integrity: sha512-FJqqoDBR00Mdj9ppamLa/Y7vxm+PRmNWA67N846RvsoYVMKB4q3y/de5PA7gUmRMYK/8CMz2GDZQmCRN1wBcWA==}
+    dev: false
 
   /file-entry-cache@8.0.0:
     resolution: {integrity: sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==}
@@ -6312,6 +6342,27 @@ packages:
       source-map-js: 1.2.1
     dev: true
 
+  /posthog-js@1.242.1:
+    resolution: {integrity: sha512-j2mzw0eukyuw/Qm3tNZ6pfaXmc7eglWj6ftmvR1Lz9GtMr85ndGNXJvIGO+6PBrQW2o0D1G0k/KV93ehta0hFA==}
+    peerDependencies:
+      '@rrweb/types': 2.0.0-alpha.17
+      rrweb-snapshot: 2.0.0-alpha.17
+    peerDependenciesMeta:
+      '@rrweb/types':
+        optional: true
+      rrweb-snapshot:
+        optional: true
+    dependencies:
+      core-js: 3.42.0
+      fflate: 0.4.8
+      preact: 10.26.6
+      web-vitals: 4.2.4
+    dev: false
+
+  /preact@10.26.6:
+    resolution: {integrity: sha512-5SRRBinwpwkaD+OqlBDeITlRgvd8I8QlxHJw9AxSdMNV6O+LodN9nUyYGpSF7sadHjs6RzeFShMexC6DbtWr9g==}
+    dev: false
+
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
@@ -7641,6 +7692,10 @@ packages:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.11
     dev: true
+
+  /web-vitals@4.2.4:
+    resolution: {integrity: sha512-r4DIlprAGwJ7YM11VZp4R884m0Vmgr6EAKe3P+kO0PPj3Unqyvv59rczf6UiGcb9Z8QxZVcqKNwv/g0WNdWwsw==}
+    dev: false
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}

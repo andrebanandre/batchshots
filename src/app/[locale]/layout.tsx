@@ -11,6 +11,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { Providers } from '../providers';
 import { ClerkProvider } from '@clerk/nextjs';
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { neobrutalism } from '@clerk/themes'
 
 // Import Clerk localizations
 import { enUS, deDE, frFR, nlNL, plPL, ruRU, ukUA, csCZ } from '@clerk/localizations';
@@ -82,7 +83,16 @@ export default async function RootLayout({
   const clerkLocalization = clerkLocalizations[locale] || enUS;
 
   return (
-    <ClerkProvider localization={clerkLocalization}>
+    <ClerkProvider
+      localization={clerkLocalization}
+      appearance={{
+        baseTheme: neobrutalism,
+        signIn: { baseTheme: neobrutalism },
+        signUp: { baseTheme: neobrutalism },
+        userButton: { baseTheme: neobrutalism },
+        userProfile: { baseTheme: neobrutalism },
+      }}
+    >
       <Providers 
         intlProps={{
            locale: locale, 

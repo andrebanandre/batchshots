@@ -63,7 +63,9 @@
         "tools": "Hulpmiddelen",
         "addWatermark": "Watermerk toevoegen",
         "seoDescription": "SEO-beschrijving",
-        "imageFormatConvertor": "Afbeeldingsformaat Converter"
+        "imageFormatConvertor": "Afbeeldingsformaat Converter",
+        "profile": "Profiel",
+        "logout": "Uitloggen"
     },
     "Footer": {
         "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",

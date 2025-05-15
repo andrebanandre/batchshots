@@ -63,7 +63,9 @@
         "tools": "Nástroje",
         "addWatermark": "Přidat vodoznak",
         "seoDescription": "SEO popis",
-        "imageFormatConvertor": "Konvertor formátů obrázků"
+        "imageFormatConvertor": "Konvertor formátů obrázků",
+        "profile": "Profil",
+        "logout": "Odhlásit se"
     },
     "Footer": {
         "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
