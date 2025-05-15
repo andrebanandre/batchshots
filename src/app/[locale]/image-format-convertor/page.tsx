@@ -26,6 +26,8 @@ interface FormatConversionImageFile extends ImageFile {
 
 export default function ImageFormatConvertorPage() {
   const t = useTranslations('ImageFormatConvertorPage');
+  const tHome = useTranslations('Home');
+
   const { isProUser, isLoading: isProLoading } = useIsPro();
   const router = useRouter();
   const [images, setImages] = useState<FormatConversionImageFile[]>([]);
@@ -100,6 +102,9 @@ export default function ImageFormatConvertorPage() {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
 
+    // Set processing state immediately
+    setIsProcessing(true);
+
     // Get the original file array
     const originalFileArray = Array.from(e.target.files);
     
@@ -122,8 +127,6 @@ export default function ImageFormatConvertorPage() {
     }
     
     try {
-      setIsProcessing(true);
-      
       // Process files with HEIC handling first
       const processedFilesResults = await Promise.allSettled(fileArray.map(async (file) => {
         try {
@@ -193,7 +196,11 @@ export default function ImageFormatConvertorPage() {
       console.error('Error processing uploaded files', error);
       setProcessingErrors(prev => [...prev, `Failed to process files: ${(error as Error).message || 'Unknown error'}`]);
     } finally {
-      setIsProcessing(false);
+      // Add a small delay before removing the processing state
+      // This ensures the UI has time to update and show the loading state
+      setTimeout(() => {
+        setIsProcessing(false);
+      }, 500);
     }
   };
 
@@ -364,7 +371,15 @@ export default function ImageFormatConvertorPage() {
                   isProUser ? <ProBadge className="ml-2" /> : null
                 }
               >
-                <div className="space-y-6">
+                <div className="space-y-6 relative">
+                  {/* Main loading overlay for the entire card */}
+                  {isProcessing && (
+                    <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                      <Loader size="lg" />
+                      <p className="mt-4 text-lg font-bold text-gray-700">{tHome('preparingImagesPreview')}</p>
+                    </div>
+                  )}
+                  
                   {/* Info Section */}
                   <div className="brutalist-border p-4 bg-white">
                     <h3 className="font-bold mb-2">{t('mainCard.info.title')}</h3>
@@ -410,7 +425,8 @@ export default function ImageFormatConvertorPage() {
                             id="fileInput"
                             disabled={isProcessing || isConverting}
                           />
-                          <div className="flex flex-col items-center gap-2 space-y-6">
+                          <div className="flex flex-col items-center gap-2 space-y-6 relative">
+                        
                             <label htmlFor="fileInput" className="inline-block">
                               <Button as="span" variant="primary" size="lg" disabled={isProcessing || isConverting}>
                                 {isProUser ? t('mainCard.upload.buttonPro') : t('mainCard.upload.buttonFree')}
@@ -518,8 +534,10 @@ export default function ImageFormatConvertorPage() {
                           </div>
                         </div>
                         
-                        {/* Image grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                                                  {/* Image grid */}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 relative">
+                
+                          
                           {images.map((image, index) => (
                             <div key={image.id} className="brutalist-border p-2 cursor-pointer transition-transform hover:translate-y-[-2px]">
                               <div className="relative aspect-square w-full overflow-hidden">
