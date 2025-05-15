@@ -1,14 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import Button from './Button'; // Assuming Button is in the same directory
 import { useTranslations } from 'next-intl';
 import {
-  SignInButton,
   SignOutButton,
   useAuth,
   UserButton,
 } from '@clerk/nextjs';
 import { neobrutalism } from '@clerk/themes';
+import LoginDialog from './LoginDialog';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -56,27 +55,29 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="pt-4 border-t-2 border-black">
             {!isSignedIn && (
               <div className="flex flex-col space-y-2">
-                <SignInButton>
-                  <Button variant="primary" size="sm" fullWidth onClick={handleLinkClick}>{t('login')}</Button>
-                </SignInButton>
+                <LoginDialog 
+                  variant="primary" 
+                  size="sm" 
+                  fullWidth 
+                  onClick={handleLinkClick} 
+                />
               </div>
             )}
             {isSignedIn && (
-                              <SignOutButton>
-
-              <div className="flex items-center justify-between py-2 px-4 brutalist-border text-lg font-bold cursor-pointer" onClick={handleLinkClick}>
-                <span>{t('logout', { defaultValue: 'Logout' })}</span>
-              
-                <UserButton
-                  appearance={{
-                    baseTheme: neobrutalism,
-                    elements: {
-                      userButtonAvatarBox: 'w-10 h-10 border-2 border-black brutalist-border',
-                      userButtonPopoverCard: 'brutalist-border border-3 border-black',
-                    },
-                  }}
-                />
-              </div>
+              <SignOutButton>
+                <div className="flex items-center justify-between py-2 px-4 brutalist-border text-lg font-bold cursor-pointer" onClick={handleLinkClick}>
+                  <span>{t('logout', { defaultValue: 'Logout' })}</span>
+                
+                  <UserButton
+                    appearance={{
+                      baseTheme: neobrutalism,
+                      elements: {
+                        userButtonAvatarBox: 'w-10 h-10 border-2 border-black brutalist-border',
+                        userButtonPopoverCard: 'brutalist-border border-3 border-black',
+                      },
+                    }}
+                  />
+                </div>
               </SignOutButton>
             )}
             

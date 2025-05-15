@@ -1,7 +1,7 @@
-
-
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSeoProductDescription } from '../../lib/gemini';
+import { auth } from '@clerk/nextjs/server';
+import { checkProStatus } from '../../utils/check-pro-status';
 
 // Define CaptchaData type for response typing
 type CaptchaData =
@@ -62,10 +62,33 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   }
 }
 
+
 export async function POST(request: NextRequest) {
   console.log('[API] Received request to /api/seo-product-description');
   
   try {
+    // Get user authentication
+    const { userId } = await auth();
+    
+    if (!userId) {
+      console.error('[API] Error: User not authenticated');
+      return new NextResponse(
+        JSON.stringify({ error: 'Authentication required' }),
+        { status: 401, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+    
+    // Check if user has pro access
+    const isPro = await checkProStatus(userId);
+    
+    if (!isPro) {
+      console.error('[API] Error: User does not have pro access');
+      return new NextResponse(
+        JSON.stringify({ error: 'Pro subscription required' }),
+        { status: 403, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+    
     const body = await request.json();
     const { baseDescription, recaptchaToken, language } = body;
     

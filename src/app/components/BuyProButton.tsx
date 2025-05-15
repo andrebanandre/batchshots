@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useAuth, SignInButton } from '@clerk/nextjs';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useAuth, useClerk } from '@clerk/nextjs';
 import Button from './Button';
 import Loader from './Loader';
+import { brutalistTheme } from './LoginDialog';
 
 interface BuyProButtonProps {
   variant?: 'default' | 'primary' | 'secondary' | 'accent';
@@ -21,14 +22,12 @@ export default function BuyProButton({
   locale = 'en'
 }: BuyProButtonProps) {
   const { isSignedIn } = useAuth();
+  const clerk = useClerk();
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleClick = async () => {
-    if (!isSignedIn) {
-      // Use Clerk's SignInButton to trigger the sign-in flow
-      return;
-    }
-
+  
+  const createCheckoutSession = useCallback(async () => {
+    if (!isSignedIn) return;
+    
     setIsLoading(true);
     
     try {
@@ -53,21 +52,39 @@ export default function BuyProButton({
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [isSignedIn, locale]);
+  
+  // Check localStorage for pending checkout after page load
+  useEffect(() => {
+    const checkPendingCheckout = async () => {
+      if (isSignedIn && localStorage.getItem('pendingProCheckout') === 'true') {
+        localStorage.removeItem('pendingProCheckout');
+        await createCheckoutSession();
+      }
+    };
+    
+    checkPendingCheckout();
+  }, [isSignedIn, createCheckoutSession]);
 
-  if (!isSignedIn) {
-    return (
-      <SignInButton>
-        <Button
-          variant={variant}
-          size={size}
-          className={className}
-        >
-          {children}
-        </Button>
-      </SignInButton>
-    );
-  }
+  const handleClick = async () => {
+    if (!isSignedIn) {
+      // Store the checkout intent in localStorage
+      localStorage.setItem('pendingProCheckout', 'true');
+      
+      // Open sign-in modal with no redirects to stay on the same page
+      clerk.openSignIn({
+        redirectUrl: window.location.href,
+        afterSignInUrl: window.location.href,
+        signUpUrl: window.location.href,
+        appearance: brutalistTheme
+      });
+      
+      return;
+    }
+
+    // User is already signed in, proceed with checkout
+    await createCheckoutSession();
+  };
 
   return (
     <Button

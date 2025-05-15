@@ -2,17 +2,16 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Button from './Button';
 import { useTranslations } from 'next-intl';
 import LanguageSelector from './LanguageSelector';
 import {
-  SignInButton,
   UserButton,
   useAuth,
 } from '@clerk/nextjs';
 import { neobrutalism } from '@clerk/themes';
 import UserProStatus from './UserProStatus';
 import MobileMenu from './MobileMenu';
+import LoginDialog from './LoginDialog';
 
 // Simple SVG logo component
 const Logo = () => (
@@ -126,9 +125,7 @@ export default function Navbar() {
               </div>
             )}
             {!isSignedIn && (
-              <SignInButton>
-                <Button variant="primary" size="sm">{t('login')}</Button>
-              </SignInButton>
+              <LoginDialog variant="primary" size="sm" />
             )}
           </div>
        

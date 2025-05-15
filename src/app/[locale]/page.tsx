@@ -33,6 +33,7 @@ import { ImageProcessingProvider } from '../contexts/ImageProcessingContext';
 import ProUpgradeDialog from '../components/ProUpgradeDialog';
 import ProBadge from '../components/ProBadge';
 import { SeoProductDescription } from '../lib/gemini';
+import BuyProButton from '../components/BuyProButton';
 
 // Helper function to detect HEIC/HEIF files
 const isHeicFormat = async (file: File): Promise<boolean> => {
@@ -91,6 +92,7 @@ const convertHeicToPng = async (file: File): Promise<File | null> => {
 export default function Home() {
   const t = useTranslations('Home');
   const tDialogs = useTranslations('Dialogs');
+  const tPricing = useTranslations('Pricing');
   const locale = useLocale();
   const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
@@ -851,14 +853,7 @@ export default function Home() {
                         <div className="brutalist-border p-6 bg-yellow-400 text-center mt-6">
                           <h3 className="text-xl font-bold uppercase mb-2">{t('upgradeProTitle')}</h3>
                           <p className="text-sm mb-4">{t('upgradeProDescription')}</p>
-                          <Button 
-                            variant="default" 
-                            size="lg"
-                            className="bg-white text-black hover:bg-gray-100 font-bold border-2 border-black"
-                            onClick={() => router.push('/pricing')}
-                          >
-                            {t('upgradeToPro')}
-                          </Button>
+                          <BuyProButton locale={locale} variant="accent" size="lg">{tPricing('plans.pro.buttonText')}</BuyProButton>
                         </div>
                       </>
                     )}

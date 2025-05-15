@@ -16,6 +16,7 @@ import { useTranslations } from 'next-intl';
 import PresetsSelector, { Preset, defaultPresets } from '../../components/PresetsSelector';
 import { convertImageFormat, supportedOutputFormats, isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter';
 import DownloadDialog from '../../components/DownloadDialog';
+import ProUpgradeDialog from '../../components/ProUpgradeDialog';
 
 // Extend ImageFile type to include format conversion properties
 interface FormatConversionImageFile extends ImageFile {
@@ -112,6 +113,8 @@ export default function ImageFormatConvertorPage() {
       if (images.length + fileArray.length > MAX_IMAGES) {
         // Only take what we can add
         fileArray = fileArray.slice(0, MAX_IMAGES - images.length);
+        // Show pro upgrade dialog
+        setShowProUpgrade(true);
       }
     } else if (images.length + fileArray.length > 100) {
       // Still enforce max 100 total for pro users
@@ -401,7 +404,7 @@ export default function ImageFormatConvertorPage() {
                           <input
                             type="file"
                             accept="image/*"
-                            multiple={isProUser}
+                            multiple
                             onChange={handleFileChange}
                             className="hidden"
                             id="fileInput"
@@ -467,15 +470,25 @@ export default function ImageFormatConvertorPage() {
                               {t('mainCard.actions.clear')}
                             </Button>
                             
-                            <input
-                              type="file"
-                              accept="image/*"
-                              multiple={true}
-                              onChange={handleFileChange}
-                              className="hidden"
-                              id="fileInputMore"
-                              disabled={isProcessing || isConverting || (images.length >= MAX_IMAGES && !isProUser) || images.length >= 100}
-                            />
+                            {!isProUser && images.length >= MAX_IMAGES ? (
+                              <Button 
+                                variant="accent"
+                                size="sm"
+                                onClick={() => setShowProUpgrade(true)}
+                              >
+                                {t('ProUpgrade.learnMore')}
+                              </Button>
+                            ) : (
+                              <input
+                                type="file"
+                                accept="image/*"
+                                multiple={true}
+                                onChange={handleFileChange}
+                                className="hidden"
+                                id="fileInputMore"
+                                disabled={isProcessing || isConverting || (images.length >= MAX_IMAGES && !isProUser) || images.length >= 100}
+                              />
+                            )}
                             <label htmlFor="fileInputMore">
                               <Button 
                                 as="span" 
@@ -689,57 +702,13 @@ export default function ImageFormatConvertorPage() {
       </div>
       
       {/* Pro Upgrade Dialog */}
-      {showProUpgrade && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white brutalist-border border-3 border-black p-6 max-w-md w-full">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold">{t('proDialog.title')}</h3>
-              <button onClick={() => setShowProUpgrade(false)} className="text-gray-500 hover:text-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            <div className="mb-6">
-              <div className="flex items-center mb-4">
-                <ProBadge className="mr-2" />
-                <span className="font-bold">{t('proDialog.featureTitle')}</span>
-              </div>
-              
-              <p className="mb-4 text-sm">{t('proDialog.description', { maxImages: MAX_IMAGES })}</p>
-              
-              <div className="brutalist-border p-3 bg-yellow-50 mb-4">
-                <p className="font-bold text-center mb-2">{t('proDialog.pricing.title')}</p>
-                <p className="text-3xl font-bold text-center">{t('proDialog.pricing.price')}</p>
-                <p className="text-center text-sm text-gray-600">{t('proDialog.pricing.note')}</p>
-              </div>
-            </div>
-            
-            <div className="flex flex-col space-y-3">
-              <Button 
-                variant="primary"
-                onClick={() => router.push('/pricing')}
-                className="w-full"
-              >
-                {t('proDialog.actions.upgrade')}
-              </Button>
-              
-              <Button 
-                variant="secondary"
-                onClick={() => {
-                  setShowProUpgrade(false);
-                  // Process only the first MAX_IMAGES images for free users
-                  setImages(images.slice(0, MAX_IMAGES));
-                }}
-                className="w-full"
-              >
-                {t('proDialog.actions.continue')}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ProUpgradeDialog
+        isOpen={showProUpgrade}
+        onClose={() => setShowProUpgrade(false)}
+        title={t('proDialog.title')}
+        feature={t('proDialog.featureTitle')}
+        maxImagesCount={MAX_IMAGES}
+      />
       
       {/* Download Dialog - Similar to DownloadDialog.tsx */}
       <DownloadDialog

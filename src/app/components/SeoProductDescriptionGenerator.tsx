@@ -44,6 +44,7 @@ interface SeoProductDescriptionGeneratorProps {
   className?: string;
   onGenerateDescription?: (seoDescription: SeoProductDescription) => void;
   downloadWithImages?: boolean;
+  collapsible?: boolean;
 }
 
 type TabType = 'content' | 'meta-categories' | 'previews';
@@ -51,7 +52,8 @@ type TabType = 'content' | 'meta-categories' | 'previews';
 export default function SeoProductDescriptionGenerator({
   className = '',
   onGenerateDescription,
-  downloadWithImages = false
+  downloadWithImages = false,
+  collapsible = true
 }: SeoProductDescriptionGeneratorProps) {
   const t = useTranslations('Components.SeoProductDescription');
   
@@ -203,7 +205,7 @@ export default function SeoProductDescriptionGenerator({
   };
 
   return (
-    <Card title={t('title')} className={className} variant="accent" headerRight={<ProBadge />} initiallyCollapsed={true}>
+    <Card title={t('title')} className={className} variant="accent" headerRight={<ProBadge />} initiallyCollapsed={collapsible}>
       <div className="space-y-4">
         <div className="brutalist-border p-3 bg-white">
           <h3 className="font-bold mb-3 text-sm uppercase">

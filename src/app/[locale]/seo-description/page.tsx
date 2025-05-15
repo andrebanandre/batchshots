@@ -36,7 +36,7 @@ export default function SeoDescriptionPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Main Content Area (Left/Center) */}
           <div className="md:col-span-2">
-          <SeoProductDescriptionGenerator />
+          <SeoProductDescriptionGenerator collapsible={false} />
           </div>
 
           {/* Sidebar Area (Right) */}
