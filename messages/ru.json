@@ -107,7 +107,8 @@
             "colorBalance": "БАЛАНС ЦВЕТА (RGB)",
             "red": "КРАСНЫЙ",
             "green": "ЗЕЛЕНЫЙ",
-            "blue": "СИНИЙ"
+            "blue": "СИНИЙ",
+            "processing": "ОБРАБОТКА..."
         },
         "BackgroundRemoval": {
             "title": "УДАЛЕНИЕ ФОНА",

@@ -107,7 +107,8 @@
             "colorBalance": "БАЛАНС КОЛЬОРУ (RGB)",
             "red": "ЧЕРВОНИЙ",
             "green": "ЗЕЛЕНИЙ",
-            "blue": "СИНІЙ"
+            "blue": "СИНІЙ",
+            "processing": "ОБРОБКА..."
         },
         "BackgroundRemoval": {
             "title": "ВИДАЛЕННЯ ФОНУ",

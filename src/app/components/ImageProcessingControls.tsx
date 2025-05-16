@@ -6,6 +6,7 @@ import { useImageProcessing } from '../contexts/ImageProcessingContext';
 import { useTranslations } from 'next-intl';
 import Button from './Button';
 import Link from 'next/link';
+import Loader from './Loader';
 
 export interface ImageAdjustments {
   brightness: number;
@@ -73,13 +74,14 @@ export default function ImageProcessingControls({
   return (
     <Card 
       title={t('title')} 
-      className={className} 
+      className={`${className} relative`} 
       variant="accent"
       headerRight={
         <button 
           onClick={handleReset} 
           className="text-sm font-bold py-1 px-2 brutalist-border hover:bg-slate-100 text-gray-700 flex items-center"
           title="Reset all adjustments"
+          disabled={isProcessing}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
@@ -87,6 +89,14 @@ export default function ImageProcessingControls({
         </button>
       }
     >
+      {/* Processing Overlay */}
+      {isProcessing && (
+        <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+          <Loader size="md" />
+          <p className="mt-4 text-md font-bold text-gray-700">{t('processing')}</p>
+        </div>
+      )}
+
       <div className="space-y-6">
         {/* Mode Toggle (Apply to All vs Individual) */}
         <div className="flex justify-between items-center">
@@ -102,6 +112,7 @@ export default function ImageProcessingControls({
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat"
               }}
+              disabled={isProcessing}
             />
             <span className="font-bold">{t('applyToAll')}</span>
           </label>
@@ -113,18 +124,21 @@ export default function ImageProcessingControls({
             <button
               onClick={() => setActiveTab('basic')}
               className={`py-2 px-4 font-bold ${activeTab === 'basic' ? 'bg-primary text-white' : 'bg-white text-black'}`}
+              disabled={isProcessing}
             >
               {t('basic')}
             </button>
             <button
               onClick={() => setActiveTab('advanced')}
               className={`py-2 px-4 font-bold ${activeTab === 'advanced' ? 'bg-primary text-white' : 'bg-white text-black'}`}
+              disabled={isProcessing}
             >
               {t('advanced')}
             </button>
             <button
               onClick={() => setActiveTab('ai')}
               className={`py-2 px-4 font-bold flex items-center ${activeTab === 'ai' ? 'bg-primary text-white' : 'bg-white text-black'}`}
+              disabled={isProcessing}
             >
               {t('ai')} <ProBadge className="ml-1" />
             </button>
@@ -136,7 +150,7 @@ export default function ImageProcessingControls({
             {/* Basic Controls */}
             <div className="space-y-4">
               {/* Quick Presets - only in basic tab */}
-              <QuickPresets />
+              <QuickPresets isProcessing={isProcessing} />
               
               <div className="mt-6">
                 <label htmlFor="brightness" className="block mb-1 font-bold">
@@ -150,6 +164,7 @@ export default function ImageProcessingControls({
                   value={adjustments.brightness}
                   onChange={(e) => handleSliderChange(e, 'brightness')}
                   className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                  disabled={isProcessing}
                 />
               </div>
 
@@ -165,6 +180,7 @@ export default function ImageProcessingControls({
                   value={adjustments.contrast}
                   onChange={(e) => handleSliderChange(e, 'contrast')}
                   className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                  disabled={isProcessing}
                 />
               </div>
 
@@ -181,6 +197,7 @@ export default function ImageProcessingControls({
                   value={adjustments.sharpen || 0}
                   onChange={(e) => handleSliderChange(e, 'sharpen')}
                   className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                  disabled={isProcessing}
                 />
               </div>
             </div>
@@ -207,6 +224,7 @@ export default function ImageProcessingControls({
                         value={adjustments.hue || 100}
                         onChange={(e) => handleSliderChange(e, 'hue')}
                         className="flex-1 brutalist-border bg-gradient-to-r from-blue-500 via-purple-500 to-red-500 h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                        disabled={isProcessing}
                       />
                       <span className="ml-2 text-xs">{t('warmer')}</span>
                     </div>
@@ -226,6 +244,7 @@ export default function ImageProcessingControls({
                         value={adjustments.saturation || 100}
                         onChange={(e) => handleSliderChange(e, 'saturation')}
                         className="flex-1 brutalist-border bg-gradient-to-r from-gray-400 to-red-600 h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                        disabled={isProcessing}
                       />
                       <span className="ml-2 text-xs">{t('more')}</span>
                     </div>
@@ -245,6 +264,7 @@ export default function ImageProcessingControls({
                         value={adjustments.lightness || 100}
                         onChange={(e) => handleSliderChange(e, 'lightness')}
                         className="flex-1 brutalist-border bg-gradient-to-r from-gray-900 to-white h-6 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-7 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                        disabled={isProcessing}
                       />
                       <span className="ml-2 text-xs">{t('lighter')}</span>
                     </div>
@@ -269,6 +289,7 @@ export default function ImageProcessingControls({
                       value={adjustments.redScale || 1}
                       onChange={(e) => handleSliderChange(e, 'redScale')}
                       className="w-full brutalist-border bg-gradient-to-r from-gray-200 to-red-600 h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                      disabled={isProcessing}
                     />
                   </div>
                   
@@ -285,6 +306,7 @@ export default function ImageProcessingControls({
                       value={adjustments.greenScale || 1}
                       onChange={(e) => handleSliderChange(e, 'greenScale')}
                       className="w-full brutalist-border bg-gradient-to-r from-gray-200 to-green-600 h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                      disabled={isProcessing}
                     />
                   </div>
                   
@@ -301,6 +323,7 @@ export default function ImageProcessingControls({
                       value={adjustments.blueScale || 1}
                       onChange={(e) => handleSliderChange(e, 'blueScale')}
                       className="w-full brutalist-border bg-gradient-to-r from-gray-200 to-blue-600 h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                      disabled={isProcessing}
                     />
                   </div>
                 </div>

@@ -107,7 +107,8 @@
             "colorBalance": "KLEURBALANS (RGB)",
             "red": "ROOD",
             "green": "GROEN",
-            "blue": "BLAUW"
+            "blue": "BLAUW",
+            "processing": "VERWERKEN..."
         },
         "BackgroundRemoval": {
             "title": "ACHTERGROND VERWIJDEREN",

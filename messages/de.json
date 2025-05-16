@@ -107,7 +107,8 @@
             "colorBalance": "FARBBALANCE (RGB)",
             "red": "ROT",
             "green": "GRÜN",
-            "blue": "BLAU"
+            "blue": "BLAU",
+            "processing": "VERARBEITUNG..."
         },
         "BackgroundRemoval": {
             "title": "HINTERGRUNDENTFERNUNG",

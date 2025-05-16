@@ -107,7 +107,8 @@
             "colorBalance": "VYVÁŽENÍ BARVY (RGB)",
             "red": "ČERVENÁ",
             "green": "ZELENÁ",
-            "blue": "MODRÁ"
+            "blue": "MODRÁ",
+            "processing": "ZPRACOVÁVÁNÍ..."
         },
         "BackgroundRemoval": {
             "title": "ODSTRANĚNÍ POZADÍ",

@@ -107,7 +107,8 @@
             "colorBalance": "BALANCE DES COULEURS (RGB)",
             "red": "ROUGE",
             "green": "VERT",
-            "blue": "BLEU"
+            "blue": "BLEU",
+            "processing": "TRAITEMENT DES IMAGES..."
         },
         "BackgroundRemoval": {
             "title": "SUPPRESSION D'ARRIÈRE-PLAN",

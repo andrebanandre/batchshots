@@ -107,7 +107,8 @@
             "colorBalance": "BALANS KOLORÓW (RGB)",
             "red": "CZERWONY",
             "green": "ZIELONY",
-            "blue": "NIEBIESKI"
+            "blue": "NIEBIESKI",
+            "processing": "PRZETWARZANIE..."
         },
         "BackgroundRemoval": {
             "title": "USUWANIE TŁA",

@@ -19,7 +19,11 @@ type PresetType =
   | 'furniture' 
   | 'transparent';
 
-export default function QuickPresets() {
+interface QuickPresetsProps {
+  isProcessing?: boolean;
+}
+
+export default function QuickPresets({ isProcessing = false }: QuickPresetsProps) {
   const { setAdjustments } = useImageProcessing();
   const t = useTranslations('Components.QuickPresets');
   
@@ -186,6 +190,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('white-bg')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.white-bg.description')}
+          disabled={isProcessing}
         >
           {t('presets.white-bg.name')}
         </button>
@@ -193,6 +198,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('clean')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.clean.description')}
+          disabled={isProcessing}
         >
           {t('presets.clean.name')}
         </button>
@@ -200,6 +206,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('jewelry')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.jewelry.description')}
+          disabled={isProcessing}
         >
           {t('presets.jewelry.name')}
         </button>
@@ -207,6 +214,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('sharp')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.sharp.description')}
+          disabled={isProcessing}
         >
           {t('presets.sharp.name')}
         </button>
@@ -218,6 +226,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('textile')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.textile.description')}
+          disabled={isProcessing}
         >
           {t('presets.textile.name')}
         </button>
@@ -225,6 +234,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('soft-product')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.soft-product.description')}
+          disabled={isProcessing}
         >
           {t('presets.soft-product.name')}
         </button>
@@ -232,6 +242,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('furniture')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.furniture.description')}
+          disabled={isProcessing}
         >
           {t('presets.furniture.name')}
         </button>
@@ -239,6 +250,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('transparent')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.transparent.description')}
+          disabled={isProcessing}
         >
           {t('presets.transparent.name')}
         </button>
@@ -246,6 +258,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('food')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.food.description')}
+          disabled={isProcessing}
         >
           {t('presets.food.name')}
         </button>
@@ -253,17 +266,15 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('dramatic')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.dramatic.description')}
+          disabled={isProcessing}
         >
           {t('presets.dramatic.name')}
         </button>
-      </div>
-      
-      <h3 className="font-bold mb-2 mt-4 text-xs text-[#4f46e5]">{t('colorStyle')}</h3>
-      <div className="grid grid-cols-2 gap-2">
         <button
           onClick={() => handleQuickPreset('vivid')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.vivid.description')}
+          disabled={isProcessing}
         >
           {t('presets.vivid.name')}
         </button>
@@ -271,6 +282,7 @@ export default function QuickPresets() {
           onClick={() => handleQuickPreset('classic')}
           className="brutalist-border px-2 py-1 text-sm hover:bg-slate-100"
           title={t('presets.classic.description')}
+          disabled={isProcessing}
         >
           {t('presets.classic.name')}
         </button>

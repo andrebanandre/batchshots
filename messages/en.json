@@ -219,7 +219,8 @@
             "colorBalance": "COLOR BALANCE (RGB)",
             "red": "RED",
             "green": "GREEN",
-            "blue": "BLUE"
+            "blue": "BLUE",
+            "processing": "PROCESSING IMAGES..."
         },
         "BackgroundRemoval": {
             "title": "BACKGROUND REMOVAL",
