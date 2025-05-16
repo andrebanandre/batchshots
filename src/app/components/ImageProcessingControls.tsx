@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import ProBadge from './ProBadge';
-import BackgroundRemovalControl from './BackgroundRemovalControl';
 import QuickPresets from './QuickPresets';
 import { useImageProcessing } from '../contexts/ImageProcessingContext';
 import { useTranslations } from 'next-intl';
@@ -53,14 +52,7 @@ export default function ImageProcessingControls({
     applyToAll,
     setApplyToAll,
     handleReset,
-    selectedImageId,
-    isProcessing,
-    isRemovingBackground,
-    hasBackgroundRemoved,
-    totalImages,
-    processedCount,
-    handleRemoveBackground,
-    handleRemoveAllBackgrounds
+    isProcessing
   } = useImageProcessing();
 
   const handleSliderChange = (
@@ -317,39 +309,28 @@ export default function ImageProcessingControls({
           </>
         ) : (
           <>
-                 <div className="space-y-2 mt-4 p-4 bg-white brutalist-border flex flex-col gap-2">
-            <Button
-              as={Link}
-              href="/background-removal"
-              variant="default"
-              fullWidth
-              disabled={isProcessing}
-              target="_blank"
-            >
-              {tBackgroundRemoval('title')}
-            </Button>
-            <Button
-              as={Link}
-              href="/object-removal"
-              variant="default"
-              fullWidth
-              disabled={isProcessing}
-              target="_blank"
-            >
-              {tObjectRemoval('title')}
-            </Button>
-          </div>
-          {/* <BackgroundRemovalControl 
-            selectedImageId={selectedImageId}
-            isProcessing={isProcessing}
-            isRemovingBackground={isRemovingBackground}
-            hasBackgroundRemoved={hasBackgroundRemoved}
-            applyToAll={applyToAll}
-            totalImages={totalImages}
-            processedCount={processedCount}
-            onRemoveBackground={handleRemoveBackground}
-            onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
-          /> */}
+            <div className="space-y-2 mt-4 p-4 bg-white brutalist-border flex flex-col gap-2">
+              <Button
+                as={Link}
+                href="/background-removal"
+                variant="default"
+                fullWidth
+                disabled={isProcessing}
+                target="_blank"
+              >
+                {tBackgroundRemoval('title')}
+              </Button>
+              <Button
+                as={Link}
+                href="/object-removal"
+                variant="default"
+                fullWidth
+                disabled={isProcessing}
+                target="_blank"
+              >
+                {tObjectRemoval('title')}
+              </Button>
+            </div>
           </>
         )}
       </div>

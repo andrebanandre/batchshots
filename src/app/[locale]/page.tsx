@@ -108,7 +108,7 @@ export default function Home() {
   const router = useRouter();
   
   // Calculate max images based on pro status
-  const MAX_IMAGES = isProUser ? 100 : 5;
+  const MAX_IMAGES = isProUser ? 500 : 5;
   
   // Show upgrade dialog
   const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);

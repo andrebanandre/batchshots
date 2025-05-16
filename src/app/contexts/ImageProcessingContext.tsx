@@ -17,18 +17,11 @@ interface ImageProcessingContextProps {
   applyToAll: boolean;
   setApplyToAll: React.Dispatch<React.SetStateAction<boolean>>;
   
-  // Background removal state
-  selectedImageId: string | null;
+  // Processing state
   isProcessing: boolean;
-  isRemovingBackground: boolean;
-  hasBackgroundRemoved: boolean;
-  totalImages: number;
-  processedCount: number;
   
   // Action handlers
   handleReset: () => void;
-  handleRemoveBackground: (id: string) => void;
-  handleRemoveAllBackgrounds: () => void;
 }
 
 const ImageProcessingContext = createContext<ImageProcessingContextProps | undefined>(undefined);
@@ -51,14 +44,7 @@ interface ImageProcessingProviderProps {
   applyToAll: boolean;
   setApplyToAll: React.Dispatch<React.SetStateAction<boolean>>;
   onReset: () => void;
-  selectedImageId: string | null;
   isProcessing: boolean;
-  isRemovingBackground: boolean;
-  hasBackgroundRemoved: boolean;
-  totalImages: number;
-  processedCount: number;
-  onRemoveBackground: (id: string) => void;
-  onRemoveAllBackgrounds: () => void;
 }
 
 export const ImageProcessingProvider: React.FC<ImageProcessingProviderProps> = ({
@@ -70,14 +56,7 @@ export const ImageProcessingProvider: React.FC<ImageProcessingProviderProps> = (
   applyToAll,
   setApplyToAll,
   onReset,
-  selectedImageId,
-  isProcessing,
-  isRemovingBackground,
-  hasBackgroundRemoved,
-  totalImages,
-  processedCount,
-  onRemoveBackground,
-  onRemoveAllBackgrounds
+  isProcessing
 }) => {
   // Handle reset of adjustments AND watermarks within the provider
   const handleReset = () => {
@@ -102,18 +81,11 @@ export const ImageProcessingProvider: React.FC<ImageProcessingProviderProps> = (
     applyToAll,
     setApplyToAll,
     
-    // Background removal state
-    selectedImageId,
+    // Processing state
     isProcessing,
-    isRemovingBackground,
-    hasBackgroundRemoved,
-    totalImages,
-    processedCount,
     
     // Action handlers
     handleReset, // Use the combined reset handler
-    handleRemoveBackground: onRemoveBackground,
-    handleRemoveAllBackgrounds: onRemoveAllBackgrounds,
   };
 
   return (
