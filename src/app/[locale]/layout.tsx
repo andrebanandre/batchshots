@@ -10,7 +10,6 @@ import { routing } from '@/i18n/routing';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Providers } from '../providers';
 import { ClerkProvider } from '@clerk/nextjs';
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { neobrutalism } from '@clerk/themes'
 
 // Import Clerk localizations
@@ -108,7 +107,6 @@ export default async function RootLayout({
             className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
             suppressHydrationWarning
           >
-            <GoogleAnalytics gaId="G-8VB5ZYPDDE" />
             <Navbar />
             <main className="flex-grow">
               {children}
