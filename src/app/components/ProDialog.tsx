@@ -8,7 +8,6 @@ import BuyProButton from './BuyProButton';
 interface ProDialogProps {
   onClose: () => void;
   onUpgrade: () => void;
-  onTry: () => void;
   featureName: string;
   featureLimit?: number;
 }
@@ -16,7 +15,6 @@ interface ProDialogProps {
 export default function ProDialog({
   onClose,
   onUpgrade,
-  onTry,
   featureName,
   featureLimit,
 }: ProDialogProps) {
