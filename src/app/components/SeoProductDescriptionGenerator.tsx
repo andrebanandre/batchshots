@@ -140,10 +140,6 @@ export default function SeoProductDescriptionGenerator({
     }
   };
 
-  const handleTryFeature = () => {
-    setShowProDialog(false);
-    router.push('/seo-description');
-  };
   
   // Modify the copyToClipboard function to support both markdown and HTML formats
   const copyToClipboard = async (text: string, field: string, asHtml: boolean = false) => {
@@ -640,7 +636,6 @@ export default function SeoProductDescriptionGenerator({
         <ProDialog
           onClose={() => setShowProDialog(false)}
           onUpgrade={() => router.push('/pricing')}
-          onTry={handleTryFeature}
           featureName="AI SEO Product Description"
           featureLimit={1}
         />

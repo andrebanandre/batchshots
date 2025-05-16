@@ -67,11 +67,7 @@ export default function SeoNameGenerator({
   };
 
   const hasGeneratedNames = seoNames.length > 0;
-  
-  const handleTryFeature = () => {
-    setShowProDialog(false);
-    router.push('/seo-naming');
-  };
+
 
   return (
     <Card title={t('title')} className={className} variant="accent" headerRight={<ProBadge />}>
@@ -154,7 +150,6 @@ export default function SeoNameGenerator({
         <ProDialog
           onClose={() => setShowProDialog(false)}
           onUpgrade={() => router.push('/pricing')}
-          onTry={handleTryFeature}
           featureName="AI SEO Image Naming"
           featureLimit={100}
         />
