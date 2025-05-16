@@ -11,6 +11,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { Providers } from '../providers';
 import { ClerkProvider } from '@clerk/nextjs';
 import { neobrutalism } from '@clerk/themes'
+import CookieConsentWrapper from '../components/CookieConsentWrapper';
 
 // Import Clerk localizations
 import { enUS, deDE, frFR, nlNL, plPL, ruRU, ukUA, csCZ } from '@clerk/localizations';
@@ -112,6 +113,7 @@ export default async function RootLayout({
               {children}
             </main>
             <Footer />
+            <CookieConsentWrapper />
             <Script
               strategy="beforeInteractive"
               src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}

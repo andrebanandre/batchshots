@@ -4,7 +4,16 @@
     },
     "LocaleSwitcher": {
         "label": "Changer de langue",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Inconnu}}"
+        "locale": "{locale, select, fr {🇫🇷 Français} en {🇺🇸 English} other {Inconnu}}"
+    },
+    "CookieConsent": {
+        "title": "AVIS SUR LES COOKIES",
+        "message": "Ce site utilise des cookies essentiels pour assurer son bon fonctionnement. Nous n'utilisons aucun cookie de suivi ou de marketing. En continuant à utiliser notre site, vous acceptez cela.",
+        "privacyLink": "Politique de confidentialité",
+        "termsLink": "Conditions d'utilisation",
+        "acceptButton": "ACCEPTER",
+        "rejectButton": "REFUSER",
+        "learnMoreButton": "EN SAVOIR PLUS"
     },
     "Home": {
         "title": "Batch Shots : OPTIMISEUR D'IMAGE SEO",

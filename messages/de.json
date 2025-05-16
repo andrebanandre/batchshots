@@ -4,7 +4,16 @@
     },
     "LocaleSwitcher": {
         "label": "Sprache ändern",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Unbekannt}}"
+        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unbekannt}}"
+    },
+    "CookieConsent": {
+        "title": "COOKIE-HINWEIS",
+        "message": "Diese Website verwendet essentielle Cookies, um ihre ordnungsgemäße Funktion zu gewährleisten. Wir verwenden keine Tracking- oder Marketing-Cookies. Durch die weitere Nutzung unserer Website stimmen Sie dem zu.",
+        "privacyLink": "Datenschutzrichtlinie",
+        "termsLink": "Nutzungsbedingungen",
+        "acceptButton": "AKZEPTIEREN",
+        "rejectButton": "ABLEHNEN",
+        "learnMoreButton": "MEHR ERFAHREN"
     },
     "Home": {
         "title": "Batch Shots: SEO BILDOPTIMIERER",

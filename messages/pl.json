@@ -4,7 +4,16 @@
     },
     "LocaleSwitcher": {
         "label": "Zmień język",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Nieznany}}"
+        "locale": "{locale, select, pl {🇵🇱 Polski} en {🇺🇸 English} other {Nieznany}}"
+    },
+    "CookieConsent": {
+        "title": "INFORMACJA O PLIKACH COOKIE",
+        "message": "Ta strona używa niezbędnych plików cookie, aby zapewnić jej prawidłowe działanie. Nie używamy żadnych plików cookie śledzących ani marketingowych. Kontynuując korzystanie z naszej strony, zgadzasz się na to.",
+        "privacyLink": "Polityka prywatności",
+        "termsLink": "Warunki użytkowania",
+        "acceptButton": "AKCEPTUJĘ",
+        "rejectButton": "ODRZUCAM",
+        "learnMoreButton": "DOWIEDZ SIĘ WIĘCEJ"
     },
     "Home": {
         "title": "Batch Shots: OPTYMALIZATOR OBRAZÓW SEO",

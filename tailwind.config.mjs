@@ -21,13 +21,29 @@ export default {
       borderWidth: {
         '3': '3px',
       },
+      keyframes: {
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        }
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.3s ease-out'
+      }
     },
   },
   safelist: [
     'shadow-brutalist',
     'shadow-brutalist-accent',
     'shadow-brutalist-accent-hover',
-    'text-[10px]'
+    'text-[10px]',
+    'animate-fade-in-up'
   ],
   plugins: [],
 }; 

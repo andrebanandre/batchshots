@@ -6,6 +6,15 @@
         "label": "Change language",
         "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
     },
+    "CookieConsent": {
+        "title": "COOKIE NOTICE",
+        "message": "We use essential cookies for authentication, preferences, and app functionality. Your privacy matters - we don't use any tracking or marketing cookies. By continuing to use our site, you agree to this.",
+        "privacyLink": "Privacy Policy",
+        "termsLink": "Terms of Use",
+        "acceptButton": "ACCEPT",
+        "rejectButton": "REJECT",
+        "learnMoreButton": "LEARN MORE"
+    },
     "Home": {
         "title": "Batch Shots: SEO IMAGE OPTIMIZER",
         "loading": "LOADING APP...",

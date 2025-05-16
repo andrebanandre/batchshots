@@ -4,7 +4,16 @@
     },
     "LocaleSwitcher": {
         "label": "Změnit jazyk",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Neznámý}}"
+        "locale": "{locale, select, cs {🇨🇿 Čeština} en {🇺🇸 English} other {Neznámý}}"
+    },
+    "CookieConsent": {
+        "title": "OZNÁMENÍ O COOKIES",
+        "message": "Tento web používá nezbytné soubory cookie k zajištění jeho správného fungování. Nepoužíváme žádné sledovací ani marketingové soubory cookie. Pokračováním v používání našeho webu s tím souhlasíte.",
+        "privacyLink": "Zásady ochrany osobních údajů",
+        "termsLink": "Podmínky použití",
+        "acceptButton": "PŘIJMOUT",
+        "rejectButton": "ODMÍTNOUT",
+        "learnMoreButton": "DOZVĚDĚT SE VÍCE"
     },
     "Home": {
         "title": "Batch Shots: SEO OPTIMALIZÁTOR OBRÁZKŮ",
@@ -399,11 +408,11 @@
                     "description": "Odstraňte pozadí z produktových obrázků pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí.",
                     "freeMode": {
                         "title": "ZDARMA REŽIM",
-                        "description": "Zpracovávejte 1 obrázek současně. Upgradujte na PRO pro zpracování až 100 obrázků hromadně!"
+                        "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro zpracování až 100 obrázků hromadně!"
                     },
                     "proMode": {
                         "title": "PRO REŽIM",
-                        "description": "Zpracovávejte až 100 obrázků současně s PRO účtem!"
+                        "description": "Zpracujte až 100 obrázků současně s PRO účtem!"
                     }
                 },
                 "upload": {

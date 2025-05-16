@@ -4,7 +4,16 @@
     },
     "LocaleSwitcher": {
         "label": "Taal wijzigen",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Onbekend}}"
+        "locale": "{locale, select, nl {🇳🇱 Nederlands} en {🇺🇸 English} other {Onbekend}}"
+    },
+    "CookieConsent": {
+        "title": "COOKIEKENNISGEVING",
+        "message": "Deze site gebruikt essentiële cookies om de goede werking ervan te garanderen. We gebruiken geen tracking- of marketingcookies. Door onze site te blijven gebruiken, gaat u hiermee akkoord.",
+        "privacyLink": "Privacybeleid",
+        "termsLink": "Gebruiksvoorwaarden",
+        "acceptButton": "ACCEPTEREN",
+        "rejectButton": "WEIGEREN",
+        "learnMoreButton": "MEER WETEN"
     },
     "Home": {
         "title": "Batch Shots: SEO BEELD OPTIMALISATOR",

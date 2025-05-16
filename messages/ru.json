@@ -4,7 +4,16 @@
     },
     "LocaleSwitcher": {
         "label": "Изменить язык",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} cs {🇨🇿 Čeština} fr {🇫🇷 Français} nl {🇳🇱 Nederlands} pl {🇵🇱 Polski} ru {🇷🇺 Русский} uk {🇺🇦 Українська} other {Неизвестно}}"
+        "locale": "{locale, select, ru {🇷🇺 Русский} en {🇺🇸 English} other {Неизвестный}}"
+    },
+    "CookieConsent": {
+        "title": "УВЕДОМЛЕНИЕ О COOKIE",
+        "message": "Этот сайт использует необходимые файлы cookie для обеспечения его правильной работы. Мы не используем отслеживающие или маркетинговые cookie. Продолжая использовать наш сайт, вы соглашаетесь с этим.",
+        "privacyLink": "Политика конфиденциальности",
+        "termsLink": "Условия использования",
+        "acceptButton": "ПРИНЯТЬ",
+        "rejectButton": "ОТКЛОНИТЬ",
+        "learnMoreButton": "УЗНАТЬ БОЛЬШЕ"
     },
     "Home": {
         "title": "Batch Shots: SEO ОПТИМИЗАТОР ИЗОБРАЖЕНИЙ",
