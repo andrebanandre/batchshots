@@ -520,7 +520,7 @@
             "position": "POZYCJA",
             "uploadLogo": "PRZEŚLIJ LOGO",
             "logoPlaceholder": "Kliknij lub przeciągnij logo tutaj",
-            "reset": "RESETUJ ZNAK WODNY",
+            "reset": "RESETUJ",
             "presets": {
                 "bottomRight": "Dół Prawy",
                 "bottomLeft": "Dół Lewy",

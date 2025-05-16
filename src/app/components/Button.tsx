@@ -6,6 +6,8 @@ type ButtonBaseProps = {
   fullWidth?: boolean;
   as?: ElementType;
   className?: string;
+  href?: string;
+  target?: string;
 };
 
 export type ButtonProps<T extends ElementType = 'button'> = ButtonBaseProps &

@@ -559,7 +559,7 @@
             "position": "POSITION",
             "uploadLogo": "TÉLÉVERSER LE LOGO",
             "logoPlaceholder": "Cliquez ou glissez le logo ici",
-            "reset": "RÉINITIALISER LE FILIGRANE",
+            "reset": "RÉINITIALISER",
             "presets": {
                 "bottomRight": "En bas à droite",
                 "bottomLeft": "En bas à gauche",

@@ -569,7 +569,7 @@
             "position": "POSITION",
             "uploadLogo": "LOGO HOCHLADEN",
             "logoPlaceholder": "Klicken oder ziehen Sie das Logo hierher",
-            "reset": "WASSERZEICHEN ZURÜCKSETZEN",
+            "reset": "ZURÜCKSETZEN",
             "presets": {
                 "bottomRight": "Unten Rechts",
                 "bottomLeft": "Unten Links",

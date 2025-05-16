@@ -462,7 +462,7 @@
             "position": "POSITION",
             "uploadLogo": "UPLOAD LOGO",
             "logoPlaceholder": "Click or drag logo here",
-            "reset": "RESET WATERMARK",
+            "reset": "RESET",
             "presets": {
                 "bottomRight": "Bottom-Right",
                 "bottomLeft": "Bottom-Left",

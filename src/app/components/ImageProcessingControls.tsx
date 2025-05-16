@@ -5,6 +5,8 @@ import BackgroundRemovalControl from './BackgroundRemovalControl';
 import QuickPresets from './QuickPresets';
 import { useImageProcessing } from '../contexts/ImageProcessingContext';
 import { useTranslations } from 'next-intl';
+import Button from './Button';
+import Link from 'next/link';
 
 export interface ImageAdjustments {
   brightness: number;
@@ -40,6 +42,8 @@ export default function ImageProcessingControls({
   className = '',
 }: ImageProcessingControlsProps) {
   const t = useTranslations('Components.ImageProcessingControls');
+  const tBackgroundRemoval = useTranslations('Components.BackgroundRemoval');
+  const tObjectRemoval = useTranslations('ObjectRemovalPage');
   
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced' | 'ai'>('basic');
   
@@ -85,10 +89,9 @@ export default function ImageProcessingControls({
           className="text-sm font-bold py-1 px-2 brutalist-border hover:bg-slate-100 text-gray-700 flex items-center"
           title="Reset all adjustments"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
           </svg>
-          {t('reset')}
         </button>
       }
     >
@@ -313,8 +316,30 @@ export default function ImageProcessingControls({
             </div>
           </>
         ) : (
-          // AI Background Removal tab
-          <BackgroundRemovalControl 
+          <>
+                 <div className="space-y-2 mt-4 p-4 bg-white brutalist-border flex flex-col gap-2">
+            <Button
+              as={Link}
+              href="/background-removal"
+              variant="default"
+              fullWidth
+              disabled={isProcessing}
+              target="_blank"
+            >
+              {tBackgroundRemoval('title')}
+            </Button>
+            <Button
+              as={Link}
+              href="/object-removal"
+              variant="default"
+              fullWidth
+              disabled={isProcessing}
+              target="_blank"
+            >
+              {tObjectRemoval('title')}
+            </Button>
+          </div>
+          {/* <BackgroundRemovalControl 
             selectedImageId={selectedImageId}
             isProcessing={isProcessing}
             isRemovingBackground={isRemovingBackground}
@@ -324,7 +349,8 @@ export default function ImageProcessingControls({
             processedCount={processedCount}
             onRemoveBackground={handleRemoveBackground}
             onRemoveAllBackgrounds={handleRemoveAllBackgrounds}
-          />
+          /> */}
+          </>
         )}
       </div>
     </Card>

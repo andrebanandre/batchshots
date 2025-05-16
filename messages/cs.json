@@ -522,7 +522,7 @@
             "position": "POZICE",
             "uploadLogo": "NAHRÁT LOGO",
             "logoPlaceholder": "Klikněte nebo přetáhněte logo sem",
-            "reset": "RESET VODOTISKU",
+            "reset": "RESET",
             "presets": {
                 "bottomRight": "Vpravo dole",
                 "bottomLeft": "Vlevo dole",
