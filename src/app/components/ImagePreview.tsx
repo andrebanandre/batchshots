@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Button from './Button';
 import type { ImageFormat } from '../lib/imageProcessing';
-import Loader from './Loader';
 import { useTranslations } from 'next-intl';
 
 export interface ImageFile {
@@ -31,7 +30,6 @@ interface ImagePreviewProps {
   onDownloadImage: (image: ImageFile, format?: ImageFormat) => void;
   onDeleteImage: (id: string) => void;
   isProcessing?: boolean;
-  isRemovingBackground?: boolean;
   className?: string;
   appliedSettings?: {
     preset: string | null;
@@ -49,7 +47,6 @@ export default function ImagePreview({
   onDownloadImage,
   onDeleteImage,
   isProcessing = false,
-  isRemovingBackground = false,
   className = '',
   appliedSettings,
   maxImagesAllowed = 10,
@@ -260,16 +257,7 @@ export default function ImagePreview({
 
   // Get the appropriate image URL to display (thumbnail or full)
   const getDisplayUrl = (image: ImageFile) => {
-    // For transparent images (background removed), prioritize processed PNG sources if available
-    if (image.backgroundRemoved) {
-      // Use processed thumbnail if available
-      if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
-      // Fall back to processed full size if available
-      if (image.processedDataUrl) return image.processedDataUrl;
-      // Fall back to original background-removed data URL
-      return image.dataUrl;
-    }
-    
+
     // For regular images, use standard priority order
     // Prefer processed thumbnail for previews
     if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
@@ -330,7 +318,7 @@ export default function ImagePreview({
             
             <div 
               ref={imageContainerRef}
-              className={`relative aspect-video w-full overflow-hidden cursor-grab touch-none ${selectedImage.backgroundRemoved ? 'transparent-bg' : ''}`}
+              className={`relative aspect-video w-full overflow-hidden cursor-grab touch-none`}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -358,7 +346,6 @@ export default function ImagePreview({
                   className="object-contain"
                   priority
                   draggable={false}
-                  unoptimized={selectedImage.backgroundRemoved}
                 />
               </div>
               
@@ -373,16 +360,8 @@ export default function ImagePreview({
                 {t('zoomLevel', { scale: Math.round(scale * 100) })}
               </div>
 
-         
-              
-              {isRemovingBackground && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                  <div className="flex flex-col items-center space-y-3">
-                    <Loader size="lg" />
-                    <p className="text-white font-semibold">{t('removingBackground')}</p>
-                  </div>
-                </div>
-              )}
+           
+          
             </div>
 
             <div className="p-4 flex flex-col space-y-2">
@@ -481,13 +460,7 @@ export default function ImagePreview({
                   </>
                 )}
 
-                {/* Background removal info */}
-                {selectedImage.backgroundRemoved && (
-                  <div className="col-span-2">
-                    <span className="font-bold">{t('fileInfo.background')} </span>
-                    <span className="text-green-600">{t('fileInfo.backgroundRemoved')}</span>
-                  </div>
-                )}
+               
               </div>
             </div>
           </div>
@@ -511,7 +484,7 @@ export default function ImagePreview({
               }`}
               onClick={() => onSelectImage(image.id)}
             >
-              <div className={`relative aspect-square w-full overflow-hidden ${image.backgroundRemoved ? 'transparent-bg' : ''}`}>
+              <div className={`relative aspect-square w-full overflow-hidden`}>
                 {/* Show PNG transparency indicator only in thumbnails */}
                 <Image
                   src={getDisplayUrl(image)}
@@ -519,7 +492,6 @@ export default function ImagePreview({
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                   className="object-contain z-10"
-                  unoptimized={image.backgroundRemoved}
                 />
                 {/* Image number indicator */}
                 <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
@@ -534,12 +506,7 @@ export default function ImagePreview({
                   ×
                 </button>
                 
-                {/* Background removal indicator */}
-                {image.backgroundRemoved && (
-                  <div className="absolute bottom-1 right-1 brutalist-border border-2 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs px-2 py-1 z-10 shadow-brutalist">
-                    BG
-                  </div>
-                )}
+               
               </div>
               <div className="mt-2 text-xs truncate">
                 {getDisplayName(image)}

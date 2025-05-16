@@ -741,8 +741,6 @@ export default function ImageFormatConvertorPage() {
         downloadComplete={downloadComplete}
         formatType={downloadFormat}
         hasSeoNames={false}
-        hasRemovedBackgrounds={false}
-        hasSeoProductDescription={false}
         hasWatermark={false}
       />
     </main>

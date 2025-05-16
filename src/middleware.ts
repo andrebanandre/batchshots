@@ -3,16 +3,28 @@ import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 import { NextRequest } from 'next/server';
 
-const intlMiddleware = createMiddleware(routing);
+// Create the internationalization middleware with cookie persistence
+const intlMiddleware = createMiddleware({
+  // Forward the routing configuration
+  ...routing,
+  // Store the locale information in a cookie
+  localeDetection: true
+});
 
 export default clerkMiddleware((auth, req) => {
   const { pathname } = req.nextUrl;
   
-  // Skip internationalization for API routes
-  if (pathname.startsWith('/api') || pathname.startsWith('/trpc') || pathname.startsWith('/models')) {
+  // Skip internationalization for API routes, static files and model files
+  if (
+    pathname.startsWith('/api') || 
+    pathname.startsWith('/trpc') || 
+    pathname.startsWith('/models') ||
+    pathname.includes('.') // Skip files with extensions
+  ) {
     return null;
   }
   
+  // Apply the internationalization middleware
   return intlMiddleware(req as NextRequest);
 });
 

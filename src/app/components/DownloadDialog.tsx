@@ -16,7 +16,6 @@ interface DownloadDialogProps {
   downloadComplete: boolean;
   formatType: string;
   hasSeoNames?: boolean;
-  hasRemovedBackgrounds?: boolean;
   hasSeoProductDescription?: boolean;
   hasWatermark?: boolean;
 }
@@ -33,7 +32,6 @@ export default function DownloadDialog({
   downloadComplete,
   formatType,
   hasSeoNames = false,
-  hasRemovedBackgrounds = false,
   hasSeoProductDescription = false,
   hasWatermark = false
 }: DownloadDialogProps) {
@@ -68,11 +66,7 @@ export default function DownloadDialog({
                           {hasWatermark && (
                              <li className="text-blue-600 font-semibold">{t('watermarkApplied')}</li>
                           )}
-                          {hasRemovedBackgrounds && (
-                            <li className="text-purple-600 font-semibold">
-                              {t('backgroundRemoval')}
-                            </li>
-                          )}
+                      
                           {hasSeoNames && (
                             <li className="text-green-600 font-semibold">
                               <div className="flex items-center">

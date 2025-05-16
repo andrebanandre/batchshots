@@ -7,13 +7,11 @@ export type ImageFormat = 'jpg' | 'webp' | 'png';
 
 interface DownloadOptionsProps {
   onDownload: (format: ImageFormat) => void;
-  hasBackgroundRemovedImages?: boolean;
   hasSeoProductDescription?: boolean;
 }
 
 export default function DownloadOptions({ 
   onDownload, 
-  hasBackgroundRemovedImages = false,
   hasSeoProductDescription = false
 }: DownloadOptionsProps) {
   const t = useTranslations('Components.DownloadOptions');
@@ -66,11 +64,6 @@ export default function DownloadOptions({
             </label>
           </div>
           
-          {hasBackgroundRemovedImages && (
-            <p className="text-xs mt-2 text-purple-600">
-              {t('transparentNote')}
-            </p>
-          )}
           
           {hasSeoProductDescription && (
             <p className="text-xs mt-2 text-green-600">

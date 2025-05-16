@@ -13,6 +13,7 @@ type BrutalistSelectProps = {
   value: string;
   onChange: (value: string) => void;
   className?: string;
+  disabled?: boolean;
 };
 
 export default function BrutalistSelect({
@@ -20,6 +21,7 @@ export default function BrutalistSelect({
   value,
   onChange,
   className = '',
+  disabled = false,
 }: BrutalistSelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -43,9 +45,10 @@ export default function BrutalistSelect({
     <div className={`relative ${className}`} ref={selectRef}>
       <button
         type="button"
-        className="brutalist-border bg-white px-3 py-1.5 flex items-center justify-between gap-2 w-full text-sm"
+        className={`brutalist-border bg-white px-3 py-1.5 flex items-center justify-between gap-2 w-full text-sm ${disabled ? 'opacity-60 cursor-not-allowed' : ''}`}
         style={{ boxShadow: '3px 3px 0 0 #000000' }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        disabled={disabled}
       >
         <div className="flex items-center gap-2">
           {selectedOption?.icon && <span>{selectedOption.icon}</span>}

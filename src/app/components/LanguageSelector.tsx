@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useTransition } from 'react';
 import { useLocale } from 'next-intl';
 import BrutalistSelect from './BrutalistSelect';
 import { useRouter, usePathname } from '@/i18n/navigation';
@@ -20,10 +20,15 @@ export default function LanguageSelector() {
   const currentLocale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
   
   const handleLanguageChange = (locale: string) => {
-    // Redirect to the same path with the new locale
-    router.push(pathname, { locale });
+    // Use startTransition to avoid a full page reload
+    startTransition(() => {
+      // Use router.replace to avoid adding to history stack
+      // and prevent full page reload
+      router.replace(pathname, { locale });
+    });
   };
 
   return (
@@ -32,6 +37,7 @@ export default function LanguageSelector() {
       value={currentLocale}
       onChange={handleLanguageChange}
       className="w-40"
+      disabled={isPending}
     />
   );
 } 

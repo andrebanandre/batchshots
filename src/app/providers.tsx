@@ -60,7 +60,19 @@ function SuspendedPostHogPageView() {
 
 export function Providers({ children, intlProps }: ProvidersProps) {
   return (
-    <NextIntlClientProvider {...intlProps}>
+    <NextIntlClientProvider 
+      {...intlProps}
+      // Set now as current date to ensure consistency across renders
+      now={new Date()}
+      // Important: Ensure we don't reload the page on locale change
+      onError={(error) => {
+        if (process.env.NODE_ENV !== 'production') {
+          console.error('NextIntl error:', error);
+        }
+        // Return null to prevent throwing and reloading on missing keys
+        return null;
+      }}
+    >
       <InternalPostHogProvider>
         {children}
       </InternalPostHogProvider>

@@ -841,6 +841,109 @@
             }
         }
     },
+    "ObjectRemovalPage": {
+        "metadata": {
+            "title": "AI Nástroj pro odstranění objektů | Batch Shots",
+            "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí našeho AI nástroje. Funguje zcela ve vašem prohlížeči pro zachování soukromí. Vyzkoušejte zdarma!",
+            "keywords": "odstranění objektů, ai odstranění objektů, odstranit objekty z obrázku, odstranit text z obrázku, odstranit osoby z fotografie, inpainting, nástroj pro úpravu obrázků"
+        },
+        "title": "AI ODSTRANĚNÍ OBJEKTŮ",
+        "loading": {
+            "ort": "Načítání AI Engine...",
+            "opencv": "Načítání nástrojů pro obrázky...",
+            "model": "Načítání modelu pro odstranění objektů...",
+            "proStatus": "Kontrola stavu účtu...",
+            "generic": "Načítání..."
+        },
+        "mainCard": {
+            "title": "AI PLÁTNO PRO ODSTRANĚNÍ OBJEKTŮ",
+            "info": {
+                "title": "JAK TO FUNGUJE",
+                "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí AI. Zpracování probíhá zcela ve vašem prohlížeči.",
+                "freeMode": {
+                    "title": "ZDARMA",
+                    "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování (již brzy!)."
+                },
+                "proMode": {
+                    "title": "PRO REŽIM",
+                    "description": "Zpracujte až 100 obrázků v dávkovém režimu. Nakreslete masku jednou a aplikujte ji na všechny vaše obrázky!"
+                }
+            },
+            "upload": {
+                "title": "Nahrajte svůj obrázek",
+                "button": "VYBRAT OBRÁZEK",
+                "helpTextFree": "Vyberte obrázek, který chcete upravit.",
+                "helpTextPro": "Vyberte až 100 obrázků pro dávkové zpracování."
+            },
+            "canvas": {
+                "drawTitle": "NAKRESLETE MASKU NA OBJEKTY",
+                "brushSize": "Velikost štětce",
+                "clearMask": "VYMAZAT MASKU",
+                "outputTitle": "2. ZOBRAZIT VÝSLEDEK",
+                "outputPlaceholder": "Výsledek se zobrazí zde"
+            },
+            "actions": {
+                "reset": "RESET",
+                "remove": "ODSTRANIT OBJEKTY",
+                "removeAllObjects": "ODSTRANIT ZE VŠECH OBRÁZKŮ",
+                "processing": "ZPRACOVÁVÁNÍ...",
+                "download": "STÁHNOUT",
+                "downloadAll": "STÁHNOUT VŠE"
+            }
+        },
+        "upgradeCard": {
+            "title": "UPGRADUJTE NA PRO",
+            "description": "Odemkněte dávkové odstranění objektů pro až 100 obrázků a další PRO funkce jako hromadné odstranění pozadí a pokročilé úpravy.",
+            "button": "DOWIEDZ SIĚ WIĘCEJ & UPGRADE"
+        },
+        "instructionsCard": {
+            "title": "INSTRUKCE",
+            "step1": "Nahrajte svůj obrázek pomocí tlačítka 'Vybrat obrázek'.",
+            "step2": "Pečlivě vybarvěte objekty, které chcete odstranit, pomocí červeného štětce.",
+            "step3": "Upravte posuvník velikosti štětce pro přesnost.",
+            "step4": "Klikněte na tlačítko 'Odstranit objekty' a počkejte na zpracování AI.",
+            "step5": "Po zpracování stáhněte svůj čistý obrázek pomocí tlačítka 'Stáhnout'.",
+            "step6": "Pro dávkové zpracování zaškrtněte 'Aplikovat masku na všechny obrázky' pro odstranění podobných objektů ze všech vybraných obrázků.",
+            "noteTitle": "Poznámka:",
+            "noteText": "Zpracování může trvat 15-60 sekund v závislosti na velikosti obrázku a vašem zařízení. Pro nejlepší výsledky se ujistěte, že vaše maska plně pokrývá objekt."
+        },
+        "imageGallery": {
+            "selectedImages": "Vybrané obrázky",
+            "selectedImage": "Vybraný obrázek",
+            "clearAll": "Vymazat vše",
+            "applyMaskToAll": "Aplikovat masku na všechny obrázky (dávkové zpracování)",
+            "hasMask": "Má nakreslenou masku"
+        },
+        "processing": {
+            "readingFile": "Čtení souboru...",
+            "loadingImage": "Načítání obrázku...",
+            "exportingMask": "Příprava masky...",
+            "runningModel": "Spouštění AI modelu...",
+            "rendering": "Vykreslování výsledku...",
+            "preparingBatch": "Příprava dávkového zpracování...",
+            "processingImage": "Zpracování obrázku {current} z {total}...",
+            "finishingBatch": "Dokončování výsledků...",
+            "preparingDownload": "Příprava ke stažení...",
+            "batchProgress": "Průběh dávky",
+            "loadingDimensions": "Výpočet rozměrů obrázku...",
+            "generic": "Zpracování obrázku..."
+        },
+        "errors": {
+            "ortLoad": "Nepodařilo se načíst AI Engine. Zkuste prosím obnovit stránku.",
+            "sessionCreate": "Nepodařilo se inicializovat model pro odstranění objektů.",
+            "freeLimit": "Uživatelé zdarma mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování.",
+            "tooManyImages": "Povoleno maximálně 100 obrázků. Zpracovány budou pouze první 3 obrázky.",
+            "imageLoad": "Chyba při načítání vybraného obrázku.",
+            "fileRead": "Chyba při čtení vybraného souboru.",
+            "canvasError": "Chyba při přístupu k plátnu obrázku.",
+            "prerequisites": "Nelze zpracovat. Chybí požadované komponenty: {missing}",
+            "noMask": "Nejprve nakreslete masku na objekt, který chcete odstranit.",
+            "processingFailed": "Odstranění objektu selhalo",
+            "resultLoadFailed": "Nepodařilo se zobrazit výsledek zpracovaného obrázku.",
+            "noDownloadData": "Žádný zpracovaný obrázek není k dispozici ke stažení.",
+            "downloadFailed": "Nepodařilo se připravit obrázek ke stažení."
+        }
+    },
     "Pricing": {
         "title": "CENOVÉ PLÁNY",
         "subtitle": "Vyberte si perfektní plán pro vaše potřeby optimalizace obrázků. Náš PRO plán nabízí doživotní licenci s jednorázovou platbou.",

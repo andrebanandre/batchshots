@@ -145,9 +145,6 @@ export default function BackgroundRemovalPage() {
     }
   };
 
-  const handleTryMain = () => {
-    router.push('/');
-  };
 
   return (
     <>
@@ -328,18 +325,6 @@ export default function BackgroundRemovalPage() {
                                   <span>{t('mainCard.progress.processing')}</span>
                                   <span>{t('mainCard.progress.percent', { percent: progressPercent })}</span>
                                 </div>
-                              </div>
-                            )}
-                            
-                            {images.some(img => img.backgroundRemoved) && (
-                              <div className="mt-6">
-                                <Button 
-                                  variant="default" 
-                                  onClick={handleTryMain}
-                                  fullWidth
-                                >
-                                  {t('mainCard.actions.tryFullEditor')}
-                                </Button>
                               </div>
                             )}
                           </div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from './Button';
 import ProBadge from './ProBadge';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { createPortal } from 'react-dom';
-import BuyProButton from './BuyProButton';
 
 interface ProDialogProps {
   onClose: () => void;
   onUpgrade: () => void;
+  onTry: () => void;
   featureName: string;
   featureLimit?: number;
 }
@@ -15,14 +15,13 @@ interface ProDialogProps {
 export default function ProDialog({
   onClose,
   onUpgrade,
+  onTry,
   featureName,
   featureLimit,
 }: ProDialogProps) {
   const t = useTranslations('Components.ProUpgrade');
-  const locale = useLocale();
-
   // Get SeoNameGenerator translations for the Try button text
-  const tSeo = useTranslations('Pricing');
+  const tSeo = useTranslations('Components.SeoNameGenerator');
 
   return createPortal(
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] p-4">
@@ -65,8 +64,14 @@ export default function ProDialog({
           >
             {t('learnMore')}
           </Button>
-
-          <BuyProButton locale={locale} variant="accent" size="lg">{tSeo('plans.pro.buttonText')}</BuyProButton>
+          
+          <Button 
+            variant="secondary"
+            onClick={onTry}
+            className="w-full"
+          >
+            {tSeo('tryFeature')}
+          </Button>
           
           <button 
             onClick={onClose}

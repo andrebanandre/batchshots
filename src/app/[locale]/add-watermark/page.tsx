@@ -344,14 +344,7 @@ export default function AddWatermarkPage() {
                         applyToAll={applyToAll}
                         setApplyToAll={setApplyToAll}
                         onReset={handleReset}
-                        selectedImageId={selectedImageId}
                         isProcessing={isProcessing}
-                        isRemovingBackground={false}
-                        hasBackgroundRemoved={false}
-                        totalImages={images.length}
-                        processedCount={0}
-                        onRemoveBackground={() => {}}
-                        onRemoveAllBackgrounds={() => {}}
                       >
                         <WatermarkControl className="w-full" />
                       </ImageProcessingProvider>
