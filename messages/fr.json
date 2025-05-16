@@ -453,6 +453,8 @@
                     "clear": "EFFACER",
                     "download": "TÉLÉCHARGER",
                     "downloadZip": "TÉLÉCHARGER EN ZIP",
+                    "downloading": "TÉLÉCHARGEMENT...",
+                    "downloadingZip": "CRÉATION DU ZIP...",
                     "removeBackground": "SUPPRIMER L'ARRIÈRE-PLAN",
                     "removeBackgrounds": "SUPPRIMER LES ARRIÈRE-PLANS",
                     "processing": "SUPPRESSION DE L'ARRIÈRE-PLAN...",

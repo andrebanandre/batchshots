@@ -463,6 +463,8 @@
                     "clear": "LÖSCHEN",
                     "download": "HERUNTERLADEN",
                     "downloadZip": "ALS ZIP HERUNTERLADEN",
+                    "downloading": "WIRD HERUNTERGELADEN...",
+                    "downloadingZip": "ZIP WIRD ERSTELLT...",
                     "removeBackground": "HINTERGRUND ENTFERNEN",
                     "removeBackgrounds": "HINTERGRÜNDE ENTFERNEN",
                     "processing": "HINTERGRUND WIRD ENTFERNT...",

@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './Button';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Loader from './Loader';
 
 interface DownloadDialogProps {
   isOpen: boolean;
@@ -127,7 +128,14 @@ export default function DownloadDialog({
                         variant="accent"
                         disabled={isDownloading}
                       >
-                        {isDownloading ? t('processing') : t('download')}
+                        {isDownloading ? (
+                          <span className="flex items-center">
+                            {t('processing')}
+                            <Loader size="sm" className="ml-2" />
+                          </span>
+                        ) : (
+                          t('download')
+                        )}
                       </Button>
                     </div>
                   </>

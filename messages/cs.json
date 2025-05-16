@@ -416,6 +416,8 @@
                     "clear": "VYMAZAT",
                     "download": "STÁHNOUT",
                     "downloadZip": "STÁHNOUT JAKO ZIP",
+                    "downloading": "STAHOVÁNÍ...",
+                    "downloadingZip": "VYTVÁŘENÍ ZIP...",
                     "removeBackground": "ODSTRANIT POZADÍ",
                     "removeBackgrounds": "ODSTRANIT POZADÍ",
                     "processing": "ODSTRAŇOVÁNÍ POZADÍ...",

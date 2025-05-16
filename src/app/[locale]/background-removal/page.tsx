@@ -19,11 +19,14 @@ import { defaultWatermarkSettings } from '@/app/components/WatermarkControl';
 
 export default function BackgroundRemovalPage() {
   const t = useTranslations('Components.BackgroundRemovalPage');
+  const tHome = useTranslations('Home');
+
   const { isProUser, isLoading: isProLoading } = useIsPro();
   const router = useRouter();
   const [images, setImages] = useState<ImageFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isRemovingBackground, setIsRemovingBackground] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
   const [showProUpgrade, setShowProUpgrade] = useState(false);
@@ -119,18 +122,26 @@ export default function BackgroundRemovalPage() {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (images.length === 0) return;
     
-    // Use existing downloadAllImages function with ZIP for multiple images
-    if (images.length > 1) {
-      downloadAllImages(images, 'png', true);
-    } else if (images.length === 1) {
-      // For a single image, just download directly
-      const image = images[0];
-      if (image.backgroundRemoved && image.dataUrl) {
-        downloadImage(image.dataUrl, image.file.name, 'png');
+    setIsDownloading(true);
+    
+    try {
+      // Use existing downloadAllImages function with ZIP for multiple images
+      if (images.length > 1) {
+        await downloadAllImages(images, 'png', true);
+      } else if (images.length === 1) {
+        // For a single image, just download directly
+        const image = images[0];
+        if (image.backgroundRemoved && image.dataUrl) {
+          await downloadImage(image.dataUrl, image.file.name, 'png');
+        }
       }
+    } catch (error) {
+      console.error('Error downloading images:', error);
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -169,7 +180,15 @@ export default function BackgroundRemovalPage() {
                     isProUser ? <ProBadge className="ml-2" /> : null
                   }
                 >
-                  <div className="space-y-6">
+                                      <div className="space-y-6 relative">
+                    {/* Main loading overlay for the entire card */}
+                    {isProcessing && (
+                      <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                        <Loader size="lg" />
+                        <p className="mt-4 text-lg font-bold text-gray-700">{tHome('preparingImagesPreview')}</p>
+                      </div>
+                    )}
+                    
                     {/* Info Section */}
                     <div className="brutalist-border p-4 bg-white">
                       <h3 className="font-bold mb-2">{t('mainCard.info.title')}</h3>
@@ -272,9 +291,16 @@ export default function BackgroundRemovalPage() {
                                 <Button 
                                   variant="accent" 
                                   onClick={handleDownload}
-                                  disabled={isProcessing || isRemovingBackground}
+                                  disabled={isProcessing || isRemovingBackground || isDownloading}
                                 >
-                                  {t(images.length > 1 ? 'mainCard.actions.downloadZip' : 'mainCard.actions.download')}
+                                  {isDownloading ? (
+                                    <span className="flex items-center">
+                                      <Loader size="sm" className="mr-2" />
+                                      {t(images.length > 1 ? 'mainCard.actions.downloadingZip' : 'mainCard.actions.downloading')}
+                                    </span>
+                                  ) : (
+                                    t(images.length > 1 ? 'mainCard.actions.downloadZip' : 'mainCard.actions.download')
+                                  )}
                                 </Button>
                               ) : (
                                 <Button 
