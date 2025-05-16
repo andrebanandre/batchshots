@@ -1,8 +1,6 @@
 'use client';
 
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
 import { useRouter } from 'next/navigation';
@@ -62,6 +60,10 @@ export default function BackgroundsPage() {
   const [mockResults, setMockResults] = useState<string[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [showPaywall, setShowPaywall] = useState(false);
+  
+  useEffect(() => {
+    router.push('/');
+  }, [router]);
   
   // Handle uploading files
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
