@@ -3,9 +3,8 @@ import type { Metadata } from 'next';
 import React from 'react';
 
 // Generate metadata for the Image Duplicate Detection page
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const { locale } = params; // Await params before accessing locale
-  // For now, using static metadata. Replace with translations later.
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'ImageDuplicateDetectionPage.metadata' });
 
   return {
@@ -35,11 +34,12 @@ export default async function ImageDuplicateDetectionLayout({
   params
 }: {
   children: React.ReactNode;
-  params: { locale: string }; // Removed Promise as it's resolved by Next.js
+  params: Promise<{ locale: string }>;
 }) {
-  // const { locale } = params; // Resolve the locale from the params
+  // Resolve the locale from the params promise
+  const { locale } = await params;
   // Enable static rendering
-  setRequestLocale(params.locale);
+  setRequestLocale(locale);
   
   return <>{children}</>;
 } 

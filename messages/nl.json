@@ -1260,6 +1260,37 @@
         "HowItWorksStep4Title": "4. Verfijn Gelijkenis",
         "HowItWorksStep4Desc": "Gebruik de gelijkenisschuifregelaar om te bepalen hoe strikt de overeenkomst is. Een hogere waarde betekent dat foto's bijna identiek moeten zijn om als duplicaten te worden gemarkeerd.",
         "HowItWorksStep5Title": "5. Beoordeel & Organiseer",
-        "HowItWorksStep5Desc": "Resultaten tonen duidelijk dubbele sets en unieke foto's. Onze AI kan ook de foto van de beste kwaliteit in elke dubbele groep markeren, zodat u kunt beslissen welke u wilt behouden."
+        "HowItWorksStep5Desc": "Resultaten tonen duidelijk dubbele sets en unieke foto's. Onze AI kan ook de foto van de beste kwaliteit in elke dubbele groep markeren, zodat u kunt beslissen welke u wilt behouden.",
+
+
+        "FreeUserLimit": "Gratis gebruikers kunnen tot {limit} foto's tegelijk uploaden.",
+        "ButtonSelectImagesLimit": "Selecteer Foto's (maximaal {limit})",
+        "UpgradeMessage": "Upgrade naar PRO om onbeperkt foto's tegelijk te analyseren.",
+        "UpgradeLink": "Nu upgraden",
+        "HowItWorksStep1Free": "Gratis gebruikers zijn beperkt tot {limit} foto's tegelijk.",
+        "HowItWorksStep1Pro": "Als PRO-gebruiker kun je onbeperkt foto's tegelijk analyseren.",
+        "ProFeatureName": "Onbeperkte Foto Analyse",
+        
+        "FreeModeTitle": "GRATIS MODUS",
+        "FreeModeDescription": "Verwerk tot {limit} foto's tegelijk. Upgrade naar PRO om onbeperkt foto's te analyseren!",
+        "ProModeTitle": "PRO MODUS",
+        "ProModeDescription": "Verwerk onbeperkt foto's met je PRO-account!",
+        "MaxImagesExceeded": "Maximaal 100 afbeeldingen toegestaan. Alleen de eerste 100 zijn verwerkt.",
+        "ProcessingErrors": "Verwerkingsfouten",
+        "imagesCount": "{current}/{max} foto's",
+        "upgradeFor": "(Upgrade voor onbeperkt)",
+        
+        "UpgradeCardTitle": "UPGRADEN NAAR PRO",
+        "UpgradeCardPlanTitle": "PRO PLAN",
+        "UpgradeCardPlanPrice": "$19.99",
+        "UpgradeCardPlanNote": "Eenmalige betaling, levenslange toegang",
+        "UpgradeCardFeature1": "Analyseer onbeperkt foto's tegelijk (t.o.v. 5 in gratis modus)",
+        "UpgradeCardFeature2": "Vind snel duplicaten in grote fotocollecties",
+        "UpgradeCardFeature3": "Kwaliteitsanalyse om automatisch de beste foto's te vinden",
+        "UpgradeCardFeature4": "Batch-download van beste foto's uit duplicaatsets",
+        "UpgradeCardFeature5": "Toegang tot alle andere PRO-functies (achtergrond verwijderen, enz.)",
+        "UpgradeCardButton": "NU UPGRADEN",
+        
+        "ProUpgradeTitle": "Upgrade naar Pro voor onbeperkte foto's"
     }
 } 

@@ -1260,6 +1260,37 @@
         "HowItWorksStep4Title": "4. Affiner la Similarité",
         "HowItWorksStep4Desc": "Utilisez le curseur de similarité pour contrôler la rigueur de la correspondance. Une valeur plus élevée signifie que les photos doivent être presque identiques pour être signalées comme des doublons.",
         "HowItWorksStep5Title": "5. Examiner & Organiser",
-        "HowItWorksStep5Desc": "Les résultats montrent clairement les ensembles de doublons et les photos uniques. Notre IA peut également mettre en évidence la photo de meilleure qualité dans chaque groupe de doublons, vous aidant à décider laquelle conserver."
+        "HowItWorksStep5Desc": "Les résultats montrent clairement les ensembles de doublons et les photos uniques. Notre IA peut également mettre en évidence la photo de meilleure qualité dans chaque groupe de doublons, vous aidant à décider laquelle conserver.",
+
+
+        "FreeUserLimit": "Les utilisateurs gratuits peuvent téléverser jusqu'à {limit} photos à la fois.",
+        "ButtonSelectImagesLimit": "Sélectionner des photos (jusqu'à {limit})",
+        "UpgradeMessage": "Passez à PRO pour analyser un nombre illimité de photos en une seule fois.",
+        "UpgradeLink": "Passer à PRO",
+        "HowItWorksStep1Free": "Les utilisateurs gratuits sont limités à {limit} photos à la fois.",
+        "HowItWorksStep1Pro": "En tant qu'utilisateur PRO, vous pouvez analyser un nombre illimité de photos à la fois.",
+        "ProFeatureName": "Analyse de photos illimitée",
+        
+        "FreeModeTitle": "MODE GRATUIT",
+        "FreeModeDescription": "Traitez jusqu'à {limit} photos à la fois. Passez à PRO pour analyser un nombre illimité de photos !",
+        "ProModeTitle": "MODE PRO",
+        "ProModeDescription": "Traitez un nombre illimité de photos avec votre compte PRO !",
+        "MaxImagesExceeded": "Maximum 100 images autorisées. Seules les 100 premières ont été traitées.",
+        "ProcessingErrors": "Erreurs de traitement",
+        "imagesCount": "{current}/{max} images",
+        "upgradeFor": "(Passez à PRO pour illimité)",
+        
+        "UpgradeCardTitle": "PASSER À PRO",
+        "UpgradeCardPlanTitle": "FORFAIT PRO",
+        "UpgradeCardPlanPrice": "$19.99",
+        "UpgradeCardPlanNote": "Paiement unique, accès à vie",
+        "UpgradeCardFeature1": "Analysez un nombre illimité de photos à la fois (contre 5 en mode gratuit)",
+        "UpgradeCardFeature2": "Trouvez rapidement les doublons dans de grandes collections de photos",
+        "UpgradeCardFeature3": "Analyse de qualité pour trouver automatiquement les meilleures photos",
+        "UpgradeCardFeature4": "Téléchargement en lot des meilleures photos des ensembles de doublons",
+        "UpgradeCardFeature5": "Accès à toutes les autres fonctionnalités PRO (suppression d'arrière-plan, etc.)",
+        "UpgradeCardButton": "PASSER À PRO MAINTENANT",
+        
+        "ProUpgradeTitle": "Passez à Pro pour des photos illimitées"
     }
 } 

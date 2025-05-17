@@ -1160,6 +1160,36 @@
         "HowItWorksStep4Title": "4. Dolaďte podobnost",
         "HowItWorksStep4Desc": "Použijte posuvník podobnosti k určení, jak přísná má být shoda. Vyšší hodnota znamená, že fotografie musí být téměř identické, aby byly označeny jako duplikáty.",
         "HowItWorksStep5Title": "5. Zkontrolujte a uspořádejte",
-        "HowItWorksStep5Desc": "Výsledky jasně ukazují sady duplikátů a unikátní fotografie. Naše AI může také zvýraznit fotografii nejlepší kvality v každé duplicitní skupině, což vám pomůže rozhodnout se, kterou si ponechat."
+        "HowItWorksStep5Desc": "Výsledky jasně ukazují sady duplikátů a unikátní fotografie. Naše AI může také zvýraznit fotografii nejlepší kvality v každé duplicitní skupině, což vám pomůže rozhodnout se, kterou si ponechat.",
+
+        "FreeUserLimit": "Uživatelé zdarma mohou nahrát až {limit} fotografií najednou.",
+        "ButtonSelectImagesLimit": "Vybrat fotografie (až {limit})",
+        "UpgradeMessage": "Upgradujte na PRO pro analýzu neomezeného počtu fotografií najednou.",
+        "UpgradeLink": "Upgradovat nyní",
+        "HowItWorksStep1Free": "Uživatelé zdarma jsou omezeni na {limit} fotografií najednou.",
+        "HowItWorksStep1Pro": "Jako PRO uživatel můžete analyzovat neomezený počet fotografií najednou.",
+        "ProFeatureName": "Neomezená analýza fotografií",
+        
+        "FreeModeTitle": "REŽIM ZDARMA",
+        "FreeModeDescription": "Zpracujte až {limit} fotografií najednou. Upgradujte na PRO pro analýzu neomezeného počtu fotografií!",
+        "ProModeTitle": "PRO REŽIM",
+        "ProModeDescription": "Zpracujte neomezený počet fotografií se svým PRO účtem!",
+        "MaxImagesExceeded": "Maximálně 100 obrázků povoleno. Zpracováno bylo pouze prvních 100.",
+        "ProcessingErrors": "Chyby při zpracování",
+        "imagesCount": "{current}/{max} fotografií",
+        "upgradeFor": "(Upgrade pro neomezeně)",
+        
+        "UpgradeCardTitle": "UPGRADOVAT NA PRO",
+        "UpgradeCardPlanTitle": "PRO PLÁN",
+        "UpgradeCardPlanPrice": "$19.99",
+        "UpgradeCardPlanNote": "Jednorázová platba, doživotní přístup",
+        "UpgradeCardFeature1": "Analyzujte neomezený počet fotografií najednou (oproti 5 ve verzi zdarma)",
+        "UpgradeCardFeature2": "Rychle najděte duplikáty ve velkých kolekcích fotografií",
+        "UpgradeCardFeature3": "Analýza kvality pro automatické nalezení nejlepších fotografií",
+        "UpgradeCardFeature4": "Hromadné stažení nejlepších fotografií ze sad duplikátů",
+        "UpgradeCardFeature5": "Přístup ke všem dalším PRO funkcím (odstranění pozadí atd.)",
+        "UpgradeCardButton": "UPGRADOVAT NYNÍ",
+        
+        "ProUpgradeTitle": "Upgradujte na Pro pro neomezené fotografie"
     }
 }

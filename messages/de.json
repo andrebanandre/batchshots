@@ -1270,6 +1270,35 @@
         "HowItWorksStep4Title": "4. Ähnlichkeit feinabstimmen",
         "HowItWorksStep4Desc": "Verwenden Sie den Ähnlichkeitsregler, um zu steuern, wie streng die Übereinstimmung ist. Ein höherer Wert bedeutet, dass Fotos nahezu identisch sein müssen, um als Duplikate gekennzeichnet zu werden.",
         "HowItWorksStep5Title": "5. Überprüfen & Organisieren",
-        "HowItWorksStep5Desc": "Die Ergebnisse zeigen deutlich Duplikat-Sätze und einzigartige Fotos. Unsere KI kann auch das qualitativ beste Foto in jeder Duplikatgruppe hervorheben und Ihnen so bei der Entscheidung helfen, welches Sie behalten möchten."
+        "HowItWorksStep5Desc": "Die Ergebnisse zeigen deutlich Duplikat-Sätze und einzigartige Fotos. Unsere KI kann auch das qualitativ beste Foto in jeder Duplikatgruppe hervorheben und Ihnen so bei der Entscheidung helfen, welches Sie behalten möchten.",
+        "FreeUserLimit": "Kostenlose Benutzer können bis zu {limit} Fotos gleichzeitig hochladen.",
+        "ButtonSelectImagesLimit": "Fotos auswählen (Bis zu {limit})",
+        "UpgradeMessage": "Upgrade auf PRO, um unbegrenzt viele Fotos gleichzeitig zu analysieren.",
+        "UpgradeLink": "Jetzt upgraden",
+        "HowItWorksStep1Free": "Kostenlose Benutzer sind auf {limit} Fotos gleichzeitig beschränkt.",
+        "HowItWorksStep1Pro": "Als PRO-Benutzer können Sie unbegrenzt viele Fotos gleichzeitig analysieren.",
+        "ProFeatureName": "Unbegrenzte Fotoanalyse",
+        
+        "FreeModeTitle": "KOSTENLOSER MODUS",
+        "FreeModeDescription": "Verarbeiten Sie bis zu {limit} Fotos gleichzeitig. Upgrade auf PRO für unbegrenzte Fotoanalyse!",
+        "ProModeTitle": "PRO MODUS",
+        "ProModeDescription": "Verarbeiten Sie unbegrenzt viele Fotos mit Ihrem PRO-Konto!",
+        "MaxImagesExceeded": "Maximal 100 Bilder erlaubt. Nur die ersten 100 wurden verarbeitet.",
+        "ProcessingErrors": "Verarbeitungsfehler",
+        "imagesCount": "{current}/{max} Fotos",
+        "upgradeFor": "(Upgrade für unbegrenzt)",
+        
+        "UpgradeCardTitle": "UPGRADE AUF PRO",
+        "UpgradeCardPlanTitle": "PRO PLAN",
+        "UpgradeCardPlanPrice": "$19.99",
+        "UpgradeCardPlanNote": "Einmalzahlung, lebenslanger Zugang",
+        "UpgradeCardFeature1": "Analysieren Sie unbegrenzt viele Fotos gleichzeitig (vs. 5 im kostenlosen Modus)",
+        "UpgradeCardFeature2": "Finden Sie schnell Duplikate in großen Fotosammlungen",
+        "UpgradeCardFeature3": "Qualitätsanalyse zur automatischen Ermittlung der besten Fotos",
+        "UpgradeCardFeature4": "Stapel-Download der besten Fotos aus Duplikat-Sätzen",
+        "UpgradeCardFeature5": "Zugang zu allen anderen PRO-Funktionen (Hintergrundentfernung, etc.)",
+        "UpgradeCardButton": "JETZT UPGRADEN",
+        
+        "ProUpgradeTitle": "Upgrade auf Pro für unbegrenzte Fotos"
     }
 }

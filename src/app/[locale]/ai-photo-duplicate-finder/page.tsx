@@ -2,9 +2,14 @@
 
 import { useEffect, useState, useRef, ChangeEvent } from 'react';
 import NextImage from 'next/image'; // Aliased import
+import { useRouter } from 'next/navigation';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Loader from '../../components/Loader';
+import ProBadge from '../../components/ProBadge';
+import ProUpgradeDialog from '../../components/ProUpgradeDialog';
+import PricingCard from '../../components/PricingCard'; // Import PricingCard
+import { useIsPro } from '../../hooks/useIsPro';
 import { isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter'; // Added HEIC utilities
 import { downloadAllImages, downloadImage } from '../../lib/imageProcessing'; // Added for zip download
 import { useTranslations } from 'next-intl';
@@ -12,11 +17,15 @@ import { useTranslations } from 'next-intl';
 // Declare cv type for global window scope
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     cv: any; // Using 'any' for simplicity, can be refined with d.ts if available
     addEventListener(event: 'opencv-ready', callback: () => void): void;
     removeEventListener(event: 'opencv-ready', callback: () => void): void;
   }
 }
+
+// Free user image limit constant
+const FREE_USER_IMAGE_LIMIT = 5;
 
 interface ImageInfo {
   id: string; // Unique ID for this image instance for worker communication
@@ -50,6 +59,8 @@ interface ImageWithKPIs extends ImageInfo {
 
 export default function ImageDuplicateDetectionPage() {
   const t = useTranslations('ImageDuplicateDetectionPage');
+  const { isProUser, isLoading: isProStatusLoading } = useIsPro();
+  const router = useRouter();
   const [status, setStatus] = useState<string>(t('AppInitializing'));
   const [workerStatus, setWorkerStatus] = useState<string>(t('AISetup'));
   const [imageGroups, setImageGroups] = useState<number[][]>([]);
@@ -64,6 +75,8 @@ export default function ImageDuplicateDetectionPage() {
   const [similarityThreshold, setSimilarityThreshold] = useState<number>(0.98);
   const [processingThresholdChange, setProcessingThresholdChange] = useState<boolean>(false);
   const [isAddingMoreImages, setIsAddingMoreImages] = useState<boolean>(false);
+  // Add state for Pro dialog
+  const [showProDialog, setShowProDialog] = useState<boolean>(false);
   
   const imageInfoRef = useRef<ImageInfo[]>([]);
   const imageEmbeddingsRef = useRef<(ImageEmbedding | null)[]>([]);
@@ -290,9 +303,32 @@ export default function ImageDuplicateDetectionPage() {
       return;
     }
 
+    // Set processing state
+    setIsAddingMoreImages(addingMore);
+    
+    // Handle limits for free users - take only the first FREE_USER_IMAGE_LIMIT images
+    let fileArray = inputFiles;
+    if (!isProUser && !isProStatusLoading) {
+      // Check if we need to show the pro upgrade dialog
+      if (addingMore) {
+        const currentCount = imageInfoRef.current.length;
+        if (currentCount + inputFiles.length > FREE_USER_IMAGE_LIMIT) {
+          // Only take what we can add
+          fileArray = inputFiles.slice(0, Math.max(0, FREE_USER_IMAGE_LIMIT - currentCount));
+          // Show pro upgrade dialog
+          setShowProDialog(true);
+        }
+      } else if (inputFiles.length > FREE_USER_IMAGE_LIMIT) {
+        // Take only the first FREE_USER_IMAGE_LIMIT images
+        fileArray = inputFiles.slice(0, FREE_USER_IMAGE_LIMIT);
+        // Show pro upgrade dialog
+        setShowProDialog(true);
+      }
+    }
+
     setStatus(t('ProcessingFilesHEIC'));
     const processedFiles: File[] = [];
-    for (const inputFile of inputFiles) {
+    for (const inputFile of fileArray) {
       if (await isHeicFormat(inputFile)) {
         console.log(`Main: Detected HEIC file: ${inputFile.name}. Attempting conversion to PNG.`);
         try {
@@ -318,8 +354,6 @@ export default function ImageDuplicateDetectionPage() {
       setStatus(t('NoValidFilesAfterConversion'));
       return;
     }
-    
-    setIsAddingMoreImages(addingMore);
     
     // Clear previous results only if not adding more images
     if (!addingMore) {
@@ -384,6 +418,12 @@ export default function ImageDuplicateDetectionPage() {
     handleFileChange(event, true);
   };
 
+  // Handle Pro dialog closing
+  const handleCloseProDialog = () => {
+    // On close, we can optionally navigate to pricing
+    setShowProDialog(false);
+  };
+
   async function calculateKpisDirectly(imageDataUrl: string, imageId: string): Promise<QualityKPIs | null> {
     if (!isCvReady || !window.cv || !window.cv.imread) {
         console.error('OpenCV not ready for KPI calculation or imread not found.');
@@ -406,6 +446,7 @@ export default function ImageDuplicateDetectionPage() {
             img.src = imageDataUrl;
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const cv = window.cv as any; // Explicitly cast to any to handle potential type mismatches
         const src = cv.imread(imgElement);
         const gray = new cv.Mat();
@@ -463,7 +504,7 @@ export default function ImageDuplicateDetectionPage() {
     }
   }
   
-  const isLoading = workerStatus !== t('AIReady') || pendingFilesCount > 0 || analyzingQualityDirectly !== null || processingThresholdChange;
+  const isLoading = workerStatus !== t('AIReady') || pendingFilesCount > 0 || analyzingQualityDirectly !== null || processingThresholdChange || isProStatusLoading;
   const isActionDisabled = isLoading || isDownloadingAll || isDownloadingSingleId !== null;
 
   const duplicateSets = imageGroups.filter(group => group.length > 1);
@@ -703,16 +744,22 @@ export default function ImageDuplicateDetectionPage() {
             size: img.size || 0,
             lastModified: Date.now(), 
             webkitRelativePath: '',
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             arrayBuffer: (() => Promise.resolve(new ArrayBuffer(0))) as any, // Dummy implementations for File interface
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             slice: (() => new Blob()) as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             stream: (() => new ReadableStream()) as any,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             text: (() => Promise.resolve('')) as any,
           } as File,
           // Provide other potentially required ImageFile fields with defaults or from img source
           thumbnailDataUrl: img.dataUrl, 
           processedDataUrl: img.dataUrl,
           processedThumbnailUrl: img.dataUrl, // Defaulting to dataUrl
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           adjustments: {} as any, // Assuming these are not critical for downloadAllImages logic
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           watermark: {} as any,
           backgroundRemoved: false, // Default value
           hasBeenProcessed: true, // Marking as "processed" in the sense of being selected for download
@@ -815,13 +862,14 @@ export default function ImageDuplicateDetectionPage() {
           {t('PageTitle')}
         </h1>
 
-        {workerStatus === t('AISetup') || workerStatus === t('AIEngineInitializing') || !isCvReady ? (
+        {workerStatus === t('AISetup') || workerStatus === t('AIEngineInitializing') || !isCvReady || isProStatusLoading ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
             <div className="flex flex-col items-center justify-center py-8">
               <Loader size="lg" />
               <h3 className="text-lg font-bold mb-2">
                 {workerStatus.includes(t('AILoadingModel').substring(0,10)) ? t("LoaderTitleLoadingModel") 
-                  : !isCvReady ? t("LoaderTitleQualityTools") 
+                  : !isCvReady ? t("LoaderTitleQualityTools")
+                  : isProStatusLoading ? t("LoaderProStatus")
                   : t("LoaderTitleInitializing")}
               </h3>
               <p className="text-sm text-gray-600">
@@ -829,6 +877,7 @@ export default function ImageDuplicateDetectionPage() {
                   ? t("LoaderDescriptionLoadingModel")
                   : !isCvReady 
                   ? t("LoaderDescriptionQualityTools")
+                  : isProStatusLoading ? t("LoaderProDescription")
                   : t("LoaderDescriptionInitializing")}
               </p>
             </div>
@@ -840,6 +889,9 @@ export default function ImageDuplicateDetectionPage() {
                 collapsible={false}
                 title={t('MainCardTitle')}
                 variant="accent"
+                headerRight={
+                  isProUser ? <ProBadge className="ml-2" /> : null
+                }
               >
                 <div className="space-y-6 relative">
                   {pendingFilesCount > 0 && (
@@ -851,9 +903,33 @@ export default function ImageDuplicateDetectionPage() {
                   
                   <div className="brutalist-border p-4 bg-white">
                     <h3 className="font-bold mb-2">{t('UploadSectionTitle')}</h3>
-                    <p className="text-sm mb-2">
+                    <p className="text-sm mb-3">
                       {t('UploadSectionDescription')}
                     </p>
+                    
+                    {/* Info section for pro/free status - styled like image-format-convertor page */}
+                    {!isProUser && (
+                      <div className="bg-yellow-50 p-3 mb-3 brutalist-border">
+                        <p className="text-sm font-bold flex items-center">
+                          {t('FreeModeTitle')}
+                        </p>
+                        <p className="text-xs">
+                          {t('FreeModeDescription', { limit: FREE_USER_IMAGE_LIMIT })}
+                        </p>
+                      </div>
+                    )}
+                    
+                    {isProUser && (
+                      <div className="bg-yellow-50 p-3 mb-3 brutalist-border">
+                        <p className="text-sm font-bold flex items-center">
+                          {t('ProModeTitle')} <ProBadge className="ml-2" />
+                        </p>
+                        <p className="text-xs">
+                          {t('ProModeDescription')}
+                        </p>
+                      </div>
+                    )}
+                    
                     <div className="flex flex-col items-center space-y-8 w-full py-4">
                       {/* Upload buttons container */}
                       <div className="flex flex-col items-center justify-center w-full space-y-4 max-w-sm">
@@ -861,13 +937,20 @@ export default function ImageDuplicateDetectionPage() {
                           <Button as="span" variant="primary" size="lg" className="w-full max-w-xs text-center" disabled={isLoading || !isCvReady}>
                             {isLoading ? t('ButtonSelectImagesLoading') 
                               : !isCvReady ? t('ButtonSelectImagesInitializing') 
-                              : t('ButtonSelectImages')}
+                              : isProUser ? t('ButtonSelectImages') 
+                              : t('ButtonSelectImagesLimit', { limit: FREE_USER_IMAGE_LIMIT })}
                           </Button>
                         </label>
                         
                         {imageInfoRef.current.length > 0 && !isLoading && (
                           <label htmlFor="addMoreInput" className="w-full flex justify-center">
-                            <Button as="span" variant="default" size="lg" className="w-full max-w-xs text-center" disabled={isLoading || !isCvReady}>
+                            <Button 
+                              as="span" 
+                              variant="default" 
+                              size="lg" 
+                              className="w-full max-w-xs text-center" 
+                              disabled={isLoading || !isCvReady || (!isProUser && imageInfoRef.current.length >= FREE_USER_IMAGE_LIMIT)}
+                            >
                               {isLoading && isAddingMoreImages ? t('ButtonAddMoreImagesLoading') : t('ButtonAddMoreImages')}
                             </Button>
                           </label>
@@ -891,7 +974,7 @@ export default function ImageDuplicateDetectionPage() {
                         accept="image/*,.heic,.heif"
                         className="hidden"
                         id="addMoreInput"
-                        disabled={isLoading}
+                        disabled={isLoading || (!isProUser && imageInfoRef.current.length >= FREE_USER_IMAGE_LIMIT)}
                       />
                       
                       {/* Status and information section */}
@@ -899,6 +982,21 @@ export default function ImageDuplicateDetectionPage() {
                         <span className="text-xs text-gray-600">
                           {t('SupportedFormats')}
                         </span>
+                        
+                        {/* Image count - like in image-format-convertor */}
+                        {imageInfoRef.current.length > 0 && (
+                          <div className="flex justify-between items-center w-full max-w-xs">
+                            <span className="text-sm font-medium">
+                              {t('imagesCount', { current: imageInfoRef.current.length, max: isProUser ? 100 : FREE_USER_IMAGE_LIMIT })}
+                            </span>
+                            {!isProUser && imageInfoRef.current.length >= FREE_USER_IMAGE_LIMIT && (
+                              <span className="text-xs text-gray-600">
+                                {t('upgradeFor')}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                        
                         <p className="text-sm font-semibold">{status}</p>
                         <p className="text-xs text-gray-500">{t('AIStatusLabel', { status: workerStatus })}</p>
                         {!isCvReady && <p className="text-xs text-yellow-600">{t('QualityAnalyzerStatusLoading')}</p>}
@@ -1129,6 +1227,28 @@ export default function ImageDuplicateDetectionPage() {
             </div>
             
             <div className="space-y-6">
+              {/* Pro upgrade card for non-pro users */}
+              {!isProUser && (
+                <Card title={t('UpgradeCardTitle')} variant="accent">
+                  <div className="space-y-4 p-1"> {/* Added small padding to match example style if PricingCard has its own internal padding */} 
+                    <PricingCard
+                      title={t('UpgradeCardPlanTitle')}
+                      price={t('UpgradeCardPlanPrice')}
+                      isPro={true} // This card represents the Pro plan
+                      features={[
+                        t('UpgradeCardFeature1'),
+                        t('UpgradeCardFeature2'),
+                        t('UpgradeCardFeature3'),
+                        t('UpgradeCardFeature4'),
+                        t('UpgradeCardFeature5'),
+                      ]}
+                      buttonText={t('UpgradeCardButton')}
+                      onSelectPlan={() => router.push('/pricing')}
+                    />
+                  </div>
+                </Card>
+              )}
+              
               <Card title={t('HowItWorksTitle')} variant="accent">
                 <div className="space-y-4">
                   <div className="brutalist-border p-3 bg-white">
@@ -1136,6 +1256,16 @@ export default function ImageDuplicateDetectionPage() {
                     <p className="text-sm">
                       {t('HowItWorksStep1Desc')}
                     </p>
+                    {!isProUser && (
+                      <p className="text-xs mt-1 text-primary font-medium">
+                        {t('HowItWorksStep1Free', { limit: FREE_USER_IMAGE_LIMIT })}
+                      </p>
+                    )}
+                    {isProUser && (
+                      <p className="text-xs mt-1 text-green-600 font-medium">
+                        {t('HowItWorksStep1Pro')}
+                      </p>
+                    )}
                   </div>
                   <div className="brutalist-border p-3 bg-white">
                     <h3 className="font-bold mb-2">{t('HowItWorksStep2Title')}</h3>
@@ -1167,6 +1297,17 @@ export default function ImageDuplicateDetectionPage() {
           </div>
         )}
       </div>
+
+      {/* Pro Dialog */}
+      {showProDialog && (
+        <ProUpgradeDialog
+          isOpen={showProDialog}
+          onClose={handleCloseProDialog}
+          title={t('ProUpgradeTitle')}
+          feature={t('ProFeatureName')}
+          maxImagesCount={FREE_USER_IMAGE_LIMIT}
+        />
+      )}
     </main>
   );
 } 

@@ -492,7 +492,7 @@ export default function ImageFormatConvertorPage() {
                                 size="sm"
                                 onClick={() => setShowProUpgrade(true)}
                               >
-                                {t('ProUpgrade.learnMore')}
+                                {t('proDialog.title')}
                               </Button>
                             ) : (
                               <input

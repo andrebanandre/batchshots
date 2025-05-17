@@ -46,9 +46,6 @@ export default function Footer() {
             <h3 className="text-lg font-bold uppercase mb-4">{t('quickLinks')}</h3>
             <nav className="flex flex-col space-y-2">
               <Link href="/" className="hover:text-primary text-sm">{tNavbar('imageOptimizer')}</Link>
-              <Link href="/background-removal" className="hover:text-primary text-sm">{tNavbar('removeBackgrounds')}</Link>
-              <Link href="/add-watermark" className="hover:text-primary text-sm">{tNavbar('addWatermark')}</Link>
-              {/* <Link href="/backgrounds" className="hover:text-primary text-sm">{tNavbar('aiBackgrounds')}</Link> */}
               <Link href="/pricing" className="hover:text-primary text-sm">{tNavbar('pricing')}</Link>
               <Link href="/privacy" className="hover:text-primary text-sm">{tHome('privacyPolicy')}</Link>
               <Link href="/terms" className="hover:text-primary text-sm">{tHome('termsOfUse')}</Link>
@@ -59,6 +56,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold uppercase mb-4">{tNavbar('tools')}</h3>
             <nav className="flex flex-col space-y-2">
+              <Link href="/ai-photo-duplicate-finder" className="hover:text-primary text-sm">{tNavbar('aiPhotoDuplicateFinder')}</Link>
               <Link href="/background-removal" className="hover:text-primary text-sm">{tNavbar('removeBackgrounds')}</Link>
               <Link href="/add-watermark" className="hover:text-primary text-sm">{tNavbar('addWatermark')}</Link>
               <Link href="/image-format-convertor" className="hover:text-primary text-sm">{tNavbar('imageFormatConvertor')}</Link>

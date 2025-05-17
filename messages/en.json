@@ -1260,9 +1260,11 @@
         "LoaderTitleInitializing": "Initializing Smart Tools...",
         "LoaderTitleLoadingModel": "Loading AI Brain...",
         "LoaderTitleQualityTools": "Preparing Quality Analyzer...",
+        "LoaderProStatus": "Checking Your Account Status...",
         "LoaderDescriptionInitializing": "Getting things ready for smart duplicate detection. Please wait.",
         "LoaderDescriptionLoadingModel": "Our advanced AI is warming up. This might take a moment.",
         "LoaderDescriptionQualityTools": "Preparing tools for detailed photo quality insights...",
+        "LoaderProDescription": "Verifying your account status to enable all available features...",
         
         "MainCardTitle": "Find & Manage Duplicate Photos",
         "UploadSectionTitle": "Upload Your Photos",
@@ -1316,6 +1318,36 @@
         "HowItWorksStep4Title": "4. Fine-Tune Similarity",
         "HowItWorksStep4Desc": "Use the similarity slider to control how strict the matching is. A higher value means photos must be almost identical to be flagged as duplicates.",
         "HowItWorksStep5Title": "5. Review & Organize",
-        "HowItWorksStep5Desc": "Results clearly show duplicate sets and unique photos. Our AI can also highlight the best quality photo in each duplicate group, helping you decide which to keep."
+        "HowItWorksStep5Desc": "Results clearly show duplicate sets and unique photos. Our AI can also highlight the best quality photo in each duplicate group, helping you decide which to keep.",
+
+        "FreeUserLimit": "Free users can upload up to {limit} photos at a time.",
+        "ButtonSelectImagesLimit": "Select Photos (Up to {limit})",
+        "UpgradeMessage": "Upgrade to PRO to analyze unlimited photos at once.",
+        "UpgradeLink": "Upgrade Now",
+        "HowItWorksStep1Free": "Free users are limited to {limit} photos at a time.",
+        "HowItWorksStep1Pro": "As a PRO user, you can analyze unlimited photos at once.",
+        "ProFeatureName": "Unlimited Photo Analysis",
+        
+        "FreeModeTitle": "FREE MODE",
+        "FreeModeDescription": "Process up to {limit} photos at a time. Upgrade to PRO to analyze unlimited photos!",
+        "ProModeTitle": "PRO MODE",
+        "ProModeDescription": "Process unlimited photos with your PRO account!",
+        "MaxImagesExceeded": "Maximum 100 images allowed. Only the first 100 were processed.",
+        "ProcessingErrors": "Processing Errors",
+        "imagesCount": "{current}/{max} photos",
+        "upgradeFor": "(Upgrade for unlimited)",
+        
+        "UpgradeCardTitle": "UPGRADE TO PRO",
+        "UpgradeCardPlanTitle": "PRO PLAN",
+        "UpgradeCardPlanPrice": "$19.99",
+        "UpgradeCardPlanNote": "One-time payment, lifetime access",
+        "UpgradeCardFeature1": "Analyze unlimited photos at once (vs. 5 in free mode)",
+        "UpgradeCardFeature2": "Find duplicates in large photo collections quickly",
+        "UpgradeCardFeature3": "Quality analysis to find the best photos automatically",
+        "UpgradeCardFeature4": "Batch download of best photos from duplicate sets",
+        "UpgradeCardFeature5": "Access to all other PRO features (background removal, etc.)",
+        "UpgradeCardButton": "UPGRADE NOW",
+        
+        "ProUpgradeTitle": "Upgrade to Pro for Unlimited Photos"
     }
 }

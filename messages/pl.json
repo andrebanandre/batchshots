@@ -1258,6 +1258,37 @@
             "HowItWorksStep4Title": "4. Dostosuj Podobieństwo",
             "HowItWorksStep4Desc": "Użyj suwaka podobieństwa, aby kontrolować, jak rygorystyczne jest dopasowanie. Wyższa wartość oznacza, że zdjęcia muszą być prawie identyczne, aby zostały oznaczone jako duplikaty.",
             "HowItWorksStep5Title": "5. Przeglądaj i Organizuj",
-            "HowItWorksStep5Desc": "Wyniki wyraźnie pokazują zestawy duplikatów i unikalne zdjęcia. Nasza AI może również wyróżnić zdjęcie najlepszej jakości w każdej grupie duplikatów, pomagając Ci zdecydować, które zachować."
+            "HowItWorksStep5Desc": "Wyniki wyraźnie pokazują zestawy duplikatów i unikalne zdjęcia. Nasza AI może również wyróżnić zdjęcie najlepszej jakości w każdej grupie duplikatów, pomagając Ci zdecydować, które zachować.",
+
+
+        "FreeUserLimit": "Użytkownicy darmowi mogą przesłać do {limit} zdjęć jednocześnie.",
+        "ButtonSelectImagesLimit": "Wybierz zdjęcia (do {limit})",
+        "UpgradeMessage": "Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć naraz.",
+        "UpgradeLink": "Zaktualizuj teraz",
+        "HowItWorksStep1Free": "Użytkownicy darmowi są ograniczeni do {limit} zdjęć jednocześnie.",
+        "HowItWorksStep1Pro": "Jako użytkownik PRO możesz analizować nieograniczoną liczbę zdjęć naraz.",
+        "ProFeatureName": "Nieograniczona analiza zdjęć",
+        
+        "FreeModeTitle": "TRYB DARMOWY",
+        "FreeModeDescription": "Przetwarzaj do {limit} zdjęć jednocześnie. Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć!",
+        "ProModeTitle": "TRYB PRO",
+        "ProModeDescription": "Przetwarzaj nieograniczoną liczbę zdjęć ze swoim kontem PRO!",
+        "MaxImagesExceeded": "Dozwolone maksymalnie 100 obrazów. Przetworzono tylko pierwsze 100.",
+        "ProcessingErrors": "Błędy przetwarzania",
+        "imagesCount": "{current}/{max} zdjęć",
+        "upgradeFor": "(Zaktualizuj, aby uzyskać nielimitowane)",
+        
+        "UpgradeCardTitle": "ZAKTUALIZUJ DO PRO",
+        "UpgradeCardPlanTitle": "PLAN PRO",
+        "UpgradeCardPlanPrice": "$19.99",
+        "UpgradeCardPlanNote": "Jednorazowa płatność, dożywotni dostęp",
+        "UpgradeCardFeature1": "Analizuj nieograniczoną liczbę zdjęć naraz (w porównaniu do 5 w trybie darmowym)",
+        "UpgradeCardFeature2": "Szybko znajdź duplikaty w dużych kolekcjach zdjęć",
+        "UpgradeCardFeature3": "Analiza jakości do automatycznego wyboru najlepszych zdjęć",
+        "UpgradeCardFeature4": "Pobieranie najlepszych zdjęć z zestawów duplikatów w partii",
+        "UpgradeCardFeature5": "Dostęp do wszystkich innych funkcji PRO (usuwanie tła itp.)",
+        "UpgradeCardButton": "ZAKTUALIZUJ TERAZ",
+        
+        "ProUpgradeTitle": "Zaktualizuj do Pro, aby mieć nielimitowane zdjęcia"
         }
 } 
