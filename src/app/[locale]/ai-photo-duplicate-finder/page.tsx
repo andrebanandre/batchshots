@@ -7,6 +7,7 @@ import Card from '../../components/Card';
 import Loader from '../../components/Loader';
 import { isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter'; // Added HEIC utilities
 import { downloadAllImages, downloadImage } from '../../lib/imageProcessing'; // Added for zip download
+import { useTranslations } from 'next-intl';
 
 // Declare cv type for global window scope
 declare global {
@@ -48,8 +49,9 @@ interface ImageWithKPIs extends ImageInfo {
 }
 
 export default function ImageDuplicateDetectionPage() {
-  const [status, setStatus] = useState<string>('Initializing...');
-  const [workerStatus, setWorkerStatus] = useState<string>('Worker starting...');
+  const t = useTranslations('ImageDuplicateDetectionPage');
+  const [status, setStatus] = useState<string>(t('AppInitializing'));
+  const [workerStatus, setWorkerStatus] = useState<string>(t('AISetup'));
   const [imageGroups, setImageGroups] = useState<number[][]>([]);
   const [imageKpis, setImageKpis] = useState<Record<string, QualityKPIs>>({});
   const [analyzingQualityDirectly, setAnalyzingQualityDirectly] = useState<number | null>(null);
@@ -58,6 +60,10 @@ export default function ImageDuplicateDetectionPage() {
   const [allGroupsAnalyzedForBest, setAllGroupsAnalyzedForBest] = useState<boolean>(false);
   const [imagesToDownloadCount, setImagesToDownloadCount] = useState<number>(0);
   const [totalUploadedImagesCount, setTotalUploadedImagesCount] = useState<number>(0);
+  // Add new state for similarity threshold
+  const [similarityThreshold, setSimilarityThreshold] = useState<number>(0.98);
+  const [processingThresholdChange, setProcessingThresholdChange] = useState<boolean>(false);
+  const [isAddingMoreImages, setIsAddingMoreImages] = useState<boolean>(false);
   
   const imageInfoRef = useRef<ImageInfo[]>([]);
   const imageEmbeddingsRef = useRef<(ImageEmbedding | null)[]>([]);
@@ -74,26 +80,32 @@ export default function ImageDuplicateDetectionPage() {
       type: 'module',
     });
     workerRef.current = workerInstance;
-    setWorkerStatus('Worker initializing...');
+    setWorkerStatus(t('AIEngineInitializing'));
     workerInstance.postMessage({ type: 'load' });
 
     workerInstance.onmessage = (event: MessageEvent) => {
       const { status: workerMsgStatus, data, imageId, embedding } = event.data;
       switch (workerMsgStatus) {
         case 'worker_started':
+          setWorkerStatus(t('AIEngineStarted'));
+          break;
         case 'initializing':
+          setWorkerStatus(t('AIInitializing'));
+          break;
         case 'loading_model':
+          setWorkerStatus(t('AILoadingModel'));
+          break;
         case 'model_loaded':
-          setWorkerStatus(data || workerMsgStatus);
+          setWorkerStatus(t('AIModelLoaded'));
           break;
         case 'ready':
-          setWorkerStatus(data || workerMsgStatus);
-          setStatus('Worker ready. Select images to find duplicates.');
+          setWorkerStatus(t('AIReady'));
+          setStatus(t('AIReadyPrompt'));
           break;
         case 'loading_progress':
           break;
         case 'processing':
-          setStatus(`Processing image ID: ${imageId}...`);
+          setStatus(t('ProcessingImage', { imageId }));
           break;
         case 'extraction_complete':
           setEmbeddingsMap(prevMap => ({ ...prevMap, [imageId]: embedding as ImageEmbedding }));
@@ -103,10 +115,10 @@ export default function ImageDuplicateDetectionPage() {
           if (imageId) {
             setEmbeddingsMap(prevMap => ({ ...prevMap, [imageId]: null }));
             setPendingFilesCount(prevCount => prevCount - 1);
-            setStatus(`Error processing image ID ${imageId}: ${data}.`);
+            setStatus(t('ErrorProcessingImage', { imageId, data }));
           } else {
-            setWorkerStatus(`Worker error: ${data}`);
-            setStatus(`Worker error: ${data}. Please refresh or try again.`);
+            setWorkerStatus(t('AIEngineError', { data }));
+            setStatus(t('AIEngineErrorRefresh', { data }));
           }
           console.error('Main: Worker reported error:', data);
           break;
@@ -117,8 +129,8 @@ export default function ImageDuplicateDetectionPage() {
 
     workerInstance.onerror = (errorEvent) => {
       console.error('Main: Worker error event:', errorEvent);
-      setWorkerStatus('Worker encountered a critical error.');
-      setStatus('A critical error occurred with the feature worker. Please refresh the page.');
+      setWorkerStatus(t('AICriticalError'));
+      setStatus(t('AICriticalErrorRefresh'));
     };
     
     const checkOpenCV = () => {
@@ -135,7 +147,7 @@ export default function ImageDuplicateDetectionPage() {
                 clearInterval(intervalId);
             } else if (attempts++ > 100) { // ~10 seconds timeout
                 console.error('Main: OpenCV did not become ready on the main thread.');
-                setStatus('OpenCV failed to load. Quality analysis may be unavailable.');
+                setStatus(t('QualityToolsError'));
                 clearInterval(intervalId);
             }
         }, 100);
@@ -147,11 +159,11 @@ export default function ImageDuplicateDetectionPage() {
       workerRef.current?.terminate();
       imageInfoRef.current.forEach(info => URL.revokeObjectURL(info.url));
     };
-  }, []);
+  }, [t]); // Added t to dependency array
 
   useEffect(() => {
     if (imageInfoRef.current.length > 0 && pendingFilesCount === 0 && Object.keys(embeddingsMap).length === imageInfoRef.current.length) {
-      setStatus('All images processed. Analyzing for duplicates...');
+      setStatus(t('AllImagesProcessedAnalyzing'));
       const orderedEmbeddings: (ImageEmbedding | null)[] = new Array(imageInfoRef.current.length).fill(null);
       let successfullyProcessedCount = 0;
       imageInfoRef.current.forEach(info => {
@@ -166,18 +178,58 @@ export default function ImageDuplicateDetectionPage() {
       imageEmbeddingsRef.current = orderedEmbeddings;
       setImageKpis({});
       if (successfullyProcessedCount > 0) {
-        const duplicateGroups = findAndGroupDuplicates(orderedEmbeddings, 0.98);
+        const duplicateGroups = findAndGroupDuplicates(orderedEmbeddings, similarityThreshold);
         setImageGroups(duplicateGroups);
         const groupSummary = duplicateGroups.filter(g => g.length > 1).length > 0 
-          ? `${duplicateGroups.filter(g => g.length > 1).length} duplicate set(s) found.`
-          : "No direct duplicates found.";
-        setStatus(`Analysis complete. ${groupSummary} Processed ${successfullyProcessedCount}/${imageInfoRef.current.length} images.`);
+          ? t('DuplicateSetsFound', { count: duplicateGroups.filter(g => g.length > 1).length })
+          : t('NoDuplicatesFound');
+        setStatus(t('AnalysisCompleteSummary', { 
+            groupSummary, 
+            successfullyProcessedCount, 
+            totalImagesCount: imageInfoRef.current.length 
+        }));
       } else {
-        setStatus(`No images could be processed successfully. Processed ${successfullyProcessedCount}/${imageInfoRef.current.length} images.`);
+        setStatus(t('NoImagesProcessedSuccessfully', { 
+            successfullyProcessedCount, 
+            totalImagesCount: imageInfoRef.current.length 
+        }));
         setImageGroups([]);
       }
     }
-  }, [pendingFilesCount, embeddingsMap]);
+  }, [pendingFilesCount, embeddingsMap, similarityThreshold, t]); // Added t
+
+  // Add new function to handle threshold changes
+  const handleThresholdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newThreshold = parseFloat(e.target.value);
+    setSimilarityThreshold(newThreshold);
+  };
+
+  // Add function to reanalyze with new threshold
+  const reanalyzeWithNewThreshold = () => {
+    if (imageEmbeddingsRef.current.length === 0) {
+      setStatus(t('NoImagesForNewThreshold'));
+      return;
+    }
+    
+    setProcessingThresholdChange(true);
+    setStatus(t('ReanalyzingWithThreshold', { threshold: similarityThreshold.toFixed(2) }));
+    
+    setTimeout(() => { // Small delay to allow UI update
+      const duplicateGroups = findAndGroupDuplicates(imageEmbeddingsRef.current, similarityThreshold);
+      setImageGroups(duplicateGroups);
+      
+      const groupSummary = duplicateGroups.filter(g => g.length > 1).length > 0 
+        ? t('DuplicateSetsFound', { count: duplicateGroups.filter(g => g.length > 1).length })
+        : t('NoDuplicatesFound');
+      
+      setStatus(t('AnalysisCompleteWithThreshold', { threshold: similarityThreshold.toFixed(2), groupSummary }));
+      setProcessingThresholdChange(false);
+      
+      // Reset these states since groups have changed
+      setAllGroupsAnalyzedForBest(false);
+      setImageKpis({});
+    }, 100);
+  };
 
   function cosineSimilarity(vec1: ImageEmbedding, vec2: ImageEmbedding): number {
     let dotProduct = 0;
@@ -227,18 +279,18 @@ export default function ImageDuplicateDetectionPage() {
     return groups.sort((a, b) => b.length - a.length);
   }
 
-  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: ChangeEvent<HTMLInputElement>, addingMore: boolean = false) => {
     const inputFiles = event.target.files ? Array.from(event.target.files) : [];
     if (inputFiles.length === 0) {
-      setStatus('Please select images...');
+      setStatus(t('PleaseSelectImages'));
       return;
     }
-    if (!workerRef.current || workerStatus !== 'Worker ready.') {
-      setStatus('Feature worker is not ready. Please wait or refresh.');
+    if (!workerRef.current || workerStatus !== t('AIReady')) {
+      setStatus(t('AINotReadyError'));
       return;
     }
 
-    setStatus('Processing selected files (converting HEIC if any)...');
+    setStatus(t('ProcessingFilesHEIC'));
     const processedFiles: File[] = [];
     for (const inputFile of inputFiles) {
       if (await isHeicFormat(inputFile)) {
@@ -250,12 +302,12 @@ export default function ImageDuplicateDetectionPage() {
             console.log(`Main: Successfully converted ${inputFile.name} to ${convertedFile.name}.`);
             } else {
             console.warn(`Main: Failed to convert HEIC file: ${inputFile.name}. Skipping this file.`);
-            setStatus(`Failed to convert HEIC file: ${inputFile.name}. It will be skipped.`);
+            setStatus(t('HEICConversionFailedSkip', { fileName: inputFile.name }));
             // Optionally: alert(`Failed to convert HEIC file: ${inputFile.name}. It will be skipped.`);
             }
         } catch (conversionError) {
             console.error(`Main: Error during HEIC conversion for ${inputFile.name}:`, conversionError);
-            setStatus(`Error converting HEIC file: ${inputFile.name}. It will be skipped.`);
+            setStatus(t('HEICConversionErrorSkip', { fileName: inputFile.name }));
         }
       } else {
         processedFiles.push(inputFile); // Add non-HEIC files directly
@@ -263,43 +315,58 @@ export default function ImageDuplicateDetectionPage() {
     }
 
     if (processedFiles.length === 0) {
-      setStatus('No valid files to process after attempting HEIC conversion.');
+      setStatus(t('NoValidFilesAfterConversion'));
       return;
     }
     
-    // Clear previous results before processing new files
-    setImageGroups([]);
-    imageInfoRef.current.forEach(info => URL.revokeObjectURL(info.url)); // Revoke old URLs first
-    imageInfoRef.current = [];
-    imageEmbeddingsRef.current = [];
-    setEmbeddingsMap({});
-    setImageKpis({});
-    setAnalyzingQualityDirectly(null);
-    setAllGroupsAnalyzedForBest(false); // Reset analysis state
-    setImagesToDownloadCount(0);
-    // totalUploadedImagesCount will be set after processing files
+    setIsAddingMoreImages(addingMore);
     
+    // Clear previous results only if not adding more images
+    if (!addingMore) {
+      setImageGroups([]);
+      imageInfoRef.current.forEach(info => URL.revokeObjectURL(info.url)); // Revoke old URLs first
+      imageInfoRef.current = [];
+      imageEmbeddingsRef.current = [];
+      setEmbeddingsMap({});
+      setImageKpis({});
+      setAnalyzingQualityDirectly(null);
+      setAllGroupsAnalyzedForBest(false); // Reset analysis state
+      setImagesToDownloadCount(0);
+      // totalUploadedImagesCount will be set after processing files
+    }
+    
+    const existingImageCount = imageInfoRef.current.length;
     const newImageInfos: ImageInfo[] = [];
+    
     // Use the processedFiles array (which includes converted HEICs)
     for (let i = 0; i < processedFiles.length; i++) {
       const file = processedFiles[i];
       const fileUrl = URL.createObjectURL(file);
-      const imageId = String(i); // imageId based on the new processedFiles array
+      // When adding more images, we need to ensure IDs don't clash with existing images
+      const imageId = String(existingImageCount + i);
       newImageInfos.push({
         id: imageId,
         name: file.name,
         size: file.size,
         type: file.type,
         url: fileUrl,
-        originalIndex: i, // originalIndex now refers to index in processedFiles
+        originalIndex: existingImageCount + i, // originalIndex now refers to position in combined array
       });
     }
-    imageInfoRef.current = newImageInfos;
+    
+    if (addingMore) {
+      // Append new images to existing images
+      imageInfoRef.current = [...imageInfoRef.current, ...newImageInfos];
+    } else {
+      // Replace with new images (original behavior)
+      imageInfoRef.current = newImageInfos;
+    }
 
     if (newImageInfos.length > 0) {
       setPendingFilesCount(newImageInfos.length);
-      setTotalUploadedImagesCount(newImageInfos.length); // Set total count here
-      setStatus(`Sending ${newImageInfos.length} images to worker for processing...`);
+      const newTotalCount = addingMore ? totalUploadedImagesCount + newImageInfos.length : newImageInfos.length;
+      setTotalUploadedImagesCount(newTotalCount); // Set total count here
+      setStatus(t('SendingImagesToAI', { count: newImageInfos.length }));
       newImageInfos.forEach((info) => {
         workerRef.current?.postMessage({
           type: 'extractFeatures',
@@ -308,14 +375,19 @@ export default function ImageDuplicateDetectionPage() {
       });
     } else {
       // This case should ideally not be reached if processedFiles.length > 0 check passed
-      setStatus('No valid images selected to process.');
+      setStatus(t('NoValidImagesSelected'));
     }
+  };
+
+  // Add handler for the "Add More Images" button
+  const handleAddMoreImages = (event: ChangeEvent<HTMLInputElement>) => {
+    handleFileChange(event, true);
   };
 
   async function calculateKpisDirectly(imageDataUrl: string, imageId: string): Promise<QualityKPIs | null> {
     if (!isCvReady || !window.cv || !window.cv.imread) {
         console.error('OpenCV not ready for KPI calculation or imread not found.');
-        setStatus('OpenCV not ready. Cannot calculate quality.');
+        setStatus(t('QualityToolsNotReadyKPI'));
         return null;
     }
     console.log(`Main: Starting KPI calculation for imageId: ${imageId} directly.`);
@@ -385,12 +457,13 @@ export default function ImageDuplicateDetectionPage() {
         return kpis;
     } catch (error) {
         console.error(`Main: Error calculating KPIs for image ${imageId} directly:`, error);
-        setStatus(`Error calculating quality for image ${imageId}: ${error instanceof Error ? error.message : String(error)}`);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        setStatus(t('ErrorCalculatingQuality', { imageId, error: errorMessage }));
         return null;
     }
   }
   
-  const isLoading = workerStatus !== 'Worker ready.' || pendingFilesCount > 0 || analyzingQualityDirectly !== null;
+  const isLoading = workerStatus !== t('AIReady') || pendingFilesCount > 0 || analyzingQualityDirectly !== null || processingThresholdChange;
   const isActionDisabled = isLoading || isDownloadingAll || isDownloadingSingleId !== null;
 
   const duplicateSets = imageGroups.filter(group => group.length > 1);
@@ -398,18 +471,18 @@ export default function ImageDuplicateDetectionPage() {
 
   const handleAnalyzeQuality = async (groupIndex: number) => {
     if (!isCvReady) {
-        setStatus('OpenCV is not ready for quality analysis. Please wait.');
+        setStatus(t('QualityToolsNotReadyAnalysisWait'));
         console.warn("Main: OpenCV not ready for analysis call.");
         return;
     }
     const group = imageGroups[groupIndex];
     if (!group || group.length <= 1) {
-        setStatus("No duplicates in this group to analyze.");
+        setStatus(t("NoDuplicatesInGroup"));
         return;
     }
 
     setAnalyzingQualityDirectly(groupIndex);
-    setStatus(`Analyzing quality for images in group ${groupIndex + 1}...`);
+    setStatus(t('AnalyzingGroupQuality', { groupNumber: groupIndex + 1 }));
     console.log(`Main: Analyzing group ${groupIndex}, which contains original indices:`, group);
     
     let processedCount = 0;
@@ -433,7 +506,12 @@ export default function ImageDuplicateDetectionPage() {
                 console.log(`Main: KPIs already exist for image ${imageInfo.id}, skipping.`);
             }
             processedCount++;
-            setStatus(`Analyzed ${processedCount}/${group.length} in group ${groupIndex + 1}. Image: ${imageInfo.name}`);
+            setStatus(t('AnalyzedProgressInGroup', { 
+                processedCount, 
+                groupTotal: group.length, 
+                groupNumber: groupIndex + 1, 
+                imageName: imageInfo.name 
+            }));
         } else {
             console.warn(`Main: Skipping imageOriginalIndex ${imageOriginalIndex} due to missing imageInfo or URL. imageInfo:`, imageInfo);
             processedCount++; // Still count as processed to avoid endless loop if data is bad
@@ -446,9 +524,9 @@ export default function ImageDuplicateDetectionPage() {
     
     console.log(`Main: Finished iterating group ${groupIndex}. Total images processed in call: ${processedCount}`);
     if (group.every(idx => !!(imageKpis[imageInfoRef.current[idx]?.id] || newKpisForGroup[imageInfoRef.current[idx]?.id]))) {
-      setStatus(`Quality analysis complete for group ${groupIndex + 1}.`);
+      setStatus(t('QualityAnalysisCompleteForGroup', { groupNumber: groupIndex + 1 }));
     } else {
-      setStatus(`Quality analysis partially done for group ${groupIndex + 1}. Some images might have failed or were skipped.`);
+      setStatus(t('QualityAnalysisPartialForGroup', { groupNumber: groupIndex + 1 }));
     }
     setAnalyzingQualityDirectly(null);
   };
@@ -529,7 +607,7 @@ export default function ImageDuplicateDetectionPage() {
     // No need to pass imageKpis or setImageKpis, as it reads and sets global state directly or via calculateKpisDirectly
   ): Promise<boolean> { // Returns true if analysis was attempted/successful for at least one image
     if (!isCvReady) {
-      setStatus('OpenCV not ready for quality analysis. Cannot ensure best image selection.');
+      setStatus(t('QualityToolsNotReadyBestSelection'));
       return false;
     }
     
@@ -541,7 +619,7 @@ export default function ImageDuplicateDetectionPage() {
       return true; // All KPIs already present for this group
     }
 
-    setStatus(`Analyzing quality for ${groupImagesToAnalyze.length} image(s) to select the best for download...`);
+    setStatus(t('AnalyzingQualityForBestDownload', { count: groupImagesToAnalyze.length }));
     let kpisUpdatedForGroup = false;
     const newKpisForGroup: Record<string, QualityKPIs> = {};
 
@@ -558,17 +636,17 @@ export default function ImageDuplicateDetectionPage() {
     if (kpisUpdatedForGroup) {
       setImageKpis(prevKpisState => ({ ...prevKpisState, ...newKpisForGroup }));
     }
-    setStatus('Pre-download quality analysis complete for the current group.');
+    setStatus(t('PreDownloadAnalysisComplete'));
     return true;
   }
 
   const handleDownloadAll = async () => {
     if (imageInfoRef.current.length === 0 || (!duplicateSets.length && !uniqueImageIndices.length)) {
-      setStatus("No images to download.");
+      setStatus(t("NoImagesToDownload"));
       return;
     }
     if (!isCvReady && duplicateSets.length > 0) {
-        setStatus("OpenCV is not ready. Quality analysis for duplicate sets cannot be performed for 'Download All'. Please wait for OpenCV or analyze groups individually first.");
+        setStatus(t("QualityToolsNotReadyDownloadAll"));
         // Optionally, allow download of unique images only, or all images without best selection
         // For now, we halt if best selection from duplicates is expected but not possible.
         // Consider a modified download if only unique images are present.
@@ -576,7 +654,7 @@ export default function ImageDuplicateDetectionPage() {
     }
 
     setIsDownloadingAll(true);
-    setStatus("Preparing files for download...");
+    setStatus(t("PreparingDownload"));
 
     const imagesToDownload: { dataUrl: string; name: string, id?: string, type?: string, size?: number }[] = [];
 
@@ -609,7 +687,7 @@ export default function ImageDuplicateDetectionPage() {
         });
       } else {
         console.warn(`Could not determine best image for group (indices: ${group.join(',')}). This group will be omitted from the ZIP.`);
-        setStatus(prev => prev + ` Warning: Best image for group with indices ${group.join(',')} could not be determined and was omitted.`);
+        setStatus(prev => prev + t('WarningBestImageOmitted'));
       }
     }
 
@@ -640,17 +718,17 @@ export default function ImageDuplicateDetectionPage() {
           hasBeenProcessed: true, // Marking as "processed" in the sense of being selected for download
         }));
 
-        setStatus(`Zipping ${imagesToDownload.length} image(s)...`);
+        setStatus(t('ZippingImages', { count: imagesToDownload.length }));
         // Using true for the third argument to indicate zipping, similar to background-removal page
         // The actual zip name will likely be a default one generated by downloadAllImages
         await downloadAllImages(filesForZip, 'png', true); 
-        setStatus("Download complete!");
+        setStatus(t("DownloadComplete"));
       } catch (error) {
         console.error("Error during Download All:", error);
-        setStatus("Error creating ZIP file for download.");
+        setStatus(t("ErrorCreatingZIP"));
       }
     } else {
-      setStatus("No images were selected for download (e.g. no unique images and no best images found in groups).");
+      setStatus(t("NoImagesSelectedForDownload"));
     }
 
     setIsDownloadingAll(false);
@@ -658,19 +736,19 @@ export default function ImageDuplicateDetectionPage() {
 
   const handleDownloadSingleFromGroup = async (imageToDownload: ImageInfo) => {
     if (!imageToDownload || !imageToDownload.url) {
-      setStatus("Image data is missing, cannot download.");
+      setStatus(t("ImageDataMissingDownload"));
       return;
     }
     setIsDownloadingSingleId(imageToDownload.id);
-    setStatus(`Downloading ${imageToDownload.name}...`);
+    setStatus(t('DownloadingImage', { imageName: imageToDownload.name }));
     try {
       // Assuming downloadImage takes (url, filename, format)
       // The format 'png' is a guess; adjust if ImageFormat has specific values like 'PNG'
       await downloadImage(imageToDownload.url, imageToDownload.name, 'png');
-      setStatus(`${imageToDownload.name} downloaded successfully.`);
+      setStatus(t('ImageDownloadedSuccessfully', { imageName: imageToDownload.name }));
     } catch (error) {
       console.error(`Error downloading single image ${imageToDownload.name}:`, error);
-      setStatus(`Failed to download ${imageToDownload.name}.`);
+      setStatus(t('FailedToDownloadImage', { imageName: imageToDownload.name }));
     }
     setIsDownloadingSingleId(null);
   };
@@ -678,28 +756,28 @@ export default function ImageDuplicateDetectionPage() {
   // Function to analyze all groups to prepare for best selection download
   const handleAnalyzeAllGroupsForBest = async () => {
     if (!isCvReady && duplicateSets.length > 0) {
-      setStatus("OpenCV is not ready. Quality analysis for duplicate sets cannot be performed. Please wait for OpenCV.");
+      setStatus(t("QualityToolsNotReadyAnalyzeAllGroups"));
       return;
     }
     if (duplicateSets.length === 0 && uniqueImageIndices.length > 0) {
       // No duplicate sets to analyze, only unique images
       setImagesToDownloadCount(uniqueImageIndices.length);
       setAllGroupsAnalyzedForBest(true);
-      setStatus("Only unique images present. Ready to download.");
+      setStatus(t("OnlyUniqueImagesReadyDownload"));
       return;
     } 
     if (duplicateSets.length === 0 && uniqueImageIndices.length === 0) {
-        setStatus("No images to analyze or download.");
+        setStatus(t("NoImagesToAnalyzeOrDownload"));
         return;
     }
 
     setIsDownloadingAll(true); // Use isDownloadingAll to indicate general processing for this button
-    setStatus("Analyzing all groups for best image selection...");
+    setStatus(t("AnalyzingAllGroupsForBest"));
     let groupsProcessedSuccessfully = 0;
 
     for (let i = 0; i < duplicateSets.length; i++) {
       const group = duplicateSets[i];
-      setStatus(`Analyzing group ${i + 1} of ${duplicateSets.length} for best image...`);
+      setStatus(t('AnalyzingGroupForBest', { currentGroup: i + 1, totalGroups: duplicateSets.length }));
       const success = await calculateKpisForGroupIfNeeded(group, imageInfoRef.current);
       if (success) {
         // KPIs for this group should now be in imageKpis state
@@ -714,11 +792,17 @@ export default function ImageDuplicateDetectionPage() {
     setAllGroupsAnalyzedForBest(true);
     
     if (groupsProcessedSuccessfully === duplicateSets.length) {
-      setStatus(`All ${duplicateSets.length} duplicate groups analyzed. Ready to download ${calculatedImagesToDownload} best images.`);
+      setStatus(t('AllGroupsAnalyzedReadyDownload', { 
+        count: duplicateSets.length, 
+        downloadCount: calculatedImagesToDownload 
+      }));
     } else {
       setStatus(
-        `Analysis for best selection partially complete (${groupsProcessedSuccessfully}/${duplicateSets.length} groups). ` +
-        `Ready to download ${calculatedImagesToDownload} images (best available will be chosen).`
+        t('AnalysisPartialReadyDownload', {
+          processedGroups: groupsProcessedSuccessfully,
+          totalGroups: duplicateSets.length,
+          downloadCount: calculatedImagesToDownload
+        })
       );
     }
     setIsDownloadingAll(false);
@@ -728,24 +812,24 @@ export default function ImageDuplicateDetectionPage() {
     <main className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="brutalist-accent-card mb-8">
         <h1 className="text-3xl font-bold text-center uppercase mb-6">
-          Image Duplicate Detection
+          {t('PageTitle')}
         </h1>
 
-        {workerStatus.startsWith('Worker starting') || workerStatus.startsWith('Worker initializing') || !isCvReady ? (
+        {workerStatus === t('AISetup') || workerStatus === t('AIEngineInitializing') || !isCvReady ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
             <div className="flex flex-col items-center justify-center py-8">
               <Loader size="lg" />
               <h3 className="text-lg font-bold mb-2">
-                {workerStatus.includes('model') ? "Loading AI Model..." 
-                  : !isCvReady ? "Initializing Quality Tools..." 
-                  : "Initializing Tool..."}
+                {workerStatus.includes(t('AILoadingModel').substring(0,10)) ? t("LoaderTitleLoadingModel") 
+                  : !isCvReady ? t("LoaderTitleQualityTools") 
+                  : t("LoaderTitleInitializing")}
               </h3>
               <p className="text-sm text-gray-600">
-                {workerStatus.includes('model') 
-                  ? "The powerful AI model is being loaded. This might take a moment."
+                {workerStatus.includes(t('AILoadingModel').substring(0,10))
+                  ? t("LoaderDescriptionLoadingModel")
                   : !isCvReady 
-                  ? "Getting OpenCV ready for image quality analysis..."
-                  : "Getting things ready for duplicate detection. Please wait."}
+                  ? t("LoaderDescriptionQualityTools")
+                  : t("LoaderDescriptionInitializing")}
               </p>
             </div>
           </div>
@@ -754,7 +838,7 @@ export default function ImageDuplicateDetectionPage() {
             <div className="md:col-span-2">
               <Card 
                 collapsible={false}
-                title="Find Duplicate Images"
+                title={t('MainCardTitle')}
                 variant="accent"
               >
                 <div className="space-y-6 relative">
@@ -766,40 +850,102 @@ export default function ImageDuplicateDetectionPage() {
                   )}
                   
                   <div className="brutalist-border p-4 bg-white">
-                    <h3 className="font-bold mb-2">Upload Your Images</h3>
+                    <h3 className="font-bold mb-2">{t('UploadSectionTitle')}</h3>
                     <p className="text-sm mb-2">
-                      Select multiple images to find duplicates. The tool will analyze them and group similar ones together.
+                      {t('UploadSectionDescription')}
                     </p>
-                    <input
+                    <div className="flex flex-col items-center space-y-8 w-full py-4">
+                      {/* Upload buttons container */}
+                      <div className="flex flex-col items-center justify-center w-full space-y-4 max-w-sm">
+                        <label htmlFor="fileInput" className="w-full flex justify-center">
+                          <Button as="span" variant="primary" size="lg" className="w-full max-w-xs text-center" disabled={isLoading || !isCvReady}>
+                            {isLoading ? t('ButtonSelectImagesLoading') 
+                              : !isCvReady ? t('ButtonSelectImagesInitializing') 
+                              : t('ButtonSelectImages')}
+                          </Button>
+                        </label>
+                        
+                        {imageInfoRef.current.length > 0 && !isLoading && (
+                          <label htmlFor="addMoreInput" className="w-full flex justify-center">
+                            <Button as="span" variant="default" size="lg" className="w-full max-w-xs text-center" disabled={isLoading || !isCvReady}>
+                              {isLoading && isAddingMoreImages ? t('ButtonAddMoreImagesLoading') : t('ButtonAddMoreImages')}
+                            </Button>
+                          </label>
+                        )}
+                      </div>
+                      
+                      {/* Hidden file inputs */}
+                      <input
                         type="file"
                         multiple
                         onChange={handleFileChange}
-                        accept="image/*,.heic,.heif" // Added .heic, .heif
+                        accept="image/*,.heic,.heif"
                         className="hidden"
                         id="fileInput"
                         disabled={isLoading}
                       />
-                      <div className="flex flex-col items-center gap-2 space-y-6">
-                        <label htmlFor="fileInput" className="inline-block">
-                          <Button as="span" variant="primary" size="lg" disabled={isLoading || !isCvReady}>
-                            {isLoading ? "Processing..." 
-                              : !isCvReady ? "Tools Initializing..." 
-                              : "Select Images"}
-                          </Button>
-                        </label>
+                      <input
+                        type="file"
+                        multiple
+                        onChange={handleAddMoreImages}
+                        accept="image/*,.heic,.heif"
+                        className="hidden"
+                        id="addMoreInput"
+                        disabled={isLoading}
+                      />
+                      
+                      {/* Status and information section */}
+                      <div className="flex flex-col items-center space-y-3 w-full">
                         <span className="text-xs text-gray-600">
-                          Supports JPG, PNG, WEBP. Max 50 images at once.
+                          {t('SupportedFormats')}
                         </span>
                         <p className="text-sm font-semibold">{status}</p>
-                        <p className="text-xs text-gray-500">Feature Worker: {workerStatus}</p>
-                        {!isCvReady && <p className="text-xs text-yellow-600">Quality Analyzer: OpenCV loading...</p>}
-                        {isCvReady && <p className="text-xs text-green-600">Quality Analyzer: OpenCV Ready</p>}
+                        <p className="text-xs text-gray-500">{t('AIStatusLabel', { status: workerStatus })}</p>
+                        {!isCvReady && <p className="text-xs text-yellow-600">{t('QualityAnalyzerStatusLoading')}</p>}
                       </div>
+                    </div>
                   </div>
+
+                  {/* New similarity threshold control */}
+                  {imageInfoRef.current.length > 0 && pendingFilesCount === 0 && (
+                    <div className="brutalist-border p-4 bg-white">
+                      <h3 className="font-bold mb-2">{t('SimilarityThresholdTitle')}</h3>
+                      <p className="text-sm mb-3">
+                        {t('SimilarityThresholdDescription')}
+                      </p>
+                      <div className="flex flex-col md:flex-row items-center gap-4">
+                        <div className="flex-1 w-full">
+                          <input
+                            type="range"
+                            min="0.75"
+                            max="0.99"
+                            step="0.01"
+                            value={similarityThreshold}
+                            onChange={handleThresholdChange}
+                            className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                            disabled={isActionDisabled}
+                          />
+                          <div className="flex justify-between text-xs mt-1">
+                            <span>{t('SimilarityLessStrict')}</span>
+                            <span>{t('SimilarityCurrent', { threshold: similarityThreshold.toFixed(2) })}</span>
+                            <span>{t('SimilarityMoreStrict')}</span>
+                          </div>
+                        </div>
+                        <Button
+                          variant="accent"
+                          size="sm"
+                          disabled={isActionDisabled}
+                          onClick={reanalyzeWithNewThreshold}
+                        >
+                          {processingThresholdChange ? t('ButtonApplyThresholdLoading') : t('ButtonApplyThreshold')}
+                        </Button>
+                      </div>
+                    </div>
+                  )}
 
                   {(duplicateSets.length > 0 || uniqueImageIndices.length > 0) && (
                     <div className="brutalist-border p-6 bg-white mt-6 relative">
-                      <h2 className="text-xl font-bold mb-4">Detection Results:</h2>
+                      <h2 className="text-xl font-bold mb-4">{t('ResultsTitle')}</h2>
                       
                       {duplicateSets.map((group, groupIndex) => {
                         const bestSharpnessMap = getBestInGroup(group, 'sharpness');
@@ -820,9 +966,9 @@ export default function ImageDuplicateDetectionPage() {
 
                         return (
                         <div key={`duplicate-set-${groupIndex}`} className="mb-8 brutalist-border p-4 bg-gray-50">
-                          <div className="flex justify-between items-center mb-3">
+                          <div className="flex flex-wrap justify-between items-center mb-3">
                             <h3 className="text-lg font-semibold">
-                              {`Duplicate Set ${groupIndex + 1} (${group.length} similar images)`}
+                              {t('DuplicateSetTitle', { number: groupIndex + 1, count: group.length })}
                             </h3>
                             <Button
                                 variant="secondary"
@@ -830,17 +976,17 @@ export default function ImageDuplicateDetectionPage() {
                                 onClick={() => handleAnalyzeQuality(groupIndex)}
                                 disabled={!isCvReady || analyzingQualityDirectly !== null || group.length <=1 }
                             >
-                                {analyzingQualityDirectly === groupIndex ? "Analyzing..." 
+                                {analyzingQualityDirectly === groupIndex ? t('ButtonAnalyzeQualityLoading') 
                                   : (group.every(idx => !!imageKpis[imageInfoRef.current[idx]?.id]) 
-                                    ? "Re-Analyze Quality" 
-                                    : "Analyze Quality")}
+                                    ? t('ButtonReanalyzeQuality') 
+                                    : t('ButtonAnalyzeQuality'))}
                             </Button>
                           </div>
-                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                             {group.map((imageOriginalIndex) => {
                               const image = imageInfoRef.current[imageOriginalIndex];
                               if (!image) {
-                                return <p key={`missing-dup-${groupIndex}-${imageOriginalIndex}`}>Image data missing (index: {imageOriginalIndex})</p>;
+                                return <p key={`missing-dup-${groupIndex}-${imageOriginalIndex}`}>{t('ImageMissing', { index: imageOriginalIndex })}</p>;
                               }
                               const kpis = imageKpis[image.id];
                               const imageWithKpis: ImageWithKPIs = {
@@ -861,7 +1007,7 @@ export default function ImageDuplicateDetectionPage() {
                                 >
                                   {imageWithKpis.isOverallBest && (
                                     <div className="absolute top-0 right-0 m-1 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase z-10">
-                                      Best
+                                      {t('BestLabel')}
                                     </div>
                                   )}
                                   <div className="relative w-full" style={{paddingBottom: '100%'}}>
@@ -875,11 +1021,11 @@ export default function ImageDuplicateDetectionPage() {
                                   <p className="text-xs truncate mt-1 px-1" title={imageWithKpis.name}>{imageWithKpis.name}</p>
                                   {kpis && (
                                     <div className="text-xs mt-1 p-1 bg-gray-100 brutalist-border-small text-left">
-                                      <p className={imageWithKpis.isBestResolution ? "font-bold text-primary" : ""}>Res: {kpis.resolution.width}x{kpis.resolution.height}</p>
-                                      <p className={imageWithKpis.isBestSharpness ? "font-bold text-primary" : ""}>Sharp: {kpis.sharpness.toFixed(2)}</p>
-                                      <p className={imageWithKpis.isBestNoise ? "font-bold text-primary" : ""}>Noise: {kpis.noiseLevel.toFixed(2)}</p>
-                                      <p className={imageWithKpis.isBestContrast ? "font-bold text-primary" : ""}>Contrast: {kpis.contrast.toFixed(2)}</p>
-                                      <p className={imageWithKpis.isBestExposure ? "font-bold text-primary" : ""}>Exposure: {kpis.exposure.toFixed(2)}</p>
+                                      <p className={imageWithKpis.isBestResolution ? "font-bold text-primary" : ""}>{t('KpiRes')} {kpis.resolution.width}x{kpis.resolution.height}</p>
+                                      <p className={imageWithKpis.isBestSharpness ? "font-bold text-primary" : ""}>{t('KpiSharp')} {kpis.sharpness.toFixed(2)}</p>
+                                      <p className={imageWithKpis.isBestNoise ? "font-bold text-primary" : ""}>{t('KpiNoise')} {kpis.noiseLevel.toFixed(2)}</p>
+                                      <p className={imageWithKpis.isBestContrast ? "font-bold text-primary" : ""}>{t('KpiContrast')} {kpis.contrast.toFixed(2)}</p>
+                                      <p className={imageWithKpis.isBestExposure ? "font-bold text-primary" : ""}>{t('KpiExposure')} {kpis.exposure.toFixed(2)}</p>
                                     </div>
                                   )}
                                   {/* Download button for individual image */}
@@ -891,7 +1037,7 @@ export default function ImageDuplicateDetectionPage() {
                                       onClick={() => handleDownloadSingleFromGroup(imageWithKpis)}
                                       disabled={isActionDisabled || isDownloadingSingleId === imageWithKpis.id}
                                     >
-                                      {isDownloadingSingleId === imageWithKpis.id ? 'Downloading...' : 'Download'}
+                                      {isDownloadingSingleId === imageWithKpis.id ? t('ButtonDownloading') : t('ButtonDownload')}
                                     </Button>
                                   </div>
                                 </div>
@@ -904,13 +1050,13 @@ export default function ImageDuplicateDetectionPage() {
                       {uniqueImageIndices.length > 0 && (
                         <div className="mb-8 brutalist-border p-4 bg-gray-50">
                           <h3 className="text-lg font-semibold mb-3">
-                            Unique Images ({uniqueImageIndices.length} image(s) with no direct duplicates)
+                            {t('UniqueImagesTitle', { count: uniqueImageIndices.length })}
                           </h3>
-                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
                             {uniqueImageIndices.map((imageOriginalIndex, index) => {
                               const image = imageInfoRef.current[imageOriginalIndex];
                               if (!image) {
-                                return <p key={`missing-unique-${index}-${imageOriginalIndex}`}>Image data missing (index: {imageOriginalIndex})</p>;
+                                return <p key={`missing-unique-${index}-${imageOriginalIndex}`}>{t('ImageMissing', { index: imageOriginalIndex })}</p>;
                               }
                               return (
                                 <div key={`${image.id}-unique-${image.url}`} className="text-center brutalist-border p-1 bg-white">
@@ -923,8 +1069,18 @@ export default function ImageDuplicateDetectionPage() {
                                     />
                                   </div>
                                   <p className="text-xs truncate mt-1 px-1" title={image.name}>{image.name}</p>
-                                  {/* No download button for unique images here, could be added if desired */}
-                                  {/* If adding, would be similar to the one in duplicate sets */}
+                                  {/* Add download button for unique images */}
+                                  <div className="mt-auto pt-1">
+                                    <Button
+                                      variant="secondary"
+                                      size="sm"
+                                      className="w-full text-xs py-1 mt-1"
+                                      onClick={() => handleDownloadSingleFromGroup(image)}
+                                      disabled={isActionDisabled || isDownloadingSingleId === image.id}
+                                    >
+                                      {isDownloadingSingleId === image.id ? t('ButtonDownloading') : t('ButtonDownload')}
+                                    </Button>
+                                  </div>
                                 </div>
                               );
                             })}
@@ -934,7 +1090,7 @@ export default function ImageDuplicateDetectionPage() {
 
                       {(duplicateSets.length > 0 || uniqueImageIndices.length > 0) && (
                         <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
-                          <div className="flex justify-center">
+                          <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
                             {!allGroupsAnalyzedForBest ? (
                                 <Button 
                                     variant="accent" 
@@ -942,18 +1098,18 @@ export default function ImageDuplicateDetectionPage() {
                                     disabled={isActionDisabled || (!isCvReady && duplicateSets.length > 0) || pendingFilesCount > 0}
                                     className="w-full max-w-md"
                                 >
-                                    {isDownloadingAll ? "Analyzing All Groups..." : "Analyze All Groups for Best Selection"}
+                                    {isDownloadingAll ? t('ButtonAnalyzeAllGroupsLoading') : t('ButtonAnalyzeAllGroups')}
                                 </Button>
                             ) : (
                                 <Button 
-                                    variant="primary"
+                                    variant="accent"
                                     onClick={handleDownloadAll}
                                     disabled={isActionDisabled || imagesToDownloadCount === 0}
                                     className="w-full max-w-md"
                                 >
                                     {isDownloadingAll 
-                                        ? "Preparing Download..." 
-                                        : `Download ${imagesToDownloadCount} Best Images (from ${totalUploadedImagesCount} total)`}
+                                        ? t('ButtonDownloadBestLoading') 
+                                        : t('ButtonDownloadBest', { count: imagesToDownloadCount })}
                                 </Button>
                             )}
                           </div>
@@ -963,7 +1119,7 @@ export default function ImageDuplicateDetectionPage() {
                   )}
                   {imageInfoRef.current.length > 0 && duplicateSets.length === 0 && uniqueImageIndices.length === 0 && !isLoading && (
                      <div className="brutalist-border p-6 bg-white mt-6">
-                        <p className="text-center text-gray-600">No images processed or no groups formed yet. Ensure images were selected and processing completed.</p>
+                        <p className="text-center text-gray-600">{t('NoImagesProcessedOrGroups')}</p>
                     </div>
                   )}
                   { /* Show global status or errors related to download all if any */ }
@@ -973,36 +1129,36 @@ export default function ImageDuplicateDetectionPage() {
             </div>
             
             <div className="space-y-6">
-              <Card title="How Duplicate Detection Works" variant="accent">
+              <Card title={t('HowItWorksTitle')} variant="accent">
                 <div className="space-y-4">
                   <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">1. Upload Your Images</h3>
+                    <h3 className="font-bold mb-2">{t('HowItWorksStep1Title')}</h3>
                     <p className="text-sm">
-                      Click the &quot;Select Images&quot; button and choose the images you want to check for duplicates. You can select multiple files at once.
+                      {t('HowItWorksStep1Desc')}
                     </p>
                   </div>
                   <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">2. AI-Powered Analysis</h3>
+                    <h3 className="font-bold mb-2">{t('HowItWorksStep2Title')}</h3>
                     <p className="text-sm">
-                      Our system uses a sophisticated AI model (Vision Transformer) to extract unique features from each image. This allows us to understand the content and appearance of your images.
+                     {t('HowItWorksStep2Desc')}
                     </p>
                   </div>
                   <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">3. Similarity Scoring</h3>
+                    <h3 className="font-bold mb-2">{t('HowItWorksStep3Title')}</h3>
                     <p className="text-sm">
-                      The extracted features are then compared using cosine similarity. This mathematical measure determines how similar two images are based on their visual content.
+                      {t('HowItWorksStep3Desc')}
                     </p>
                   </div>
                   <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">4. Grouping Duplicates</h3>
+                    <h3 className="font-bold mb-2">{t('HowItWorksStep4Title')}</h3>
                     <p className="text-sm">
-                      Images with a similarity score above a certain threshold (e.g., 98%) are grouped together as duplicates. Images that don&apos;t have close matches are considered unique.
+                     {t('HowItWorksStep4Desc')}
                     </p>
                   </div>
                   <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">5. View Results</h3>
+                    <h3 className="font-bold mb-2">{t('HowItWorksStep5Title')}</h3>
                     <p className="text-sm">
-                      The results are displayed with duplicate sets grouped together at the top, followed by unique images. You can then easily identify and manage your similar photos.
+                      {t('HowItWorksStep5Desc')}
                     </p>
                   </div>
                 </div>
