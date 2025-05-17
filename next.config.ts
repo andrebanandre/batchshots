@@ -23,6 +23,8 @@ const nextConfig: NextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "onnxruntime-web/all": path.join(__dirname, 'node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs'),
+      "sharp$": false,
+      "onnxruntime-node$": false,
     };
 
     // Only apply these configurations to client-side builds
