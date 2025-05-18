@@ -17,8 +17,7 @@ import { useTranslations } from 'next-intl';
 // Declare cv type for global window scope
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    cv: any; // Using 'any' for simplicity, can be refined with d.ts if available
+    // cv: any; // Using 'any' for simplicity, can be refined with d.ts if available
     addEventListener(event: 'opencv-ready', callback: () => void): void;
     removeEventListener(event: 'opencv-ready', callback: () => void): void;
   }

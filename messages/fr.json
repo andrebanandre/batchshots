@@ -643,6 +643,7 @@
                     "Suppression d'objets IA image unique",
                     "Ajout de filigrane max 5 images",
                     "Convertisseur d'images max 5 images en lot",
+                    "Détecteur de doublons photo IA max 5 images",
                     "Génération de noms d'images SEO IA (Non disponible)",
                     "Description et métatags SEO IA (Non disponible)"
                 ],
@@ -657,6 +658,7 @@
                     "Suppression d'objets IA jusqu'à 100 images",
                     "Ajout de filigrane 100 images en un lot",
                     "Convertisseur d'images max 100 images en lot",
+                    "Détecteur de doublons photo IA traitement par lots illimité",
                     "Génération de noms d'images SEO IA (jusqu'à 100)",
                     "Description et métatags SEO IA disponibles",
                     "**Paiement unique, accès à vie**"

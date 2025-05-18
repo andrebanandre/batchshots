@@ -721,6 +721,7 @@
                     "AI objects removal from single image",
                     "Watermark adding max 5 images",
                     "Image converter max 5 images in bulk",
+                    "AI Photo Duplicate Finder max 5 images",
                     "AI SEO images naming generation (Not available)",
                     "AI SEO description and metatags (Not available)"
                 ],
@@ -735,6 +736,7 @@
                     "AI objects removal up to 100 images",
                     "Watermark adding 100 images in one batch",
                     "Image converter max 100 images in bulk",
+                    "AI Photo Duplicate Finder unlimited batch",
                     "AI SEO images naming generation (up to 100)",
                     "AI SEO description and metatags available",
                     "**One-time payment, lifetime access**"
