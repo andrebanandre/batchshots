@@ -1224,7 +1224,7 @@
         "UploadSectionTitle": "Laden Sie Ihre Fotos hoch",
         "UploadSectionDescription": "Wählen Sie mehrere Fotos aus. Unsere KI analysiert sie intelligent und gruppiert ähnliche Fotos.",
         "ButtonSelectImages": "Fotos auswählen",
-        "ButtonSelectImagesLoading": "Analysiere...",
+        "ButtonSelectImagesLoading": "Lädt...",
         "ButtonSelectImagesInitializing": "Werkzeuge laden...",
         "ButtonAddMoreImages": "Weitere Fotos hinzufügen",
         "ButtonAddMoreImagesLoading": "Fotos werden hinzugefügt...",

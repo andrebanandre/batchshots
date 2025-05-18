@@ -1211,7 +1211,7 @@
         "UploadSectionTitle": "Загрузите ваши фотографии",
         "UploadSectionDescription": "Выберите несколько фотографий. Наш ИИ интеллектуально проанализирует их и сгруппирует похожие.",
         "ButtonSelectImages": "Выбрать фотографии",
-        "ButtonSelectImagesLoading": "Анализ...",
+        "ButtonSelectImagesLoading": "Загрузка...",
         "ButtonSelectImagesInitializing": "Загрузка инструментов...",
         "ButtonAddMoreImages": "Добавить еще фотографий",
         "ButtonAddMoreImagesLoading": "Добавление фотографий...",

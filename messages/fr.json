@@ -1214,7 +1214,7 @@
         "UploadSectionTitle": "Téléchargez Vos Photos",
         "UploadSectionDescription": "Sélectionnez plusieurs photos. Notre IA les analysera intelligemment et regroupera celles qui sont similaires.",
         "ButtonSelectImages": "Sélectionner des Photos",
-        "ButtonSelectImagesLoading": "Analyse en cours...",
+        "ButtonSelectImagesLoading": "Chargement...",
         "ButtonSelectImagesInitializing": "Chargement des outils...",
         "ButtonAddMoreImages": "Ajouter plus de Photos",
         "ButtonAddMoreImagesLoading": "Ajout de photos...",

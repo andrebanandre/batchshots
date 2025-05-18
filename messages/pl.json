@@ -1212,7 +1212,7 @@
             "UploadSectionTitle": "Prześlij Swoje Zdjęcia",
             "UploadSectionDescription": "Wybierz wiele zdjęć. Nasza AI inteligentnie je przeanalizuje i zgrupowuje podobne.",
             "ButtonSelectImages": "Wybierz Zdjęcia",
-            "ButtonSelectImagesLoading": "Analizowanie...",
+            "ButtonSelectImagesLoading": "Ładowanie...",
             "ButtonSelectImagesInitializing": "Ładowanie Narzędzi...",
             "ButtonAddMoreImages": "Dodaj Więcej Zdjęć",
             "ButtonAddMoreImagesLoading": "Dodawanie Zdjęć...",

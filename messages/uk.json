@@ -1211,7 +1211,7 @@
         "UploadSectionTitle": "Завантажте ваші фото",
         "UploadSectionDescription": "Виберіть кілька фото. Наш ШІ розумно проаналізує їх та згрупує схожі.",
         "ButtonSelectImages": "Вибрати фото",
-        "ButtonSelectImagesLoading": "Аналіз...",
+        "ButtonSelectImagesLoading": "Завантаження...",
         "ButtonSelectImagesInitializing": "Завантаження інструментів...",
         "ButtonAddMoreImages": "Додати ще фото",
         "ButtonAddMoreImagesLoading": "Додавання фото...",

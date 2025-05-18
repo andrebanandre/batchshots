@@ -1272,7 +1272,7 @@
         "UploadSectionTitle": "Upload Your Photos",
         "UploadSectionDescription": "Select multiple photos. Our AI will intelligently analyze them and group similar ones together.",
         "ButtonSelectImages": "Select Photos",
-        "ButtonSelectImagesLoading": "Analyzing...",
+        "ButtonSelectImagesLoading": "Loading...",
         "ButtonSelectImagesInitializing": "Tools Loading...",
         "ButtonAddMoreImages": "Add More Photos",
         "ButtonAddMoreImagesLoading": "Adding Photos...",
