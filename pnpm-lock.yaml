@@ -59,6 +59,9 @@ dependencies:
   react-sketch-canvas:
     specifier: ^6.2.0
     version: 6.2.0(react@19.1.0)
+  slug:
+    specifier: ^10.0.0
+    version: 10.0.0
   stripe:
     specifier: ^18.0.0
     version: 18.0.0
@@ -85,6 +88,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^19.1.2
     version: 19.1.2(@types/react@19.1.2)
+  '@types/slug':
+    specifier: ^5.0.9
+    version: 5.0.9
   '@types/uuid':
     specifier: ^10.0.0
     version: 10.0.0
@@ -1683,6 +1689,10 @@ packages:
     resolution: {integrity: sha512-oxLPMytKchWGbnQM9O7D67uPa9paTNxO7jVoNMXgkkErULBPhPARCfkKL9ytcIJJRGjbsVwW4ugJzyFFvm/Tiw==}
     dependencies:
       csstype: 3.1.3
+
+  /@types/slug@5.0.9:
+    resolution: {integrity: sha512-6Yp8BSplP35Esa/wOG1wLNKiqXevpQTEF/RcL/NV6BBQaMmZh4YlDwCgrrFSoUE4xAGvnKd5c+lkQJmPrBAzfQ==}
+    dev: true
 
   /@types/stack-utils@2.0.3:
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
@@ -6910,6 +6920,11 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
     dev: true
+
+  /slug@10.0.0:
+    resolution: {integrity: sha512-M8s2PWOUeSCdD4S1NH5lCzXg2zFV1fozrtfr0FSKl65x+EF1rUowj+/vyFlnHgxPxWzT+DL0VXKfYc1DHJoymg==}
+    hasBin: true
+    dev: false
 
   /snake-case@3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
