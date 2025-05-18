@@ -91,6 +91,9 @@ export default function Navbar() {
                 <Link href="/background-removal" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
                   {t('removeBackgrounds')}
                 </Link>
+                <Link href="/ai-image-seo-caption-generation" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
+                  {t('aiImageSeoCaptionGeneration')}
+                </Link>
                 <Link href="/add-watermark" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
                   {t('addWatermark')}
                 </Link>

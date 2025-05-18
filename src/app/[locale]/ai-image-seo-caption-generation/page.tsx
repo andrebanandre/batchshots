@@ -594,13 +594,7 @@ export default function ImageSeoGenerationPage() {
                       price="$19.99" // Assuming price is fixed, or fetch dynamically
                       isPro={true} // This card represents an upgrade to Pro
                       features={[
-                        // It's better to have dedicated translation keys for these features
-                        // For now, I'll use placeholders, assuming you'll add them to en.json
-                        // e.g., t('ProFeature1_SeoPage'), t('ProFeature2_SeoPage'), etc.
-                        `Process up to ${MAX_IMAGES_PRO} images with AI SEO`,
-                        "Unlock all AI SEO generation features",
-                        "Priority AI processing",
-                        "Download results in convenient ZIP format",
+                        `Process unlimited images with AI SEO`,
                         "Access to all other PRO features"
                       ]}
                       buttonText={t('ButtonUpgradeNow')}

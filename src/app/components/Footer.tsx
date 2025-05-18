@@ -58,6 +58,7 @@ export default function Footer() {
             <nav className="flex flex-col space-y-2">
               <Link href="/ai-photo-duplicate-finder" className="hover:text-primary text-sm">{tNavbar('aiPhotoDuplicateFinder')}</Link>
               <Link href="/background-removal" className="hover:text-primary text-sm">{tNavbar('removeBackgrounds')}</Link>
+              <Link href="/ai-image-seo-caption-generation" className="hover:text-primary text-sm">{tNavbar('aiImageSeoCaptionGeneration')}</Link>
               <Link href="/add-watermark" className="hover:text-primary text-sm">{tNavbar('addWatermark')}</Link>
               <Link href="/image-format-convertor" className="hover:text-primary text-sm">{tNavbar('imageFormatConvertor')}</Link>
               <Link href="/seo-description" className="hover:text-primary text-sm">{tNavbar('seoDescription')}</Link>

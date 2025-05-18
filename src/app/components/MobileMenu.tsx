@@ -33,8 +33,14 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <Link href="/" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             {t('imageOptimizer')}
           </Link>
+          <Link href="/ai-photo-duplicate-finder" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
+            {t('aiPhotoDuplicateFinder')}
+          </Link>
           <Link href="/background-removal" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             {t('removeBackgrounds')}
+          </Link>
+          <Link href="/ai-image-seo-caption-generation" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
+            {t('aiImageSeoCaptionGeneration')}
           </Link>
           <Link href="/add-watermark" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             {t('addWatermark')}
