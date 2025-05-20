@@ -10,6 +10,7 @@ import ProBadge from '../../components/ProBadge';
 import ProUpgradeDialog from '../../components/ProUpgradeDialog';
 import PricingCard from '../../components/PricingCard'; // Import PricingCard
 import { useIsPro } from '../../hooks/useIsPro';
+import { useIsMobile } from '../../hooks/useIsMobile'; // Import useIsMobile hook
 import { isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter'; // Added HEIC utilities
 import { downloadAllImages, downloadImage } from '../../lib/imageProcessing'; // Added for zip download
 import { useTranslations } from 'next-intl';
@@ -20,11 +21,16 @@ declare global {
     // cv: any; // Using 'any' for simplicity, can be refined with d.ts if available
     addEventListener(event: 'opencv-ready', callback: () => void): void;
     removeEventListener(event: 'opencv-ready', callback: () => void): void;
+    gc?: () => void; // Add optional gc property for memory management
   }
 }
 
 // Free user image limit constant
 const FREE_USER_IMAGE_LIMIT = 5;
+
+// Added processing batch sizes based on device capabilities
+const DESKTOP_BATCH_SIZE = 10;
+const MOBILE_BATCH_SIZE = 3;
 
 interface ImageInfo {
   id: string; // Unique ID for this image instance for worker communication
@@ -56,9 +62,84 @@ interface ImageWithKPIs extends ImageInfo {
   isOverallBest?: boolean; // Added for overall best in group
 }
 
+// Add this function near the top of the file after other utility functions
+async function resizeImageForMobile(file: File): Promise<File> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      if (!e.target?.result) {
+        reject(new Error('Failed to read file'));
+        return;
+      }
+
+      const img = new Image();
+      img.onload = () => {
+        // Target size for mobile (smaller width for lower memory usage)
+        const MAX_WIDTH = 1200;
+        const MAX_HEIGHT = 1200;
+        
+        let width = img.width;
+        let height = img.height;
+        
+        // Calculate new dimensions while maintaining aspect ratio
+        if (width > height && width > MAX_WIDTH) {
+          height = Math.round(height * (MAX_WIDTH / width));
+          width = MAX_WIDTH;
+        } else if (height > MAX_HEIGHT) {
+          width = Math.round(width * (MAX_HEIGHT / height));
+          height = MAX_HEIGHT;
+        }
+        
+        // Create canvas for resizing
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        
+        // Draw and resize image on canvas
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          reject(new Error('Could not get canvas context'));
+          return;
+        }
+        
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        // Convert to blob
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            reject(new Error('Failed to create blob'));
+            return;
+          }
+          
+          // Create new file from blob
+          const resizedFile = new File([blob], file.name, {
+            type: 'image/jpeg',
+            lastModified: file.lastModified,
+          });
+          
+          resolve(resizedFile);
+        }, 'image/jpeg', 0.85); // Use JPEG with 85% quality for smaller size
+      };
+      
+      img.onerror = () => {
+        reject(new Error('Failed to load image'));
+      };
+      
+      img.src = e.target.result as string;
+    };
+    
+    reader.onerror = () => {
+      reject(new Error('Failed to read file'));
+    };
+    
+    reader.readAsDataURL(file);
+  });
+}
+
 export default function ImageDuplicateDetectionPage() {
   const t = useTranslations('ImageDuplicateDetectionPage');
   const { isProUser, isLoading: isProStatusLoading } = useIsPro();
+  const { isMobile, isLowPerformanceDevice } = useIsMobile(); // Get device capabilities
   const router = useRouter();
   const [status, setStatus] = useState<string>(t('AppInitializing'));
   const [workerStatus, setWorkerStatus] = useState<string>(t('AISetup'));
@@ -76,6 +157,9 @@ export default function ImageDuplicateDetectionPage() {
   const [isAddingMoreImages, setIsAddingMoreImages] = useState<boolean>(false);
   // Add state for Pro dialog
   const [showProDialog, setShowProDialog] = useState<boolean>(false);
+  // Add new state for sequential processing
+  const [processingQueue, setProcessingQueue] = useState<ImageInfo[]>([]);
+  const [isProcessingQueue, setIsProcessingQueue] = useState<boolean>(false);
   
   const imageInfoRef = useRef<ImageInfo[]>([]);
   const imageEmbeddingsRef = useRef<(ImageEmbedding | null)[]>([]);
@@ -173,6 +257,29 @@ export default function ImageDuplicateDetectionPage() {
     };
   }, [t]); // Added t to dependency array
 
+  // Fix unused 'e' parameter in releaseImageResources function
+  const releaseImageResources = (imageIds: string[]) => {
+    console.log(`Main: Releasing resources for ${imageIds.length} images`);
+    for (const id of imageIds) {
+      const embedding = embeddingsMap[id];
+      if (embedding) {
+        // Delete reference to large typed arrays
+        delete embeddingsMap[id];
+      }
+    }
+    
+    // Run garbage collection hint (not guaranteed, but helps)
+    if (window.gc) {
+      try {
+        window.gc();
+        console.log('Main: Manual garbage collection requested');
+      } catch {
+        console.log('Main: Manual garbage collection not available');
+      }
+    }
+  };
+
+  // Modify the useEffect that processes embeddings to release resources
   useEffect(() => {
     if (imageInfoRef.current.length > 0 && pendingFilesCount === 0 && Object.keys(embeddingsMap).length === imageInfoRef.current.length) {
       setStatus(t('AllImagesProcessedAnalyzing'));
@@ -200,6 +307,16 @@ export default function ImageDuplicateDetectionPage() {
             successfullyProcessedCount, 
             totalImagesCount: imageInfoRef.current.length 
         }));
+        
+        // Once analysis is complete, release original embeddings to free memory
+        if (isMobile || isLowPerformanceDevice) {
+          // Create an array of all image IDs
+          const allImageIds = Object.keys(embeddingsMap);
+          // Release resources for processed images
+          releaseImageResources(allImageIds);
+          // Clear the embeddingsMap since we now have imageEmbeddingsRef
+          setEmbeddingsMap({});
+        }
       } else {
         setStatus(t('NoImagesProcessedSuccessfully', { 
             successfullyProcessedCount, 
@@ -207,8 +324,43 @@ export default function ImageDuplicateDetectionPage() {
         }));
         setImageGroups([]);
       }
+      
+      // Clear the processing queue in case any images are left
+      setProcessingQueue([]);
     }
-  }, [pendingFilesCount, embeddingsMap, similarityThreshold, t]); // Added t
+  }, [pendingFilesCount, embeddingsMap, similarityThreshold, t, isMobile, isLowPerformanceDevice]);
+
+  // Process images in sequence on mobile devices to prevent memory issues
+  useEffect(() => {
+    const processNextBatch = async () => {
+      if (processingQueue.length === 0 || !workerRef.current || isProcessingQueue) {
+        return;
+      }
+
+      setIsProcessingQueue(true);
+      const batchSize = isMobile ? MOBILE_BATCH_SIZE : DESKTOP_BATCH_SIZE;
+      const currentBatch = processingQueue.slice(0, batchSize);
+      const remainingQueue = processingQueue.slice(batchSize);
+      setProcessingQueue(remainingQueue);
+
+      setStatus(t('SendingImagesToAI', { count: currentBatch.length }));
+      
+      for (const imageInfo of currentBatch) {
+        if (workerRef.current) {
+          workerRef.current.postMessage({
+            type: 'extractFeatures',
+            data: { imageUrl: imageInfo.url, imageId: imageInfo.id }
+          });
+        }
+      }
+
+      setIsProcessingQueue(false);
+    };
+
+    if (processingQueue.length > 0 && !isProcessingQueue) {
+      processNextBatch();
+    }
+  }, [processingQueue, isProcessingQueue, isMobile, t]);
 
   // Add new function to handle threshold changes
   const handleThresholdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -291,6 +443,7 @@ export default function ImageDuplicateDetectionPage() {
     return groups.sort((a, b) => b.length - a.length);
   }
 
+  // Also modify the handleFileChange function to clear old object URLs more aggressively
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>, addingMore: boolean = false) => {
     const inputFiles = event.target.files ? Array.from(event.target.files) : [];
     if (inputFiles.length === 0) {
@@ -326,26 +479,52 @@ export default function ImageDuplicateDetectionPage() {
     }
 
     setStatus(t('ProcessingFilesHEIC'));
+    
+    // Add info about mobile optimization
+    if (isMobile) {
+      setStatus(`${t('ProcessingFilesHEIC')} (Optimizing for mobile)`);
+    }
+    
     const processedFiles: File[] = [];
     for (const inputFile of fileArray) {
-      if (await isHeicFormat(inputFile)) {
-        console.log(`Main: Detected HEIC file: ${inputFile.name}. Attempting conversion to PNG.`);
-        try {
+      try {
+        let fileToProcess = inputFile;
+        
+        // HEIC conversion handling
+        if (await isHeicFormat(inputFile)) {
+          console.log(`Main: Detected HEIC file: ${inputFile.name}. Attempting conversion to PNG.`);
+          try {
             const convertedFile = await convertHeicToFormat(inputFile, 'png');
             if (convertedFile) {
-            processedFiles.push(convertedFile);
-            console.log(`Main: Successfully converted ${inputFile.name} to ${convertedFile.name}.`);
+              fileToProcess = convertedFile;
+              console.log(`Main: Successfully converted ${inputFile.name} to ${convertedFile.name}.`);
             } else {
-            console.warn(`Main: Failed to convert HEIC file: ${inputFile.name}. Skipping this file.`);
-            setStatus(t('HEICConversionFailedSkip', { fileName: inputFile.name }));
-            // Optionally: alert(`Failed to convert HEIC file: ${inputFile.name}. It will be skipped.`);
+              console.warn(`Main: Failed to convert HEIC file: ${inputFile.name}. Skipping this file.`);
+              setStatus(t('HEICConversionFailedSkip', { fileName: inputFile.name }));
+              continue;
             }
-        } catch (conversionError) {
+          } catch (conversionError) {
             console.error(`Main: Error during HEIC conversion for ${inputFile.name}:`, conversionError);
             setStatus(t('HEICConversionErrorSkip', { fileName: inputFile.name }));
+            continue;
+          }
         }
-      } else {
-        processedFiles.push(inputFile); // Add non-HEIC files directly
+        
+        // Resize image if on mobile to reduce memory usage
+        if (isMobile || isLowPerformanceDevice) {
+          try {
+            fileToProcess = await resizeImageForMobile(fileToProcess);
+            console.log(`Main: Resized image ${fileToProcess.name} for mobile optimization.`);
+          } catch (resizeError) {
+            console.warn(`Main: Failed to resize image ${fileToProcess.name}, using original.`, resizeError);
+            // Continue with original file if resize fails
+          }
+        }
+        
+        processedFiles.push(fileToProcess);
+      } catch (processError) {
+        console.error(`Main: Error processing file ${inputFile.name}:`, processError);
+        setStatus(`Error processing file ${inputFile.name}`);
       }
     }
 
@@ -357,7 +536,11 @@ export default function ImageDuplicateDetectionPage() {
     // Clear previous results only if not adding more images
     if (!addingMore) {
       setImageGroups([]);
-      imageInfoRef.current.forEach(info => URL.revokeObjectURL(info.url)); // Revoke old URLs first
+      // Revoke object URLs immediately to free memory
+      imageInfoRef.current.forEach(info => {
+        URL.revokeObjectURL(info.url);
+        console.log(`Main: Revoked URL for image ${info.id}`);
+      });
       imageInfoRef.current = [];
       imageEmbeddingsRef.current = [];
       setEmbeddingsMap({});
@@ -365,7 +548,17 @@ export default function ImageDuplicateDetectionPage() {
       setAnalyzingQualityDirectly(null);
       setAllGroupsAnalyzedForBest(false); // Reset analysis state
       setImagesToDownloadCount(0);
-      // totalUploadedImagesCount will be set after processing files
+      setProcessingQueue([]); // Clear the processing queue
+      
+      // Force garbage collection hint
+      if (window.gc) {
+        try {
+          window.gc();
+          console.log('Main: Manual garbage collection requested after clearing');
+        } catch {
+          console.log('Main: Manual garbage collection not available');
+        }
+      }
     }
     
     const existingImageCount = imageInfoRef.current.length;
@@ -399,13 +592,21 @@ export default function ImageDuplicateDetectionPage() {
       setPendingFilesCount(newImageInfos.length);
       const newTotalCount = addingMore ? totalUploadedImagesCount + newImageInfos.length : newImageInfos.length;
       setTotalUploadedImagesCount(newTotalCount); // Set total count here
-      setStatus(t('SendingImagesToAI', { count: newImageInfos.length }));
-      newImageInfos.forEach((info) => {
-        workerRef.current?.postMessage({
-          type: 'extractFeatures',
-          data: { imageUrl: info.url, imageId: info.id }
+      
+      // Use sequential processing for mobile devices to prevent memory issues
+      if (isMobile || isLowPerformanceDevice) {
+        setStatus(`Optimizing for mobile - ${t('SendingImagesToAI', { count: newImageInfos.length })}`);
+        setProcessingQueue(newImageInfos);
+      } else {
+        // Process all images in parallel for desktop
+        setStatus(t('SendingImagesToAI', { count: newImageInfos.length }));
+        newImageInfos.forEach((info) => {
+          workerRef.current?.postMessage({
+            type: 'extractFeatures',
+            data: { imageUrl: info.url, imageId: info.id }
+          });
         });
-      });
+      }
     } else {
       // This case should ideally not be reached if processedFiles.length > 0 check passed
       setStatus(t('NoValidImagesSelected'));
@@ -928,6 +1129,8 @@ export default function ImageDuplicateDetectionPage() {
                         </p>
                       </div>
                     )}
+                    
+         
                     
                     <div className="flex flex-col items-center space-y-8 w-full py-4">
                       {/* Upload buttons container */}

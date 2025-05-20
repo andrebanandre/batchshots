@@ -48,17 +48,23 @@ const resizeImageForProcessing = async (imageFile: ImageFile): Promise<Blob> => 
       }
       
       // Calculate new dimensions while maintaining aspect ratio
+      // Based on the highest proportional side (width or height)
       let newWidth = width;
       let newHeight = height;
       
-      if (width > MAX_PROCESSING_WIDTH) {
-        newWidth = MAX_PROCESSING_WIDTH;
-        newHeight = Math.floor(height * (MAX_PROCESSING_WIDTH / width));
-      }
+      // Calculate resize ratios for both dimensions
+      const widthRatio = width / MAX_PROCESSING_WIDTH;
+      const heightRatio = height / MAX_PROCESSING_HEIGHT;
       
-      if (newHeight > MAX_PROCESSING_HEIGHT) {
+      // Use the largest ratio to determine which dimension is more "out of bounds"
+      if (widthRatio >= heightRatio) {
+        // Width is the limiting factor
+        newWidth = MAX_PROCESSING_WIDTH;
+        newHeight = Math.floor(height / widthRatio);
+      } else {
+        // Height is the limiting factor
         newHeight = MAX_PROCESSING_HEIGHT;
-        newWidth = Math.floor(newWidth * (MAX_PROCESSING_HEIGHT / newHeight));
+        newWidth = Math.floor(width / heightRatio);
       }
       
       // Resize using canvas
