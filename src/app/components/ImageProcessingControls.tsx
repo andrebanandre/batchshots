@@ -44,6 +44,7 @@ export default function ImageProcessingControls({
   const t = useTranslations('Components.ImageProcessingControls');
   const tBackgroundRemoval = useTranslations('Components.BackgroundRemoval');
   const tObjectRemoval = useTranslations('ObjectRemovalPage');
+  const tNavbar = useTranslations('Navbar');
   
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced' | 'ai'>('basic');
   
@@ -352,6 +353,36 @@ export default function ImageProcessingControls({
                 target="_blank"
               >
                 {tObjectRemoval('title')}
+              </Button>
+              <Button
+                as={Link}
+                href="/ai-photo-duplicate-finder"
+                variant="default"
+                fullWidth
+                disabled={isProcessing}
+                target="_blank"
+              >
+                {tNavbar('aiPhotoDuplicateFinder')}
+              </Button>
+              <Button
+                as={Link}
+                href="/ai-image-seo-caption-generation"
+                variant="default"
+                fullWidth
+                disabled={isProcessing}
+                target="_blank"
+              >
+                {tNavbar('aiImageSeoCaptionGeneration')}
+              </Button>
+              <Button
+                as={Link}
+                href="/seo-description"
+                variant="default"
+                fullWidth
+                disabled={isProcessing}
+                target="_blank"
+              >
+                {tNavbar('seoDescription')}
               </Button>
             </div>
           </>
