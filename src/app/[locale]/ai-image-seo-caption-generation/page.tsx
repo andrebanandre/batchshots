@@ -9,6 +9,7 @@ import { isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConver
 import JSZip from 'jszip'; // Import JSZip
 import slug from 'slug'; // Import slug
 import { useIsPro } from '../../hooks/useIsPro'; // Added
+import { useIsMobile } from '../../hooks/useIsMobile'; // Added to detect mobile devices
 import ProDialog from '../../components/ProDialog'; // Added
 import ProBadge from '../../components/ProBadge'; // Added
 import PricingCard from '../../components/PricingCard'; // Added PricingCard import
@@ -35,11 +36,31 @@ interface ProcessedImage extends ImageInfo {
   error?: string;
 }
 
+// Image resizing configuration
+const IMAGE_RESIZE_CONFIG = {
+  desktop: {
+    maxWidth: 1024,
+    maxHeight: 1024,
+    quality: 0.8
+  },
+  mobile: {
+    maxWidth: 640,
+    maxHeight: 640,
+    quality: 0.75
+  },
+  lowPerformance: {
+    maxWidth: 512,
+    maxHeight: 512,
+    quality: 0.7
+  }
+};
+
 export default function ImageSeoGenerationPage() {
   // Placeholder for translations - replace with useTranslations if needed later
   const t = useTranslations('ImageSeoGenerationPage');
 
   const { isProUser, isLoading: isProLoading } = useIsPro();
+  const { isMobile, isLowPerformanceDevice } = useIsMobile();
   const router = useRouter();
   const locale = useLocale();
 
@@ -183,6 +204,84 @@ export default function ImageSeoGenerationPage() {
     }
   }, [pendingFilesCount]);
 
+  // Helper function to resize images before processing
+  const resizeImage = (file: File): Promise<File> => {
+    return new Promise((resolve, reject) => {
+      // Determine which config to use based on device type
+      let config = IMAGE_RESIZE_CONFIG.desktop;
+      if (isLowPerformanceDevice) {
+        config = IMAGE_RESIZE_CONFIG.lowPerformance;
+      } else if (isMobile) {
+        config = IMAGE_RESIZE_CONFIG.mobile;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (!event.target?.result) {
+          reject(new Error('Failed to read file'));
+          return;
+        }
+
+        const img = new Image();
+        img.onload = () => {
+          // Calculate new dimensions while preserving aspect ratio
+          let width = img.width;
+          let height = img.height;
+          
+          if (width > config.maxWidth || height > config.maxHeight) {
+            if (width > height) {
+              height = height * (config.maxWidth / width);
+              width = config.maxWidth;
+            } else {
+              width = width * (config.maxHeight / height);
+              height = config.maxHeight;
+            }
+          }
+
+          // Create canvas and resize image
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            reject(new Error('Failed to get canvas context'));
+            return;
+          }
+          
+          ctx.drawImage(img, 0, 0, width, height);
+          
+          // Convert canvas to blob
+          canvas.toBlob((blob) => {
+            if (!blob) {
+              reject(new Error('Failed to convert canvas to blob'));
+              return;
+            }
+            
+            // Create new file with same name but resized content
+            const resizedFile = new File([blob], file.name, {
+              type: file.type,
+              lastModified: file.lastModified
+            });
+            
+            resolve(resizedFile);
+          }, file.type, config.quality); // Use the quality setting from config
+        };
+        
+        img.onerror = () => {
+          reject(new Error('Failed to load image'));
+        };
+        
+        img.src = event.target.result as string;
+      };
+      
+      reader.onerror = () => {
+        reject(new Error('Failed to read file'));
+      };
+      
+      reader.readAsDataURL(file);
+    });
+  };
+
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const inputFiles = event.target.files ? Array.from(event.target.files) : [];
     if (inputFiles.length === 0) {
@@ -204,25 +303,35 @@ export default function ImageSeoGenerationPage() {
     setStatus(t('ProcessingFilesHEIC'));
     const processedInputFiles: File[] = [];
     for (const inputFile of inputFiles) {
-      if (await isHeicFormat(inputFile)) {
-        console.log(`Main: Detected HEIC file: ${inputFile.name}. Attempting conversion to PNG.`);
-        try {
-            const convertedFile = await convertHeicToFormat(inputFile, 'png'); // Convert to PNG
-            if (convertedFile) {
-                processedInputFiles.push(convertedFile);
-                console.log(`Main: Successfully converted ${inputFile.name} to ${convertedFile.name}.`);
-            } else {
-                console.warn(`Main: Failed to convert HEIC file: ${inputFile.name}. Skipping this file.`);
-                setStatus(t('HEICConversionFailedSkip', { fileName: inputFile.name }));
-            }
-        } catch (conversionError) {
-            console.error(`Main: Error during HEIC conversion for ${inputFile.name}:`, conversionError);
-            setStatus(t('HEICConversionErrorSkip', { fileName: inputFile.name }));
+      try {
+        if (await isHeicFormat(inputFile)) {
+          console.log(`Main: Detected HEIC file: ${inputFile.name}. Attempting conversion to PNG.`);
+          try {
+              const convertedFile = await convertHeicToFormat(inputFile, 'png'); // Convert to PNG
+              if (convertedFile) {
+                  // Resize the converted file
+                  const resizedFile = await resizeImage(convertedFile);
+                  processedInputFiles.push(resizedFile);
+                  console.log(`Main: Successfully converted ${inputFile.name} to ${convertedFile.name} and resized.`);
+              } else {
+                  console.warn(`Main: Failed to convert HEIC file: ${inputFile.name}. Skipping this file.`);
+                  setStatus(t('HEICConversionFailedSkip', { fileName: inputFile.name }));
+              }
+          } catch (conversionError) {
+              console.error(`Main: Error during HEIC conversion for ${inputFile.name}:`, conversionError);
+              setStatus(t('HEICConversionErrorSkip', { fileName: inputFile.name }));
+          }
+        } else if (inputFile.type.startsWith('image/')) {
+          // Resize standard image files
+          const resizedFile = await resizeImage(inputFile);
+          processedInputFiles.push(resizedFile);
+          console.log(`Main: Successfully resized ${inputFile.name}, new size: ${(resizedFile.size / 1024).toFixed(2)}KB`);
+        } else {
+          console.warn(`Main: Skipping non-image file: ${inputFile.name}, type: ${inputFile.type}`);
         }
-      } else if (inputFile.type.startsWith('image/')) { // Only add other valid image types
-        processedInputFiles.push(inputFile);
-      } else {
-        console.warn(`Main: Skipping non-image file: ${inputFile.name}, type: ${inputFile.type}`);
+      } catch (error) {
+        console.error(`Error processing file ${inputFile.name}:`, error);
+        setStatus(`Error processing ${inputFile.name}: ${error instanceof Error ? error.message : 'Unknown error'}`);
       }
     }
 
@@ -265,12 +374,18 @@ export default function ImageSeoGenerationPage() {
     if (newImageInfos.length > 0) {
       setPendingFilesCount(newImageInfos.length);
       setStatus(t('SendingImagesToAI', { count: newImageInfos.length }));
-      newImageInfos.forEach((info) => {
-        workerRef.current?.postMessage({
-          type: 'generateCaption',
-          data: { imageUrl: info.url, imageId: info.id }
-        });
-      });
+      
+      // Set a slight delay between sending images to reduce memory pressure
+      for (let i = 0; i < newImageInfos.length; i++) {
+        const info = newImageInfos[i];
+        // Use setTimeout to stagger processing of images
+        setTimeout(() => {
+          workerRef.current?.postMessage({
+            type: 'generateCaption',
+            data: { imageUrl: info.url, imageId: info.id }
+          });
+        }, i * (isMobile ? 300 : 150)); // Longer delay on mobile
+      }
     } else {
       setStatus(t('NoValidFiles'));
     }
