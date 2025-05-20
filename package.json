@@ -16,7 +16,6 @@
     "@clerk/themes": "^2.2.43",
     "@google/genai": "^0.12.0",
     "@huggingface/transformers": "^3.5.1",
-    "@imgly/background-removal": "^1.6.0",
     "@stripe/stripe-js": "^7.1.0",
     "@techstark/opencv-js": "4.10.0-release.1",
     "heic-to": "^1.1.12",
