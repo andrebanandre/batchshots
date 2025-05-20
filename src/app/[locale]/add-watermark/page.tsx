@@ -23,6 +23,7 @@ interface WatermarkedImageFile extends ImageFile {
 
 export default function AddWatermarkPage() {
   const t = useTranslations('WatermarkPage');
+  const tHome = useTranslations('Home');
   const { isProUser, isLoading: isProLoading } = useIsPro();
   const router = useRouter();
   const [images, setImages] = useState<WatermarkedImageFile[]>([]);
@@ -187,7 +188,15 @@ export default function AddWatermarkPage() {
                     isProUser ? <ProBadge className="ml-2" /> : null
                   }
                 >
-                  <div className="space-y-6">
+                  <div className="space-y-6 relative">
+                    {/* Main loading overlay for the entire card */}
+                    {isProcessing && (
+                      <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                        <Loader size="lg" />
+                        <p className="mt-4 text-lg font-bold text-gray-700">{tHome('preparingImagesPreview')}</p>
+                      </div>
+                    )}
+                    
                     {/* Info Section */}
                     <div className="brutalist-border p-4 bg-white">
                       <h3 className="font-bold mb-2">{t('mainCard.info.title')}</h3>
