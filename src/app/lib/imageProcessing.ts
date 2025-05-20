@@ -493,7 +493,7 @@ export const processImage = async (
   
   if (!sourceUrl) {
       console.error('No source URL available for processing image:', imageFile.id);
-      return { processedThumbnailUrl: originalThumbnail }; 
+      return { processedThumbnailUrl: originalThumbnail || '' }; 
   }
 
   try {
@@ -661,19 +661,19 @@ export const processImage = async (
 
       // Always process thumbnail first
       try {
-        thumbnailResultUrl = await processFunction(originalThumbnail, false);
+        thumbnailResultUrl = await processFunction(originalThumbnail || '', false);
       } catch (thumbError) {
         console.error('Error processing thumbnail for image:', imageFile.id, thumbError);
-        thumbnailResultUrl = originalThumbnail; // Fallback to original on thumb error
+        thumbnailResultUrl = originalThumbnail || ''; // Fallback to original on thumb error
       }
       
       // Ensure thumbnailResultUrl is a string
-      const finalThumbnailUrl = thumbnailResultUrl || originalThumbnail;
+      const finalThumbnailUrl = thumbnailResultUrl || originalThumbnail || '';
 
       // Process full size only if requested (for download)
       if (processFullSize) {
           try {
-            processedDataUrl = await processFunction(imageFile.dataUrl, true);
+            processedDataUrl = await processFunction(imageFile.dataUrl || '', true);
           } catch (fullSizeError) {
              console.error('Error processing full size image:', imageFile.id, fullSizeError);
              // processedDataUrl remains undefined
@@ -689,7 +689,7 @@ export const processImage = async (
 
   } catch (error) {
       console.error('Error processing image:', imageFile.id, error);
-      return { processedThumbnailUrl: originalThumbnail }; 
+      return { processedThumbnailUrl: originalThumbnail || '' }; 
   }
 };
 
@@ -1072,15 +1072,15 @@ export const downloadAllImages = async (
   // If there's only one image and we don't need a zip, download it directly
   if (images.length === 1 && !asZip && !seoProductDescription) {
     const image = images[0];
-    const dataUrl = image.processedDataUrl || image.dataUrl;
+    const dataUrl = image.processedDataUrl || image.dataUrl || '';
     const sourceFilename = image.file.name;
     const seoName = image.seoName;
     
     if (image.backgroundRemoved) {
       // Always use PNG for transparent images
-      downloadImage(dataUrl, sourceFilename, 'png', seoName, adjustments);
+      downloadImage(dataUrl, sourceFilename, 'png', seoName || undefined, adjustments);
     } else {
-      downloadImage(dataUrl, sourceFilename, format, seoName, adjustments);
+      downloadImage(dataUrl, sourceFilename, format, seoName || undefined, adjustments);
     }
     return;
   }
@@ -1099,7 +1099,7 @@ export const downloadAllImages = async (
   // Add each image to the ZIP file
   for (let i = 0; i < images.length; i++) {
     const image = images[i];
-    const dataUrl = image.processedDataUrl || image.dataUrl;
+    const dataUrl = image.processedDataUrl || image.dataUrl || '';
     const originalFilename = image.file.name;
     const seoName = image.seoName;
     
@@ -1108,12 +1108,12 @@ export const downloadAllImages = async (
     
     try {
       await convertImageAndAddToZip(
-        dataUrl, 
+        dataUrl || '', 
         imagesDir, 
         imageFormat, 
         i, 
         originalFilename, 
-        seoName,
+        seoName || undefined,
         adjustments
       );
     } catch (err) {

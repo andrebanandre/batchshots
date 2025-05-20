@@ -370,20 +370,20 @@ export default function Home() {
         
         if (processedDataUrl) {
            setImages(prev => prev.map(img => img.id === image.id ? { ...img, processedDataUrl } : img));
-           downloadImage(processedDataUrl, `processed_${image.file.name}`, format, image.seoName);
+           downloadImage(processedDataUrl, `processed_${image.file.name}`, format, image.seoName || undefined);
         } else {
            // Fallback to original dataUrl but still attempt processing for download (like adjustments only)
-           downloadImage(image.dataUrl, image.file.name, format, image.seoName, adjustments);
+           downloadImage(image.dataUrl || '', image.file.name, format, image.seoName || undefined, adjustments);
         }
       } catch (error) {
         console.error('Error processing full image for download', error);
-        downloadImage(image.dataUrl, image.file.name, format, image.seoName, adjustments);
+        downloadImage(image.dataUrl || '', image.file.name, format, image.seoName || undefined, adjustments);
       } finally {
         setIsProcessing(false);
       }
     } else {
       // Download the original if no processing has been done
-      downloadImage(image.dataUrl, image.file.name, format, image.seoName);
+      downloadImage(image.dataUrl || '', image.file.name, format, image.seoName || undefined);
     }
   };
 
