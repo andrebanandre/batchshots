@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useIsPro } from '../../hooks/useIsPro';
+import { useIsMobile } from '../../hooks/useIsMobile';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import ProBadge from '../../components/ProBadge';
@@ -16,6 +17,11 @@ import { defaultAdjustments } from '../../components/ImageProcessingControls';
 import { useTranslations } from 'next-intl';
 import { defaultWatermarkSettings } from '@/app/components/WatermarkControl';
 
+// Max dimensions for processing - prevents memory issues on mobile
+const MAX_PROCESSING_WIDTH = 1600;
+const MAX_PROCESSING_HEIGHT = 1600;
+const DELAY_BETWEEN_IMAGES = 500; // ms delay between processing images
+
 // Interface for tracking individual image processing status
 interface ImageProcessingStatus {
   id: string;
@@ -25,11 +31,64 @@ interface ImageProcessingStatus {
   error?: string;
 }
 
+// Function to resize an image before processing to avoid memory issues
+const resizeImageForProcessing = async (imageFile: ImageFile): Promise<Blob> => {
+  return new Promise((resolve, reject) => {
+    const img = document.createElement('img');
+    img.onload = () => {
+      const { width, height } = img;
+      
+      // If image is small enough, return original
+      if (width <= MAX_PROCESSING_WIDTH && height <= MAX_PROCESSING_HEIGHT) {
+        fetch(imageFile.dataUrl!)
+          .then(res => res.blob())
+          .then(resolve)
+          .catch(reject);
+        return;
+      }
+      
+      // Calculate new dimensions while maintaining aspect ratio
+      let newWidth = width;
+      let newHeight = height;
+      
+      if (width > MAX_PROCESSING_WIDTH) {
+        newWidth = MAX_PROCESSING_WIDTH;
+        newHeight = Math.floor(height * (MAX_PROCESSING_WIDTH / width));
+      }
+      
+      if (newHeight > MAX_PROCESSING_HEIGHT) {
+        newHeight = MAX_PROCESSING_HEIGHT;
+        newWidth = Math.floor(newWidth * (MAX_PROCESSING_HEIGHT / newHeight));
+      }
+      
+      // Resize using canvas
+      const canvas = document.createElement('canvas');
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+      const ctx = canvas.getContext('2d')!;
+      ctx.drawImage(img, 0, 0, newWidth, newHeight);
+      
+      canvas.toBlob(
+        (blob) => {
+          if (blob) resolve(blob);
+          else reject(new Error('Canvas to Blob conversion failed'));
+        },
+        'image/jpeg', 
+        0.9
+      );
+    };
+    
+    img.onerror = () => reject(new Error('Image loading failed'));
+    img.src = imageFile.dataUrl!;
+  });
+};
+
 export default function BackgroundRemovalPage() {
   const t = useTranslations('Components.BackgroundRemovalPage');
   const tHome = useTranslations('Home');
 
   const { isProUser, isLoading: isProLoading } = useIsPro();
+  const { isLowPerformanceDevice } = useIsMobile();
   const router = useRouter();
   const [images, setImages] = useState<ImageFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -151,8 +210,25 @@ export default function BackgroundRemovalPage() {
       // Update overall progress percentage
       setProgressPercent(Math.round((index / total) * 100));
       
+      // For low performance devices, resize large images before processing
+      let updatedImage = image;
+      if (isLowPerformanceDevice) {
+        try {
+          const resizedBlob = await resizeImageForProcessing(image);
+          console.log(`Resized image for processing on low-performance device: ${image.id}`);
+          // Create a temporary object URL for the resized image
+          const resizedUrl = URL.createObjectURL(resizedBlob);
+          updatedImage = {
+            ...image,
+            dataUrl: resizedUrl
+          };
+        } catch (resizeError) {
+          console.error('Error resizing image:', resizeError);
+        }
+      }
+      
       // Process image with background removal
-      const processedBlob = await processImageBackground(image);
+      const processedBlob = await processImageBackground(updatedImage);
       
       // Update status to show progress
       setProcessingStatus(prev => prev.map(status => 
@@ -160,6 +236,11 @@ export default function BackgroundRemovalPage() {
           ? { ...status, progress: 50 } 
           : status
       ));
+      
+      // Clean up any temporary object URL we created
+      if (updatedImage.dataUrl !== image.dataUrl) {
+        URL.revokeObjectURL(updatedImage.dataUrl!);
+      }
       
       // Create a new image with the processed data
       const processedImage = getUpdatedImageWithBackground(image, processedBlob);
@@ -216,6 +297,9 @@ export default function BackgroundRemovalPage() {
       // Process each image to remove background
       const processed: ImageFile[] = [];
       
+      // Throttle processing on low performance devices
+      const shouldThrottle = isLowPerformanceDevice;
+      
       for (let i = 0; i < images.length; i++) {
         const image = images[i];
         
@@ -228,6 +312,12 @@ export default function BackgroundRemovalPage() {
         const processedImage = await processImageAndUpdateStatus(image, i, images.length);
         if (processedImage) {
           processed.push(processedImage);
+        }
+        
+        // Add delay between processing images on low-performance devices
+        // This gives browser a chance to clean up memory between operations
+        if (shouldThrottle && i < images.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, DELAY_BETWEEN_IMAGES));
         }
       }
       
@@ -457,33 +547,7 @@ export default function BackgroundRemovalPage() {
                                 {t('mainCard.actions.clear')}
                               </Button>
                               
-                              {images.some(img => img.backgroundRemoved) ? (
-                                <Button 
-                                  variant="accent" 
-                                  onClick={handleDownloadAll}
-                                  disabled={isProcessing || isRemovingBackground || isDownloading}
-                                >
-                                  {isDownloading ? (
-                                    <span className="flex items-center">
-                                      <Loader size="sm" className="mr-2" />
-                                      {t(images.length > 1 ? 'mainCard.actions.downloadingZip' : 'mainCard.actions.downloading')}
-                                    </span>
-                                  ) : (
-                                    t(images.length > 1 ? 'mainCard.actions.downloadZip' : 'mainCard.actions.download')
-                                  )}
-                                </Button>
-                              ) : (
-                                <Button 
-                                  variant="accent" 
-                                  onClick={handleRemoveBackground}
-                                  disabled={isProcessing || isRemovingBackground}
-                                >
-                                  {isRemovingBackground 
-                                    ? t(images.length > 1 ? 'mainCard.actions.processingMultiple' : 'mainCard.actions.processing')
-                                    : t(images.length > 1 ? 'mainCard.actions.removeBackgrounds' : 'mainCard.actions.removeBackground')
-                                  }
-                                </Button>
-                              )}
+                           
                             </div>
                             
                             {isRemovingBackground && (
@@ -497,6 +561,51 @@ export default function BackgroundRemovalPage() {
                                 <div className="flex justify-between text-xs">
                                   <span>{t('mainCard.progress.processing')}</span>
                                   <span>{t('mainCard.progress.percent', { percent: progressPercent })}</span>
+                                </div>
+                              </div>
+                            )}
+                            
+                            {/* Sticky download button at bottom of container */}
+                            {images.some(img => img.backgroundRemoved) && images.length > 1 && (
+                              <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
+                                <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+                                  <Button 
+                                    variant="accent"
+                                    onClick={handleDownloadAll}
+                                    disabled={isProcessing || isRemovingBackground || isDownloading}
+                                    className="w-full max-w-md"
+                                  >
+                                    {isDownloading ? (
+                                      <span className="flex items-center justify-center">
+                                        <Loader size="sm" className="mr-2" />
+                                        {t('mainCard.actions.downloadingZip')}
+                                      </span>
+                                    ) : (
+                                      t('mainCard.actions.downloadZip')
+                                    )}
+                                  </Button>
+                                </div>
+                              </div>
+                            )}
+                            
+                            {/* Sticky remove background button at bottom of container */}
+                            {images.length > 0 && !images.some(img => img.backgroundRemoved) && (
+                              <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
+                                <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+                                  <Button 
+                                    variant="accent"
+                                    onClick={handleRemoveBackground}
+                                    disabled={isProcessing || isRemovingBackground}
+                                    className="w-full max-w-md"
+                                  >
+                                    {isRemovingBackground 
+                                      ? <span className="flex items-center justify-center">
+                                          <Loader size="sm" className="mr-2" />
+                                          {t(images.length > 1 ? 'mainCard.actions.processingMultiple' : 'mainCard.actions.processing')}
+                                        </span>
+                                      : t(images.length > 1 ? 'mainCard.actions.removeBackgrounds' : 'mainCard.actions.removeBackground')
+                                    }
+                                  </Button>
                                 </div>
                               </div>
                             )}
