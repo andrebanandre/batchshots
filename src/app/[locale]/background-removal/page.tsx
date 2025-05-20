@@ -10,12 +10,20 @@ import ProBadge from '../../components/ProBadge';
 import PricingCard from '../../components/PricingCard';
 import { ImageFile } from '../../components/ImagePreview';
 import { createImageFile, processImage, downloadImage, downloadAllImages } from '../../lib/imageProcessing';
-import { processImageBackground, getUpdatedImageWithBackground } from '../../lib/backgroundRemoval';
-import { initOpenCV } from '../../lib/imageProcessing';
+import { processImageBackground, getUpdatedImageWithBackground, initializeBackgroundWorker, cleanupBackgroundWorker } from '../../lib/backgroundRemoval';
 import Loader from '../../components/Loader';
 import { defaultAdjustments } from '../../components/ImageProcessingControls';
 import { useTranslations } from 'next-intl';
 import { defaultWatermarkSettings } from '@/app/components/WatermarkControl';
+
+// Interface for tracking individual image processing status
+interface ImageProcessingStatus {
+  id: string;
+  isProcessing: boolean;
+  progress: number;
+  isComplete: boolean;
+  error?: string;
+}
 
 export default function BackgroundRemovalPage() {
   const t = useTranslations('Components.BackgroundRemovalPage');
@@ -28,23 +36,77 @@ export default function BackgroundRemovalPage() {
   const [isRemovingBackground, setIsRemovingBackground] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
-  const [isOpenCVReady, setIsOpenCVReady] = useState(false);
+  const [isModelReady, setIsModelReady] = useState(false);
+  const [isLoadingModel, setIsLoadingModel] = useState(false);
   const [showProUpgrade, setShowProUpgrade] = useState(false);
+  const [modelLoadingStatus, setModelLoadingStatus] = useState('');
+  
+  // Track processing status for each image
+  const [processingStatus, setProcessingStatus] = useState<ImageProcessingStatus[]>([]);
 
-  // Initialize OpenCV
+  // Initialize the worker and model
   useEffect(() => {
-    const loadOpenCV = async () => {
+    let isMounted = true;
+    
+    const initializeModel = async () => {
+      if (typeof window === 'undefined') return;
+      
       try {
-        await initOpenCV();
-        setIsOpenCVReady(true);
-        console.log('OpenCV.js initialized successfully');
+        setIsLoadingModel(true);
+        setModelLoadingStatus('Initializing background removal model...');
+        
+        await initializeBackgroundWorker();
+        
+        if (isMounted) {
+          setIsModelReady(true);
+          setIsLoadingModel(false);
+          console.log('Background removal model initialized successfully');
+        }
       } catch (error) {
-        console.error('Failed to initialize OpenCV.js', error);
+        console.error('Failed to initialize background removal model', error);
+        if (isMounted) {
+          setIsLoadingModel(false);
+          setModelLoadingStatus('Failed to load model. Please refresh and try again.');
+        }
       }
     };
 
-    loadOpenCV();
+    initializeModel();
+
+    return () => {
+      isMounted = false;
+      cleanupBackgroundWorker();
+    };
   }, []);
+
+  // Update processing status for images
+  useEffect(() => {
+    // Initialize processing status for new images
+    if (images.length > 0) {
+      setProcessingStatus(prev => {
+        // Keep existing statuses
+        const existingStatuses = prev.filter(status => 
+          images.some(img => img.id === status.id)
+        );
+        
+        // Add statuses for new images
+        const newImageIds = images
+          .filter(img => !existingStatuses.some(status => status.id === img.id))
+          .map(img => img.id);
+        
+        const newStatuses = newImageIds.map(id => ({
+          id,
+          isProcessing: false,
+          progress: 0,
+          isComplete: images.find(img => img.id === id)?.backgroundRemoved || false
+        }));
+        
+        return [...existingStatuses, ...newStatuses];
+      });
+    } else {
+      setProcessingStatus([]);
+    }
+  }, [images]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
@@ -76,6 +138,69 @@ export default function BackgroundRemovalPage() {
     }
   };
 
+  // Process a single image and update its status
+  const processImageAndUpdateStatus = async (image: ImageFile, index: number, total: number) => {
+    // Update status to processing
+    setProcessingStatus(prev => prev.map(status => 
+      status.id === image.id 
+        ? { ...status, isProcessing: true, progress: 0 } 
+        : status
+    ));
+    
+    try {
+      // Update overall progress percentage
+      setProgressPercent(Math.round((index / total) * 100));
+      
+      // Process image with background removal
+      const processedBlob = await processImageBackground(image);
+      
+      // Update status to show progress
+      setProcessingStatus(prev => prev.map(status => 
+        status.id === image.id 
+          ? { ...status, progress: 50 } 
+          : status
+      ));
+      
+      // Create a new image with the processed data
+      const processedImage = getUpdatedImageWithBackground(image, processedBlob);
+      
+      // Apply minimal adjustments to the image
+      const { processedThumbnailUrl } = await processImage(processedImage, defaultAdjustments, null, defaultWatermarkSettings, false);
+      
+      // Update status to complete
+      setProcessingStatus(prev => prev.map(status => 
+        status.id === image.id 
+          ? { ...status, isProcessing: false, progress: 100, isComplete: true } 
+          : status
+      ));
+      
+      // Replace the original image with the processed one
+      setImages(prevImages => prevImages.map(img => 
+        img.id === image.id 
+          ? { ...processedImage, processedThumbnailUrl } 
+          : img
+      ));
+      
+      return { ...processedImage, processedThumbnailUrl };
+    } catch (error) {
+      console.error(`Error processing image ${image.id}:`, error);
+      
+      // Update status to show error
+      setProcessingStatus(prev => prev.map(status => 
+        status.id === image.id 
+          ? { 
+              ...status, 
+              isProcessing: false, 
+              error: error instanceof Error ? error.message : 'Unknown error',
+              isComplete: false 
+            } 
+          : status
+      ));
+      
+      return null;
+    }
+  };
+
   const handleRemoveBackground = async () => {
     if (images.length === 0) return;
     
@@ -90,30 +215,23 @@ export default function BackgroundRemovalPage() {
     try {
       // Process each image to remove background
       const processed: ImageFile[] = [];
+      
       for (let i = 0; i < images.length; i++) {
         const image = images[i];
         
-        // Update progress percentage
-        setProgressPercent(Math.round((i / images.length) * 100));
+        // Skip already processed images
+        if (image.backgroundRemoved) {
+          processed.push(image);
+          continue;
+        }
         
-        // Process image with background removal
-        const processedData = await processImageBackground(image);
-        
-        // Create a new image with the processed data
-        const processedImage = getUpdatedImageWithBackground(image, processedData);
-        
-        // Apply minimal adjustments to the image
-        const { processedThumbnailUrl } = await processImage(processedImage, defaultAdjustments, null, defaultWatermarkSettings, false);
-        
-        // Add to processed images
-        processed.push({
-          ...processedImage,
-          processedThumbnailUrl
-        });
+        const processedImage = await processImageAndUpdateStatus(image, i, images.length);
+        if (processedImage) {
+          processed.push(processedImage);
+        }
       }
       
       setProgressPercent(100);
-      setImages(processed); // Replace original images with processed ones
     } catch (error) {
       console.error('Error in background removal:', error);
       alert('Background removal failed. Please try again.');
@@ -122,7 +240,23 @@ export default function BackgroundRemovalPage() {
     }
   };
 
-  const handleDownload = async () => {
+  // Handle downloading a single image
+  const handleDownloadSingleImage = async (imageId: string) => {
+    const image = images.find(img => img.id === imageId);
+    if (!image || !image.backgroundRemoved || !image.dataUrl) return;
+    
+    try {
+      setIsDownloading(true);
+      await downloadImage(image.dataUrl, image.file.name, 'png');
+    } catch (error) {
+      console.error('Error downloading image:', error);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  // Handle downloading all processed images
+  const handleDownloadAll = async () => {
     if (images.length === 0) return;
     
     setIsDownloading(true);
@@ -145,6 +279,10 @@ export default function BackgroundRemovalPage() {
     }
   };
 
+  // Get processing status for an image
+  const getImageStatus = (imageId: string) => {
+    return processingStatus.find(status => status.id === imageId);
+  };
 
   return (
     <>
@@ -154,15 +292,17 @@ export default function BackgroundRemovalPage() {
             {t('title')}
           </h1>
           
-          {!isOpenCVReady || isProLoading ? (
+          {isLoadingModel || !isModelReady || isProLoading ? (
             <div className="brutalist-border p-4 text-center mb-6 bg-white">
               <div className="flex flex-col items-center justify-center py-8">
                 <Loader size="lg" />
                 <h3 className="text-lg font-bold mb-2">
-                  {!isOpenCVReady ? t('loading.tool') : t('loading.proStatus')}
+                  {isLoadingModel || !isModelReady ? t('loading.tool') : t('loading.proStatus')}
                 </h3>
                 <p className="text-sm text-gray-600">
-                  {!isOpenCVReady ? t('loading.description') : t('loading.proDescription')}
+                  {isLoadingModel || !isModelReady 
+                    ? modelLoadingStatus || t('loading.description') 
+                    : t('loading.proDescription')}
                 </p>
               </div>
             </div>
@@ -177,7 +317,7 @@ export default function BackgroundRemovalPage() {
                     isProUser ? <ProBadge className="ml-2" /> : null
                   }
                 >
-                                      <div className="space-y-6 relative">
+                  <div className="space-y-6 relative">
                     {/* Main loading overlay for the entire card */}
                     {isProcessing && (
                       <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
@@ -246,33 +386,66 @@ export default function BackgroundRemovalPage() {
                         ) : (
                           <div className="space-y-4">
                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                              {images.map(image => (
-                                <div key={image.id} className="brutalist-border p-1 bg-white">
-                                  {image.backgroundRemoved ? (
-                                    <div
-                                      className="bg-[url('/checkered-bg.png')] bg-repeat relative"
-                                      style={{ aspectRatio: '1 / 1' }}
-                                    >
-                                      <Image
-                                        src={image.thumbnailDataUrl || image.dataUrl || ''}
-                                        alt={image.file.name}
-                                        className="object-contain"
-                                        fill
-                                      />
-                                    </div>
-                                  ) : (
-                                    <div className="relative" style={{ aspectRatio: '1 / 1' }}>
-                                      <Image
-                                        src={image.thumbnailDataUrl || image.dataUrl || ''}
-                                        alt={image.file.name}
-                                        className="object-contain"
-                                        fill
-                                      />
-                                    </div>
-                                  )}
-                                  <p className="text-xs truncate mt-1 px-1">{image.file.name}</p>
-                                </div>
-                              ))}
+                              {images.map(image => {
+                                const status = getImageStatus(image.id);
+                                return (
+                                  <div key={image.id} className="brutalist-border p-1 bg-white relative">
+                                    {image.backgroundRemoved ? (
+                                      <div
+                                        className="bg-[url('/checkered-bg.png')] bg-repeat relative"
+                                        style={{ aspectRatio: '1 / 1' }}
+                                      >
+                                        <Image
+                                          src={image.thumbnailDataUrl || image.dataUrl || ''}
+                                          alt={image.file.name}
+                                          className="object-contain"
+                                          fill
+                                        />
+                                        {/* Download button for processed images */}
+                                        <button 
+                                          onClick={() => handleDownloadSingleImage(image.id)}
+                                          className="absolute bottom-1 right-1 brutalist-border border-2 bg-white text-black text-xs px-2 py-1 hover:translate-y-[-2px] transition-transform"
+                                          title="Download this image"
+                                        >
+                                          ↓
+                                        </button>
+                                      </div>
+                                    ) : (
+                                      <div className="relative" style={{ aspectRatio: '1 / 1' }}>
+                                        <Image
+                                          src={image.thumbnailDataUrl || image.dataUrl || ''}
+                                          alt={image.file.name}
+                                          className="object-contain"
+                                          fill
+                                        />
+                                        
+                                        {/* Show processing status */}
+                                        {status?.isProcessing && (
+                                          <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white">
+                                            <Loader size="sm" />
+                                            <span className="text-xs mt-2">
+                                              {Math.round(status.progress)}%
+                                            </span>
+                                          </div>
+                                        )}
+                                        
+                                        {/* Show error indicator if processing failed */}
+                                        {status?.error && (
+                                          <div className="absolute bottom-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded-sm" title={status.error}>
+                                            !
+                                          </div>
+                                        )}
+                                      </div>
+                                    )}
+                                    <p className="text-xs truncate mt-1 px-1">
+                                      {image.file.name}
+                                      {image.backgroundRemoved && 
+                                        <span className="ml-1 inline-block w-2 h-2 bg-green-500 rounded-full" title="Background removed"></span>
+                                      }
+                                    </p>
+                                  </div>
+                                );
+                              })}
                             </div>
                             
                             <div className="flex justify-between">
@@ -287,7 +460,7 @@ export default function BackgroundRemovalPage() {
                               {images.some(img => img.backgroundRemoved) ? (
                                 <Button 
                                   variant="accent" 
-                                  onClick={handleDownload}
+                                  onClick={handleDownloadAll}
                                   disabled={isProcessing || isRemovingBackground || isDownloading}
                                 >
                                   {isDownloading ? (

@@ -7,10 +7,14 @@ import { useTranslations } from 'next-intl';
 export interface ImageFile {
   id: string;
   file: File;
-  dataUrl: string;
-  thumbnailDataUrl?: string; // Thumbnail for faster previews
+  dataUrl: string | null;
+  thumbnailDataUrl: string | null;
+  width?: number;
+  height?: number;
   processedDataUrl?: string;
-  processedThumbnailUrl?: string; // Processed thumbnail for faster previews
+  processedThumbnailUrl?: string;
+  backgroundRemoved?: boolean;
+  processedBlob?: Blob;
   dimensions?: { width: number; height: number; size: string };
   appliedPreset?: {
     name: string;
@@ -20,7 +24,6 @@ export interface ImageFile {
   };
   seoName?: string; // SEO-friendly filename
   originalName?: string; // Original filename for reference
-  backgroundRemoved?: boolean; // Flag to indicate if background has been removed
 }
 
 interface ImagePreviewProps {
@@ -126,7 +129,7 @@ export default function ImagePreview({
             }
           }));
         };
-        img.src = image.dataUrl;
+        img.src = image.dataUrl || '';
       }
     });
   }, [localImages, imageDimensions]);
@@ -266,7 +269,7 @@ export default function ImagePreview({
     // Fall back to thumbnail if available
     if (image.thumbnailDataUrl) return image.thumbnailDataUrl;
     // Last resort - original image
-    return image.dataUrl;
+    return image.dataUrl || '';
   };
 
   // Get file extension from name

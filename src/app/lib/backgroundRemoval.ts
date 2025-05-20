@@ -1,142 +1,175 @@
-import { removeBackground } from "@imgly/background-removal";
-import { ImageFile } from "../components/ImagePreview";
+import { ImageFile } from '../components/ImagePreview';
 
-/**
- * Utility for managing background removal operations
- */
+// Worker state
+let worker: Worker | null = null;
+let isWorkerInitialized = false;
+let isWorkerInitializing = false;
+let processingQueue: { 
+  resolve: () => void; 
+  reject: (error: Error) => void; 
+  imageFile: ImageFile | null;
+}[] = [];
 
-// Quality settings for background removal output
-const BACKGROUND_REMOVAL_CONFIG = {
-  format: 'image/png' as const,
-  quality: 1, // Maximum quality for transparency
+// Initialize the worker
+export const initializeBackgroundWorker = () => {
+  if (typeof window === 'undefined' || !window.Worker) {
+    return Promise.reject(new Error('Web workers not supported in this environment'));
+  }
+
+  return new Promise<void>((resolve, reject) => {
+    if (isWorkerInitialized) {
+      resolve();
+      return;
+    }
+
+    if (isWorkerInitializing) {
+      // Add to queue and wait for initialization to complete
+      processingQueue.push({ 
+        resolve: () => resolve(), 
+        reject, 
+        imageFile: null 
+      });
+      return;
+    }
+
+    isWorkerInitializing = true;
+
+    try {
+      worker = new Worker(new URL('../[locale]/background-removal/background-removal.worker.js', import.meta.url));
+      
+      worker.addEventListener('message', (event) => {
+        const { status, data } = event.data;
+        
+        switch (status) {
+          case 'ready':
+            isWorkerInitialized = true;
+            isWorkerInitializing = false;
+            
+            // Process any queued items
+            processingQueue.forEach(({ resolve }) => resolve());
+            processingQueue = [];
+            
+            resolve();
+            break;
+          case 'error':
+            if (isWorkerInitializing) {
+              isWorkerInitializing = false;
+              reject(new Error(data));
+              
+              // Reject all queued promises
+              processingQueue.forEach(({ reject: rejectFn }) => rejectFn(new Error(data)));
+              processingQueue = [];
+            }
+            break;
+        }
+      });
+      
+      // Load the model
+      worker.postMessage({ type: 'load' });
+    } catch (error) {
+      isWorkerInitializing = false;
+      reject(error instanceof Error ? error : new Error(String(error)));
+    }
+  });
 };
 
-// Size for thumbnail generation
-const MAX_THUMB_SIZE = 500;
-
-/**
- * Remove background from an image
- * @param imageData Original image data URL or blob
- * @returns Processed image blob with background removed
- */
-export async function removeImageBackground(imageData: string | Blob): Promise<Blob> {
-  const blob = typeof imageData === 'string' 
-    ? await fetch(imageData).then(res => res.blob())
-    : imageData;
+// Convert base64 data to Blob
+const base64ToBlob = async (base64Data: string, type: string): Promise<Blob> => {
+  // For data URLs, we need to remove the prefix
+  const base64 = base64Data.split(',')[1];
+  const byteString = atob(base64);
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
   
-  // Process with high quality settings
-  return await removeBackground(blob, {
-    output: BACKGROUND_REMOVAL_CONFIG
-  });
-}
-
-/**
- * Create a thumbnail with a transparent background
- * @param imageData Original image data
- * @param maxSize Maximum thumbnail size
- * @returns Data URL of the generated thumbnail
- */
-export async function createTransparentThumbnail(imageData: string, maxSize = MAX_THUMB_SIZE): Promise<string> {
-  // Create image element to get dimensions
-  const img = new Image();
-  await new Promise((resolve) => {
-    img.onload = resolve;
-    img.src = imageData;
-  });
-  
-  // Calculate thumbnail dimensions
-  let width = img.width;
-  let height = img.height;
-  
-  if (width > height) {
-    if (width > maxSize) {
-      height = Math.floor(height * (maxSize / width));
-      width = maxSize;
-    }
-  } else {
-    if (height > maxSize) {
-      width = Math.floor(width * (maxSize / height));
-      height = maxSize;
-    }
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
   }
   
-  // Create canvas for thumbnail
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext('2d');
-  
-  if (ctx) {
-    // Use high quality rendering
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-    
-    // Create transparent background
-    ctx.clearRect(0, 0, width, height);
-    
-    // Draw the image on top with high quality rendering
-    ctx.drawImage(img, 0, 0, width, height);
+  return new Blob([ab], { type });
+};
+
+// Process an image to remove background
+export const processImageBackground = async (imageFile: ImageFile): Promise<Blob> => {
+  if (!worker) {
+    await initializeBackgroundWorker();
   }
-  
-  // Return high quality PNG thumbnail with transparency
-  return canvas.toDataURL('image/png', 1.0);
-}
 
-/**
- * Process a single image to remove background
- * @param image Original image file object
- * @returns Object with processed image data
- */
-export async function processImageBackground(image: ImageFile): Promise<{
-  dataUrl: string;
-  thumbnailUrl: string;
-  file: File;
-}> {
-  // Remove background from original image
-  const resultBlob = await removeImageBackground(image.dataUrl);
-  
-  // Convert result to data URL
-  const dataUrl = await new Promise<string>((resolve) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result as string);
-    reader.readAsDataURL(resultBlob);
+  return new Promise<Blob>((resolve, reject) => {
+    if (!worker) {
+      reject(new Error('Background removal worker is not available'));
+      return;
+    }
+
+    // Convert data URL to blob
+    const fetchImageBlob = async (dataUrl: string): Promise<Blob> => {
+      const response = await fetch(dataUrl);
+      return await response.blob();
+    };
+
+    const handleMessage = (event: MessageEvent) => {
+      const { status, imageId, base64Data, blobType, data } = event.data;
+      
+      if (imageId !== imageFile.id) return; // Not our message
+      
+      if (status === 'complete') {
+        worker?.removeEventListener('message', handleMessage);
+        
+        // Convert base64 data to blob
+        base64ToBlob(base64Data, blobType || 'image/png')
+          .then(blob => resolve(blob))
+          .catch(error => reject(new Error(`Failed to create blob: ${error.message}`)));
+      } else if (status === 'error') {
+        worker?.removeEventListener('message', handleMessage);
+        reject(new Error(data));
+      }
+    };
+
+    // Listen for messages from the worker
+    worker.addEventListener('message', handleMessage);
+
+    // Send the image to the worker for processing
+    if (!imageFile.dataUrl) {
+      worker.removeEventListener('message', handleMessage);
+      reject(new Error('No image data URL available'));
+      return;
+    }
+    
+    fetchImageBlob(imageFile.dataUrl)
+      .then(blob => {
+        worker?.postMessage({
+          type: 'process',
+          data: {
+            imageId: imageFile.id,
+            imageData: blob
+          }
+        });
+      })
+      .catch(error => {
+        worker?.removeEventListener('message', handleMessage);
+        reject(error instanceof Error ? error : new Error(String(error)));
+      });
   });
-  
-  // Create new file with PNG extension
-  const newFile = new File(
-    [resultBlob], 
-    image.file.name.replace(/\.[^/.]+$/, '.png'), 
-    { type: 'image/png' }
-  );
-  
-  // Create thumbnail
-  const thumbnailUrl = await createTransparentThumbnail(dataUrl);
-  
-  return {
-    dataUrl,
-    thumbnailUrl,
-    file: newFile
-  };
-}
+};
 
-/**
- * Update image state with background removed data
- * @param image Original image
- * @param processedData Processed background removal data
- * @returns Updated image object with background removed
- */
-export function getUpdatedImageWithBackground(
-  image: ImageFile, 
-  processedData: {dataUrl: string; thumbnailUrl: string; file: File}
-): ImageFile {
+// Update image file with the processed background removed version
+export const getUpdatedImageWithBackground = (originalImage: ImageFile, processedBlob: Blob): ImageFile => {
+  const processedDataUrl = URL.createObjectURL(processedBlob);
+  
   return {
-    ...image,
-    dataUrl: processedData.dataUrl,
-    thumbnailDataUrl: processedData.thumbnailUrl,
-    file: processedData.file,
-    // Also set as processed versions to ensure they're used in UI and downloads
-    processedDataUrl: processedData.dataUrl,
-    processedThumbnailUrl: processedData.thumbnailUrl,
-    backgroundRemoved: true
+    ...originalImage,
+    dataUrl: processedDataUrl,
+    thumbnailDataUrl: processedDataUrl,
+    backgroundRemoved: true,
+    processedBlob
   };
-} 
+};
+
+// Terminate the worker when not needed anymore
+export const cleanupBackgroundWorker = () => {
+  if (worker) {
+    worker.terminate();
+    worker = null;
+    isWorkerInitialized = false;
+    isWorkerInitializing = false;
+  }
+}; 
