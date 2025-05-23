@@ -1225,9 +1225,9 @@
 
         "SimilarityThresholdTitle": "Gelijkenisinstelling",
         "SimilarityThresholdDescription": "Bepaal hoe nauwkeurig foto's moeten overeenkomen om als duplicaten te worden gemarkeerd. Hogere waarden betekenen striktere overeenkomst.",
-        "SimilarityLessStrict": "Minder Strikt (0.75)",
+        "SimilarityLessStrict": "Minder Strikt",
         "SimilarityCurrent": "Huidig: {threshold}",
-        "SimilarityMoreStrict": "Strikter (0.99)",
+        "SimilarityMoreStrict": "Strikter",
         "ButtonApplyThreshold": "Instelling Toepassen",
         "ButtonApplyThresholdLoading": "Opnieuw Analyseren...",
 

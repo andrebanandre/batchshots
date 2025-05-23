@@ -1222,9 +1222,9 @@
 
         "SimilarityThresholdTitle": "Налаштування схожості",
         "SimilarityThresholdDescription": "Контролюйте, наскільки точно фотографії повинні збігатися, щоб бути позначеними як дублікати. Вищі значення означають суворішу відповідність.",
-        "SimilarityLessStrict": "Менш суворо (0.75)",
+        "SimilarityLessStrict": "Менш суворо",
         "SimilarityCurrent": "Поточне: {threshold}",
-        "SimilarityMoreStrict": "Більш суворо (0.99)",
+        "SimilarityMoreStrict": "Більш суворо",
         "ButtonApplyThreshold": "Застосувати налаштування",
         "ButtonApplyThresholdLoading": "Повторний аналіз...",
 

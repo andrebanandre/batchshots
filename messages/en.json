@@ -1283,9 +1283,9 @@
 
         "SimilarityThresholdTitle": "Similarity Setting",
         "SimilarityThresholdDescription": "Control how closely photos must match to be flagged as duplicates. Higher values mean stricter matching.",
-        "SimilarityLessStrict": "Less Strict (0.75)",
+        "SimilarityLessStrict": "Less Strict",
         "SimilarityCurrent": "Current: {threshold}",
-        "SimilarityMoreStrict": "More Strict (0.99)",
+        "SimilarityMoreStrict": "More Strict",
         "ButtonApplyThreshold": "Apply Setting",
         "ButtonApplyThresholdLoading": "Re-analyzing...",
 

@@ -1225,9 +1225,9 @@
 
         "SimilarityThresholdTitle": "Paramètre de Similarité",
         "SimilarityThresholdDescription": "Contrôlez à quel point les photos doivent correspondre pour être signalées comme doublons. Des valeurs plus élevées signifient une correspondance plus stricte.",
-        "SimilarityLessStrict": "Moins Strict (0.75)",
+        "SimilarityLessStrict": "Moins Strict",
         "SimilarityCurrent": "Actuel : {threshold}",
-        "SimilarityMoreStrict": "Plus Strict (0.99)",
+        "SimilarityMoreStrict": "Plus Strict",
         "ButtonApplyThreshold": "Appliquer le Paramètre",
         "ButtonApplyThresholdLoading": "Réanalyse en cours...",
 

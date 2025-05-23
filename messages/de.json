@@ -1235,9 +1235,9 @@
 
         "SimilarityThresholdTitle": "Ähnlichkeitseinstellung",
         "SimilarityThresholdDescription": "Steuern Sie, wie genau Fotos übereinstimmen müssen, um als Duplikate markiert zu werden. Höhere Werte bedeuten eine strengere Übereinstimmung.",
-        "SimilarityLessStrict": "Weniger streng (0.75)",
+        "SimilarityLessStrict": "Weniger streng",
         "SimilarityCurrent": "Aktuell: {threshold}",
-        "SimilarityMoreStrict": "Strenger (0.99)",
+        "SimilarityMoreStrict": "Strenger",
         "ButtonApplyThreshold": "Einstellung anwenden",
         "ButtonApplyThresholdLoading": "Neu analysieren...",
 

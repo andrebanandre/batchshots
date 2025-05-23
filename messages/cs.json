@@ -1125,9 +1125,9 @@
 
         "SimilarityThresholdTitle": "Nastavení podobnosti",
         "SimilarityThresholdDescription": "Určete, jak moc se musí fotografie shodovat, aby byly označeny jako duplikáty. Vyšší hodnoty znamenají přísnější shodu.",
-        "SimilarityLessStrict": "Méně přísné (0.75)",
+        "SimilarityLessStrict": "Méně přísné",
         "SimilarityCurrent": "Aktuální: {threshold}",
-        "SimilarityMoreStrict": "Přísnější (0.99)",
+        "SimilarityMoreStrict": "Přísnější",
         "ButtonApplyThreshold": "Použít nastavení",
         "ButtonApplyThresholdLoading": "Opětovná analýza...",
 

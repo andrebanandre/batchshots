@@ -1223,9 +1223,9 @@
     
             "SimilarityThresholdTitle": "Ustawienie Podobieństwa",
             "SimilarityThresholdDescription": "Określ, jak dokładnie zdjęcia muszą pasować, aby zostały oznaczone jako duplikaty. Wyższe wartości oznaczają bardziej rygorystyczne dopasowanie.",
-            "SimilarityLessStrict": "Mniej Rygorystyczne (0.75)",
+            "SimilarityLessStrict": "Mniej Rygorystyczne",
             "SimilarityCurrent": "Aktualne: {threshold}",
-            "SimilarityMoreStrict": "Bardziej Rygorystyczne (0.99)",
+            "SimilarityMoreStrict": "Bardziej Rygorystyczne",
             "ButtonApplyThreshold": "Zastosuj Ustawienie",
             "ButtonApplyThresholdLoading": "Ponowne Analizowanie...",
     

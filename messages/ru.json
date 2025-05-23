@@ -1222,9 +1222,9 @@
 
         "SimilarityThresholdTitle": "Настройка схожести",
         "SimilarityThresholdDescription": "Управляйте тем, насколько близко должны совпадать фотографии, чтобы быть отмеченными как дубликаты. Более высокие значения означают более строгое совпадение.",
-        "SimilarityLessStrict": "Менее строго (0.75)",
+        "SimilarityLessStrict": "Менее строго",
         "SimilarityCurrent": "Текущее: {threshold}",
-        "SimilarityMoreStrict": "Более строго (0.99)",
+        "SimilarityMoreStrict": "Более строго",
         "ButtonApplyThreshold": "Применить настройку",
         "ButtonApplyThresholdLoading": "Повторный анализ...",
 

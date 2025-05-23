@@ -1217,7 +1217,7 @@ export default function ImageDuplicateDetectionPage() {
                         <div className="flex-1 w-full">
                           <input
                             type="range"
-                            min="0.75"
+                            min="0.1"
                             max="0.99"
                             step="0.01"
                             value={similarityThreshold}
