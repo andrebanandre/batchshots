@@ -1351,7 +1351,21 @@
         "UpgradeCardFeature5": "Access to all other PRO features (background removal, etc.)",
         "UpgradeCardButton": "UPGRADE NOW",
         
-        "ProUpgradeTitle": "Upgrade to Pro for Unlimited Photos"
+        "ProUpgradeTitle": "Upgrade to Pro for Unlimited Photos",
+
+        "SimilarityControlsTitle": "Similarity Algorithm & Threshold",
+        "SimilarityAlgorithmLabel": "Similarity Algorithm",
+        "SimilarityThresholdLabel": "Similarity Threshold",
+        "SimilarityThresholdDescDistance": "Lower values mean more similar images (distance metric)",
+        "SimilarityThresholdDescSimilarity": "Higher values mean more similar images (similarity metric)",
+        
+        "ProcessingChanges": "Processing changes...",
+        "ReanalyzingWithAlgorithm": "Reanalyzing with new algorithm...",
+        "AnalysisCompleteWithAlgorithm": "Analysis complete with new algorithm. {groupSummary}",
+        
+        "AnalyzingDuplicates": "Analyzing duplicates...",
+        "AnalyzingDuplicatesProgress": "Analyzing duplicates... {progress}%",
+        "DuplicateAnalysisComplete": "Duplicate analysis complete"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

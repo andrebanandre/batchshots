@@ -1199,7 +1199,7 @@
         "AnalyzingGroupForBest": "Аналіз групи {currentGroup} з {totalGroups} для вибору найкращого фото...",
         "AllGroupsAnalyzedReadyDownload": "Усі {count} груп дублікатів проаналізовано. Готово до завантаження {downloadCount} найкращих фото.",
         "AnalysisPartialReadyDownload": "Аналіз для вибору найкращих частково завершено ({processedGroups}/{totalGroups} груп). Готово до завантаження {downloadCount} фото (буде обрано найкращі з доступних).",
-        "NoImagesProcessedOrGroups": "Фото не оброблено або групи ще не сформовано. Переконайтеся, що фото було вибрано та аналіз ШІ завершено.",
+        "NoImagesProcessedOrGroups": "Фото не оброблено або басейни ще не сформовано. Переконайтеся, що фото було вибрано та аналіз ШІ завершено.",
 
         "LoaderTitleInitializing": "Ініціалізація розумних інструментів...",
         "LoaderTitleLoadingModel": "Завантаження мозку ШІ...",
@@ -1291,7 +1291,17 @@
         "UpgradeCardFeature5": "Доступ до всіх інших PRO-функцій (видалення фону тощо)",
         "UpgradeCardButton": "ОНОВИТИ ЗАРАЗ",
         
-        "ProUpgradeTitle": "Оновіть до Pro для необмеженої кількості фото"
+        "ProUpgradeTitle": "Оновіть до Pro для необмеженої кількості фото",
+
+        "SimilarityControlsTitle": "Алгоритм схожості та поріг",
+        "SimilarityAlgorithmLabel": "Алгоритм схожості",
+        "SimilarityThresholdLabel": "Поріг схожості",
+        "SimilarityThresholdDescDistance": "Нижчі значення означають більш схожі зображення (метрика відстані)",
+        "SimilarityThresholdDescSimilarity": "Вищі значення означають більш схожі зображення (метрика схожості)",
+        
+        "ProcessingChanges": "Обробка змін...",
+        "ReanalyzingWithAlgorithm": "Повторний аналіз з новим алгоритмом...",
+        "AnalysisCompleteWithAlgorithm": "Аналіз завершено з новим алгоритмом. {groupSummary}"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

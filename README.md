@@ -92,3 +92,51 @@ You can obtain a Google AI API key from the [Google AI Studio](https://makersuit
 ## License
 
 MIT
+
+## AI Photo Duplicate Finder
+
+Our AI-powered duplicate photo finder now supports multiple similarity algorithms for more accurate detection:
+
+### Similarity Algorithms
+
+#### 1. Cosine Similarity (Default)
+- **Description**: Measures the angle between feature vectors (0-1 scale)
+- **Best for**: General-purpose duplicate detection
+- **Threshold Range**: 0.1 - 0.99 (higher = more similar)
+- **Use Case**: Recommended for most users as it's robust and effective
+
+#### 2. Euclidean Distance
+- **Description**: Calculates straight-line distance between feature vectors
+- **Best for**: When you want exact mathematical similarity
+- **Threshold Range**: 0.1 - 50.0 (lower = more similar)
+- **Use Case**: More sensitive to small differences in image features
+
+#### 3. Manhattan Distance (L1 Norm)
+- **Description**: Sum of absolute differences between coordinates
+- **Best for**: High-dimensional spaces, more robust to outliers
+- **Threshold Range**: 1.0 - 500.0 (lower = more similar)
+- **Use Case**: Alternative distance metric that can be more robust in certain scenarios
+
+### How to Use
+
+1. **Upload Photos**: Select multiple images using the file picker
+2. **Choose Algorithm**: Use the dropdown to select your preferred similarity algorithm
+3. **Adjust Threshold**: Use the slider to fine-tune how strict the matching should be
+4. **Analyze**: Click "Apply Setting" to reanalyze with new parameters
+5. **Review Results**: View duplicate groups and download the best quality images
+
+### Technical Implementation
+
+The similarity algorithms are based on Vision Transformer (ViT) embeddings:
+- Images are processed through a pre-trained ViT model
+- Feature embeddings are extracted from the CLS token
+- Similarity/distance is calculated between embedding vectors
+- Groups are formed based on the selected algorithm and threshold
+
+### Features
+
+- **Real-time threshold adjustment**: Change similarity settings without re-uploading
+- **Quality analysis**: Automatically identify the best image in each duplicate set
+- **Batch download**: Download only the best images from each group
+- **Mobile optimization**: Efficient processing on mobile devices
+- **Multiple formats**: Support for JPG, PNG, WEBP, HEIC

@@ -1294,7 +1294,17 @@
         "UpgradeCardFeature5": "Toegang tot alle andere PRO-functies (achtergrond verwijderen, enz.)",
         "UpgradeCardButton": "NU UPGRADEN",
         
-        "ProUpgradeTitle": "Upgrade naar Pro voor onbeperkte foto's"
+        "ProUpgradeTitle": "Upgrade naar Pro voor onbeperkte foto's",
+
+        "SimilarityControlsTitle": "Gelijkenisalgoritme & drempelwaarde",
+        "SimilarityAlgorithmLabel": "Gelijkenisalgoritme",
+        "SimilarityThresholdLabel": "Gelijkenisdrempel",
+        "SimilarityThresholdDescDistance": "Lagere waarden betekenen meer gelijkaardige afbeeldingen (afstandsmetriek)",
+        "SimilarityThresholdDescSimilarity": "Hogere waarden betekenen meer gelijkaardige afbeeldingen (gelijkenismetriek)",
+        
+        "ProcessingChanges": "Wijzigingen verwerken...",
+        "ReanalyzingWithAlgorithm": "Heranalyse met nieuw algoritme...",
+        "AnalysisCompleteWithAlgorithm": "Analyse voltooid met nieuw algoritme. {groupSummary}"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

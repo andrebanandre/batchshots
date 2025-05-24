@@ -1290,7 +1290,17 @@
         "UpgradeCardFeature5": "Доступ ко всем другим PRO-функциям (удаление фона и др.)",
         "UpgradeCardButton": "ОБНОВИТЬ СЕЙЧАС",
         
-        "ProUpgradeTitle": "Обновите до Pro для неограниченного количества фотографий"
+        "ProUpgradeTitle": "Обновите до Pro для неограниченного количества фото",
+
+        "SimilarityControlsTitle": "Алгоритм схожести и порог",
+        "SimilarityAlgorithmLabel": "Алгоритм схожести",
+        "SimilarityThresholdLabel": "Порог схожести",
+        "SimilarityThresholdDescDistance": "Более низкие значения означают более похожие изображения (метрика расстояния)",
+        "SimilarityThresholdDescSimilarity": "Более высокие значения означают более похожие изображения (метрика схожести)",
+        
+        "ProcessingChanges": "Обработка изменений...",
+        "ReanalyzingWithAlgorithm": "Повторный анализ с новым алгоритмом...",
+        "AnalysisCompleteWithAlgorithm": "Анализ завершен с новым алгоритмом. {groupSummary}"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

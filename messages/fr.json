@@ -1294,7 +1294,17 @@
         "UpgradeCardFeature5": "Accès à toutes les autres fonctionnalités PRO (suppression d'arrière-plan, etc.)",
         "UpgradeCardButton": "PASSER À PRO MAINTENANT",
         
-        "ProUpgradeTitle": "Passez à Pro pour des photos illimitées"
+        "ProUpgradeTitle": "Passer à Pro pour des photos illimitées",
+
+        "SimilarityControlsTitle": "Algorithme de similarité et seuil",
+        "SimilarityAlgorithmLabel": "Algorithme de similarité",
+        "SimilarityThresholdLabel": "Seuil de similarité",
+        "SimilarityThresholdDescDistance": "Des valeurs plus faibles signifient des images plus similaires (métrique de distance)",
+        "SimilarityThresholdDescSimilarity": "Des valeurs plus élevées signifient des images plus similaires (métrique de similarité)",
+        
+        "ProcessingChanges": "Traitement des modifications...",
+        "ReanalyzingWithAlgorithm": "Réanalyse avec le nouvel algorithme...",
+        "AnalysisCompleteWithAlgorithm": "Analyse terminée avec le nouvel algorithme. {groupSummary}"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

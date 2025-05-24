@@ -14,6 +14,7 @@ import { useIsMobile } from '../../hooks/useIsMobile'; // Import useIsMobile hoo
 import { isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter'; // Added HEIC utilities
 import { downloadAllImages, downloadImage } from '../../lib/imageProcessing'; // Added for zip download
 import { useTranslations } from 'next-intl';
+import BrutalistSelect from '../../components/BrutalistSelect';
 
 // Declare cv type for global window scope
 declare global {
@@ -61,6 +62,49 @@ interface ImageWithKPIs extends ImageInfo {
   isBestResolution?: boolean;
   isOverallBest?: boolean; // Added for overall best in group
 }
+
+// Add similarity algorithm types and configurations
+type SimilarityAlgorithm = 'cosine' | 'euclidean' | 'manhattan';
+
+interface AlgorithmConfig {
+  name: string;
+  description: string;
+  minThreshold: number;
+  maxThreshold: number;
+  defaultThreshold: number;
+  step: number;
+  lowerIsBetter: boolean; // true for distance metrics, false for similarity metrics
+}
+
+const SIMILARITY_ALGORITHMS: Record<SimilarityAlgorithm, AlgorithmConfig> = {
+  cosine: {
+    name: 'Cosine Similarity',
+    description: 'Measures angle between vectors (0-1, higher = more similar)',
+    minThreshold: 0.1,
+    maxThreshold: 0.99,
+    defaultThreshold: 0.98,
+    step: 0.01,
+    lowerIsBetter: false
+  },
+  euclidean: {
+    name: 'Euclidean Distance',
+    description: 'Straight-line distance between vectors (lower = more similar)',
+    minThreshold: 0.1,
+    maxThreshold: 50.0,
+    defaultThreshold: 10.0,
+    step: 0.1,
+    lowerIsBetter: true
+  },
+  manhattan: {
+    name: 'Manhattan Distance',
+    description: 'Sum of absolute differences (lower = more similar)',
+    minThreshold: 1.0,
+    maxThreshold: 500.0,
+    defaultThreshold: 100.0,
+    step: 1.0,
+    lowerIsBetter: true
+  }
+};
 
 // Add this function near the top of the file after other utility functions
 async function resizeImageForMobile(file: File): Promise<File> {
@@ -151,8 +195,9 @@ export default function ImageDuplicateDetectionPage() {
   const [allGroupsAnalyzedForBest, setAllGroupsAnalyzedForBest] = useState<boolean>(false);
   const [imagesToDownloadCount, setImagesToDownloadCount] = useState<number>(0);
   const [totalUploadedImagesCount, setTotalUploadedImagesCount] = useState<number>(0);
-  // Add new state for similarity threshold
-  const [similarityThreshold, setSimilarityThreshold] = useState<number>(0.98);
+  // Updated similarity states
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<SimilarityAlgorithm>('cosine');
+  const [similarityThreshold, setSimilarityThreshold] = useState<number>(SIMILARITY_ALGORITHMS.cosine.defaultThreshold);
   const [processingThresholdChange, setProcessingThresholdChange] = useState<boolean>(false);
   const [isAddingMoreImages, setIsAddingMoreImages] = useState<boolean>(false);
   // Add state for Pro dialog
@@ -160,6 +205,9 @@ export default function ImageDuplicateDetectionPage() {
   // Add new state for sequential processing
   const [processingQueue, setProcessingQueue] = useState<ImageInfo[]>([]);
   const [isProcessingQueue, setIsProcessingQueue] = useState<boolean>(false);
+  // Add progress tracking for similarity analysis
+  const [analysisProgress, setAnalysisProgress] = useState<number>(0);
+  const [isAnalyzingDuplicates, setIsAnalyzingDuplicates] = useState<boolean>(false);
   
   const imageInfoRef = useRef<ImageInfo[]>([]);
   const imageEmbeddingsRef = useRef<(ImageEmbedding | null)[]>([]);
@@ -283,52 +331,78 @@ export default function ImageDuplicateDetectionPage() {
   useEffect(() => {
     if (imageInfoRef.current.length > 0 && pendingFilesCount === 0 && Object.keys(embeddingsMap).length === imageInfoRef.current.length) {
       setStatus(t('AllImagesProcessedAnalyzing'));
-      const orderedEmbeddings: (ImageEmbedding | null)[] = new Array(imageInfoRef.current.length).fill(null);
-      let successfullyProcessedCount = 0;
-      imageInfoRef.current.forEach(info => {
-        const embedding = embeddingsMap[info.id];
-        if (embedding) {
-          orderedEmbeddings[info.originalIndex] = embedding;
-          successfullyProcessedCount++;
-        } else {
-          orderedEmbeddings[info.originalIndex] = null;
-        }
-      });
-      imageEmbeddingsRef.current = orderedEmbeddings;
-      setImageKpis({});
-      if (successfullyProcessedCount > 0) {
-        const duplicateGroups = findAndGroupDuplicates(orderedEmbeddings, similarityThreshold);
-        setImageGroups(duplicateGroups);
-        const groupSummary = duplicateGroups.filter(g => g.length > 1).length > 0 
-          ? t('DuplicateSetsFound', { count: duplicateGroups.filter(g => g.length > 1).length })
-          : t('NoDuplicatesFound');
-        setStatus(t('AnalysisCompleteSummary', { 
-            groupSummary, 
-            successfullyProcessedCount, 
-            totalImagesCount: imageInfoRef.current.length 
-        }));
-        
-        // Once analysis is complete, release original embeddings to free memory
-        if (isMobile || isLowPerformanceDevice) {
-          // Create an array of all image IDs
-          const allImageIds = Object.keys(embeddingsMap);
-          // Release resources for processed images
-          releaseImageResources(allImageIds);
-          // Clear the embeddingsMap since we now have imageEmbeddingsRef
-          setEmbeddingsMap({});
-        }
-      } else {
-        setStatus(t('NoImagesProcessedSuccessfully', { 
-            successfullyProcessedCount, 
-            totalImagesCount: imageInfoRef.current.length 
-        }));
-        setImageGroups([]);
-      }
+      setIsAnalyzingDuplicates(true);
+      setAnalysisProgress(0);
       
-      // Clear the processing queue in case any images are left
-      setProcessingQueue([]);
+      const processEmbeddings = async () => {
+        const orderedEmbeddings: (ImageEmbedding | null)[] = new Array(imageInfoRef.current.length).fill(null);
+        let successfullyProcessedCount = 0;
+        imageInfoRef.current.forEach(info => {
+          const embedding = embeddingsMap[info.id];
+          if (embedding) {
+            orderedEmbeddings[info.originalIndex] = embedding;
+            successfullyProcessedCount++;
+          } else {
+            orderedEmbeddings[info.originalIndex] = null;
+          }
+        });
+        imageEmbeddingsRef.current = orderedEmbeddings;
+        setImageKpis({});
+        
+        if (successfullyProcessedCount > 0) {
+          try {
+            const duplicateGroups = await findAndGroupDuplicatesAsync(
+              orderedEmbeddings, 
+              similarityThreshold, 
+              selectedAlgorithm,
+              (progress) => {
+                setAnalysisProgress(progress);
+                setStatus(t('AllImagesProcessedAnalyzing') + ` (${progress}%)`);
+              }
+            );
+            
+            setImageGroups(duplicateGroups);
+            const groupSummary = duplicateGroups.filter((g: number[]) => g.length > 1).length > 0 
+              ? t('DuplicateSetsFound', { count: duplicateGroups.filter((g: number[]) => g.length > 1).length })
+              : t('NoDuplicatesFound');
+            setStatus(t('AnalysisCompleteSummary', { 
+                groupSummary, 
+                successfullyProcessedCount, 
+                totalImagesCount: imageInfoRef.current.length 
+            }));
+            
+            // Once analysis is complete, release original embeddings to free memory
+            if (isMobile || isLowPerformanceDevice) {
+              // Create an array of all image IDs
+              const allImageIds = Object.keys(embeddingsMap);
+              // Release resources for processed images
+              releaseImageResources(allImageIds);
+              // Clear the embeddingsMap since we now have imageEmbeddingsRef
+              setEmbeddingsMap({});
+            }
+          } catch (error) {
+            console.error('Error during duplicate analysis:', error);
+            setStatus(t('ErrorProcessingImage', { imageId: 'analysis', data: 'Analysis failed' }));
+            setImageGroups([]);
+          }
+        } else {
+          setStatus(t('NoImagesProcessedSuccessfully', { 
+              successfullyProcessedCount, 
+              totalImagesCount: imageInfoRef.current.length 
+          }));
+          setImageGroups([]);
+        }
+        
+        setIsAnalyzingDuplicates(false);
+        setAnalysisProgress(0);
+        
+        // Clear the processing queue in case any images are left
+        setProcessingQueue([]);
+      };
+      
+      processEmbeddings();
     }
-  }, [pendingFilesCount, embeddingsMap, similarityThreshold, t, isMobile, isLowPerformanceDevice]);
+  }, [pendingFilesCount, embeddingsMap, similarityThreshold, t, isMobile, isLowPerformanceDevice, selectedAlgorithm]);
 
   // Process images in sequence on mobile devices to prevent memory issues
   useEffect(() => {
@@ -368,6 +442,66 @@ export default function ImageDuplicateDetectionPage() {
     setSimilarityThreshold(newThreshold);
   };
 
+  // Add function to handle algorithm change
+  const handleAlgorithmChange = (algorithmValue: string) => {
+    const algorithm = algorithmValue as SimilarityAlgorithm;
+    setSelectedAlgorithm(algorithm);
+    // Update threshold to the default for the new algorithm
+    setSimilarityThreshold(SIMILARITY_ALGORITHMS[algorithm].defaultThreshold);
+    
+    // Start processing to show overlay
+    setProcessingThresholdChange(true);
+    setIsAnalyzingDuplicates(true);
+    setAnalysisProgress(0);
+    
+    // If we have images, reanalyze with new algorithm
+    if (imageEmbeddingsRef.current.length > 0) {
+      setStatus(t('ReanalyzingWithAlgorithm') || 'Reanalyzing with new algorithm...');
+      
+      const reanalyzeAsync = async () => {
+        try {
+          const duplicateGroups = await findAndGroupDuplicatesAsync(
+            imageEmbeddingsRef.current, 
+            SIMILARITY_ALGORITHMS[algorithm].defaultThreshold, 
+            algorithm,
+            (progress) => {
+              setAnalysisProgress(progress);
+              setStatus((t('ReanalyzingWithAlgorithm') || 'Reanalyzing with new algorithm...') + ` (${progress}%)`);
+            }
+          );
+          setImageGroups(duplicateGroups);
+          
+          const groupSummary = duplicateGroups.filter((g: number[]) => g.length > 1).length > 0 
+            ? t('DuplicateSetsFound', { count: duplicateGroups.filter((g: number[]) => g.length > 1).length })
+            : t('NoDuplicatesFound');
+          
+          setStatus(t('AnalysisCompleteWithAlgorithm', { groupSummary }));
+        } catch (error) {
+          console.error('Error during algorithm change analysis:', error);
+          setStatus(t('ErrorProcessingImage', { imageId: 'algorithm-change', data: 'Analysis failed' }));
+        } finally {
+          setProcessingThresholdChange(false);
+          setIsAnalyzingDuplicates(false);
+          setAnalysisProgress(0);
+          
+          // Reset analysis state since algorithm changed
+          setAllGroupsAnalyzedForBest(false);
+          setImageKpis({});
+        }
+      };
+      
+      reanalyzeAsync();
+    } else {
+      // No images to reanalyze, just reset the processing state
+      setProcessingThresholdChange(false);
+      setIsAnalyzingDuplicates(false);
+      setAnalysisProgress(0);
+      // Reset analysis state since algorithm changed
+      setAllGroupsAnalyzedForBest(false);
+      setImageKpis({});
+    }
+  };
+
   // Add function to reanalyze with new threshold
   const reanalyzeWithNewThreshold = () => {
     if (imageEmbeddingsRef.current.length === 0) {
@@ -376,23 +510,43 @@ export default function ImageDuplicateDetectionPage() {
     }
     
     setProcessingThresholdChange(true);
+    setIsAnalyzingDuplicates(true);
+    setAnalysisProgress(0);
     setStatus(t('ReanalyzingWithThreshold', { threshold: similarityThreshold.toFixed(2) }));
     
-    setTimeout(() => { // Small delay to allow UI update
-      const duplicateGroups = findAndGroupDuplicates(imageEmbeddingsRef.current, similarityThreshold);
-      setImageGroups(duplicateGroups);
-      
-      const groupSummary = duplicateGroups.filter(g => g.length > 1).length > 0 
-        ? t('DuplicateSetsFound', { count: duplicateGroups.filter(g => g.length > 1).length })
-        : t('NoDuplicatesFound');
-      
-      setStatus(t('AnalysisCompleteWithThreshold', { threshold: similarityThreshold.toFixed(2), groupSummary }));
-      setProcessingThresholdChange(false);
-      
-      // Reset these states since groups have changed
-      setAllGroupsAnalyzedForBest(false);
-      setImageKpis({});
-    }, 100);
+    const reanalyzeAsync = async () => {
+      try {
+        const duplicateGroups = await findAndGroupDuplicatesAsync(
+          imageEmbeddingsRef.current, 
+          similarityThreshold, 
+          selectedAlgorithm,
+          (progress) => {
+            setAnalysisProgress(progress);
+            setStatus(t('ReanalyzingWithThreshold', { threshold: similarityThreshold.toFixed(2) }) + ` (${progress}%)`);
+          }
+        );
+        setImageGroups(duplicateGroups);
+        
+        const groupSummary = duplicateGroups.filter((g: number[]) => g.length > 1).length > 0 
+          ? t('DuplicateSetsFound', { count: duplicateGroups.filter((g: number[]) => g.length > 1).length })
+          : t('NoDuplicatesFound');
+        
+        setStatus(t('AnalysisCompleteWithThreshold', { threshold: similarityThreshold.toFixed(2), groupSummary }));
+      } catch (error) {
+        console.error('Error during threshold change analysis:', error);
+        setStatus(t('ErrorProcessingImage', { imageId: 'threshold-change', data: 'Analysis failed' }));
+      } finally {
+        setProcessingThresholdChange(false);
+        setIsAnalyzingDuplicates(false);
+        setAnalysisProgress(0);
+        
+        // Reset these states since groups have changed
+        setAllGroupsAnalyzedForBest(false);
+        setImageKpis({});
+      }
+    };
+    
+    reanalyzeAsync();
   };
 
   function cosineSimilarity(vec1: ImageEmbedding, vec2: ImageEmbedding): number {
@@ -410,36 +564,117 @@ export default function ImageDuplicateDetectionPage() {
     return dotProduct / (magnitude1 * magnitude2);
   }
 
-  function findAndGroupDuplicates(
+  // Add Euclidean Distance function (from duplicate.py)
+  function euclideanDistance(vec1: ImageEmbedding, vec2: ImageEmbedding): number {
+    let sum = 0;
+    for (let i = 0; i < vec1.length; i++) {
+      const diff = vec1[i] - vec2[i];
+      sum += diff * diff;
+    }
+    return Math.sqrt(sum);
+  }
+
+  // Add Manhattan Distance function (from duplicate.py) 
+  function manhattanDistance(vec1: ImageEmbedding, vec2: ImageEmbedding): number {
+    let sum = 0;
+    for (let i = 0; i < vec1.length; i++) {
+      sum += Math.abs(vec1[i] - vec2[i]);
+    }
+    return sum;
+  }
+
+  // Updated function to calculate similarity/distance based on selected algorithm
+  function calculateSimilarity(
+    vec1: ImageEmbedding, 
+    vec2: ImageEmbedding, 
+    algorithm: SimilarityAlgorithm
+  ): number {
+    switch (algorithm) {
+      case 'cosine':
+        return cosineSimilarity(vec1, vec2);
+      case 'euclidean':
+        return euclideanDistance(vec1, vec2);
+      case 'manhattan':
+        return manhattanDistance(vec1, vec2);
+      default:
+        return cosineSimilarity(vec1, vec2);
+    }
+  }
+
+  // Helper function to yield control back to main thread
+  const yieldToMainThread = () => {
+    return new Promise(resolve => setTimeout(resolve, 0));
+  };
+
+  // Non-blocking version of findAndGroupDuplicates
+  async function findAndGroupDuplicatesAsync(
     embeddings: (ImageEmbedding | null)[],
-    threshold = 0.98
-  ): number[][] {
+    threshold: number,
+    algorithm: SimilarityAlgorithm = 'cosine',
+    onProgress?: (progress: number) => void
+  ): Promise<number[][]> {
     const groups: number[][] = [];
     const visitedOriginalIndices = new Set<number>();
     const validEntries: { embedding: ImageEmbedding; originalIndex: number }[] = [];
+    
     embeddings.forEach((emb, index) => {
       if (emb) {
         validEntries.push({ embedding: emb, originalIndex: index });
       }
     });
+    
+    const algorithmConfig = SIMILARITY_ALGORITHMS[algorithm];
+    const totalComparisons = (validEntries.length * (validEntries.length - 1)) / 2;
+    let completedComparisons = 0;
+    
     for (let i = 0; i < validEntries.length; i++) {
       const currentEntry = validEntries[i];
       if (visitedOriginalIndices.has(currentEntry.originalIndex)) continue;
+      
       const currentGroup = [currentEntry.originalIndex];
       visitedOriginalIndices.add(currentEntry.originalIndex);
-      for (let j = i + 1; j < validEntries.length; j++) {
-        const nextEntry = validEntries[j];
-        if (visitedOriginalIndices.has(nextEntry.originalIndex)) continue;
-        const similarity = cosineSimilarity(currentEntry.embedding, nextEntry.embedding);
-        if (similarity > threshold) {
-          currentGroup.push(nextEntry.originalIndex);
-          visitedOriginalIndices.add(nextEntry.originalIndex);
+      
+      // Process comparisons in chunks to avoid blocking the main thread
+      const CHUNK_SIZE = 10; // Process 10 comparisons at a time
+      
+      for (let j = i + 1; j < validEntries.length; j += CHUNK_SIZE) {
+        const endIndex = Math.min(j + CHUNK_SIZE, validEntries.length);
+        
+        // Process a chunk of comparisons
+        for (let k = j; k < endIndex; k++) {
+          const nextEntry = validEntries[k];
+          if (visitedOriginalIndices.has(nextEntry.originalIndex)) continue;
+          
+          const similarity = calculateSimilarity(currentEntry.embedding, nextEntry.embedding, algorithm);
+          
+          // Check if images are similar based on the algorithm type
+          const areSimilar = algorithmConfig.lowerIsBetter 
+            ? similarity < threshold  // For distance metrics (euclidean, manhattan)
+            : similarity > threshold; // For similarity metrics (cosine)
+          
+          if (areSimilar) {
+            currentGroup.push(nextEntry.originalIndex);
+            visitedOriginalIndices.add(nextEntry.originalIndex);
+          }
+          
+          completedComparisons++;
         }
+        
+        // Update progress and yield control back to main thread
+        if (onProgress) {
+          const progress = Math.round((completedComparisons / totalComparisons) * 100);
+          onProgress(progress);
+        }
+        
+        // Yield control back to main thread every chunk
+        await yieldToMainThread();
       }
+      
       if (currentGroup.length > 0) { 
         groups.push(currentGroup);
       }
     }
+    
     return groups.sort((a, b) => b.length - a.length);
   }
 
@@ -704,7 +939,7 @@ export default function ImageDuplicateDetectionPage() {
     }
   }
   
-  const isLoading = workerStatus !== t('AIReady') || pendingFilesCount > 0 || analyzingQualityDirectly !== null || processingThresholdChange || isProStatusLoading;
+  const isLoading = workerStatus !== t('AIReady') || pendingFilesCount > 0 || analyzingQualityDirectly !== null || processingThresholdChange || isProStatusLoading || isAnalyzingDuplicates;
   const isActionDisabled = isLoading || isDownloadingAll || isDownloadingSingleId !== null;
 
   const duplicateSets = imageGroups.filter(group => group.length > 1);
@@ -1094,10 +1329,32 @@ export default function ImageDuplicateDetectionPage() {
                 }
               >
                 <div className="space-y-6 relative">
-                  {pendingFilesCount > 0 && (
+                  {(pendingFilesCount > 0 || processingThresholdChange || isAnalyzingDuplicates) && (
                     <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
                       <Loader size="lg" />
-                      <p className="mt-4 text-lg font-bold text-gray-700">{status}</p>
+                      {pendingFilesCount > 0 ? (
+                        <p className="mt-4 text-lg font-bold text-gray-700">{status}</p>
+                      ) : isAnalyzingDuplicates ? (
+                        <div className="mt-4 text-center">
+                          <p className="text-lg font-bold text-gray-700">
+                            {analysisProgress > 0 
+                              ? `Analyzing duplicates... ${analysisProgress}%`
+                              : 'Analyzing duplicates...'}
+                          </p>
+                          {analysisProgress > 0 && (
+                            <div className="w-64 bg-gray-200 rounded-full h-2 mt-2">
+                              <div 
+                                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                                style={{ width: `${analysisProgress}%` }}
+                              ></div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <p className="mt-4 text-lg font-bold text-gray-700">
+                          {t('ProcessingChanges') || 'Processing changes...'}
+                        </p>
+                      )}
                     </div>
                   )}
                   
@@ -1206,39 +1463,84 @@ export default function ImageDuplicateDetectionPage() {
                     </div>
                   </div>
 
-                  {/* New similarity threshold control */}
+                  {/* Updated similarity threshold and algorithm control */}
                   {imageInfoRef.current.length > 0 && pendingFilesCount === 0 && (
                     <div className="brutalist-border p-4 bg-white">
-                      <h3 className="font-bold mb-2">{t('SimilarityThresholdTitle')}</h3>
-                      <p className="text-sm mb-3">
-                        {t('SimilarityThresholdDescription')}
-                      </p>
-                      <div className="flex flex-col md:flex-row items-center gap-4">
-                        <div className="flex-1 w-full">
-                          <input
-                            type="range"
-                            min="0.1"
-                            max="0.99"
-                            step="0.01"
-                            value={similarityThreshold}
-                            onChange={handleThresholdChange}
-                            className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
-                            disabled={isActionDisabled}
-                          />
-                          <div className="flex justify-between text-xs mt-1">
-                            <span>{t('SimilarityLessStrict')}</span>
-                            <span>{t('SimilarityCurrent', { threshold: similarityThreshold.toFixed(2) })}</span>
-                            <span>{t('SimilarityMoreStrict')}</span>
-                          </div>
-                        </div>
-                        <Button
-                          variant="accent"
-                          size="sm"
+                      <h3 className="font-bold mb-2">{t('SimilarityControlsTitle') || 'Similarity Algorithm & Threshold'}</h3>
+                      
+                      {/* Algorithm Selection */}
+                      <div className="mb-4">
+                        <label className="block text-sm font-medium mb-2">
+                          {t('SimilarityAlgorithmLabel') || 'Similarity Algorithm'}
+                        </label>
+                        <BrutalistSelect
+                          options={Object.entries(SIMILARITY_ALGORITHMS).map(([key, config]) => ({
+                            value: key,
+                            label: config.name,
+                          }))}
+                          value={selectedAlgorithm}
+                          onChange={handleAlgorithmChange}
                           disabled={isActionDisabled}
-                          onClick={reanalyzeWithNewThreshold}
-                        >
-                          {processingThresholdChange ? t('ButtonApplyThresholdLoading') : t('ButtonApplyThreshold')}
-                        </Button>
+                          className="w-full max-w-md"
+                        />
+                        <p className="text-xs text-gray-600 mt-1">
+                          {SIMILARITY_ALGORITHMS[selectedAlgorithm].description}
+                        </p>
+                      </div>
+                      
+                      {/* Threshold Control */}
+                      <div>
+                        <label className="block text-sm font-medium mb-2">
+                          {t('SimilarityThresholdLabel') || 'Similarity Threshold'}
+                        </label>
+                        <p className="text-sm mb-3">
+                          {SIMILARITY_ALGORITHMS[selectedAlgorithm].lowerIsBetter 
+                            ? (t('SimilarityThresholdDescDistance') || 'Lower values mean more similar images (distance metric)')
+                            : (t('SimilarityThresholdDescSimilarity') || 'Higher values mean more similar images (similarity metric)')}
+                        </p>
+                        <div className="flex flex-col md:flex-row items-center gap-4">
+                          <div className="flex-1 w-full">
+                            <input
+                              type="range"
+                              min={SIMILARITY_ALGORITHMS[selectedAlgorithm].minThreshold}
+                              max={SIMILARITY_ALGORITHMS[selectedAlgorithm].maxThreshold}
+                              step={SIMILARITY_ALGORITHMS[selectedAlgorithm].step}
+                              value={similarityThreshold}
+                              onChange={handleThresholdChange}
+                              className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                              disabled={isActionDisabled}
+                            />
+                            <div className="flex justify-between text-xs mt-1">
+                              <span>
+                                {SIMILARITY_ALGORITHMS[selectedAlgorithm].lowerIsBetter 
+                                  ? (t('SimilarityMoreStrict') || 'More Strict') 
+                                  : (t('SimilarityLessStrict') || 'Less Strict')}
+                              </span>
+                              <span>
+                                {t('SimilarityCurrent', { 
+                                  threshold: similarityThreshold.toFixed(
+                                    SIMILARITY_ALGORITHMS[selectedAlgorithm].step >= 1 ? 0 : 2
+                                  ) 
+                                }) || `Current: ${similarityThreshold.toFixed(
+                                  SIMILARITY_ALGORITHMS[selectedAlgorithm].step >= 1 ? 0 : 2
+                                )}`}
+                              </span>
+                              <span>
+                                {SIMILARITY_ALGORITHMS[selectedAlgorithm].lowerIsBetter 
+                                  ? (t('SimilarityLessStrict') || 'Less Strict') 
+                                  : (t('SimilarityMoreStrict') || 'More Strict')}
+                              </span>
+                            </div>
+                          </div>
+                          <Button
+                            variant="accent"
+                            size="sm"
+                            disabled={isActionDisabled}
+                            onClick={reanalyzeWithNewThreshold}
+                          >
+                            {processingThresholdChange ? t('ButtonApplyThresholdLoading') : t('ButtonApplyThreshold')}
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -1345,7 +1647,7 @@ export default function ImageDuplicateDetectionPage() {
                             })}
                           </div>
                         </div>
-                      )})} 
+                      )})}
 
                       {uniqueImageIndices.length > 0 && (
                         <div className="mb-8 brutalist-border p-4 bg-gray-50">
@@ -1512,5 +1814,4 @@ export default function ImageDuplicateDetectionPage() {
       )}
     </main>
   );
-} 
-
+}

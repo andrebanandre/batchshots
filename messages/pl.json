@@ -1292,7 +1292,17 @@
         "UpgradeCardFeature5": "Dostęp do wszystkich innych funkcji PRO (usuwanie tła itp.)",
         "UpgradeCardButton": "ZAKTUALIZUJ TERAZ",
         
-        "ProUpgradeTitle": "Zaktualizuj do Pro, aby mieć nielimitowane zdjęcia"
+        "ProUpgradeTitle": "Przejdź na Pro dla nieograniczonych zdjęć",
+
+        "SimilarityControlsTitle": "Algorytm podobieństwa i próg",
+        "SimilarityAlgorithmLabel": "Algorytm podobieństwa",
+        "SimilarityThresholdLabel": "Próg podobieństwa",
+        "SimilarityThresholdDescDistance": "Niższe wartości oznaczają bardziej podobne obrazy (metryka odległości)",
+        "SimilarityThresholdDescSimilarity": "Wyższe wartości oznaczają bardziej podobne obrazy (metryka podobieństwa)",
+        
+        "ProcessingChanges": "Przetwarzanie zmian...",
+        "ReanalyzingWithAlgorithm": "Ponowna analiza z nowym algorytmem...",
+        "AnalysisCompleteWithAlgorithm": "Analiza zakończona z nowym algorytmem. {groupSummary}"
         },
         "ImageSeoGenerationPage": {
             "metadata": {

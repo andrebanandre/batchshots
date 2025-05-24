@@ -1193,7 +1193,17 @@
         "UpgradeCardFeature5": "Přístup ke všem dalším PRO funkcím (odstranění pozadí atd.)",
         "UpgradeCardButton": "UPGRADOVAT NYNÍ",
         
-        "ProUpgradeTitle": "Upgradujte na Pro pro neomezené fotografie"
+        "ProUpgradeTitle": "Upgradujte na Pro pro neomezené fotky",
+
+        "SimilarityControlsTitle": "Algoritmus podobnosti a práh",
+        "SimilarityAlgorithmLabel": "Algoritmus podobnosti",
+        "SimilarityThresholdLabel": "Práh podobnosti",
+        "SimilarityThresholdDescDistance": "Nižší hodnoty znamenají podobnější obrázky (metrika vzdálenosti)",
+        "SimilarityThresholdDescSimilarity": "Vyšší hodnoty znamenají podobnější obrázky (metrika podobnosti)",
+        
+        "ProcessingChanges": "Zpracovávám změny...",
+        "ReanalyzingWithAlgorithm": "Znovu analyzuji s novým algoritmem...",
+        "AnalysisCompleteWithAlgorithm": "Analýza dokončena s novým algoritmem. {groupSummary}"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

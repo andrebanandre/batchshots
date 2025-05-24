@@ -1302,7 +1302,17 @@
         "UpgradeCardFeature5": "Zugang zu allen anderen PRO-Funktionen (Hintergrundentfernung, etc.)",
         "UpgradeCardButton": "JETZT UPGRADEN",
         
-        "ProUpgradeTitle": "Upgrade auf Pro für unbegrenzte Fotos"
+        "ProUpgradeTitle": "Upgrade auf Pro für unbegrenzte Fotos",
+
+        "SimilarityControlsTitle": "Ähnlichkeitsalgorithmus & Schwellenwert",
+        "SimilarityAlgorithmLabel": "Ähnlichkeitsalgorithmus",
+        "SimilarityThresholdLabel": "Ähnlichkeitsschwellenwert",
+        "SimilarityThresholdDescDistance": "Niedrigere Werte bedeuten ähnlichere Bilder (Distanzmetrik)",
+        "SimilarityThresholdDescSimilarity": "Höhere Werte bedeuten ähnlichere Bilder (Ähnlichkeitsmetrik)",
+        
+        "ProcessingChanges": "Änderungen werden verarbeitet...",
+        "ReanalyzingWithAlgorithm": "Neuanalyse mit neuem Algorithmus...",
+        "AnalysisCompleteWithAlgorithm": "Analyse mit neuem Algorithmus abgeschlossen. {groupSummary}"
     },
     "ImageSeoGenerationPage": {
         "metadata": {
