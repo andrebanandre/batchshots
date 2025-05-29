@@ -1203,7 +1203,21 @@
         
         "ProcessingChanges": "Zpracovávám změny...",
         "ReanalyzingWithAlgorithm": "Znovu analyzuji s novým algoritmem...",
-        "AnalysisCompleteWithAlgorithm": "Analýza dokončena s novým algoritmem. {groupSummary}"
+        "AnalysisCompleteWithAlgorithm": "Analýza dokončena s novým algoritmem. {groupSummary}",
+        "DuplicateAnalysisComplete": "Analýza duplicit dokončena",
+        
+        "VisualizationTitle": "AI Vektorový Prostor",
+        "VisualizationDescription": "Vizualizujte, jak AI vidí vaše obrázky ve vícerozměrném prostoru, zredukovaném na 2D pomocí UMAP algoritmu. Podobné obrázky se shlukují dohromady.",
+        "VisualizationShowButton": "Zobrazit vizualizaci",
+        "VisualizationHideButton": "Skrýt vizualizaci",
+        "VisualizationGeneratingButton": "Generování vizualizace...",
+        "VisualizationNoData": "Nejprve nahrajte a zpracujte obrázky pro povolení vizualizace",
+        "VisualizationProcessingStatus": "Pro velké soubory dat to může chvíli trvat...",
+        "VisualizationLegendUnique": "Unikátní obrázky",
+        "VisualizationLegendDuplicates": "Skupiny duplicit (barevně odlišené podle podobnosti)",
+        "VisualizationHelpText": "Najetím myší na body uvidíte náhledy obrázků • Blíže umístěné body = podobnější obrázky",
+        "VisualizationNeedMinImages": "Pro vizualizaci je potřeba alespoň 3 obrázky",
+        "VisualizationNoDataAvailable": "Nejsou k dispozici žádná data pro vizualizaci"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

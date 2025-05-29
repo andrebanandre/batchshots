@@ -1312,7 +1312,21 @@
         
         "ProcessingChanges": "Änderungen werden verarbeitet...",
         "ReanalyzingWithAlgorithm": "Neuanalyse mit neuem Algorithmus...",
-        "AnalysisCompleteWithAlgorithm": "Analyse mit neuem Algorithmus abgeschlossen. {groupSummary}"
+        "AnalysisCompleteWithAlgorithm": "Analyse mit neuem Algorithmus abgeschlossen. {groupSummary}",
+        "DuplicateAnalysisComplete": "Duplikatanalyse abgeschlossen",
+        
+        "VisualizationTitle": "KI-Vektorraum",
+        "VisualizationDescription": "Visualisieren Sie, wie die KI Ihre Bilder im hochdimensionalen Raum sieht, reduziert auf 2D mit dem UMAP-Algorithmus. Ähnliche Bilder gruppieren sich zusammen.",
+        "VisualizationShowButton": "Visualisierung anzeigen",
+        "VisualizationHideButton": "Visualisierung ausblenden",
+        "VisualizationGeneratingButton": "Visualisierung wird generiert...",
+        "VisualizationNoData": "Laden Sie zuerst Bilder hoch und verarbeiten Sie diese, um die Visualisierung zu aktivieren",
+        "VisualizationProcessingStatus": "Dies kann bei großen Datensätzen einen Moment dauern...",
+        "VisualizationLegendUnique": "Einzigartige Bilder",
+        "VisualizationLegendDuplicates": "Duplikatgruppen (nach Ähnlichkeit eingefärbt)",
+        "VisualizationHelpText": "Bewegen Sie den Mauszeiger über die Punkte, um Bildvorschauen zu sehen • Nähere Punkte = ähnlichere Bilder",
+        "VisualizationNeedMinImages": "Mindestens 3 Bilder für die Visualisierung erforderlich",
+        "VisualizationNoDataAvailable": "Keine Visualisierungsdaten verfügbar"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

@@ -9,6 +9,7 @@ import Loader from '../../components/Loader';
 import ProBadge from '../../components/ProBadge';
 import ProUpgradeDialog from '../../components/ProUpgradeDialog';
 import PricingCard from '../../components/PricingCard'; // Import PricingCard
+import EmbeddingVisualization from '../../components/EmbeddingVisualization'; // Add this import
 import { useIsPro } from '../../hooks/useIsPro';
 import { useIsMobile } from '../../hooks/useIsMobile'; // Import useIsMobile hook
 import { isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter'; // Added HEIC utilities
@@ -589,6 +590,9 @@ export default function ImageDuplicateDetectionPage() {
     vec2: ImageEmbedding, 
     algorithm: SimilarityAlgorithm
   ): number {
+    // Note: Embeddings are already normalized in the worker (normalize: true)
+    // This makes all distance metrics more meaningful and comparable
+    
     switch (algorithm) {
       case 'cosine':
         return cosineSimilarity(vec1, vec2);
@@ -599,6 +603,16 @@ export default function ImageDuplicateDetectionPage() {
       default:
         return cosineSimilarity(vec1, vec2);
     }
+  }
+
+  // Optional: Helper function to verify embedding normalization (for debugging)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function verifyNormalization(embedding: ImageEmbedding): number {
+    let magnitude = 0;
+    for (let i = 0; i < embedding.length; i++) {
+      magnitude += embedding[i] * embedding[i];
+    }
+    return Math.sqrt(magnitude);
   }
 
   // Helper function to yield control back to main thread
@@ -1446,7 +1460,7 @@ export default function ImageDuplicateDetectionPage() {
                         {imageInfoRef.current.length > 0 && (
                           <div className="flex justify-between items-center w-full max-w-xs">
                             <span className="text-sm font-medium">
-                              {t('imagesCount', { current: imageInfoRef.current.length, max: isProUser ? 100 : FREE_USER_IMAGE_LIMIT })}
+                              {t('imagesCount', { current: imageInfoRef.current.length, max: isProUser ? '∞' : FREE_USER_IMAGE_LIMIT })}
                             </span>
                             {!isProUser && imageInfoRef.current.length >= FREE_USER_IMAGE_LIMIT && (
                               <span className="text-xs text-gray-600">
@@ -1724,6 +1738,17 @@ export default function ImageDuplicateDetectionPage() {
                         <p className="text-center text-gray-600">{t('NoImagesProcessedOrGroups')}</p>
                     </div>
                   )}
+                  
+                  {/* Embedding Visualization */}
+                  {(duplicateSets.length > 0 || uniqueImageIndices.length > 0) && (
+                    <EmbeddingVisualization
+                      embeddings={imageEmbeddingsRef.current}
+                      imageInfos={imageInfoRef.current}
+                      imageGroups={imageGroups}
+                      title={t('VisualizationTitle')}
+                    />
+                  )}
+                  
                   { /* Show global status or errors related to download all if any */ }
                   {(isDownloadingAll || isDownloadingSingleId) && <p className="text-center text-sm font-bold mt-4">{status}</p>}
                 </div>

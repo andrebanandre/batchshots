@@ -1304,7 +1304,22 @@
         
         "ProcessingChanges": "Traitement des modifications...",
         "ReanalyzingWithAlgorithm": "Réanalyse avec le nouvel algorithme...",
-        "AnalysisCompleteWithAlgorithm": "Analyse terminée avec le nouvel algorithme. {groupSummary}"
+        "AnalysisCompleteWithAlgorithm": "Analyse terminée avec le nouvel algorithme. {groupSummary}",
+
+        "DuplicateAnalysisComplete": "Analyse des doublons terminée",
+        
+        "VisualizationTitle": "Espace Vectoriel IA",
+        "VisualizationDescription": "Visualisez comment l'IA perçoit vos images dans un espace à haute dimension, réduit en 2D grâce à l'algorithme UMAP. Les images similaires se regroupent ensemble.",
+        "VisualizationShowButton": "Afficher la Visualisation",
+        "VisualizationHideButton": "Masquer la Visualisation",
+        "VisualizationGeneratingButton": "Génération de la Visualisation...",
+        "VisualizationNoData": "Téléversez et traitez d'abord les images pour activer la visualisation",
+        "VisualizationProcessingStatus": "Cela peut prendre un moment pour les grands ensembles de données...",
+        "VisualizationLegendUnique": "Images Uniques",
+        "VisualizationLegendDuplicates": "Groupes de Doublons (colorés par similarité)",
+        "VisualizationHelpText": "Survolez les points pour voir les miniatures • Points plus proches = images plus similaires",
+        "VisualizationNeedMinImages": "Minimum 3 images requises pour la visualisation",
+        "VisualizationNoDataAvailable": "Aucune donnée de visualisation disponible"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

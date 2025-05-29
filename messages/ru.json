@@ -1300,7 +1300,22 @@
         
         "ProcessingChanges": "Обработка изменений...",
         "ReanalyzingWithAlgorithm": "Повторный анализ с новым алгоритмом...",
-        "AnalysisCompleteWithAlgorithm": "Анализ завершен с новым алгоритмом. {groupSummary}"
+        "AnalysisCompleteWithAlgorithm": "Анализ завершен с новым алгоритмом. {groupSummary}",
+
+        "DuplicateAnalysisComplete": "Анализ дубликатов завершен",
+        
+        "VisualizationTitle": "Векторное пространство ИИ",
+        "VisualizationDescription": "Визуализация того, как ИИ видит ваши изображения в многомерном пространстве, сведенном к 2D с помощью алгоритма UMAP. Похожие изображения группируются вместе.",
+        "VisualizationShowButton": "Показать визуализацию",
+        "VisualizationHideButton": "Скрыть визуализацию",
+        "VisualizationGeneratingButton": "Генерация визуализации...",
+        "VisualizationNoData": "Сначала загрузите и обработайте изображения для включения визуализации",
+        "VisualizationProcessingStatus": "Это может занять некоторое время для больших наборов данных...",
+        "VisualizationLegendUnique": "Уникальные изображения",
+        "VisualizationLegendDuplicates": "Группы дубликатов (окрашены по схожести)",
+        "VisualizationHelpText": "Наведите курсор на точки, чтобы увидеть миниатюры изображений • Близкие точки = более похожие изображения",
+        "VisualizationNeedMinImages": "Необходимо минимум 3 изображения для визуализации",
+        "VisualizationNoDataAvailable": "Нет доступных данных для визуализации"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

@@ -53,10 +53,30 @@ self.addEventListener('message', async (e) => {
             try {
                 const extractor = await getPipeline(); // Ensures pipeline is loaded
                 const outputTensor = await extractor(imageUrl, { pooling: 'mean', normalize: true });
-                const embedding = outputTensor.data; // This should be a Float32Array
+                
+                // ViT models return all patch embeddings + CLS token
+                // We need to extract just the CLS token (first 768 dimensions) for proper image representation
+                let embedding = outputTensor.data; // This should be a Float32Array
+                
+                // Check if we got the full patch embeddings (151296 = 197 tokens × 768 dims)
+                if (embedding.length === 151296) {
+                    // Extract CLS token (first 768 dimensions)
+                    embedding = embedding.slice(0, 768);
+                    console.log(`Worker: ✅ Extracted CLS token from patch embeddings for ${imageId} - Dimensions: ${embedding.length}`);
+                } else if (embedding.length === 768) {
+                    // Already pooled correctly
+                    console.log(`Worker: ✅ Got pre-pooled CLS embedding for ${imageId} - Dimensions: ${embedding.length}`);
+                } else {
+                    console.warn(`Worker: ⚠️ Unexpected embedding dimension for ${imageId}. Got ${embedding.length}, expected 768 or 151296`);
+                }
 
                 if (!embedding || typeof embedding.length === 'undefined') {
                     throw new Error('Worker: Failed to extract a valid embedding vector.');
+                }
+                
+                // Verify final dimensions
+                if (embedding.length !== 768) {
+                    throw new Error(`Worker: Final embedding has wrong dimensions. Expected 768, got ${embedding.length}`);
                 }
                 
                 // For Float32Array, sending the array directly is fine.

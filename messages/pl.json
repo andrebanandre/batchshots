@@ -1302,7 +1302,22 @@
         
         "ProcessingChanges": "Przetwarzanie zmian...",
         "ReanalyzingWithAlgorithm": "Ponowna analiza z nowym algorytmem...",
-        "AnalysisCompleteWithAlgorithm": "Analiza zakończona z nowym algorytmem. {groupSummary}"
+        "AnalysisCompleteWithAlgorithm": "Analiza zakończona z nowym algorytmem. {groupSummary}",
+
+        "DuplicateAnalysisComplete": "Analiza duplikatów zakończona",
+        
+        "VisualizationTitle": "Przestrzeń Wektorowa AI",
+        "VisualizationDescription": "Wizualizuj jak AI postrzega Twoje obrazy w przestrzeni wielowymiarowej, zredukowanej do 2D za pomocą algorytmu UMAP. Podobne obrazy grupują się razem.",
+        "VisualizationShowButton": "Pokaż Wizualizację",
+        "VisualizationHideButton": "Ukryj Wizualizację",
+        "VisualizationGeneratingButton": "Generowanie Wizualizacji...",
+        "VisualizationNoData": "Najpierw prześlij i przetwórz obrazy, aby włączyć wizualizację",
+        "VisualizationProcessingStatus": "To może zająć chwilę dla dużych zbiorów danych...",
+        "VisualizationLegendUnique": "Unikalne Obrazy",
+        "VisualizationLegendDuplicates": "Grupy Duplikatów (pokolorowane według podobieństwa)",
+        "VisualizationHelpText": "Najedź na punkty, aby zobaczyć miniatury obrazów • Bliższe punkty = bardziej podobne obrazy",
+        "VisualizationNeedMinImages": "Potrzebne minimum 3 obrazy do wizualizacji",
+        "VisualizationNoDataAvailable": "Brak dostępnych danych do wizualizacji"
         },
         "ImageSeoGenerationPage": {
             "metadata": {

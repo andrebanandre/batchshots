@@ -1301,7 +1301,22 @@
         
         "ProcessingChanges": "Обробка змін...",
         "ReanalyzingWithAlgorithm": "Повторний аналіз з новим алгоритмом...",
-        "AnalysisCompleteWithAlgorithm": "Аналіз завершено з новим алгоритмом. {groupSummary}"
+        "AnalysisCompleteWithAlgorithm": "Аналіз завершено з новим алгоритмом. {groupSummary}",
+
+        "DuplicateAnalysisComplete": "Аналіз дублікатів завершено",
+        
+        "VisualizationTitle": "Векторний простір ШІ",
+        "VisualizationDescription": "Візуалізуйте, як ШІ бачить ваші зображення у високовимірному просторі, зведеному до 2D за допомогою алгоритму UMAP. Схожі зображення згруповані разом.",
+        "VisualizationShowButton": "Показати візуалізацію",
+        "VisualizationHideButton": "Приховати візуалізацію",
+        "VisualizationGeneratingButton": "Генерація візуалізації...",
+        "VisualizationNoData": "Спочатку завантажте та обробіть зображення для увімкнення візуалізації",
+        "VisualizationProcessingStatus": "Це може зайняти деякий час для великих наборів даних...",
+        "VisualizationLegendUnique": "Унікальні зображення",
+        "VisualizationLegendDuplicates": "Групи дублікатів (кольорові за схожістю)",
+        "VisualizationHelpText": "Наведіть курсор на точки, щоб побачити мініатюри зображень • Ближчі точки = більш схожі зображення",
+        "VisualizationNeedMinImages": "Потрібно щонайменше 3 зображення для візуалізації",
+        "VisualizationNoDataAvailable": "Немає доступних даних для візуалізації"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

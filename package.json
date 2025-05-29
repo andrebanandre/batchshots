@@ -30,6 +30,8 @@
     "react-sketch-canvas": "^6.2.0",
     "slug": "^10.0.0",
     "stripe": "^18.0.0",
+    "three": "^0.173.0",
+    "umap-js": "^1.4.0",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
@@ -40,6 +42,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@types/slug": "^5.0.9",
+    "@types/three": "^0.173.0",
     "@types/uuid": "^10.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "eslint": "^9",

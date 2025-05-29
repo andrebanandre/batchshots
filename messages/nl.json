@@ -1304,7 +1304,22 @@
         
         "ProcessingChanges": "Wijzigingen verwerken...",
         "ReanalyzingWithAlgorithm": "Heranalyse met nieuw algoritme...",
-        "AnalysisCompleteWithAlgorithm": "Analyse voltooid met nieuw algoritme. {groupSummary}"
+        "AnalysisCompleteWithAlgorithm": "Analyse voltooid met nieuw algoritme. {groupSummary}",
+
+        "DuplicateAnalysisComplete": "Duplikatanalyse fullført",
+        
+        "VisualizationTitle": "AI Vektorrom",
+        "VisualizationDescription": "Visualiser hvordan AI ser bildene dine i høy-dimensjonalt rom, redusert til 2D ved hjelp av UMAP-algoritmen. Lignende bilder grupperer seg sammen.",
+        "VisualizationShowButton": "Vis Visualisering",
+        "VisualizationHideButton": "Skjul Visualisering",
+        "VisualizationGeneratingButton": "Genererer Visualisering...",
+        "VisualizationNoData": "Last opp og behandl bilder først for å aktivere visualisering",
+        "VisualizationProcessingStatus": "Dette kan ta litt tid for store datasett...",
+        "VisualizationLegendUnique": "Unike Bilder",
+        "VisualizationLegendDuplicates": "Duplikatgrupper (farget etter likhet)",
+        "VisualizationHelpText": "Hold musepekeren over punkter for å se miniatyrbilder • Nærmere punkter = mer lignende bilder",
+        "VisualizationNeedMinImages": "Trenger minst 3 bilder for visualisering",
+        "VisualizationNoDataAvailable": "Ingen visualiseringsdata tilgjengelig"
     },
     "ImageSeoGenerationPage": {
         "metadata": {

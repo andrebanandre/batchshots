@@ -1365,7 +1365,20 @@
         
         "AnalyzingDuplicates": "Analyzing duplicates...",
         "AnalyzingDuplicatesProgress": "Analyzing duplicates... {progress}%",
-        "DuplicateAnalysisComplete": "Duplicate analysis complete"
+        "DuplicateAnalysisComplete": "Duplicate analysis complete",
+        
+        "VisualizationTitle": "AI Vector Space",
+        "VisualizationDescription": "Visualize how AI sees your images in high-dimensional space, reduced to 2D using UMAP algorithm. Similar images cluster together.",
+        "VisualizationShowButton": "Show Visualization",
+        "VisualizationHideButton": "Hide Visualization",
+        "VisualizationGeneratingButton": "Generating Visualization...",
+        "VisualizationNoData": "Upload and process images first to enable visualization",
+        "VisualizationProcessingStatus": "This may take a moment for large datasets...",
+        "VisualizationLegendUnique": "Unique Images",
+        "VisualizationLegendDuplicates": "Duplicate Groups (colored by similarity)",
+        "VisualizationHelpText": "Hover over points to see image thumbnails • Closer points = more similar images",
+        "VisualizationNeedMinImages": "Need at least 3 images for visualization",
+        "VisualizationNoDataAvailable": "No visualization data available"
     },
     "ImageSeoGenerationPage": {
         "metadata": {
