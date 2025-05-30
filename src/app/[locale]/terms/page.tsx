@@ -59,8 +59,18 @@ export default function TermsOfUse() {
             <p className="mb-4">
               {t('section4P1')}
             </p>
-            <p className="mb-2">
+            <p>
               {t('section4P2')}
+            </p>
+          </section>
+          
+          <section className="mb-6">
+            <h2 className="text-xl font-bold mb-3 uppercase">{t('section4aTitle')}</h2>
+            <p className="mb-4">
+              {t('section4aP1')}
+            </p>
+            <p>
+              {t('section4aP2')}
             </p>
           </section>
           
