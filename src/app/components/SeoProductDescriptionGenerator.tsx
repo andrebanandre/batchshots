@@ -13,6 +13,8 @@ import BrutalistSelect from './BrutalistSelect';
 import Markdown from 'react-markdown'
 import { renderToString } from 'react-dom/server';
 import ReactMarkdown from 'react-markdown';
+import { useAuth } from '@clerk/nextjs';
+import LoginDialog from './LoginDialog';
 
 // Language options for the selector - popular languages + supported locales
 const LANGUAGES = {
@@ -66,13 +68,50 @@ export default function SeoProductDescriptionGenerator({
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabType>('content');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const [remainingCount, setRemainingCount] = useState<number | null>(null);
   const router = useRouter();
+  const { isSignedIn } = useAuth();
 
   // Get current locale and set it as default language
   useEffect(() => {
     const locale = document.documentElement.lang || 'en';
     setSelectedLanguage(locale);
   }, []);
+
+  // Load daily usage count from cookie on component mount
+  useEffect(() => {
+    if (!isProUser && !isProLoading && isSignedIn) {
+      const getCookie = (name: string) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop()?.split(';').shift();
+        return null;
+      };
+
+      const dailyUsageCookie = getCookie('seo_daily_usage');
+      const today = new Date().toDateString();
+      
+      if (dailyUsageCookie) {
+        try {
+          const parsedUsage = JSON.parse(decodeURIComponent(dailyUsageCookie));
+          if (parsedUsage.date === today) {
+            setRemainingCount(Math.max(0, 5 - parsedUsage.count));
+          } else {
+            // Reset for new day
+            setRemainingCount(5);
+          }
+        } catch (error) {
+          console.error('Error parsing daily usage cookie:', error);
+          setRemainingCount(5);
+        }
+      } else {
+        setRemainingCount(5);
+      }
+    } else if (!isSignedIn) {
+      // Reset remaining count when not signed in
+      setRemainingCount(null);
+    }
+  }, [isProUser, isProLoading, isSignedIn]);
 
   // Convert LANGUAGES object to array format for BrutalistSelect
   const languageOptions = Object.entries(LANGUAGES).map(([code, name]) => ({
@@ -84,10 +123,12 @@ export default function SeoProductDescriptionGenerator({
   const handleGenerateDescription = async () => {
     if (baseDescription.trim() === '') return;
     
-    // Check if user is PRO
+    // Check daily limits for non-PRO users
     if (!isProUser && !isProLoading) {
-      setShowProDialog(true);
-      return;
+      if (remainingCount !== null && remainingCount <= 0) {
+        setRecaptchaError(t('dailyLimitExceeded'));
+        return;
+      }
     }
     
     setRecaptchaError(null);
@@ -115,11 +156,21 @@ export default function SeoProductDescriptionGenerator({
         }),
       });
       
-      if (!response.ok) {
-        throw new Error('Failed to generate SEO product description');
-      }
-      
       const data = await response.json();
+      
+      if (!response.ok) {
+        // Handle specific error cases
+        if (response.status === 429) {
+          setRecaptchaError(data.message || t('dailyLimitExceeded'));
+          // Update remaining count if provided
+          if (data.remainingCount !== undefined) {
+            setRemainingCount(data.remainingCount);
+          }
+        } else {
+          throw new Error(data.message || 'Failed to generate SEO product description');
+        }
+        return;
+      }
       
       if (!data.seoDescription) {
         throw new Error('Invalid response from API');
@@ -128,12 +179,18 @@ export default function SeoProductDescriptionGenerator({
       // Update state with the generated SEO description
       setSeoDescription(data.seoDescription);
       
+      // Update remaining count for non-PRO users
+      if (!isProUser && data.remainingCount !== undefined) {
+        setRemainingCount(data.remainingCount);
+      }
+      
       // If a callback was provided, call it with the description
       if (onGenerateDescription) {
         onGenerateDescription(data.seoDescription);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error generating SEO product description:', error);
+      
       setRecaptchaError('Failed to generate SEO product description. Please try again.');
     } finally {
       setIsGenerating(false);
@@ -231,27 +288,63 @@ export default function SeoProductDescriptionGenerator({
               onChange={(e) => setBaseDescription(e.target.value)}
               disabled={isGenerating}
             ></textarea>
-            <p className="text-xs text-gray-500">
-              {t('proFeature')}
+            <p className="text-xs text-gray-600 mt-2">
+              {!isSignedIn ? (
+                "Login for 5 free descriptions per day"
+              ) : isProUser ? (
+                "PRO: Unlimited generations"
+              ) : remainingCount !== null ? (
+                `${remainingCount} of 5 daily generations remaining`
+              ) : (
+                "Loading usage..."
+              )}
             </p>
           </div>
         </div>
 
-        <Button
-          onClick={handleGenerateDescription}
-          fullWidth
-          variant="default"
-          disabled={isGenerating || baseDescription.trim() === ''}
-        >
-          {isGenerating ? (
-            <div className="flex items-center justify-center">
-              <span className="mr-2">{t('generating')}</span>
-              <Loader size="sm" />
-            </div>
-          ) : (
-            t('generate')
-          )}
-        </Button>
+        {baseDescription.trim() !== '' && (
+          <>
+            {!isSignedIn ? (
+              <LoginDialog 
+                variant="default" 
+                fullWidth
+              >
+                {t('loginButton')}
+              </LoginDialog>
+            ) : (
+              <Button
+                onClick={handleGenerateDescription}
+                fullWidth
+                variant="default"
+                disabled={isGenerating || (isSignedIn && !isProUser && remainingCount !== null && remainingCount <= 0)}
+              >
+                {isGenerating ? (
+                  <div className="flex items-center justify-center">
+                    <span className="mr-2">{t('generating')}</span>
+                    <Loader size="sm" />
+                  </div>
+                ) : !isProUser && remainingCount !== null && remainingCount <= 0 ? (
+                  t('dailyLimitReached')
+                ) : !isProUser && remainingCount !== null ? (
+                  t('generateWithCount', { remaining: remainingCount })
+                ) : (
+                  t('generate')
+                )}
+              </Button>
+            )}
+          </>
+        )}
+
+        {isSignedIn && !isProUser && remainingCount !== null && remainingCount <= 0 && (
+          <Button
+            onClick={() => setShowProDialog(true)}
+            fullWidth
+            variant="secondary"
+            className="mt-2"
+          >
+            {t('upgradeToPro')}
+          </Button>
+        )}
 
         {recaptchaError && (
           <div className="mt-3 text-red-500 text-xs text-center">
@@ -636,8 +729,8 @@ export default function SeoProductDescriptionGenerator({
         <ProDialog
           onClose={() => setShowProDialog(false)}
           onUpgrade={() => router.push('/pricing')}
-          featureName="AI SEO Product Description"
-          featureLimit={1}
+          featureName="Unlimited AI SEO Product Description"
+          featureLimit={5}
         />
       )}
     </Card>

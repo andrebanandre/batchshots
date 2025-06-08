@@ -81,12 +81,37 @@ export async function POST(request: NextRequest) {
     // Check if user has pro access
     const isPro = await checkProStatus(userId);
     
+    // Handle daily limits for non-PRO users
     if (!isPro) {
-      console.error('[API] Error: User does not have pro access');
-      return new NextResponse(
-        JSON.stringify({ error: 'Pro subscription required' }),
-        { status: 403, headers: { 'Content-Type': 'application/json' } }
-      );
+      const cookies = request.cookies;
+      const dailyUsageCookie = cookies.get('seo_daily_usage');
+      const today = new Date().toDateString();
+      
+      let dailyUsage = { date: today, count: 0 };
+      
+      if (dailyUsageCookie) {
+        try {
+          const parsedUsage = JSON.parse(dailyUsageCookie.value);
+          if (parsedUsage.date === today) {
+            dailyUsage = parsedUsage;
+          }
+        } catch (error) {
+          console.log('[API] Error parsing daily usage cookie, resetting:', error);
+        }
+      }
+      
+      // Check if daily limit exceeded (5 per day for non-PRO users)
+      if (dailyUsage.count >= 5) {
+        console.error('[API] Error: Daily limit exceeded for non-PRO user');
+        return new NextResponse(
+          JSON.stringify({ 
+            error: 'Daily limit exceeded',
+            message: 'Free users can generate 5 SEO descriptions per day. Upgrade to PRO for unlimited access.',
+            remainingCount: 0
+          }),
+          { status: 429, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
     }
     
     const body = await request.json();
@@ -127,14 +152,58 @@ export async function POST(request: NextRequest) {
     const seoDescription = await generateSeoProductDescription(baseDescription, language || 'en');
     console.log(`[API] Generated SEO product description successfully`);
     
-    // Return the SEO product description
+    // Update usage count for non-PRO users
+    let updatedUsageCount = null;
+    let remainingCount = null;
+    
+    if (!isPro) {
+      const cookies = request.cookies;
+      const dailyUsageCookie = cookies.get('seo_daily_usage');
+      const today = new Date().toDateString();
+      
+      let dailyUsage = { date: today, count: 0 };
+      
+      if (dailyUsageCookie) {
+        try {
+          const parsedUsage = JSON.parse(dailyUsageCookie.value);
+          if (parsedUsage.date === today) {
+            dailyUsage = parsedUsage;
+          }
+        } catch (error) {
+          console.log('[API] Error parsing daily usage cookie during update:', error);
+        }
+      }
+      
+      // Increment usage count
+      dailyUsage.count += 1;
+      updatedUsageCount = JSON.stringify(dailyUsage);
+      remainingCount = Math.max(0, 5 - dailyUsage.count);
+      
+      console.log(`[API] Updated daily usage count: ${dailyUsage.count}/5`);
+    }
+    
+    // Return the SEO product description with usage info
     console.log('[API] Returning response');
-    return new NextResponse(
+    const response = new NextResponse(
       JSON.stringify({ 
-        seoDescription
+        seoDescription,
+        ...(remainingCount !== null && { remainingCount }),
+        ...(updatedUsageCount && { isPro: false })
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
+    
+    // Set updated usage cookie for non-PRO users
+    if (updatedUsageCount) {
+      response.cookies.set('seo_daily_usage', updatedUsageCount, {
+        maxAge: 60 * 60 * 24, // 24 hours
+        httpOnly: false, // Allow client-side access
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax'
+      });
+    }
+    
+    return response;
   } catch (error: unknown) {
     console.error('[API] Error generating SEO product description:', error);
     return new NextResponse(

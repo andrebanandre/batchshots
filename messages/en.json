@@ -342,7 +342,16 @@
             "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
             "generate": "GENERATE PRODUCT DESCRIPTION",
             "generating": "GENERATING...",
-            "proFeature": "This is a PRO feature",
+            "generateWithCount": "GENERATE ({remaining} remaining today)",
+            "dailyLimitReached": "DAILY LIMIT REACHED",
+            "dailyLimitExceeded": "Daily limit of 5 descriptions reached. Upgrade to PRO for unlimited access or try again tomorrow.",
+            "dailyUsageInfo": "{remaining} of {total} daily generations remaining",
+            "proUnlimited": "PRO: Unlimited generations",
+            "upgradeToPro": "UPGRADE TO PRO",
+            "loginRequired": "LOGIN REQUIRED",
+            "loginToGenerate": "Please log in to generate SEO product descriptions. Free users get 5 descriptions per day, PRO users get unlimited access.",
+            "loginButton": "LOG IN",
+            "cancel": "CANCEL",
             "copyToClipboard": "COPY TO CLIPBOARD",
             "downloadAsTxt": "DOWNLOAD AS TXT",
             "copied": "Copied!",
@@ -585,7 +594,16 @@
             "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
             "generate": "GENERATE PRODUCT DESCRIPTION",
             "generating": "GENERATING...",
-            "proFeature": "This is a PRO feature",
+            "generateWithCount": "GENERATE ({remaining} remaining today)",
+            "dailyLimitReached": "DAILY LIMIT REACHED",
+            "dailyLimitExceeded": "Daily limit of 5 descriptions reached. Upgrade to PRO for unlimited access or try again tomorrow.",
+            "dailyUsageInfo": "{remaining} of {total} daily generations remaining",
+            "proUnlimited": "PRO: Unlimited generations",
+            "upgradeToPro": "UPGRADE TO PRO",
+            "loginRequired": "LOGIN REQUIRED",
+            "loginToGenerate": "Please log in to generate SEO product descriptions. Free users get 5 descriptions per day, PRO users get unlimited access.",
+            "loginButton": "LOG IN",
+            "cancel": "CANCEL",
             "copyToClipboard": "COPY TO CLIPBOARD",
             "downloadAsTxt": "DOWNLOAD AS TXT",
             "copied": "Copied!",
@@ -627,10 +645,10 @@
                 "info": {
                     "title": "WHAT IS THIS TOOL?",
                     "description": "This AI-powered tool generates a complete SEO package for your products from basic information. You'll receive a product title, meta title, meta description, short and long descriptions, categories, tags, and a URL slug, all optimized for search engines.",
-                    "freeMode": {
-                        "title": "FREE MODE",
-                        "description": "Limited access to generate a few descriptions. Upgrade to PRO for unlimited generation and access to all SEO content fields."
-                    },
+                                    "freeMode": {
+                    "title": "FREE MODE",
+                    "description": "Generate up to 5 SEO product descriptions per day. Upgrade to PRO for unlimited generation and access to all SEO content fields."
+                },
                     "proMode": {
                         "title": "PRO MODE",
                         "description": "Unlimited access to generate complete SEO product descriptions with all premium features unlocked."
