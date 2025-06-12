@@ -53,12 +53,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        // Apply restrictive headers only to specific paths that need WASM/SharedArrayBuffer
+        source: "/api/:path*",
         headers: [
           {
             key: "Cross-Origin-Embedder-Policy",
             value: "require-corp",
           },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
+        ],
+      },
+      {
+        // Less restrictive headers for pages with YouTube embeds
+        source: "/:path*",
+        headers: [
           {
             key: "Cross-Origin-Opener-Policy",
             value: "same-origin",

@@ -14,6 +14,7 @@ import SeoNameGenerator, { SeoImageName } from '../components/SeoNameGenerator';
 import SeoProductDescriptionGenerator from '../components/SeoProductDescriptionGenerator';
 import { useIsPro } from '../hooks/useIsPro';
 import { useRouter } from 'next/navigation';
+import { YouTubeEmbed } from '@next/third-parties/google';
 // Import heic-to for HEIC conversion
 import { heicTo, isHeic } from 'heic-to';
 import { 
@@ -655,6 +656,22 @@ export default function Home() {
                       </div>
                     </label>
 
+                        {/* Video Introduction Section */}
+                        <div className="pt-6 pb-6 pr-2 pl-2 mt-6">
+                      
+                      {/* YouTube Video Embed with Brutalist S  tyling */}
+<div>
+  <div className="relative w-full m-2" style={{
+      border: '2px solid #000',
+      boxShadow: '4px 4px 0px #000'
+    }} >
+    <YouTubeEmbed videoid="fMGOvRdo_wU"  />
+  </div>
+</div>
+
+
+</div>
+
                     {/* Pro status - FREE PLAN card for non-pro users */}
                     {!isProUser && (
                       <>
@@ -681,6 +698,8 @@ export default function Home() {
                         </div>
                       </>
                     )}
+
+                
                   </div>
                 </div>
                 
