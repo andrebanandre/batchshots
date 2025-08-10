@@ -94,6 +94,16 @@
         "description": "Snadno upravujte, měňte velikost, přidávejte vodoznaky a optimalizujte obrázky hromadně pro SEO. Funkce s podporou AI pro produktové fotografie, odstranění pozadí a generování SEO názvů.",
         "keywords": "editor obrázků, hromadné zpracování obrázků, seo optimalizace obrázků, vodoznak na fotkách, odstranění pozadí, produktové fotografie, ai úprava fotek, batchshots"
     },
+  "PrivacyPage": {
+    "title": "Zásady ochrany osobních údajů | Batch Shots",
+    "description": "Pochopte, jak Batch Shots nakládá s vašimi daty. Naše zásady popisují postupy ochrany soukromí a bezpečnosti.",
+    "keywords": "zásady ochrany osobních údajů, ochrana dat, soukromí, batchshots"
+  },
+  "TermsPage": {
+    "title": "Podmínky služby | Batch Shots",
+    "description": "Seznamte se s podmínkami používání Batch Shots, odpovědností uživatelů a dalšími právními informacemi.",
+    "keywords": "podmínky služby, obchodní podmínky, uživatelská smlouva, batchshots"
+  },
     "Components": {
         "ImageProcessingControls": {
             "title": "NASTAVENÍ OBRÁZKU",

@@ -542,9 +542,9 @@
                 }
             },
             "metadata": {
-                "title": "AI Achtergrondverwijderaar | Batch Shots",
-                "description": "Verwijder automatisch achtergronden uit uw afbeeldingen met de AI-tool van Batch Shots. Perfect voor productfoto's, portretten en creatieve projecten. Probeer het gratis!",
-                "keywords": "achtergrondverwijderaar, achtergrond verwijderen, ai achtergrondverwijdering, transparante achtergrond, productfotografie, batch beeldbewerking"
+                "title": "AI Achtergrond Verwijderaar | Batch Shots",
+                "description": "Verwijder achtergronden volledig in de browser. Gratis en privacy-vriendelijk.",
+                "keywords": "achtergrond verwijderen, ai, transparant, in-browser"
             }
         },
         "ImagePreview": {
@@ -609,8 +609,8 @@
         "WatermarkPage": {
             "metadata": {
                 "title": "Watermerk toevoegen aan afbeeldingen | Batch Shots",
-                "description": "Voeg eenvoudig aangepaste tekst- of logowatermerken toe aan uw afbeeldingen. Bescherm uw foto's met watermerken met controle over transparantie, positie en grootte.",
-                "keywords": "watermerk, watermerk toevoegen aan afbeeldingen, foto watermerk, afbeelding watermerk, logo watermerk, tekst watermerk, afbeelding branding, watermerken foto's"
+                "description": "Voeg snel tekst- of logowatermerken toe. Alles draait lokaal in uw browser.",
+                "keywords": "watermerk, logo, tekst, privacy"
             },
             "title": "WATERMERK TOEVOEGEN AAN AFBEELDINGEN",
             "loading": {

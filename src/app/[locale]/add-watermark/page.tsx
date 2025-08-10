@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
 // Pro removed
@@ -43,7 +43,7 @@ export default function AddWatermarkPage() {
   }, [images, selectedImageId]);
 
   // Process watermark when settings change - no debounce, immediate processing
-  const processWatermark = async (settings: WatermarkSettings) => {
+  const processWatermark = useCallback(async (settings: WatermarkSettings) => {
     if (images.length === 0) return;
     
     // No pro gating
@@ -85,14 +85,14 @@ export default function AddWatermarkPage() {
     } finally {
       setIsProcessing(false);
     }
-  };
+  }, [images, t]);
 
   // Apply watermark whenever settings change
   useEffect(() => {
     if (watermarkSettings.enabled && images.length > 0) {
       processWatermark(watermarkSettings);
     }
-  }, [watermarkSettings, images.length, t]);
+  }, [watermarkSettings, images.length, processWatermark]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;

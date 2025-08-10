@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, ChangeEvent } from 'react';
+import { useEffect, useState, useRef, ChangeEvent, useCallback } from 'react';
 import NextImage from 'next/image'; // Aliased import
 // Router not used
 import Button from '../../components/Button';
@@ -306,7 +306,7 @@ export default function ImageDuplicateDetectionPage() {
   }, [t]); // Added t to dependency array
 
   // Fix unused 'e' parameter in releaseImageResources function
-  const releaseImageResources = (imageIds: string[]) => {
+  const releaseImageResources = useCallback((imageIds: string[]) => {
     console.log(`Main: Releasing resources for ${imageIds.length} images`);
     for (const id of imageIds) {
       const embedding = embeddingsMap[id];
@@ -325,7 +325,57 @@ export default function ImageDuplicateDetectionPage() {
         console.log('Main: Manual garbage collection not available');
       }
     }
-  };
+  }, [embeddingsMap]);
+
+  // Non-blocking version of findAndGroupDuplicates placed before effects that depend on it
+  const findAndGroupDuplicatesAsync = useCallback(async function(
+    embeddings: (ImageEmbedding | null)[],
+    threshold: number,
+    algorithm: SimilarityAlgorithm = 'cosine',
+    onProgress?: (progress: number) => void
+  ): Promise<number[][]> {
+    const groups: number[][] = [];
+    const visitedOriginalIndices = new Set<number>();
+    const validEntries: { embedding: ImageEmbedding; originalIndex: number }[] = [];
+    embeddings.forEach((emb, index) => {
+      if (emb) {
+        validEntries.push({ embedding: emb, originalIndex: index });
+      }
+    });
+    const algorithmConfig = SIMILARITY_ALGORITHMS[algorithm];
+    const totalComparisons = (validEntries.length * (validEntries.length - 1)) / 2;
+    let completedComparisons = 0;
+    for (let i = 0; i < validEntries.length; i++) {
+      const currentEntry = validEntries[i];
+      if (visitedOriginalIndices.has(currentEntry.originalIndex)) continue;
+      const currentGroup = [currentEntry.originalIndex];
+      visitedOriginalIndices.add(currentEntry.originalIndex);
+      const CHUNK_SIZE = 10;
+      for (let j = i + 1; j < validEntries.length; j += CHUNK_SIZE) {
+        const endIndex = Math.min(j + CHUNK_SIZE, validEntries.length);
+        for (let k = j; k < endIndex; k++) {
+          const nextEntry = validEntries[k];
+          if (visitedOriginalIndices.has(nextEntry.originalIndex)) continue;
+          const similarity = calculateSimilarity(currentEntry.embedding, nextEntry.embedding, algorithm);
+          const areSimilar = algorithmConfig.lowerIsBetter ? similarity < threshold : similarity > threshold;
+          if (areSimilar) {
+            currentGroup.push(nextEntry.originalIndex);
+            visitedOriginalIndices.add(nextEntry.originalIndex);
+          }
+          completedComparisons++;
+        }
+        if (onProgress) {
+          const progress = Math.round((completedComparisons / totalComparisons) * 100);
+          onProgress(progress);
+        }
+        await yieldToMainThread();
+      }
+      if (currentGroup.length > 0) {
+        groups.push(currentGroup);
+      }
+    }
+    return groups.sort((a, b) => b.length - a.length);
+  }, [calculateSimilarity]);
 
   // Modify the useEffect that processes embeddings to release resources
   useEffect(() => {
@@ -619,77 +669,7 @@ export default function ImageDuplicateDetectionPage() {
     return new Promise(resolve => setTimeout(resolve, 0));
   };
 
-  // Non-blocking version of findAndGroupDuplicates
-  async function findAndGroupDuplicatesAsync(
-    embeddings: (ImageEmbedding | null)[],
-    threshold: number,
-    algorithm: SimilarityAlgorithm = 'cosine',
-    onProgress?: (progress: number) => void
-  ): Promise<number[][]> {
-    const groups: number[][] = [];
-    const visitedOriginalIndices = new Set<number>();
-    const validEntries: { embedding: ImageEmbedding; originalIndex: number }[] = [];
-    
-    embeddings.forEach((emb, index) => {
-      if (emb) {
-        validEntries.push({ embedding: emb, originalIndex: index });
-      }
-    });
-    
-    const algorithmConfig = SIMILARITY_ALGORITHMS[algorithm];
-    const totalComparisons = (validEntries.length * (validEntries.length - 1)) / 2;
-    let completedComparisons = 0;
-    
-    for (let i = 0; i < validEntries.length; i++) {
-      const currentEntry = validEntries[i];
-      if (visitedOriginalIndices.has(currentEntry.originalIndex)) continue;
-      
-      const currentGroup = [currentEntry.originalIndex];
-      visitedOriginalIndices.add(currentEntry.originalIndex);
-      
-      // Process comparisons in chunks to avoid blocking the main thread
-      const CHUNK_SIZE = 10; // Process 10 comparisons at a time
-      
-      for (let j = i + 1; j < validEntries.length; j += CHUNK_SIZE) {
-        const endIndex = Math.min(j + CHUNK_SIZE, validEntries.length);
-        
-        // Process a chunk of comparisons
-        for (let k = j; k < endIndex; k++) {
-          const nextEntry = validEntries[k];
-          if (visitedOriginalIndices.has(nextEntry.originalIndex)) continue;
-          
-          const similarity = calculateSimilarity(currentEntry.embedding, nextEntry.embedding, algorithm);
-          
-          // Check if images are similar based on the algorithm type
-          const areSimilar = algorithmConfig.lowerIsBetter 
-            ? similarity < threshold  // For distance metrics (euclidean, manhattan)
-            : similarity > threshold; // For similarity metrics (cosine)
-          
-          if (areSimilar) {
-            currentGroup.push(nextEntry.originalIndex);
-            visitedOriginalIndices.add(nextEntry.originalIndex);
-          }
-          
-          completedComparisons++;
-        }
-        
-        // Update progress and yield control back to main thread
-        if (onProgress) {
-          const progress = Math.round((completedComparisons / totalComparisons) * 100);
-          onProgress(progress);
-        }
-        
-        // Yield control back to main thread every chunk
-        await yieldToMainThread();
-      }
-      
-      if (currentGroup.length > 0) { 
-        groups.push(currentGroup);
-      }
-    }
-    
-    return groups.sort((a, b) => b.length - a.length);
-  }
+  
 
   // Also modify the handleFileChange function to clear old object URLs more aggressively
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>, addingMore: boolean = false) => {
