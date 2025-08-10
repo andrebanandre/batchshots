@@ -106,6 +106,59 @@ const SIMILARITY_ALGORITHMS: Record<SimilarityAlgorithm, AlgorithmConfig> = {
   }
 };
 
+// Similarity helpers moved to module scope to keep stable references across renders
+function cosineSimilarity(vec1: Float32Array, vec2: Float32Array): number {
+  let dotProduct = 0;
+  let magnitude1 = 0;
+  let magnitude2 = 0;
+  for (let i = 0; i < vec1.length; i++) {
+    dotProduct += vec1[i] * vec2[i];
+    magnitude1 += vec1[i] * vec1[i];
+    magnitude2 += vec2[i] * vec2[i];
+  }
+  magnitude1 = Math.sqrt(magnitude1);
+  magnitude2 = Math.sqrt(magnitude2);
+  if (magnitude1 === 0 || magnitude2 === 0) return 0;
+  return dotProduct / (magnitude1 * magnitude2);
+}
+
+function euclideanDistance(vec1: Float32Array, vec2: Float32Array): number {
+  let sum = 0;
+  for (let i = 0; i < vec1.length; i++) {
+    const diff = vec1[i] - vec2[i];
+    sum += diff * diff;
+  }
+  return Math.sqrt(sum);
+}
+
+function manhattanDistance(vec1: Float32Array, vec2: Float32Array): number {
+  let sum = 0;
+  for (let i = 0; i < vec1.length; i++) {
+    sum += Math.abs(vec1[i] - vec2[i]);
+  }
+  return sum;
+}
+
+function calculateSimilarity(
+  vec1: Float32Array,
+  vec2: Float32Array,
+  algorithm: SimilarityAlgorithm
+): number {
+  switch (algorithm) {
+    case 'cosine':
+      return cosineSimilarity(vec1, vec2);
+    case 'euclidean':
+      return euclideanDistance(vec1, vec2);
+    case 'manhattan':
+      return manhattanDistance(vec1, vec2);
+    default:
+      return cosineSimilarity(vec1, vec2);
+  }
+}
+
+// Yield helper moved to module scope to avoid changing identity
+const yieldToMainThread = () => new Promise(resolve => setTimeout(resolve, 0));
+
 // Add this function near the top of the file after other utility functions
 async function resizeImageForMobile(file: File): Promise<File> {
   return new Promise((resolve, reject) => {
@@ -308,15 +361,16 @@ export default function ImageDuplicateDetectionPage() {
   // Fix unused 'e' parameter in releaseImageResources function
   const releaseImageResources = useCallback((imageIds: string[]) => {
     console.log(`Main: Releasing resources for ${imageIds.length} images`);
-    for (const id of imageIds) {
-      const embedding = embeddingsMap[id];
-      if (embedding) {
-        // Delete reference to large typed arrays
-        delete embeddingsMap[id];
+    // Safely remove embeddings via state updater to avoid direct mutation
+    setEmbeddingsMap(prev => {
+      if (!prev || imageIds.length === 0) return prev;
+      const next: typeof prev = { ...prev };
+      for (const id of imageIds) {
+        if (next[id]) delete next[id];
       }
-    }
-    
-    // Run garbage collection hint (not guaranteed, but helps)
+      return next;
+    });
+
     if (window.gc) {
       try {
         window.gc();
@@ -325,7 +379,7 @@ export default function ImageDuplicateDetectionPage() {
         console.log('Main: Manual garbage collection not available');
       }
     }
-  }, [embeddingsMap]);
+  }, []);
 
   // Non-blocking version of findAndGroupDuplicates placed before effects that depend on it
   const findAndGroupDuplicatesAsync = useCallback(async function(
@@ -375,7 +429,7 @@ export default function ImageDuplicateDetectionPage() {
       }
     }
     return groups.sort((a, b) => b.length - a.length);
-  }, [calculateSimilarity]);
+  }, []);
 
   // Modify the useEffect that processes embeddings to release resources
   useEffect(() => {
@@ -599,60 +653,7 @@ export default function ImageDuplicateDetectionPage() {
     reanalyzeAsync();
   };
 
-  function cosineSimilarity(vec1: ImageEmbedding, vec2: ImageEmbedding): number {
-    let dotProduct = 0;
-    let magnitude1 = 0;
-    let magnitude2 = 0;
-    for (let i = 0; i < vec1.length; i++) {
-      dotProduct += vec1[i] * vec2[i];
-      magnitude1 += vec1[i] * vec1[i];
-      magnitude2 += vec2[i] * vec2[i];
-    }
-    magnitude1 = Math.sqrt(magnitude1);
-    magnitude2 = Math.sqrt(magnitude2);
-    if (magnitude1 === 0 || magnitude2 === 0) return 0;
-    return dotProduct / (magnitude1 * magnitude2);
-  }
-
-  // Add Euclidean Distance function (from duplicate.py)
-  function euclideanDistance(vec1: ImageEmbedding, vec2: ImageEmbedding): number {
-    let sum = 0;
-    for (let i = 0; i < vec1.length; i++) {
-      const diff = vec1[i] - vec2[i];
-      sum += diff * diff;
-    }
-    return Math.sqrt(sum);
-  }
-
-  // Add Manhattan Distance function (from duplicate.py) 
-  function manhattanDistance(vec1: ImageEmbedding, vec2: ImageEmbedding): number {
-    let sum = 0;
-    for (let i = 0; i < vec1.length; i++) {
-      sum += Math.abs(vec1[i] - vec2[i]);
-    }
-    return sum;
-  }
-
-  // Updated function to calculate similarity/distance based on selected algorithm
-  function calculateSimilarity(
-    vec1: ImageEmbedding, 
-    vec2: ImageEmbedding, 
-    algorithm: SimilarityAlgorithm
-  ): number {
-    // Note: Embeddings are already normalized in the worker (normalize: true)
-    // This makes all distance metrics more meaningful and comparable
-    
-    switch (algorithm) {
-      case 'cosine':
-        return cosineSimilarity(vec1, vec2);
-      case 'euclidean':
-        return euclideanDistance(vec1, vec2);
-      case 'manhattan':
-        return manhattanDistance(vec1, vec2);
-      default:
-        return cosineSimilarity(vec1, vec2);
-    }
-  }
+  // Similarity helpers moved to module scope above
 
   // Optional: Helper function to verify embedding normalization (for debugging)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -664,10 +665,7 @@ export default function ImageDuplicateDetectionPage() {
     return Math.sqrt(magnitude);
   }
 
-  // Helper function to yield control back to main thread
-  const yieldToMainThread = () => {
-    return new Promise(resolve => setTimeout(resolve, 0));
-  };
+  // Yield helper moved to module scope above
 
   
 

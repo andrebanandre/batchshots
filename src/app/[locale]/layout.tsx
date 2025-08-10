@@ -48,51 +48,41 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params
 }: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  // Resolve the locale from the params promise
   const { locale } = await params;
-  
-  // Enable static rendering and provide locale to next-intl
   setRequestLocale(locale);
-  
-  // Ensure that the incoming `locale` is valid
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
-  // Get messages for current locale
   const messages = await getMessages({ locale });
 
   return (
-    <Providers 
+    <Providers
       intlProps={{
-         locale: locale, 
-         messages: messages,
-         timeZone: 'America/New_York'
+        locale,
+        messages,
+        timeZone: 'America/New_York',
       }}
     >
-      <html lang={locale}>
-        <head>
-          <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
-        </head>
-        <body
-          className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
-          suppressHydrationWarning
-        >
-          <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-          <CookieConsentWrapper />
-        </body>
-      </html>
+      {/* Load OpenCV early; no explicit <head> here to avoid nested html/head */}
+      <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
+      <div
+        className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
+        suppressHydrationWarning
+      >
+        <Navbar />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+        <CookieConsentWrapper />
+      </div>
     </Providers>
   );
 }

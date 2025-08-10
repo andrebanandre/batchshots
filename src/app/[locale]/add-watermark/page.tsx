@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
 // Pro removed
@@ -34,6 +34,20 @@ export default function AddWatermarkPage() {
   const [watermarkSettings, setWatermarkSettings] = useState<WatermarkSettings>(defaultWatermarkSettings);
   const [applyToAll, setApplyToAll] = useState(true);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
+  const imagesRef = useRef<WatermarkedImageFile[]>([]);
+  const lastAppliedSignatureRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    imagesRef.current = images;
+  }, [images]);
+
+  // Create a stable signature from settings and image ids to avoid reprocessing the same input
+  const makeSignature = useCallback((settings: WatermarkSettings, imgs: WatermarkedImageFile[]) => {
+    const ids = imgs.map(i => i.id);
+    // Only include fields from settings that affect rendering; assume settings is JSON-serializable
+    const settingsString = JSON.stringify(settings);
+    return `${settingsString}|${ids.join(',')}`;
+  }, []);
   
   // Select the first image by default when images are loaded
   useEffect(() => {
@@ -43,8 +57,8 @@ export default function AddWatermarkPage() {
   }, [images, selectedImageId]);
 
   // Process watermark when settings change - no debounce, immediate processing
-  const processWatermark = useCallback(async (settings: WatermarkSettings) => {
-    if (images.length === 0) return;
+  const processWatermark = useCallback(async (settings: WatermarkSettings, sourceImages: WatermarkedImageFile[]) => {
+    if (!sourceImages || sourceImages.length === 0) return;
     
     // No pro gating
     
@@ -53,11 +67,11 @@ export default function AddWatermarkPage() {
     try {
       // Process each image to add watermark
       const processed: WatermarkedImageFile[] = [];
-      for (let i = 0; i < images.length; i++) {
-        const image = images[i];
+      for (let i = 0; i < sourceImages.length; i++) {
+        const image = sourceImages[i];
         
         // Update progress percentage
-        setProgressPercent(Math.round((i / images.length) * 100));
+        setProgressPercent(Math.round((i / sourceImages.length) * 100));
         
         // Apply watermark to the image
         const { processedDataUrl, processedThumbnailUrl } = await processImage(
@@ -85,14 +99,27 @@ export default function AddWatermarkPage() {
     } finally {
       setIsProcessing(false);
     }
-  }, [images, t]);
+  }, [t]);
 
   // Apply watermark whenever settings change
   useEffect(() => {
-    if (watermarkSettings.enabled && images.length > 0) {
-      processWatermark(watermarkSettings);
+    if (!watermarkSettings.enabled) return;
+    if (images.length === 0) return;
+    if (isProcessing) return;
+
+    const signature = makeSignature(watermarkSettings, imagesRef.current);
+    if (lastAppliedSignatureRef.current === signature) {
+      return; // Already applied for this settings + image set
     }
-  }, [watermarkSettings, images.length, processWatermark]);
+
+    // Use ref to avoid effect dependency on images object identity
+    void (async () => {
+      await processWatermark(watermarkSettings, imagesRef.current);
+      // Record signature after successful processing to prevent immediate re-run
+      lastAppliedSignatureRef.current = signature;
+    })();
+    // Intentionally depend only on images.length to avoid reprocessing on identity changes
+  }, [watermarkSettings, images.length, isProcessing, processWatermark, makeSignature]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
