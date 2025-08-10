@@ -1,17 +1,10 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import LanguageSelector from './LanguageSelector';
-import {
-  UserButton,
-  useAuth,
-} from '@clerk/nextjs';
-import { neobrutalism } from '@clerk/themes';
-import UserProStatus from './UserProStatus';
 import MobileMenu from './MobileMenu';
-import LoginDialog from './LoginDialog';
 
 // Simple SVG logo component
 const Logo = () => (
@@ -26,7 +19,6 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { isSignedIn } = useAuth();
   const t = useTranslations('Navbar');
   
   // Handle clicks outside the dropdown to close it
@@ -91,49 +83,23 @@ export default function Navbar() {
                 <Link href="/background-removal" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
                   {t('removeBackgrounds')}
                 </Link>
-                <Link href="/ai-image-seo-caption-generation" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
-                  {t('aiImageSeoCaptionGeneration')}
-                </Link>
+                {/* Removed Gemini feature link */}
                 <Link href="/add-watermark" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
                   {t('addWatermark')}
                 </Link>
                 <Link href="/image-format-convertor" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black">
                   {t('imageFormatConvertor')}
                 </Link>
-                <Link href="/seo-description" className="block px-4 py-2 text-sm hover:bg-slate-100 flex items-center gap-2">
-                  {t('seoDescription')}
-                </Link>
-                <Link href="/object-removal" className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black flex items-center gap-2">
-                  {t('objectRemoval')}
-                  <span className="ml-2 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
-                </Link>
+                 {/* Removed SEO description (Gemini) link */}
+                 {/* Removed object removal */}
               </div>
             )}
           </div>
           {/* <Link href="/backgrounds" className="font-bold text-lg uppercase hover:text-primary transition-colors">
             {t('aiBackgrounds')}
           </Link> */}
-          <Link href="/pricing" className="font-bold text-lg uppercase hover:text-primary transition-colors">
-            {t('pricing')}
-          </Link>
-          <div className="ml-2 flex items-center space-x-2">
-            {isSignedIn && (
-              <div className="flex items-center gap-2">
-                <UserProStatus />
-                <UserButton 
-                  appearance={{
-                    baseTheme: neobrutalism,
-                    elements: {
-                      userButtonAvatarBox: 'border-3 border-black brutalist-border'
-                    }
-                  }}
-                />
-              </div>
-            )}
-            {!isSignedIn && (
-              <LoginDialog variant="primary" size="sm" />
-            )}
-          </div>
+          {/* Pricing removed */}
+          {/* Auth removed */}
        
         </nav>
         

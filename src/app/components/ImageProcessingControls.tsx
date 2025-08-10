@@ -5,7 +5,7 @@ import QuickPresets from './QuickPresets';
 import { useImageProcessing } from '../contexts/ImageProcessingContext';
 import { useTranslations } from 'next-intl';
 import Button from './Button';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Loader from './Loader';
 
 export interface ImageAdjustments {
@@ -43,7 +43,7 @@ export default function ImageProcessingControls({
 }: ImageProcessingControlsProps) {
   const t = useTranslations('Components.ImageProcessingControls');
   const tBackgroundRemoval = useTranslations('Components.BackgroundRemoval');
-  const tObjectRemoval = useTranslations('ObjectRemovalPage');
+  // Object removal removed
   const tNavbar = useTranslations('Navbar');
   
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced' | 'ai'>('basic');
@@ -344,16 +344,7 @@ export default function ImageProcessingControls({
               >
                 {tBackgroundRemoval('title')}
               </Button>
-              <Button
-                as={Link}
-                href="/object-removal"
-                variant="default"
-                fullWidth
-                disabled={isProcessing}
-                target="_blank"
-              >
-                {tObjectRemoval('title')}
-              </Button>
+              {/* Object removal removed */}
               <Button
                 as={Link}
                 href="/ai-photo-duplicate-finder"
@@ -364,26 +355,7 @@ export default function ImageProcessingControls({
               >
                 {tNavbar('aiPhotoDuplicateFinder')}
               </Button>
-              <Button
-                as={Link}
-                href="/ai-image-seo-caption-generation"
-                variant="default"
-                fullWidth
-                disabled={isProcessing}
-                target="_blank"
-              >
-                {tNavbar('aiImageSeoCaptionGeneration')}
-              </Button>
-              <Button
-                as={Link}
-                href="/seo-description"
-                variant="default"
-                fullWidth
-                disabled={isProcessing}
-                target="_blank"
-              >
-                {tNavbar('seoDescription')}
-              </Button>
+              {/* Gemini tools removed */}
             </div>
           </>
         )}

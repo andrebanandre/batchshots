@@ -60,6 +60,22 @@ const EmbeddingVisualization: React.FC<EmbeddingVisualizationProps> = ({
   const [hoveredPointIndex, setHoveredPointIndex] = useState<number | null>(null);
   const tooltipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const handleUMAPComplete = useCallback((reducedEmbeddings: number[][], imageIds: string[]) => {
+    const newVisualizationData: VisualizationData[] = [];
+    reducedEmbeddings.forEach((coords, index) => {
+      const imageId = imageIds[index];
+      const imageInfo = imageInfos.find(info => info.id === imageId);
+      const embedding = embeddings[imageInfo?.originalIndex ?? -1];
+      if (imageInfo && embedding) {
+        newVisualizationData.push({ position: [coords[0], coords[1]], imageInfo, embedding });
+      }
+    });
+    setVisualizationData(newVisualizationData);
+    setIsProcessing(false);
+    setProcessingStatus('');
+    onVisualizationReady?.();
+  }, [imageInfos, embeddings, onVisualizationReady]);
+
   // Initialize UMAP worker
   useEffect(() => {
     const worker = new Worker(new URL('../[locale]/ai-photo-duplicate-finder/umap.worker.js', import.meta.url), {
@@ -93,7 +109,7 @@ const EmbeddingVisualization: React.FC<EmbeddingVisualizationProps> = ({
     return () => {
       worker.terminate();
     };
-  }, []);
+  }, [handleUMAPComplete]);
 
   // Initialize Three.js scene
   useEffect(() => {
@@ -223,28 +239,7 @@ const EmbeddingVisualization: React.FC<EmbeddingVisualizationProps> = ({
     };
   }, [isCollapsed, visualizationData]);
 
-  const handleUMAPComplete = useCallback((reducedEmbeddings: number[][], imageIds: string[]) => {
-    const newVisualizationData: VisualizationData[] = [];
-    
-    reducedEmbeddings.forEach((coords, index) => {
-      const imageId = imageIds[index];
-      const imageInfo = imageInfos.find(info => info.id === imageId);
-      const embedding = embeddings[imageInfo?.originalIndex ?? -1];
-      
-      if (imageInfo && embedding) {
-        newVisualizationData.push({
-          position: [coords[0], coords[1]],
-          imageInfo,
-          embedding
-        });
-      }
-    });
-
-    setVisualizationData(newVisualizationData);
-    setIsProcessing(false);
-    setProcessingStatus('');
-    onVisualizationReady?.();
-  }, [imageInfos, embeddings, onVisualizationReady]);
+  
 
   // Create point cloud from visualization data
   useEffect(() => {

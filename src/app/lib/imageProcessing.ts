@@ -4,7 +4,7 @@ import { Preset } from '../components/PresetsSelector';
 import { ImageFile } from '../components/ImagePreview';
 import { WatermarkSettings, WatermarkPosition, defaultWatermarkSettings } from '../components/WatermarkControl';
 import JSZip from 'jszip';
-import { SeoProductDescription } from './gemini';
+// Gemini removed
 
 // Import the OpenCV type from our declaration file
 declare global {
@@ -1064,13 +1064,12 @@ export const downloadAllImages = async (
   images: ImageFile[], 
   format: ImageFormat = 'jpg', 
   asZip: boolean = false,
-  seoProductDescription: SeoProductDescription | null = null,
   adjustments?: ImageAdjustments
 ): Promise<void> => {
   if (images.length === 0) return;
   
   // If there's only one image and we don't need a zip, download it directly
-  if (images.length === 1 && !asZip && !seoProductDescription) {
+  if (images.length === 1 && !asZip) {
     const image = images[0];
     const dataUrl = image.processedDataUrl || image.dataUrl || '';
     const sourceFilename = image.file.name;
@@ -1121,27 +1120,7 @@ export const downloadAllImages = async (
     }
   }
   
-  // Add SEO product description to ZIP if provided
-  if (seoProductDescription) {
-    // Create a directory for the SEO product description
-    const seoDir = zip.folder("seo-description");
-    
-    if (seoDir) {
-      // Create content for the SEO product description text file
-      let content = '';
-      content += `PRODUCT TITLE:\n${seoProductDescription.productTitle}\n\n`;
-      content += `META TITLE:\n${seoProductDescription.metaTitle}\n\n`;
-      content += `META DESCRIPTION:\n${seoProductDescription.metaDescription}\n\n`;
-      content += `SHORT DESCRIPTION:\n${seoProductDescription.shortDescription}\n\n`;
-      content += `LONG DESCRIPTION:\n${seoProductDescription.longDescription}\n\n`;
-      content += `CATEGORIES:\n${seoProductDescription.categories.join(' > ')}\n\n`;
-      content += `TAGS:\n${seoProductDescription.tags.join(', ')}\n\n`;
-      content += `URL SLUG:\n${seoProductDescription.urlSlug}\n\n`;
-      
-      // Add the text file to the ZIP
-      seoDir.file("product-description.txt", content);
-    }
-  }
+  // SEO product description removed
   
   // Generate the ZIP file and trigger download
   zip.generateAsync({ type: "blob" })

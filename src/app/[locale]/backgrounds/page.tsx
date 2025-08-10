@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../../components/Card';
 import Button from '../../components/Button';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 
 // Sample background types/presets for the feature
 const backgroundPresets = [

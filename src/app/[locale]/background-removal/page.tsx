@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
-import { useIsPro } from '../../hooks/useIsPro';
+// Pro removed
 import { useIsMobile } from '../../hooks/useIsMobile';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
-import ProBadge from '../../components/ProBadge';
-import PricingCard from '../../components/PricingCard';
+// Pro badge removed
+// Pricing card removed
 import { ImageFile } from '../../components/ImagePreview';
 import { createImageFile, processImage, downloadImage, downloadAllImages } from '../../lib/imageProcessing';
 import { processImageBackground, getUpdatedImageWithBackground, initializeBackgroundWorker, cleanupBackgroundWorker } from '../../lib/backgroundRemoval';
@@ -93,7 +93,8 @@ export default function BackgroundRemovalPage() {
   const t = useTranslations('Components.BackgroundRemovalPage');
   const tHome = useTranslations('Home');
 
-  const { isProUser, isLoading: isProLoading } = useIsPro();
+  const isProUser = true;
+  const isProLoading = false;
   const { isLowPerformanceDevice } = useIsMobile();
   const router = useRouter();
   const [images, setImages] = useState<ImageFile[]>([]);
@@ -409,9 +410,7 @@ export default function BackgroundRemovalPage() {
                   collapsible={false}
                   title={t('mainCard.title')}
                   variant="accent"
-                  headerRight={
-                    isProUser ? <ProBadge className="ml-2" /> : null
-                  }
+                  headerRight={null}
                 >
                   <div className="space-y-6 relative">
                     {/* Main loading overlay for the entire card */}
@@ -443,7 +442,7 @@ export default function BackgroundRemovalPage() {
                       {isProUser && (
                         <div className="bg-yellow-50 p-3 mb-2 brutalist-border">
                           <p className="text-sm font-bold flex items-center">
-                            {t('mainCard.info.proMode.title')} <ProBadge className="ml-2" />
+                            {t('mainCard.info.proMode.title')}
                           </p>
                           <p className="text-xs">
                             {t('mainCard.info.proMode.description')}
@@ -624,26 +623,7 @@ export default function BackgroundRemovalPage() {
               </div>
               
               <div className="space-y-6">
-                {!isProUser && !isProLoading && (
-                  <Card title={t('mainCard.upgradeCard.title')} variant="accent">
-                    <div className="space-y-4">
-                      <PricingCard
-                        title={t('mainCard.upgradeCard.plan.title')}
-                        price={t('mainCard.upgradeCard.plan.price')}
-                        isPro={true}
-                        features={[
-                          t('mainCard.upgradeCard.plan.features.0'),
-                          t('mainCard.upgradeCard.plan.features.1'),
-                          t('mainCard.upgradeCard.plan.features.2'),
-                          t('mainCard.upgradeCard.plan.features.3'),
-                          t('mainCard.upgradeCard.plan.features.4')
-                        ]}
-                        buttonText={t('mainCard.upgradeCard.plan.buttonText')}
-                        onSelectPlan={() => router.push('/pricing')}
-                      />
-                    </div>
-                  </Card>
-                )}
+                {/* Upgrade card removed */}
                 
                 <Card title={t('howItWorks.title')} variant="accent">
                   <div className="space-y-4">
@@ -686,7 +666,7 @@ export default function BackgroundRemovalPage() {
               
               <div className="mb-6">
                 <div className="flex items-center mb-4">
-                  <ProBadge className="mr-2" />
+                 
                   <span className="font-bold">{t('proDialog.featureTitle')}</span>
                 </div>
                 

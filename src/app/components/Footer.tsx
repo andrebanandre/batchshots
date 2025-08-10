@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import LanguageSelector from './LanguageSelector';
 
@@ -46,7 +46,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold uppercase mb-4">{t('quickLinks')}</h3>
             <nav className="flex flex-col space-y-2">
               <Link href="/" className="hover:text-primary text-sm">{tNavbar('imageOptimizer')}</Link>
-              <Link href="/pricing" className="hover:text-primary text-sm">{tNavbar('pricing')}</Link>
+              {/* Pricing removed */}
               <Link href="/privacy" className="hover:text-primary text-sm">{tHome('privacyPolicy')}</Link>
               <Link href="/terms" className="hover:text-primary text-sm">{tHome('termsOfUse')}</Link>
             </nav>

@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import Image from 'next/image';
-import { useIsPro } from '../../hooks/useIsPro';
+// Pro removed
 import Button from '../../components/Button';
 import Card from '../../components/Card';
-import ProBadge from '../../components/ProBadge';
-import PricingCard from '../../components/PricingCard';
+// Pro badge removed
+// Pricing card removed
 import { ImageFile } from '../../components/ImagePreview';
 import { createImageFile, processImage, downloadImage, downloadAllImages } from '../../lib/imageProcessing';
 import Loader from '../../components/Loader';
@@ -24,12 +24,13 @@ interface WatermarkedImageFile extends ImageFile {
 export default function AddWatermarkPage() {
   const t = useTranslations('WatermarkPage');
   const tHome = useTranslations('Home');
-  const { isProUser, isLoading: isProLoading } = useIsPro();
+  const isProUser = true;
+  const isProLoading = false;
   const router = useRouter();
   const [images, setImages] = useState<WatermarkedImageFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
-  const [showProUpgrade, setShowProUpgrade] = useState(false);
+  // Upgrade dialog removed
   const [watermarkSettings, setWatermarkSettings] = useState<WatermarkSettings>(defaultWatermarkSettings);
   const [applyToAll, setApplyToAll] = useState(true);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
@@ -45,11 +46,7 @@ export default function AddWatermarkPage() {
   const processWatermark = async (settings: WatermarkSettings) => {
     if (images.length === 0) return;
     
-    // For free users, check if they're trying to process more than 1 image
-    if (!isProUser && !isProLoading && images.length > 1) {
-      setShowProUpgrade(true);
-      return;
-    }
+    // No pro gating
     
     setIsProcessing(true);
     
@@ -95,7 +92,7 @@ export default function AddWatermarkPage() {
     if (watermarkSettings.enabled && images.length > 0) {
       processWatermark(watermarkSettings);
     }
-  }, [watermarkSettings, images.length, isProUser, isProLoading, t]);
+  }, [watermarkSettings, images.length, t]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
@@ -184,9 +181,7 @@ export default function AddWatermarkPage() {
                   collapsible={false}
                   title={t('mainCard.title')}
                   variant="accent"
-                  headerRight={
-                    isProUser ? <ProBadge className="ml-2" /> : null
-                  }
+                  headerRight={null}
                 >
                   <div className="space-y-6 relative">
                     {/* Main loading overlay for the entire card */}
@@ -204,27 +199,7 @@ export default function AddWatermarkPage() {
                         {t('mainCard.info.description')}
                       </p>
                       
-                      {!isProUser && !isProLoading && (
-                        <div className="bg-yellow-50 p-3 mb-2 brutalist-border">
-                          <p className="text-sm font-bold flex items-center">
-                            {t('mainCard.info.freeMode.title')}
-                          </p>
-                          <p className="text-xs">
-                            {t('mainCard.info.freeMode.description')}
-                          </p>
-                        </div>
-                      )}
-                      
-                      {isProUser && (
-                        <div className="bg-yellow-50 p-3 mb-2 brutalist-border">
-                          <p className="text-sm font-bold flex items-center">
-                            {t('mainCard.info.proMode.title')} <ProBadge className="ml-2" />
-                          </p>
-                          <p className="text-xs">
-                            {t('mainCard.info.proMode.description')}
-                          </p>
-                        </div>
-                      )}
+                      {/* Pro/Free banners removed */}
                     </div>
                   
                     {/* Upload and Process Area */}
@@ -233,25 +208,23 @@ export default function AddWatermarkPage() {
                         {images.length === 0 ? (
                           <div className="text-center">
                             <p className="text-lg font-bold mb-4">{t('mainCard.upload.title')}</p>
-                            <input
-                              type="file"
-                              accept="image/*"
-                              multiple={isProUser}
-                              onChange={handleFileChange}
-                              className="hidden"
-                              id="fileInput"
-                              disabled={isProcessing}
-                            />
+                               <input
+                               type="file"
+                               accept="image/*"
+                               multiple
+                               onChange={handleFileChange}
+                               className="hidden"
+                               id="fileInput"
+                               disabled={isProcessing}
+                             />
                             <div className="flex flex-col items-center gap-2 space-y-6">
                               <label htmlFor="fileInput" className="inline-block">
                                 <Button as="span" variant="primary" size="lg" disabled={isProcessing}>
-                                  {isProUser ? t('mainCard.upload.buttonPro') : t('mainCard.upload.buttonFree')}
+                                  {t('mainCard.upload.buttonFree')}
                                 </Button>
                               </label>
                               
-                              <span className="text-xs text-gray-600">
-                                {isProUser ? t('mainCard.upload.helpTextPro') : t('mainCard.upload.helpTextFree')}
-                              </span>
+                              <span className="text-xs text-gray-600">{t('mainCard.upload.helpTextFree')}</span>
                             </div>
                           </div>
                         ) : (
@@ -363,26 +336,7 @@ export default function AddWatermarkPage() {
               </div>
               
               <div className="space-y-6">
-                {!isProUser && !isProLoading && (
-                  <Card title={t('mainCard.upgradeCard.title')} variant="accent">
-                    <div className="space-y-4">
-                      <PricingCard
-                        title={t('mainCard.upgradeCard.plan.title')}
-                        price={t('mainCard.upgradeCard.plan.price')}
-                        isPro={true}
-                        features={[
-                          t('mainCard.upgradeCard.plan.features.0'),
-                          t('mainCard.upgradeCard.plan.features.1'),
-                          t('mainCard.upgradeCard.plan.features.2'),
-                          t('mainCard.upgradeCard.plan.features.3'),
-                          t('mainCard.upgradeCard.plan.features.4')
-                        ]}
-                        buttonText={t('mainCard.upgradeCard.plan.buttonText')}
-                        onSelectPlan={() => router.push('/pricing')}
-                      />
-                    </div>
-                  </Card>
-                )}
+                {/* Upgrade card removed */}
                 
                 <Card title={t('howItWorks.title')} variant="accent">
                   <div className="space-y-4">
@@ -390,7 +344,6 @@ export default function AddWatermarkPage() {
                       <h3 className="font-bold mb-2">{t('howItWorks.step1.title')}</h3>
                       <p className="text-sm">
                         {t('howItWorks.step1.description')}
-                        {isProUser ? ` ${t('howItWorks.step1.proNote')}` : ''}
                       </p>
                     </div>
                     
@@ -410,58 +363,7 @@ export default function AddWatermarkPage() {
           )}
         </div>
         
-        {/* Pro Upgrade Dialog */}
-        {showProUpgrade && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white brutalist-border border-3 border-black p-6 max-w-md w-full">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">{t('proDialog.title')}</h3>
-                <button onClick={() => setShowProUpgrade(false)} className="text-gray-500 hover:text-gray-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              
-              <div className="mb-6">
-                <div className="flex items-center mb-4">
-                  <ProBadge className="mr-2" />
-                  <span className="font-bold">{t('proDialog.featureTitle')}</span>
-                </div>
-                
-                <p className="mb-4 text-sm">{t('proDialog.description')}</p>
-                
-                <div className="brutalist-border p-3 bg-yellow-50 mb-4">
-                  <p className="font-bold text-center mb-2">{t('proDialog.pricing.title')}</p>
-                  <p className="text-3xl font-bold text-center">{t('proDialog.pricing.price')}</p>
-                  <p className="text-center text-sm text-gray-600">{t('proDialog.pricing.note')}</p>
-                </div>
-              </div>
-              
-              <div className="flex flex-col space-y-3">
-                <Button 
-                  variant="primary"
-                  onClick={() => router.push('/pricing')}
-                  className="w-full"
-                >
-                  {t('proDialog.actions.upgrade')}
-                </Button>
-                
-                <Button 
-                  variant="secondary"
-                  onClick={() => {
-                    setShowProUpgrade(false);
-                    // Process only the first image for free users
-                    setImages([images[0]]);
-                  }}
-                  className="w-full"
-                >
-                  {t('proDialog.actions.continue')}
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Upgrade dialog removed */}
       </main>
     </>
   );

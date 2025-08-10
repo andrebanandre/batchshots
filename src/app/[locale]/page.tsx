@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Card from '../components/Card';
 import Button from '../components/Button';
 import ImagePreview, { ImageFile } from '../components/ImagePreview';
@@ -11,9 +11,8 @@ import WatermarkControl, { WatermarkSettings, defaultWatermarkSettings } from '.
 import DownloadOptions, { ImageFormat } from '../components/DownloadOptions';
 import DownloadDialog from '../components/DownloadDialog';
 import SeoNameGenerator, { SeoImageName } from '../components/SeoNameGenerator';
-import SeoProductDescriptionGenerator from '../components/SeoProductDescriptionGenerator';
-import { useIsPro } from '../hooks/useIsPro';
-import { useRouter } from 'next/navigation';
+// Pro removed
+// Router not used
 import { YouTubeEmbed } from '@next/third-parties/google';
 // Import heic-to for HEIC conversion
 import { heicTo, isHeic } from 'heic-to';
@@ -27,10 +26,8 @@ import {
 } from '../lib/imageProcessing';
 import Loader from '../components/Loader';
 import { ImageProcessingProvider } from '../contexts/ImageProcessingContext';
-import ProUpgradeDialog from '../components/ProUpgradeDialog';
+// Upgrade dialog removed
 import ProBadge from '../components/ProBadge';
-import { SeoProductDescription } from '../lib/gemini';
-import BuyProButton from '../components/BuyProButton';
 
 // Helper function to detect HEIC/HEIF files
 const isHeicFormat = async (file: File): Promise<boolean> => {
@@ -88,9 +85,9 @@ const convertHeicToPng = async (file: File): Promise<File | null> => {
 
 export default function Home() {
   const t = useTranslations('Home');
-  const tDialogs = useTranslations('Dialogs');
-  const tPricing = useTranslations('Pricing');
-  const locale = useLocale();
+  // const tDialogs = useTranslations('Dialogs');
+  // Pricing removed
+  // locale not needed in free static mode
   const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
   const [adjustments, setAdjustments] = useState<ImageAdjustments>(defaultAdjustments);
@@ -101,14 +98,15 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [applyToAll, setApplyToAll] = useState(true);
-  const { isProUser } = useIsPro();
-  const router = useRouter();
+  const isProUser = false;
+  // const router = useRouter();
   
   // Calculate max images based on pro status
-  const MAX_IMAGES = isProUser ? 100 : 5;
+  // Free version: set generous but static limit, no pro gating
+  const MAX_IMAGES = 100;
   
   // Show upgrade dialog
-  const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
+  // Upgrade dialog removed
   
   // Download dialog state
   const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
@@ -121,7 +119,7 @@ export default function Home() {
   const [isGeneratingSeoNames, setIsGeneratingSeoNames] = useState(false);
   
   // SEO product description state
-  const [seoProductDescription, setSeoProductDescription] = useState<SeoProductDescription | null>(null);
+  // Removed Gemini SEO product description
 
   // Initialize OpenCV.js
   useEffect(() => {
@@ -313,9 +311,7 @@ export default function Home() {
           }
           
           // Show dialog for upgrade if user hit the limit with this upload
-          if (images.length === 0 && newImages.length > MAX_IMAGES) {
-            setShowUpgradeDialog(true);
-          }
+          // No upgrade dialog in all-free version
         }
       } else {
         setImages(totalImages);
@@ -442,7 +438,7 @@ export default function Home() {
       setImages(fullyProcessedImages);
       
       // Download all the processed images 
-      downloadAllImages(fullyProcessedImages, format, true, seoProductDescription); // Removed adjustments from here as they are baked in
+      downloadAllImages(fullyProcessedImages, format, true); // Removed adjustments from here as they are baked in
       
     } catch (error) {
       console.error('Error processing images for download all', error);
@@ -452,75 +448,27 @@ export default function Home() {
   };
 
   // Generate SEO-friendly names for images
-  const handleGenerateSeoNames = async (description: string, recaptchaToken: string, imageCount: number) => {
+  const handleGenerateSeoNames = async (description: string, _recaptchaToken: string, imageCount: number) => {
     if (!description.trim() || images.length === 0) return;
-    
     setIsGeneratingSeoNames(true);
-    
     try {
-      console.log(`[Client] Generating SEO names in language: ${locale}`);
-      
-      // Call the API endpoint to generate SEO names
-      const response = await fetch('/api/seo-names', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          description, 
-          recaptchaToken,
-          imageCount: imageCount || images.length, // Use provided count or fall back to total images
-          language: locale // Pass the current locale to the API
-        }),
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to generate SEO names');
-      }
-      
-      const data = await response.json();
-      const { seoNames: generatedSeoNames } = data;
-      
-      if (!generatedSeoNames || !Array.isArray(generatedSeoNames)) {
-        throw new Error('Invalid response from SEO names API');
-      }
-      
-      // Map the generated SEO names to images
-      const newSeoNames: SeoImageName[] = images.map((image, index) => {
-        // Use a generated name if available, otherwise create a default one
-        const seoName = index < generatedSeoNames.length 
-          ? generatedSeoNames[index] 
-          : `product-${index + 1}`;
-          
-        return {
-          id: image.id,
-          originalName: image.file.name,
-          seoName: seoName,
-          description,
-          extension: image.file.name.split('.').pop() || 'jpg'
-        };
-      });
-      
+      // Generate simple slug-based names client-side (free, no server)
+      const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
+      const base = normalize(description).slice(0, 50) || 'image';
+      const count = imageCount || images.length;
+      const generated = Array.from({ length: count }, (_, i) => `${base}-${i + 1}`);
+      const newSeoNames: SeoImageName[] = images.map((image, index) => ({
+        id: image.id,
+        originalName: image.file.name,
+        seoName: generated[index] || `${base}-${index + 1}`,
+        description,
+        extension: image.file.name.split('.').pop() || 'jpg'
+      }));
       setSeoNames(newSeoNames);
-      
-      // Update the images with the SEO names
-      setImages(prevImages => 
-        prevImages.map(image => {
-          const seoNameData = newSeoNames.find(seo => seo.id === image.id);
-          if (seoNameData) {
-            return {
-              ...image,
-              seoName: seoNameData.seoName,
-              originalName: image.file.name // Keep original name for reference
-            };
-          }
-          return image;
-        })
-      );
-      
-    } catch (error) {
-      console.error('Error generating SEO names:', error);
-      alert('Failed to generate SEO names. Please try again.');
+      setImages(prev => prev.map(img => {
+        const m = newSeoNames.find(n => n.id === img.id);
+        return m ? { ...img, seoName: m.seoName, originalName: img.file.name } : img;
+      }));
     } finally {
       setIsGeneratingSeoNames(false);
     }
@@ -560,7 +508,7 @@ export default function Home() {
     setSelectedPreset(null);
     setCustomPresetSettings(null);
     setSeoNames([]);
-    setSeoProductDescription(null); // Reset description
+    // SEO product description removed
     setIsDownloadDialogOpen(false);
   };
 
@@ -570,9 +518,7 @@ export default function Home() {
   };
 
   // Handle SEO product description generation
-  const handleGenerateSeoProductDescription = (description: SeoProductDescription) => {
-    setSeoProductDescription(description);
-  };
+  // No-op: SEO product description removed
 
   return (
     <main className="container mx-auto px-4 py-8 max-w-6xl">
@@ -676,26 +622,13 @@ export default function Home() {
                     {!isProUser && (
                       <>
                         <div className="brutalist-border p-4 bg-white mt-6">
-                          <div className="flex items-center mb-2">
-                            <p className="font-bold">{t('freePlan')}</p>
-                          </div>
+                 
                           <p className="text-sm mb-3">{t('freeDescription', { maxImages: MAX_IMAGES })}</p>
                           <div className="text-center mt-2">
-                            <Button 
-                              variant="secondary" 
-                              size="md"
-                              onClick={() => router.push('/pricing')}
-                              className="w-full md:w-auto"
-                            >
-                              {t('learnMoreAboutPro')}
-                            </Button>
+                            {/* Premium CTA removed */}
                           </div>
                         </div>
-                        <div className="brutalist-border p-6 bg-yellow-400 text-center mt-6">
-                          <h3 className="text-xl font-bold uppercase mb-2">{t('upgradeProTitle')}</h3>
-                          <p className="text-sm mb-4">{t('upgradeProDescription')}</p>
-                          <BuyProButton locale={locale} variant="accent" size="lg">{tPricing('plans.pro.buttonText')}</BuyProButton>
-                        </div>
+                        {/* Upgrade banner removed */}
                       </>
                     )}
 
@@ -750,7 +683,7 @@ export default function Home() {
               )}
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold">{t('imageEditor')}</h2>
-                {isProUser && <ProBadge />}
+                {/* Pro badge removed */}
               </div>
             
               <ImagePreview
@@ -790,14 +723,7 @@ export default function Home() {
                     </Button>
                   </label>
                   
-                  {!isProUser && images.length >= MAX_IMAGES && (
-                    <Button 
-                      variant="accent"
-                      onClick={() => router.push('/pricing')}
-                    >
-                      {t('upgradeToPro')}
-                    </Button>
-                  )}
+                  {/* Upgrade button removed */}
                 </div>
                 
                 <div className="text-sm">
@@ -842,14 +768,11 @@ export default function Home() {
                 imageCount={images.length}
               />
 
-              <SeoProductDescriptionGenerator 
-                onGenerateDescription={handleGenerateSeoProductDescription}
-                downloadWithImages={true}
-              />
+              {/* Removed SEO Product Description generator */}
 
               <DownloadOptions
                 onDownload={handleInitiateDownload}
-                hasSeoProductDescription={seoProductDescription !== null}
+                hasSeoProductDescription={false}
               />
             </div>
           </div>
@@ -871,17 +794,12 @@ export default function Home() {
         downloadComplete={downloadComplete}
         formatType={downloadFormat}
         hasSeoNames={images.some(img => !!img.seoName)}
-        hasSeoProductDescription={seoProductDescription !== null}
+        hasSeoProductDescription={false}
         hasWatermark={watermarkSettings.enabled}
       />
       
       {/* Pro Upgrade Dialog */}
-      <ProUpgradeDialog
-        isOpen={showUpgradeDialog}
-        onClose={() => setShowUpgradeDialog(false)}
-        feature={tDialogs('proUpgrade.feature')}
-        maxImagesCount={100}
-      />
+      {/* Upgrade dialog removed */}
       
       {/* Sticky CTA Styles */}
       <style jsx global>{`
@@ -908,3 +826,4 @@ export default function Home() {
     </main>
   );
 }
+

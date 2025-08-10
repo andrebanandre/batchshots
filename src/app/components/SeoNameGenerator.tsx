@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import Card from './Card';
 import Button from './Button';
-import ProBadge from './ProBadge';
-import { useIsPro } from '../hooks/useIsPro';
-import { useRouter } from 'next/navigation';
-import { getCaptchaToken } from '../lib/recaptcha';
+// Pro removed
 import Loader from './Loader';
 import { useTranslations } from 'next-intl';
-import ProDialog from './ProDialog';
+// Pro dialog removed
 
 export interface SeoImageName {
   id: string;
@@ -36,44 +33,22 @@ export default function SeoNameGenerator({
   
   const [globalDescription, setGlobalDescription] = useState('');
   const [recaptchaError, setRecaptchaError] = useState<string | null>(null);
-  const { isProUser, isLoading: isProLoading } = useIsPro();
-  const [showProDialog, setShowProDialog] = useState(false);
-  const router = useRouter();
 
   const handleGenerateSeoNames = async () => {
     if (globalDescription.trim() === '') return;
     
-    // Check if user is PRO
-    if (!isProUser && !isProLoading) {
-      setShowProDialog(true);
-      return;
-    }
-    
     setRecaptchaError(null);
-    
-    try {
-      const token = await getCaptchaToken('seo_name_generation');
-      
-      if (!token) {
-        setRecaptchaError('reCAPTCHA verification failed. Please try again.');
-        return;
-      }
-      
-      onGenerateSeoNames(globalDescription, token, imageCount);
-    } catch (error) {
-      console.error('reCAPTCHA error:', error);
-      setRecaptchaError('An error occurred during verification. Please try again.');
-    }
+    onGenerateSeoNames(globalDescription, '', imageCount);
   };
 
   const hasGeneratedNames = seoNames.length > 0;
 
 
   return (
-    <Card title={t('title')} className={className} variant="accent" headerRight={<ProBadge />}>
+    <Card title={t('title')} className={className} variant="accent">
       <div className="space-y-4">
         <div className="brutalist-border p-3 bg-white">
-          <h3 className="font-bold mb-3 text-sm uppercase">{t('enterDescription')} <ProBadge className="ml-1" /></h3>
+          <h3 className="font-bold mb-3 text-sm uppercase">{t('enterDescription')}</h3>
           <div className="space-y-3">
             <div className="flex items-center">
               <p className="text-xs">
@@ -89,9 +64,7 @@ export default function SeoNameGenerator({
               onChange={(e) => setGlobalDescription(e.target.value)}
               disabled={isGenerating}
             ></textarea>
-            <p className="text-xs text-gray-500">
-              {t('proLimit')}
-            </p>
+            {/* Pro limits removed */}
           </div>
         </div>
 
@@ -145,15 +118,7 @@ export default function SeoNameGenerator({
         )}
       </div>
 
-      {/* Pro Upgrade Dialog */}
-      {showProDialog && (
-        <ProDialog
-          onClose={() => setShowProDialog(false)}
-          onUpgrade={() => router.push('/pricing')}
-          featureName="AI SEO Image Naming"
-          featureLimit={100}
-        />
-      )}
+      {/* Pro dialog removed */}
     </Card>
   );
 } 

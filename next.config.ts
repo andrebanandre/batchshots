@@ -7,7 +7,8 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
+  // Export as fully static site
+  output: 'export',
   webpack: (config, { isServer }) => {
     // Add TypeScript file extensions
     config.resolve.extensions.push(".ts", ".tsx");
@@ -49,35 +50,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  // Headers for WASM and SharedArrayBuffer usage
-  async headers() {
-    return [
-      {
-        // Apply restrictive headers only to specific paths that need WASM/SharedArrayBuffer
-        source: "/api/:path*",
-        headers: [
-          {
-            key: "Cross-Origin-Embedder-Policy",
-            value: "require-corp",
-          },
-          {
-            key: "Cross-Origin-Opener-Policy",
-            value: "same-origin",
-          },
-        ],
-      },
-      {
-        // Less restrictive headers for pages with YouTube embeds
-        source: "/:path*",
-        headers: [
-          {
-            key: "Cross-Origin-Opener-Policy",
-            value: "same-origin",
-          },
-        ],
-      },
-    ];
-  },
+  // Note: Custom headers are not supported with output: 'export'
 };
 
 export default withNextIntl(nextConfig);

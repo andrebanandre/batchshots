@@ -49,16 +49,16 @@
         "upgradeProDescription": "Get more images, background removal, and advanced features with our one-time Pro upgrade.",
         "proMode": "PRO MODE ACTIVATED",
         "freePlan": "FREE PLAN",
-        "proDescription": "Process up to {maxImages} images at once with all premium features unlocked.",
-        "freeDescription": "Limited to {maxImages} images. Upgrade to PRO to process up to 100 images at once.",
-        "upgradeToPro": "UPGRADE TO PRO",
-        "learnMoreAboutPro": "LEARN MORE ABOUT PRO",
-        "selectImages": "SELECT IMAGES (UP TO {maxImages})",
+        "proDescription": "Process images freely with all features unlocked.",
+        "freeDescription": "All features are free and unlimited.",
+        "upgradeToPro": "",
+        "learnMoreAboutPro": "",
+        "selectImages": "SELECT IMAGES",
         "imageEditor": "IMAGE EDITOR",
         "selectMoreImages": "SELECT MORE IMAGES",
         "maxImagesReached": "MAX IMAGES REACHED",
         "imagesCount": "{current}/{max} images",
-        "upgradeFor": "(Upgrade for up to 100)",
+        "upgradeFor": "",
         "imageOptimization": "IMAGE OPTIMIZATION",
         "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong> Your privacy and security are guaranteed."
     },
@@ -127,21 +127,17 @@
             "info": {
                 "title": "AI BACKGROUND REMOVAL",
                 "description": "Remove the background from your product images with AI technology. The process occurs entirely in your browser for privacy.",
-                "freeMode": {
-                    "title": "FREE MODE",
-                    "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
-                },
-                "proMode": {
-                    "title": "PRO MODE",
-                    "description": "Process up to 100 images in bulk with your PRO account!"
-                }
+            "freeMode": {
+                "title": "ALL FEATURES",
+                "description": "Process as many images as you want. Everything is free."
+            }
             },
             "upload": {
                 "title": "Select Images",
-                "buttonFree": "SELECT AN IMAGE",
-                "buttonPro": "SELECT IMAGES",
-                "helpTextFree": "Free users can select 1 image at a time.",
-                "helpTextPro": "You can select up to 100 images at once."
+            "buttonFree": "SELECT IMAGES",
+            "buttonPro": "SELECT IMAGES",
+            "helpTextFree": "",
+            "helpTextPro": ""
             },
             "actions": {
                 "clear": "CLEAR",
@@ -171,7 +167,7 @@
                         "Batch processing for all features",
                         "One-time payment, lifetime access"
                     ],
-                    "buttonText": "UPGRADE NOW"
+                    "buttonText": ""
                 }
             }
         },
@@ -1083,8 +1079,8 @@
             "description": "Convert your images to different formats with just a few clicks.",
             "selectImages": "SELECT IMAGES (UP TO {maxImages})",
             "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong>",
-            "freeLimitInfo": "Free users can convert up to {maxImages} images at a time.",
-            "upgradeLink": "Upgrade to PRO"
+            "freeLimitInfo": "",
+            "upgradeLink": ""
         },
         "selectedImages": {
             "title": "SELECTED IMAGES ({count})"
@@ -1099,20 +1095,16 @@
                 "title": "IMAGE FORMAT CONVERSION",
                 "description": "Convert your images between formats like JPG, PNG, WebP, and AVIF. You can also resize your images during conversion.",
                 "freeMode": {
-                    "title": "FREE MODE",
-                    "description": "Process up to {maxImages} images at a time. Upgrade to PRO to convert up to 100 images in bulk!"
-                },
-                "proMode": {
-                    "title": "PRO MODE",
-                    "description": "Process up to 100 images in bulk with your PRO account!"
+                    "title": "ALL FEATURES",
+                    "description": "Process any number of images. Everything is free."
                 }
             },
             "upload": {
                 "title": "Select Images to Convert",
                 "buttonFree": "SELECT IMAGES",
                 "buttonPro": "SELECT IMAGES",
-                "helpTextFree": "Free users can select up to {maxImages} images at a time.",
-                "helpTextPro": "You can select up to 100 images at once."
+                "helpTextFree": "",
+                "helpTextPro": ""
             },
             "actions": {
                 "clear": "CLEAR",
@@ -1129,21 +1121,7 @@
                 "processing": "Processing...",
                 "percent": "{percent}%"
             },
-            "upgradeCard": {
-                "title": "UPGRADE TO PRO",
-                "plan": {
-                    "title": "PRO PLAN",
-                    "price": "$19.99",
-                    "features": [
-                        "Convert up to 100 images at once",
-                        "Resize images during conversion",
-                        "Convert from HEIC/HEIF to any format",
-                        "Background removal for product images",
-                        "One-time payment, lifetime access"
-                    ],
-                    "buttonText": "UPGRADE NOW"
-                }
-            }
+                "upgradeCard": {}
         },
         "targetFormat": {
             "title": "SELECT TARGET FORMAT"
@@ -1187,8 +1165,6 @@
             }
         },
         "alerts": {
-            "freeUserLimit": "Free users can convert up to 5 images at a time. Upgrade to PRO to convert up to 100 images in bulk!",
-            "maxImagesLimit": "Maximum 100 images allowed at once.",
             "conversionFailed": "Format conversion failed. Please try again."
         },
         "proDialog": {

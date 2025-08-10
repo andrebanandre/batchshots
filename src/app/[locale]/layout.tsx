@@ -9,24 +9,9 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Providers } from '../providers';
-import { ClerkProvider } from '@clerk/nextjs';
-import { neobrutalism } from '@clerk/themes'
 import CookieConsentWrapper from '../components/CookieConsentWrapper';
 
-// Import Clerk localizations
-import { enUS, deDE, frFR, nlNL, plPL, ruRU, ukUA, csCZ } from '@clerk/localizations';
-
-// Map your locale codes to Clerk localizations
-const clerkLocalizations: Record<string, typeof enUS> = {
-  en: enUS,
-  de: deDE,
-  fr: frFR,
-  nl: nlNL,
-  pl: plPL,
-  ru: ruRU,
-  uk: ukUA,
-  cs: csCZ,
-};
+// Clerk removed
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,6 +43,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
+// Required for output: 'export' so that all locale segments are statically generated
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function RootLayout({
   children,
   params
@@ -79,48 +69,30 @@ export default async function RootLayout({
   // Get messages for current locale
   const messages = await getMessages({ locale });
 
-  // Get Clerk localization for current locale
-  const clerkLocalization = clerkLocalizations[locale] || enUS;
-
   return (
-    <ClerkProvider
-      localization={clerkLocalization}
-      appearance={{
-        baseTheme: neobrutalism,
-        signIn: { baseTheme: neobrutalism },
-        signUp: { baseTheme: neobrutalism },
-        userButton: { baseTheme: neobrutalism },
-        userProfile: { baseTheme: neobrutalism },
+    <Providers 
+      intlProps={{
+         locale: locale, 
+         messages: messages,
+         timeZone: 'America/New_York'
       }}
     >
-      <Providers 
-        intlProps={{
-           locale: locale, 
-           messages: messages,
-           timeZone: 'America/New_York'
-        }}
-      >
-        <html lang={locale}>
-          <head>
-            <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
-          </head>
-          <body
-            className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
-            suppressHydrationWarning
-          >
-            <Navbar />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-            <CookieConsentWrapper />
-            <Script
-              strategy="beforeInteractive"
-              src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-            />
-          </body>
-        </html>
-      </Providers>
-    </ClerkProvider>
+      <html lang={locale}>
+        <head>
+          <Script src="/js/opencv-loader.js" strategy="beforeInteractive" />
+        </head>
+        <body
+          className={`${['ru', 'uk'].includes(locale) ? montserrat.variable : `${geistSans.variable} ${geistMono.variable}`} antialiased flex flex-col min-h-screen`}
+          suppressHydrationWarning
+        >
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+          <CookieConsentWrapper />
+        </body>
+      </html>
+    </Providers>
   );
 }

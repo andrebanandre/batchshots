@@ -1,20 +1,13 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import {
-  SignOutButton,
-  useAuth,
-  UserButton,
-} from '@clerk/nextjs';
-import { neobrutalism } from '@clerk/themes';
-import LoginDialog from './LoginDialog';
+// Auth removed
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
 }
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
-  const { isSignedIn } = useAuth();
   const t = useTranslations('Navbar');
   
   if (!isOpen) return null;
@@ -39,55 +32,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <Link href="/background-removal" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             {t('removeBackgrounds')}
           </Link>
-          <Link href="/ai-image-seo-caption-generation" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            {t('aiImageSeoCaptionGeneration')}
-          </Link>
+          {/* Removed Gemini feature link */}
           <Link href="/add-watermark" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             {t('addWatermark')}
           </Link>
           <Link href="/image-format-convertor" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
             {t('imageFormatConvertor')}
           </Link>
-          <Link href="/seo-description" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            {t('seoDescription')}
-          </Link>
-          <Link href="/object-removal" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100 flex items-center gap-2">
-            {t('objectRemoval')}
-            <span className="ml-2 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase">BETA</span>
-          </Link>
-          <Link href="/pricing" onClick={handleLinkClick} className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100">
-            {t('pricing')}
-          </Link>
-          <div className="pt-4 border-t-2 border-black">
-            {!isSignedIn && (
-              <div className="flex flex-col space-y-2">
-                <LoginDialog 
-                  variant="primary" 
-                  size="sm" 
-                  fullWidth 
-                  onClick={handleLinkClick} 
-                />
-              </div>
-            )}
-            {isSignedIn && (
-              <SignOutButton>
-                <div className="flex items-center justify-between py-2 px-4 brutalist-border text-lg font-bold cursor-pointer" onClick={handleLinkClick}>
-                  <span>{t('logout', { defaultValue: 'Logout' })}</span>
-                
-                  <UserButton
-                    appearance={{
-                      baseTheme: neobrutalism,
-                      elements: {
-                        userButtonAvatarBox: 'w-10 h-10 border-2 border-black brutalist-border',
-                        userButtonPopoverCard: 'brutalist-border border-3 border-black',
-                      },
-                    }}
-                  />
-                </div>
-              </SignOutButton>
-            )}
-            
-          </div>
+          {/* Removed SEO description link */}
+          {/* Removed object removal */}
+          {/* Pricing removed */}
+          {/* Auth removed */}
         </nav>
       </div>
     </div>

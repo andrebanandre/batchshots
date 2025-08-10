@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+// Router not used
 import Image from 'next/image';
-import { useIsPro } from '../../hooks/useIsPro';
+// Pro removed
 import Button from '../../components/Button';
 import Card from '../../components/Card';
-import ProBadge from '../../components/ProBadge';
-import PricingCard from '../../components/PricingCard';
+// Pro removed
 import { ImageFile } from '../../components/ImagePreview';
 import { createImageFile, downloadAllImages, downloadImage, ImageFormat } from '../../lib/imageProcessing';
 import { initOpenCV } from '../../lib/imageProcessing';
@@ -16,7 +15,7 @@ import { useTranslations } from 'next-intl';
 import PresetsSelector, { Preset, defaultPresets } from '../../components/PresetsSelector';
 import { convertImageFormat, supportedOutputFormats, isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter';
 import DownloadDialog from '../../components/DownloadDialog';
-import ProUpgradeDialog from '../../components/ProUpgradeDialog';
+// Upgrade dialog removed
 
 // Extend ImageFile type to include format conversion properties
 interface FormatConversionImageFile extends ImageFile {
@@ -28,14 +27,15 @@ export default function ImageFormatConvertorPage() {
   const t = useTranslations('ImageFormatConvertorPage');
   const tHome = useTranslations('Home');
 
-  const { isProUser, isLoading: isProLoading } = useIsPro();
-  const router = useRouter();
+  const isProUser = true;
+  const isProLoading = false;
+  // const router = useRouter();
   const [images, setImages] = useState<FormatConversionImageFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isConverting, setIsConverting] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
-  const [showProUpgrade, setShowProUpgrade] = useState(false);
+  // Pro upgrade removed
   const [selectedFormat, setSelectedFormat] = useState<string>('jpg');
   const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
   const [customPresetSettings, setCustomPresetSettings] = useState<Preset | null>(null);
@@ -49,7 +49,7 @@ export default function ImageFormatConvertorPage() {
   const [downloadFormat, setDownloadFormat] = useState<ImageFormat>('jpg');
 
   // Calculate max images based on pro status
-  const MAX_IMAGES = isProUser ? 100 : 5;
+  const MAX_IMAGES = 100;
 
   // Initialize OpenCV
   useEffect(() => {
@@ -113,16 +113,8 @@ export default function ImageFormatConvertorPage() {
     
     // Enforce the max images limit for non-pro users
     let fileArray = originalFileArray;
-    if (!isProUser && !isProLoading) {
-      // Check total images (current + new) against max
-      if (images.length + fileArray.length > MAX_IMAGES) {
-        // Only take what we can add
-        fileArray = fileArray.slice(0, MAX_IMAGES - images.length);
-        // Show pro upgrade dialog
-        setShowProUpgrade(true);
-      }
-    } else if (images.length + fileArray.length > 100) {
-      // Still enforce max 100 total for pro users
+    // No gating beyond hard cap of 100
+    if (images.length + fileArray.length > 100) {
       fileArray = fileArray.slice(0, 100 - images.length);
     }
     
@@ -208,10 +200,7 @@ export default function ImageFormatConvertorPage() {
     if (images.length === 0) return;
     
     // For free users, enforce MAX_IMAGES limit again
-    if (!isProUser && !isProLoading && images.length > MAX_IMAGES) {
-      setShowProUpgrade(true);
-      return;
-    }
+    // No pro gating
     
     setIsConverting(true);
     setProcessingErrors([]);
@@ -367,9 +356,7 @@ export default function ImageFormatConvertorPage() {
                 collapsible={false}
                 title={t('mainCard.title')}
                 variant="accent"
-                headerRight={
-                  isProUser ? <ProBadge className="ml-2" /> : null
-                }
+                  headerRight={null}
               >
                 <div className="space-y-6 relative">
                   {/* Main loading overlay for the entire card */}
@@ -387,27 +374,7 @@ export default function ImageFormatConvertorPage() {
                       {t('mainCard.info.description')}
                     </p>
                     
-                    {!isProUser && !isProLoading && (
-                      <div className="bg-yellow-50 p-3 mb-2 brutalist-border">
-                        <p className="text-sm font-bold flex items-center">
-                          {t('mainCard.info.freeMode.title')}
-                        </p>
-                        <p className="text-xs">
-                          {t('mainCard.info.freeMode.description', { maxImages: MAX_IMAGES })}
-                        </p>
-                      </div>
-                    )}
-                    
-                    {isProUser && (
-                      <div className="bg-yellow-50 p-3 mb-2 brutalist-border">
-                        <p className="text-sm font-bold flex items-center">
-                          {t('mainCard.info.proMode.title')} <ProBadge className="ml-2" />
-                        </p>
-                        <p className="text-xs">
-                          {t('mainCard.info.proMode.description')}
-                        </p>
-                      </div>
-                    )}
+                      {/* Pro/Free banners removed */}
                   </div>
                   
                   {/* Upload Area - Use same logic as background-removal/page.tsx */}
@@ -429,11 +396,11 @@ export default function ImageFormatConvertorPage() {
                         
                             <label htmlFor="fileInput" className="inline-block">
                               <Button as="span" variant="primary" size="lg" disabled={isProcessing || isConverting}>
-                                {isProUser ? t('mainCard.upload.buttonPro') : t('mainCard.upload.buttonFree')}
+                                {t('mainCard.upload.buttonFree')}
                               </Button>
                             </label>
                             <span className="text-xs text-gray-600">
-                              {isProUser ? t('mainCard.upload.helpTextPro') : t('mainCard.upload.helpTextFree', { maxImages: MAX_IMAGES })}
+                              {t('mainCard.upload.helpTextFree', { maxImages: MAX_IMAGES })}
                             </span>
                           </div>
                         </div>
@@ -486,25 +453,15 @@ export default function ImageFormatConvertorPage() {
                               {t('mainCard.actions.clear')}
                             </Button>
                             
-                            {!isProUser && images.length >= MAX_IMAGES ? (
-                              <Button 
-                                variant="accent"
-                                size="sm"
-                                onClick={() => setShowProUpgrade(true)}
-                              >
-                                {t('proDialog.title')}
-                              </Button>
-                            ) : (
-                              <input
-                                type="file"
-                                accept="image/*"
-                                multiple={true}
-                                onChange={handleFileChange}
-                                className="hidden"
-                                id="fileInputMore"
-                                disabled={isProcessing || isConverting || (images.length >= MAX_IMAGES && !isProUser) || images.length >= 100}
-                              />
-                            )}
+                            <input
+                              type="file"
+                              accept="image/*"
+                              multiple={true}
+                              onChange={handleFileChange}
+                              className="hidden"
+                              id="fileInputMore"
+                              disabled={isProcessing || isConverting || images.length >= 100}
+                            />
                             <label htmlFor="fileInputMore">
                               <Button 
                                 as="span" 
@@ -526,11 +483,7 @@ export default function ImageFormatConvertorPage() {
                           
                           <div className="text-sm">
                             {t('imagesCount', { current: images.length, max: MAX_IMAGES })}
-                            {!isProUser && images.length >= MAX_IMAGES && (
-                              <span className="ml-2 text-xs text-gray-600">
-                                {t('upgradeFor')}
-                              </span>
-                            )}
+                             {/* Upgrade hint removed */}
                           </div>
                         </div>
                         
@@ -628,26 +581,7 @@ export default function ImageFormatConvertorPage() {
             </div>
             
             <div className="space-y-6">
-              {!isProUser && !isProLoading && (
-                <Card title={t('mainCard.upgradeCard.title')} variant="accent">
-                  <div className="space-y-4">
-                    <PricingCard
-                      title={t('mainCard.upgradeCard.plan.title')}
-                      price={t('mainCard.upgradeCard.plan.price')}
-                      isPro={true}
-                      features={[
-                        t('mainCard.upgradeCard.plan.features.0'),
-                        t('mainCard.upgradeCard.plan.features.1'),
-                        t('mainCard.upgradeCard.plan.features.2'),
-                        t('mainCard.upgradeCard.plan.features.3'),
-                        t('mainCard.upgradeCard.plan.features.4')
-                      ]}
-                      buttonText={t('mainCard.upgradeCard.plan.buttonText')}
-                      onSelectPlan={() => router.push('/pricing')}
-                    />
-                  </div>
-                </Card>
-              )}
+              {/* Upgrade card removed */}
               
               <Card title={t('howItWorks.title')} variant="accent">
                 <div className="space-y-4">
@@ -719,14 +653,7 @@ export default function ImageFormatConvertorPage() {
         )}
       </div>
       
-      {/* Pro Upgrade Dialog */}
-      <ProUpgradeDialog
-        isOpen={showProUpgrade}
-        onClose={() => setShowProUpgrade(false)}
-        title={t('proDialog.title')}
-        feature={t('proDialog.featureTitle')}
-        maxImagesCount={MAX_IMAGES}
-      />
+      {/* Upgrade dialog removed */}
       
       {/* Download Dialog - Similar to DownloadDialog.tsx */}
       <DownloadDialog

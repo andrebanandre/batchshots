@@ -2,15 +2,14 @@
 
 import { useEffect, useState, useRef, ChangeEvent } from 'react';
 import NextImage from 'next/image'; // Aliased import
-import { useRouter } from 'next/navigation';
+// Router not used
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Loader from '../../components/Loader';
-import ProBadge from '../../components/ProBadge';
-import ProUpgradeDialog from '../../components/ProUpgradeDialog';
-import PricingCard from '../../components/PricingCard'; // Import PricingCard
+// ProBadge removed
+// Pro/Upgrade removed
 import EmbeddingVisualization from '../../components/EmbeddingVisualization'; // Add this import
-import { useIsPro } from '../../hooks/useIsPro';
+// Pro removed
 import { useIsMobile } from '../../hooks/useIsMobile'; // Import useIsMobile hook
 import { isHeicFormat, convertHeicToFormat } from '../../utils/imageFormatConverter'; // Added HEIC utilities
 import { downloadAllImages, downloadImage } from '../../lib/imageProcessing'; // Added for zip download
@@ -183,9 +182,10 @@ async function resizeImageForMobile(file: File): Promise<File> {
 
 export default function ImageDuplicateDetectionPage() {
   const t = useTranslations('ImageDuplicateDetectionPage');
-  const { isProUser, isLoading: isProStatusLoading } = useIsPro();
+  const isProUser = true;
+  const isProStatusLoading = false;
   const { isMobile, isLowPerformanceDevice } = useIsMobile(); // Get device capabilities
-  const router = useRouter();
+  // Router not needed
   const [status, setStatus] = useState<string>(t('AppInitializing'));
   const [workerStatus, setWorkerStatus] = useState<string>(t('AISetup'));
   const [imageGroups, setImageGroups] = useState<number[][]>([]);
@@ -201,8 +201,7 @@ export default function ImageDuplicateDetectionPage() {
   const [similarityThreshold, setSimilarityThreshold] = useState<number>(SIMILARITY_ALGORITHMS.cosine.defaultThreshold);
   const [processingThresholdChange, setProcessingThresholdChange] = useState<boolean>(false);
   const [isAddingMoreImages, setIsAddingMoreImages] = useState<boolean>(false);
-  // Add state for Pro dialog
-  const [showProDialog, setShowProDialog] = useState<boolean>(false);
+  // Pro dialog removed
   // Add new state for sequential processing
   const [processingQueue, setProcessingQueue] = useState<ImageInfo[]>([]);
   const [isProcessingQueue, setIsProcessingQueue] = useState<boolean>(false);
@@ -403,7 +402,7 @@ export default function ImageDuplicateDetectionPage() {
       
       processEmbeddings();
     }
-  }, [pendingFilesCount, embeddingsMap, similarityThreshold, t, isMobile, isLowPerformanceDevice, selectedAlgorithm]);
+  }, [pendingFilesCount, embeddingsMap, similarityThreshold, t, isMobile, isLowPerformanceDevice, selectedAlgorithm, releaseImageResources, findAndGroupDuplicatesAsync]);
 
   // Process images in sequence on mobile devices to prevent memory issues
   useEffect(() => {
@@ -708,24 +707,8 @@ export default function ImageDuplicateDetectionPage() {
     setIsAddingMoreImages(addingMore);
     
     // Handle limits for free users - take only the first FREE_USER_IMAGE_LIMIT images
-    let fileArray = inputFiles;
-    if (!isProUser && !isProStatusLoading) {
-      // Check if we need to show the pro upgrade dialog
-      if (addingMore) {
-        const currentCount = imageInfoRef.current.length;
-        if (currentCount + inputFiles.length > FREE_USER_IMAGE_LIMIT) {
-          // Only take what we can add
-          fileArray = inputFiles.slice(0, Math.max(0, FREE_USER_IMAGE_LIMIT - currentCount));
-          // Show pro upgrade dialog
-          setShowProDialog(true);
-        }
-      } else if (inputFiles.length > FREE_USER_IMAGE_LIMIT) {
-        // Take only the first FREE_USER_IMAGE_LIMIT images
-        fileArray = inputFiles.slice(0, FREE_USER_IMAGE_LIMIT);
-        // Show pro upgrade dialog
-        setShowProDialog(true);
-      }
-    }
+    const fileArray = inputFiles;
+    // Free/unlimited: no gating on number of images
 
     setStatus(t('ProcessingFilesHEIC'));
     
@@ -868,10 +851,7 @@ export default function ImageDuplicateDetectionPage() {
   };
 
   // Handle Pro dialog closing
-  const handleCloseProDialog = () => {
-    // On close, we can optionally navigate to pricing
-    setShowProDialog(false);
-  };
+  // Pro dialog removed
 
   async function calculateKpisDirectly(imageDataUrl: string, imageId: string): Promise<QualityKPIs | null> {
     if (!isCvReady || !window.cv || !window.cv.imread) {
@@ -1338,9 +1318,7 @@ export default function ImageDuplicateDetectionPage() {
                 collapsible={false}
                 title={t('MainCardTitle')}
                 variant="accent"
-                headerRight={
-                  isProUser ? <ProBadge className="ml-2" /> : null
-                }
+                  headerRight={null}
               >
                 <div className="space-y-6 relative">
                   {(pendingFilesCount > 0 || processingThresholdChange || isAnalyzingDuplicates) && (
@@ -1378,28 +1356,7 @@ export default function ImageDuplicateDetectionPage() {
                       {t('UploadSectionDescription')}
                     </p>
                     
-                    {/* Info section for pro/free status - styled like image-format-convertor page */}
-                    {!isProUser && (
-                      <div className="bg-yellow-50 p-3 mb-3 brutalist-border">
-                        <p className="text-sm font-bold flex items-center">
-                          {t('FreeModeTitle')}
-                        </p>
-                        <p className="text-xs">
-                          {t('FreeModeDescription', { limit: FREE_USER_IMAGE_LIMIT })}
-                        </p>
-                      </div>
-                    )}
-                    
-                    {isProUser && (
-                      <div className="bg-yellow-50 p-3 mb-3 brutalist-border">
-                        <p className="text-sm font-bold flex items-center">
-                          {t('ProModeTitle')} <ProBadge className="ml-2" />
-                        </p>
-                        <p className="text-xs">
-                          {t('ProModeDescription')}
-                        </p>
-                      </div>
-                    )}
+                    {/* Pro/Free banners removed */}
                     
          
                     
@@ -1407,23 +1364,20 @@ export default function ImageDuplicateDetectionPage() {
                       {/* Upload buttons container */}
                       <div className="flex flex-col items-center justify-center w-full space-y-4 max-w-sm">
                         <label htmlFor="fileInput" className="w-full flex justify-center">
-                          <Button as="span" variant="primary" size="lg" className="w-full max-w-xs text-center" disabled={isLoading || !isCvReady}>
-                            {isLoading ? t('ButtonSelectImagesLoading') 
-                              : !isCvReady ? t('ButtonSelectImagesInitializing') 
-                              : isProUser ? t('ButtonSelectImages') 
-                              : t('ButtonSelectImagesLimit', { limit: FREE_USER_IMAGE_LIMIT })}
-                          </Button>
+                           <Button as="span" variant="primary" size="lg" className="w-full max-w-xs text-center" disabled={isLoading || !isCvReady}>
+                             {isLoading ? t('ButtonSelectImagesLoading') : !isCvReady ? t('ButtonSelectImagesInitializing') : t('ButtonSelectImages')}
+                           </Button>
                         </label>
                         
                         {imageInfoRef.current.length > 0 && !isLoading && (
                           <label htmlFor="addMoreInput" className="w-full flex justify-center">
-                            <Button 
-                              as="span" 
-                              variant="default" 
-                              size="lg" 
-                              className="w-full max-w-xs text-center" 
-                              disabled={isLoading || !isCvReady || (!isProUser && imageInfoRef.current.length >= FREE_USER_IMAGE_LIMIT)}
-                            >
+                             <Button 
+                               as="span" 
+                               variant="default" 
+                               size="lg" 
+                               className="w-full max-w-xs text-center" 
+                               disabled={isLoading || !isCvReady}
+                             >
                               {isLoading && isAddingMoreImages ? t('ButtonAddMoreImagesLoading') : t('ButtonAddMoreImages')}
                             </Button>
                           </label>
@@ -1456,19 +1410,13 @@ export default function ImageDuplicateDetectionPage() {
                           {t('SupportedFormats')}
                         </span>
                         
-                        {/* Image count - like in image-format-convertor */}
-                        {imageInfoRef.current.length > 0 && (
-                          <div className="flex justify-between items-center w-full max-w-xs">
-                            <span className="text-sm font-medium">
-                              {t('imagesCount', { current: imageInfoRef.current.length, max: isProUser ? '∞' : FREE_USER_IMAGE_LIMIT })}
-                            </span>
-                            {!isProUser && imageInfoRef.current.length >= FREE_USER_IMAGE_LIMIT && (
-                              <span className="text-xs text-gray-600">
-                                {t('upgradeFor')}
-                              </span>
-                            )}
-                          </div>
-                        )}
+                       {imageInfoRef.current.length > 0 && (
+                         <div className="flex justify-between items-center w-full max-w-xs">
+                           <span className="text-sm font-medium">
+                             {t('imagesCount', { current: imageInfoRef.current.length, max: '∞' })}
+                           </span>
+                         </div>
+                       )}
                         
                         <p className="text-sm font-semibold">{status}</p>
                         <p className="text-xs text-gray-500">{t('AIStatusLabel', { status: workerStatus })}</p>
@@ -1756,27 +1704,7 @@ export default function ImageDuplicateDetectionPage() {
             </div>
             
             <div className="space-y-6">
-              {/* Pro upgrade card for non-pro users */}
-              {!isProUser && (
-                <Card title={t('UpgradeCardTitle')} variant="accent">
-                  <div className="space-y-4 p-1"> {/* Added small padding to match example style if PricingCard has its own internal padding */} 
-                    <PricingCard
-                      title={t('UpgradeCardPlanTitle')}
-                      price={t('UpgradeCardPlanPrice')}
-                      isPro={true} // This card represents the Pro plan
-                      features={[
-                        t('UpgradeCardFeature1'),
-                        t('UpgradeCardFeature2'),
-                        t('UpgradeCardFeature3'),
-                        t('UpgradeCardFeature4'),
-                        t('UpgradeCardFeature5'),
-                      ]}
-                      buttonText={t('UpgradeCardButton')}
-                      onSelectPlan={() => router.push('/pricing')}
-                    />
-                  </div>
-                </Card>
-              )}
+              {/* Upgrade card removed */}
               
               <Card title={t('HowItWorksTitle')} variant="accent">
                 <div className="space-y-4">
@@ -1827,16 +1755,7 @@ export default function ImageDuplicateDetectionPage() {
         )}
       </div>
 
-      {/* Pro Dialog */}
-      {showProDialog && (
-        <ProUpgradeDialog
-          isOpen={showProDialog}
-          onClose={handleCloseProDialog}
-          title={t('ProUpgradeTitle')}
-          feature={t('ProFeatureName')}
-          maxImagesCount={FREE_USER_IMAGE_LIMIT}
-        />
-      )}
+      {/* Pro dialog removed */}
     </main>
   );
 }
