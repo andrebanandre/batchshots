@@ -285,7 +285,7 @@
                 "title": "SEO-INHALT GENERIEREN",
                 "info": {
                     "title": "WAS IST DIESES TOOL?",
-                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen.",
+                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen."
                 },
                 "benefits": {
                     "complete": "KOMPLETTES SEO-PAKET",
@@ -315,7 +315,7 @@
                 "title": "SEO-INHALT GENERIEREN",
                 "info": {
                     "title": "WAS IST DIESES TOOL?",
-                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen.",
+                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen."
                 },
                 "benefits": {
                     "complete": "KOMPLETTES SEO-PAKET",
@@ -455,7 +455,7 @@
                 "title": "BILDHINTERGRÜNDE ENTFERNEN",
                 "info": {
                     "title": "KI-HINTERGRUNDENTFERNUNG",
-                    "description": "Entfernen Sie den Hintergrund Ihrer Produktbilder mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz.",
+                    "description": "Entfernen Sie den Hintergrund Ihrer Produktbilder mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz."
                 },
                 "upload": {
                     "title": "Bilder auswählen",
@@ -808,7 +808,7 @@
             "title": "KI-OBJEKTENTFERNUNG",
             "info": {
                 "title": "SO FUNKTIONIERT ES",
-                "description": "Entfernen Sie unerwünschte Objekte, Personen oder Text aus Ihren Bildern mit KI. Die Verarbeitung erfolgt vollständig in Ihrem Browser.",
+                "description": "Entfernen Sie unerwünschte Objekte, Personen oder Text aus Ihren Bildern mit KI. Die Verarbeitung erfolgt vollständig in Ihrem Browser."
             },
             "upload": {
                 "title": "Bild hochladen",
@@ -908,7 +908,7 @@
             "title": "WASSERZEICHEN SIE IHRE BILDER",
             "info": {
                 "title": "BENUTZERDEFINIERTE WASSERZEICHEN HINZUFÜGEN",
-                "description": "Schützen Sie Ihre Bilder mit benutzerdefinierten Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position an Ihre Markenbedürfnisse an.",
+                "description": "Schützen Sie Ihre Bilder mit benutzerdefinierten Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position an Ihre Markenbedürfnisse an."
             },
             "upload": {
                 "title": "Bilder auswählen",
@@ -1010,8 +1010,7 @@
             "title": "BILDER IN JEDES FORMAT KONVERTIEREN",
             "info": {
                 "title": "BILDFORMATKONVERTIERUNG",
-                "description": "Konvertieren Sie Ihre Bilder zwischen Formaten wie JPG, PNG, WebP und AVIF. Sie können Ihre Bilder auch während der Konvertierung in der Größe ändern.",
-                },
+                "description": "Konvertieren Sie Ihre Bilder zwischen Formaten wie JPG, PNG, WebP und AVIF. Sie können Ihre Bilder auch während der Konvertierung in der Größe ändern."
             },
             "upload": {
                 "title": "Zu konvertierende Bilder auswählen",

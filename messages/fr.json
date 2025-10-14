@@ -280,7 +280,7 @@
                 "title": "GÉNÉRER DU CONTENU SEO",
                 "info": {
                     "title": "QU'EST-CE QUE CET OUTIL ?",
-                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche.",
+                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche."
                 },
                 "benefits": {
                     "complete": "PACKAGE SEO COMPLET",
@@ -305,7 +305,7 @@
                 "title": "GÉNÉRER DU CONTENU SEO",
                 "info": {
                     "title": "QU'EST-CE QUE CET OUTIL ?",
-                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche.",
+                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche."
                 },
                 "benefits": {
                     "complete": "PACKAGE SEO COMPLET",
@@ -445,7 +445,7 @@
                 "title": "SUPPRIMER LES ARRIÈRE-PLANS D'IMAGES",
                 "info": {
                     "title": "SUPPRESSION D'ARRIÈRE-PLAN IA",
-                    "description": "Supprimez l'arrière-plan de vos images de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité.",
+                    "description": "Supprimez l'arrière-plan de vos images de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité."
                 },
                 "upload": {
                     "title": "Sélectionner des images",
@@ -798,7 +798,7 @@
             "title": "SUPPRESSION D'OBJETS IA",
             "info": {
                 "title": "COMMENT ÇA FONCTIONNE",
-                "description": "Supprimez les objets indésirables, les personnes ou le texte de vos images grâce à l'IA. Le traitement se fait entièrement dans votre navigateur.",
+                "description": "Supprimez les objets indésirables, les personnes ou le texte de vos images grâce à l'IA. Le traitement se fait entièrement dans votre navigateur."
             },
             "upload": {
                 "title": "Télécharger une image",
@@ -898,7 +898,7 @@
             "title": "FILIGRANEZ VOS IMAGES",
             "info": {
                 "title": "AJOUTER DES FILIGRANES PERSONNALISÉS",
-                "description": "Protégez vos images avec des filigranes texte ou logo personnalisés. Personnalisez l'opacité, la taille et la position pour répondre à vos besoins de marque.",
+                "description": "Protégez vos images avec des filigranes texte ou logo personnalisés. Personnalisez l'opacité, la taille et la position pour répondre à vos besoins de marque."
             },
             "upload": {
                 "title": "Sélectionner des images",
@@ -1000,8 +1000,7 @@
             "title": "CONVERTIR DES IMAGES DANS N'IMPORTE QUEL FORMAT",
             "info": {
                 "title": "CONVERSION DE FORMAT D'IMAGE",
-                "description": "Convertissez vos images entre des formats comme JPG, PNG, WebP et AVIF. Vous pouvez également redimensionner vos images pendant la conversion.",
-                },
+                "description": "Convertissez vos images entre des formats comme JPG, PNG, WebP et AVIF. Vous pouvez également redimensionner vos images pendant la conversion."
             },
             "upload": {
                 "title": "Sélectionner les images à convertir",

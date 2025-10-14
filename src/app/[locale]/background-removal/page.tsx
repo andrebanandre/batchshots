@@ -1,14 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "@/i18n/navigation";
 import Image from "next/image";
-// Pro removed
 import { useIsMobile } from "../../hooks/useIsMobile";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
-// Pro badge removed
-// Pricing card removed
 import { ImageFile } from "../../components/ImagePreview";
 import {
   createImageFile,
@@ -106,7 +102,6 @@ export default function BackgroundRemovalPage() {
   const tHome = useTranslations("Home");
 
   const { isLowPerformanceDevice } = useIsMobile();
-  const router = useRouter();
   const [images, setImages] = useState<ImageFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isRemovingBackground, setIsRemovingBackground] = useState(false);
@@ -114,7 +109,6 @@ export default function BackgroundRemovalPage() {
   const [progressPercent, setProgressPercent] = useState(0);
   const [isModelReady, setIsModelReady] = useState(false);
   const [isLoadingModel, setIsLoadingModel] = useState(false);
-  const [showProUpgrade, setShowProUpgrade] = useState(false);
   const [modelLoadingStatus, setModelLoadingStatus] = useState("");
 
   // Track processing status for each image
@@ -693,8 +687,6 @@ export default function BackgroundRemovalPage() {
               </div>
 
               <div className="space-y-6">
-                {/* Upgrade card removed */}
-
                 <Card title={t("howItWorks.title")} variant="accent">
                   <div className="space-y-4">
                     <div className="brutalist-border p-3 bg-white">
@@ -730,80 +722,6 @@ export default function BackgroundRemovalPage() {
             </div>
           )}
         </div>
-
-        {/* Pro Upgrade Dialog */}
-        {showProUpgrade && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white brutalist-border border-3 border-black p-6 max-w-md w-full">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold">{t("proDialog.title")}</h3>
-                <button
-                  onClick={() => setShowProUpgrade(false)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <div className="mb-6">
-                <div className="flex items-center mb-4">
-                  <span className="font-bold">
-                    {t("proDialog.featureTitle")}
-                  </span>
-                </div>
-
-                <p className="mb-4 text-sm">{t("proDialog.description")}</p>
-
-                <div className="brutalist-border p-3 bg-yellow-50 mb-4">
-                  <p className="font-bold text-center mb-2">
-                    {t("proDialog.pricing.title")}
-                  </p>
-                  <p className="text-3xl font-bold text-center">
-                    {t("proDialog.pricing.price")}
-                  </p>
-                  <p className="text-center text-sm text-gray-600">
-                    {t("proDialog.pricing.note")}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-col space-y-3">
-                <Button
-                  variant="primary"
-                  onClick={() => router.push("/pricing")}
-                  className="w-full"
-                >
-                  {t("proDialog.actions.upgrade")}
-                </Button>
-
-                <Button
-                  variant="secondary"
-                  onClick={() => {
-                    setShowProUpgrade(false);
-                    // Process only the first image for free users
-                    setImages([images[0]]);
-                  }}
-                  className="w-full"
-                >
-                  {t("proDialog.actions.continue")}
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
       </main>
     </>
   );

@@ -1,1382 +1,1381 @@
 {
-    "Manifest": {
-        "name": "Batch Shots"
+  "Manifest": {
+    "name": "Batch Shots"
+  },
+  "LocaleSwitcher": {
+    "label": "Zmień język",
+    "locale": "{locale, select, pl {🇵🇱 Polski} en {🇺🇸 English} other {Nieznany}}"
+  },
+  "CookieConsent": {
+    "title": "INFORMACJA O PLIKACH COOKIE",
+    "message": "Ta strona używa niezbędnych plików cookie, aby zapewnić jej prawidłowe działanie. Kontynuując korzystanie z naszej strony, zgadzasz się na to.",
+    "privacyLink": "Polityka prywatności",
+    "termsLink": "Warunki użytkowania",
+    "acceptButton": "AKCEPTUJĘ",
+    "rejectButton": "ODRZUCAM",
+    "learnMoreButton": "DOWIEDZ SIĘ WIĘCEJ"
+  },
+  "Home": {
+    "title": "Batch Shots: OPTYMALIZATOR OBRAZÓW SEO",
+    "loading": "ŁADOWANIE APLIKACJI...",
+    "loadingDescription": "Proszę czekać, inicjalizujemy możliwości przetwarzania obrazów.",
+    "transformTitle": "PRZEKSZTAŁĆ SWOJE ZDJĘCIA PRODUKTOWE",
+    "heroDescription": "Szybko optymalizuj swoje zdjęcia produktowe dla internetu, e-commerce i mediów społecznościowych za pomocą naszego narzędzia w przeglądarce.",
+    "privacyFocused": "SKONCENTROWANE NA PRYWATNOŚCI",
+    "privacyDescription": "Batch Shots przetwarza wszystkie obrazy bezpośrednio w Twojej przeglądarce. Nie przechowujemy Twoich zdjęć ani danych na naszych serwerach.",
+    "privacyPolicy": "Polityka prywatności",
+    "termsOfUse": "Warunki użytkowania",
+    "preparingImagesPreview": "Przygotowywanie podglądu obrazów...",
+    "features": {
+      "presets": {
+        "title": "PROFESJONALNE PRESETY",
+        "description": "Zastosuj zoptymalizowane presety dla e-commerce, mediów społecznościowych i wyświetlania w internecie jednym kliknięciem."
+      },
+      "aiPowered": {
+        "title": "SEO WSPOMAGANE PRZEZ AI",
+        "description": "Generuj przyjazne dla SEO nazwy plików za pomocą naszych narzędzi AI, aby poprawić widoczność Twoich produktów."
+      },
+      "advancedControls": {
+        "title": "ZAAWANSOWANE STEROWANIE",
+        "description": "Dostosuj jasność, kontrast, balans bieli i inne parametry, aby udoskonalić swoje zdjęcia produktowe."
+      },
+      "batchProcessing": {
+        "title": "PRZETWARZANIE WSADOWE",
+        "description": "Przetwarzaj wiele obrazów jednocześnie, aby zaoszczędzić czas i zapewnić spójne wyniki."
+      }
     },
-    "LocaleSwitcher": {
-        "label": "Zmień język",
-        "locale": "{locale, select, pl {🇵🇱 Polski} en {🇺🇸 English} other {Nieznany}}"
+    "upgradeProTitle": "ODBLOKUJ FUNKCJE PRO",
+    "upgradeProDescription": "Zyskaj więcej obrazów, usuwanie tła i zaawansowane funkcje dzięki naszej jednorazowej aktualizacji do wersji Pro.",
+    "freePlan": "DARMOWY PLAN",
+    "proDescription": "Przetwarzaj do {maxImages} obrazów jednocześnie ze wszystkimi odblokowanymi funkcjami premium.",
+    "freeDescription": "Ograniczone do {maxImages} obrazów. Zaktualizuj do PRO, aby przetwarzać do 100 obrazów jednocześnie.",
+    "upgradeToPro": "ZAKTUALIZUJ DO PRO",
+    "learnMoreAboutPro": "DOWIEDZ SIĘ WIĘCEJ O PRO",
+    "selectImages": "WYBIERZ OBRAZY (DO {maxImages})",
+    "imageEditor": "EDYTOR OBRAZÓW",
+    "selectMoreImages": "WYBIERZ WIĘCEJ OBRAZÓW",
+    "maxImagesReached": "OSIĄGNIĘTO MAKSYMALNĄ LICZBĘ OBRAZÓW",
+    "imagesCount": "{current}/{max} obrazów",
+    "upgradeFor": "(Zaktualizuj, aby uzyskać do 100)",
+    "imageOptimization": "OPTYMALIZACJA OBRAZÓW",
+    "dragAndDropPrivacy": "Przeciągnij i upuść obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong> Twoja prywatność i bezpieczeństwo są gwarantowane.",
+    "heicConversionFailed": "Nie udało się przekonwertować obrazu HEIC: {fileName}. Format pliku może nie być obsługiwany lub plik może być uszkodzony."
+  },
+  "Navbar": {
+    "imageOptimizer": "Optymalizator obrazów",
+    "removeBackgrounds": "Usuń tła",
+    "aiPhotoDuplicateFinder": "AI Duplikatfinder",
+    "aiImageSeoCaptionGeneration": "AI SEO opis obrazu",
+    "aiBackgrounds": "Tła AI",
+    "pricing": "Cennik",
+    "login": "ZALOGUJ SIĘ",
+    "objectRemoval": "Usuwanie obiektów",
+    "tools": "Narzędzia",
+    "addWatermark": "Dodaj znak wodny",
+    "seoDescription": "Opis SEO",
+    "imageFormatConvertor": "Konwerter formatu obrazu",
+    "profile": "Profil",
+    "logout": "Wyloguj się"
+  },
+  "Footer": {
+    "about": "Batch Shots pomaga szybko i łatwo zoptymalizować obrazy produktów pod kątem SEO, bezpośrednio w przeglądarce.",
+    "quickLinks": "SZYBKIE LINKI",
+    "stayUpdated": "BĄDŹ NA BIEŻĄCO",
+    "subscribeText": "Zapisz się do naszego newslettera, aby otrzymywać aktualizacje, porady i specjalne oferty.",
+    "emailPlaceholder": "Twój email",
+    "subscribe": "ZAPISZ SIĘ",
+    "copyright": "© {year} Batch Shots. Wszelkie prawa zastrzeżone.",
+    "madeWith": "Stworzone z ♥ przez zespół Batch Shots",
+    "contactUs": "Skontaktuj się z nami"
+  },
+  "Layout": {
+    "title": "Edytor Obrazów Zbiorczych i Optymalizator SEO | Batch Shots",
+    "description": "Łatwo edytuj, zmieniaj rozmiar, dodawaj znaki wodne i optymalizuj obrazy zbiorczo pod kątem SEO. Funkcje oparte na AI dla zdjęć produktów, usuwania tła i generowania nazw SEO.",
+    "keywords": "edytor obrazów, przetwarzanie zbiorcze obrazów, optymalizacja obrazów seo, znak wodny na zdjęciach, usuwanie tła, zdjęcia produktów, edycja zdjęć ai, batchshots"
+  },
+  "Components": {
+    "ImageProcessingControls": {
+      "title": "USTAWIENIA OBRAZU",
+      "reset": "RESETUJ",
+      "applyToAll": "ZASTOSUJ DO WSZYSTKICH OBRAZÓW",
+      "basic": "PODSTAWOWE",
+      "advanced": "ZAAWANSOWANE",
+      "ai": "AI",
+      "brightness": "JASNOŚĆ",
+      "contrast": "KONTRAST",
+      "sharpen": "WYOSTRZENIE",
+      "colorAdjust": "DOSTOSOWANIE KOLORU (HSL)",
+      "hue": "ODCIEŃ",
+      "cooler": "CHŁODNIEJSZY",
+      "warmer": "CIEPLEJSZY",
+      "saturation": "NASYCENIE",
+      "less": "MNIEJ",
+      "more": "WIĘCEJ",
+      "lightness": "JASNOŚĆ",
+      "darker": "CIEMNIEJSZY",
+      "lighter": "JAŚNIEJSZY",
+      "colorBalance": "BALANS KOLORÓW (RGB)",
+      "red": "CZERWONY",
+      "green": "ZIELONY",
+      "blue": "NIEBIESKI",
+      "processing": "PRZETWARZANIE..."
     },
-    "CookieConsent": {
-        "title": "INFORMACJA O PLIKACH COOKIE",
-        "message": "Ta strona używa niezbędnych plików cookie, aby zapewnić jej prawidłowe działanie. Kontynuując korzystanie z naszej strony, zgadzasz się na to.",
-        "privacyLink": "Polityka prywatności",
-        "termsLink": "Warunki użytkowania",
-        "acceptButton": "AKCEPTUJĘ",
-        "rejectButton": "ODRZUCAM",
-        "learnMoreButton": "DOWIEDZ SIĘ WIĘCEJ"
-    },
-    "Home": {
-        "title": "Batch Shots: OPTYMALIZATOR OBRAZÓW SEO",
-        "loading": "ŁADOWANIE APLIKACJI...",
-        "loadingDescription": "Proszę czekać, inicjalizujemy możliwości przetwarzania obrazów.",
-        "transformTitle": "PRZEKSZTAŁĆ SWOJE ZDJĘCIA PRODUKTOWE",
-        "heroDescription": "Szybko optymalizuj swoje zdjęcia produktowe dla internetu, e-commerce i mediów społecznościowych za pomocą naszego narzędzia w przeglądarce.",
-        "privacyFocused": "SKONCENTROWANE NA PRYWATNOŚCI",
-        "privacyDescription": "Batch Shots przetwarza wszystkie obrazy bezpośrednio w Twojej przeglądarce. Nie przechowujemy Twoich zdjęć ani danych na naszych serwerach.",
-        "privacyPolicy": "Polityka prywatności",
-        "termsOfUse": "Warunki użytkowania",
-        "preparingImagesPreview": "Przygotowywanie podglądu obrazów...",
-        "features": {
-            "presets": {
-                "title": "PROFESJONALNE PRESETY",
-                "description": "Zastosuj zoptymalizowane presety dla e-commerce, mediów społecznościowych i wyświetlania w internecie jednym kliknięciem."
-            },
-            "aiPowered": {
-                "title": "SEO WSPOMAGANE PRZEZ AI",
-                "description": "Generuj przyjazne dla SEO nazwy plików za pomocą naszych narzędzi AI, aby poprawić widoczność Twoich produktów."
-            },
-            "advancedControls": {
-                "title": "ZAAWANSOWANE STEROWANIE",
-                "description": "Dostosuj jasność, kontrast, balans bieli i inne parametry, aby udoskonalić swoje zdjęcia produktowe."
-            },
-            "batchProcessing": {
-                "title": "PRZETWARZANIE WSADOWE",
-                "description": "Przetwarzaj wiele obrazów jednocześnie, aby zaoszczędzić czas i zapewnić spójne wyniki."
-            }
+    "BackgroundRemoval": {
+      "title": "USUWANIE TŁA",
+      "selected": "Wybrany obraz",
+      "removeBackground": "USUŃ TŁO",
+      "allImages": "Wszystkie obrazy",
+      "backgroundsRemoved": "{count} z {total} tła usunięte",
+      "removeAllBackgrounds": "USUŃ WSZYSTKIE TŁA",
+      "processing": "Przetwarzanie...",
+      "backgroundRemoved": "Tło zostało pomyślnie usunięte!",
+      "transparent": "Wykryto przezroczyste tło",
+      "description": "Usuń tło z obrazu produktu za pomocą technologii AI. Przetwarzanie odbywa się całkowicie w Twojej przeglądarce dla zachowania prywatności.",
+      "processingInfo": {
+        "process": "Proces",
+        "processValue": "Przetwarzanie AI w przeglądarce",
+        "result": "Wynik",
+        "resultValue": "Przezroczyste tło PNG",
+        "mode": "Tryb"
+      },
+      "proDialog": {
+        "title": "ULEPSZ DO PRO",
+        "featureTitle": "FUNKCJA PRO: Usuwanie tła",
+        "description": "Ulepsz do PRO, aby odblokować usuwanie tła dla wszystkich Twoich obrazów (do 100 jednocześnie)! Zdobądź profesjonalnie wyglądające zdjęcia produktów z przezroczystym tłem.",
+        "pricing": {
+          "title": "JEDNORAZOWA PŁATNOŚĆ",
+          "price": "19,99 €",
+          "note": "Bez subskrypcji, dostęp dożywotni"
         },
-        "upgradeProTitle": "ODBLOKUJ FUNKCJE PRO",
-        "upgradeProDescription": "Zyskaj więcej obrazów, usuwanie tła i zaawansowane funkcje dzięki naszej jednorazowej aktualizacji do wersji Pro.",
-        "freePlan": "DARMOWY PLAN",
-        "proDescription": "Przetwarzaj do {maxImages} obrazów jednocześnie ze wszystkimi odblokowanymi funkcjami premium.",
-        "freeDescription": "Ograniczone do {maxImages} obrazów. Zaktualizuj do PRO, aby przetwarzać do 100 obrazów jednocześnie.",
-        "upgradeToPro": "ZAKTUALIZUJ DO PRO",
-        "learnMoreAboutPro": "DOWIEDZ SIĘ WIĘCEJ O PRO",
-        "selectImages": "WYBIERZ OBRAZY (DO {maxImages})",
-        "imageEditor": "EDYTOR OBRAZÓW",
-        "selectMoreImages": "WYBIERZ WIĘCEJ OBRAZÓW",
-        "maxImagesReached": "OSIĄGNIĘTO MAKSYMALNĄ LICZBĘ OBRAZÓW",
-        "imagesCount": "{current}/{max} obrazów",
-        "upgradeFor": "(Zaktualizuj, aby uzyskać do 100)",
-        "imageOptimization": "OPTYMALIZACJA OBRAZÓW",
-        "dragAndDropPrivacy": "Przeciągnij i upuść obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong> Twoja prywatność i bezpieczeństwo są gwarantowane.",
-        "heicConversionFailed": "Nie udało się przekonwertować obrazu HEIC: {fileName}. Format pliku może nie być obsługiwany lub plik może być uszkodzony."
-    },
-    "Navbar": {
-        "imageOptimizer": "Optymalizator obrazów",
-        "removeBackgrounds": "Usuń tła",
-        "aiPhotoDuplicateFinder": "AI Duplikatfinder",
-        "aiImageSeoCaptionGeneration": "AI SEO opis obrazu",
-        "aiBackgrounds": "Tła AI",
-        "pricing": "Cennik",
-        "login": "ZALOGUJ SIĘ",
-        "objectRemoval": "Usuwanie obiektów",
-        "tools": "Narzędzia",
-        "addWatermark": "Dodaj znak wodny",
-        "seoDescription": "Opis SEO",
-        "imageFormatConvertor": "Konwerter formatu obrazu",
-        "profile": "Profil",
-        "logout": "Wyloguj się"
-    },
-    "Footer": {
-        "about": "Batch Shots pomaga szybko i łatwo zoptymalizować obrazy produktów pod kątem SEO, bezpośrednio w przeglądarce.",
-        "quickLinks": "SZYBKIE LINKI",
-        "stayUpdated": "BĄDŹ NA BIEŻĄCO",
-        "subscribeText": "Zapisz się do naszego newslettera, aby otrzymywać aktualizacje, porady i specjalne oferty.",
-        "emailPlaceholder": "Twój email",
-        "subscribe": "ZAPISZ SIĘ",
-        "copyright": "© {year} Batch Shots. Wszelkie prawa zastrzeżone.",
-        "madeWith": "Stworzone z ♥ przez zespół Batch Shots",
-        "contactUs": "Skontaktuj się z nami"
-    },
-    "Layout": {
-        "title": "Edytor Obrazów Zbiorczych i Optymalizator SEO | Batch Shots",
-        "description": "Łatwo edytuj, zmieniaj rozmiar, dodawaj znaki wodne i optymalizuj obrazy zbiorczo pod kątem SEO. Funkcje oparte na AI dla zdjęć produktów, usuwania tła i generowania nazw SEO.",
-        "keywords": "edytor obrazów, przetwarzanie zbiorcze obrazów, optymalizacja obrazów seo, znak wodny na zdjęciach, usuwanie tła, zdjęcia produktów, edycja zdjęć ai, batchshots"
-    },
-    "Components": {
-        "ImageProcessingControls": {
-            "title": "USTAWIENIA OBRAZU",
-            "reset": "RESETUJ",
-            "applyToAll": "ZASTOSUJ DO WSZYSTKICH OBRAZÓW",
-            "basic": "PODSTAWOWE",
-            "advanced": "ZAAWANSOWANE",
-            "ai": "AI",
-            "brightness": "JASNOŚĆ",
-            "contrast": "KONTRAST",
-            "sharpen": "WYOSTRZENIE",
-            "colorAdjust": "DOSTOSOWANIE KOLORU (HSL)",
-            "hue": "ODCIEŃ",
-            "cooler": "CHŁODNIEJSZY",
-            "warmer": "CIEPLEJSZY",
-            "saturation": "NASYCENIE",
-            "less": "MNIEJ",
-            "more": "WIĘCEJ",
-            "lightness": "JASNOŚĆ",
-            "darker": "CIEMNIEJSZY",
-            "lighter": "JAŚNIEJSZY",
-            "colorBalance": "BALANS KOLORÓW (RGB)",
-            "red": "CZERWONY",
-            "green": "ZIELONY",
-            "blue": "NIEBIESKI",
-            "processing": "PRZETWARZANIE..."
-        },
-        "BackgroundRemoval": {
-            "title": "USUWANIE TŁA",
-            "selected": "Wybrany obraz",
-            "removeBackground": "USUŃ TŁO",
-            "allImages": "Wszystkie obrazy",
-            "backgroundsRemoved": "{count} z {total} tła usunięte",
-            "removeAllBackgrounds": "USUŃ WSZYSTKIE TŁA",
-            "processing": "Przetwarzanie...",
-            "backgroundRemoved": "Tło zostało pomyślnie usunięte!",
-            "transparent": "Wykryto przezroczyste tło",
-            "description": "Usuń tło z obrazu produktu za pomocą technologii AI. Przetwarzanie odbywa się całkowicie w Twojej przeglądarce dla zachowania prywatności.",
-            "processingInfo": {
-                "process": "Proces",
-                "processValue": "Przetwarzanie AI w przeglądarce",
-                "result": "Wynik",
-                "resultValue": "Przezroczyste tło PNG",
-                "mode": "Tryb"
-            },
-            "proDialog": {
-                "title": "ULEPSZ DO PRO",
-                "featureTitle": "FUNKCJA PRO: Usuwanie tła",
-                "description": "Ulepsz do PRO, aby odblokować usuwanie tła dla wszystkich Twoich obrazów (do 100 jednocześnie)! Zdobądź profesjonalnie wyglądające zdjęcia produktów z przezroczystym tłem.",
-                "pricing": {
-                    "title": "JEDNORAZOWA PŁATNOŚĆ",
-                    "price": "19,99 €",
-                    "note": "Bez subskrypcji, dostęp dożywotni"
-                },
-                "actions": {
-                    "upgrade": "ULEPSZ DO PRO",
-                    "try": "SPRAWDŹ JAK TO DZIAŁA",
-                    "later": "Może później"
-                }
-            },
-            "compactDescription": "Usuwa tło z obrazów produktów za pomocą AI. Przetwarzanie trwa 10-30 sekund."
-        },
-        "PresetsSelector": {
-            "title": "PRESETY",
-            "custom": "Niestandardowe",
-            "dimensions": "WYMIARY",
-            "width": "Szerokość",
-            "height": "Wysokość",
-            "auto": "auto",
-            "quality": "JAKOŚĆ",
-            "apply": "ZASTOSUJ",
-            "presets": {
-                "web-optimized": {
-                    "name": "Zoptymalizowane dla sieci",
-                    "description": "1080px, 75% jakości (Najmniejszy rozmiar pliku, dobre dla sieci)"
-                },
-                "standard": {
-                    "name": "Standardowe",
-                    "description": "1080px, 85% jakości (Zbalansowany rozmiar i jakość)"
-                },
-                "high-quality": {
-                    "name": "Wysoka jakość",
-                    "description": "1440px, 95% jakości (Wysoka jakość, większy rozmiar pliku)"
-                },
-                "max-quality": {
-                    "name": "Maksymalne",
-                    "description": "2160px, 100% jakości (Maksymalna jakość, największy rozmiar pliku)"
-                },
-                "custom": {
-                    "name": "Niestandardowe",
-                    "description": "Niestandardowe wymiary i ustawienia jakości"
-                }
-            }
-        },
-        "DownloadOptions": {
-            "title": "POBIERZ",
-            "format": "FORMAT",
-            "downloadAll": "POBIERZ WSZYSTKO",
-            "transparentNote": "Uwaga: Obrazy z usuniętym tłem zostaną zapisane jako przezroczysty PNG",
-            "seoProductDescription": "Plik TXT z opisem produktu SEO zostanie dołączony do pobrania ZIP"
-        },
-        "ProUpgrade": {
-            "title": "Ulepsz do Pro",
-            "unlock": "Odblokuj wszystkie funkcje premium",
-            "description": "Ulepsz do Pro, aby odblokować {feature} i przetwarzać do {count} obrazów jednocześnie.",
-            "pricing": {
-                "title": "JEDNORAZOWA PŁATNOŚĆ",
-                "price": "19,99 €",
-                "note": "Bez subskrypcji, dostęp dożywotni"
-            },
-            "learnMore": "DOWIEDZ SIĘ WIĘCEJ",
-            "close": "Zamknij"
-        },
-        "SeoNameGenerator": {
-            "title": "GENERATOR NAZW SEO AI",
-            "description": "Generuj zoptymalizowane pod kątem SEO nazwy plików dla swoich obrazów",
-            "enterDescription": "Wprowadź opis swojego produktu",
-            "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista...",
-            "generate": "GENERUJ NAZWY SEO",
-            "generating": "GENEROWANIE...",
-            "proLimit": "Generuj do 100 nazw jednocześnie z wersją Pro",
-            "originalName": "Oryginalna nazwa",
-            "seoName": "Nazwa SEO",
-            "appliedNames": {
-                "title": "Zastosowane nazwy SEO",
-                "description": "Nasza sztuczna inteligencja wygenerowała zoptymalizowane pod kątem SEO nazwy plików dla Twoich obrazów. Możesz edytować poszczególne nazwy w obszarze podglądu obrazów."
-            },
-            "tryFeature": "WYPRÓBUJ FUNKCJĘ"
-        },
-        "SeoProductDescription": {
-            "title": "OPIS PRODUKTU SEO AI",
-            "description": "Wygeneruj kompletny opis produktu zoptymalizowany pod kątem SEO",
-            "enterDescription": "Wprowadź podstawowe informacje o produkcie",
-            "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista, wiele przegródek na karty...",
-            "generate": "GENERUJ OPIS PRODUKTU",
-            "generating": "GENEROWANIE...",
-            "generateWithCount": "GENERUJ ({remaining} pozostało na dziś)",
-            "dailyLimitReached": "OSIĄGNIĘTO DZIENNY LIMIT",
-            "dailyLimitExceeded": "Osiągnięto dzienny limit 5 opisów. Zaktualizuj do PRO, aby uzyskać nieograniczony dostęp, lub spróbuj ponownie jutro.",
-            "dailyUsageInfo": "Pozostało {remaining} z {total} dziennych generacji",
-            "proUnlimited": "PRO: Nieograniczone generacje",
-            "upgradeToPro": "ZAKTUALIZUJ DO PRO",
-            "loginRequired": "WYMAGANE LOGOWANIE",
-            "loginToGenerate": "Zaloguj się, aby generować opisy produktów SEO. Darmowi użytkownicy otrzymują 5 opisów dziennie, użytkownicy PRO mają nieograniczony dostęp.",
-            "loginButton": "ZALOGUJ SIĘ",
-            "cancel": "ANULUJ",
-            "copyToClipboard": "KOPIUJ DO SCHOWKA",
-            "downloadAsTxt": "POBIERZ JAKO TXT",
-            "copied": "Skopiowano!",
-            "tryFeature": "WYPRÓBUJ FUNKCJĘ",
-            "tabs": {
-                "content": "TREŚĆ",
-                "meta": "META",
-                "categories": "KATEGORIE",
-                "previews": "PODGLĄDY"
-            },
-            "previews": {
-                "googleSearch": "PODGLĄD WYSZUKIWANIA GOOGLE",
-                "ecommerce": "PODGLĄD E-COMMERCE",
-                "productImage": "Zdjęcie produktu",
-                "addToCart": "Dodaj do koszyka",
-                "wishlist": "Lista życzeń"
-            },
-            "sections": {
-                "productTitle": "Tytuł produktu",
-                "metaTitle": "Meta tytuł",
-                "metaDescription": "Meta opis",
-                "shortDescription": "Krótki opis", 
-                "longDescription": "Długi opis",
-                "categories": "Kategorie",
-                "tags": "Tagi",
-                "urlSlug": "URL Slug"
-            },
-            "downloadAll": "POBIERZ WSZYSTKIE DANE",
-            "keywords": "opis produktu SEO, generator treści AI, SEO e-commerce, optymalizacja list produktów, meta opisy",
-            "instructionsCard": {
-                "title": "JAK UŻYWAĆ",
-                "step1": "Wprowadź podstawowe informacje o swoim produkcie (nazwa, cechy, materiały itp.).",
-                "step2": "Kliknij przycisk 'Generuj opis produktu'.",
-                "step3": "Przejrzyj wygenerowaną treść (tytuł, meta, opisy itp.).",
-                "step4": "Skopiuj treść lub pobierz ją jako plik tekstowy.",
-                "step5": "Użyj wygenerowanej treści SEO w swoim sklepie e-commerce lub na stronie internetowej."
-            },
-            "mainCard": {
-                "title": "GENERUJ TREŚCI SEO",
-                "info": {
-                    "title": "CZYM JEST TO NARZĘDZIE?",
-                    "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek.",
-                },
-                "benefits": {
-                    "complete": "KOMPLETNY PAKIET SEO",
-                    "completeDesc": "Otrzymaj pełny zestaw treści SEO dla swojego produktu, gotowy do użycia.",
-                    "aiPowered": "TREŚĆ GENEROWANA PRZEZ AI",
-                    "aiPoweredDesc": "Generuje unikalne, przekonujące i bogate w słowa kluczowe opisy.",
-                    "bestPractices": "NAJLEPSZE PRAKTYKI SEO",
-                    "bestPracticesDesc": "Przestrzega wytycznych dotyczących liczby znaków, rozmieszczenia słów kluczowych i czytelności.",
-                    "quickEasy": "SZYBKO I ŁATWO",
-                    "quickEasyDesc": "Oszczędź godziny, generując profesjonalne opisy w kilka sekund."
-                }
-            }
-        },
-        "SeoDescriptionPage": {
-            "metadata": {
-                "title": "Generator opisów produktów SEO AI | Batch Shots",
-                "description": "Generuj kompletne, zoptymalizowane pod kątem SEO opisy produktów (tytuł, meta tytuł/opis, krótki/długi opis, kategorie, tagi, slug URL) na podstawie podstawowych informacji.",
-                "keywords": "opis produktu seo, opis produktu ai, seo ecommerce, generator opisów produktów, generator meta opisów, generator tytułów produktów"
-            },
-            "title": "GENERATOR OPISÓW PRODUKTÓW SEO AI",
-            "mainCard": {
-                "title": "GENERUJ TREŚCI SEO",
-                "info": {
-                    "title": "CZYM JEST TO NARZĘDZIE?",
-                    "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek.",
-                },
-                "benefits": {
-                    "complete": "KOMPLETNY PAKIET SEO",
-                    "completeDesc": "Otrzymaj pełny zestaw treści SEO dla swojego produktu, gotowy do użycia.",
-                    "aiPowered": "TREŚĆ GENEROWANA PRZEZ AI",
-                    "aiPoweredDesc": "Generuje unikalne, przekonujące i bogate w słowa kluczowe opisy.",
-                    "bestPractices": "NAJLEPSZE PRAKTYKI SEO",
-                    "bestPracticesDesc": "Przestrzega wytycznych dotyczących liczby znaków, rozmieszczenia słów kluczowych i czytelności.",
-                    "quickEasy": "SZYBKO I ŁATWO",
-                    "quickEasyDesc": "Oszczędź godziny, generując profesjonalne opisy w kilka sekund."
-                }
-            },
-            "upgradeCard": {
-                "title": "PRZEJDŹ NA PRO",
-                "description": "Odblokuj nieograniczone generowanie opisów produktów SEO i uzyskaj dostęp do wszystkich funkcji.",
-                "button": "ULEPSZ TERAZ"
-            },
-            "instructionsCard": {
-                "title": "JAK UŻYWAĆ",
-                "step1": "Wprowadź podstawowe informacje o swoim produkcie (nazwa, cechy, materiały itp.).",
-                "step2": "Kliknij przycisk 'Generuj opis produktu'.",
-                "step3": "Przejrzyj wygenerowaną treść (tytuł, meta, opisy itp.).",
-                "step4": "Skopiuj treść lub pobierz ją jako plik tekstowy.",
-                "step5": "Użyj wygenerowanej treści SEO w swoim sklepie e-commerce lub na stronie internetowej."
-            }
-        },
-        "QuickPresets": {
-            "title": "SZYBKIE PRESETY",
-            "productSpecialty": "SPECJALIZACJA PRODUKTU",
-            "colorStyle": "STYL KOLORU",
-            "presets": {
-                "white-bg": {
-                    "name": "BIAŁE TŁO",
-                    "description": "Czysta fotografia produktowa na białym tle"
-                },
-                "clean": {
-                    "name": "CZYSTY PRODUKT",
-                    "description": "Fotografia produktowa z czystymi, neutralnymi kolorami"
-                },
-                "jewelry": {
-                    "name": "BIŻUTERIA/METAL",
-                    "description": "Zoptymalizowane dla biżuterii i produktów metalowych"
-                },
-                "sharp": {
-                    "name": "OSTRE SZCZEGÓŁY",
-                    "description": "Ulepszona ostrość i szczegóły"
-                },
-                "textile": {
-                    "name": "TEKSTYLIA/TKANINA",
-                    "description": "Dla produktów z tkaniny i tekstyliów - poprawia teksturę i kolor"
-                },
-                "soft-product": {
-                    "name": "MIĘKKIE PRODUKTY",
-                    "description": "Dla miękkich produktów jak poduszki, poduszki, pluszaki"
-                },
-                "furniture": {
-                    "name": "MEBLE/DREWNO",
-                    "description": "Meble drewniane i dekoracje wnętrz"
-                },
-                "transparent": {
-                    "name": "SZKŁO",
-                    "description": "Szkło i produkty przezroczyste"
-                },
-                "food": {
-                    "name": "PRODUKTY SPOŻYWCZE",
-                    "description": "Fotografia kulinarna - poprawia świeżość i atrakcyjność kolorów"
-                },
-                "dramatic": {
-                    "name": "DRAMATYCZNE",
-                    "description": "Fotografia produktowa z wysokim kontrastem"
-                },
-                "vivid": {
-                    "name": "ŻYWE KOLORY",
-                    "description": "Ulepszone nasycenie i jasność kolorów"
-                },
-                "classic": {
-                    "name": "KLASYCZNE",
-                    "description": "Klasyczny wygląd ze zbalansowanymi kolorami"
-                }
-            }
-        },
-        "BackgroundRemovalPage": {
-            "title": "NARZĘDZIE DO USUWANIA TŁA",
-            "loading": {
-                "tool": "ŁADOWANIE NARZĘDZIA...",
-                "proStatus": "SPRAWDZANIE STATUSU PRO...",
-                "description": "Proszę czekać, podczas gdy inicjalizujemy możliwości przetwarzania obrazów.",
-                "proDescription": "Proszę czekać, podczas gdy sprawdzamy status Twojego konta."
-            },
-            "mainCard": {
-                "title": "USUŃ TŁA Z OBRAZÓW",
-                "info": {
-                    "title": "USUWANIE TŁA AI",
-                    "description": "Usuń tło z obrazów produktów za pomocą technologii AI. Przetwarzanie odbywa się całkowicie w Twojej przeglądarce dla zachowania prywatności.",
-                },
-                "upload": {
-                    "title": "Wybierz obrazy",
-                    "buttonFree": "WYBIERZ OBRAZ",
-                    "buttonPro": "WYBIERZ OBRAZY",
-                    "helpTextFree": "Użytkownicy darmowi mogą wybrać 1 obraz jednocześnie.",
-                    "helpTextPro": "Możesz wybrać do 100 obrazów jednocześnie."
-                },
-                "actions": {
-                    "clear": "WYCZYŚĆ",
-                    "download": "POBIERZ",
-                    "downloadZip": "POBIERZ JAKO ZIP",
-                    "removeBackground": "USUŃ TŁO",
-                    "removeBackgrounds": "USUŃ TŁA",
-                    "processing": "USUWANIE TŁA...",
-                    "processingMultiple": "USUWANIE TŁA...",
-                    "tryFullEditor": "WYPRÓBUJ PEŁNY EDYTOR"
-                },
-                "progress": {
-                    "processing": "Przetwarzanie...",
-                    "percent": "{percent}%"
-                },
-                "upgradeCard": {
-                    "title": "ULEPSZ DO PRO",
-                    "plan": {
-                        "title": "PLAN PRO",
-                        "price": "19,99 €",
-                        "features": [
-                            "Usuwaj tła z do 100 obrazów jednocześnie",
-                            "Zaawansowane dostosowania obrazów i presety",
-                            "Generowanie nazw SEO dla obrazów produktów",
-                            "Przetwarzanie zbiorcze dla wszystkich funkcji",
-                            "Jednorazowa płatność, dostęp dożywotni"
-                        ],
-                        "buttonText": "ULEPSZ TERAZ"
-                    }
-                }
-            },
-            "howItWorks": {
-                "title": "JAK TO DZIAŁA",
-                "step1": {
-                    "title": "1. WYBIERZ SWOJE OBRAZY",
-                    "description": "Prześlij jeden lub więcej obrazów produktów, które chcesz przetworzyć.",
-                    "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów jednocześnie!"
-                },
-                "step2": {
-                    "title": "2. USUŃ TŁA",
-                    "description": "Nasza technologia AI wykrywa i usuwa tło z Twoich obrazów, tworząc przezroczyste PNG idealne dla e-commerce."
-                },
-                "step3": {
-                    "title": "3. POBIERZ & UŻYJ",
-                    "description": "Pobierz przetworzone obrazy i używaj ich na swojej stronie internetowej, aukcjach marketplace lub materiałach marketingowych."
-                }
-            },
-            "proDialog": {
-                "title": "ULEPSZ DO PRO",
-                "featureTitle": "FUNKCJA PRO: Masowe usuwanie tła",
-                "description": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo, oszczędzając godziny pracy!",
-                "pricing": {
-                    "title": "JEDNORAZOWA PŁATNOŚĆ",
-                    "price": "19,99 €",
-                    "note": "Brak subskrypcji, dostęp dożywotni"
-                },
-                "actions": {
-                    "upgrade": "ULEPSZ DO PRO",
-                    "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
-                }
-            }
-        },
-        "ImagePreview": {
-            "noImages": "Nie wybrano obrazów",
-            "zoomInstructions": "Ściśnij, aby przybliżyć, przeciągnij, aby przesunąć",
-            "zoomLevel": "{scale}%",
-            "removingBackground": "Usuwanie tła...",
-            "seoName": {
-                "label": "Przyjazna dla SEO nazwa:",
-                "edit": "EDYTUJ",
-                "cancel": "ANULUJ",
-                "save": "ZAPISZ"
-            },
-            "originalName": "Nazwa oryginalna:",
-            "fileInfo": {
-                "dimensions": "Wymiary:",
-                "size": "Rozmiar:",
-                "output": "Wyjście:",
-                "quality": "Jakość:",
-                "background": "Tło:",
-                "backgroundRemoved": "Usunięte",
-                "custom": "Niestandardowe",
-                "auto": "auto"
-            },
-            "actions": {
-                "download": "POBIERZ",
-                "reset": "RESETUJ"
-            },
-            "allImages": "WSZYSTKIE OBRAZY ({current}/{max})"
-        },
-        "PricingCard": {
-            "oneTime": "jednorazowo",
-            "currentPlan": "OBECNY PLAN"
-        },
-        "WatermarkControl": {
-            "title": "ZNAK WODNY",
-            "addTab": "DODAJ ZNAK WODNY",
-            "removeTab": "USUŃ ZNAK WODNY (AI)",
-            "type": "TYP",
-            "text": "TEKST",
-            "logo": "LOGO",
-            "enterText": "Wprowadź tekst znaku wodnego",
-            "font": "CZCIONKA",
-            "size": "ROZMIAR",
-            "color": "KOLOR",
-            "opacity": "KRYCIE",
-            "position": "POZYCJA",
-            "uploadLogo": "PRZEŚLIJ LOGO",
-            "logoPlaceholder": "Kliknij lub przeciągnij logo tutaj",
-            "reset": "RESETUJ",
-            "presets": {
-                "bottomRight": "Dół Prawy",
-                "bottomLeft": "Dół Lewy",
-                "topLeft": "Góra Lewy",
-                "topRight": "Góra Prawy",
-                "center": "Środek",
-                "diagonal": "Przekątna",
-                "tile": "Kafel (Wzór)"
-            },
-            "removeDescription": "Usuwanie znaku wodnego wspomagane przez AI już wkrótce!"
-        },
-        "SeoProductDescriptionGenerator": {
-            "title": "OPIS PRODUKTU SEO AI",
-            "description": "Wygeneruj kompletny opis produktu zoptymalizowany pod kątem SEO",
-            "enterDescription": "Wprowadź podstawowe informacje o produkcie",
-            "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista, wiele przegródek na karty...",
-            "generate": "GENERUJ OPIS PRODUKTU",
-            "generating": "GENEROWANIE...",
-            "generateWithCount": "GENERUJ ({remaining} pozostało na dziś)",
-            "dailyLimitReached": "OSIĄGNIĘTO DZIENNY LIMIT",
-            "dailyLimitExceeded": "Osiągnięto dzienny limit 5 opisów. Zaktualizuj do PRO, aby uzyskać nieograniczony dostęp, lub spróbuj ponownie jutro.",
-            "dailyUsageInfo": "Pozostało {remaining} z {total} dziennych generacji",
-            "proUnlimited": "PRO: Nieograniczone generacje",
-            "upgradeToPro": "ZAKTUALIZUJ DO PRO",
-            "loginRequired": "WYMAGANE LOGOWANIE",
-            "loginToGenerate": "Zaloguj się, aby generować opisy produktów SEO. Darmowi użytkownicy otrzymują 5 opisów dziennie, użytkownicy PRO mają nieograniczony dostęp.",
-            "loginButton": "ZALOGUJ SIĘ",
-            "cancel": "ANULUJ",
-            "copyToClipboard": "KOPIUJ DO SCHOWKA",
-            "downloadAsTxt": "POBIERZ JAKO TXT",
-            "copied": "Skopiowano!",
-            "tryFeature": "WYPRÓBUJ FUNKCJĘ",
-            "tabs": {
-                "content": "TREŚĆ",
-                "meta": "META",
-                "categories": "KATEGORIE",
-                "previews": "PODGLĄDY"
-            },
-            "previews": {
-                "googleSearch": "PODGLĄD WYSZUKIWANIA GOOGLE",
-                "ecommerce": "PODGLĄD E-COMMERCE",
-                "productImage": "Zdjęcie produktu",
-                "addToCart": "Dodaj do koszyka",
-                "wishlist": "Lista życzeń"
-            },
-            "sections": {
-                "productTitle": "Tytuł produktu",
-                "metaTitle": "Meta tytuł",
-                "metaDescription": "Meta opis",
-                "shortDescription": "Krótki opis",
-                "longDescription": "Długi opis",
-                "categories": "Kategorie",
-                "tags": "Tagi",
-                "urlSlug": "URL Slug"
-            },
-            "downloadAll": "POBIERZ WSZYSTKIE DANE"
+        "actions": {
+          "upgrade": "ULEPSZ DO PRO",
+          "try": "SPRAWDŹ JAK TO DZIAŁA",
+          "later": "Może później"
         }
+      },
+      "compactDescription": "Usuwa tło z obrazów produktów za pomocą AI. Przetwarzanie trwa 10-30 sekund."
     },
-    "Dialogs": {
-        "download": {
-            "title": "Pobierz obrazy",
-            "confirmTitle": "Potwierdź pobieranie",
-            "successTitle": "Pobieranie zakończone sukcesem",
-            "summary": "Podsumowanie pobierania:",
-            "images": "{count, plural, =1 {# obraz} other {# obrazy}} zostaną pobrane",
-            "format": "Format:",
-            "appliedPreset": "Zastosowany preset:",
-            "adjustmentsApplied": "Zastosowano dostosowania obrazu",
-            "backgroundRemoval": "Zastosowano usuwanie tła",
-            "seoFilenames": "Dołączono zoptymalizowane nazwy plików SEO przez AI",
-            "watermarkApplied": "Znak wodny zastosowany",
-            "zipPackage": "Pliki zostaną spakowane do archiwum ZIP",
-            "processingNote": "Przetwarzanie może chwilę potrwać w przypadku wielu lub dużych obrazów.",
-            "cancel": "ANULUJ",
-            "download": "POBIERZ",
-            "processing": "PRZETWARZANIE...",
-            "successMessage": "Twoje obrazy zostały pomyślnie pobrane. Co chcesz zrobić dalej?",
-            "startNewBundleDesc": "Rozpocznij nowy pakiet: Wyczyść obecne obrazy i zacznij od nowa",
-            "continueEditingDesc": "Kontynuuj edycję: Kontynuuj pracę z obecnymi obrazami",
-            "startNewBundle": "ROZPOCZNIJ NOWY PAKIET",
-            "continueEditing": "KONTYNUUJ EDYCJĘ",
-            "seoProductDescription": "Opis produktu SEO (TXT)"
+    "PresetsSelector": {
+      "title": "PRESETY",
+      "custom": "Niestandardowe",
+      "dimensions": "WYMIARY",
+      "width": "Szerokość",
+      "height": "Wysokość",
+      "auto": "auto",
+      "quality": "JAKOŚĆ",
+      "apply": "ZASTOSUJ",
+      "presets": {
+        "web-optimized": {
+          "name": "Zoptymalizowane dla sieci",
+          "description": "1080px, 75% jakości (Najmniejszy rozmiar pliku, dobre dla sieci)"
         },
-        "proUpgrade": {
-            "feature": "Przetwarzanie zbiorcze"
+        "standard": {
+          "name": "Standardowe",
+          "description": "1080px, 85% jakości (Zbalansowany rozmiar i jakość)"
+        },
+        "high-quality": {
+          "name": "Wysoka jakość",
+          "description": "1440px, 95% jakości (Wysoka jakość, większy rozmiar pliku)"
+        },
+        "max-quality": {
+          "name": "Maksymalne",
+          "description": "2160px, 100% jakości (Maksymalna jakość, największy rozmiar pliku)"
+        },
+        "custom": {
+          "name": "Niestandardowe",
+          "description": "Niestandardowe wymiary i ustawienia jakości"
         }
+      }
     },
-    "Pricing": {
-        "title": "PLANY CENOWE",
-        "subtitle": "Wybierz idealny plan dla swoich potrzeb optymalizacji obrazów. Nasz plan PRO oferuje licencję dożywotnią z jednorazową płatnością.",
-        "alreadyPro": {
-            "title": "Jesteś już użytkownikiem PRO!",
-            "description": "Dziękujemy za wsparcie. Masz dostęp do wszystkich funkcji PRO, w tym zbiorczego usuwania tła, zaawansowanych dostosowań obrazów i generowania nazw plików SEO.",
-            "backToEditor": "WRÓĆ DO EDYTORA"
+    "DownloadOptions": {
+      "title": "POBIERZ",
+      "format": "FORMAT",
+      "downloadAll": "POBIERZ WSZYSTKO",
+      "transparentNote": "Uwaga: Obrazy z usuniętym tłem zostaną zapisane jako przezroczysty PNG",
+      "seoProductDescription": "Plik TXT z opisem produktu SEO zostanie dołączony do pobrania ZIP"
+    },
+    "ProUpgrade": {
+      "title": "Ulepsz do Pro",
+      "unlock": "Odblokuj wszystkie funkcje premium",
+      "description": "Ulepsz do Pro, aby odblokować {feature} i przetwarzać do {count} obrazów jednocześnie.",
+      "pricing": {
+        "title": "JEDNORAZOWA PŁATNOŚĆ",
+        "price": "19,99 €",
+        "note": "Bez subskrypcji, dostęp dożywotni"
+      },
+      "learnMore": "DOWIEDZ SIĘ WIĘCEJ",
+      "close": "Zamknij"
+    },
+    "SeoNameGenerator": {
+      "title": "GENERATOR NAZW SEO AI",
+      "description": "Generuj zoptymalizowane pod kątem SEO nazwy plików dla swoich obrazów",
+      "enterDescription": "Wprowadź opis swojego produktu",
+      "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista...",
+      "generate": "GENERUJ NAZWY SEO",
+      "generating": "GENEROWANIE...",
+      "proLimit": "Generuj do 100 nazw jednocześnie z wersją Pro",
+      "originalName": "Oryginalna nazwa",
+      "seoName": "Nazwa SEO",
+      "appliedNames": {
+        "title": "Zastosowane nazwy SEO",
+        "description": "Nasza sztuczna inteligencja wygenerowała zoptymalizowane pod kątem SEO nazwy plików dla Twoich obrazów. Możesz edytować poszczególne nazwy w obszarze podglądu obrazów."
+      },
+      "tryFeature": "WYPRÓBUJ FUNKCJĘ"
+    },
+    "SeoProductDescription": {
+      "title": "OPIS PRODUKTU SEO AI",
+      "description": "Wygeneruj kompletny opis produktu zoptymalizowany pod kątem SEO",
+      "enterDescription": "Wprowadź podstawowe informacje o produkcie",
+      "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista, wiele przegródek na karty...",
+      "generate": "GENERUJ OPIS PRODUKTU",
+      "generating": "GENEROWANIE...",
+      "generateWithCount": "GENERUJ ({remaining} pozostało na dziś)",
+      "dailyLimitReached": "OSIĄGNIĘTO DZIENNY LIMIT",
+      "dailyLimitExceeded": "Osiągnięto dzienny limit 5 opisów. Zaktualizuj do PRO, aby uzyskać nieograniczony dostęp, lub spróbuj ponownie jutro.",
+      "dailyUsageInfo": "Pozostało {remaining} z {total} dziennych generacji",
+      "proUnlimited": "PRO: Nieograniczone generacje",
+      "upgradeToPro": "ZAKTUALIZUJ DO PRO",
+      "loginRequired": "WYMAGANE LOGOWANIE",
+      "loginToGenerate": "Zaloguj się, aby generować opisy produktów SEO. Darmowi użytkownicy otrzymują 5 opisów dziennie, użytkownicy PRO mają nieograniczony dostęp.",
+      "loginButton": "ZALOGUJ SIĘ",
+      "cancel": "ANULUJ",
+      "copyToClipboard": "KOPIUJ DO SCHOWKA",
+      "downloadAsTxt": "POBIERZ JAKO TXT",
+      "copied": "Skopiowano!",
+      "tryFeature": "WYPRÓBUJ FUNKCJĘ",
+      "tabs": {
+        "content": "TREŚĆ",
+        "meta": "META",
+        "categories": "KATEGORIE",
+        "previews": "PODGLĄDY"
+      },
+      "previews": {
+        "googleSearch": "PODGLĄD WYSZUKIWANIA GOOGLE",
+        "ecommerce": "PODGLĄD E-COMMERCE",
+        "productImage": "Zdjęcie produktu",
+        "addToCart": "Dodaj do koszyka",
+        "wishlist": "Lista życzeń"
+      },
+      "sections": {
+        "productTitle": "Tytuł produktu",
+        "metaTitle": "Meta tytuł",
+        "metaDescription": "Meta opis",
+        "shortDescription": "Krótki opis",
+        "longDescription": "Długi opis",
+        "categories": "Kategorie",
+        "tags": "Tagi",
+        "urlSlug": "URL Slug"
+      },
+      "downloadAll": "POBIERZ WSZYSTKIE DANE",
+      "keywords": "opis produktu SEO, generator treści AI, SEO e-commerce, optymalizacja list produktów, meta opisy",
+      "instructionsCard": {
+        "title": "JAK UŻYWAĆ",
+        "step1": "Wprowadź podstawowe informacje o swoim produkcie (nazwa, cechy, materiały itp.).",
+        "step2": "Kliknij przycisk 'Generuj opis produktu'.",
+        "step3": "Przejrzyj wygenerowaną treść (tytuł, meta, opisy itp.).",
+        "step4": "Skopiuj treść lub pobierz ją jako plik tekstowy.",
+        "step5": "Użyj wygenerowanej treści SEO w swoim sklepie e-commerce lub na stronie internetowej."
+      },
+      "mainCard": {
+        "title": "GENERUJ TREŚCI SEO",
+        "info": {
+          "title": "CZYM JEST TO NARZĘDZIE?",
+          "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek."
         },
-        "checkout": {
-            "title": "DOKOŃCZ ZAKUP",
-            "planTitle": "LICENCJA PRO DOŻYWOTNIA",
-            "price": "19,99 €",
-            "description": "Jednorazowa płatność, dostęp dożywotni do wszystkich funkcji PRO",
-            "email": "EMAIL",
-            "cardInfo": "INFORMACJE O KARCIE",
-            "cardNumber": "1234 5678 9012 3456",
-            "expiryDate": "MM/RR",
-            "cvc": "CVC",
-            "completePurchase": "DOKOŃCZ ZAKUP",
-            "goBack": "Wróć"
-        },
-        "plans": {
-            "free": {
-                "title": "DARMOWY",
-                "price": "DARMOWY",
-                "features": [
-                    "Przetwarzanie wsadowe max 5 obrazów",
-                    "Usuwanie tła AI pojedynczego obrazu (podgląd)",
-                    "Usuwanie obiektów AI z pojedynczego obrazu",
-                    "Dodawanie znaku wodnego max 5 obrazów",
-                    "Konwerter obrazów max 5 obrazów wsadowo",
-                    "AI Photo Duplicate Finder max 5 obrazów",
-                    "Generowanie nazw obrazów SEO AI (Niedostępne)",
-                    "Opis SEO AI i metatagi (Niedostępne)"
-                ],
-                "buttonText": "KONTYNUUJ Z DARMOWYM"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "$19.99",
-                "features": [
-                    "Przetwarzanie wsadowe max 100 obrazów",
-                    "Do 100 usunięć tła AI w jednej partii",
-                    "Usuwanie obiektów AI do 100 obrazów",
-                    "Dodawanie znaku wodnego 100 obrazów w jednej partii",
-                    "Konwerter obrazów max 100 obrazów wsadowo",
-                    "AI Photo Duplicate Finder nieograniczona wsadowa przetwarzanie",
-                    "Generowanie nazw obrazów SEO AI (do 100)",
-                    "Opis SEO AI i metatagi dostępne",
-                    "**Jednorazowa płatność, dożywotni dostęp**"
-                ],
-                "buttonText": "PRZEJDŹ NA PRO"
-            }
-        },
-        "faq": {
-            "title": "CZĘSTO ZADAWANE PYTANIA",
-            "questions": {
-                "oneTime": {
-                    "question": "Czy to naprawdę jednorazowa płatność?",
-                    "answer": "Tak! Zapłać raz i otrzymaj dostęp dożywotni do wszystkich funkcji PRO. Bez subskrypcji."
-                },
-                "backgroundRemoval": {
-                    "question": "Jak działa usuwanie tła?",
-                    "answer": "Używamy zaawansowanych algorytmów AI do wykrywania i usuwania tła z obrazów produktów. Cały proces odbywa się w Twojej przeglądarce - nigdy nie przechowujemy Twoich obrazów na naszych serwerach."
-                },
-                "imageLimits": {
-                    "question": "Jakie są limity obrazów?",
-                    "answer": "Użytkownicy darmowi mogą przetwarzać do 10 obrazów jednocześnie z podstawowymi funkcjami i usuwać tło z 1 obrazu jednocześnie. Użytkownicy PRO mogą przetwarzać do 100 obrazów jednocześnie, w tym zbiorcze usuwanie tła."
-                },
-                "refund": {
-                    "question": "Czy mogę poprosić o zwrot pieniędzy?",
-                    "answer": "Tak, oferujemy 30-dniową gwarancję zwrotu pieniędzy, jeśli nie jesteś zadowolony z funkcji PRO. Skontaktuj się z nami pod adresem privacy@batchshots.com."
-                }
-            }
+        "benefits": {
+          "complete": "KOMPLETNY PAKIET SEO",
+          "completeDesc": "Otrzymaj pełny zestaw treści SEO dla swojego produktu, gotowy do użycia.",
+          "aiPowered": "TREŚĆ GENEROWANA PRZEZ AI",
+          "aiPoweredDesc": "Generuje unikalne, przekonujące i bogate w słowa kluczowe opisy.",
+          "bestPractices": "NAJLEPSZE PRAKTYKI SEO",
+          "bestPracticesDesc": "Przestrzega wytycznych dotyczących liczby znaków, rozmieszczenia słów kluczowych i czytelności.",
+          "quickEasy": "SZYBKO I ŁATWO",
+          "quickEasyDesc": "Oszczędź godziny, generując profesjonalne opisy w kilka sekund."
         }
+      }
     },
-    "PrivacyPolicy": {
-        "title": "POLITYKA PRYWATNOŚCI",
-        "section1Title": "1. WPROWADZENIE",
-        "section1P1": "Witamy w Batch Shots („my”, „nasz”, „nas”). Zobowiązujemy się do ochrony Twojej prywatności i zapewnienia bezpieczeństwa Twoich danych osobowych.",
-        "section1P2": "Ta Polityka Prywatności wyjaśnia, jak przetwarzamy Twoje dane podczas korystania z naszego narzędzia do optymalizacji obrazów działającego w przeglądarce.",
-        "section2Title": "2. INFORMACJE, KTÓRYCH NIE ZBIERAMY",
-        "section2P1Bold": "Nie zbieramy ani nie przechowujemy Twoich obrazów.",
-        "section2P1": "Naszą podstawową zasadą jest prywatność przez projekt.",
-        "section2P2": "Batch Shots działa całkowicie w Twojej przeglądarce. Kiedy przesyłasz obrazy do optymalizacji:",
-        "section2Li1": "Twoje obrazy są przetwarzane lokalnie w Twojej przeglądarce przy użyciu JavaScript po stronie klienta.",
-        "section2Li2": "Twoje obrazy nigdy nie opuszczają Twojego urządzenia i nie są przesyłane na nasze serwery.",
-        "section2Li3": "Nie przechowujemy kopii Twoich oryginalnych ani przetworzonych obrazów.",
-        "section2Li4": "Nie śledzimy zawartości Twoich obrazów.",
-        "section3Title": "3. FUNKCJE WSPIERANE PRZEZ AI",
-        "section3P1": "Gdy korystasz z naszych funkcji generowania nazw SEO wspieranych przez AI:",
-        "section3Li1": "Wysyłamy do naszego API tylko podany przez Ciebie tekst opisowy.",
-        "section3Li2": "Nie wysyłamy ani nie przetwarzamy Twoich rzeczywistych obrazów za pośrednictwem naszych systemów AI.",
-        "section3Li3": "Wygenerowane nazwy SEO są dostarczane z powrotem do Twojej przeglądarki i nie są trwale przechowywane na naszych serwerach.",
-        "section4Title": "4. ANALITYKA I PLIKI COOKIE",
-        "section4P1": "Używamy minimalnej analityki, aby zrozumieć, w jaki sposób używana jest nasza strona:",
-        "section4Li1": "Gromadzimy anonimowe statystyki użytkowania, takie jak odsłony stron i wykorzystanie funkcji.",
-        "section4Li2": "Używamy niezbędnych plików cookie do zapewnienia funkcjonalności, takich jak ochrona reCAPTCHA.",
-        "section4Li3": "Nie używamy plików cookie do celów reklamowych ani śledzenia na innych stronach internetowych.",
-        "section5Title": "5. USŁUGI STRON TRZECICH",
-        "section5P1": "Korzystamy z następujących usług stron trzecich:",
-        "section5Li1": "Google reCAPTCHA do ochrony przed spamem w naszych funkcjach AI.",
-        "section5Li2": "OpenCV.js do przetwarzania obrazów (działa całkowicie w Twojej przeglądarce).",
-        "section5P2": "Każda z tych usług ma własną politykę prywatności regulującą sposób postępowania z danymi.",
-        "section6Title": "6. ZMIANY W NINIEJSZEJ POLITYCE",
-        "section6P1": "Od czasu do czasu możemy aktualizować niniejszą Politykę prywatności. Powiadomimy Cię o wszelkich zmianach, publikując nową Politykę prywatności na tej stronie i aktualizując datę „Ostatnia aktualizacja\".",
-        "section7Title": "7. SKONTAKTUJ SIĘ Z NAMI",
-        "section7P1": "Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności, skontaktuj się z nami pod adresem privacy@batchshots.com.",
-        "returnButton": "POWRÓT DO STRONY GŁÓWNEJ"
+    "SeoDescriptionPage": {
+      "metadata": {
+        "title": "Generator opisów produktów SEO AI | Batch Shots",
+        "description": "Generuj kompletne, zoptymalizowane pod kątem SEO opisy produktów (tytuł, meta tytuł/opis, krótki/długi opis, kategorie, tagi, slug URL) na podstawie podstawowych informacji.",
+        "keywords": "opis produktu seo, opis produktu ai, seo ecommerce, generator opisów produktów, generator meta opisów, generator tytułów produktów"
+      },
+      "title": "GENERATOR OPISÓW PRODUKTÓW SEO AI",
+      "mainCard": {
+        "title": "GENERUJ TREŚCI SEO",
+        "info": {
+          "title": "CZYM JEST TO NARZĘDZIE?",
+          "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek."
+        },
+        "benefits": {
+          "complete": "KOMPLETNY PAKIET SEO",
+          "completeDesc": "Otrzymaj pełny zestaw treści SEO dla swojego produktu, gotowy do użycia.",
+          "aiPowered": "TREŚĆ GENEROWANA PRZEZ AI",
+          "aiPoweredDesc": "Generuje unikalne, przekonujące i bogate w słowa kluczowe opisy.",
+          "bestPractices": "NAJLEPSZE PRAKTYKI SEO",
+          "bestPracticesDesc": "Przestrzega wytycznych dotyczących liczby znaków, rozmieszczenia słów kluczowych i czytelności.",
+          "quickEasy": "SZYBKO I ŁATWO",
+          "quickEasyDesc": "Oszczędź godziny, generując profesjonalne opisy w kilka sekund."
+        }
+      },
+      "upgradeCard": {
+        "title": "PRZEJDŹ NA PRO",
+        "description": "Odblokuj nieograniczone generowanie opisów produktów SEO i uzyskaj dostęp do wszystkich funkcji.",
+        "button": "ULEPSZ TERAZ"
+      },
+      "instructionsCard": {
+        "title": "JAK UŻYWAĆ",
+        "step1": "Wprowadź podstawowe informacje o swoim produkcie (nazwa, cechy, materiały itp.).",
+        "step2": "Kliknij przycisk 'Generuj opis produktu'.",
+        "step3": "Przejrzyj wygenerowaną treść (tytuł, meta, opisy itp.).",
+        "step4": "Skopiuj treść lub pobierz ją jako plik tekstowy.",
+        "step5": "Użyj wygenerowanej treści SEO w swoim sklepie e-commerce lub na stronie internetowej."
+      }
     },
-    "TermsOfUse": {
-        "title": "WARUNKI KORZYSTANIA",
-        "lastUpdated": "Ostatnia aktualizacja: 30 maja 2025",
-        "section1Title": "1. Akceptacja Warunków",
-        "section1P1": "Korzystając z Batch Shots, akceptujesz niniejsze Warunki Korzystania. Jeśli nie zgadzasz się z jakąkolwiek częścią tych warunków, nie możesz korzystać z naszej usługi.",
-        "section2Title": "2. Opis Usługi",
-        "section2P1": "Batch Shots to narzędzie do optymalizacji obrazów działające w przeglądarce, które umożliwia użytkownikom:",
-        "section2Li1": "Dostosowywanie właściwości obrazu, takich jak jasność, kontrast i balans bieli",
-        "section2Li2": "Zmianę rozmiaru i optymalizację obrazów do użycia w internecie",
-        "section2Li3": "Generowanie przyjaznych dla SEO nazw plików",
-        "section2Li4": "Przetwarzanie wielu obrazów jednocześnie",
-        "section2P2": "Całe przetwarzanie obrazów odbywa się lokalnie w Twojej przeglądarce; żadne obrazy nie są przesyłane ani przechowywane na naszych serwerach.",
-        "section3Title": "3. Obowiązki Użytkownika",
-        "section3P1": "Użytkownicy Batch Shots są wyłącznie odpowiedzialni za zapewnienie, że posiadają niezbędne prawa i uprawnienia do korzystania, przesyłania i przetwarzania obrazów za pomocą naszej usługi. Batch Shots nie ponosi odpowiedzialności za naruszenia praw autorskich lub własności intelektualnej wynikające z korzystania z usługi. Musisz korzystać z usługi zgodnie ze wszystkimi obowiązującymi przepisami prawa.",
-        "section3Li1": "Zapewnienie posiadania niezbędnych praw i uprawnień do modyfikowania i przetwarzania używanych obrazów",
-        "section3Li2": "Korzystanie z usługi zgodnie z obowiązującymi przepisami prawa",
-        "section3Li3": "Niekorzystanie z usługi do przetwarzania, tworzenia lub rozpowszechniania nieodpowiednich, obraźliwych lub nielegalnych treści",
-        "section3Li4": "Niepróbowanie odwrotnego inżynierowania, modyfikowania lub włamywania się do usługi",
-        "section4Title": "4. Własność Intelektualna",
-        "section4P1": "Cała oryginalna zawartość, funkcje i funkcjonalność Batch Shots są naszą własnością i są chronione międzynarodowymi prawami autorskimi, znakami towarowymi i innymi prawami własności intelektualnej.",
-        "section4P2": "Zachowujesz wszystkie prawa do swoich oryginalnych obrazów. Nie rościmy sobie praw własności do obrazów przetwarzanych za pomocą naszej usługi.",
-        "section4aTitle": "4A. Treści Użytkownika, Własność i Dożywotni Dostęp Pro",
-        "section4aP1": "Wszystkie obrazy i treści przesłane lub przetworzone za pomocą Batch Shots pozostają wyłączną własnością użytkownika. Batch Shots nie przechowuje, nie przegląda ani nie przesyła Twoich obrazów na nasze serwery; całe przetwarzanie odbywa się lokalnie w Twojej przeglądarce. Jesteś wyłącznie odpowiedzialny za zapewnienie, że posiadasz niezbędne prawa i uprawnienia do korzystania i przetwarzania obrazów za pomocą naszej usługi. Batch Shots nie ponosi odpowiedzialności za naruszenia praw autorskich lub własności intelektualnej wynikające z korzystania z usługi.",
-        "section4aP2": "Dostęp \"dożywotni\" do funkcji Pro oznacza, że będziesz miał dostęp do wszystkich funkcji Pro tak długo, jak długo Batch Shots będzie działać i być utrzymywany jako usługa. Jeśli Batch Shots zostanie wycofany, dołożymy starań, aby zapewnić użytkownikom Pro dostęp do kodu oprogramowania lub udostępnić aplikację jako open source, umożliwiając dalsze korzystanie.",
-        "section5Title": "5. Wyłączenia Odpowiedzialności",
-        "section5Li1": "Batch Shots jest dostarczany \"w stanie obecnym\" i \"w miarę dostępności\" bez jakichkolwiek gwarancji.",
-        "section5Li2": "Nie gwarantujemy, że usługa będzie nieprzerwana, bezpieczna lub wolna od błędów.",
-        "section5Li3": "Nie ponosimy odpowiedzialności za utratę danych, która może wystąpić podczas przetwarzania. Użytkownicy są odpowiedzialni za zachowanie własnych kopii zapasowych.",
-        "section5Li4": "Nie udzielamy gwarancji dotyczących dokładności lub skuteczności funkcji generowania nazw SEO.",
-        "section5Li5": "Batch Shots nie ponosi odpowiedzialności za jakiekolwiek roszczenia prawne, szkody lub spory wynikające z treści użytkownika lub korzystania z usługi.",
-        "section6Title": "6. Ograniczenie Odpowiedzialności",
-        "section6P1": "W maksymalnym zakresie dozwolonym przez prawo, nie będziemy odpowiedzialni za jakiekolwiek pośrednie, przypadkowe, szczególne, następowe lub karne szkody wynikające z korzystania lub niemożności korzystania z usługi, lub z jakichkolwiek roszczeń prawnych wynikających z Twoich treści.",
-        "section7Title": "7. Modyfikacje Usługi",
-        "section7P1": "Zastrzegamy sobie prawo do modyfikowania, zawieszania lub zaprzestania działania dowolnej części Batch Shots w dowolnym momencie bez uprzedniego powiadomienia lub odpowiedzialności.",
-        "section8Title": "8. Prawo Właściwe",
-        "section8P1": "Niniejsze Warunki Korzystania będą regulowane i interpretowane zgodnie z prawem jurysdykcji, w której działamy, bez uwzględnienia jej przepisów kolizyjnych.",
-        "section9Title": "9. Zmiany w Warunkach",
-        "section9P1": "Możemy od czasu do czasu aktualizować te Warunki Korzystania. Powiadomimy Cię o wszelkich zmianach, publikując nowe Warunki na tej stronie i aktualizując datę \"Ostatnia aktualizacja\".",
-        "section10Title": "10. Kontakt",
-        "section10P1": "Jeśli masz jakiekolwiek pytania dotyczące tych Warunków Korzystania, skontaktuj się z nami pod adresem terms@batchshots.com.",
-        "returnButton": "POWRÓT DO STRONY GŁÓWNEJ"
-    },
-    "PrivacyPage": {
-        "title": "Polityka Prywatności | Batch Shots",
-        "description": "Dowiedz się, jak Batch Shots przetwarza Twoje dane. Nasza polityka prywatności szczegółowo opisuje praktyki zbierania, wykorzystywania i ochrony danych.",
-        "keywords": "polityka prywatności, ochrona danych, dane użytkownika, RODO, batchshots"
-    },
-    "TermsPage": {
-        "title": "Warunki Korzystania z Usługi | Batch Shots",
-        "description": "Zapoznaj się z warunkami korzystania z Batch Shots. Dowiedz się o obowiązkach użytkownika, ograniczeniach usługi i własności intelektualnej.",
-        "keywords": "warunki korzystania, regulamin, umowa użytkownika, batchshots"
-    },
-    "PricingPage": {
-        "title": "Plany Cenowe | Batch Shots Pro",
-        "description": "Przeglądaj plany cenowe Batch Shots. Wybierz najlepszy plan dla swoich potrzeb edycji obrazów, od darmowego poziomu po funkcje Pro, takie jak usuwanie tła i zwiększone limity.",
-        "keywords": "cennik, batch shots pro, plany subskrypcji, koszt edycji zdjęć, cennik usuwania tła"
+    "QuickPresets": {
+      "title": "SZYBKIE PRESETY",
+      "productSpecialty": "SPECJALIZACJA PRODUKTU",
+      "colorStyle": "STYL KOLORU",
+      "presets": {
+        "white-bg": {
+          "name": "BIAŁE TŁO",
+          "description": "Czysta fotografia produktowa na białym tle"
+        },
+        "clean": {
+          "name": "CZYSTY PRODUKT",
+          "description": "Fotografia produktowa z czystymi, neutralnymi kolorami"
+        },
+        "jewelry": {
+          "name": "BIŻUTERIA/METAL",
+          "description": "Zoptymalizowane dla biżuterii i produktów metalowych"
+        },
+        "sharp": {
+          "name": "OSTRE SZCZEGÓŁY",
+          "description": "Ulepszona ostrość i szczegóły"
+        },
+        "textile": {
+          "name": "TEKSTYLIA/TKANINA",
+          "description": "Dla produktów z tkaniny i tekstyliów - poprawia teksturę i kolor"
+        },
+        "soft-product": {
+          "name": "MIĘKKIE PRODUKTY",
+          "description": "Dla miękkich produktów jak poduszki, poduszki, pluszaki"
+        },
+        "furniture": {
+          "name": "MEBLE/DREWNO",
+          "description": "Meble drewniane i dekoracje wnętrz"
+        },
+        "transparent": {
+          "name": "SZKŁO",
+          "description": "Szkło i produkty przezroczyste"
+        },
+        "food": {
+          "name": "PRODUKTY SPOŻYWCZE",
+          "description": "Fotografia kulinarna - poprawia świeżość i atrakcyjność kolorów"
+        },
+        "dramatic": {
+          "name": "DRAMATYCZNE",
+          "description": "Fotografia produktowa z wysokim kontrastem"
+        },
+        "vivid": {
+          "name": "ŻYWE KOLORY",
+          "description": "Ulepszone nasycenie i jasność kolorów"
+        },
+        "classic": {
+          "name": "KLASYCZNE",
+          "description": "Klasyczny wygląd ze zbalansowanymi kolorami"
+        }
+      }
     },
     "BackgroundRemovalPage": {
-        "metadata": {
-            "title": "Usuwanie Tła AI | Batch Shots",
-            "description": "Automatycznie usuwaj tła ze swoich obrazów za pomocą narzędzia AI Batch Shots. Idealne do zdjęć produktów, portretów i projektów kreatywnych. Wypróbuj za darmo!",
-            "keywords": "usuwanie tła, usuń tło, usuwanie tła ai, przezroczyste tło, fotografia produktowa, edycja zbiorcza obrazów"
-        }
-    },
-    "ObjectRemovalPage": {
-        "metadata": {
-            "title": "Narzędzie AI do Usuwania Obiektów | Batch Shots",
-            "description": "Usuń niechciane obiekty, osoby lub tekst ze swoich zdjęć dzięki naszemu narzędziu opartemu na AI. Działa całkowicie w Twojej przeglądarce dla zachowania prywatności. Wypróbuj za darmo!",
-            "keywords": "usuwanie obiektów, usuwanie obiektów ai, usunąć obiekty ze zdjęcia, usunąć tekst ze zdjęcia, usunąć osoby ze zdjęcia, inpainting, narzędzie do edycji zdjęć"
+      "title": "NARZĘDZIE DO USUWANIA TŁA",
+      "loading": {
+        "tool": "ŁADOWANIE NARZĘDZIA...",
+        "proStatus": "SPRAWDZANIE STATUSU PRO...",
+        "description": "Proszę czekać, podczas gdy inicjalizujemy możliwości przetwarzania obrazów.",
+        "proDescription": "Proszę czekać, podczas gdy sprawdzamy status Twojego konta."
+      },
+      "mainCard": {
+        "title": "USUŃ TŁA Z OBRAZÓW",
+        "info": {
+          "title": "USUWANIE TŁA AI",
+          "description": "Usuń tło z obrazów produktów za pomocą technologii AI. Przetwarzanie odbywa się całkowicie w Twojej przeglądarce dla zachowania prywatności."
         },
-        "title": "AI USUWANIE OBIEKTÓW",
-        "loading": {
-            "ort": "Ładowanie silnika AI...",
-            "opencv": "Ładowanie narzędzi do przetwarzania obrazów...",
-            "model": "Ładowanie modelu usuwania obiektów...",
-            "proStatus": "Sprawdzanie statusu konta...",
-            "generic": "Ładowanie..."
+        "upload": {
+          "title": "Wybierz obrazy",
+          "buttonFree": "WYBIERZ OBRAZ",
+          "buttonPro": "WYBIERZ OBRAZY",
+          "helpTextFree": "Użytkownicy darmowi mogą wybrać 1 obraz jednocześnie.",
+          "helpTextPro": "Możesz wybrać do 100 obrazów jednocześnie."
         },
-        "mainCard": {
-            "title": "USUWANIE OBIEKTÓW",
-            "info": {
-                "title": "JAK TO DZIAŁA",
-                "description": "Usuń niechciane obiekty, osoby lub tekst ze swoich zdjęć za pomocą AI. Przetwarzanie odbywa się w całości w Twojej przeglądarce.",
-            },
-            "upload": {
-                "title": "Wgraj zdjęcie",
-                "button": "WYBIERZ ZDJĘCIE",
-                "helpTextFree": "Wybierz zdjęcie do edycji.",
-                "helpTextPro": "Wybierz do 100 zdjęć do przetwarzania wsadowego."
-            },
-            "canvas": {
-                "drawTitle": "NARYSUJ MASKĘ NA OBIEKTACH",
-                "brushSize": "Rozmiar pędzla",
-                "clearMask": "WYCZYŚĆ MASKĘ",
-                "outputTitle": "2. ZOBACZ WYNIK",
-                "outputPlaceholder": "Wynik pojawi się tutaj"
-            },
-            "actions": {
-                "reset": "RESETUJ",
-                "remove": "USUŃ OBIEKTY",
-                "removeAllObjects": "USUŃ ZE WSZYSTKICH ZDJĘĆ",
-                "processing": "PRZETWARZANIE...",
-                "download": "POBIERZ",
-                "downloadAll": "POBIERZ WSZYSTKO"
-            }
+        "actions": {
+          "clear": "WYCZYŚĆ",
+          "download": "POBIERZ",
+          "downloadZip": "POBIERZ JAKO ZIP",
+          "removeBackground": "USUŃ TŁO",
+          "removeBackgrounds": "USUŃ TŁA",
+          "processing": "USUWANIE TŁA...",
+          "processingMultiple": "USUWANIE TŁA...",
+          "tryFullEditor": "WYPRÓBUJ PEŁNY EDYTOR"
+        },
+        "progress": {
+          "processing": "Przetwarzanie...",
+          "percent": "{percent}%"
         },
         "upgradeCard": {
-            "title": "PRZEJDŹ NA PRO",
-            "description": "Odblokuj wsadowe usuwanie obiektów dla nawet 100 zdjęć i inne funkcje PRO, takie jak masowe usuwanie tła i zaawansowana edycja.",
-            "button": "DOWIEDZ SIĘ WIĘCEJ I PRZEJDŹ NA PRO"
-        },
-        "instructionsCard": {
-            "title": "INSTRUKCJE",
-            "step1": "Wgraj zdjęcie używając przycisku 'Wybierz zdjęcie'.",
-            "step2": "Ostrożnie narysuj czerwonym pędzlem na obiektach, które chcesz usunąć.",
-            "step3": "Dostosuj rozmiar pędzla dla większej precyzji.",
-            "step4": "Kliknij przycisk 'Usuń obiekty' i poczekaj, aż AI zakończy przetwarzanie.",
-            "step5": "Po zakończeniu przetwarzania możesz pobrać oczyszczone zdjęcie używając przycisku 'Pobierz'.",
-            "step6": "Dla przetwarzania wsadowego włącz 'Zastosuj maskę do wszystkich zdjęć', aby usunąć podobne obiekty ze wszystkich wybranych zdjęć.",
-            "noteTitle": "Uwaga:",
-            "noteText": "Przetwarzanie może zająć 15-60 sekund w zależności od rozmiaru zdjęcia i Twojego urządzenia. Upewnij się, że maska całkowicie pokrywa obiekt dla najlepszych rezultatów."
-        },
-        "imageGallery": {
-            "selectedImages": "Wybrane zdjęcia",
-            "selectedImage": "Wybrane zdjęcie",
-            "clearAll": "Wyczyść wszystko",
-            "applyMaskToAll": "Zastosuj maskę do wszystkich zdjęć (przetwarzanie wsadowe)",
-            "hasMask": "Maska narysowana"
-        },
-        "processing": {
-            "readingFile": "Odczytywanie pliku...",
-            "loadingImage": "Ładowanie zdjęcia...",
-            "exportingMask": "Przygotowywanie maski...",
-            "runningModel": "Uruchamianie modelu AI...",
-            "rendering": "Renderowanie wyniku...",
-            "preparingBatch": "Przygotowywanie przetwarzania wsadowego...",
-            "processingImage": "Przetwarzanie zdjęcia {current} z {total}...",
-            "finishingBatch": "Finalizowanie wyników...",
-            "preparingDownload": "Przygotowywanie pobierania...",
-            "batchProgress": "Postęp przetwarzania wsadowego",
-            "loadingDimensions": "Obliczanie wymiarów zdjęcia...",
-            "generic": "Przetwarzanie zdjęcia..."
-        },
-        "errors": {
-            "ortLoad": "Nie udało się załadować silnika AI. Proszę odświeżyć stronę.",
-            "sessionCreate": "Nie udało się zainicjować modelu usuwania obiektów.",
-            "freeLimit": "Użytkownicy darmowi mogą przetwarzać tylko 1 zdjęcie na raz. Przejdź na PRO, aby korzystać z przetwarzania wsadowego.",
-            "tooManyImages": "Maksymalnie dozwolone jest 100 zdjęć. Tylko pierwsze 100 zdjęć zostanie przetworzonych.",
-            "imageLoad": "Błąd podczas ładowania wybranego zdjęcia.",
-            "fileRead": "Błąd podczas odczytywania wybranego pliku.",
-            "canvasError": "Błąd podczas dostępu do płótna zdjęcia.",
-            "prerequisites": "Nie można przetworzyć. Brakujące wymagane komponenty: {missing}",
-            "noMask": "Najpierw narysuj maskę na obiekcie, który chcesz usunąć.",
-            "processingFailed": "Usuwanie obiektu nie powiodło się",
-            "resultLoadFailed": "Błąd podczas wyświetlania przetworzonego wyniku.",
-            "noDownloadData": "Brak przetworzonego zdjęcia do pobrania.",
-            "downloadFailed": "Błąd podczas przygotowywania pobierania."
+          "title": "ULEPSZ DO PRO",
+          "plan": {
+            "title": "PLAN PRO",
+            "price": "19,99 €",
+            "features": [
+              "Usuwaj tła z do 100 obrazów jednocześnie",
+              "Zaawansowane dostosowania obrazów i presety",
+              "Generowanie nazw SEO dla obrazów produktów",
+              "Przetwarzanie zbiorcze dla wszystkich funkcji",
+              "Jednorazowa płatność, dostęp dożywotni"
+            ],
+            "buttonText": "ULEPSZ TERAZ"
+          }
         }
-    },
-    "WatermarkPage": {
-        "metadata": {
-            "title": "Dodaj znak wodny do zdjęć | Batch Shots",
-            "description": "Łatwo dodawaj niestandardowe znaki wodne tekstowe lub logo do swoich zdjęć. Chroń swoje zdjęcia za pomocą znaków wodnych z kontrolą przezroczystości, pozycji i rozmiaru.",
-            "keywords": "znak wodny, dodaj znak wodny do zdjęć, znak wodny na zdjęciu, znak wodny obrazu, znak wodny logo, znak wodny tekstowy, branding obrazu, znakowanie zdjęć"
+      },
+      "howItWorks": {
+        "title": "JAK TO DZIAŁA",
+        "step1": {
+          "title": "1. WYBIERZ SWOJE OBRAZY",
+          "description": "Prześlij jeden lub więcej obrazów produktów, które chcesz przetworzyć.",
+          "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów jednocześnie!"
         },
-        "title": "DODAJ ZNAK WODNY DO ZDJĘĆ",
-        "loading": {
-            "proStatus": "SPRAWDZANIE STATUSU PRO...",
-            "proDescription": "Proszę czekać, weryfikujemy status Twojego konta."
+        "step2": {
+          "title": "2. USUŃ TŁA",
+          "description": "Nasza technologia AI wykrywa i usuwa tło z Twoich obrazów, tworząc przezroczyste PNG idealne dla e-commerce."
         },
-        "preview": {
-            "title": "PODGLĄD OBRAZU"
-        },
-        "alerts": {
-            "freeUserLimit": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!",
-            "maxImagesLimit": "Maksymalnie dozwolone jest 100 obrazów na raz.",
-            "watermarkFailed": "Zastosowanie znaku wodnego nie powiodło się. Proszę spróbować ponownie."
-        },
-        "mainCard": {
-            "title": "ZNAKUJ WODNIE SWOJE ZDJĘCIA",
-            "info": {
-                "title": "DODAJ NIESTANDARDOWE ZNAKI WODNE",
-                "description": "Chroń swoje obrazy za pomocą niestandardowych znaków wodnych tekstowych lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich preferencji brandingowych.",
-            },
-            "upload": {
-                "title": "Wybierz obrazy",
-                "buttonFree": "WYBIERZ OBRAZ",
-                "buttonPro": "WYBIERZ OBRAZY",
-                "helpTextFree": "Darmowi użytkownicy mogą wybrać 1 obraz na raz.",
-                "helpTextPro": "Możesz wybrać do 100 obrazów na raz."
-            },
-            "actions": {
-                "clear": "WYCZYŚĆ",
-                "download": "POBIERZ",
-                "downloadZip": "POBIERZ JAKO ZIP",
-                "applyWatermark": "ZASTOSUJ ZNAK WODNY",
-                "applyWatermarks": "ZASTOSUJ ZNAKI WODNE",
-                "processing": "STOSOWANIE ZNAKU WODNEGO...",
-                "processingMultiple": "STOSOWANIE ZNAKÓW WODNYCH...",
-                "tryFullEditor": "WYPRÓBUJ PEŁNY EDYTOR"
-            },
-            "progress": {
-                "processing": "Przetwarzanie...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "ULEPSZ DO PRO",
-                "plan": {
-                    "title": "PLAN PRO",
-                    "price": "19,99 €",
-                    "features": [
-                        "Znakuj wodnie do 100 obrazów na raz",
-                        "Zaawansowane dostosowania obrazów i presety",
-                        "Usuwanie tła dla zdjęć produktów",
-                        "Przetwarzanie zbiorcze dla wszystkich funkcji",
-                        "Jednorazowa płatność, dostęp dożywotni"
-                    ],
-                    "buttonText": "ULEPSZ TERAZ"
-                }
-            }
-        },
-        "howItWorks": {
-            "title": "JAK TO DZIAŁA",
-            "step1": {
-                "title": "1. WYBIERZ SWOJE OBRAZY",
-                "description": "Prześlij jeden lub więcej obrazów, które chcesz oznaczyć znakiem wodnym.",
-                "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów na raz!"
-            },
-            "step2": {
-                "title": "2. DOSTOSUJ ZNAK WODNY",
-                "description": "Wybierz między znakami wodnymi tekstowymi lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich preferencji."
-            },
-            "step3": {
-                "title": "3. POBIERZ I UŻYJ",
-                "description": "Zastosuj znak wodny i pobierz przetworzone obrazy gotowe do użycia w sieci, mediach społecznościowych lub portfolio."
-            }
-        },
-        "proDialog": {
-            "title": "ULEPSZ DO PRO",
-            "featureTitle": "FUNKCJA PRO: Zbiorcze znakowanie wodne",
-            "description": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby oznaczać znakiem wodnym do 100 obrazów zbiorczo, oszczędzając godziny pracy!",
-            "pricing": {
-                "title": "JEDNORAZOWA PŁATNOŚĆ",
-                "price": "19,99 €",
-                "note": "Brak subskrypcji, dostęp dożywotni"
-            },
-            "actions": {
-                "upgrade": "ULEPSZ DO PRO",
-                "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
-            }
+        "step3": {
+          "title": "3. POBIERZ & UŻYJ",
+          "description": "Pobierz przetworzone obrazy i używaj ich na swojej stronie internetowej, aukcjach marketplace lub materiałach marketingowych."
         }
-    },
-    "ImageFormatConvertorPage": {
-        "metadata": {
-            "title": "Konwerter formatów obrazów | Batch Shots",
-            "description": "Konwertuj obrazy między formatami (JPG, PNG, WebP, AVIF) za pomocą naszego łatwego w użyciu narzędzia. Obsługuje konwersję HEIC i przetwarzanie wsadowe.",
-            "keywords": "konwerter formatów obrazów, konwertuj jpg na png, konwertuj heic na jpg, konwerter webp, konwersja formatu obrazu, wsadowa konwersja obrazów, konwertuj heic"
+      },
+      "proDialog": {
+        "title": "ULEPSZ DO PRO",
+        "featureTitle": "FUNKCJA PRO: Masowe usuwanie tła",
+        "description": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo, oszczędzając godziny pracy!",
+        "pricing": {
+          "title": "JEDNORAZOWA PŁATNOŚĆ",
+          "price": "19,99 €",
+          "note": "Brak subskrypcji, dostęp dożywotni"
         },
-        "title": "KONWERTER FORMATÓW OBRAZÓW",
-        "loading": {
-            "tool": "ŁADOWANIE KONWERTERA...",
-            "proStatus": "SPRAWDZANIE STATUSU PRO...",
-            "description": "Poczekaj, aż zainicjujemy możliwości przetwarzania obrazów.",
-            "proDescription": "Poczekaj, aż zweryfikujemy status Twojego konta."
-        },
-        "uploadArea": {
-            "title": "KONWERTUJ SWOJE OBRAZY",
-            "description": "Konwertuj swoje obrazy do różnych formatów za pomocą kilku kliknięć.",
-            "selectImages": "WYBIERZ OBRAZY (DO {maxImages})",
-            "dragAndDropPrivacy": "Przeciągnij obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong>",
-            "freeLimitInfo": "Darmowi użytkownicy mogą konwertować do {maxImages} obrazów naraz.",
-            "upgradeLink": "Uaktualnij do PRO"
-        },
-        "selectedImages": {
-            "title": "WYBRANE OBRAZY ({count})"
-        },
-        "formatChanged": {
-            "title": "FORMAT ZMIENIONY",
-            "description": "Zmieniłeś format docelowy. Kliknij Resetuj, aby przekonwertować obrazy do nowego formatu."
-        },
-        "mainCard": {
-            "title": "KONWERTUJ OBRAZY DO DOWOLNEGO FORMATU",
-            "info": {
-                "title": "KONWERSJA FORMATU OBRAZU",
-                "description": "Konwertuj swoje obrazy między formatami takimi jak JPG, PNG, WebP i AVIF. Możesz także zmieniać rozmiar obrazów podczas konwersji.",
-                },
-            },
-            "upload": {
-                "title": "Wybierz obrazy do konwersji",
-                "buttonFree": "WYBIERZ OBRAZY",
-                "buttonPro": "WYBIERZ OBRAZY",
-                "helpTextFree": "Darmowi użytkownicy mogą wybrać do {maxImages} obrazów naraz.",
-                "helpTextPro": "Możesz wybrać do 100 obrazów naraz."
-            },
-            "actions": {
-                "clear": "WYCZYŚĆ",
-                "addMore": "DODAJ WIĘCEJ",
-                "download": "POBIERZ SKONWERTOWANE",
-                "downloadZip": "POBIERZ WSZYSTKO JAKO ZIP",
-                "convertImageTo": "KONWERTUJ DO {format}",
-                "convertImagesTo": "KONWERTUJ WSZYSTKO DO {format}",
-                "converting": "KONWERSJA...",
-                "convertingMultiple": "KONWERSJA OBRAZÓW...",
-                "resetConversion": "RESETUJ"
-            },
-            "progress": {
-                "processing": "Przetwarzanie...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "UAKTUALNIJ DO PRO",
-                "plan": {
-                    "title": "PLAN PRO",
-                    "price": "$19.99",
-                    "features": [
-                        "Konwertuj do 100 obrazów naraz",
-                        "Zmieniaj rozmiar obrazów podczas konwersji",
-                        "Konwertuj z HEIC/HEIF do dowolnego formatu",
-                        "Usuwanie tła dla zdjęć produktów",
-                        "Jednorazowa opłata, dożywotni dostęp"
-                    ],
-                    "buttonText": "UAKTUALNIJ TERAZ"
-                }
-            }
-        },
-        "targetFormat": {
-            "title": "WYBIERZ FORMAT DOCELOWY"
-        },
-        "resize": {
-            "title": "ZMIEŃ ROZMIAR PODCZAS KONWERSJI (OPCJONALNIE)"
-        },
-        "convertedImages": {
-            "title": "SKONWERTOWANE OBRAZY",
-            "description": "Twoje obrazy zostały pomyślnie przekonwertowane. Kliknij Pobierz, aby je zapisać."
-        },
-        "howItWorks": {
-            "title": "JAK TO DZIAŁA",
-            "step1": {
-                "title": "1. WYBIERZ SWOJE OBRAZY",
-                "description": "Prześlij jeden lub więcej obrazów, które chcesz przekonwertować.",
-                "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów naraz!"
-            },
-            "step2": {
-                "title": "2. WYBIERZ FORMAT DOCELOWY",
-                "description": "Wybierz żądany format wyjściowy (JPG, PNG, WebP lub AVIF)."
-            },
-            "step3": {
-                "title": "3. ZMIEŃ ROZMIAR (OPCJONALNIE)",
-                "description": "Opcjonalnie wybierz ustawienie wstępne, aby zmienić rozmiar obrazów podczas konwersji."
-            },
-            "step4": {
-                "title": "4. POBIERZ I UŻYWAJ",
-                "description": "Konwertuj swoje obrazy i pobieraj je pojedynczo lub jako archiwum ZIP."
-            }
-        },
-        "supportedFormats": {
-            "title": "OBSŁUGIWANE FORMATY",
-            "input": {
-                "title": "FORMATY WEJŚCIOWE",
-                "description": "Możesz przesyłać obrazy w tych formatach:"
-            },
-            "output": {
-                "title": "FORMATY WYJŚCIOWE",
-                "description": "Konwertuj swoje obrazy do dowolnego z tych formatów:"
-            }
-        },
-        "alerts": {
-            "freeUserLimit": "Darmowi użytkownicy mogą konwertować do 5 obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo!",
-            "maxImagesLimit": "Maksymalnie 100 obrazów dozwolonych naraz.",
-            "conversionFailed": "Konwersja formatu nie powiodła się. Spróbuj ponownie."
-        },
-        "proDialog": {
-            "title": "UAKTUALNIJ DO PRO",
-            "featureTitle": "FUNKCJA PRO: Wsadowa konwersja formatu",
-            "description": "Darmowi użytkownicy mogą konwertować tylko {maxImages} obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo, oszczędzając godziny pracy!",
-            "pricing": {
-                "title": "JEDNORAZOWA OPŁATA",
-                "price": "$19.99",
-                "note": "Bez subskrypcji, dożywotni dostęp"
-            },
-            "actions": {
-                "upgrade": "UAKTUALNIJ DO PRO",
-                "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
-            }
-        },
-        "allImages": "WSZYSTKIE OBRAZY ({current}/{max})",
-        "imagesCount": "{current}/{max} obrazów",
-        "upgradeFor": "(Uaktualnij do 100)"
-    },
-    "ImageDuplicateDetectionPage": {
-            "metadata": {
-                "title": "Wyszukiwarka i Czyszczenie Duplikatów Zdjęć AI | Batch Shots",
-                "description": "Szybko znajduj i usuwaj zduplikowane lub podobne zdjęcia za pomocą naszego narzędzia opartego na AI. Identyfikuje obrazy najlepszej jakości w zestawach duplikatów. Darmowe i w przeglądarce.",
-                "keywords": "wyszukiwarka duplikatów zdjęć, usuwanie duplikatów obrazów, wyszukiwarka podobnych zdjęć, czyszczenie zdjęć AI, wykrywanie duplikatów obrazów, zdjęcie najlepszej jakości, porządkowanie zdjęć, batchshots"
-            },
-            "PageTitle": "Wyszukiwarka i Czyszczenie Duplikatów Zdjęć AI",
-            "AppInitializing": "Inicjalizowanie Inteligentnego Analizatora Zdjęć...",
-            "AISetup": "Konfigurowanie Silnika AI...",
-            "AIEngineInitializing": "Inicjalizowanie Silnika AI...",
-            "AIEngineStarted": "Silnik AI Uruchomiony.",
-            "AIInitializing": "Inicjalizowanie AI...",
-            "AILoadingModel": "Ładowanie Zaawansowanego Modelu AI...",
-            "AIModelLoaded": "Model AI Załadowany.",
-            "AIReady": "AI Gotowe. Wybierz zdjęcia, aby znaleźć duplikaty.",
-            "AIReadyPrompt": "AI Gotowe. Wybierz zdjęcia, aby znaleźć duplikaty.",
-            "ProcessingImage": "Analizowanie zdjęcia {imageId}...",
-            "ErrorProcessingImage": "Błąd podczas analizy zdjęcia {imageId}: {data}.",
-            "AIEngineError": "Błąd Silnika AI: {data}.",
-            "AIEngineErrorRefresh": "Błąd Silnika AI: {data}. Odśwież stronę lub spróbuj ponownie.",
-            "AICriticalError": "AI napotkało krytyczny błąd.",
-            "AICriticalErrorRefresh": "Wystąpił krytyczny błąd podczas analizy AI. Proszę odświeżyć stronę.",
-            "QualityToolsError": "Nie udało się załadować narzędzi do analizy jakości. Szczegółowe metryki jakości mogą być niedostępne.",
-            "AllImagesProcessedAnalyzing": "Wszystkie zdjęcia przetworzone. Identyfikowanie duplikatów...",
-            "AnalysisCompleteSummary": "Analiza zakończona. {groupSummary} Przetworzono {successfullyProcessedCount} z {totalImagesCount} zdjęć.",
-            "DuplicateSetsFound": "Znaleziono {count} zestaw(ów) duplikatów.",
-            "NoDuplicatesFound": "Nie znaleziono bezpośrednich duplikatów.",
-            "NoImagesProcessedSuccessfully": "Nie udało się pomyślnie przetworzyć żadnych zdjęć. Przetworzono {successfullyProcessedCount} z {totalImagesCount} zdjęć.",
-            "NoImagesForNewThreshold": "Brak zdjęć do analizy z nowym ustawieniem podobieństwa.",
-            "ReanalyzingWithThreshold": "Ponowna analiza zdjęć z ustawieniem podobieństwa: {threshold}...",
-            "AnalysisCompleteWithThreshold": "Analiza zakończona z podobieństwem {threshold}. {groupSummary}",
-            "PleaseSelectImages": "Proszę wybrać zdjęcia...",
-            "AINotReadyError": "Silnik analizy AI nie jest gotowy. Proszę czekać lub odświeżyć stronę.",
-            "ProcessingFilesHEIC": "Przygotowywanie wybranych plików (konwertowanie w razie potrzeby)...",
-            "HEICConversionFailedSkip": "Nie udało się przekonwertować obrazu: {fileName}. Zostanie pominięty.",
-            "HEICConversionErrorSkip": "Błąd podczas konwersji obrazu: {fileName}. Zostanie pominięty.",
-            "NoValidFilesAfterConversion": "Brak prawidłowych plików do przetworzenia po próbach konwersji.",
-            "SendingImagesToAI": "Wysyłanie {count} zdjęć do analizy AI...",
-            "NoValidImagesSelected": "Nie wybrano prawidłowych zdjęć do przetworzenia.",
-            "QualityToolsNotReadyKPI": "Narzędzia analizy jakości nie są gotowe. Nie można obliczyć szczegółowej jakości.",
-            "QualityToolsNotReadyQuality": "Narzędzia analizy jakości nie są gotowe. Nie można obliczyć jakości.",
-            "ErrorCalculatingQuality": "Błąd podczas obliczania jakości dla zdjęcia {imageId}: {error}",
-            "QualityToolsNotReadyAnalysisWait": "Narzędzia analizy jakości nie są gotowe. Proszę czekać.",
-            "NoDuplicatesInGroup": "Brak duplikatów w tej grupie do analizy.",
-            "AnalyzingGroupQuality": "Analizowanie jakości zdjęć w grupie {groupNumber}...",
-            "AnalyzedProgressInGroup": "Przeanalizowano {processedCount} z {groupTotal} w grupie {groupNumber}. Zdjęcie: {imageName}",
-            "QualityAnalysisCompleteForGroup": "Analiza jakości zakończona dla grupy {groupNumber}.",
-            "QualityAnalysisPartialForGroup": "Analiza jakości częściowo wykonana dla grupy {groupNumber}. Niektóre zdjęcia mogły się nie udać lub zostały pominięte.",
-            "QualityToolsNotReadyBestSelection": "Narzędzia analizy jakości nie są gotowe. Nie można zapewnić wyboru najlepszego zdjęcia.",
-            "AnalyzingQualityForBestDownload": "Analizowanie jakości dla {count} zdjęć w celu wybrania najlepszych do pobrania...",
-            "PreDownloadAnalysisComplete": "Wstępna analiza jakości zakończona dla bieżącej grupy.",
-            "NoImagesToDownload": "Brak zdjęć do pobrania.",
-            "QualityToolsNotReadyDownloadAll": "Narzędzia analizy jakości nie są gotowe. Szczegółowa analiza zestawów duplikatów nie może być wykonana dla opcji 'Pobierz Wszystkie'. Proszę czekać lub najpierw przeanalizować grupy indywidualnie.",
-            "PreparingDownload": "Przygotowywanie plików do pobrania...",
-            "BestImageDeterminationFailed": "Nie udało się określić najlepszego zdjęcia dla grupy. Ta grupa zostanie pominięta w pliku ZIP.",
-            "WarningBestImageOmitted": "Ostrzeżenie: Nie udało się określić najlepszego zdjęcia dla grupy i zostało ono pominięte.",
-            "ZippingImages": "Kompresowanie {count} zdjęć...",
-            "DownloadComplete": "Pobieranie zakończone!",
-            "ErrorCreatingZIP": "Błąd podczas tworzenia pliku ZIP do pobrania.",
-            "NoImagesSelectedForDownload": "Nie wybrano żadnych zdjęć do pobrania (np. brak unikalnych zdjęć lub nie zidentyfikowano najlepszych zdjęć w grupach).",
-            "ImageDataMissingDownload": "Brak danych zdjęcia, nie można pobrać.",
-            "DownloadingImage": "Pobieranie {imageName}...",
-            "ImageDownloadedSuccessfully": "{imageName} pobrano pomyślnie.",
-            "FailedToDownloadImage": "Nie udało się pobrać {imageName}.",
-            "QualityToolsNotReadyAnalyzeAllGroups": "Narzędzia analizy jakości nie są gotowe. Szczegółowa analiza zestawów duplikatów nie może być wykonana. Proszę czekać.",
-            "OnlyUniqueImagesReadyDownload": "Obecne tylko unikalne zdjęcia. Gotowe do pobrania.",
-            "NoImagesToAnalyzeOrDownload": "Brak zdjęć do analizy lub pobrania.",
-            "AnalyzingAllGroupsForBest": "Analizowanie wszystkich grup w celu wyboru najlepszego zdjęcia...",
-            "AnalyzingGroupForBest": "Analizowanie grupy {currentGroup} z {totalGroups} w celu wyboru najlepszego zdjęcia...",
-            "AllGroupsAnalyzedReadyDownload": "Wszystkie {count} grupy duplikatów przeanalizowane. Gotowe do pobrania {downloadCount} najlepszych zdjęć.",
-            "AnalysisPartialReadyDownload": "Analiza wyboru najlepszych zdjęć częściowo zakończona (przetworzono {processedGroups}/{totalGroups} grup). Gotowe do pobrania {downloadCount} zdjęć (zostaną wybrane najlepsze dostępne).",
-            "NoImagesProcessedOrGroups": "Nie przetworzono żadnych zdjęć lub nie utworzono jeszcze grup. Upewnij się, że zdjęcia zostały wybrane, a analiza AI zakończona.",
-    
-            "LoaderTitleInitializing": "Inicjalizowanie Inteligentnych Narzędzi...",
-            "LoaderTitleLoadingModel": "Ładowanie Mózgu AI...",
-            "LoaderTitleQualityTools": "Przygotowywanie Analizatora Jakości...",
-            "LoaderDescriptionInitializing": "Przygotowywanie do inteligentnego wykrywania duplikatów. Proszę czekać.",
-            "LoaderDescriptionLoadingModel": "Nasza zaawansowana AI się rozgrzewa. Może to chwilę potrwać.",
-            "LoaderDescriptionQualityTools": "Przygotowywanie narzędzi do szczegółowych informacji o jakości zdjęć...",
-            
-            "MainCardTitle": "Znajdź i Zarządzaj Zduplikowanymi Zdjęciami",
-            "UploadSectionTitle": "Prześlij Swoje Zdjęcia",
-            "UploadSectionDescription": "Wybierz wiele zdjęć. Nasza AI inteligentnie je przeanalizuje i zgrupowuje podobne.",
-            "ButtonSelectImages": "Wybierz Zdjęcia",
-            "ButtonSelectImagesLoading": "Ładowanie...",
-            "ButtonSelectImagesInitializing": "Ładowanie Narzędzi...",
-            "ButtonAddMoreImages": "Dodaj Więcej Zdjęć",
-            "ButtonAddMoreImagesLoading": "Dodawanie Zdjęć...",
-            "SupportedFormats": "Obsługuje formaty JPG, PNG, WEBP, HEIC",
-            "AIStatusLabel": "Status AI: {status}",
-            "QualityAnalyzerStatusLoading": "Analizator Jakości: Ładowanie...",
-    
-            "SimilarityThresholdTitle": "Ustawienie Podobieństwa",
-            "SimilarityThresholdDescription": "Określ, jak dokładnie zdjęcia muszą pasować, aby zostały oznaczone jako duplikaty. Wyższe wartości oznaczają bardziej rygorystyczne dopasowanie.",
-            "SimilarityLessStrict": "Mniej Rygorystyczne",
-            "SimilarityCurrent": "Aktualne: {threshold}",
-            "SimilarityMoreStrict": "Bardziej Rygorystyczne",
-            "ButtonApplyThreshold": "Zastosuj Ustawienie",
-            "ButtonApplyThresholdLoading": "Ponowne Analizowanie...",
-    
-            "ResultsTitle": "Wyniki Wykrywania:",
-            "DuplicateSetTitle": "Zestaw Duplikatów {number} ({count} podobnych zdjęć)",
-            "ButtonAnalyzeQuality": "Analizuj Jakość",
-            "ButtonAnalyzeQualityLoading": "Analizowanie...",
-            "ButtonReanalyzeQuality": "Przeanalizuj Ponownie Jakość",
-            "ImageMissing": "Brak danych zdjęcia (indeks: {index})",
-            "BestLabel": "Najlepsze",
-            "KpiRes": "Rozdz:",
-            "KpiSharp": "Ostrość:",
-            "KpiNoise": "Szum:",
-            "KpiContrast": "Kontr.:",
-            "KpiExposure": "Eksp.:",
-            "ButtonDownload": "Pobierz",
-            "ButtonDownloading": "Pobieranie...",
-    
-            "UniqueImagesTitle": "Unikalne Zdjęcia ({count} zdjęć bez bezpośrednich duplikatów)",
-    
-            "ButtonAnalyzeAllGroups": "Analizuj Wszystkie Grupy dla Najlepszego Wyboru",
-            "ButtonAnalyzeAllGroupsLoading": "Analizowanie Wszystkich Grup...",
-            "ButtonDownloadBest": "Pobierz {count} Najlepszych Zdjęć",
-            "ButtonDownloadBestLoading": "Przygotowywanie Pobierania...",
-    
-            "HowItWorksTitle": "Jak Nasza AI Znajduje Duplikaty",
-            "HowItWorksStep1Title": "1. Prześlij Swoje Zdjęcia",
-            "HowItWorksStep1Desc": "Kliknij \"Wybierz Zdjęcia\" i wybierz obrazy, które chcesz sprawdzić. Możesz wybrać wiele naraz.",
-            "HowItWorksStep2Title": "2. Inteligentna Analiza AI",
-            "HowItWorksStep2Desc": "Nasza zaawansowana AI (oparta na technologii Vision Transformer) inteligentnie analizuje wizualną zawartość każdego zdjęcia, rozumiejąc jego unikalne cechy i wygląd.",
-            "HowItWorksStep3Title": "3. Inteligentne Ocenianie Podobieństwa",
-            "HowItWorksStep3Desc": "AI porównuje zdjęcia za pomocą zaawansowanej analizy wizualnej (podobieństwo kosinusowe), aby określić, jak bardzo są do siebie podobne na podstawie ich zawartości.",
-            "HowItWorksStep4Title": "4. Dostosuj Podobieństwo",
-            "HowItWorksStep4Desc": "Użyj suwaka podobieństwa, aby kontrolować, jak rygorystyczne jest dopasowanie. Wyższa wartość oznacza, że zdjęcia muszą być prawie identyczne, aby zostały oznaczone jako duplikaty.",
-            "HowItWorksStep5Title": "5. Przeglądaj i Organizuj",
-            "HowItWorksStep5Desc": "Wyniki wyraźnie pokazują zestawy duplikatów i unikalne zdjęcia. Nasza AI może również wyróżnić zdjęcie najlepszej jakości w każdej grupie duplikatów, pomagając Ci zdecydować, które zachować.",
-
-
-        "FreeUserLimit": "Użytkownicy darmowi mogą przesłać do {limit} zdjęć jednocześnie.",
-        "ButtonSelectImagesLimit": "Wybierz zdjęcia (do {limit})",
-        "UpgradeMessage": "Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć naraz.",
-        "UpgradeLink": "Zaktualizuj teraz",
-        "HowItWorksStep1Free": "Użytkownicy darmowi są ograniczeni do {limit} zdjęć jednocześnie.",
-        "HowItWorksStep1Pro": "Jako użytkownik PRO możesz analizować nieograniczoną liczbę zdjęć naraz.",
-        "ProFeatureName": "Nieograniczona analiza zdjęć",
-        
-        "FreeModeTitle": "TRYB DARMOWY",
-        "FreeModeDescription": "Przetwarzaj do {limit} zdjęć jednocześnie. Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć!",
-        "ProModeTitle": "TRYB PRO",
-        "ProModeDescription": "Przetwarzaj nieograniczoną liczbę zdjęć ze swoim kontem PRO!",
-        "MaxImagesExceeded": "Dozwolone maksymalnie 100 obrazów. Przetworzono tylko pierwsze 100.",
-        "ProcessingErrors": "Błędy przetwarzania",
-        "imagesCount": "{current}/{max} zdjęć",
-        "upgradeFor": "(Zaktualizuj, aby uzyskać nielimitowane)",
-        
-        "UpgradeCardTitle": "ZAKTUALIZUJ DO PRO",
-        "UpgradeCardPlanTitle": "PLAN PRO",
-        "UpgradeCardPlanPrice": "$19.99",
-        "UpgradeCardPlanNote": "Jednorazowa płatność, dożywotni dostęp",
-        "UpgradeCardFeature1": "Analizuj nieograniczoną liczbę zdjęć naraz (w porównaniu do 5 w trybie darmowym)",
-        "UpgradeCardFeature2": "Szybko znajdź duplikaty w dużych kolekcjach zdjęć",
-        "UpgradeCardFeature3": "Analiza jakości do automatycznego wyboru najlepszych zdjęć",
-        "UpgradeCardFeature4": "Pobieranie najlepszych zdjęć z zestawów duplikatów w partii",
-        "UpgradeCardFeature5": "Dostęp do wszystkich innych funkcji PRO (usuwanie tła itp.)",
-        "UpgradeCardButton": "ZAKTUALIZUJ TERAZ",
-        
-        "ProUpgradeTitle": "Przejdź na Pro dla nieograniczonych zdjęć",
-
-        "SimilarityControlsTitle": "Algorytm podobieństwa i próg",
-        "SimilarityAlgorithmLabel": "Algorytm podobieństwa",
-        "SimilarityThresholdLabel": "Próg podobieństwa",
-        "SimilarityThresholdDescDistance": "Niższe wartości oznaczają bardziej podobne obrazy (metryka odległości)",
-        "SimilarityThresholdDescSimilarity": "Wyższe wartości oznaczają bardziej podobne obrazy (metryka podobieństwa)",
-        
-        "ProcessingChanges": "Przetwarzanie zmian...",
-        "ReanalyzingWithAlgorithm": "Ponowna analiza z nowym algorytmem...",
-        "AnalysisCompleteWithAlgorithm": "Analiza zakończona z nowym algorytmem. {groupSummary}",
-
-        "DuplicateAnalysisComplete": "Analiza duplikatów zakończona",
-        
-        "VisualizationTitle": "Przestrzeń Wektorowa AI",
-        "VisualizationDescription": "Wizualizuj jak AI postrzega Twoje obrazy w przestrzeni wielowymiarowej, zredukowanej do 2D za pomocą algorytmu UMAP. Podobne obrazy grupują się razem.",
-        "VisualizationShowButton": "Pokaż Wizualizację",
-        "VisualizationHideButton": "Ukryj Wizualizację",
-        "VisualizationGeneratingButton": "Generowanie Wizualizacji...",
-        "VisualizationNoData": "Najpierw prześlij i przetwórz obrazy, aby włączyć wizualizację",
-        "VisualizationProcessingStatus": "To może zająć chwilę dla dużych zbiorów danych...",
-        "VisualizationLegendUnique": "Unikalne Obrazy",
-        "VisualizationLegendDuplicates": "Grupy Duplikatów (pokolorowane według podobieństwa)",
-        "VisualizationHelpText": "Najedź na punkty, aby zobaczyć miniatury obrazów • Bliższe punkty = bardziej podobne obrazy",
-        "VisualizationNeedMinImages": "Potrzebne minimum 3 obrazy do wizualizacji",
-        "VisualizationNoDataAvailable": "Brak dostępnych danych do wizualizacji"
-        },
-        "ImageSeoGenerationPage": {
-            "metadata": {
-                "title": "AI Generowanie SEO Obrazów – Generuj SEO URL i Opisy",
-                "description": "Prześlij swoje obrazy, aby automatycznie generować przyjazne SEO nazwy, adresy URL i opisy za pomocą AI.",
-                "keywords": "seo obrazów, generator url, generator opisów seo obrazów, tworzenie treści ai, optymalizacja obrazów"
-            },
-            "AppInitializing": "Inicjalizowanie generatora AI SEO...",
-            "AISetup": "Konfigurowanie AI do treści SEO...",
-            "AIEngineInitializing": "Inicjalizowanie silnika AI SEO...",
-            "AIEngineStarted": "Silnik AI SEO uruchomiony.",
-            "AIInitializing": "Inicjalizowanie modelu AI do SEO...",
-            "AILoadingModel": "Ładowanie modelu AI SEO...",
-            "AIModelLoaded": "Model AI SEO załadowany.",
-            "AIReady": "Silnik AI SEO gotowy.",
-            "AIReadyPrompt": "AI SEO gotowe. Prześlij swoje obrazy.",
-            "ProcessingImage": "AI przetwarza dla SEO: Obraz {imageId}...",
-            "ErrorProcessingImage": "Błąd podczas przetwarzania AI SEO dla obrazu {imageId}: {data}",
-            "AIEngineError": "Błąd silnika AI SEO: {data}",
-            "AIEngineErrorRefresh": "Błąd silnika AI SEO: {data}. Odśwież stronę.",
-            "AICriticalError": "Krytyczny błąd silnika AI SEO.",
-            "AICriticalErrorRefresh": "Krytyczny błąd silnika AI SEO. Odśwież stronę i spróbuj ponownie.",
-            "PleaseSelectImages": "Wybierz obrazy do generowania AI SEO.",
-            "AINotReadyError": "Silnik AI SEO nie jest gotowy. Proszę czekać.",
-            "ProcessingFiles": "Przetwarzanie obrazów dla AI SEO...",
-            "ProcessingFilesHEIC": "Przetwarzanie obrazów dla AI SEO, konwersja HEIC jeśli potrzeba...",
-            "HEICConversionFailedSkip": "Nie udało się przekonwertować HEIC do formatu SEO dla: {fileName}. Pomijam.",
-            "HEICConversionErrorSkip": "Błąd konwersji HEIC dla SEO: {fileName}. Pomijam.",
-            "NoValidFilesAfterConversion": "Brak prawidłowych obrazów do AI SEO po próbach konwersji.",
-            "NoValidFiles": "Nie wybrano prawidłowych obrazów do przetwarzania AI SEO.",
-            "SendingImagesToAI": "Wysyłanie {count} obrazów do AI w celu generowania treści SEO...",
-            "AllImagesProcessed": "Przetwarzanie AI SEO zakończone. Zobacz zoptymalizowane treści poniżej.",
-            "PageTitle": "AI Generator SEO Obrazów i Tekstu Alt",
-            "PageTitlePro": "PRO AI Generator SEO Obrazów i Tekstu Alt",
-            "PageTitleFree": "AI Generator SEO Obrazów i Opisów",
-            "MainCardTitle": "Generuj SEO nazwy i opisy z AI",
-            "UploadSectionTitle": "1. Prześlij obrazy do AI SEO",
-            "UploadSectionDescription": "Prześlij obrazy JPG, PNG, WEBP, GIF, HEIC. Nasze AI generuje przyjazne SEO nazwy plików i teksty alt. Dodaj słowa kluczowe, aby doprecyzować wyniki.",
-            "UploadSectionDescriptionWithLimit": "Prześlij JPG, PNG, WEBP, GIF, HEIC (maks. {maxImages} dla Twojego planu). AI generuje SEO nazwy plików i teksty alt. Dodaj słowa kluczowe dla własnych rezultatów.",
-            "ButtonSelectImages": "Wybierz obrazy do AI SEO",
-            "ButtonSelectImagesLoading": "Inicjalizowanie AI...",
-            "ResultsTitle": "Treści SEO wygenerowane przez AI",
-            "ImageMissing": "Brak danych obrazu dla AI SEO (indeks: {index})",
-            "GeneratedSeoName": "AI: Wygenerowana nazwa pliku SEO:",
-            "GeneratedDescription": "AI: Wygenerowany tekst alt/opis:",
-            "StatusLabel": "Aktualny status:",
-            "AIStatusLabel": "Status AI SEO: {status}",
-            "HowItWorksTitle": "Jak działa AI SEO dla obrazów",
-            "HowItWorksStep1Title": "Prześlij swoje obrazy",
-            "HowItWorksStep1Desc": "Wybierz lub przeciągnij obrazy. Nasze AI przygotuje je do analizy SEO.",
-            "HowItWorksStep2Title": "Analiza treści przez AI",
-            "HowItWorksStep2Desc": "AI analizuje każdy obraz, aby zrozumieć jego zawartość, kontekst i potencjał SEO.",
-            "HowItWorksStep3Title": "Generowanie nazw SEO i tekstów alt",
-            "HowItWorksStep3Desc": "AI tworzy przyjazne SEO nazwy plików i opisowe teksty alt. Słowa kluczowe zwiększają optymalizację.",
-            "HowItWorksStep4Title": "Przejrzyj i popraw swoje SEO",
-            "HowItWorksStep4Desc": "Skopiuj treści SEO wygenerowane przez AI, aby poprawić pozycję i dostępność swojej strony, bloga lub mediów społecznościowych.",
-            "NoResultsYet": "Prześlij obrazy, aby zobaczyć treści SEO wygenerowane przez AI.",
-            "KeywordsSectionTitle": "2. Wzbogacenie słowami kluczowymi (opcjonalnie)",
-            "KeywordsSectionDescription": "Dodaj słowa kluczowe oddzielone przecinkami. Nasze AI strategicznie wplecie je w tekst alt dla lepszego SEO.",
-            "KeywordsPlaceholder": "np. podróże, jedzenie, e-commerce, kategoria produktu",
-            "ButtonRegenerateWithKeywords": "Wygeneruj ponownie treści SEO ze słowami kluczowymi",
-            "ButtonRegenerating": "Ponowne generowanie treści SEO...",
-            "RegeneratingStatus": "AI generuje ponownie tekst alt z nowymi słowami kluczowymi SEO...",
-            "RegenerationComplete": "Ponowne generowanie SEO przez AI zakończone.",
-            "ButtonDownloadAll": "Pobierz wszystkie wyniki AI SEO (ZIP)",
-            "ButtonDownloadingAll": "Pobieranie AI SEO ZIP...",
-            "PreparingDownload": "Przygotowywanie plików AI SEO do pobrania...",
-            "ZippingFiles": "Pakowanie {count} zoptymalizowanych plików AI...",
-            "NoFilesToDownload": "Brak obrazów przetworzonych przez AI z danymi SEO do pobrania.",
-            "ErrorCreatingZIP": "Błąd podczas tworzenia ZIP AI SEO. Spróbuj ponownie.",
-            "DownloadComplete": "Pobieranie AI SEO zakończone!",
-            "ImageUploadFeatureName": "Nielimitowane przesyłanie obrazów do AI SEO",
-            "FreeLimitReachedDialogTitle": "Zaktualizuj, aby uzyskać więcej mocy AI SEO",
-            "FreeLimitReachedDialogMessage": "Osiągnięto darmowy limit AI SEO. Zaktualizuj do Pro, aby przetwarzać więcej obrazów.",
-            "FreeLimitReachedSomeProcessed": "Osiągnięto limit {count} obrazów w darmowym planie AI SEO. Przetwarzane są pierwsze {count}. Zaktualizuj, aby więcej.",
-            "ProLimitReachedSomeProcessed": "Osiągnięto limit {count} obrazów w planie Pro AI SEO. Przetwarzane są pierwsze {count}.",
-            "NoValidFilesToProcessAfterLimit": "Brak obrazów do przetworzenia przez AI SEO po limitach planu.",
-            "ProUserCardTitle": "Aktywny plan AI SEO Pro",
-            "ProUserCardDescription": "Masz plan Pro! Korzystaj z nielimitowanego generowania SEO obrazów AI w każdej partii i wszystkich funkcji premium.",
-            "UpgradeToProCardTitle": "Zaktualizuj do Pro",
-            "UpgradeToProCardDescription": "Odblokuj pełną moc AI SEO! Darmowi użytkownicy mogą przetwarzać {maxImagesFree} obrazów. Użytkownicy Pro mają nielimitowane przetwarzanie i więcej korzyści.",
-            "ButtonUpgradeNow": "Zaktualizuj do Pro teraz",
-            "ProUserPlanIndicator": "Plan Pro: Nielimitowane generowanie SEO obrazów AI.",
-            "FreeUserPlanIndicator": "Plan darmowy: AI SEO dla maksymalnie 3 obrazów. Zaktualizuj, aby mieć nielimitowane!",
-            "FreePlanInfoBoxTitle": "PLAN DARMOWY",
-            "ProFeatureUnlimitedImages": "Nielimitowane generowanie SEO obrazów AI"
+        "actions": {
+          "upgrade": "ULEPSZ DO PRO",
+          "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
         }
-} 
+      }
+    },
+    "ImagePreview": {
+      "noImages": "Nie wybrano obrazów",
+      "zoomInstructions": "Ściśnij, aby przybliżyć, przeciągnij, aby przesunąć",
+      "zoomLevel": "{scale}%",
+      "removingBackground": "Usuwanie tła...",
+      "seoName": {
+        "label": "Przyjazna dla SEO nazwa:",
+        "edit": "EDYTUJ",
+        "cancel": "ANULUJ",
+        "save": "ZAPISZ"
+      },
+      "originalName": "Nazwa oryginalna:",
+      "fileInfo": {
+        "dimensions": "Wymiary:",
+        "size": "Rozmiar:",
+        "output": "Wyjście:",
+        "quality": "Jakość:",
+        "background": "Tło:",
+        "backgroundRemoved": "Usunięte",
+        "custom": "Niestandardowe",
+        "auto": "auto"
+      },
+      "actions": {
+        "download": "POBIERZ",
+        "reset": "RESETUJ"
+      },
+      "allImages": "WSZYSTKIE OBRAZY ({current}/{max})"
+    },
+    "PricingCard": {
+      "oneTime": "jednorazowo",
+      "currentPlan": "OBECNY PLAN"
+    },
+    "WatermarkControl": {
+      "title": "ZNAK WODNY",
+      "addTab": "DODAJ ZNAK WODNY",
+      "removeTab": "USUŃ ZNAK WODNY (AI)",
+      "type": "TYP",
+      "text": "TEKST",
+      "logo": "LOGO",
+      "enterText": "Wprowadź tekst znaku wodnego",
+      "font": "CZCIONKA",
+      "size": "ROZMIAR",
+      "color": "KOLOR",
+      "opacity": "KRYCIE",
+      "position": "POZYCJA",
+      "uploadLogo": "PRZEŚLIJ LOGO",
+      "logoPlaceholder": "Kliknij lub przeciągnij logo tutaj",
+      "reset": "RESETUJ",
+      "presets": {
+        "bottomRight": "Dół Prawy",
+        "bottomLeft": "Dół Lewy",
+        "topLeft": "Góra Lewy",
+        "topRight": "Góra Prawy",
+        "center": "Środek",
+        "diagonal": "Przekątna",
+        "tile": "Kafel (Wzór)"
+      },
+      "removeDescription": "Usuwanie znaku wodnego wspomagane przez AI już wkrótce!"
+    },
+    "SeoProductDescriptionGenerator": {
+      "title": "OPIS PRODUKTU SEO AI",
+      "description": "Wygeneruj kompletny opis produktu zoptymalizowany pod kątem SEO",
+      "enterDescription": "Wprowadź podstawowe informacje o produkcie",
+      "placeholder": "Np. vintage skórzany portfel, ręcznie robiony, brązowy, skóra pełnoziarnista, wiele przegródek na karty...",
+      "generate": "GENERUJ OPIS PRODUKTU",
+      "generating": "GENEROWANIE...",
+      "generateWithCount": "GENERUJ ({remaining} pozostało na dziś)",
+      "dailyLimitReached": "OSIĄGNIĘTO DZIENNY LIMIT",
+      "dailyLimitExceeded": "Osiągnięto dzienny limit 5 opisów. Zaktualizuj do PRO, aby uzyskać nieograniczony dostęp, lub spróbuj ponownie jutro.",
+      "dailyUsageInfo": "Pozostało {remaining} z {total} dziennych generacji",
+      "proUnlimited": "PRO: Nieograniczone generacje",
+      "upgradeToPro": "ZAKTUALIZUJ DO PRO",
+      "loginRequired": "WYMAGANE LOGOWANIE",
+      "loginToGenerate": "Zaloguj się, aby generować opisy produktów SEO. Darmowi użytkownicy otrzymują 5 opisów dziennie, użytkownicy PRO mają nieograniczony dostęp.",
+      "loginButton": "ZALOGUJ SIĘ",
+      "cancel": "ANULUJ",
+      "copyToClipboard": "KOPIUJ DO SCHOWKA",
+      "downloadAsTxt": "POBIERZ JAKO TXT",
+      "copied": "Skopiowano!",
+      "tryFeature": "WYPRÓBUJ FUNKCJĘ",
+      "tabs": {
+        "content": "TREŚĆ",
+        "meta": "META",
+        "categories": "KATEGORIE",
+        "previews": "PODGLĄDY"
+      },
+      "previews": {
+        "googleSearch": "PODGLĄD WYSZUKIWANIA GOOGLE",
+        "ecommerce": "PODGLĄD E-COMMERCE",
+        "productImage": "Zdjęcie produktu",
+        "addToCart": "Dodaj do koszyka",
+        "wishlist": "Lista życzeń"
+      },
+      "sections": {
+        "productTitle": "Tytuł produktu",
+        "metaTitle": "Meta tytuł",
+        "metaDescription": "Meta opis",
+        "shortDescription": "Krótki opis",
+        "longDescription": "Długi opis",
+        "categories": "Kategorie",
+        "tags": "Tagi",
+        "urlSlug": "URL Slug"
+      },
+      "downloadAll": "POBIERZ WSZYSTKIE DANE"
+    }
+  },
+  "Dialogs": {
+    "download": {
+      "title": "Pobierz obrazy",
+      "confirmTitle": "Potwierdź pobieranie",
+      "successTitle": "Pobieranie zakończone sukcesem",
+      "summary": "Podsumowanie pobierania:",
+      "images": "{count, plural, =1 {# obraz} other {# obrazy}} zostaną pobrane",
+      "format": "Format:",
+      "appliedPreset": "Zastosowany preset:",
+      "adjustmentsApplied": "Zastosowano dostosowania obrazu",
+      "backgroundRemoval": "Zastosowano usuwanie tła",
+      "seoFilenames": "Dołączono zoptymalizowane nazwy plików SEO przez AI",
+      "watermarkApplied": "Znak wodny zastosowany",
+      "zipPackage": "Pliki zostaną spakowane do archiwum ZIP",
+      "processingNote": "Przetwarzanie może chwilę potrwać w przypadku wielu lub dużych obrazów.",
+      "cancel": "ANULUJ",
+      "download": "POBIERZ",
+      "processing": "PRZETWARZANIE...",
+      "successMessage": "Twoje obrazy zostały pomyślnie pobrane. Co chcesz zrobić dalej?",
+      "startNewBundleDesc": "Rozpocznij nowy pakiet: Wyczyść obecne obrazy i zacznij od nowa",
+      "continueEditingDesc": "Kontynuuj edycję: Kontynuuj pracę z obecnymi obrazami",
+      "startNewBundle": "ROZPOCZNIJ NOWY PAKIET",
+      "continueEditing": "KONTYNUUJ EDYCJĘ",
+      "seoProductDescription": "Opis produktu SEO (TXT)"
+    },
+    "proUpgrade": {
+      "feature": "Przetwarzanie zbiorcze"
+    }
+  },
+  "Pricing": {
+    "title": "PLANY CENOWE",
+    "subtitle": "Wybierz idealny plan dla swoich potrzeb optymalizacji obrazów. Nasz plan PRO oferuje licencję dożywotnią z jednorazową płatnością.",
+    "alreadyPro": {
+      "title": "Jesteś już użytkownikiem PRO!",
+      "description": "Dziękujemy za wsparcie. Masz dostęp do wszystkich funkcji PRO, w tym zbiorczego usuwania tła, zaawansowanych dostosowań obrazów i generowania nazw plików SEO.",
+      "backToEditor": "WRÓĆ DO EDYTORA"
+    },
+    "checkout": {
+      "title": "DOKOŃCZ ZAKUP",
+      "planTitle": "LICENCJA PRO DOŻYWOTNIA",
+      "price": "19,99 €",
+      "description": "Jednorazowa płatność, dostęp dożywotni do wszystkich funkcji PRO",
+      "email": "EMAIL",
+      "cardInfo": "INFORMACJE O KARCIE",
+      "cardNumber": "1234 5678 9012 3456",
+      "expiryDate": "MM/RR",
+      "cvc": "CVC",
+      "completePurchase": "DOKOŃCZ ZAKUP",
+      "goBack": "Wróć"
+    },
+    "plans": {
+      "free": {
+        "title": "DARMOWY",
+        "price": "DARMOWY",
+        "features": [
+          "Przetwarzanie wsadowe max 5 obrazów",
+          "Usuwanie tła AI pojedynczego obrazu (podgląd)",
+          "Usuwanie obiektów AI z pojedynczego obrazu",
+          "Dodawanie znaku wodnego max 5 obrazów",
+          "Konwerter obrazów max 5 obrazów wsadowo",
+          "AI Photo Duplicate Finder max 5 obrazów",
+          "Generowanie nazw obrazów SEO AI (Niedostępne)",
+          "Opis SEO AI i metatagi (Niedostępne)"
+        ],
+        "buttonText": "KONTYNUUJ Z DARMOWYM"
+      },
+      "pro": {
+        "title": "PRO",
+        "price": "$19.99",
+        "features": [
+          "Przetwarzanie wsadowe max 100 obrazów",
+          "Do 100 usunięć tła AI w jednej partii",
+          "Usuwanie obiektów AI do 100 obrazów",
+          "Dodawanie znaku wodnego 100 obrazów w jednej partii",
+          "Konwerter obrazów max 100 obrazów wsadowo",
+          "AI Photo Duplicate Finder nieograniczona wsadowa przetwarzanie",
+          "Generowanie nazw obrazów SEO AI (do 100)",
+          "Opis SEO AI i metatagi dostępne",
+          "**Jednorazowa płatność, dożywotni dostęp**"
+        ],
+        "buttonText": "PRZEJDŹ NA PRO"
+      }
+    },
+    "faq": {
+      "title": "CZĘSTO ZADAWANE PYTANIA",
+      "questions": {
+        "oneTime": {
+          "question": "Czy to naprawdę jednorazowa płatność?",
+          "answer": "Tak! Zapłać raz i otrzymaj dostęp dożywotni do wszystkich funkcji PRO. Bez subskrypcji."
+        },
+        "backgroundRemoval": {
+          "question": "Jak działa usuwanie tła?",
+          "answer": "Używamy zaawansowanych algorytmów AI do wykrywania i usuwania tła z obrazów produktów. Cały proces odbywa się w Twojej przeglądarce - nigdy nie przechowujemy Twoich obrazów na naszych serwerach."
+        },
+        "imageLimits": {
+          "question": "Jakie są limity obrazów?",
+          "answer": "Użytkownicy darmowi mogą przetwarzać do 10 obrazów jednocześnie z podstawowymi funkcjami i usuwać tło z 1 obrazu jednocześnie. Użytkownicy PRO mogą przetwarzać do 100 obrazów jednocześnie, w tym zbiorcze usuwanie tła."
+        },
+        "refund": {
+          "question": "Czy mogę poprosić o zwrot pieniędzy?",
+          "answer": "Tak, oferujemy 30-dniową gwarancję zwrotu pieniędzy, jeśli nie jesteś zadowolony z funkcji PRO. Skontaktuj się z nami pod adresem privacy@batchshots.com."
+        }
+      }
+    }
+  },
+  "PrivacyPolicy": {
+    "title": "POLITYKA PRYWATNOŚCI",
+    "section1Title": "1. WPROWADZENIE",
+    "section1P1": "Witamy w Batch Shots („my”, „nasz”, „nas”). Zobowiązujemy się do ochrony Twojej prywatności i zapewnienia bezpieczeństwa Twoich danych osobowych.",
+    "section1P2": "Ta Polityka Prywatności wyjaśnia, jak przetwarzamy Twoje dane podczas korystania z naszego narzędzia do optymalizacji obrazów działającego w przeglądarce.",
+    "section2Title": "2. INFORMACJE, KTÓRYCH NIE ZBIERAMY",
+    "section2P1Bold": "Nie zbieramy ani nie przechowujemy Twoich obrazów.",
+    "section2P1": "Naszą podstawową zasadą jest prywatność przez projekt.",
+    "section2P2": "Batch Shots działa całkowicie w Twojej przeglądarce. Kiedy przesyłasz obrazy do optymalizacji:",
+    "section2Li1": "Twoje obrazy są przetwarzane lokalnie w Twojej przeglądarce przy użyciu JavaScript po stronie klienta.",
+    "section2Li2": "Twoje obrazy nigdy nie opuszczają Twojego urządzenia i nie są przesyłane na nasze serwery.",
+    "section2Li3": "Nie przechowujemy kopii Twoich oryginalnych ani przetworzonych obrazów.",
+    "section2Li4": "Nie śledzimy zawartości Twoich obrazów.",
+    "section3Title": "3. FUNKCJE WSPIERANE PRZEZ AI",
+    "section3P1": "Gdy korystasz z naszych funkcji generowania nazw SEO wspieranych przez AI:",
+    "section3Li1": "Wysyłamy do naszego API tylko podany przez Ciebie tekst opisowy.",
+    "section3Li2": "Nie wysyłamy ani nie przetwarzamy Twoich rzeczywistych obrazów za pośrednictwem naszych systemów AI.",
+    "section3Li3": "Wygenerowane nazwy SEO są dostarczane z powrotem do Twojej przeglądarki i nie są trwale przechowywane na naszych serwerach.",
+    "section4Title": "4. ANALITYKA I PLIKI COOKIE",
+    "section4P1": "Używamy minimalnej analityki, aby zrozumieć, w jaki sposób używana jest nasza strona:",
+    "section4Li1": "Gromadzimy anonimowe statystyki użytkowania, takie jak odsłony stron i wykorzystanie funkcji.",
+    "section4Li2": "Używamy niezbędnych plików cookie do zapewnienia funkcjonalności, takich jak ochrona reCAPTCHA.",
+    "section4Li3": "Nie używamy plików cookie do celów reklamowych ani śledzenia na innych stronach internetowych.",
+    "section5Title": "5. USŁUGI STRON TRZECICH",
+    "section5P1": "Korzystamy z następujących usług stron trzecich:",
+    "section5Li1": "Google reCAPTCHA do ochrony przed spamem w naszych funkcjach AI.",
+    "section5Li2": "OpenCV.js do przetwarzania obrazów (działa całkowicie w Twojej przeglądarce).",
+    "section5P2": "Każda z tych usług ma własną politykę prywatności regulującą sposób postępowania z danymi.",
+    "section6Title": "6. ZMIANY W NINIEJSZEJ POLITYCE",
+    "section6P1": "Od czasu do czasu możemy aktualizować niniejszą Politykę prywatności. Powiadomimy Cię o wszelkich zmianach, publikując nową Politykę prywatności na tej stronie i aktualizując datę „Ostatnia aktualizacja\".",
+    "section7Title": "7. SKONTAKTUJ SIĘ Z NAMI",
+    "section7P1": "Jeśli masz jakiekolwiek pytania dotyczące niniejszej Polityki prywatności, skontaktuj się z nami pod adresem privacy@batchshots.com.",
+    "returnButton": "POWRÓT DO STRONY GŁÓWNEJ"
+  },
+  "TermsOfUse": {
+    "title": "WARUNKI KORZYSTANIA",
+    "lastUpdated": "Ostatnia aktualizacja: 30 maja 2025",
+    "section1Title": "1. Akceptacja Warunków",
+    "section1P1": "Korzystając z Batch Shots, akceptujesz niniejsze Warunki Korzystania. Jeśli nie zgadzasz się z jakąkolwiek częścią tych warunków, nie możesz korzystać z naszej usługi.",
+    "section2Title": "2. Opis Usługi",
+    "section2P1": "Batch Shots to narzędzie do optymalizacji obrazów działające w przeglądarce, które umożliwia użytkownikom:",
+    "section2Li1": "Dostosowywanie właściwości obrazu, takich jak jasność, kontrast i balans bieli",
+    "section2Li2": "Zmianę rozmiaru i optymalizację obrazów do użycia w internecie",
+    "section2Li3": "Generowanie przyjaznych dla SEO nazw plików",
+    "section2Li4": "Przetwarzanie wielu obrazów jednocześnie",
+    "section2P2": "Całe przetwarzanie obrazów odbywa się lokalnie w Twojej przeglądarce; żadne obrazy nie są przesyłane ani przechowywane na naszych serwerach.",
+    "section3Title": "3. Obowiązki Użytkownika",
+    "section3P1": "Użytkownicy Batch Shots są wyłącznie odpowiedzialni za zapewnienie, że posiadają niezbędne prawa i uprawnienia do korzystania, przesyłania i przetwarzania obrazów za pomocą naszej usługi. Batch Shots nie ponosi odpowiedzialności za naruszenia praw autorskich lub własności intelektualnej wynikające z korzystania z usługi. Musisz korzystać z usługi zgodnie ze wszystkimi obowiązującymi przepisami prawa.",
+    "section3Li1": "Zapewnienie posiadania niezbędnych praw i uprawnień do modyfikowania i przetwarzania używanych obrazów",
+    "section3Li2": "Korzystanie z usługi zgodnie z obowiązującymi przepisami prawa",
+    "section3Li3": "Niekorzystanie z usługi do przetwarzania, tworzenia lub rozpowszechniania nieodpowiednich, obraźliwych lub nielegalnych treści",
+    "section3Li4": "Niepróbowanie odwrotnego inżynierowania, modyfikowania lub włamywania się do usługi",
+    "section4Title": "4. Własność Intelektualna",
+    "section4P1": "Cała oryginalna zawartość, funkcje i funkcjonalność Batch Shots są naszą własnością i są chronione międzynarodowymi prawami autorskimi, znakami towarowymi i innymi prawami własności intelektualnej.",
+    "section4P2": "Zachowujesz wszystkie prawa do swoich oryginalnych obrazów. Nie rościmy sobie praw własności do obrazów przetwarzanych za pomocą naszej usługi.",
+    "section4aTitle": "4A. Treści Użytkownika, Własność i Dożywotni Dostęp Pro",
+    "section4aP1": "Wszystkie obrazy i treści przesłane lub przetworzone za pomocą Batch Shots pozostają wyłączną własnością użytkownika. Batch Shots nie przechowuje, nie przegląda ani nie przesyła Twoich obrazów na nasze serwery; całe przetwarzanie odbywa się lokalnie w Twojej przeglądarce. Jesteś wyłącznie odpowiedzialny za zapewnienie, że posiadasz niezbędne prawa i uprawnienia do korzystania i przetwarzania obrazów za pomocą naszej usługi. Batch Shots nie ponosi odpowiedzialności za naruszenia praw autorskich lub własności intelektualnej wynikające z korzystania z usługi.",
+    "section4aP2": "Dostęp \"dożywotni\" do funkcji Pro oznacza, że będziesz miał dostęp do wszystkich funkcji Pro tak długo, jak długo Batch Shots będzie działać i być utrzymywany jako usługa. Jeśli Batch Shots zostanie wycofany, dołożymy starań, aby zapewnić użytkownikom Pro dostęp do kodu oprogramowania lub udostępnić aplikację jako open source, umożliwiając dalsze korzystanie.",
+    "section5Title": "5. Wyłączenia Odpowiedzialności",
+    "section5Li1": "Batch Shots jest dostarczany \"w stanie obecnym\" i \"w miarę dostępności\" bez jakichkolwiek gwarancji.",
+    "section5Li2": "Nie gwarantujemy, że usługa będzie nieprzerwana, bezpieczna lub wolna od błędów.",
+    "section5Li3": "Nie ponosimy odpowiedzialności za utratę danych, która może wystąpić podczas przetwarzania. Użytkownicy są odpowiedzialni za zachowanie własnych kopii zapasowych.",
+    "section5Li4": "Nie udzielamy gwarancji dotyczących dokładności lub skuteczności funkcji generowania nazw SEO.",
+    "section5Li5": "Batch Shots nie ponosi odpowiedzialności za jakiekolwiek roszczenia prawne, szkody lub spory wynikające z treści użytkownika lub korzystania z usługi.",
+    "section6Title": "6. Ograniczenie Odpowiedzialności",
+    "section6P1": "W maksymalnym zakresie dozwolonym przez prawo, nie będziemy odpowiedzialni za jakiekolwiek pośrednie, przypadkowe, szczególne, następowe lub karne szkody wynikające z korzystania lub niemożności korzystania z usługi, lub z jakichkolwiek roszczeń prawnych wynikających z Twoich treści.",
+    "section7Title": "7. Modyfikacje Usługi",
+    "section7P1": "Zastrzegamy sobie prawo do modyfikowania, zawieszania lub zaprzestania działania dowolnej części Batch Shots w dowolnym momencie bez uprzedniego powiadomienia lub odpowiedzialności.",
+    "section8Title": "8. Prawo Właściwe",
+    "section8P1": "Niniejsze Warunki Korzystania będą regulowane i interpretowane zgodnie z prawem jurysdykcji, w której działamy, bez uwzględnienia jej przepisów kolizyjnych.",
+    "section9Title": "9. Zmiany w Warunkach",
+    "section9P1": "Możemy od czasu do czasu aktualizować te Warunki Korzystania. Powiadomimy Cię o wszelkich zmianach, publikując nowe Warunki na tej stronie i aktualizując datę \"Ostatnia aktualizacja\".",
+    "section10Title": "10. Kontakt",
+    "section10P1": "Jeśli masz jakiekolwiek pytania dotyczące tych Warunków Korzystania, skontaktuj się z nami pod adresem terms@batchshots.com.",
+    "returnButton": "POWRÓT DO STRONY GŁÓWNEJ"
+  },
+  "PrivacyPage": {
+    "title": "Polityka Prywatności | Batch Shots",
+    "description": "Dowiedz się, jak Batch Shots przetwarza Twoje dane. Nasza polityka prywatności szczegółowo opisuje praktyki zbierania, wykorzystywania i ochrony danych.",
+    "keywords": "polityka prywatności, ochrona danych, dane użytkownika, RODO, batchshots"
+  },
+  "TermsPage": {
+    "title": "Warunki Korzystania z Usługi | Batch Shots",
+    "description": "Zapoznaj się z warunkami korzystania z Batch Shots. Dowiedz się o obowiązkach użytkownika, ograniczeniach usługi i własności intelektualnej.",
+    "keywords": "warunki korzystania, regulamin, umowa użytkownika, batchshots"
+  },
+  "PricingPage": {
+    "title": "Plany Cenowe | Batch Shots Pro",
+    "description": "Przeglądaj plany cenowe Batch Shots. Wybierz najlepszy plan dla swoich potrzeb edycji obrazów, od darmowego poziomu po funkcje Pro, takie jak usuwanie tła i zwiększone limity.",
+    "keywords": "cennik, batch shots pro, plany subskrypcji, koszt edycji zdjęć, cennik usuwania tła"
+  },
+  "BackgroundRemovalPage": {
+    "metadata": {
+      "title": "Usuwanie Tła AI | Batch Shots",
+      "description": "Automatycznie usuwaj tła ze swoich obrazów za pomocą narzędzia AI Batch Shots. Idealne do zdjęć produktów, portretów i projektów kreatywnych. Wypróbuj za darmo!",
+      "keywords": "usuwanie tła, usuń tło, usuwanie tła ai, przezroczyste tło, fotografia produktowa, edycja zbiorcza obrazów"
+    }
+  },
+  "ObjectRemovalPage": {
+    "metadata": {
+      "title": "Narzędzie AI do Usuwania Obiektów | Batch Shots",
+      "description": "Usuń niechciane obiekty, osoby lub tekst ze swoich zdjęć dzięki naszemu narzędziu opartemu na AI. Działa całkowicie w Twojej przeglądarce dla zachowania prywatności. Wypróbuj za darmo!",
+      "keywords": "usuwanie obiektów, usuwanie obiektów ai, usunąć obiekty ze zdjęcia, usunąć tekst ze zdjęcia, usunąć osoby ze zdjęcia, inpainting, narzędzie do edycji zdjęć"
+    },
+    "title": "AI USUWANIE OBIEKTÓW",
+    "loading": {
+      "ort": "Ładowanie silnika AI...",
+      "opencv": "Ładowanie narzędzi do przetwarzania obrazów...",
+      "model": "Ładowanie modelu usuwania obiektów...",
+      "proStatus": "Sprawdzanie statusu konta...",
+      "generic": "Ładowanie..."
+    },
+    "mainCard": {
+      "title": "USUWANIE OBIEKTÓW",
+      "info": {
+        "title": "JAK TO DZIAŁA",
+        "description": "Usuń niechciane obiekty, osoby lub tekst ze swoich zdjęć za pomocą AI. Przetwarzanie odbywa się w całości w Twojej przeglądarce."
+      },
+      "upload": {
+        "title": "Wgraj zdjęcie",
+        "button": "WYBIERZ ZDJĘCIE",
+        "helpTextFree": "Wybierz zdjęcie do edycji.",
+        "helpTextPro": "Wybierz do 100 zdjęć do przetwarzania wsadowego."
+      },
+      "canvas": {
+        "drawTitle": "NARYSUJ MASKĘ NA OBIEKTACH",
+        "brushSize": "Rozmiar pędzla",
+        "clearMask": "WYCZYŚĆ MASKĘ",
+        "outputTitle": "2. ZOBACZ WYNIK",
+        "outputPlaceholder": "Wynik pojawi się tutaj"
+      },
+      "actions": {
+        "reset": "RESETUJ",
+        "remove": "USUŃ OBIEKTY",
+        "removeAllObjects": "USUŃ ZE WSZYSTKICH ZDJĘĆ",
+        "processing": "PRZETWARZANIE...",
+        "download": "POBIERZ",
+        "downloadAll": "POBIERZ WSZYSTKO"
+      }
+    },
+    "upgradeCard": {
+      "title": "PRZEJDŹ NA PRO",
+      "description": "Odblokuj wsadowe usuwanie obiektów dla nawet 100 zdjęć i inne funkcje PRO, takie jak masowe usuwanie tła i zaawansowana edycja.",
+      "button": "DOWIEDZ SIĘ WIĘCEJ I PRZEJDŹ NA PRO"
+    },
+    "instructionsCard": {
+      "title": "INSTRUKCJE",
+      "step1": "Wgraj zdjęcie używając przycisku 'Wybierz zdjęcie'.",
+      "step2": "Ostrożnie narysuj czerwonym pędzlem na obiektach, które chcesz usunąć.",
+      "step3": "Dostosuj rozmiar pędzla dla większej precyzji.",
+      "step4": "Kliknij przycisk 'Usuń obiekty' i poczekaj, aż AI zakończy przetwarzanie.",
+      "step5": "Po zakończeniu przetwarzania możesz pobrać oczyszczone zdjęcie używając przycisku 'Pobierz'.",
+      "step6": "Dla przetwarzania wsadowego włącz 'Zastosuj maskę do wszystkich zdjęć', aby usunąć podobne obiekty ze wszystkich wybranych zdjęć.",
+      "noteTitle": "Uwaga:",
+      "noteText": "Przetwarzanie może zająć 15-60 sekund w zależności od rozmiaru zdjęcia i Twojego urządzenia. Upewnij się, że maska całkowicie pokrywa obiekt dla najlepszych rezultatów."
+    },
+    "imageGallery": {
+      "selectedImages": "Wybrane zdjęcia",
+      "selectedImage": "Wybrane zdjęcie",
+      "clearAll": "Wyczyść wszystko",
+      "applyMaskToAll": "Zastosuj maskę do wszystkich zdjęć (przetwarzanie wsadowe)",
+      "hasMask": "Maska narysowana"
+    },
+    "processing": {
+      "readingFile": "Odczytywanie pliku...",
+      "loadingImage": "Ładowanie zdjęcia...",
+      "exportingMask": "Przygotowywanie maski...",
+      "runningModel": "Uruchamianie modelu AI...",
+      "rendering": "Renderowanie wyniku...",
+      "preparingBatch": "Przygotowywanie przetwarzania wsadowego...",
+      "processingImage": "Przetwarzanie zdjęcia {current} z {total}...",
+      "finishingBatch": "Finalizowanie wyników...",
+      "preparingDownload": "Przygotowywanie pobierania...",
+      "batchProgress": "Postęp przetwarzania wsadowego",
+      "loadingDimensions": "Obliczanie wymiarów zdjęcia...",
+      "generic": "Przetwarzanie zdjęcia..."
+    },
+    "errors": {
+      "ortLoad": "Nie udało się załadować silnika AI. Proszę odświeżyć stronę.",
+      "sessionCreate": "Nie udało się zainicjować modelu usuwania obiektów.",
+      "freeLimit": "Użytkownicy darmowi mogą przetwarzać tylko 1 zdjęcie na raz. Przejdź na PRO, aby korzystać z przetwarzania wsadowego.",
+      "tooManyImages": "Maksymalnie dozwolone jest 100 zdjęć. Tylko pierwsze 100 zdjęć zostanie przetworzonych.",
+      "imageLoad": "Błąd podczas ładowania wybranego zdjęcia.",
+      "fileRead": "Błąd podczas odczytywania wybranego pliku.",
+      "canvasError": "Błąd podczas dostępu do płótna zdjęcia.",
+      "prerequisites": "Nie można przetworzyć. Brakujące wymagane komponenty: {missing}",
+      "noMask": "Najpierw narysuj maskę na obiekcie, który chcesz usunąć.",
+      "processingFailed": "Usuwanie obiektu nie powiodło się",
+      "resultLoadFailed": "Błąd podczas wyświetlania przetworzonego wyniku.",
+      "noDownloadData": "Brak przetworzonego zdjęcia do pobrania.",
+      "downloadFailed": "Błąd podczas przygotowywania pobierania."
+    }
+  },
+  "WatermarkPage": {
+    "metadata": {
+      "title": "Dodaj znak wodny do zdjęć | Batch Shots",
+      "description": "Łatwo dodawaj niestandardowe znaki wodne tekstowe lub logo do swoich zdjęć. Chroń swoje zdjęcia za pomocą znaków wodnych z kontrolą przezroczystości, pozycji i rozmiaru.",
+      "keywords": "znak wodny, dodaj znak wodny do zdjęć, znak wodny na zdjęciu, znak wodny obrazu, znak wodny logo, znak wodny tekstowy, branding obrazu, znakowanie zdjęć"
+    },
+    "title": "DODAJ ZNAK WODNY DO ZDJĘĆ",
+    "loading": {
+      "proStatus": "SPRAWDZANIE STATUSU PRO...",
+      "proDescription": "Proszę czekać, weryfikujemy status Twojego konta."
+    },
+    "preview": {
+      "title": "PODGLĄD OBRAZU"
+    },
+    "alerts": {
+      "freeUserLimit": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!",
+      "maxImagesLimit": "Maksymalnie dozwolone jest 100 obrazów na raz.",
+      "watermarkFailed": "Zastosowanie znaku wodnego nie powiodło się. Proszę spróbować ponownie."
+    },
+    "mainCard": {
+      "title": "ZNAKUJ WODNIE SWOJE ZDJĘCIA",
+      "info": {
+        "title": "DODAJ NIESTANDARDOWE ZNAKI WODNE",
+        "description": "Chroń swoje obrazy za pomocą niestandardowych znaków wodnych tekstowych lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich preferencji brandingowych."
+      },
+      "upload": {
+        "title": "Wybierz obrazy",
+        "buttonFree": "WYBIERZ OBRAZ",
+        "buttonPro": "WYBIERZ OBRAZY",
+        "helpTextFree": "Darmowi użytkownicy mogą wybrać 1 obraz na raz.",
+        "helpTextPro": "Możesz wybrać do 100 obrazów na raz."
+      },
+      "actions": {
+        "clear": "WYCZYŚĆ",
+        "download": "POBIERZ",
+        "downloadZip": "POBIERZ JAKO ZIP",
+        "applyWatermark": "ZASTOSUJ ZNAK WODNY",
+        "applyWatermarks": "ZASTOSUJ ZNAKI WODNE",
+        "processing": "STOSOWANIE ZNAKU WODNEGO...",
+        "processingMultiple": "STOSOWANIE ZNAKÓW WODNYCH...",
+        "tryFullEditor": "WYPRÓBUJ PEŁNY EDYTOR"
+      },
+      "progress": {
+        "processing": "Przetwarzanie...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "ULEPSZ DO PRO",
+        "plan": {
+          "title": "PLAN PRO",
+          "price": "19,99 €",
+          "features": [
+            "Znakuj wodnie do 100 obrazów na raz",
+            "Zaawansowane dostosowania obrazów i presety",
+            "Usuwanie tła dla zdjęć produktów",
+            "Przetwarzanie zbiorcze dla wszystkich funkcji",
+            "Jednorazowa płatność, dostęp dożywotni"
+          ],
+          "buttonText": "ULEPSZ TERAZ"
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "JAK TO DZIAŁA",
+      "step1": {
+        "title": "1. WYBIERZ SWOJE OBRAZY",
+        "description": "Prześlij jeden lub więcej obrazów, które chcesz oznaczyć znakiem wodnym.",
+        "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów na raz!"
+      },
+      "step2": {
+        "title": "2. DOSTOSUJ ZNAK WODNY",
+        "description": "Wybierz między znakami wodnymi tekstowymi lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich preferencji."
+      },
+      "step3": {
+        "title": "3. POBIERZ I UŻYJ",
+        "description": "Zastosuj znak wodny i pobierz przetworzone obrazy gotowe do użycia w sieci, mediach społecznościowych lub portfolio."
+      }
+    },
+    "proDialog": {
+      "title": "ULEPSZ DO PRO",
+      "featureTitle": "FUNKCJA PRO: Zbiorcze znakowanie wodne",
+      "description": "Darmowi użytkownicy mogą przetwarzać tylko 1 obraz na raz. Ulepsz do PRO, aby oznaczać znakiem wodnym do 100 obrazów zbiorczo, oszczędzając godziny pracy!",
+      "pricing": {
+        "title": "JEDNORAZOWA PŁATNOŚĆ",
+        "price": "19,99 €",
+        "note": "Brak subskrypcji, dostęp dożywotni"
+      },
+      "actions": {
+        "upgrade": "ULEPSZ DO PRO",
+        "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
+      }
+    }
+  },
+  "ImageFormatConvertorPage": {
+    "metadata": {
+      "title": "Konwerter formatów obrazów | Batch Shots",
+      "description": "Konwertuj obrazy między formatami (JPG, PNG, WebP, AVIF) za pomocą naszego łatwego w użyciu narzędzia. Obsługuje konwersję HEIC i przetwarzanie wsadowe.",
+      "keywords": "konwerter formatów obrazów, konwertuj jpg na png, konwertuj heic na jpg, konwerter webp, konwersja formatu obrazu, wsadowa konwersja obrazów, konwertuj heic"
+    },
+    "title": "KONWERTER FORMATÓW OBRAZÓW",
+    "loading": {
+      "tool": "ŁADOWANIE KONWERTERA...",
+      "proStatus": "SPRAWDZANIE STATUSU PRO...",
+      "description": "Poczekaj, aż zainicjujemy możliwości przetwarzania obrazów.",
+      "proDescription": "Poczekaj, aż zweryfikujemy status Twojego konta."
+    },
+    "uploadArea": {
+      "title": "KONWERTUJ SWOJE OBRAZY",
+      "description": "Konwertuj swoje obrazy do różnych formatów za pomocą kilku kliknięć.",
+      "selectImages": "WYBIERZ OBRAZY (DO {maxImages})",
+      "dragAndDropPrivacy": "Przeciągnij obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong>",
+      "freeLimitInfo": "Darmowi użytkownicy mogą konwertować do {maxImages} obrazów naraz.",
+      "upgradeLink": "Uaktualnij do PRO"
+    },
+    "selectedImages": {
+      "title": "WYBRANE OBRAZY ({count})"
+    },
+    "formatChanged": {
+      "title": "FORMAT ZMIENIONY",
+      "description": "Zmieniłeś format docelowy. Kliknij Resetuj, aby przekonwertować obrazy do nowego formatu."
+    },
+    "mainCard": {
+      "title": "KONWERTUJ OBRAZY DO DOWOLNEGO FORMATU",
+      "info": {
+        "title": "KONWERSJA FORMATU OBRAZU",
+        "description": "Konwertuj swoje obrazy między formatami takimi jak JPG, PNG, WebP i AVIF. Możesz także zmieniać rozmiar obrazów podczas konwersji."
+      }
+    },
+    "upload": {
+      "title": "Wybierz obrazy do konwersji",
+      "buttonFree": "WYBIERZ OBRAZY",
+      "buttonPro": "WYBIERZ OBRAZY",
+      "helpTextFree": "Darmowi użytkownicy mogą wybrać do {maxImages} obrazów naraz.",
+      "helpTextPro": "Możesz wybrać do 100 obrazów naraz."
+    },
+    "actions": {
+      "clear": "WYCZYŚĆ",
+      "addMore": "DODAJ WIĘCEJ",
+      "download": "POBIERZ SKONWERTOWANE",
+      "downloadZip": "POBIERZ WSZYSTKO JAKO ZIP",
+      "convertImageTo": "KONWERTUJ DO {format}",
+      "convertImagesTo": "KONWERTUJ WSZYSTKO DO {format}",
+      "converting": "KONWERSJA...",
+      "convertingMultiple": "KONWERSJA OBRAZÓW...",
+      "resetConversion": "RESETUJ"
+    },
+    "progress": {
+      "processing": "Przetwarzanie...",
+      "percent": "{percent}%"
+    },
+    "upgradeCard": {
+      "title": "UAKTUALNIJ DO PRO",
+      "plan": {
+        "title": "PLAN PRO",
+        "price": "$19.99",
+        "features": [
+          "Konwertuj do 100 obrazów naraz",
+          "Zmieniaj rozmiar obrazów podczas konwersji",
+          "Konwertuj z HEIC/HEIF do dowolnego formatu",
+          "Usuwanie tła dla zdjęć produktów",
+          "Jednorazowa opłata, dożywotni dostęp"
+        ],
+        "buttonText": "UAKTUALNIJ TERAZ"
+      }
+    }
+  },
+  "targetFormat": {
+    "title": "WYBIERZ FORMAT DOCELOWY"
+  },
+  "resize": {
+    "title": "ZMIEŃ ROZMIAR PODCZAS KONWERSJI (OPCJONALNIE)"
+  },
+  "convertedImages": {
+    "title": "SKONWERTOWANE OBRAZY",
+    "description": "Twoje obrazy zostały pomyślnie przekonwertowane. Kliknij Pobierz, aby je zapisać."
+  },
+  "howItWorks": {
+    "title": "JAK TO DZIAŁA",
+    "step1": {
+      "title": "1. WYBIERZ SWOJE OBRAZY",
+      "description": "Prześlij jeden lub więcej obrazów, które chcesz przekonwertować.",
+      "proNote": "Użytkownicy PRO mogą wybrać do 100 obrazów naraz!"
+    },
+    "step2": {
+      "title": "2. WYBIERZ FORMAT DOCELOWY",
+      "description": "Wybierz żądany format wyjściowy (JPG, PNG, WebP lub AVIF)."
+    },
+    "step3": {
+      "title": "3. ZMIEŃ ROZMIAR (OPCJONALNIE)",
+      "description": "Opcjonalnie wybierz ustawienie wstępne, aby zmienić rozmiar obrazów podczas konwersji."
+    },
+    "step4": {
+      "title": "4. POBIERZ I UŻYWAJ",
+      "description": "Konwertuj swoje obrazy i pobieraj je pojedynczo lub jako archiwum ZIP."
+    }
+  },
+  "supportedFormats": {
+    "title": "OBSŁUGIWANE FORMATY",
+    "input": {
+      "title": "FORMATY WEJŚCIOWE",
+      "description": "Możesz przesyłać obrazy w tych formatach:"
+    },
+    "output": {
+      "title": "FORMATY WYJŚCIOWE",
+      "description": "Konwertuj swoje obrazy do dowolnego z tych formatów:"
+    }
+  },
+  "alerts": {
+    "freeUserLimit": "Darmowi użytkownicy mogą konwertować do 5 obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo!",
+    "maxImagesLimit": "Maksymalnie 100 obrazów dozwolonych naraz.",
+    "conversionFailed": "Konwersja formatu nie powiodła się. Spróbuj ponownie."
+  },
+  "proDialog": {
+    "title": "UAKTUALNIJ DO PRO",
+    "featureTitle": "FUNKCJA PRO: Wsadowa konwersja formatu",
+    "description": "Darmowi użytkownicy mogą konwertować tylko {maxImages} obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo, oszczędzając godziny pracy!",
+    "pricing": {
+      "title": "JEDNORAZOWA OPŁATA",
+      "price": "$19.99",
+      "note": "Bez subskrypcji, dożywotni dostęp"
+    },
+    "actions": {
+      "upgrade": "UAKTUALNIJ DO PRO",
+      "continue": "KONTYNUUJ W TRYBIE DARMOWYM"
+    }
+  },
+  "allImages": "WSZYSTKIE OBRAZY ({current}/{max})",
+  "imagesCount": "{current}/{max} obrazów",
+  "upgradeFor": "(Uaktualnij do 100)",
+
+  "ImageDuplicateDetectionPage": {
+    "metadata": {
+      "title": "Wyszukiwarka i Czyszczenie Duplikatów Zdjęć AI | Batch Shots",
+      "description": "Szybko znajduj i usuwaj zduplikowane lub podobne zdjęcia za pomocą naszego narzędzia opartego na AI. Identyfikuje obrazy najlepszej jakości w zestawach duplikatów. Darmowe i w przeglądarce.",
+      "keywords": "wyszukiwarka duplikatów zdjęć, usuwanie duplikatów obrazów, wyszukiwarka podobnych zdjęć, czyszczenie zdjęć AI, wykrywanie duplikatów obrazów, zdjęcie najlepszej jakości, porządkowanie zdjęć, batchshots"
+    },
+    "PageTitle": "Wyszukiwarka i Czyszczenie Duplikatów Zdjęć AI",
+    "AppInitializing": "Inicjalizowanie Inteligentnego Analizatora Zdjęć...",
+    "AISetup": "Konfigurowanie Silnika AI...",
+    "AIEngineInitializing": "Inicjalizowanie Silnika AI...",
+    "AIEngineStarted": "Silnik AI Uruchomiony.",
+    "AIInitializing": "Inicjalizowanie AI...",
+    "AILoadingModel": "Ładowanie Zaawansowanego Modelu AI...",
+    "AIModelLoaded": "Model AI Załadowany.",
+    "AIReady": "AI Gotowe. Wybierz zdjęcia, aby znaleźć duplikaty.",
+    "AIReadyPrompt": "AI Gotowe. Wybierz zdjęcia, aby znaleźć duplikaty.",
+    "ProcessingImage": "Analizowanie zdjęcia {imageId}...",
+    "ErrorProcessingImage": "Błąd podczas analizy zdjęcia {imageId}: {data}.",
+    "AIEngineError": "Błąd Silnika AI: {data}.",
+    "AIEngineErrorRefresh": "Błąd Silnika AI: {data}. Odśwież stronę lub spróbuj ponownie.",
+    "AICriticalError": "AI napotkało krytyczny błąd.",
+    "AICriticalErrorRefresh": "Wystąpił krytyczny błąd podczas analizy AI. Proszę odświeżyć stronę.",
+    "QualityToolsError": "Nie udało się załadować narzędzi do analizy jakości. Szczegółowe metryki jakości mogą być niedostępne.",
+    "AllImagesProcessedAnalyzing": "Wszystkie zdjęcia przetworzone. Identyfikowanie duplikatów...",
+    "AnalysisCompleteSummary": "Analiza zakończona. {groupSummary} Przetworzono {successfullyProcessedCount} z {totalImagesCount} zdjęć.",
+    "DuplicateSetsFound": "Znaleziono {count} zestaw(ów) duplikatów.",
+    "NoDuplicatesFound": "Nie znaleziono bezpośrednich duplikatów.",
+    "NoImagesProcessedSuccessfully": "Nie udało się pomyślnie przetworzyć żadnych zdjęć. Przetworzono {successfullyProcessedCount} z {totalImagesCount} zdjęć.",
+    "NoImagesForNewThreshold": "Brak zdjęć do analizy z nowym ustawieniem podobieństwa.",
+    "ReanalyzingWithThreshold": "Ponowna analiza zdjęć z ustawieniem podobieństwa: {threshold}...",
+    "AnalysisCompleteWithThreshold": "Analiza zakończona z podobieństwem {threshold}. {groupSummary}",
+    "PleaseSelectImages": "Proszę wybrać zdjęcia...",
+    "AINotReadyError": "Silnik analizy AI nie jest gotowy. Proszę czekać lub odświeżyć stronę.",
+    "ProcessingFilesHEIC": "Przygotowywanie wybranych plików (konwertowanie w razie potrzeby)...",
+    "HEICConversionFailedSkip": "Nie udało się przekonwertować obrazu: {fileName}. Zostanie pominięty.",
+    "HEICConversionErrorSkip": "Błąd podczas konwersji obrazu: {fileName}. Zostanie pominięty.",
+    "NoValidFilesAfterConversion": "Brak prawidłowych plików do przetworzenia po próbach konwersji.",
+    "SendingImagesToAI": "Wysyłanie {count} zdjęć do analizy AI...",
+    "NoValidImagesSelected": "Nie wybrano prawidłowych zdjęć do przetworzenia.",
+    "QualityToolsNotReadyKPI": "Narzędzia analizy jakości nie są gotowe. Nie można obliczyć szczegółowej jakości.",
+    "QualityToolsNotReadyQuality": "Narzędzia analizy jakości nie są gotowe. Nie można obliczyć jakości.",
+    "ErrorCalculatingQuality": "Błąd podczas obliczania jakości dla zdjęcia {imageId}: {error}",
+    "QualityToolsNotReadyAnalysisWait": "Narzędzia analizy jakości nie są gotowe. Proszę czekać.",
+    "NoDuplicatesInGroup": "Brak duplikatów w tej grupie do analizy.",
+    "AnalyzingGroupQuality": "Analizowanie jakości zdjęć w grupie {groupNumber}...",
+    "AnalyzedProgressInGroup": "Przeanalizowano {processedCount} z {groupTotal} w grupie {groupNumber}. Zdjęcie: {imageName}",
+    "QualityAnalysisCompleteForGroup": "Analiza jakości zakończona dla grupy {groupNumber}.",
+    "QualityAnalysisPartialForGroup": "Analiza jakości częściowo wykonana dla grupy {groupNumber}. Niektóre zdjęcia mogły się nie udać lub zostały pominięte.",
+    "QualityToolsNotReadyBestSelection": "Narzędzia analizy jakości nie są gotowe. Nie można zapewnić wyboru najlepszego zdjęcia.",
+    "AnalyzingQualityForBestDownload": "Analizowanie jakości dla {count} zdjęć w celu wybrania najlepszych do pobrania...",
+    "PreDownloadAnalysisComplete": "Wstępna analiza jakości zakończona dla bieżącej grupy.",
+    "NoImagesToDownload": "Brak zdjęć do pobrania.",
+    "QualityToolsNotReadyDownloadAll": "Narzędzia analizy jakości nie są gotowe. Szczegółowa analiza zestawów duplikatów nie może być wykonana dla opcji 'Pobierz Wszystkie'. Proszę czekać lub najpierw przeanalizować grupy indywidualnie.",
+    "PreparingDownload": "Przygotowywanie plików do pobrania...",
+    "BestImageDeterminationFailed": "Nie udało się określić najlepszego zdjęcia dla grupy. Ta grupa zostanie pominięta w pliku ZIP.",
+    "WarningBestImageOmitted": "Ostrzeżenie: Nie udało się określić najlepszego zdjęcia dla grupy i zostało ono pominięte.",
+    "ZippingImages": "Kompresowanie {count} zdjęć...",
+    "DownloadComplete": "Pobieranie zakończone!",
+    "ErrorCreatingZIP": "Błąd podczas tworzenia pliku ZIP do pobrania.",
+    "NoImagesSelectedForDownload": "Nie wybrano żadnych zdjęć do pobrania (np. brak unikalnych zdjęć lub nie zidentyfikowano najlepszych zdjęć w grupach).",
+    "ImageDataMissingDownload": "Brak danych zdjęcia, nie można pobrać.",
+    "DownloadingImage": "Pobieranie {imageName}...",
+    "ImageDownloadedSuccessfully": "{imageName} pobrano pomyślnie.",
+    "FailedToDownloadImage": "Nie udało się pobrać {imageName}.",
+    "QualityToolsNotReadyAnalyzeAllGroups": "Narzędzia analizy jakości nie są gotowe. Szczegółowa analiza zestawów duplikatów nie może być wykonana. Proszę czekać.",
+    "OnlyUniqueImagesReadyDownload": "Obecne tylko unikalne zdjęcia. Gotowe do pobrania.",
+    "NoImagesToAnalyzeOrDownload": "Brak zdjęć do analizy lub pobrania.",
+    "AnalyzingAllGroupsForBest": "Analizowanie wszystkich grup w celu wyboru najlepszego zdjęcia...",
+    "AnalyzingGroupForBest": "Analizowanie grupy {currentGroup} z {totalGroups} w celu wyboru najlepszego zdjęcia...",
+    "AllGroupsAnalyzedReadyDownload": "Wszystkie {count} grupy duplikatów przeanalizowane. Gotowe do pobrania {downloadCount} najlepszych zdjęć.",
+    "AnalysisPartialReadyDownload": "Analiza wyboru najlepszych zdjęć częściowo zakończona (przetworzono {processedGroups}/{totalGroups} grup). Gotowe do pobrania {downloadCount} zdjęć (zostaną wybrane najlepsze dostępne).",
+    "NoImagesProcessedOrGroups": "Nie przetworzono żadnych zdjęć lub nie utworzono jeszcze grup. Upewnij się, że zdjęcia zostały wybrane, a analiza AI zakończona.",
+
+    "LoaderTitleInitializing": "Inicjalizowanie Inteligentnych Narzędzi...",
+    "LoaderTitleLoadingModel": "Ładowanie Mózgu AI...",
+    "LoaderTitleQualityTools": "Przygotowywanie Analizatora Jakości...",
+    "LoaderDescriptionInitializing": "Przygotowywanie do inteligentnego wykrywania duplikatów. Proszę czekać.",
+    "LoaderDescriptionLoadingModel": "Nasza zaawansowana AI się rozgrzewa. Może to chwilę potrwać.",
+    "LoaderDescriptionQualityTools": "Przygotowywanie narzędzi do szczegółowych informacji o jakości zdjęć...",
+
+    "MainCardTitle": "Znajdź i Zarządzaj Zduplikowanymi Zdjęciami",
+    "UploadSectionTitle": "Prześlij Swoje Zdjęcia",
+    "UploadSectionDescription": "Wybierz wiele zdjęć. Nasza AI inteligentnie je przeanalizuje i zgrupowuje podobne.",
+    "ButtonSelectImages": "Wybierz Zdjęcia",
+    "ButtonSelectImagesLoading": "Ładowanie...",
+    "ButtonSelectImagesInitializing": "Ładowanie Narzędzi...",
+    "ButtonAddMoreImages": "Dodaj Więcej Zdjęć",
+    "ButtonAddMoreImagesLoading": "Dodawanie Zdjęć...",
+    "SupportedFormats": "Obsługuje formaty JPG, PNG, WEBP, HEIC",
+    "AIStatusLabel": "Status AI: {status}",
+    "QualityAnalyzerStatusLoading": "Analizator Jakości: Ładowanie...",
+
+    "SimilarityThresholdTitle": "Ustawienie Podobieństwa",
+    "SimilarityThresholdDescription": "Określ, jak dokładnie zdjęcia muszą pasować, aby zostały oznaczone jako duplikaty. Wyższe wartości oznaczają bardziej rygorystyczne dopasowanie.",
+    "SimilarityLessStrict": "Mniej Rygorystyczne",
+    "SimilarityCurrent": "Aktualne: {threshold}",
+    "SimilarityMoreStrict": "Bardziej Rygorystyczne",
+    "ButtonApplyThreshold": "Zastosuj Ustawienie",
+    "ButtonApplyThresholdLoading": "Ponowne Analizowanie...",
+
+    "ResultsTitle": "Wyniki Wykrywania:",
+    "DuplicateSetTitle": "Zestaw Duplikatów {number} ({count} podobnych zdjęć)",
+    "ButtonAnalyzeQuality": "Analizuj Jakość",
+    "ButtonAnalyzeQualityLoading": "Analizowanie...",
+    "ButtonReanalyzeQuality": "Przeanalizuj Ponownie Jakość",
+    "ImageMissing": "Brak danych zdjęcia (indeks: {index})",
+    "BestLabel": "Najlepsze",
+    "KpiRes": "Rozdz:",
+    "KpiSharp": "Ostrość:",
+    "KpiNoise": "Szum:",
+    "KpiContrast": "Kontr.:",
+    "KpiExposure": "Eksp.:",
+    "ButtonDownload": "Pobierz",
+    "ButtonDownloading": "Pobieranie...",
+
+    "UniqueImagesTitle": "Unikalne Zdjęcia ({count} zdjęć bez bezpośrednich duplikatów)",
+
+    "ButtonAnalyzeAllGroups": "Analizuj Wszystkie Grupy dla Najlepszego Wyboru",
+    "ButtonAnalyzeAllGroupsLoading": "Analizowanie Wszystkich Grup...",
+    "ButtonDownloadBest": "Pobierz {count} Najlepszych Zdjęć",
+    "ButtonDownloadBestLoading": "Przygotowywanie Pobierania...",
+
+    "HowItWorksTitle": "Jak Nasza AI Znajduje Duplikaty",
+    "HowItWorksStep1Title": "1. Prześlij Swoje Zdjęcia",
+    "HowItWorksStep1Desc": "Kliknij \"Wybierz Zdjęcia\" i wybierz obrazy, które chcesz sprawdzić. Możesz wybrać wiele naraz.",
+    "HowItWorksStep2Title": "2. Inteligentna Analiza AI",
+    "HowItWorksStep2Desc": "Nasza zaawansowana AI (oparta na technologii Vision Transformer) inteligentnie analizuje wizualną zawartość każdego zdjęcia, rozumiejąc jego unikalne cechy i wygląd.",
+    "HowItWorksStep3Title": "3. Inteligentne Ocenianie Podobieństwa",
+    "HowItWorksStep3Desc": "AI porównuje zdjęcia za pomocą zaawansowanej analizy wizualnej (podobieństwo kosinusowe), aby określić, jak bardzo są do siebie podobne na podstawie ich zawartości.",
+    "HowItWorksStep4Title": "4. Dostosuj Podobieństwo",
+    "HowItWorksStep4Desc": "Użyj suwaka podobieństwa, aby kontrolować, jak rygorystyczne jest dopasowanie. Wyższa wartość oznacza, że zdjęcia muszą być prawie identyczne, aby zostały oznaczone jako duplikaty.",
+    "HowItWorksStep5Title": "5. Przeglądaj i Organizuj",
+    "HowItWorksStep5Desc": "Wyniki wyraźnie pokazują zestawy duplikatów i unikalne zdjęcia. Nasza AI może również wyróżnić zdjęcie najlepszej jakości w każdej grupie duplikatów, pomagając Ci zdecydować, które zachować.",
+
+    "FreeUserLimit": "Użytkownicy darmowi mogą przesłać do {limit} zdjęć jednocześnie.",
+    "ButtonSelectImagesLimit": "Wybierz zdjęcia (do {limit})",
+    "UpgradeMessage": "Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć naraz.",
+    "UpgradeLink": "Zaktualizuj teraz",
+    "HowItWorksStep1Free": "Użytkownicy darmowi są ograniczeni do {limit} zdjęć jednocześnie.",
+    "HowItWorksStep1Pro": "Jako użytkownik PRO możesz analizować nieograniczoną liczbę zdjęć naraz.",
+    "ProFeatureName": "Nieograniczona analiza zdjęć",
+
+    "FreeModeTitle": "TRYB DARMOWY",
+    "FreeModeDescription": "Przetwarzaj do {limit} zdjęć jednocześnie. Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć!",
+    "ProModeTitle": "TRYB PRO",
+    "ProModeDescription": "Przetwarzaj nieograniczoną liczbę zdjęć ze swoim kontem PRO!",
+    "MaxImagesExceeded": "Dozwolone maksymalnie 100 obrazów. Przetworzono tylko pierwsze 100.",
+    "ProcessingErrors": "Błędy przetwarzania",
+    "imagesCount": "{current}/{max} zdjęć",
+    "upgradeFor": "(Zaktualizuj, aby uzyskać nielimitowane)",
+
+    "UpgradeCardTitle": "ZAKTUALIZUJ DO PRO",
+    "UpgradeCardPlanTitle": "PLAN PRO",
+    "UpgradeCardPlanPrice": "$19.99",
+    "UpgradeCardPlanNote": "Jednorazowa płatność, dożywotni dostęp",
+    "UpgradeCardFeature1": "Analizuj nieograniczoną liczbę zdjęć naraz (w porównaniu do 5 w trybie darmowym)",
+    "UpgradeCardFeature2": "Szybko znajdź duplikaty w dużych kolekcjach zdjęć",
+    "UpgradeCardFeature3": "Analiza jakości do automatycznego wyboru najlepszych zdjęć",
+    "UpgradeCardFeature4": "Pobieranie najlepszych zdjęć z zestawów duplikatów w partii",
+    "UpgradeCardFeature5": "Dostęp do wszystkich innych funkcji PRO (usuwanie tła itp.)",
+    "UpgradeCardButton": "ZAKTUALIZUJ TERAZ",
+
+    "ProUpgradeTitle": "Przejdź na Pro dla nieograniczonych zdjęć",
+
+    "SimilarityControlsTitle": "Algorytm podobieństwa i próg",
+    "SimilarityAlgorithmLabel": "Algorytm podobieństwa",
+    "SimilarityThresholdLabel": "Próg podobieństwa",
+    "SimilarityThresholdDescDistance": "Niższe wartości oznaczają bardziej podobne obrazy (metryka odległości)",
+    "SimilarityThresholdDescSimilarity": "Wyższe wartości oznaczają bardziej podobne obrazy (metryka podobieństwa)",
+
+    "ProcessingChanges": "Przetwarzanie zmian...",
+    "ReanalyzingWithAlgorithm": "Ponowna analiza z nowym algorytmem...",
+    "AnalysisCompleteWithAlgorithm": "Analiza zakończona z nowym algorytmem. {groupSummary}",
+
+    "DuplicateAnalysisComplete": "Analiza duplikatów zakończona",
+
+    "VisualizationTitle": "Przestrzeń Wektorowa AI",
+    "VisualizationDescription": "Wizualizuj jak AI postrzega Twoje obrazy w przestrzeni wielowymiarowej, zredukowanej do 2D za pomocą algorytmu UMAP. Podobne obrazy grupują się razem.",
+    "VisualizationShowButton": "Pokaż Wizualizację",
+    "VisualizationHideButton": "Ukryj Wizualizację",
+    "VisualizationGeneratingButton": "Generowanie Wizualizacji...",
+    "VisualizationNoData": "Najpierw prześlij i przetwórz obrazy, aby włączyć wizualizację",
+    "VisualizationProcessingStatus": "To może zająć chwilę dla dużych zbiorów danych...",
+    "VisualizationLegendUnique": "Unikalne Obrazy",
+    "VisualizationLegendDuplicates": "Grupy Duplikatów (pokolorowane według podobieństwa)",
+    "VisualizationHelpText": "Najedź na punkty, aby zobaczyć miniatury obrazów • Bliższe punkty = bardziej podobne obrazy",
+    "VisualizationNeedMinImages": "Potrzebne minimum 3 obrazy do wizualizacji",
+    "VisualizationNoDataAvailable": "Brak dostępnych danych do wizualizacji"
+  },
+  "ImageSeoGenerationPage": {
+    "metadata": {
+      "title": "AI Generowanie SEO Obrazów – Generuj SEO URL i Opisy",
+      "description": "Prześlij swoje obrazy, aby automatycznie generować przyjazne SEO nazwy, adresy URL i opisy za pomocą AI.",
+      "keywords": "seo obrazów, generator url, generator opisów seo obrazów, tworzenie treści ai, optymalizacja obrazów"
+    },
+    "AppInitializing": "Inicjalizowanie generatora AI SEO...",
+    "AISetup": "Konfigurowanie AI do treści SEO...",
+    "AIEngineInitializing": "Inicjalizowanie silnika AI SEO...",
+    "AIEngineStarted": "Silnik AI SEO uruchomiony.",
+    "AIInitializing": "Inicjalizowanie modelu AI do SEO...",
+    "AILoadingModel": "Ładowanie modelu AI SEO...",
+    "AIModelLoaded": "Model AI SEO załadowany.",
+    "AIReady": "Silnik AI SEO gotowy.",
+    "AIReadyPrompt": "AI SEO gotowe. Prześlij swoje obrazy.",
+    "ProcessingImage": "AI przetwarza dla SEO: Obraz {imageId}...",
+    "ErrorProcessingImage": "Błąd podczas przetwarzania AI SEO dla obrazu {imageId}: {data}",
+    "AIEngineError": "Błąd silnika AI SEO: {data}",
+    "AIEngineErrorRefresh": "Błąd silnika AI SEO: {data}. Odśwież stronę.",
+    "AICriticalError": "Krytyczny błąd silnika AI SEO.",
+    "AICriticalErrorRefresh": "Krytyczny błąd silnika AI SEO. Odśwież stronę i spróbuj ponownie.",
+    "PleaseSelectImages": "Wybierz obrazy do generowania AI SEO.",
+    "AINotReadyError": "Silnik AI SEO nie jest gotowy. Proszę czekać.",
+    "ProcessingFiles": "Przetwarzanie obrazów dla AI SEO...",
+    "ProcessingFilesHEIC": "Przetwarzanie obrazów dla AI SEO, konwersja HEIC jeśli potrzeba...",
+    "HEICConversionFailedSkip": "Nie udało się przekonwertować HEIC do formatu SEO dla: {fileName}. Pomijam.",
+    "HEICConversionErrorSkip": "Błąd konwersji HEIC dla SEO: {fileName}. Pomijam.",
+    "NoValidFilesAfterConversion": "Brak prawidłowych obrazów do AI SEO po próbach konwersji.",
+    "NoValidFiles": "Nie wybrano prawidłowych obrazów do przetwarzania AI SEO.",
+    "SendingImagesToAI": "Wysyłanie {count} obrazów do AI w celu generowania treści SEO...",
+    "AllImagesProcessed": "Przetwarzanie AI SEO zakończone. Zobacz zoptymalizowane treści poniżej.",
+    "PageTitle": "AI Generator SEO Obrazów i Tekstu Alt",
+    "PageTitlePro": "PRO AI Generator SEO Obrazów i Tekstu Alt",
+    "PageTitleFree": "AI Generator SEO Obrazów i Opisów",
+    "MainCardTitle": "Generuj SEO nazwy i opisy z AI",
+    "UploadSectionTitle": "1. Prześlij obrazy do AI SEO",
+    "UploadSectionDescription": "Prześlij obrazy JPG, PNG, WEBP, GIF, HEIC. Nasze AI generuje przyjazne SEO nazwy plików i teksty alt. Dodaj słowa kluczowe, aby doprecyzować wyniki.",
+    "UploadSectionDescriptionWithLimit": "Prześlij JPG, PNG, WEBP, GIF, HEIC (maks. {maxImages} dla Twojego planu). AI generuje SEO nazwy plików i teksty alt. Dodaj słowa kluczowe dla własnych rezultatów.",
+    "ButtonSelectImages": "Wybierz obrazy do AI SEO",
+    "ButtonSelectImagesLoading": "Inicjalizowanie AI...",
+    "ResultsTitle": "Treści SEO wygenerowane przez AI",
+    "ImageMissing": "Brak danych obrazu dla AI SEO (indeks: {index})",
+    "GeneratedSeoName": "AI: Wygenerowana nazwa pliku SEO:",
+    "GeneratedDescription": "AI: Wygenerowany tekst alt/opis:",
+    "StatusLabel": "Aktualny status:",
+    "AIStatusLabel": "Status AI SEO: {status}",
+    "HowItWorksTitle": "Jak działa AI SEO dla obrazów",
+    "HowItWorksStep1Title": "Prześlij swoje obrazy",
+    "HowItWorksStep1Desc": "Wybierz lub przeciągnij obrazy. Nasze AI przygotuje je do analizy SEO.",
+    "HowItWorksStep2Title": "Analiza treści przez AI",
+    "HowItWorksStep2Desc": "AI analizuje każdy obraz, aby zrozumieć jego zawartość, kontekst i potencjał SEO.",
+    "HowItWorksStep3Title": "Generowanie nazw SEO i tekstów alt",
+    "HowItWorksStep3Desc": "AI tworzy przyjazne SEO nazwy plików i opisowe teksty alt. Słowa kluczowe zwiększają optymalizację.",
+    "HowItWorksStep4Title": "Przejrzyj i popraw swoje SEO",
+    "HowItWorksStep4Desc": "Skopiuj treści SEO wygenerowane przez AI, aby poprawić pozycję i dostępność swojej strony, bloga lub mediów społecznościowych.",
+    "NoResultsYet": "Prześlij obrazy, aby zobaczyć treści SEO wygenerowane przez AI.",
+    "KeywordsSectionTitle": "2. Wzbogacenie słowami kluczowymi (opcjonalnie)",
+    "KeywordsSectionDescription": "Dodaj słowa kluczowe oddzielone przecinkami. Nasze AI strategicznie wplecie je w tekst alt dla lepszego SEO.",
+    "KeywordsPlaceholder": "np. podróże, jedzenie, e-commerce, kategoria produktu",
+    "ButtonRegenerateWithKeywords": "Wygeneruj ponownie treści SEO ze słowami kluczowymi",
+    "ButtonRegenerating": "Ponowne generowanie treści SEO...",
+    "RegeneratingStatus": "AI generuje ponownie tekst alt z nowymi słowami kluczowymi SEO...",
+    "RegenerationComplete": "Ponowne generowanie SEO przez AI zakończone.",
+    "ButtonDownloadAll": "Pobierz wszystkie wyniki AI SEO (ZIP)",
+    "ButtonDownloadingAll": "Pobieranie AI SEO ZIP...",
+    "PreparingDownload": "Przygotowywanie plików AI SEO do pobrania...",
+    "ZippingFiles": "Pakowanie {count} zoptymalizowanych plików AI...",
+    "NoFilesToDownload": "Brak obrazów przetworzonych przez AI z danymi SEO do pobrania.",
+    "ErrorCreatingZIP": "Błąd podczas tworzenia ZIP AI SEO. Spróbuj ponownie.",
+    "DownloadComplete": "Pobieranie AI SEO zakończone!",
+    "ImageUploadFeatureName": "Nielimitowane przesyłanie obrazów do AI SEO",
+    "FreeLimitReachedDialogTitle": "Zaktualizuj, aby uzyskać więcej mocy AI SEO",
+    "FreeLimitReachedDialogMessage": "Osiągnięto darmowy limit AI SEO. Zaktualizuj do Pro, aby przetwarzać więcej obrazów.",
+    "FreeLimitReachedSomeProcessed": "Osiągnięto limit {count} obrazów w darmowym planie AI SEO. Przetwarzane są pierwsze {count}. Zaktualizuj, aby więcej.",
+    "ProLimitReachedSomeProcessed": "Osiągnięto limit {count} obrazów w planie Pro AI SEO. Przetwarzane są pierwsze {count}.",
+    "NoValidFilesToProcessAfterLimit": "Brak obrazów do przetworzenia przez AI SEO po limitach planu.",
+    "ProUserCardTitle": "Aktywny plan AI SEO Pro",
+    "ProUserCardDescription": "Masz plan Pro! Korzystaj z nielimitowanego generowania SEO obrazów AI w każdej partii i wszystkich funkcji premium.",
+    "UpgradeToProCardTitle": "Zaktualizuj do Pro",
+    "UpgradeToProCardDescription": "Odblokuj pełną moc AI SEO! Darmowi użytkownicy mogą przetwarzać {maxImagesFree} obrazów. Użytkownicy Pro mają nielimitowane przetwarzanie i więcej korzyści.",
+    "ButtonUpgradeNow": "Zaktualizuj do Pro teraz",
+    "ProUserPlanIndicator": "Plan Pro: Nielimitowane generowanie SEO obrazów AI.",
+    "FreeUserPlanIndicator": "Plan darmowy: AI SEO dla maksymalnie 3 obrazów. Zaktualizuj, aby mieć nielimitowane!",
+    "FreePlanInfoBoxTitle": "PLAN DARMOWY",
+    "ProFeatureUnlimitedImages": "Nielimitowane generowanie SEO obrazów AI"
+  }
+}

@@ -4,9 +4,10 @@ import { ImageFile } from '../components/ImagePreview';
 let worker: Worker | null = null;
 let isWorkerInitialized = false;
 let isWorkerInitializing = false;
-let processingQueue: { 
-  resolve: () => void; 
-  reject: (error: Error) => void; 
+let isWebGPUAvailable = false;
+let processingQueue: {
+  resolve: () => void;
+  reject: (error: Error) => void;
   imageFile: ImageFile | null;
 }[] = [];
 
@@ -24,10 +25,10 @@ export const initializeBackgroundWorker = () => {
 
     if (isWorkerInitializing) {
       // Add to queue and wait for initialization to complete
-      processingQueue.push({ 
-        resolve: () => resolve(), 
-        reject, 
-        imageFile: null 
+      processingQueue.push({
+        resolve: () => resolve(),
+        reject,
+        imageFile: null
       });
       return;
     }
@@ -36,26 +37,35 @@ export const initializeBackgroundWorker = () => {
 
     try {
       worker = new Worker(new URL('../[locale]/background-removal/background-removal.worker.js', import.meta.url));
-      
+
       worker.addEventListener('message', (event) => {
         const { status, data } = event.data;
-        
+
         switch (status) {
+          case 'webgpu_available':
+            isWebGPUAvailable = true;
+            console.log('✅ WebGPU detected - using RMBG-1.4 with WebGPU acceleration');
+            break;
+          case 'webgpu_unavailable':
+            isWebGPUAvailable = false;
+            console.log('ℹ️ WebGPU not available - using RMBG-1.4 with WASM');
+            break;
           case 'ready':
             isWorkerInitialized = true;
             isWorkerInitializing = false;
-            
+
             // Process any queued items
             processingQueue.forEach(({ resolve }) => resolve());
             processingQueue = [];
-            
+
+            console.log(`Background removal model ready (RMBG-1.4 with ${isWebGPUAvailable ? 'WebGPU' : 'WASM'})`);
             resolve();
             break;
           case 'error':
             if (isWorkerInitializing) {
               isWorkerInitializing = false;
               reject(new Error(data));
-              
+
               // Reject all queued promises
               processingQueue.forEach(({ reject: rejectFn }) => rejectFn(new Error(data)));
               processingQueue = [];
@@ -63,7 +73,7 @@ export const initializeBackgroundWorker = () => {
             break;
         }
       });
-      
+
       // Load the model
       worker.postMessage({ type: 'load' });
     } catch (error) {
@@ -71,6 +81,11 @@ export const initializeBackgroundWorker = () => {
       reject(error instanceof Error ? error : new Error(String(error)));
     }
   });
+};
+
+// Get WebGPU availability status
+export const isWebGPUEnabled = (): boolean => {
+  return isWebGPUAvailable;
 };
 
 // Convert base64 data to Blob

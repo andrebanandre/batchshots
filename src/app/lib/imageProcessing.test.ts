@@ -77,12 +77,14 @@ class MockCanvasRenderingContext2D {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   clearRect(_x: number, _y: number, _width: number, _height: number): void {}
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   fillRect(_x: number, _y: number, _width: number, _height: number): void {}
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   drawImage(
-    _image: any,
+    _image:
+      | HTMLImageElement
+      | HTMLCanvasElement
+      | HTMLVideoElement
+      | ImageBitmap,
     _x: number,
     _y: number,
     _width?: number,
@@ -115,15 +117,13 @@ class MockHTMLCanvasElement {
   width: number = 0;
   height: number = 0;
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   getContext(
     _contextId: string,
-    _options?: any
+    _options?: CanvasRenderingContext2DSettings
   ): MockCanvasRenderingContext2D | null {
     return new MockCanvasRenderingContext2D(this);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   toDataURL(_type?: string, _quality?: number): string {
     return "data:image/png;base64,mock";
   }
