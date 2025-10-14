@@ -1,6 +1,11 @@
 // Mock Next.js environment variables if needed
 process.env.GOOGLE_AI_API_KEY = 'test-api-key';
 
+// Mock uuid to avoid ES module issues
+jest.mock('uuid', () => ({
+  v4: jest.fn(() => 'mock-uuid-1234'),
+}));
+
 // Add any global setup needed for tests
 global.console = {
   ...console,
