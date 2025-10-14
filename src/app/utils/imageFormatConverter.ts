@@ -40,11 +40,11 @@ export const convertHeicToFormat = async (file: File, format: string = 'png'): P
     console.log(`Converting HEIC image to ${format.toUpperCase()}:`, file.name);
     
     const mimeType = `image/${format}`;
-    
+
     // Convert using heic-to
     const outputBlob = await heicTo({
       blob: file,
-      type: mimeType,
+      type: mimeType as `image/${string}`,
       quality: 1
     });
     
