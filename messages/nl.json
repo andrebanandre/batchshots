@@ -1,1432 +1,1382 @@
 {
-    "Manifest": {
-        "name": "Batch Shots"
+  "Manifest": {
+    "name": "Batch Shots"
+  },
+  "LocaleSwitcher": {
+    "label": "Taal wijzigen",
+    "locale": "{locale, select, nl {🇳🇱 Nederlands} en {🇺🇸 English} other {Onbekend}}"
+  },
+  "CookieConsent": {
+    "title": "COOKIEKENNISGEVING",
+    "message": "Deze site gebruikt essentiële cookies om de goede werking ervan te garanderen. Door onze site te blijven gebruiken, gaat u hiermee akkoord.",
+    "privacyLink": "Privacybeleid",
+    "termsLink": "Gebruiksvoorwaarden",
+    "acceptButton": "ACCEPTEREN",
+    "rejectButton": "WEIGEREN",
+    "learnMoreButton": "MEER WETEN"
+  },
+  "Home": {
+    "title": "Batch Shots: SEO BEELD OPTIMALISATOR",
+    "loading": "APP LADEN...",
+    "loadingDescription": "Wacht alstublieft terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
+    "transformTitle": "TRANSFORMEER UW PRODUCTFOTO'S",
+    "heroDescription": "Optimaliseer snel uw productafbeeldingen voor web, e-commerce en sociale media met onze browsergebaseerde tool.",
+    "privacyFocused": "PRIVACYGERICHT",
+    "privacyDescription": "Batch Shots verwerkt alle afbeeldingen rechtstreeks in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
+    "privacyPolicy": "Privacybeleid",
+    "termsOfUse": "Gebruiksvoorwaarden",
+    "preparingImagesPreview": "Voorbeelden voorbereiden...",
+    "features": {
+      "presets": {
+        "title": "PROFESSIONELE PRESETS",
+        "description": "Pas geoptimaliseerde presets toe voor e-commerce, sociale media en webweergave met één klik."
+      },
+      "aiPowered": {
+        "title": "AI-AANGEDREVEN SEO",
+        "description": "Genereer SEO-vriendelijke bestandsnamen met onze AI-tools om de vindbaarheid van uw producten te verbeteren."
+      },
+      "advancedControls": {
+        "title": "GEAVANCEERDE CONTROLES",
+        "description": "Verfijn helderheid, contrast, witbalans en meer om uw productafbeeldingen te perfectioneren."
+      },
+      "batchProcessing": {
+        "title": "BATCHVERWERKING",
+        "description": "Verwerk meerdere afbeeldingen tegelijk om tijd te besparen en consistente resultaten te garanderen."
+      }
     },
-    "LocaleSwitcher": {
-        "label": "Taal wijzigen",
-        "locale": "{locale, select, nl {🇳🇱 Nederlands} en {🇺🇸 English} other {Onbekend}}"
+    "upgradeProTitle": "PRO FUNCTIES ONTGRENDELEN",
+    "upgradeProDescription": "Krijg meer afbeeldingen, achtergrondverwijdering en geavanceerde functies met onze eenmalige Pro-upgrade.",
+    "freePlan": "GRATIS PLAN",
+    "proDescription": "Verwerk tot {maxImages} afbeeldingen tegelijk met alle premium functies ontgrendeld.",
+    "freeDescription": "Beperkt tot {maxImages} afbeeldingen. Upgrade naar PRO om tot 100 afbeeldingen tegelijk te verwerken.",
+    "upgradeToPro": "UPGRADEN NAAR PRO",
+    "learnMoreAboutPro": "MEER LEREN OVER PRO",
+    "selectImages": "SELECTEER AFBEELDINGEN (TOT {maxImages})",
+    "imageEditor": "BEELDBEWERKER",
+    "selectMoreImages": "SELECTEER MEER AFBEELDINGEN",
+    "maxImagesReached": "MAXIMAAL AANTAL AFBEELDINGEN BEREIKT",
+    "imagesCount": "{current}/{max} afbeeldingen",
+    "upgradeFor": "(Upgrade voor maximaal 100)",
+    "imageOptimization": "BEELDOPTIMALISATIE",
+    "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong> Uw privacy en veiligheid zijn gegarandeerd.",
+    "heicConversionFailed": "HEIC-afbeelding kan niet worden geconverteerd: {fileName}. Het bestandsformaat wordt mogelijk niet ondersteund of het bestand is beschadigd."
+  },
+  "Navbar": {
+    "imageOptimizer": "Beeldoptimalisatie",
+    "removeBackgrounds": "Achtergronden verwijderen",
+    "aiPhotoDuplicateFinder": "AI Duplikatfinder",
+    "aiImageSeoCaptionGeneration": "AI SEO afbeeldingsbeschrijving",
+    "aiBackgrounds": "AI-achtergronden",
+    "pricing": "Prijzen",
+    "login": "INLOGGEN",
+    "objectRemoval": "Objectverwijdering",
+    "tools": "Hulpmiddelen",
+    "addWatermark": "Watermerk toevoegen",
+    "seoDescription": "SEO-beschrijving",
+    "imageFormatConvertor": "Afbeeldingsformaat Converter",
+    "profile": "Profiel",
+    "logout": "Uitloggen"
+  },
+  "Footer": {
+    "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",
+    "quickLinks": "SNELLE LINKS",
+    "stayUpdated": "BLIJF OP DE HOOGTE",
+    "subscribeText": "Abonneer u op onze nieuwsbrief voor updates, tips en speciale aanbiedingen.",
+    "emailPlaceholder": "Uw e-mail",
+    "subscribe": "ABONNEER",
+    "copyright": "© {year} Batch Shots. Alle rechten voorbehouden.",
+    "madeWith": "Gemaakt met ♥ door het Batch Shots-team",
+    "contactUs": "Neem contact op"
+  },
+  "Layout": {
+    "title": "Batch Afbeeldingseditor & SEO Optimalisatie | Batch Shots",
+    "description": "Bewerk, wijzig het formaat, watermerk en optimaliseer afbeeldingen moeiteloos in bulk voor SEO. AI-aangedreven functies voor productfoto's, achtergrondverwijdering en SEO-naamgeneratie.",
+    "keywords": "afbeeldingseditor, batch afbeeldingen verwerken, seo afbeelding optimalisatie, watermerk foto's, achtergrond verwijderen, productfoto's, ai beeldbewerking, batchshots"
+  },
+  "Components": {
+    "ImageProcessingControls": {
+      "title": "AFBEELDINGSINSTELLINGEN",
+      "reset": "RESET",
+      "applyToAll": "TOEPASSEN OP ALLE AFBEELDINGEN",
+      "basic": "BASIS",
+      "advanced": "GEAVANCEERD",
+      "ai": "AI",
+      "brightness": "HELDERHEID",
+      "contrast": "CONTRAST",
+      "sharpen": "SCHERPEN",
+      "colorAdjust": "KLEURINSTELLING (HSL)",
+      "hue": "KLEURTOON",
+      "cooler": "KOELER",
+      "warmer": "WARMER",
+      "saturation": "VERZADIGING",
+      "less": "MINDER",
+      "more": "MEER",
+      "lightness": "LICHTSTERKTE",
+      "darker": "DONKERDER",
+      "lighter": "LICHTER",
+      "colorBalance": "KLEURBALANS (RGB)",
+      "red": "ROOD",
+      "green": "GROEN",
+      "blue": "BLAUW",
+      "processing": "VERWERKEN..."
     },
-    "CookieConsent": {
-        "title": "COOKIEKENNISGEVING",
-        "message": "Deze site gebruikt essentiële cookies om de goede werking ervan te garanderen. Door onze site te blijven gebruiken, gaat u hiermee akkoord.",
-        "privacyLink": "Privacybeleid",
-        "termsLink": "Gebruiksvoorwaarden",
-        "acceptButton": "ACCEPTEREN",
-        "rejectButton": "WEIGEREN",
-        "learnMoreButton": "MEER WETEN"
-    },
-    "Home": {
-        "title": "Batch Shots: SEO BEELD OPTIMALISATOR",
-        "loading": "APP LADEN...",
-        "loadingDescription": "Wacht alstublieft terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
-        "transformTitle": "TRANSFORMEER UW PRODUCTFOTO'S",
-        "heroDescription": "Optimaliseer snel uw productafbeeldingen voor web, e-commerce en sociale media met onze browsergebaseerde tool.",
-        "privacyFocused": "PRIVACYGERICHT",
-        "privacyDescription": "Batch Shots verwerkt alle afbeeldingen rechtstreeks in uw browser. We slaan uw foto's of gegevens niet op onze servers op.",
-        "privacyPolicy": "Privacybeleid",
-        "termsOfUse": "Gebruiksvoorwaarden",
-        "preparingImagesPreview": "Voorbeelden voorbereiden...",
-        "features": {
-            "presets": {
-                "title": "PROFESSIONELE PRESETS",
-                "description": "Pas geoptimaliseerde presets toe voor e-commerce, sociale media en webweergave met één klik."
-            },
-            "aiPowered": {
-                "title": "AI-AANGEDREVEN SEO",
-                "description": "Genereer SEO-vriendelijke bestandsnamen met onze AI-tools om de vindbaarheid van uw producten te verbeteren."
-            },
-            "advancedControls": {
-                "title": "GEAVANCEERDE CONTROLES",
-                "description": "Verfijn helderheid, contrast, witbalans en meer om uw productafbeeldingen te perfectioneren."
-            },
-            "batchProcessing": {
-                "title": "BATCHVERWERKING",
-                "description": "Verwerk meerdere afbeeldingen tegelijk om tijd te besparen en consistente resultaten te garanderen."
-            }
+    "BackgroundRemoval": {
+      "title": "ACHTERGROND VERWIJDEREN",
+      "selected": "Geselecteerde afbeelding",
+      "removeBackground": "ACHTERGROND VERWIJDEREN",
+      "allImages": "Alle afbeeldingen",
+      "backgroundsRemoved": "{count} van {total} achtergronden verwijderd",
+      "removeAllBackgrounds": "ALLE ACHTERGRONDEN VERWIJDEREN",
+      "processing": "Verwerken...",
+      "backgroundRemoved": "Achtergrond succesvol verwijderd!",
+      "transparent": "Transparante achtergrond gedetecteerd",
+      "description": "Verwijder de achtergrond van uw productafbeelding met AI-technologie. Het proces vindt volledig plaats in uw browser voor privacy.",
+      "processingInfo": {
+        "process": "Proces",
+        "processValue": "AI-verwerking in browser",
+        "result": "Resultaat",
+        "resultValue": "Transparante PNG-achtergrond",
+        "mode": "Modus"
+      },
+      "proDialog": {
+        "title": "UPGRADE NAAR PRO",
+        "featureTitle": "PRO-FUNCTIE: Achtergrond verwijderen",
+        "description": "Upgrade naar PRO om achtergrondverwijdering voor al uw afbeeldingen te ontgrendelen (tot 100 tegelijk)! Krijg professioneel ogende productfoto's met transparante achtergronden.",
+        "pricing": {
+          "title": "EENMALIGE BETALING",
+          "price": "€19,99",
+          "note": "Geen abonnement, levenslange toegang"
         },
-        "upgradeProTitle": "PRO FUNCTIES ONTGRENDELEN",
-        "upgradeProDescription": "Krijg meer afbeeldingen, achtergrondverwijdering en geavanceerde functies met onze eenmalige Pro-upgrade.",
-        "proMode": "PRO MODUS GEACTIVEERD",
-        "freePlan": "GRATIS PLAN",
-        "proDescription": "Verwerk tot {maxImages} afbeeldingen tegelijk met alle premium functies ontgrendeld.",
-        "freeDescription": "Beperkt tot {maxImages} afbeeldingen. Upgrade naar PRO om tot 100 afbeeldingen tegelijk te verwerken.",
-        "upgradeToPro": "UPGRADEN NAAR PRO",
-        "learnMoreAboutPro": "MEER LEREN OVER PRO",
-        "selectImages": "SELECTEER AFBEELDINGEN (TOT {maxImages})",
-        "imageEditor": "BEELDBEWERKER",
-        "selectMoreImages": "SELECTEER MEER AFBEELDINGEN",
-        "maxImagesReached": "MAXIMAAL AANTAL AFBEELDINGEN BEREIKT",
-        "imagesCount": "{current}/{max} afbeeldingen",
-        "upgradeFor": "(Upgrade voor maximaal 100)",
-        "imageOptimization": "BEELDOPTIMALISATIE",
-        "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong> Uw privacy en veiligheid zijn gegarandeerd.",
-        "heicConversionFailed": "HEIC-afbeelding kan niet worden geconverteerd: {fileName}. Het bestandsformaat wordt mogelijk niet ondersteund of het bestand is beschadigd."
-    },
-    "Navbar": {
-        "imageOptimizer": "Beeldoptimalisatie",
-        "removeBackgrounds": "Achtergronden verwijderen",
-        "aiPhotoDuplicateFinder": "AI Duplikatfinder",
-        "aiImageSeoCaptionGeneration": "AI SEO afbeeldingsbeschrijving",
-        "aiBackgrounds": "AI-achtergronden",
-        "pricing": "Prijzen",
-        "login": "INLOGGEN",
-        "objectRemoval": "Objectverwijdering",
-        "tools": "Hulpmiddelen",
-        "addWatermark": "Watermerk toevoegen",
-        "seoDescription": "SEO-beschrijving",
-        "imageFormatConvertor": "Afbeeldingsformaat Converter",
-        "profile": "Profiel",
-        "logout": "Uitloggen"
-    },
-    "Footer": {
-        "about": "Batch Shots helpt u snel en eenvoudig productafbeeldingen te optimaliseren voor SEO, rechtstreeks in uw browser.",
-        "quickLinks": "SNELLE LINKS",
-        "stayUpdated": "BLIJF OP DE HOOGTE",
-        "subscribeText": "Abonneer u op onze nieuwsbrief voor updates, tips en speciale aanbiedingen.",
-        "emailPlaceholder": "Uw e-mail",
-        "subscribe": "ABONNEER",
-        "copyright": "© {year} Batch Shots. Alle rechten voorbehouden.",
-        "madeWith": "Gemaakt met ♥ door het Batch Shots-team",
-        "contactUs": "Neem contact op"
-    },
-    "Layout": {
-        "title": "Batch Afbeeldingseditor & SEO Optimalisatie | Batch Shots",
-        "description": "Bewerk, wijzig het formaat, watermerk en optimaliseer afbeeldingen moeiteloos in bulk voor SEO. AI-aangedreven functies voor productfoto's, achtergrondverwijdering en SEO-naamgeneratie.",
-        "keywords": "afbeeldingseditor, batch afbeeldingen verwerken, seo afbeelding optimalisatie, watermerk foto's, achtergrond verwijderen, productfoto's, ai beeldbewerking, batchshots"
-    },
-    "Components": {
-        "ImageProcessingControls": {
-            "title": "AFBEELDINGSINSTELLINGEN",
-            "reset": "RESET",
-            "applyToAll": "TOEPASSEN OP ALLE AFBEELDINGEN",
-            "basic": "BASIS",
-            "advanced": "GEAVANCEERD",
-            "ai": "AI",
-            "brightness": "HELDERHEID",
-            "contrast": "CONTRAST",
-            "sharpen": "SCHERPEN",
-            "colorAdjust": "KLEURINSTELLING (HSL)",
-            "hue": "KLEURTOON",
-            "cooler": "KOELER",
-            "warmer": "WARMER",
-            "saturation": "VERZADIGING",
-            "less": "MINDER",
-            "more": "MEER",
-            "lightness": "LICHTSTERKTE",
-            "darker": "DONKERDER",
-            "lighter": "LICHTER",
-            "colorBalance": "KLEURBALANS (RGB)",
-            "red": "ROOD",
-            "green": "GROEN",
-            "blue": "BLAUW",
-            "processing": "VERWERKEN..."
-        },
-        "BackgroundRemoval": {
-            "title": "ACHTERGROND VERWIJDEREN",
-            "selected": "Geselecteerde afbeelding",
-            "removeBackground": "ACHTERGROND VERWIJDEREN",
-            "allImages": "Alle afbeeldingen",
-            "backgroundsRemoved": "{count} van {total} achtergronden verwijderd",
-            "removeAllBackgrounds": "ALLE ACHTERGRONDEN VERWIJDEREN",
-            "processing": "Verwerken...",
-            "backgroundRemoved": "Achtergrond succesvol verwijderd!",
-            "transparent": "Transparante achtergrond gedetecteerd",
-            "description": "Verwijder de achtergrond van uw productafbeelding met AI-technologie. Het proces vindt volledig plaats in uw browser voor privacy.",
-            "processingInfo": {
-                "process": "Proces",
-                "processValue": "AI-verwerking in browser",
-                "result": "Resultaat",
-                "resultValue": "Transparante PNG-achtergrond",
-                "mode": "Modus"
-            },
-            "proDialog": {
-                "title": "UPGRADE NAAR PRO",
-                "featureTitle": "PRO-FUNCTIE: Achtergrond verwijderen",
-                "description": "Upgrade naar PRO om achtergrondverwijdering voor al uw afbeeldingen te ontgrendelen (tot 100 tegelijk)! Krijg professioneel ogende productfoto's met transparante achtergronden.",
-                "pricing": {
-                    "title": "EENMALIGE BETALING",
-                    "price": "€19,99",
-                    "note": "Geen abonnement, levenslange toegang"
-                },
-                "actions": {
-                    "upgrade": "UPGRADE NAAR PRO",
-                    "try": "PROBEER HOE HET WERKT",
-                    "later": "Misschien later"
-                }
-            },
-            "compactDescription": "Verwijdert achtergrond van productafbeeldingen met AI. Verwerking duurt 10-30 seconden."
-        },
-        "PresetsSelector": {
-            "title": "VOORINSTELLINGEN",
-            "custom": "Aangepast",
-            "dimensions": "AFMETINGEN",
-            "width": "Breedte",
-            "height": "Hoogte",
-            "auto": "auto",
-            "quality": "KWALITEIT",
-            "apply": "TOEPASSEN",
-            "presets": {
-                "web-optimized": {
-                    "name": "Web-geoptimaliseerd",
-                    "description": "1080px, 75% kwaliteit (Kleinste bestandsgrootte, goed voor web)"
-                },
-                "standard": {
-                    "name": "Standaard",
-                    "description": "1080px, 85% kwaliteit (Gebalanceerde grootte en kwaliteit)"
-                },
-                "high-quality": {
-                    "name": "Hoge kwaliteit",
-                    "description": "1440px, 95% kwaliteit (Hoge kwaliteit, grotere bestandsgrootte)"
-                },
-                "max-quality": {
-                    "name": "Maximaal",
-                    "description": "2160px, 100% kwaliteit (Maximale kwaliteit, grootste bestandsgrootte)"
-                },
-                "custom": {
-                    "name": "Aangepast",
-                    "description": "Aangepaste afmetingen en kwaliteitsinstellingen"
-                }
-            }
-        },
-        "DownloadOptions": {
-            "title": "DOWNLOADEN",
-            "format": "FORMAAT",
-            "downloadAll": "ALLES DOWNLOADEN",
-            "transparentNote": "Opmerking: Afbeeldingen met verwijderde achtergrond worden opgeslagen als transparante PNG's",
-            "seoProductDescription": "Een TXT-bestand met de SEO-productbeschrijving wordt meegeleverd in de ZIP-download"
-        },
-        "ProUpgrade": {
-            "title": "Upgrade naar Pro",
-            "unlock": "Ontgrendel alle premium functies",
-            "description": "Upgrade naar Pro om {feature} te ontgrendelen en tot {count} afbeeldingen tegelijk te verwerken.",
-            "pricing": {
-                "title": "EENMALIGE BETALING",
-                "price": "€19,99",
-                "note": "Geen abonnement, levenslange toegang"
-            },
-            "learnMore": "MEER INFORMATIE",
-            "close": "Sluiten"
-        },
-        "SeoNameGenerator": {
-            "title": "AI SEO NAAMGENERATOR",
-            "description": "Genereer SEO-vriendelijke bestandsnamen voor uw afbeeldingen",
-            "enterDescription": "Voer uw productbeschrijving in",
-            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder...",
-            "generate": "GENEREER SEO NAMEN",
-            "generating": "GENEREREN...",
-            "proLimit": "Genereer tot 100 namen tegelijk met Pro",
-            "originalName": "Originele naam",
-            "seoName": "SEO naam",
-            "appliedNames": {
-                "title": "Toegepaste SEO namen",
-                "description": "Onze AI heeft SEO-geoptimaliseerde bestandsnamen voor uw afbeeldingen gegenereerd. U kunt individuele namen bewerken in het afbeeldingsvoorbeeldgedeelte."
-            },
-            "tryFeature": "PROBEER HOE HET WERKT"
-        },
-        "SeoProductDescription": {
-            "title": "AI SEO PRODUCTBESCHRIJVING",
-            "description": "Genereer een complete SEO-geoptimaliseerde productbeschrijving",
-            "enterDescription": "Voer basisproductinformatie in",
-            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder, meerdere kaartvakken...",
-            "generate": "GENEREER PRODUCTBESCHRIJVING",
-            "generating": "GENEREREN...",
-            "generateWithCount": "GENEREER ({remaining} vandaag over)",
-            "dailyLimitReached": "DAGELIJKSE LIMIET BEREIKT",
-            "dailyLimitExceeded": "Dagelijkse limiet van 5 beschrijvingen bereikt. Upgrade naar PRO voor onbeperkte toegang of probeer het morgen opnieuw.",
-            "dailyUsageInfo": "{remaining} van {total} dagelijkse generaties over",
-            "proUnlimited": "PRO: Onbeperkte generaties",
-            "upgradeToPro": "UPGRADE NAAR PRO",
-            "loginRequired": "INLOGGEN VEREIST",
-            "loginToGenerate": "Log in om SEO-productbeschrijvingen te genereren. Gratis gebruikers krijgen 5 beschrijvingen per dag, PRO-gebruikers krijgen onbeperkte toegang.",
-            "loginButton": "INLOGGEN",
-            "cancel": "ANNULEREN",
-            "copyToClipboard": "KOPIËREN NAAR KLEMBORD",
-            "downloadAsTxt": "DOWNLOADEN ALS TXT",
-            "copied": "Gekopieerd!",
-            "tryFeature": "PROBEER HOE HET WERKT",
-            "tabs": {
-                "content": "INHOUD",
-                "meta": "META",
-                "categories": "CATEGORIEËN",
-                "previews": "VOORBEELDEN"
-            },
-            "previews": {
-                "googleSearch": "GOOGLE ZOEKVOORBEELD",
-                "ecommerce": "E-COMMERCE VOORBEELD",
-                "productImage": "Productafbeelding",
-                "addToCart": "Toevoegen aan winkelwagen",
-                "wishlist": "Verlanglijst"
-            },
-            "sections": {
-                "productTitle": "Producttitel",
-                "metaTitle": "Meta titel",
-                "metaDescription": "Meta beschrijving",
-                "shortDescription": "Korte beschrijving",
-                "longDescription": "Lange beschrijving",
-                "categories": "Categorieën",
-                "tags": "Tags",
-                "urlSlug": "URL slug"
-            },
-            "downloadAll": "DOWNLOAD ALLE GEGEVENS",
-            "keywords": "SEO productbeschrijving, AI content generator, e-commerce SEO, productvermeldingen optimaliseren, metabeschrijvingen",
-            "instructionsCard": {
-                "title": "HOE TE GEBRUIKEN",
-                "step1": "Voer basisgegevens over uw product in (naam, kenmerken, materialen, enz.).",
-                "step2": "Klik op de knop 'Productbeschrijving genereren'.",
-                "step3": "Bekijk de gegenereerde inhoud (titel, meta, beschrijvingen, enz.).",
-                "step4": "Kopieer de inhoud of download deze als een tekstbestand.",
-                "step5": "Gebruik de gegenereerde SEO-inhoud in uw e-commerce winkel of website."
-            },
-            "mainCard": {
-                "title": "GENEREER SEO-INHOUD",
-                "info": {
-                    "title": "WAT IS DEZE TOOL?",
-                    "description": "Deze AI-gestuurde tool genereert een compleet SEO-pakket voor uw producten op basis van basisinformatie. U ontvangt een producttitel, metatitel, metabeschrijving, korte en lange beschrijvingen, categorieën, tags en een URL-slug, allemaal geoptimaliseerd voor zoekmachines.",
-                    "freeMode": {
-                        "title": "GRATIS MODUS",
-                        "description": "Beperkte toegang om enkele beschrijvingen te genereren. Upgrade naar PRO voor onbeperkte generatie en toegang tot alle SEO-inhoudsvelden."
-                    },
-                    "proMode": {
-                        "title": "PRO-MODUS",
-                        "description": "Onbeperkte toegang om volledige SEO-productbeschrijvingen te genereren met alle premium functies ontgrendeld."
-                    }
-                },
-                "benefits": {
-                    "complete": "COMPLEET SEO-PAKKET",
-                    "completeDesc": "Ontvang een volledige set SEO-content voor uw product, klaar voor gebruik.",
-                    "aiPowered": "AI-GEGENEREERDE INHOUD",
-                    "aiPoweredDesc": "Genereert unieke, overtuigende en trefwoordrijke beschrijvingen.",
-                    "bestPractices": "BESTE SEO-PRAKTIJKEN",
-                    "bestPracticesDesc": "Volgt richtlijnen voor tekenaantallen, trefwoordplaatsing en leesbaarheid.",
-                    "quickEasy": "SNEL & GEMAKKELIJK",
-                    "quickEasyDesc": "Bespaar uren door professionele beschrijvingen in seconden te genereren."
-                }
-            }
-        },
-        "SeoDescriptionPage": {
-            "metadata": {
-                "title": "AI SEO Productbeschrijving Generator | Batch Shots",
-                "description": "Genereer complete, SEO-geoptimaliseerde productbeschrijvingen (titel, metatitel/beschrijving, korte/lange beschrijving, categorieën, tags, URL-slug) uit basisinformatie.",
-                "keywords": "seo productbeschrijving, ai productbeschrijving, ecommerce seo, productbeschrijving generator, metabeschrijving generator, producttitel generator"
-            },
-            "title": "AI SEO PRODUCTBESCHRIJVING GENERATOR",
-            "mainCard": {
-                "title": "GENEREER SEO-INHOUD",
-                "info": {
-                    "title": "WAT IS DEZE TOOL?",
-                    "description": "Deze AI-gestuurde tool genereert een compleet SEO-pakket voor uw producten op basis van basisinformatie. U ontvangt een producttitel, metatitel, metabeschrijving, korte en lange beschrijvingen, categorieën, tags en een URL-slug, allemaal geoptimaliseerd voor zoekmachines.",
-                    "freeMode": {
-                        "title": "GRATIS MODUS",
-                        "description": "Beperkte toegang om enkele beschrijvingen te genereren. Upgrade naar PRO voor onbeperkte generatie en toegang tot alle SEO-inhoudsvelden."
-                    },
-                    "proMode": {
-                        "title": "PRO-MODUS",
-                        "description": "Onbeperkte toegang om volledige SEO-productbeschrijvingen te genereren met alle premium functies ontgrendeld."
-                    }
-                },
-                "benefits": {
-                    "complete": "COMPLEET SEO-PAKKET",
-                    "completeDesc": "Ontvang een volledige set SEO-content voor uw product, klaar voor gebruik.",
-                    "aiPowered": "AI-GEGENEREERDE INHOUD",
-                    "aiPoweredDesc": "Genereert unieke, overtuigende en trefwoordrijke beschrijvingen.",
-                    "bestPractices": "BESTE SEO-PRAKTIJKEN",
-                    "bestPracticesDesc": "Volgt richtlijnen voor tekenaantallen, trefwoordplaatsing en leesbaarheid.",
-                    "quickEasy": "SNEL & GEMAKKELIJK",
-                    "quickEasyDesc": "Bespaar uren door professionele beschrijvingen in seconden te genereren."
-                }
-            },
-            "upgradeCard": {
-                "title": "UPGRADE NAAR PRO",
-                "description": "Ontgrendel onbeperkte generatie van SEO-productbeschrijvingen en krijg toegang tot alle functies.",
-                "button": "NU UPGRADEN"
-            },
-            "instructionsCard": {
-                "title": "HOE TE GEBRUIKEN",
-                "step1": "Voer basisgegevens over uw product in (naam, kenmerken, materialen, enz.).",
-                "step2": "Klik op de knop 'Productbeschrijving genereren'.",
-                "step3": "Bekijk de gegenereerde inhoud (titel, meta, beschrijvingen, enz.).",
-                "step4": "Kopieer de inhoud of download deze als een tekstbestand.",
-                "step5": "Gebruik de gegenereerde SEO-inhoud in uw e-commerce winkel of website."
-            }
-        },
-        "SeoProductDescriptionGenerator": {
-            "title": "AI SEO PRODUCTBESCHRIJVING",
-            "description": "Genereer een complete SEO-geoptimaliseerde productbeschrijving",
-            "enterDescription": "Voer basisproductinformatie in",
-            "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder, meerdere kaartvakken...",
-            "generate": "GENEREER PRODUCTBESCHRIJVING",
-            "generating": "GENEREREN...",
-            "generateWithCount": "GENEREER ({remaining} vandaag over)",
-            "dailyLimitReached": "DAGELIJKSE LIMIET BEREIKT",
-            "dailyLimitExceeded": "Dagelijkse limiet van 5 beschrijvingen bereikt. Upgrade naar PRO voor onbeperkte toegang of probeer het morgen opnieuw.",
-            "dailyUsageInfo": "{remaining} van {total} dagelijkse generaties over",
-            "proUnlimited": "PRO: Onbeperkte generaties",
-            "upgradeToPro": "UPGRADE NAAR PRO",
-            "loginRequired": "INLOGGEN VEREIST",
-            "loginToGenerate": "Log in om SEO-productbeschrijvingen te genereren. Gratis gebruikers krijgen 5 beschrijvingen per dag, PRO-gebruikers krijgen onbeperkte toegang.",
-            "loginButton": "INLOGGEN",
-            "cancel": "ANNULEREN",
-            "copyToClipboard": "KOPIËREN NAAR KLEMBORD",
-            "downloadAsTxt": "DOWNLOADEN ALS TXT",
-            "copied": "Gekopieerd!",
-            "tryFeature": "PROBEER HOE HET WERKT",
-            "tabs": {
-                "content": "INHOUD",
-                "meta": "META",
-                "categories": "CATEGORIEËN",
-                "previews": "VOORBEELDEN"
-            },
-            "previews": {
-                "googleSearch": "GOOGLE ZOEKVOORBEELD",
-                "ecommerce": "E-COMMERCE VOORBEELD",
-                "productImage": "Productafbeelding",
-                "addToCart": "Toevoegen aan winkelwagen",
-                "wishlist": "Verlanglijst"
-            },
-            "sections": {
-                "productTitle": "Producttitel",
-                "metaTitle": "Meta titel",
-                "metaDescription": "Meta beschrijving",
-                "shortDescription": "Korte beschrijving",
-                "longDescription": "Lange beschrijving",
-                "categories": "Categorieën",
-                "tags": "Tags",
-                "urlSlug": "URL slug"
-            },
-            "downloadAll": "DOWNLOAD ALLE GEGEVENS"
-        },
-        "QuickPresets": {
-            "title": "SNELLE VOORINSTELLINGEN",
-            "productSpecialty": "PRODUCTSPECIALITEIT",
-            "colorStyle": "KLEURSTIJL",
-            "presets": {
-                "white-bg": {
-                    "name": "WITTE ACHTERGROND",
-                    "description": "Schone productfotografie met witte achtergrond"
-                },
-                "clean": {
-                    "name": "SCHONE PRODUCT",
-                    "description": "Productfotografie met schone, neutrale kleuren"
-                },
-                "jewelry": {
-                    "name": "SIERADEN/METAAL",
-                    "description": "Geoptimaliseerd voor sieraden en metalen producten"
-                },
-                "sharp": {
-                    "name": "SCHERPE DETAILS",
-                    "description": "Verbeterde scherpte en details"
-                },
-                "textile": {
-                    "name": "TEXTIEL/STOF",
-                    "description": "Voor stof- en textielproducten - verbetert textuur en kleur"
-                },
-                "soft-product": {
-                    "name": "ZACHTE PRODUCTEN",
-                    "description": "Voor zachte producten zoals kussens, kussens, knuffels"
-                },
-                "furniture": {
-                    "name": "MEUBELS/HOUT",
-                    "description": "Houten meubels en woondecoratie"
-                },
-                "transparent": {
-                    "name": "GLAS",
-                    "description": "Glas en transparante producten"
-                },
-                "food": {
-                    "name": "VOEDINGSMIDDELEN",
-                    "description": "Voedselfotografie - verbetert versheid en kleuraantrekkingskracht"
-                },
-                "dramatic": {
-                    "name": "DRAMATISCH",
-                    "description": "Productfotografie met hoog contrast"
-                },
-                "vivid": {
-                    "name": "LEVENDIGE KLEUREN",
-                    "description": "Verbeterde kleurverzadiging en helderheid"
-                },
-                "classic": {
-                    "name": "KLASSIEK",
-                    "description": "Klassieke look met gebalanceerde kleuren"
-                }
-            }
-        },
-        "BackgroundRemovalPage": {
-            "title": "ACHTERGRONDVERWIJDERING",
-            "loading": {
-                "tool": "TOOL WORDT GELADEN...",
-                "proStatus": "PRO-STATUS WORDT GECONTROLEERD...",
-                "description": "Even geduld terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
-                "proDescription": "Even geduld terwijl we uw accountstatus controleren."
-            },
-            "mainCard": {
-                "title": "AFBEELDINGSACHTERGRONDEN VERWIJDEREN",
-                "info": {
-                    "title": "AI-ACHTERGRONDVERWIJDERING",
-                    "description": "Verwijder de achtergrond van uw productafbeeldingen met AI-technologie. Het proces vindt volledig plaats in uw browser voor privacy.",
-                    "freeMode": {
-                        "title": "GRATIS MODUS",
-                        "description": "Verwerk 1 afbeelding tegelijk. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!"
-                    },
-                    "proMode": {
-                        "title": "PRO-MODUS",
-                        "description": "Verwerk tot 100 afbeeldingen tegelijk met uw PRO-account!"
-                    }
-                },
-                "upload": {
-                    "title": "Selecteer afbeeldingen",
-                    "buttonFree": "SELECTEER EEN AFBEELDING",
-                    "buttonPro": "SELECTEER AFBEELDINGEN",
-                    "helpTextFree": "Gratis gebruikers kunnen 1 afbeelding tegelijk selecteren.",
-                    "helpTextPro": "U kunt tot 100 afbeeldingen tegelijk selecteren."
-                },
-                "actions": {
-                    "clear": "WISSEN",
-                    "download": "DOWNLOADEN",
-                    "downloadZip": "ALS ZIP DOWNLOADEN",
-                    "downloading": "DOWNLOADEN...",
-                    "downloadingZip": "ZIP WORDT GEMAAKT...",
-                    "removeBackground": "ACHTERGROND VERWIJDEREN",
-                    "removeBackgrounds": "ACHTERGRONDEN VERWIJDEREN",
-                    "processing": "ACHTERGROND WORDT VERWIJDERD...",
-                    "processingMultiple": "ACHTERGRONDEN WORDEN VERWIJDERD...",
-                    "tryFullEditor": "PROBEER VOLLEDIGE EDITOR"
-                },
-                "progress": {
-                    "processing": "Verwerken...",
-                    "percent": "{percent}%"
-                },
-                "upgradeCard": {
-                    "title": "UPGRADE NAAR PRO",
-                    "plan": {
-                        "title": "PRO-PLAN",
-                        "price": "€19,99",
-                        "features": [
-                            "Verwijder achtergronden van tot 100 afbeeldingen tegelijk",
-                            "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
-                            "SEO-naamgeneratie voor productafbeeldingen",
-                            "Batchverwerking voor alle functies",
-                            "Eenmalige betaling, levenslange toegang"
-                        ],
-                        "buttonText": "NU UPGRADEN"
-                    }
-                }
-            },
-            "howItWorks": {
-                "title": "HOE HET WERKT",
-                "step1": {
-                    "title": "1. SELECTEER UW AFBEELDINGEN",
-                    "description": "Upload een of meer productafbeeldingen die u wilt verwerken.",
-                    "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
-                },
-                "step2": {
-                    "title": "2. VERWIJDER ACHTERGRONDEN",
-                    "description": "Onze AI-technologie detecteert en verwijdert de achtergrond van uw afbeeldingen, waardoor transparante PNG's ontstaan die perfect zijn voor e-commerce."
-                },
-                "step3": {
-                    "title": "3. DOWNLOAD & GEBRUIK",
-                    "description": "Download uw verwerkte afbeeldingen en gebruik ze op uw website, marktplaatsvermeldingen of marketingmaterialen."
-                }
-            },
-            "proDialog": {
-                "title": "UPGRADE NAAR PRO",
-                "featureTitle": "PRO-FUNCTIE: Bulk achtergrondverwijdering",
-                "description": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken, wat u uren werk bespaart!",
-                "pricing": {
-                    "title": "EENMALIGE BETALING",
-                    "price": "€19,99",
-                    "note": "Geen abonnement, levenslange toegang"
-                },
-                "actions": {
-                    "upgrade": "UPGRADE NAAR PRO",
-                    "continue": "DOORGAAN MET GRATIS MODUS"
-                }
-            },
-            "metadata": {
-                "title": "AI Achtergrond Verwijderaar | Batch Shots",
-                "description": "Verwijder achtergronden volledig in de browser. Gratis en privacy-vriendelijk.",
-                "keywords": "achtergrond verwijderen, ai, transparant, in-browser"
-            }
-        },
-        "ImagePreview": {
-            "noImages": "Geen afbeeldingen geselecteerd",
-            "zoomInstructions": "Knijp om in te zoomen, sleep om te verplaatsen",
-            "zoomLevel": "{scale}%",
-            "removingBackground": "Achtergrond wordt verwijderd...",
-            "seoName": {
-                "label": "SEO-vriendelijke naam:",
-                "edit": "BEWERKEN",
-                "cancel": "ANNULEREN",
-                "save": "OPSLAAN"
-            },
-            "originalName": "Originele naam:",
-            "fileInfo": {
-                "dimensions": "Afmetingen:",
-                "size": "Grootte:",
-                "output": "Uitvoer:",
-                "quality": "Kwaliteit:",
-                "background": "Achtergrond:",
-                "backgroundRemoved": "Verwijderd",
-                "custom": "Aangepast",
-                "auto": "auto"
-            },
-            "actions": {
-                "download": "DOWNLOADEN",
-                "reset": "RESET"
-            },
-            "allImages": "ALLE AFBEELDINGEN ({current}/{max})"
-        },
-        "PricingCard": {
-            "oneTime": "eenmalig",
-            "currentPlan": "HUIDIG PLAN"
-        },
-        "WatermarkControl": {
-            "title": "WATERMERK",
-            "addTab": "WATERMERK TOEVOEGEN",
-            "removeTab": "WATERMERK VERWIJDEREN (AI)",
-            "type": "TYPE",
-            "text": "TEKST",
-            "logo": "LOGO",
-            "enterText": "Voer watermerktekst in",
-            "font": "LETTERTYPE",
-            "size": "GROOTTE",
-            "color": "KLEUR",
-            "opacity": "DEKKING",
-            "position": "POSITIE",
-            "uploadLogo": "LOGO UPLOADEN",
-            "logoPlaceholder": "Klik of sleep logo hier",
-            "reset": "RESETTEN",
-            "presets": {
-                "bottomRight": "Rechtsonder",
-                "bottomLeft": "Linksonder",
-                "topLeft": "Linksboven",
-                "topRight": "Rechtsboven",
-                "center": "Midden",
-                "diagonal": "Diagonaal",
-                "tile": "Tegel (Patroon)"
-            },
-            "removeDescription": "AI-gestuurde watermerkverwijdering komt binnenkort!"
-        },
-        "WatermarkPage": {
-            "metadata": {
-                "title": "Watermerk toevoegen aan afbeeldingen | Batch Shots",
-                "description": "Voeg snel tekst- of logowatermerken toe. Alles draait lokaal in uw browser.",
-                "keywords": "watermerk, logo, tekst, privacy"
-            },
-            "title": "WATERMERK TOEVOEGEN AAN AFBEELDINGEN",
-            "loading": {
-                "proStatus": "PRO-STATUS CONTROLEREN...",
-                "proDescription": "Even geduld terwijl we uw accountstatus verifiëren."
-            },
-            "preview": {
-                "title": "AFBEELDINGSVOORBEELD"
-            },
-            "alerts": {
-                "freeUserLimit": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!",
-                "maxImagesLimit": "Maximaal 100 afbeeldingen tegelijk toegestaan.",
-                "watermarkFailed": "Toepassen van watermerk mislukt. Probeer het opnieuw."
-            },
-            "mainCard": {
-                "title": "WATERMERK UW AFBEELDINGEN",
-                "info": {
-                    "title": "VOEG AANGEPASTE WATERMERKEN TOE",
-                    "description": "Bescherm uw afbeeldingen met aangepaste tekst- of logowatermerken. Pas transparantie, grootte en positie aan uw merkbehoeften aan.",
-                    "freeMode": {
-                        "title": "GRATIS MODUS",
-                        "description": "Verwerk 1 afbeelding tegelijk. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!"
-                    },
-                    "proMode": {
-                        "title": "PRO-MODUS",
-                        "description": "Verwerk tot 100 afbeeldingen in bulk met uw PRO-account!"
-                    }
-                },
-                "upload": {
-                    "title": "Selecteer afbeeldingen",
-                    "buttonFree": "SELECTEER EEN AFBEELDING",
-                    "buttonPro": "SELECTEER AFBEELDINGEN",
-                    "helpTextFree": "Gratis gebruikers kunnen 1 afbeelding tegelijk selecteren.",
-                    "helpTextPro": "U kunt tot 100 afbeeldingen tegelijk selecteren."
-                },
-                "actions": {
-                    "clear": "WISSEN",
-                    "download": "DOWNLOADEN",
-                    "downloadZip": "ALS ZIP DOWNLOADEN",
-                    "downloading": "DOWNLOADEN...",
-                    "downloadingZip": "ZIP WORDT GEMAAKT...",
-                    "removeBackground": "ACHTERGROND VERWIJDEREN",
-                    "removeBackgrounds": "ACHTERGRONDEN VERWIJDEREN",
-                    "processing": "WATERMERK TOEPASSEN...",
-                    "processingMultiple": "WATERMERKEN TOEPASSEN...",
-                    "tryFullEditor": "PROBEER VOLLEDIGE EDITOR"
-                },
-                "progress": {
-                    "processing": "Verwerken...",
-                    "percent": "{percent}%"
-                },
-                "upgradeCard": {
-                    "title": "UPGRADE NAAR PRO",
-                    "plan": {
-                        "title": "PRO-PLAN",
-                        "price": "€19,99",
-                        "features": [
-                            "Watermerk tot 100 afbeeldingen tegelijk",
-                            "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
-                            "Achtergrondverwijdering voor productafbeeldingen",
-                            "Batchverwerking voor alle functies",
-                            "Eenmalige betaling, levenslange toegang"
-                        ],
-                        "buttonText": "NU UPGRADEN"
-                    }
-                }
-            },
-            "howItWorks": {
-                "title": "HOE HET WERKT",
-                "step1": {
-                    "title": "1. SELECTEER UW AFBEELDINGEN",
-                    "description": "Upload een of meer afbeeldingen die u wilt watermerken.",
-                    "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
-                },
-                "step2": {
-                    "title": "2. PAS WATERMERK AAN",
-                    "description": "Kies tussen tekst- of logowatermerken. Pas transparantie, grootte en positie naar wens aan."
-                },
-                "step3": {
-                    "title": "3. DOWNLOAD & GEBRUIK",
-                    "description": "Pas uw watermerk toe en download de verwerkte afbeeldingen, klaar voor web-, social media- of portfoliogebruik."
-                }
-            },
-            "proDialog": {
-                "title": "UPGRADE NAAR PRO",
-                "featureTitle": "PRO-FUNCTIE: Bulk watermerken",
-                "description": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te watermerken, wat u uren werk bespaart!",
-                "pricing": {
-                    "title": "EENMALIGE BETALING",
-                    "price": "€19,99",
-                    "note": "Geen abonnement, levenslange toegang"
-                },
-                "actions": {
-                    "upgrade": "UPGRADE NAAR PRO",
-                    "continue": "DOORGAAN MET GRATIS MODUS"
-                }
-            }
+        "actions": {
+          "upgrade": "UPGRADE NAAR PRO",
+          "try": "PROBEER HOE HET WERKT",
+          "later": "Misschien later"
         }
+      },
+      "compactDescription": "Verwijdert achtergrond van productafbeeldingen met AI. Verwerking duurt 10-30 seconden."
     },
-    "Dialogs": {
-        "download": {
-            "title": "Afbeeldingen downloaden",
-            "confirmTitle": "Download bevestigen",
-            "successTitle": "Download geslaagd",
-            "summary": "Download samenvatting:",
-            "images": "{count, plural, =1 {# afbeelding} other {# afbeeldingen}} worden gedownload",
-            "format": "Formaat:",
-            "appliedPreset": "Toegepaste preset:",
-            "adjustmentsApplied": "Beeldaanpassingen toegepast",
-            "backgroundRemoval": "Achtergrondverwijdering toegepast",
-            "seoFilenames": "AI SEO-geoptimaliseerde bestandsnamen inbegrepen",
-            "watermarkApplied": "Watermerk toegepast",
-            "zipPackage": "Bestanden worden verpakt in een ZIP-archief",
-            "processingNote": "Verwerking kan even duren voor meerdere of grote afbeeldingen.",
-            "cancel": "ANNULEREN",
-            "download": "DOWNLOADEN",
-            "processing": "VERWERKEN...",
-            "successMessage": "Uw afbeeldingen zijn succesvol gedownload. Wat wilt u nu doen?",
-            "startNewBundleDesc": "Nieuw pakket starten: Huidige afbeeldingen wissen en opnieuw beginnen",
-            "continueEditingDesc": "Verder bewerken: Blijf werken met huidige afbeeldingen",
-            "startNewBundle": "NIEUW PAKKET STARTEN",
-            "continueEditing": "VERDER BEWERKEN",
-            "seoProductDescription": "SEO Productbeschrijving (TXT)"
+    "PresetsSelector": {
+      "title": "VOORINSTELLINGEN",
+      "custom": "Aangepast",
+      "dimensions": "AFMETINGEN",
+      "width": "Breedte",
+      "height": "Hoogte",
+      "auto": "auto",
+      "quality": "KWALITEIT",
+      "apply": "TOEPASSEN",
+      "presets": {
+        "web-optimized": {
+          "name": "Web-geoptimaliseerd",
+          "description": "1080px, 75% kwaliteit (Kleinste bestandsgrootte, goed voor web)"
         },
-        "proUpgrade": {
-            "feature": "Batchverwerking"
+        "standard": {
+          "name": "Standaard",
+          "description": "1080px, 85% kwaliteit (Gebalanceerde grootte en kwaliteit)"
+        },
+        "high-quality": {
+          "name": "Hoge kwaliteit",
+          "description": "1440px, 95% kwaliteit (Hoge kwaliteit, grotere bestandsgrootte)"
+        },
+        "max-quality": {
+          "name": "Maximaal",
+          "description": "2160px, 100% kwaliteit (Maximale kwaliteit, grootste bestandsgrootte)"
+        },
+        "custom": {
+          "name": "Aangepast",
+          "description": "Aangepaste afmetingen en kwaliteitsinstellingen"
         }
+      }
     },
-    "Pricing": {
-        "title": "PRIJSPLANNEN",
-        "subtitle": "Kies het perfecte plan voor uw beeldoptimalisatiebehoeften. Ons PRO-plan biedt een levenslange licentie met een eenmalige betaling.",
-        "alreadyPro": {
-            "title": "U bent al een PRO-gebruiker!",
-            "description": "Bedankt voor uw ondersteuning. U heeft toegang tot alle PRO-functies inclusief bulk achtergrondverwijdering, geavanceerde afbeeldingsaanpassingen en SEO-bestandsnaamgeneratie.",
-            "backToEditor": "TERUG NAAR EDITOR"
+    "DownloadOptions": {
+      "title": "DOWNLOADEN",
+      "format": "FORMAAT",
+      "downloadAll": "ALLES DOWNLOADEN",
+      "transparentNote": "Opmerking: Afbeeldingen met verwijderde achtergrond worden opgeslagen als transparante PNG's",
+      "seoProductDescription": "Een TXT-bestand met de SEO-productbeschrijving wordt meegeleverd in de ZIP-download"
+    },
+    "ProUpgrade": {
+      "title": "Upgrade naar Pro",
+      "unlock": "Ontgrendel alle premium functies",
+      "description": "Upgrade naar Pro om {feature} te ontgrendelen en tot {count} afbeeldingen tegelijk te verwerken.",
+      "pricing": {
+        "title": "EENMALIGE BETALING",
+        "price": "€19,99",
+        "note": "Geen abonnement, levenslange toegang"
+      },
+      "learnMore": "MEER INFORMATIE",
+      "close": "Sluiten"
+    },
+    "SeoNameGenerator": {
+      "title": "AI SEO NAAMGENERATOR",
+      "description": "Genereer SEO-vriendelijke bestandsnamen voor uw afbeeldingen",
+      "enterDescription": "Voer uw productbeschrijving in",
+      "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder...",
+      "generate": "GENEREER SEO NAMEN",
+      "generating": "GENEREREN...",
+      "proLimit": "Genereer tot 100 namen tegelijk met Pro",
+      "originalName": "Originele naam",
+      "seoName": "SEO naam",
+      "appliedNames": {
+        "title": "Toegepaste SEO namen",
+        "description": "Onze AI heeft SEO-geoptimaliseerde bestandsnamen voor uw afbeeldingen gegenereerd. U kunt individuele namen bewerken in het afbeeldingsvoorbeeldgedeelte."
+      },
+      "tryFeature": "PROBEER HOE HET WERKT"
+    },
+    "SeoProductDescription": {
+      "title": "AI SEO PRODUCTBESCHRIJVING",
+      "description": "Genereer een complete SEO-geoptimaliseerde productbeschrijving",
+      "enterDescription": "Voer basisproductinformatie in",
+      "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder, meerdere kaartvakken...",
+      "generate": "GENEREER PRODUCTBESCHRIJVING",
+      "generating": "GENEREREN...",
+      "generateWithCount": "GENEREER ({remaining} vandaag over)",
+      "dailyLimitReached": "DAGELIJKSE LIMIET BEREIKT",
+      "dailyLimitExceeded": "Dagelijkse limiet van 5 beschrijvingen bereikt. Upgrade naar PRO voor onbeperkte toegang of probeer het morgen opnieuw.",
+      "dailyUsageInfo": "{remaining} van {total} dagelijkse generaties over",
+      "proUnlimited": "PRO: Onbeperkte generaties",
+      "upgradeToPro": "UPGRADE NAAR PRO",
+      "loginRequired": "INLOGGEN VEREIST",
+      "loginToGenerate": "Log in om SEO-productbeschrijvingen te genereren. Gratis gebruikers krijgen 5 beschrijvingen per dag, PRO-gebruikers krijgen onbeperkte toegang.",
+      "loginButton": "INLOGGEN",
+      "cancel": "ANNULEREN",
+      "copyToClipboard": "KOPIËREN NAAR KLEMBORD",
+      "downloadAsTxt": "DOWNLOADEN ALS TXT",
+      "copied": "Gekopieerd!",
+      "tryFeature": "PROBEER HOE HET WERKT",
+      "tabs": {
+        "content": "INHOUD",
+        "meta": "META",
+        "categories": "CATEGORIEËN",
+        "previews": "VOORBEELDEN"
+      },
+      "previews": {
+        "googleSearch": "GOOGLE ZOEKVOORBEELD",
+        "ecommerce": "E-COMMERCE VOORBEELD",
+        "productImage": "Productafbeelding",
+        "addToCart": "Toevoegen aan winkelwagen",
+        "wishlist": "Verlanglijst"
+      },
+      "sections": {
+        "productTitle": "Producttitel",
+        "metaTitle": "Meta titel",
+        "metaDescription": "Meta beschrijving",
+        "shortDescription": "Korte beschrijving",
+        "longDescription": "Lange beschrijving",
+        "categories": "Categorieën",
+        "tags": "Tags",
+        "urlSlug": "URL slug"
+      },
+      "downloadAll": "DOWNLOAD ALLE GEGEVENS",
+      "keywords": "SEO productbeschrijving, AI content generator, e-commerce SEO, productvermeldingen optimaliseren, metabeschrijvingen",
+      "instructionsCard": {
+        "title": "HOE TE GEBRUIKEN",
+        "step1": "Voer basisgegevens over uw product in (naam, kenmerken, materialen, enz.).",
+        "step2": "Klik op de knop 'Productbeschrijving genereren'.",
+        "step3": "Bekijk de gegenereerde inhoud (titel, meta, beschrijvingen, enz.).",
+        "step4": "Kopieer de inhoud of download deze als een tekstbestand.",
+        "step5": "Gebruik de gegenereerde SEO-inhoud in uw e-commerce winkel of website."
+      },
+      "mainCard": {
+        "title": "GENEREER SEO-INHOUD",
+        "info": {
+          "title": "WAT IS DEZE TOOL?",
+          "description": "Deze AI-gestuurde tool genereert een compleet SEO-pakket voor uw producten op basis van basisinformatie. U ontvangt een producttitel, metatitel, metabeschrijving, korte en lange beschrijvingen, categorieën, tags en een URL-slug, allemaal geoptimaliseerd voor zoekmachines."
         },
-        "checkout": {
-            "title": "VOLTOOI UW AANKOOP",
-            "planTitle": "PRO LEVENSLANGE LICENTIE",
-            "price": "€19,99",
-            "description": "Eenmalige betaling, levenslange toegang tot alle PRO-functies",
-            "email": "E-MAIL",
-            "cardInfo": "KAARTINFORMATIE",
-            "cardNumber": "1234 5678 9012 3456",
-            "expiryDate": "MM/JJ",
-            "cvc": "CVC",
-            "completePurchase": "AANKOOP VOLTOOIEN",
-            "goBack": "Terug"
-        },
-        "plans": {
-            "free": {
-                "title": "GRATIS",
-                "price": "GRATIS",
-                "features": [
-                    "Batchverwerking max 5 afbeeldingen",
-                    "AI achtergrondverwijdering enkele afbeelding (preview)",
-                    "AI objectenverwijdering enkele afbeelding",
-                    "Watermerk toevoegen max 5 afbeeldingen",
-                    "Afbeeldingsconverter max 5 afbeeldingen in bulk",
-                    "AI SEO afbeeldingsnaamgeneratie (Niet beschikbaar)",
-                    "AI Photo Duplicate Finder max 5 afbeeldingen",
-                    "AI SEO beschrijving en metatags (Niet beschikbaar)"
-                ],
-                "buttonText": "DOORGAAN MET GRATIS"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "$19.99",
-                "features": [
-                    "Batchverwerking max 100 afbeeldingen",
-                    "Tot 100 AI achtergrondverwijderingen in één batch",
-                    "AI objectenverwijdering tot 100 afbeeldingen",
-                    "Watermerk toevoegen 100 afbeeldingen in één batch",
-                    "Afbeeldingsconverter max 100 afbeeldingen in bulk",
-                    "AI Photo Duplicate Finder unbegrensd batchverwerking",
-                    "AI SEO afbeeldingsnaamgeneratie (tot 100)",
-                    "AI SEO beschrijving en metatags beschikbaar",
-                    "**Eenmalige betaling, levenslange toegang**"
-                ],
-                "buttonText": "UPGRADEN NAAR PRO"
-            }
-        },
-        "faq": {
-            "title": "VEELGESTELDE VRAGEN",
-            "questions": {
-                "oneTime": {
-                    "question": "Is dit echt een eenmalige betaling?",
-                    "answer": "Ja! Betaal eenmaal en krijg levenslange toegang tot alle PRO-functies. Geen terugkerende abonnementen."
-                },
-                "backgroundRemoval": {
-                    "question": "Hoe werkt achtergrondverwijdering?",
-                    "answer": "We gebruiken geavanceerde AI-algoritmen om achtergronden van uw productafbeeldingen te detecteren en te verwijderen. Het hele proces vindt plaats in uw browser - we slaan uw afbeeldingen nooit op onze servers op."
-                },
-                "imageLimits": {
-                    "question": "Wat zijn de afbeeldingslimieten?",
-                    "answer": "Gratis gebruikers kunnen tot 10 afbeeldingen tegelijk verwerken met basis functies en de achtergrond van 1 afbeelding tegelijk verwijderen. PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk verwerken, inclusief bulk achtergrondverwijdering."
-                },
-                "refund": {
-                    "question": "Kan ik een terugbetaling aanvragen?",
-                    "answer": "Ja, we bieden een 30-dagen geld-terug-garantie als u niet tevreden bent met de PRO-functies. Neem contact op met ons ondersteuningsteam voor hulp."
-                }
-            }
+        "benefits": {
+          "complete": "COMPLEET SEO-PAKKET",
+          "completeDesc": "Ontvang een volledige set SEO-content voor uw product, klaar voor gebruik.",
+          "aiPowered": "AI-GEGENEREERDE INHOUD",
+          "aiPoweredDesc": "Genereert unieke, overtuigende en trefwoordrijke beschrijvingen.",
+          "bestPractices": "BESTE SEO-PRAKTIJKEN",
+          "bestPracticesDesc": "Volgt richtlijnen voor tekenaantallen, trefwoordplaatsing en leesbaarheid.",
+          "quickEasy": "SNEL & GEMAKKELIJK",
+          "quickEasyDesc": "Bespaar uren door professionele beschrijvingen in seconden te genereren."
         }
+      }
     },
-    "PrivacyPolicy": {
-        "title": "PRIVACYBELEID",
-        "section1Title": "1. INTRODUCTIE",
-        "section1P1": "Welkom bij Batch Shots (“wij”, “ons”, “onze”). Wij zetten ons in om uw privacy te beschermen en de veiligheid van uw persoonlijke gegevens te waarborgen.",
-        "section1P2": "Dit privacybeleid legt uit hoe wij uw gegevens verwerken wanneer u onze browsergebaseerde tool voor beeldoptimalisatie gebruikt.",
-        "section2Title": "2. INFORMATIE DIE WE NIET VERZAMELEN",
-        "section2P1Bold": "We verzamelen of slaan uw afbeeldingen niet op.",
-        "section2P1": "Ons kernprincipe is privacy by design.",
-        "section2P2": "Batch Shots werkt volledig binnen uw browser. Wanneer u afbeeldingen uploadt om te optimaliseren:",
-        "section2Li1": "Uw afbeeldingen worden lokaal in uw browser verwerkt met behulp van client-side JavaScript.",
-        "section2Li2": "Uw afbeeldingen verlaten nooit uw apparaat en worden niet naar onze servers verzonden.",
-        "section2Li3": "Wij slaan geen kopieën op van uw originele of verwerkte afbeeldingen.",
-        "section2Li4": "Wij volgen de inhoud van uw afbeeldingen niet.",
-        "section3Title": "3. AI-GESTUURDE FUNCTIES",
-        "section3P1": "Wanneer u onze AI-gestuurde functies voor het genereren van SEO-namen gebruikt:",
-        "section3Li1": "Wij sturen alleen de beschrijvende tekst die u opgeeft naar onze API.",
-        "section3Li2": "Wij sturen of verwerken uw daadwerkelijke afbeeldingen niet via onze AI-systemen.",
-        "section3Li3": "Uw gegenereerde SEO-namen worden teruggestuurd naar uw browser en worden niet permanent op onze servers opgeslagen.",
-        "section4Title": "4. ANALYTICS & COOKIES",
-        "section4P1": "Wij gebruiken minimale analyses om te begrijpen hoe onze site wordt gebruikt:",
-        "section4Li1": "Wij verzamelen anonieme gebruiksstatistieken zoals paginaweergaven en functiegebruik.",
-        "section4Li2": "Wij gebruiken essentiële cookies om functionaliteit te bieden zoals reCAPTCHA-bescherming.",
-        "section4Li3": "Wij gebruiken geen cookies voor reclame of tracking op andere websites.",
-        "section5Title": "5. DIENSTEN VAN DERDEN",
-        "section5P1": "Wij gebruiken de volgende diensten van derden:",
-        "section5Li1": "Google reCAPTCHA voor spambescherming op onze AI-functies.",
-        "section5Li2": "OpenCV.js voor beeldverwerking (draait volledig in uw browser).",
-        "section5P2": "Elk van deze diensten heeft zijn eigen privacybeleid dat bepaalt hoe zij met gegevens omgaan.",
-        "section6Title": "6. WIJZIGINGEN IN DIT BELEID",
-        "section6P1": "Wij kunnen dit privacybeleid van tijd tot tijd bijwerken. Wij zullen u op de hoogte stellen van eventuele wijzigingen door het nieuwe privacybeleid op deze pagina te publiceren en de datum „Laatst bijgewerkt” bij te werken.",
-        "section7Title": "7. CONTACTEER ONS",
-        "section7P1": "Als u vragen heeft over dit privacybeleid, neem dan contact met ons op via privacy@batchshots.com.",
-        "returnButton": "TERUG NAAR HOME"
-    },
-    "TermsOfUse": {
-        "title": "GEBRUIKSVOORWAARDEN",
-        "lastUpdated": "Laatst bijgewerkt: 30 mei 2025",
-        "section1Title": "1. Aanvaarding van de voorwaarden",
-        "section1P1": "Door Batch Shots te gebruiken, gaat u akkoord met deze Gebruiksvoorwaarden. Als u het niet eens bent met een deel van deze voorwaarden, mag u onze dienst niet gebruiken.",
-        "section2Title": "2. Beschrijving van de dienst",
-        "section2P1": "Batch Shots is een browsergebaseerde beeldoptimalisatietool waarmee gebruikers:",
-        "section2Li1": "Beeldeigenschappen zoals helderheid, contrast en witbalans kunnen aanpassen",
-        "section2Li2": "Afbeeldingen kunnen aanpassen en optimaliseren voor webgebruik",
-        "section2Li3": "SEO-vriendelijke bestandsnamen kunnen genereren",
-        "section2Li4": "Meerdere afbeeldingen gelijktijdig kunnen verwerken",
-        "section2P2": "Alle beeldverwerking vindt plaats in uw browser; er worden geen afbeeldingen naar onze servers geüpload of daar opgeslagen.",
-        "section3Title": "3. Gebruikersverantwoordelijkheden",
-        "section3P1": "Gebruikers van Batch Shots zijn uitsluitend verantwoordelijk voor het waarborgen van de benodigde rechten en toestemmingen om afbeeldingen te gebruiken, te uploaden en te verwerken met onze dienst. Batch Shots is niet verantwoordelijk voor inbreuken op auteursrechten of intellectueel eigendom die voortvloeien uit uw gebruik van de dienst. U moet de dienst gebruiken in overeenstemming met alle toepasselijke wetten en voorschriften.",
-        "section3Li1": "Zorgen dat zij de benodigde rechten en toestemmingen hebben om de gebruikte afbeeldingen te wijzigen en te verwerken",
-        "section3Li2": "De dienst gebruiken in overeenstemming met toepasselijke wetten en voorschriften",
-        "section3Li3": "De dienst niet gebruiken om ongepaste, aanstootgevende of illegale inhoud te verwerken, te maken of te verspreiden",
-        "section3Li4": "Niet proberen de dienst te reverse engineeren, te wijzigen of te hacken",
-        "section4Title": "4. Intellectueel eigendom",
-        "section4P1": "Alle originele inhoud, functies en functionaliteit van Batch Shots zijn ons eigendom en worden beschermd door internationale auteursrechten, handelsmerken en andere wetten op intellectueel eigendom.",
-        "section4P2": "U behoudt alle rechten op uw originele afbeeldingen. Wij maken geen aanspraak op eigendom van de afbeeldingen die u verwerkt met onze dienst.",
-        "section4aTitle": "4A. Gebruikersinhoud, eigendom en levenslange Pro-toegang",
-        "section4aP1": "Alle afbeeldingen en inhoud die worden geüpload of verwerkt met Batch Shots blijven het exclusieve eigendom van de gebruiker. Batch Shots slaat uw afbeeldingen niet op, bekijkt ze niet en verzendt ze niet naar onze servers; alle verwerking vindt plaats in uw browser. U bent uitsluitend verantwoordelijk voor het waarborgen van de benodigde rechten en toestemmingen om afbeeldingen te gebruiken en te verwerken met onze dienst. Batch Shots is niet verantwoordelijk voor inbreuken op auteursrechten of intellectueel eigendom die voortvloeien uit uw gebruik van de dienst.",
-        "section4aP2": "\"Levenslange\" toegang tot Pro-functies betekent dat u toegang heeft tot alle Pro-functies zolang Batch Shots als dienst wordt geëxploiteerd en onderhouden. Als Batch Shots wordt stopgezet, zullen wij redelijke inspanningen leveren om Pro-gebruikers toegang te geven tot de softwarecode of om de applicatie open source te maken, zodat deze blijvend gebruikt kan worden.",
-        "section5Title": "5. Vrijwaringen",
-        "section5Li1": "Batch Shots wordt aangeboden \"zoals het is\" en \"zoals beschikbaar\" zonder enige garanties van welke aard dan ook.",
-        "section5Li2": "Wij garanderen niet dat de dienst ononderbroken, veilig of foutloos zal zijn.",
-        "section5Li3": "Wij zijn niet verantwoordelijk voor eventueel verlies van gegevens tijdens de verwerking. Gebruikers zijn verantwoordelijk voor het maken van hun eigen back-ups.",
-        "section5Li4": "Wij geven geen garanties met betrekking tot de nauwkeurigheid of effectiviteit van de SEO-naamgeneratiefunctie.",
-        "section5Li5": "Batch Shots is niet verantwoordelijk voor juridische claims, schade of geschillen die voortvloeien uit gebruikersinhoud of het gebruik van de dienst.",
-        "section6Title": "6. Aansprakelijkheidsbeperking",
-        "section6P1": "Voor zover wettelijk toegestaan, zijn wij niet aansprakelijk voor indirecte, incidentele, bijzondere, gevolg- of strafschade die voortvloeit uit uw gebruik van of onvermogen om de dienst te gebruiken, of uit juridische claims die voortvloeien uit uw inhoud.",
-        "section7Title": "7. Wijzigingen in de dienst",
-        "section7P1": "Wij behouden ons het recht voor om elk onderdeel van Batch Shots te allen tijde te wijzigen, op te schorten of stop te zetten zonder voorafgaande kennisgeving of aansprakelijkheid.",
-        "section8Title": "8. Toepasselijk recht",
-        "section8P1": "Deze Gebruiksvoorwaarden worden beheerst door en uitgelegd in overeenstemming met de wetten van de jurisdictie waarin wij opereren, zonder rekening te houden met de bepalingen inzake wetsconflicten.",
-        "section9Title": "9. Wijzigingen in de voorwaarden",
-        "section9P1": "Wij kunnen deze Gebruiksvoorwaarden van tijd tot tijd bijwerken. Wij zullen u op de hoogte stellen van eventuele wijzigingen door de nieuwe Voorwaarden op deze pagina te plaatsen en de datum \"Laatst bijgewerkt\" bij te werken.",
-        "section10Title": "10. Contact met ons",
-        "section10P1": "Als u vragen heeft over deze Gebruiksvoorwaarden, neem dan contact met ons op via terms@batchshots.com.",
-        "returnButton": "TERUG NAAR HOME"
-    },
-    "PrivacyPage": {
-        "title": "Privacybeleid | Batch Shots",
-        "description": "Begrijp hoe Batch Shots uw gegevens behandelt. Ons privacybeleid beschrijft de praktijken voor gegevensverzameling, -gebruik en -bescherming.",
-        "keywords": "privacybeleid, gegevensbescherming, gebruikersgegevens, AVG, batchshots"
-    },
-    "TermsPage": {
-        "title": "Servicevoorwaarden | Batch Shots",
-        "description": "Bekijk de algemene voorwaarden voor het gebruik van Batch Shots. Leer meer over gebruikersverantwoordelijkheden, servicebeperkingen en intellectueel eigendom.",
-        "keywords": "servicevoorwaarden, algemene voorwaarden, gebruikersovereenkomst, batchshots"
-    },
-    "PricingPage": {
-        "title": "Prijsplannen | Batch Shots Pro",
-        "description": "Ontdek de prijsplannen van Batch Shots. Kies het beste plan voor uw beeldbewerkingsbehoeften, van het gratis niveau tot Pro-functies zoals achtergrondverwijdering en verhoogde limieten.",
-        "keywords": "prijzen, batch shots pro, abonnementen, kosten beeldbewerking, prijzen achtergrondverwijdering"
-    },
-    "ObjectRemovalPage": {
-        "metadata": {
-            "title": "AI Objectverwijderingstool | Batch Shots",
-            "description": "Verwijder ongewenste objecten, personen of tekst uit uw afbeeldingen met onze AI-gestuurde tool. Werkt volledig in uw browser voor privacy. Probeer het gratis!",
-            "keywords": "objecten verwijderen, ai objectverwijdering, objecten uit afbeelding verwijderen, tekst uit afbeelding verwijderen, personen uit foto verwijderen, inpainting, beeldbewerkingstool"
+    "SeoDescriptionPage": {
+      "metadata": {
+        "title": "AI SEO Productbeschrijving Generator | Batch Shots",
+        "description": "Genereer complete, SEO-geoptimaliseerde productbeschrijvingen (titel, metatitel/beschrijving, korte/lange beschrijving, categorieën, tags, URL-slug) uit basisinformatie.",
+        "keywords": "seo productbeschrijving, ai productbeschrijving, ecommerce seo, productbeschrijving generator, metabeschrijving generator, producttitel generator"
+      },
+      "title": "AI SEO PRODUCTBESCHRIJVING GENERATOR",
+      "mainCard": {
+        "title": "GENEREER SEO-INHOUD",
+        "info": {
+          "title": "WAT IS DEZE TOOL?",
+          "description": "Deze AI-gestuurde tool genereert een compleet SEO-pakket voor uw producten op basis van basisinformatie. U ontvangt een producttitel, metatitel, metabeschrijving, korte en lange beschrijvingen, categorieën, tags en een URL-slug, allemaal geoptimaliseerd voor zoekmachines."
         },
-        "title": "AI OBJECTVERWIJDERING",
-        "loading": {
-            "ort": "AI-engine laden...",
-            "opencv": "Beeldverwerkingstools laden...",
-            "model": "Objectverwijderingsmodel laden...",
-            "proStatus": "Accountstatus controleren...",
-            "generic": "Laden..."
+        "benefits": {
+          "complete": "COMPLEET SEO-PAKKET",
+          "completeDesc": "Ontvang een volledige set SEO-content voor uw product, klaar voor gebruik.",
+          "aiPowered": "AI-GEGENEREERDE INHOUD",
+          "aiPoweredDesc": "Genereert unieke, overtuigende en trefwoordrijke beschrijvingen.",
+          "bestPractices": "BESTE SEO-PRAKTIJKEN",
+          "bestPracticesDesc": "Volgt richtlijnen voor tekenaantallen, trefwoordplaatsing en leesbaarheid.",
+          "quickEasy": "SNEL & GEMAKKELIJK",
+          "quickEasyDesc": "Bespaar uren door professionele beschrijvingen in seconden te genereren."
+        }
+      },
+      "upgradeCard": {
+        "title": "UPGRADE NAAR PRO",
+        "description": "Ontgrendel onbeperkte generatie van SEO-productbeschrijvingen en krijg toegang tot alle functies.",
+        "button": "NU UPGRADEN"
+      },
+      "instructionsCard": {
+        "title": "HOE TE GEBRUIKEN",
+        "step1": "Voer basisgegevens over uw product in (naam, kenmerken, materialen, enz.).",
+        "step2": "Klik op de knop 'Productbeschrijving genereren'.",
+        "step3": "Bekijk de gegenereerde inhoud (titel, meta, beschrijvingen, enz.).",
+        "step4": "Kopieer de inhoud of download deze als een tekstbestand.",
+        "step5": "Gebruik de gegenereerde SEO-inhoud in uw e-commerce winkel of website."
+      }
+    },
+    "SeoProductDescriptionGenerator": {
+      "title": "AI SEO PRODUCTBESCHRIJVING",
+      "description": "Genereer een complete SEO-geoptimaliseerde productbeschrijving",
+      "enterDescription": "Voer basisproductinformatie in",
+      "placeholder": "Bijv. vintage leren portemonnee, handgemaakt, bruin, volnerfleder, meerdere kaartvakken...",
+      "generate": "GENEREER PRODUCTBESCHRIJVING",
+      "generating": "GENEREREN...",
+      "generateWithCount": "GENEREER ({remaining} vandaag over)",
+      "dailyLimitReached": "DAGELIJKSE LIMIET BEREIKT",
+      "dailyLimitExceeded": "Dagelijkse limiet van 5 beschrijvingen bereikt. Upgrade naar PRO voor onbeperkte toegang of probeer het morgen opnieuw.",
+      "dailyUsageInfo": "{remaining} van {total} dagelijkse generaties over",
+      "proUnlimited": "PRO: Onbeperkte generaties",
+      "upgradeToPro": "UPGRADE NAAR PRO",
+      "loginRequired": "INLOGGEN VEREIST",
+      "loginToGenerate": "Log in om SEO-productbeschrijvingen te genereren. Gratis gebruikers krijgen 5 beschrijvingen per dag, PRO-gebruikers krijgen onbeperkte toegang.",
+      "loginButton": "INLOGGEN",
+      "cancel": "ANNULEREN",
+      "copyToClipboard": "KOPIËREN NAAR KLEMBORD",
+      "downloadAsTxt": "DOWNLOADEN ALS TXT",
+      "copied": "Gekopieerd!",
+      "tryFeature": "PROBEER HOE HET WERKT",
+      "tabs": {
+        "content": "INHOUD",
+        "meta": "META",
+        "categories": "CATEGORIEËN",
+        "previews": "VOORBEELDEN"
+      },
+      "previews": {
+        "googleSearch": "GOOGLE ZOEKVOORBEELD",
+        "ecommerce": "E-COMMERCE VOORBEELD",
+        "productImage": "Productafbeelding",
+        "addToCart": "Toevoegen aan winkelwagen",
+        "wishlist": "Verlanglijst"
+      },
+      "sections": {
+        "productTitle": "Producttitel",
+        "metaTitle": "Meta titel",
+        "metaDescription": "Meta beschrijving",
+        "shortDescription": "Korte beschrijving",
+        "longDescription": "Lange beschrijving",
+        "categories": "Categorieën",
+        "tags": "Tags",
+        "urlSlug": "URL slug"
+      },
+      "downloadAll": "DOWNLOAD ALLE GEGEVENS"
+    },
+    "QuickPresets": {
+      "title": "SNELLE VOORINSTELLINGEN",
+      "productSpecialty": "PRODUCTSPECIALITEIT",
+      "colorStyle": "KLEURSTIJL",
+      "presets": {
+        "white-bg": {
+          "name": "WITTE ACHTERGROND",
+          "description": "Schone productfotografie met witte achtergrond"
         },
-        "mainCard": {
-            "title": "OBJECTEN VERWIJDEREN (AI)",
-            "info": {
-                "title": "HOE HET WERKT",
-                "description": "Verwijder ongewenste objecten, personen of tekst uit uw afbeeldingen met AI. De verwerking gebeurt volledig in uw browser.",
-                "freeMode": {
-                    "title": "GRATIS MODUS",
-                    "description": "Verwerk 1 afbeelding tegelijk. Upgrade naar PRO voor batchverwerking (binnenkort beschikbaar!)."
-                },
-                "proMode": {
-                    "title": "PRO MODUS",
-                    "description": "Verwerk tot 100 afbeeldingen in batch. Teken één masker en pas het toe op al uw afbeeldingen!"
-                }
-            },
-            "upload": {
-                "title": "Afbeelding uploaden",
-                "button": "SELECTEER AFBEELDING",
-                "helpTextFree": "Selecteer de afbeelding die u wilt bewerken.",
-                "helpTextPro": "Selecteer tot 100 afbeeldingen voor batchverwerking."
-            },
-            "canvas": {
-                "drawTitle": "TEKEN EEN MASKER OP OBJECTEN",
-                "brushSize": "Kwastgrootte",
-                "clearMask": "MASKER WISSEN",
-                "outputTitle": "2. BEKIJK RESULTAAT",
-                "outputPlaceholder": "Resultaat wordt hier getoond"
-            },
-            "actions": {
-                "reset": "RESETTEN",
-                "remove": "OBJECTEN VERWIJDEREN",
-                "removeAllObjects": "VERWIJDER UIT ALLE AFBEELDINGEN",
-                "processing": "VERWERKEN...",
-                "download": "DOWNLOADEN",
-                "downloadAll": "ALLES DOWNLOADEN"
-            }
+        "clean": {
+          "name": "SCHONE PRODUCT",
+          "description": "Productfotografie met schone, neutrale kleuren"
+        },
+        "jewelry": {
+          "name": "SIERADEN/METAAL",
+          "description": "Geoptimaliseerd voor sieraden en metalen producten"
+        },
+        "sharp": {
+          "name": "SCHERPE DETAILS",
+          "description": "Verbeterde scherpte en details"
+        },
+        "textile": {
+          "name": "TEXTIEL/STOF",
+          "description": "Voor stof- en textielproducten - verbetert textuur en kleur"
+        },
+        "soft-product": {
+          "name": "ZACHTE PRODUCTEN",
+          "description": "Voor zachte producten zoals kussens, kussens, knuffels"
+        },
+        "furniture": {
+          "name": "MEUBELS/HOUT",
+          "description": "Houten meubels en woondecoratie"
+        },
+        "transparent": {
+          "name": "GLAS",
+          "description": "Glas en transparante producten"
+        },
+        "food": {
+          "name": "VOEDINGSMIDDELEN",
+          "description": "Voedselfotografie - verbetert versheid en kleuraantrekkingskracht"
+        },
+        "dramatic": {
+          "name": "DRAMATISCH",
+          "description": "Productfotografie met hoog contrast"
+        },
+        "vivid": {
+          "name": "LEVENDIGE KLEUREN",
+          "description": "Verbeterde kleurverzadiging en helderheid"
+        },
+        "classic": {
+          "name": "KLASSIEK",
+          "description": "Klassieke look met gebalanceerde kleuren"
+        }
+      }
+    },
+    "BackgroundRemovalPage": {
+      "title": "ACHTERGRONDVERWIJDERING",
+      "loading": {
+        "tool": "TOOL WORDT GELADEN...",
+        "proStatus": "PRO-STATUS WORDT GECONTROLEERD...",
+        "description": "Even geduld terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
+        "proDescription": "Even geduld terwijl we uw accountstatus controleren."
+      },
+      "mainCard": {
+        "title": "AFBEELDINGSACHTERGRONDEN VERWIJDEREN",
+        "info": {
+          "title": "AI-ACHTERGRONDVERWIJDERING",
+          "description": "Verwijder de achtergrond van uw productafbeeldingen met AI-technologie. Het proces vindt volledig plaats in uw browser voor privacy."
+        },
+        "upload": {
+          "title": "Selecteer afbeeldingen",
+          "buttonFree": "SELECTEER EEN AFBEELDING",
+          "buttonPro": "SELECTEER AFBEELDINGEN",
+          "helpTextFree": "Gratis gebruikers kunnen 1 afbeelding tegelijk selecteren.",
+          "helpTextPro": "U kunt tot 100 afbeeldingen tegelijk selecteren."
+        },
+        "actions": {
+          "clear": "WISSEN",
+          "download": "DOWNLOADEN",
+          "downloadZip": "ALS ZIP DOWNLOADEN",
+          "downloading": "DOWNLOADEN...",
+          "downloadingZip": "ZIP WORDT GEMAAKT...",
+          "removeBackground": "ACHTERGROND VERWIJDEREN",
+          "removeBackgrounds": "ACHTERGRONDEN VERWIJDEREN",
+          "processing": "ACHTERGROND WORDT VERWIJDERD...",
+          "processingMultiple": "ACHTERGRONDEN WORDEN VERWIJDERD...",
+          "tryFullEditor": "PROBEER VOLLEDIGE EDITOR"
+        },
+        "progress": {
+          "processing": "Verwerken...",
+          "percent": "{percent}%"
         },
         "upgradeCard": {
-            "title": "UPGRADE NAAR PRO",
-            "description": "Ontgrendel batch objectverwijdering voor maximaal 100 afbeeldingen en andere PRO-functies zoals bulk achtergrondverwijdering en geavanceerde bewerking.",
-            "button": "MEER INFORMATIE EN UPGRADE NAAR PRO"
-        },
-        "instructionsCard": {
-            "title": "INSTRUCTIES",
-            "step1": "Upload een afbeelding met de knop 'Selecteer Afbeelding'.",
-            "step2": "Teken zorgvuldig over de objecten die u wilt verwijderen met de rode kwast.",
-            "step3": "Pas de kwastgrootte aan voor meer precisie.",
-            "step4": "Klik op de knop 'Objecten Verwijderen' en wacht tot de AI klaar is.",
-            "step5": "Na verwerking kunt u uw opgeschoonde afbeelding downloaden met de knop 'Downloaden'.",
-            "step6": "Voor batchverwerking: schakel 'Masker toepassen op alle afbeeldingen' in om vergelijkbare objecten uit alle geselecteerde afbeeldingen te verwijderen.",
-            "noteTitle": "Let op:",
-            "noteText": "De verwerking kan 15-60 seconden duren, afhankelijk van de afbeeldingsgrootte en uw apparaat. Zorg dat uw masker het object volledig bedekt voor het beste resultaat."
-        },
-        "imageGallery": {
-            "selectedImages": "Geselecteerde afbeeldingen",
-            "selectedImage": "Geselecteerde afbeelding",
-            "clearAll": "Alles wissen",
-            "applyMaskToAll": "Masker toepassen op alle afbeeldingen (batchverwerking)",
-            "hasMask": "Masker getekend"
-        },
-        "processing": {
-            "readingFile": "Bestand lezen...",
-            "loadingImage": "Afbeelding laden...",
-            "exportingMask": "Masker voorbereiden...",
-            "runningModel": "AI-model uitvoeren...",
-            "rendering": "Resultaat weergeven...",
-            "preparingBatch": "Batchverwerking voorbereiden...",
-            "processingImage": "Afbeelding {current} van {total} verwerken...",
-            "finishingBatch": "Resultaten afronden...",
-            "preparingDownload": "Download voorbereiden...",
-            "batchProgress": "Batchvoortgang",
-            "loadingDimensions": "Afbeeldingsafmetingen berekenen...",
-            "generic": "Afbeelding verwerken..."
-        },
-        "errors": {
-            "ortLoad": "AI-engine laden mislukt. Vernieuw de pagina.",
-            "sessionCreate": "Objectverwijderingsmodel initialiseren mislukt.",
-            "freeLimit": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO voor batchverwerking.",
-            "tooManyImages": "Maximaal 100 afbeeldingen toegestaan. Alleen de eerste 100 worden verwerkt.",
-            "imageLoad": "Fout bij het laden van de geselecteerde afbeelding.",
-            "fileRead": "Fout bij het lezen van het geselecteerde bestand.",
-            "canvasError": "Fout bij toegang tot het afbeeldingscanvas.",
-            "prerequisites": "Kan niet verwerken. Vereiste componenten ontbreken: {missing}",
-            "noMask": "Teken eerst een masker over het object dat u wilt verwijderen.",
-            "processingFailed": "Objectverwijdering mislukt",
-            "resultLoadFailed": "Fout bij het weergeven van het verwerkte resultaat.",
-            "noDownloadData": "Geen verwerkte afbeelding beschikbaar om te downloaden.",
-            "downloadFailed": "Fout bij het voorbereiden van de download."
+          "title": "UPGRADE NAAR PRO",
+          "plan": {
+            "title": "PRO-PLAN",
+            "price": "€19,99",
+            "features": [
+              "Verwijder achtergronden van tot 100 afbeeldingen tegelijk",
+              "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
+              "SEO-naamgeneratie voor productafbeeldingen",
+              "Batchverwerking voor alle functies",
+              "Eenmalige betaling, levenslange toegang"
+            ],
+            "buttonText": "NU UPGRADEN"
+          }
         }
+      },
+      "howItWorks": {
+        "title": "HOE HET WERKT",
+        "step1": {
+          "title": "1. SELECTEER UW AFBEELDINGEN",
+          "description": "Upload een of meer productafbeeldingen die u wilt verwerken.",
+          "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
+        },
+        "step2": {
+          "title": "2. VERWIJDER ACHTERGRONDEN",
+          "description": "Onze AI-technologie detecteert en verwijdert de achtergrond van uw afbeeldingen, waardoor transparante PNG's ontstaan die perfect zijn voor e-commerce."
+        },
+        "step3": {
+          "title": "3. DOWNLOAD & GEBRUIK",
+          "description": "Download uw verwerkte afbeeldingen en gebruik ze op uw website, marktplaatsvermeldingen of marketingmaterialen."
+        }
+      },
+      "proDialog": {
+        "title": "UPGRADE NAAR PRO",
+        "featureTitle": "PRO-FUNCTIE: Bulk achtergrondverwijdering",
+        "description": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken, wat u uren werk bespaart!",
+        "pricing": {
+          "title": "EENMALIGE BETALING",
+          "price": "€19,99",
+          "note": "Geen abonnement, levenslange toegang"
+        },
+        "actions": {
+          "upgrade": "UPGRADE NAAR PRO",
+          "continue": "DOORGAAN MET GRATIS MODUS"
+        }
+      },
+      "metadata": {
+        "title": "AI Achtergrond Verwijderaar | Batch Shots",
+        "description": "Verwijder achtergronden volledig in de browser. Gratis en privacy-vriendelijk.",
+        "keywords": "achtergrond verwijderen, ai, transparant, in-browser"
+      }
     },
-    "ImageFormatConvertorPage": {
-        "metadata": {
-            "title": "Afbeeldingsformaat Converter | Batch Shots",
-            "description": "Converteer afbeeldingen tussen formaten (JPG, PNG, WebP, AVIF) met onze gebruiksvriendelijke tool. Ondersteunt HEIC-conversie en batchverwerking.",
-            "keywords": "afbeeldingsformaat converter, jpg naar png converteren, heic naar jpg converteren, webp converter, afbeeldingsformaatconversie, batch afbeeldingen converteren, heic converteren"
-        },
-        "title": "AFBEELDINGSFORMAAT CONVERTER",
-        "loading": {
-            "tool": "CONVERTER LADEN...",
-            "proStatus": "PRO-STATUS CONTROLEREN...",
-            "description": "Wacht alstublieft terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
-            "proDescription": "Wacht alstublieft terwijl we uw accountstatus verifiëren."
-        },
-        "uploadArea": {
-            "title": "CONVERTEER UW AFBEELDINGEN",
-            "description": "Converteer uw afbeeldingen naar verschillende formaten met slechts een paar klikken.",
-            "selectImages": "SELECTEER AFBEELDINGEN (TOT {maxImages})",
-            "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong>",
-            "freeLimitInfo": "Gratis gebruikers kunnen maximaal {maxImages} afbeeldingen tegelijk converteren.",
-            "upgradeLink": "Upgrade naar PRO"
-        },
-        "selectedImages": {
-            "title": "GESELECTEERDE AFBEELDINGEN ({count})"
-        },
-        "formatChanged": {
-            "title": "FORMAAT GEWIJZIGD",
-            "description": "U heeft het doelformaat gewijzigd. Klik op Reset om uw afbeeldingen naar het nieuwe formaat te converteren."
-        },
-        "mainCard": {
-            "title": "CONVERTEER AFBEELDINGEN NAAR ELK FORMAAT",
-            "info": {
-                "title": "AFBEELDINGSFORMAATCONVERSIE",
-                "description": "Converteer uw afbeeldingen tussen formaten zoals JPG, PNG, WebP en AVIF. U kunt uw afbeeldingen ook tijdens de conversie vergroten of verkleinen.",
-                "freeMode": {
-                    "title": "GRATIS MODUS",
-                    "description": "Verwerk maximaal {maxImages} afbeeldingen tegelijk. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren!"
-                },
-                "proMode": {
-                    "title": "PRO MODUS",
-                    "description": "Verwerk tot 100 afbeeldingen in bulk met uw PRO-account!"
-                }
-            },
-            "upload": {
-                "title": "Selecteer afbeeldingen om te converteren",
-                "buttonFree": "SELECTEER AFBEELDINGEN",
-                "buttonPro": "SELECTEER AFBEELDINGEN",
-                "helpTextFree": "Gratis gebruikers kunnen maximaal {maxImages} afbeeldingen tegelijk selecteren.",
-                "helpTextPro": "U kunt maximaal 100 afbeeldingen tegelijk selecteren."
-            },
-            "actions": {
-                "clear": "WISSEN",
-                "addMore": "MEER TOEVOEGEN",
-                "download": "GECONVERTEERDE DOWNLOADEN",
-                "downloadZip": "ALLES DOWNLOADEN ALS ZIP",
-                "convertImageTo": "CONVERTEREN NAAR {format}",
-                "convertImagesTo": "ALLES CONVERTEREN NAAR {format}",
-                "converting": "CONVERTEREN...",
-                "convertingMultiple": "AFBEELDINGEN CONVERTEREN...",
-                "resetConversion": "RESETTEN"
-            },
-            "progress": {
-                "processing": "Verwerken...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "UPGRADE NAAR PRO",
-                "plan": {
-                    "title": "PRO PLAN",
-                    "price": "$19.99",
-                    "features": [
-                        "Converteer tot 100 afbeeldingen tegelijk",
-                        "Afbeeldingen vergroten/verkleinen tijdens conversie",
-                        "Converteer van HEIC/HEIF naar elk formaat",
-                        "Achtergrondverwijdering voor productfoto's",
-                        "Eenmalige betaling, levenslange toegang"
-                    ],
-                    "buttonText": "NU UPGRADEN"
-                }
-            }
-        },
-        "targetFormat": {
-            "title": "SELECTEER DOELFORMAAT"
-        },
-        "resize": {
-            "title": "FORMAAT WIJZIGEN TIJDENS CONVERSIE (OPTIONEEL)"
-        },
-        "convertedImages": {
-            "title": "GECONVERTEERDE AFBEELDINGEN",
-            "description": "Uw afbeeldingen zijn succesvol geconverteerd. Klik op Downloaden om ze op te slaan."
-        },
-        "howItWorks": {
-            "title": "HOE HET WERKT",
-            "step1": {
-                "title": "1. SELECTEER UW AFBEELDINGEN",
-                "description": "Upload een of meer afbeeldingen die u wilt converteren.",
-                "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
-            },
-            "step2": {
-                "title": "2. KIES DOELFORMAAT",
-                "description": "Selecteer het gewenste uitvoerformaat (JPG, PNG, WebP of AVIF)."
-            },
-            "step3": {
-                "title": "3. FORMAAT WIJZIGEN (OPTIONEEL)",
-                "description": "Selecteer optioneel een voorinstelling om uw afbeeldingen tijdens de conversie van formaat te wijzigen."
-            },
-            "step4": {
-                "title": "4. DOWNLOADEN & GEBRUIKEN",
-                "description": "Converteer uw afbeeldingen en download ze afzonderlijk of als ZIP-archief."
-            }
-        },
-        "supportedFormats": {
-            "title": "ONDERSTEUNDE FORMATEN",
-            "input": {
-                "title": "INVOERFORMATEN",
-                "description": "U kunt afbeeldingen in deze formaten uploaden:"
-            },
-            "output": {
-                "title": "UITVOERFORMATEN",
-                "description": "Converteer uw afbeeldingen naar een van deze formaten:"
-            }
-        },
-        "alerts": {
-            "freeUserLimit": "Gratis gebruikers kunnen maximaal 5 afbeeldingen tegelijk converteren. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren!",
-            "maxImagesLimit": "Maximaal 100 afbeeldingen tegelijk toegestaan.",
-            "conversionFailed": "Formaatconversie mislukt. Probeer het opnieuw."
-        },
-        "proDialog": {
-            "title": "UPGRADE NAAR PRO",
-            "featureTitle": "PRO-FUNCTIE: Batch Formaatconversie",
-            "description": "Gratis gebruikers kunnen slechts {maxImages} afbeeldingen tegelijk converteren. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren, wat u uren werk bespaart!",
-            "pricing": {
-                "title": "EENMALIGE BETALING",
-                "price": "$19.99",
-                "note": "Geen abonnement, levenslange toegang"
-            },
-            "actions": {
-                "upgrade": "UPGRADE NAAR PRO",
-                "continue": "DOORGAAN MET GRATIS MODUS"
-            }
-        },
-        "allImages": "ALLE AFBEELDINGEN ({current}/{max})",
-        "imagesCount": "{current}/{max} afbeeldingen",
-        "upgradeFor": "(Upgrade voor maximaal 100)"
+    "ImagePreview": {
+      "noImages": "Geen afbeeldingen geselecteerd",
+      "zoomInstructions": "Knijp om in te zoomen, sleep om te verplaatsen",
+      "zoomLevel": "{scale}%",
+      "removingBackground": "Achtergrond wordt verwijderd...",
+      "seoName": {
+        "label": "SEO-vriendelijke naam:",
+        "edit": "BEWERKEN",
+        "cancel": "ANNULEREN",
+        "save": "OPSLAAN"
+      },
+      "originalName": "Originele naam:",
+      "fileInfo": {
+        "dimensions": "Afmetingen:",
+        "size": "Grootte:",
+        "output": "Uitvoer:",
+        "quality": "Kwaliteit:",
+        "background": "Achtergrond:",
+        "backgroundRemoved": "Verwijderd",
+        "custom": "Aangepast",
+        "auto": "auto"
+      },
+      "actions": {
+        "download": "DOWNLOADEN",
+        "reset": "RESET"
+      },
+      "allImages": "ALLE AFBEELDINGEN ({current}/{max})"
     },
-    "ImageDuplicateDetectionPage": {
-        "metadata": {
-            "title": "AI Dubbele Foto Zoeker & Opschoner | Batch Shots",
-            "description": "Vind en verwijder snel dubbele of vergelijkbare foto's met onze AI-tool. Identificeert de beste kwaliteitsfoto's in dubbele sets. Gratis & in-browser.",
-            "keywords": "dubbele foto zoeker, dubbele afbeeldingen verwijderen, vergelijkbare foto zoeker, ai foto opschoner, afbeelding duplicaten detectie, beste kwaliteit foto, foto's opruimen, batchshots"
-        },
-        "PageTitle": "AI Dubbele Foto Zoeker & Opschoner",
-        "AppInitializing": "Slimme Fotoanalyzer Initialiseren...",
-        "AISetup": "AI Engine Instellen...",
-        "AIEngineInitializing": "AI Engine Initialiseren...",
-        "AIEngineStarted": "AI Engine Gestart.",
-        "AIInitializing": "AI Initialiseren...",
-        "AILoadingModel": "Geavanceerd AI Model Laden...",
-        "AIModelLoaded": "AI Model Geladen.",
-        "AIReady": "AI Klaar. Selecteer foto's om duplicaten te vinden.",
-        "AIReadyPrompt": "AI Klaar. Selecteer foto's om duplicaten te vinden.",
-        "ProcessingImage": "Foto {imageId} Analyseren...",
-        "ErrorProcessingImage": "Fout bij analyseren van foto {imageId}: {data}.",
-        "AIEngineError": "AI Engine Fout: {data}.",
-        "AIEngineErrorRefresh": "AI Engine Fout: {data}. Vernieuw de pagina of probeer opnieuw.",
-        "AICriticalError": "AI ondervond een kritieke fout.",
-        "AICriticalErrorRefresh": "Er is een kritieke fout opgetreden bij onze AI-analyse. Vernieuw de pagina.",
-        "QualityToolsError": "Kwaliteitsanalysetools konden niet worden geladen. Gedetailleerde kwaliteitsstatistieken zijn mogelijk niet beschikbaar.",
-        "AllImagesProcessedAnalyzing": "Alle foto's verwerkt. Duplicaten identificeren...",
-        "AnalysisCompleteSummary": "Analyse voltooid. {groupSummary} {successfullyProcessedCount} van {totalImagesCount} foto's verwerkt.",
-        "DuplicateSetsFound": "{count} dubbele set(s) gevonden.",
-        "NoDuplicatesFound": "Geen directe duplicaten gevonden.",
-        "NoImagesProcessedSuccessfully": "Geen foto's succesvol verwerkt. {successfullyProcessedCount} van {totalImagesCount} foto's verwerkt.",
-        "NoImagesForNewThreshold": "Geen foto's om te analyseren met de nieuwe gelijkenisinstelling.",
-        "ReanalyzingWithThreshold": "Foto's opnieuw analyseren met gelijkenisinstelling: {threshold}...",
-        "AnalysisCompleteWithThreshold": "Analyse voltooid met gelijkenis {threshold}. {groupSummary}",
-        "PleaseSelectImages": "Selecteer alstublieft foto's...",
-        "AINotReadyError": "AI-analyse engine is niet klaar. Wacht alstublieft of vernieuw de pagina.",
-        "ProcessingFilesHEIC": "Geselecteerde bestanden voorbereiden (converteren indien nodig)...",
-        "HEICConversionFailedSkip": "Converteren van afbeelding mislukt: {fileName}. Deze wordt overgeslagen.",
-        "HEICConversionErrorSkip": "Fout bij converteren van afbeelding: {fileName}. Deze wordt overgeslagen.",
-        "NoValidFilesAfterConversion": "Geen geldige bestanden om te verwerken na conversiepogingen.",
-        "SendingImagesToAI": "{count} foto's verzenden voor AI-analyse...",
-        "NoValidImagesSelected": "Geen geldige foto's geselecteerd om te verwerken.",
-        "QualityToolsNotReadyKPI": "Kwaliteitsanalysetools niet klaar. Kan gedetailleerde kwaliteit niet berekenen.",
-        "QualityToolsNotReadyQuality": "Kwaliteitsanalysetools niet klaar. Kan kwaliteit niet berekenen.",
-        "ErrorCalculatingQuality": "Fout bij berekenen van kwaliteit voor foto {imageId}: {error}",
-        "QualityToolsNotReadyAnalysisWait": "Kwaliteitsanalysetools zijn niet klaar. Wacht alstublieft.",
-        "NoDuplicatesInGroup": "Geen duplicaten in deze groep om te analyseren.",
-        "AnalyzingGroupQuality": "Kwaliteit analyseren voor foto's in groep {groupNumber}...",
-        "AnalyzedProgressInGroup": "{processedCount} van {groupTotal} geanalyseerd in groep {groupNumber}. Foto: {imageName}",
-        "QualityAnalysisCompleteForGroup": "Kwaliteitsanalyse voltooid voor groep {groupNumber}.",
-        "QualityAnalysisPartialForGroup": "Kwaliteitsanalyse gedeeltelijk voltooid voor groep {groupNumber}. Sommige foto's zijn mogelijk mislukt of overgeslagen.",
-        "QualityToolsNotReadyBestSelection": "Kwaliteitsanalysetools niet klaar. Kan selectie van beste foto niet garanderen.",
-        "AnalyzingQualityForBestDownload": "Kwaliteit analyseren voor {count} foto('s) om de beste te selecteren voor download...",
-        "PreDownloadAnalysisComplete": "Pre-download kwaliteitsanalyse voltooid voor de huidige groep.",
-        "NoImagesToDownload": "Geen foto's om te downloaden.",
-        "QualityToolsNotReadyDownloadAll": "Kwaliteitsanalysetools niet klaar. Gedetailleerde analyse voor dubbele sets kan niet worden uitgevoerd voor 'Alles Downloaden'. Wacht alstublieft of analyseer groepen eerst afzonderlijk.",
-        "PreparingDownload": "Bestanden voorbereiden voor download...",
-        "BestImageDeterminationFailed": "Kon de beste foto voor een groep niet bepalen. Deze groep wordt weggelaten uit het ZIP-bestand.",
-        "WarningBestImageOmitted": "Waarschuwing: De beste foto voor een groep kon niet worden bepaald en is weggelaten.",
-        "ZippingImages": "{count} foto('s) zippen...",
-        "DownloadComplete": "Download voltooid!",
-        "ErrorCreatingZIP": "Fout bij het maken van ZIP-bestand voor download.",
-        "NoImagesSelectedForDownload": "Geen foto's geselecteerd voor download (bijv. geen unieke foto's of geen beste foto's geïdentificeerd in groepen).",
-        "ImageDataMissingDownload": "Fotogegevens ontbreken, kan niet downloaden.",
-        "DownloadingImage": "{imageName} downloaden...",
-        "ImageDownloadedSuccessfully": "{imageName} succesvol gedownload.",
-        "FailedToDownloadImage": "Downloaden van {imageName} mislukt.",
-        "QualityToolsNotReadyAnalyzeAllGroups": "Kwaliteitsanalysetools niet klaar. Gedetailleerde analyse voor dubbele sets kan niet worden uitgevoerd. Wacht alstublieft.",
-        "OnlyUniqueImagesReadyDownload": "Alleen unieke foto's aanwezig. Klaar om te downloaden.",
-        "NoImagesToAnalyzeOrDownload": "Geen foto's om te analyseren of te downloaden.",
-        "AnalyzingAllGroupsForBest": "Alle groepen analyseren voor selectie van de beste foto...",
-        "AnalyzingGroupForBest": "Groep {currentGroup} van {totalGroups} analyseren voor de beste foto...",
-        "AllGroupsAnalyzedReadyDownload": "Alle {count} dubbele groepen geanalyseerd. Klaar om {downloadCount} beste foto's te downloaden.",
-        "AnalysisPartialReadyDownload": "Analyse voor beste selectie gedeeltelijk voltooid ({processedGroups}/{totalGroups} groepen). Klaar om {downloadCount} foto's te downloaden (best beschikbare wordt gekozen).",
-        "NoImagesProcessedOrGroups": "Geen foto's verwerkt of nog geen groepen gevormd. Zorg ervoor dat foto's zijn geselecteerd en de AI-analyse is voltooid.",
-
-        "LoaderTitleInitializing": "Slimme Tools Initialiseren...",
-        "LoaderTitleLoadingModel": "AI Kern Laden...",
-        "LoaderTitleQualityTools": "Kwaliteitsanalyzer Voorbereiden...",
-        "LoaderDescriptionInitializing": "Voorbereidingen treffen voor slimme duplicatendetectie. Een ogenblik geduld.",
-        "LoaderDescriptionLoadingModel": "Onze geavanceerde AI warmt op. Dit kan even duren.",
-        "LoaderDescriptionQualityTools": "Tools voorbereiden voor gedetailleerde inzichten in fotokwaliteit...",
-        
-        "MainCardTitle": "Vind & Beheer Dubbele Foto's",
-        "UploadSectionTitle": "Upload Uw Foto's",
-        "UploadSectionDescription": "Selecteer meerdere foto's. Onze AI zal ze intelligent analyseren en vergelijkbare foto's groeperen.",
-        "ButtonSelectImages": "Selecteer Foto's",
-        "ButtonSelectImagesLoading": "Laden...",
-        "ButtonSelectImagesInitializing": "Tools Laden...",
-        "ButtonAddMoreImages": "Meer Foto's Toevoegen",
-        "ButtonAddMoreImagesLoading": "Foto's Toevoegen...",
-        "SupportedFormats": "Ondersteunt JPG, PNG, WEBP, HEIC formaten",
-        "AIStatusLabel": "AI Status: {status}",
-        "QualityAnalyzerStatusLoading": "Kwaliteitsanalyzer: Laden...",
-
-        "SimilarityThresholdTitle": "Gelijkenisinstelling",
-        "SimilarityThresholdDescription": "Bepaal hoe nauwkeurig foto's moeten overeenkomen om als duplicaten te worden gemarkeerd. Hogere waarden betekenen striktere overeenkomst.",
-        "SimilarityLessStrict": "Minder Strikt",
-        "SimilarityCurrent": "Huidig: {threshold}",
-        "SimilarityMoreStrict": "Strikter",
-        "ButtonApplyThreshold": "Instelling Toepassen",
-        "ButtonApplyThresholdLoading": "Opnieuw Analyseren...",
-
-        "ResultsTitle": "Detectieresultaten:",
-        "DuplicateSetTitle": "Dubbele Set {number} ({count} vergelijkbare foto's)",
-        "ButtonAnalyzeQuality": "Analyseer Kwaliteit",
-        "ButtonAnalyzeQualityLoading": "Analyseren...",
-        "ButtonReanalyzeQuality": "Heranalyseer Kwaliteit",
-        "ImageMissing": "Fotogegevens ontbreken (index: {index})",
-        "BestLabel": "Beste",
-        "KpiRes": "Res:",
-        "KpiSharp": "Scherp:",
-        "KpiNoise": "Ruis:",
-        "KpiContrast": "Contr.:",
-        "KpiExposure": "Belicht.:",
-        "ButtonDownload": "Downloaden",
-        "ButtonDownloading": "Downloaden...",
-
-        "UniqueImagesTitle": "Unieke Foto's ({count} foto('s) zonder directe duplicaten)",
-
-        "ButtonAnalyzeAllGroups": "Analyseer Alle Groepen voor Beste Selectie",
-        "ButtonAnalyzeAllGroupsLoading": "Alle Groepen Analyseren...",
-        "ButtonDownloadBest": "Download {count} Beste Foto's",
-        "ButtonDownloadBestLoading": "Download Voorbereiden...",
-
-        "HowItWorksTitle": "Hoe Onze AI Duplicaten Vindt",
-        "HowItWorksStep1Title": "1. Upload Uw Foto's",
-        "HowItWorksStep1Desc": "Klik op \"Selecteer Foto's\" en kies de afbeeldingen die u wilt controleren. U kunt er meerdere tegelijk selecteren.",
-        "HowItWorksStep2Title": "2. Intelligente AI Analyse",
-        "HowItWorksStep2Desc": "Onze geavanceerde AI (gebaseerd op Vision Transformer technologie) analyseert intelligent de visuele inhoud van elke foto, en begrijpt de unieke kenmerken en het uiterlijk ervan.",
-        "HowItWorksStep3Title": "3. Slimme Gelijkenisscore",
-        "HowItWorksStep3Desc": "De AI vergelijkt foto's met behulp van geavanceerde visuele analyse (cosinusgelijkheid) om te bepalen hoe sterk ze op elkaar lijken op basis van hun inhoud.",
-        "HowItWorksStep4Title": "4. Verfijn Gelijkenis",
-        "HowItWorksStep4Desc": "Gebruik de gelijkenisschuifregelaar om te bepalen hoe strikt de overeenkomst is. Een hogere waarde betekent dat foto's bijna identiek moeten zijn om als duplicaten te worden gemarkeerd.",
-        "HowItWorksStep5Title": "5. Beoordeel & Organiseer",
-        "HowItWorksStep5Desc": "Resultaten tonen duidelijk dubbele sets en unieke foto's. Onze AI kan ook de foto van de beste kwaliteit in elke dubbele groep markeren, zodat u kunt beslissen welke u wilt behouden.",
-
-
-        "FreeUserLimit": "Gratis gebruikers kunnen tot {limit} foto's tegelijk uploaden.",
-        "ButtonSelectImagesLimit": "Selecteer Foto's (maximaal {limit})",
-        "UpgradeMessage": "Upgrade naar PRO om onbeperkt foto's tegelijk te analyseren.",
-        "UpgradeLink": "Nu upgraden",
-        "HowItWorksStep1Free": "Gratis gebruikers zijn beperkt tot {limit} foto's tegelijk.",
-        "HowItWorksStep1Pro": "Als PRO-gebruiker kun je onbeperkt foto's tegelijk analyseren.",
-        "ProFeatureName": "Onbeperkte Foto Analyse",
-        
-        "FreeModeTitle": "GRATIS MODUS",
-        "FreeModeDescription": "Verwerk tot {limit} foto's tegelijk. Upgrade naar PRO om onbeperkt foto's te analyseren!",
-        "ProModeTitle": "PRO MODUS",
-        "ProModeDescription": "Verwerk onbeperkt foto's met je PRO-account!",
-        "MaxImagesExceeded": "Maximaal 100 afbeeldingen toegestaan. Alleen de eerste 100 zijn verwerkt.",
-        "ProcessingErrors": "Verwerkingsfouten",
-        "imagesCount": "{current}/{max} foto's",
-        "upgradeFor": "(Upgrade voor onbeperkt)",
-        
-        "UpgradeCardTitle": "UPGRADEN NAAR PRO",
-        "UpgradeCardPlanTitle": "PRO PLAN",
-        "UpgradeCardPlanPrice": "$19.99",
-        "UpgradeCardPlanNote": "Eenmalige betaling, levenslange toegang",
-        "UpgradeCardFeature1": "Analyseer onbeperkt foto's tegelijk (t.o.v. 5 in gratis modus)",
-        "UpgradeCardFeature2": "Vind snel duplicaten in grote fotocollecties",
-        "UpgradeCardFeature3": "Kwaliteitsanalyse om automatisch de beste foto's te vinden",
-        "UpgradeCardFeature4": "Batch-download van beste foto's uit duplicaatsets",
-        "UpgradeCardFeature5": "Toegang tot alle andere PRO-functies (achtergrond verwijderen, enz.)",
-        "UpgradeCardButton": "NU UPGRADEN",
-        
-        "ProUpgradeTitle": "Upgrade naar Pro voor onbeperkte foto's",
-
-        "SimilarityControlsTitle": "Gelijkenisalgoritme & drempelwaarde",
-        "SimilarityAlgorithmLabel": "Gelijkenisalgoritme",
-        "SimilarityThresholdLabel": "Gelijkenisdrempel",
-        "SimilarityThresholdDescDistance": "Lagere waarden betekenen meer gelijkaardige afbeeldingen (afstandsmetriek)",
-        "SimilarityThresholdDescSimilarity": "Hogere waarden betekenen meer gelijkaardige afbeeldingen (gelijkenismetriek)",
-        
-        "ProcessingChanges": "Wijzigingen verwerken...",
-        "ReanalyzingWithAlgorithm": "Heranalyse met nieuw algoritme...",
-        "AnalysisCompleteWithAlgorithm": "Analyse voltooid met nieuw algoritme. {groupSummary}",
-
-        "DuplicateAnalysisComplete": "Duplikatanalyse fullført",
-        
-        "VisualizationTitle": "AI Vektorrom",
-        "VisualizationDescription": "Visualiser hvordan AI ser bildene dine i høy-dimensjonalt rom, redusert til 2D ved hjelp av UMAP-algoritmen. Lignende bilder grupperer seg sammen.",
-        "VisualizationShowButton": "Vis Visualisering",
-        "VisualizationHideButton": "Skjul Visualisering",
-        "VisualizationGeneratingButton": "Genererer Visualisering...",
-        "VisualizationNoData": "Last opp og behandl bilder først for å aktivere visualisering",
-        "VisualizationProcessingStatus": "Dette kan ta litt tid for store datasett...",
-        "VisualizationLegendUnique": "Unike Bilder",
-        "VisualizationLegendDuplicates": "Duplikatgrupper (farget etter likhet)",
-        "VisualizationHelpText": "Hold musepekeren over punkter for å se miniatyrbilder • Nærmere punkter = mer lignende bilder",
-        "VisualizationNeedMinImages": "Trenger minst 3 bilder for visualisering",
-        "VisualizationNoDataAvailable": "Ingen visualiseringsdata tilgjengelig"
+    "PricingCard": {
+      "oneTime": "eenmalig",
+      "currentPlan": "HUIDIG PLAN"
     },
-    "ImageSeoGenerationPage": {
-        "metadata": {
-            "title": "AI Afbeelding SEO Generatie - Genereer SEO URL Slugs & Onderschriften",
-            "description": "Upload uw afbeeldingen om automatisch SEO-vriendelijke namen, URL-slugs en onderschriften te genereren met AI.",
-            "keywords": "afbeelding seo, url slug generator, seo afbeelding onderschrift generator, ai content creatie, afbeelding optimalisatie"
+    "WatermarkControl": {
+      "title": "WATERMERK",
+      "addTab": "WATERMERK TOEVOEGEN",
+      "removeTab": "WATERMERK VERWIJDEREN (AI)",
+      "type": "TYPE",
+      "text": "TEKST",
+      "logo": "LOGO",
+      "enterText": "Voer watermerktekst in",
+      "font": "LETTERTYPE",
+      "size": "GROOTTE",
+      "color": "KLEUR",
+      "opacity": "DEKKING",
+      "position": "POSITIE",
+      "uploadLogo": "LOGO UPLOADEN",
+      "logoPlaceholder": "Klik of sleep logo hier",
+      "reset": "RESETTEN",
+      "presets": {
+        "bottomRight": "Rechtsonder",
+        "bottomLeft": "Linksonder",
+        "topLeft": "Linksboven",
+        "topRight": "Rechtsboven",
+        "center": "Midden",
+        "diagonal": "Diagonaal",
+        "tile": "Tegel (Patroon)"
+      },
+      "removeDescription": "AI-gestuurde watermerkverwijdering komt binnenkort!"
+    },
+    "WatermarkPage": {
+      "metadata": {
+        "title": "Watermerk toevoegen aan afbeeldingen | Batch Shots",
+        "description": "Voeg snel tekst- of logowatermerken toe. Alles draait lokaal in uw browser.",
+        "keywords": "watermerk, logo, tekst, privacy"
+      },
+      "title": "WATERMERK TOEVOEGEN AAN AFBEELDINGEN",
+      "loading": {
+        "proStatus": "PRO-STATUS CONTROLEREN...",
+        "proDescription": "Even geduld terwijl we uw accountstatus verifiëren."
+      },
+      "preview": {
+        "title": "AFBEELDINGSVOORBEELD"
+      },
+      "alerts": {
+        "freeUserLimit": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te verwerken!",
+        "maxImagesLimit": "Maximaal 100 afbeeldingen tegelijk toegestaan.",
+        "watermarkFailed": "Toepassen van watermerk mislukt. Probeer het opnieuw."
+      },
+      "mainCard": {
+        "title": "WATERMERK UW AFBEELDINGEN",
+        "info": {
+          "title": "VOEG AANGEPASTE WATERMERKEN TOE",
+          "description": "Bescherm uw afbeeldingen met aangepaste tekst- of logowatermerken. Pas transparantie, grootte en positie aan uw merkbehoeften aan."
         },
-        "AppInitializing": "AI SEO Generator initialiseren...",
-        "AISetup": "AI instellen voor SEO-inhoud...",
-        "AIEngineInitializing": "AI SEO Engine wordt geïnitialiseerd...",
-        "AIEngineStarted": "AI SEO Engine gestart.",
-        "AIInitializing": "AI-model voor SEO wordt geïnitialiseerd...",
-        "AILoadingModel": "AI SEO-model laden...",
-        "AIModelLoaded": "AI SEO-model geladen.",
-        "AIReady": "AI SEO Engine is klaar.",
-        "AIReadyPrompt": "Klaar voor AI SEO. Upload uw afbeeldingen.",
-        "ProcessingImage": "AI verwerkt voor SEO: Afbeelding {imageId}...",
-        "ErrorProcessingImage": "Fout bij AI SEO-verwerking voor afbeelding {imageId}: {data}",
-        "AIEngineError": "AI SEO Engine-fout: {data}",
-        "AIEngineErrorRefresh": "AI SEO Engine-fout: {data}. Vernieuw de pagina.",
-        "AICriticalError": "Kritieke AI SEO Engine-fout.",
-        "AICriticalErrorRefresh": "Kritieke AI SEO Engine-fout. Vernieuw de pagina en probeer opnieuw.",
-        "PleaseSelectImages": "Selecteer afbeeldingen voor AI SEO-generatie.",
-        "AINotReadyError": "AI SEO Engine is nog niet klaar. Even geduld alstublieft.",
-        "ProcessingFiles": "Afbeeldingen verwerken voor AI SEO...",
-        "ProcessingFilesHEIC": "Afbeeldingen verwerken voor AI SEO, HEIC wordt indien nodig geconverteerd...",
-        "HEICConversionFailedSkip": "HEIC naar SEO-vriendelijk formaat conversie mislukt voor: {fileName}. Overgeslagen.",
-        "HEICConversionErrorSkip": "Fout bij HEIC-conversie voor SEO: {fileName}. Overgeslagen.",
-        "NoValidFilesAfterConversion": "Geen geldige afbeeldingen voor AI SEO na conversiepogingen.",
-        "NoValidFiles": "Geen geldige afbeeldingen geselecteerd voor AI SEO-verwerking.",
-        "SendingImagesToAI": "{count} afbeeldingen worden naar AI gestuurd voor SEO-inhoudsgeneratie...",
-        "AllImagesProcessed": "AI SEO-verwerking voltooid. Bekijk hieronder uw geoptimaliseerde inhoud.",
-        "PageTitle": "AI Afbeelding SEO & Alt-tekst Generator",
-        "PageTitlePro": "PRO AI Afbeelding SEO & Alt-tekst Generator",
-        "PageTitleFree": "AI Afbeelding SEO & Onderschrift Generator",
-        "MainCardTitle": "Genereer SEO-namen & onderschriften met AI",
-        "UploadSectionTitle": "1. Upload Afbeeldingen voor AI SEO",
-        "UploadSectionDescription": "Upload JPG, PNG, WEBP, GIF, HEIC afbeeldingen. Onze AI genereert SEO-vriendelijke bestandsnamen en alt-tekst. Voeg trefwoorden toe om de resultaten te verfijnen.",
-        "UploadSectionDescriptionWithLimit": "Upload JPG, PNG, WEBP, GIF, HEIC (max {maxImages} voor uw plan). AI genereert SEO-bestandsnamen & alt-tekst. Voeg trefwoorden toe voor aangepaste resultaten.",
-        "ButtonSelectImages": "Selecteer Afbeeldingen voor AI SEO",
-        "ButtonSelectImagesLoading": "AI initialiseren...",
-        "ResultsTitle": "AI-gegenereerde SEO-inhoud",
-        "ImageMissing": "Afbeeldingsgegevens ontbreken voor AI SEO (index: {index})",
-        "GeneratedSeoName": "AI-gegenereerde SEO-bestandsnaam:",
-        "GeneratedDescription": "AI-gegenereerde alt-tekst/onderschrift:",
-        "StatusLabel": "Huidige status:",
-        "AIStatusLabel": "AI SEO-status: {status}",
-        "HowItWorksTitle": "Hoe AI Afbeelding SEO Werkt",
-        "HowItWorksStep1Title": "Upload Uw Afbeeldingen",
-        "HowItWorksStep1Desc": "Selecteer of sleep afbeeldingen. Onze AI bereidt ze voor op SEO-analyse.",
-        "HowItWorksStep2Title": "AI Inhoudsanalyse",
-        "HowItWorksStep2Desc": "Onze AI analyseert elke afbeelding om de inhoud, context en SEO-potentie te begrijpen.",
-        "HowItWorksStep3Title": "SEO-naam & Alt-tekst Generatie",
-        "HowItWorksStep3Desc": "AI maakt SEO-vriendelijke bestandsnamen en beschrijvende alt-tekst. Trefwoorden verbeteren de optimalisatie.",
-        "HowItWorksStep4Title": "Controleer & Versterk Uw SEO",
-        "HowItWorksStep4Desc": "Kopieer de door AI gegenereerde SEO-inhoud om de vindbaarheid en toegankelijkheid van uw website, blog of sociale media te verbeteren.",
-        "NoResultsYet": "Upload afbeeldingen om AI-gegenereerde SEO-inhoud te zien.",
-        "KeywordsSectionTitle": "2. Verbeter met Trefwoorden (Optioneel)",
-        "KeywordsSectionDescription": "Voeg komma-gescheiden trefwoorden toe. Onze AI verwerkt deze strategisch in de alt-tekst voor betere SEO.",
-        "KeywordsPlaceholder": "bijv. reizen, eten, e-commerce, productcategorie",
-        "ButtonRegenerateWithKeywords": "Genereer SEO-inhoud opnieuw met trefwoorden",
-        "ButtonRegenerating": "SEO-inhoud opnieuw genereren...",
-        "RegeneratingStatus": "AI genereert alt-tekst opnieuw met nieuwe SEO-trefwoorden...",
-        "RegenerationComplete": "AI-aangedreven SEO-regeneratie voltooid.",
-        "ButtonDownloadAll": "Download alle AI SEO-resultaten (ZIP)",
-        "ButtonDownloadingAll": "AI SEO ZIP downloaden...",
-        "PreparingDownload": "AI SEO-bestanden voorbereiden voor download...",
-        "ZippingFiles": "{count} AI-geoptimaliseerde bestanden worden gecomprimeerd...",
-        "NoFilesToDownload": "Geen AI-verwerkte afbeeldingen met SEO-gegevens om te downloaden.",
-        "ErrorCreatingZIP": "Fout bij het maken van AI SEO ZIP. Probeer het opnieuw.",
-        "DownloadComplete": "AI SEO-download voltooid!",
-        "ImageUploadFeatureName": "Onbeperkt AI SEO Afbeeldingen Uploaden",
-        "FreeLimitReachedDialogTitle": "Upgrade voor Meer AI SEO-mogelijkheden",
-        "FreeLimitReachedDialogMessage": "U heeft de gratis limiet voor AI SEO bereikt. Upgrade naar Pro om meer afbeeldingen te verwerken.",
-        "FreeLimitReachedSomeProcessed": "Gratis limiet van {count} afbeeldingen bereikt voor AI SEO. De eerste {count} worden verwerkt. Upgrade voor meer.",
-        "ProLimitReachedSomeProcessed": "Pro-limiet van {count} afbeeldingen bereikt voor AI SEO. De eerste {count} worden verwerkt.",
-        "NoValidFilesToProcessAfterLimit": "Geen afbeeldingen om te verwerken voor AI SEO na planlimieten.",
-        "ProUserCardTitle": "AI SEO Pro Plan Actief",
-        "ProUserCardDescription": "U heeft het Pro-plan! Geniet van onbeperkte AI SEO-afbeeldingengeneratie per batch en alle premium functies.",
-        "UpgradeToProCardTitle": "Upgrade naar Pro",
-        "UpgradeToProCardDescription": "Ontgrendel volledige AI SEO-kracht! Gratis gebruikers kunnen {maxImagesFree} afbeeldingen verwerken. Pro-gebruikers genieten van onbeperkte verwerking & meer voordelen.",
-        "ButtonUpgradeNow": "Nu upgraden naar Pro",
-        "ProUserPlanIndicator": "Pro Plan: Onbeperkte AI SEO-afbeeldingengeneratie.",
-        "FreeUserPlanIndicator": "Gratis Plan: AI SEO voor maximaal 3 afbeeldingen. Upgrade voor onbeperkt!",
-        "FreePlanInfoBoxTitle": "GRATIS PLAN",
-        "ProFeatureUnlimitedImages": "Onbeperkte AI SEO-afbeeldingengeneratie"
+        "upload": {
+          "title": "Selecteer afbeeldingen",
+          "buttonFree": "SELECTEER EEN AFBEELDING",
+          "buttonPro": "SELECTEER AFBEELDINGEN",
+          "helpTextFree": "Gratis gebruikers kunnen 1 afbeelding tegelijk selecteren.",
+          "helpTextPro": "U kunt tot 100 afbeeldingen tegelijk selecteren."
+        },
+        "actions": {
+          "clear": "WISSEN",
+          "download": "DOWNLOADEN",
+          "downloadZip": "ALS ZIP DOWNLOADEN",
+          "downloading": "DOWNLOADEN...",
+          "downloadingZip": "ZIP WORDT GEMAAKT...",
+          "removeBackground": "ACHTERGROND VERWIJDEREN",
+          "removeBackgrounds": "ACHTERGRONDEN VERWIJDEREN",
+          "processing": "WATERMERK TOEPASSEN...",
+          "processingMultiple": "WATERMERKEN TOEPASSEN...",
+          "tryFullEditor": "PROBEER VOLLEDIGE EDITOR"
+        },
+        "progress": {
+          "processing": "Verwerken...",
+          "percent": "{percent}%"
+        },
+        "upgradeCard": {
+          "title": "UPGRADE NAAR PRO",
+          "plan": {
+            "title": "PRO-PLAN",
+            "price": "€19,99",
+            "features": [
+              "Watermerk tot 100 afbeeldingen tegelijk",
+              "Geavanceerde afbeeldingsaanpassingen en voorinstellingen",
+              "Achtergrondverwijdering voor productafbeeldingen",
+              "Batchverwerking voor alle functies",
+              "Eenmalige betaling, levenslange toegang"
+            ],
+            "buttonText": "NU UPGRADEN"
+          }
+        }
+      },
+      "howItWorks": {
+        "title": "HOE HET WERKT",
+        "step1": {
+          "title": "1. SELECTEER UW AFBEELDINGEN",
+          "description": "Upload een of meer afbeeldingen die u wilt watermerken.",
+          "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
+        },
+        "step2": {
+          "title": "2. PAS WATERMERK AAN",
+          "description": "Kies tussen tekst- of logowatermerken. Pas transparantie, grootte en positie naar wens aan."
+        },
+        "step3": {
+          "title": "3. DOWNLOAD & GEBRUIK",
+          "description": "Pas uw watermerk toe en download de verwerkte afbeeldingen, klaar voor web-, social media- of portfoliogebruik."
+        }
+      },
+      "proDialog": {
+        "title": "UPGRADE NAAR PRO",
+        "featureTitle": "PRO-FUNCTIE: Bulk watermerken",
+        "description": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO om tot 100 afbeeldingen in bulk te watermerken, wat u uren werk bespaart!",
+        "pricing": {
+          "title": "EENMALIGE BETALING",
+          "price": "€19,99",
+          "note": "Geen abonnement, levenslange toegang"
+        },
+        "actions": {
+          "upgrade": "UPGRADE NAAR PRO",
+          "continue": "DOORGAAN MET GRATIS MODUS"
+        }
+      }
     }
-} 
+  },
+  "Dialogs": {
+    "download": {
+      "title": "Afbeeldingen downloaden",
+      "confirmTitle": "Download bevestigen",
+      "successTitle": "Download geslaagd",
+      "summary": "Download samenvatting:",
+      "images": "{count, plural, =1 {# afbeelding} other {# afbeeldingen}} worden gedownload",
+      "format": "Formaat:",
+      "appliedPreset": "Toegepaste preset:",
+      "adjustmentsApplied": "Beeldaanpassingen toegepast",
+      "backgroundRemoval": "Achtergrondverwijdering toegepast",
+      "seoFilenames": "AI SEO-geoptimaliseerde bestandsnamen inbegrepen",
+      "watermarkApplied": "Watermerk toegepast",
+      "zipPackage": "Bestanden worden verpakt in een ZIP-archief",
+      "processingNote": "Verwerking kan even duren voor meerdere of grote afbeeldingen.",
+      "cancel": "ANNULEREN",
+      "download": "DOWNLOADEN",
+      "processing": "VERWERKEN...",
+      "successMessage": "Uw afbeeldingen zijn succesvol gedownload. Wat wilt u nu doen?",
+      "startNewBundleDesc": "Nieuw pakket starten: Huidige afbeeldingen wissen en opnieuw beginnen",
+      "continueEditingDesc": "Verder bewerken: Blijf werken met huidige afbeeldingen",
+      "startNewBundle": "NIEUW PAKKET STARTEN",
+      "continueEditing": "VERDER BEWERKEN",
+      "seoProductDescription": "SEO Productbeschrijving (TXT)"
+    },
+    "proUpgrade": {
+      "feature": "Batchverwerking"
+    }
+  },
+  "Pricing": {
+    "title": "PRIJSPLANNEN",
+    "subtitle": "Kies het perfecte plan voor uw beeldoptimalisatiebehoeften. Ons PRO-plan biedt een levenslange licentie met een eenmalige betaling.",
+    "alreadyPro": {
+      "title": "U bent al een PRO-gebruiker!",
+      "description": "Bedankt voor uw ondersteuning. U heeft toegang tot alle PRO-functies inclusief bulk achtergrondverwijdering, geavanceerde afbeeldingsaanpassingen en SEO-bestandsnaamgeneratie.",
+      "backToEditor": "TERUG NAAR EDITOR"
+    },
+    "checkout": {
+      "title": "VOLTOOI UW AANKOOP",
+      "planTitle": "PRO LEVENSLANGE LICENTIE",
+      "price": "€19,99",
+      "description": "Eenmalige betaling, levenslange toegang tot alle PRO-functies",
+      "email": "E-MAIL",
+      "cardInfo": "KAARTINFORMATIE",
+      "cardNumber": "1234 5678 9012 3456",
+      "expiryDate": "MM/JJ",
+      "cvc": "CVC",
+      "completePurchase": "AANKOOP VOLTOOIEN",
+      "goBack": "Terug"
+    },
+    "plans": {
+      "free": {
+        "title": "GRATIS",
+        "price": "GRATIS",
+        "features": [
+          "Batchverwerking max 5 afbeeldingen",
+          "AI achtergrondverwijdering enkele afbeelding (preview)",
+          "AI objectenverwijdering enkele afbeelding",
+          "Watermerk toevoegen max 5 afbeeldingen",
+          "Afbeeldingsconverter max 5 afbeeldingen in bulk",
+          "AI SEO afbeeldingsnaamgeneratie (Niet beschikbaar)",
+          "AI Photo Duplicate Finder max 5 afbeeldingen",
+          "AI SEO beschrijving en metatags (Niet beschikbaar)"
+        ],
+        "buttonText": "DOORGAAN MET GRATIS"
+      },
+      "pro": {
+        "title": "PRO",
+        "price": "$19.99",
+        "features": [
+          "Batchverwerking max 100 afbeeldingen",
+          "Tot 100 AI achtergrondverwijderingen in één batch",
+          "AI objectenverwijdering tot 100 afbeeldingen",
+          "Watermerk toevoegen 100 afbeeldingen in één batch",
+          "Afbeeldingsconverter max 100 afbeeldingen in bulk",
+          "AI Photo Duplicate Finder unbegrensd batchverwerking",
+          "AI SEO afbeeldingsnaamgeneratie (tot 100)",
+          "AI SEO beschrijving en metatags beschikbaar",
+          "**Eenmalige betaling, levenslange toegang**"
+        ],
+        "buttonText": "UPGRADEN NAAR PRO"
+      }
+    },
+    "faq": {
+      "title": "VEELGESTELDE VRAGEN",
+      "questions": {
+        "oneTime": {
+          "question": "Is dit echt een eenmalige betaling?",
+          "answer": "Ja! Betaal eenmaal en krijg levenslange toegang tot alle PRO-functies. Geen terugkerende abonnementen."
+        },
+        "backgroundRemoval": {
+          "question": "Hoe werkt achtergrondverwijdering?",
+          "answer": "We gebruiken geavanceerde AI-algoritmen om achtergronden van uw productafbeeldingen te detecteren en te verwijderen. Het hele proces vindt plaats in uw browser - we slaan uw afbeeldingen nooit op onze servers op."
+        },
+        "imageLimits": {
+          "question": "Wat zijn de afbeeldingslimieten?",
+          "answer": "Gratis gebruikers kunnen tot 10 afbeeldingen tegelijk verwerken met basis functies en de achtergrond van 1 afbeelding tegelijk verwijderen. PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk verwerken, inclusief bulk achtergrondverwijdering."
+        },
+        "refund": {
+          "question": "Kan ik een terugbetaling aanvragen?",
+          "answer": "Ja, we bieden een 30-dagen geld-terug-garantie als u niet tevreden bent met de PRO-functies. Neem contact op met ons ondersteuningsteam voor hulp."
+        }
+      }
+    }
+  },
+  "PrivacyPolicy": {
+    "title": "PRIVACYBELEID",
+    "section1Title": "1. INTRODUCTIE",
+    "section1P1": "Welkom bij Batch Shots (“wij”, “ons”, “onze”). Wij zetten ons in om uw privacy te beschermen en de veiligheid van uw persoonlijke gegevens te waarborgen.",
+    "section1P2": "Dit privacybeleid legt uit hoe wij uw gegevens verwerken wanneer u onze browsergebaseerde tool voor beeldoptimalisatie gebruikt.",
+    "section2Title": "2. INFORMATIE DIE WE NIET VERZAMELEN",
+    "section2P1Bold": "We verzamelen of slaan uw afbeeldingen niet op.",
+    "section2P1": "Ons kernprincipe is privacy by design.",
+    "section2P2": "Batch Shots werkt volledig binnen uw browser. Wanneer u afbeeldingen uploadt om te optimaliseren:",
+    "section2Li1": "Uw afbeeldingen worden lokaal in uw browser verwerkt met behulp van client-side JavaScript.",
+    "section2Li2": "Uw afbeeldingen verlaten nooit uw apparaat en worden niet naar onze servers verzonden.",
+    "section2Li3": "Wij slaan geen kopieën op van uw originele of verwerkte afbeeldingen.",
+    "section2Li4": "Wij volgen de inhoud van uw afbeeldingen niet.",
+    "section3Title": "3. AI-GESTUURDE FUNCTIES",
+    "section3P1": "Wanneer u onze AI-gestuurde functies voor het genereren van SEO-namen gebruikt:",
+    "section3Li1": "Wij sturen alleen de beschrijvende tekst die u opgeeft naar onze API.",
+    "section3Li2": "Wij sturen of verwerken uw daadwerkelijke afbeeldingen niet via onze AI-systemen.",
+    "section3Li3": "Uw gegenereerde SEO-namen worden teruggestuurd naar uw browser en worden niet permanent op onze servers opgeslagen.",
+    "section4Title": "4. ANALYTICS & COOKIES",
+    "section4P1": "Wij gebruiken minimale analyses om te begrijpen hoe onze site wordt gebruikt:",
+    "section4Li1": "Wij verzamelen anonieme gebruiksstatistieken zoals paginaweergaven en functiegebruik.",
+    "section4Li2": "Wij gebruiken essentiële cookies om functionaliteit te bieden zoals reCAPTCHA-bescherming.",
+    "section4Li3": "Wij gebruiken geen cookies voor reclame of tracking op andere websites.",
+    "section5Title": "5. DIENSTEN VAN DERDEN",
+    "section5P1": "Wij gebruiken de volgende diensten van derden:",
+    "section5Li1": "Google reCAPTCHA voor spambescherming op onze AI-functies.",
+    "section5Li2": "OpenCV.js voor beeldverwerking (draait volledig in uw browser).",
+    "section5P2": "Elk van deze diensten heeft zijn eigen privacybeleid dat bepaalt hoe zij met gegevens omgaan.",
+    "section6Title": "6. WIJZIGINGEN IN DIT BELEID",
+    "section6P1": "Wij kunnen dit privacybeleid van tijd tot tijd bijwerken. Wij zullen u op de hoogte stellen van eventuele wijzigingen door het nieuwe privacybeleid op deze pagina te publiceren en de datum „Laatst bijgewerkt” bij te werken.",
+    "section7Title": "7. CONTACTEER ONS",
+    "section7P1": "Als u vragen heeft over dit privacybeleid, neem dan contact met ons op via privacy@batchshots.com.",
+    "returnButton": "TERUG NAAR HOME"
+  },
+  "TermsOfUse": {
+    "title": "GEBRUIKSVOORWAARDEN",
+    "lastUpdated": "Laatst bijgewerkt: 30 mei 2025",
+    "section1Title": "1. Aanvaarding van de voorwaarden",
+    "section1P1": "Door Batch Shots te gebruiken, gaat u akkoord met deze Gebruiksvoorwaarden. Als u het niet eens bent met een deel van deze voorwaarden, mag u onze dienst niet gebruiken.",
+    "section2Title": "2. Beschrijving van de dienst",
+    "section2P1": "Batch Shots is een browsergebaseerde beeldoptimalisatietool waarmee gebruikers:",
+    "section2Li1": "Beeldeigenschappen zoals helderheid, contrast en witbalans kunnen aanpassen",
+    "section2Li2": "Afbeeldingen kunnen aanpassen en optimaliseren voor webgebruik",
+    "section2Li3": "SEO-vriendelijke bestandsnamen kunnen genereren",
+    "section2Li4": "Meerdere afbeeldingen gelijktijdig kunnen verwerken",
+    "section2P2": "Alle beeldverwerking vindt plaats in uw browser; er worden geen afbeeldingen naar onze servers geüpload of daar opgeslagen.",
+    "section3Title": "3. Gebruikersverantwoordelijkheden",
+    "section3P1": "Gebruikers van Batch Shots zijn uitsluitend verantwoordelijk voor het waarborgen van de benodigde rechten en toestemmingen om afbeeldingen te gebruiken, te uploaden en te verwerken met onze dienst. Batch Shots is niet verantwoordelijk voor inbreuken op auteursrechten of intellectueel eigendom die voortvloeien uit uw gebruik van de dienst. U moet de dienst gebruiken in overeenstemming met alle toepasselijke wetten en voorschriften.",
+    "section3Li1": "Zorgen dat zij de benodigde rechten en toestemmingen hebben om de gebruikte afbeeldingen te wijzigen en te verwerken",
+    "section3Li2": "De dienst gebruiken in overeenstemming met toepasselijke wetten en voorschriften",
+    "section3Li3": "De dienst niet gebruiken om ongepaste, aanstootgevende of illegale inhoud te verwerken, te maken of te verspreiden",
+    "section3Li4": "Niet proberen de dienst te reverse engineeren, te wijzigen of te hacken",
+    "section4Title": "4. Intellectueel eigendom",
+    "section4P1": "Alle originele inhoud, functies en functionaliteit van Batch Shots zijn ons eigendom en worden beschermd door internationale auteursrechten, handelsmerken en andere wetten op intellectueel eigendom.",
+    "section4P2": "U behoudt alle rechten op uw originele afbeeldingen. Wij maken geen aanspraak op eigendom van de afbeeldingen die u verwerkt met onze dienst.",
+    "section4aTitle": "4A. Gebruikersinhoud, eigendom en levenslange Pro-toegang",
+    "section4aP1": "Alle afbeeldingen en inhoud die worden geüpload of verwerkt met Batch Shots blijven het exclusieve eigendom van de gebruiker. Batch Shots slaat uw afbeeldingen niet op, bekijkt ze niet en verzendt ze niet naar onze servers; alle verwerking vindt plaats in uw browser. U bent uitsluitend verantwoordelijk voor het waarborgen van de benodigde rechten en toestemmingen om afbeeldingen te gebruiken en te verwerken met onze dienst. Batch Shots is niet verantwoordelijk voor inbreuken op auteursrechten of intellectueel eigendom die voortvloeien uit uw gebruik van de dienst.",
+    "section4aP2": "\"Levenslange\" toegang tot Pro-functies betekent dat u toegang heeft tot alle Pro-functies zolang Batch Shots als dienst wordt geëxploiteerd en onderhouden. Als Batch Shots wordt stopgezet, zullen wij redelijke inspanningen leveren om Pro-gebruikers toegang te geven tot de softwarecode of om de applicatie open source te maken, zodat deze blijvend gebruikt kan worden.",
+    "section5Title": "5. Vrijwaringen",
+    "section5Li1": "Batch Shots wordt aangeboden \"zoals het is\" en \"zoals beschikbaar\" zonder enige garanties van welke aard dan ook.",
+    "section5Li2": "Wij garanderen niet dat de dienst ononderbroken, veilig of foutloos zal zijn.",
+    "section5Li3": "Wij zijn niet verantwoordelijk voor eventueel verlies van gegevens tijdens de verwerking. Gebruikers zijn verantwoordelijk voor het maken van hun eigen back-ups.",
+    "section5Li4": "Wij geven geen garanties met betrekking tot de nauwkeurigheid of effectiviteit van de SEO-naamgeneratiefunctie.",
+    "section5Li5": "Batch Shots is niet verantwoordelijk voor juridische claims, schade of geschillen die voortvloeien uit gebruikersinhoud of het gebruik van de dienst.",
+    "section6Title": "6. Aansprakelijkheidsbeperking",
+    "section6P1": "Voor zover wettelijk toegestaan, zijn wij niet aansprakelijk voor indirecte, incidentele, bijzondere, gevolg- of strafschade die voortvloeit uit uw gebruik van of onvermogen om de dienst te gebruiken, of uit juridische claims die voortvloeien uit uw inhoud.",
+    "section7Title": "7. Wijzigingen in de dienst",
+    "section7P1": "Wij behouden ons het recht voor om elk onderdeel van Batch Shots te allen tijde te wijzigen, op te schorten of stop te zetten zonder voorafgaande kennisgeving of aansprakelijkheid.",
+    "section8Title": "8. Toepasselijk recht",
+    "section8P1": "Deze Gebruiksvoorwaarden worden beheerst door en uitgelegd in overeenstemming met de wetten van de jurisdictie waarin wij opereren, zonder rekening te houden met de bepalingen inzake wetsconflicten.",
+    "section9Title": "9. Wijzigingen in de voorwaarden",
+    "section9P1": "Wij kunnen deze Gebruiksvoorwaarden van tijd tot tijd bijwerken. Wij zullen u op de hoogte stellen van eventuele wijzigingen door de nieuwe Voorwaarden op deze pagina te plaatsen en de datum \"Laatst bijgewerkt\" bij te werken.",
+    "section10Title": "10. Contact met ons",
+    "section10P1": "Als u vragen heeft over deze Gebruiksvoorwaarden, neem dan contact met ons op via terms@batchshots.com.",
+    "returnButton": "TERUG NAAR HOME"
+  },
+  "PrivacyPage": {
+    "title": "Privacybeleid | Batch Shots",
+    "description": "Begrijp hoe Batch Shots uw gegevens behandelt. Ons privacybeleid beschrijft de praktijken voor gegevensverzameling, -gebruik en -bescherming.",
+    "keywords": "privacybeleid, gegevensbescherming, gebruikersgegevens, AVG, batchshots"
+  },
+  "TermsPage": {
+    "title": "Servicevoorwaarden | Batch Shots",
+    "description": "Bekijk de algemene voorwaarden voor het gebruik van Batch Shots. Leer meer over gebruikersverantwoordelijkheden, servicebeperkingen en intellectueel eigendom.",
+    "keywords": "servicevoorwaarden, algemene voorwaarden, gebruikersovereenkomst, batchshots"
+  },
+  "PricingPage": {
+    "title": "Prijsplannen | Batch Shots Pro",
+    "description": "Ontdek de prijsplannen van Batch Shots. Kies het beste plan voor uw beeldbewerkingsbehoeften, van het gratis niveau tot Pro-functies zoals achtergrondverwijdering en verhoogde limieten.",
+    "keywords": "prijzen, batch shots pro, abonnementen, kosten beeldbewerking, prijzen achtergrondverwijdering"
+  },
+  "ObjectRemovalPage": {
+    "metadata": {
+      "title": "AI Objectverwijderingstool | Batch Shots",
+      "description": "Verwijder ongewenste objecten, personen of tekst uit uw afbeeldingen met onze AI-gestuurde tool. Werkt volledig in uw browser voor privacy. Probeer het gratis!",
+      "keywords": "objecten verwijderen, ai objectverwijdering, objecten uit afbeelding verwijderen, tekst uit afbeelding verwijderen, personen uit foto verwijderen, inpainting, beeldbewerkingstool"
+    },
+    "title": "AI OBJECTVERWIJDERING",
+    "loading": {
+      "ort": "AI-engine laden...",
+      "opencv": "Beeldverwerkingstools laden...",
+      "model": "Objectverwijderingsmodel laden...",
+      "proStatus": "Accountstatus controleren...",
+      "generic": "Laden..."
+    },
+    "mainCard": {
+      "title": "OBJECTEN VERWIJDEREN (AI)",
+      "info": {
+        "title": "HOE HET WERKT",
+        "description": "Verwijder ongewenste objecten, personen of tekst uit uw afbeeldingen met AI. De verwerking gebeurt volledig in uw browser."
+      },
+      "upload": {
+        "title": "Afbeelding uploaden",
+        "button": "SELECTEER AFBEELDING",
+        "helpTextFree": "Selecteer de afbeelding die u wilt bewerken.",
+        "helpTextPro": "Selecteer tot 100 afbeeldingen voor batchverwerking."
+      },
+      "canvas": {
+        "drawTitle": "TEKEN EEN MASKER OP OBJECTEN",
+        "brushSize": "Kwastgrootte",
+        "clearMask": "MASKER WISSEN",
+        "outputTitle": "2. BEKIJK RESULTAAT",
+        "outputPlaceholder": "Resultaat wordt hier getoond"
+      },
+      "actions": {
+        "reset": "RESETTEN",
+        "remove": "OBJECTEN VERWIJDEREN",
+        "removeAllObjects": "VERWIJDER UIT ALLE AFBEELDINGEN",
+        "processing": "VERWERKEN...",
+        "download": "DOWNLOADEN",
+        "downloadAll": "ALLES DOWNLOADEN"
+      }
+    },
+    "upgradeCard": {
+      "title": "UPGRADE NAAR PRO",
+      "description": "Ontgrendel batch objectverwijdering voor maximaal 100 afbeeldingen en andere PRO-functies zoals bulk achtergrondverwijdering en geavanceerde bewerking.",
+      "button": "MEER INFORMATIE EN UPGRADE NAAR PRO"
+    },
+    "instructionsCard": {
+      "title": "INSTRUCTIES",
+      "step1": "Upload een afbeelding met de knop 'Selecteer Afbeelding'.",
+      "step2": "Teken zorgvuldig over de objecten die u wilt verwijderen met de rode kwast.",
+      "step3": "Pas de kwastgrootte aan voor meer precisie.",
+      "step4": "Klik op de knop 'Objecten Verwijderen' en wacht tot de AI klaar is.",
+      "step5": "Na verwerking kunt u uw opgeschoonde afbeelding downloaden met de knop 'Downloaden'.",
+      "step6": "Voor batchverwerking: schakel 'Masker toepassen op alle afbeeldingen' in om vergelijkbare objecten uit alle geselecteerde afbeeldingen te verwijderen.",
+      "noteTitle": "Let op:",
+      "noteText": "De verwerking kan 15-60 seconden duren, afhankelijk van de afbeeldingsgrootte en uw apparaat. Zorg dat uw masker het object volledig bedekt voor het beste resultaat."
+    },
+    "imageGallery": {
+      "selectedImages": "Geselecteerde afbeeldingen",
+      "selectedImage": "Geselecteerde afbeelding",
+      "clearAll": "Alles wissen",
+      "applyMaskToAll": "Masker toepassen op alle afbeeldingen (batchverwerking)",
+      "hasMask": "Masker getekend"
+    },
+    "processing": {
+      "readingFile": "Bestand lezen...",
+      "loadingImage": "Afbeelding laden...",
+      "exportingMask": "Masker voorbereiden...",
+      "runningModel": "AI-model uitvoeren...",
+      "rendering": "Resultaat weergeven...",
+      "preparingBatch": "Batchverwerking voorbereiden...",
+      "processingImage": "Afbeelding {current} van {total} verwerken...",
+      "finishingBatch": "Resultaten afronden...",
+      "preparingDownload": "Download voorbereiden...",
+      "batchProgress": "Batchvoortgang",
+      "loadingDimensions": "Afbeeldingsafmetingen berekenen...",
+      "generic": "Afbeelding verwerken..."
+    },
+    "errors": {
+      "ortLoad": "AI-engine laden mislukt. Vernieuw de pagina.",
+      "sessionCreate": "Objectverwijderingsmodel initialiseren mislukt.",
+      "freeLimit": "Gratis gebruikers kunnen slechts 1 afbeelding tegelijk verwerken. Upgrade naar PRO voor batchverwerking.",
+      "tooManyImages": "Maximaal 100 afbeeldingen toegestaan. Alleen de eerste 100 worden verwerkt.",
+      "imageLoad": "Fout bij het laden van de geselecteerde afbeelding.",
+      "fileRead": "Fout bij het lezen van het geselecteerde bestand.",
+      "canvasError": "Fout bij toegang tot het afbeeldingscanvas.",
+      "prerequisites": "Kan niet verwerken. Vereiste componenten ontbreken: {missing}",
+      "noMask": "Teken eerst een masker over het object dat u wilt verwijderen.",
+      "processingFailed": "Objectverwijdering mislukt",
+      "resultLoadFailed": "Fout bij het weergeven van het verwerkte resultaat.",
+      "noDownloadData": "Geen verwerkte afbeelding beschikbaar om te downloaden.",
+      "downloadFailed": "Fout bij het voorbereiden van de download."
+    }
+  },
+  "ImageFormatConvertorPage": {
+    "metadata": {
+      "title": "Afbeeldingsformaat Converter | Batch Shots",
+      "description": "Converteer afbeeldingen tussen formaten (JPG, PNG, WebP, AVIF) met onze gebruiksvriendelijke tool. Ondersteunt HEIC-conversie en batchverwerking.",
+      "keywords": "afbeeldingsformaat converter, jpg naar png converteren, heic naar jpg converteren, webp converter, afbeeldingsformaatconversie, batch afbeeldingen converteren, heic converteren"
+    },
+    "title": "AFBEELDINGSFORMAAT CONVERTER",
+    "loading": {
+      "tool": "CONVERTER LADEN...",
+      "proStatus": "PRO-STATUS CONTROLEREN...",
+      "description": "Wacht alstublieft terwijl we de beeldverwerkingsmogelijkheden initialiseren.",
+      "proDescription": "Wacht alstublieft terwijl we uw accountstatus verifiëren."
+    },
+    "uploadArea": {
+      "title": "CONVERTEER UW AFBEELDINGEN",
+      "description": "Converteer uw afbeeldingen naar verschillende formaten met slechts een paar klikken.",
+      "selectImages": "SELECTEER AFBEELDINGEN (TOT {maxImages})",
+      "dragAndDropPrivacy": "Sleep afbeeldingen hierheen of klik om bestanden te selecteren. <strong>Alle verwerking gebeurt in uw browser. We uploaden uw afbeeldingen nooit naar onze servers.</strong>",
+      "freeLimitInfo": "Gratis gebruikers kunnen maximaal {maxImages} afbeeldingen tegelijk converteren.",
+      "upgradeLink": "Upgrade naar PRO"
+    },
+    "selectedImages": {
+      "title": "GESELECTEERDE AFBEELDINGEN ({count})"
+    },
+    "formatChanged": {
+      "title": "FORMAAT GEWIJZIGD",
+      "description": "U heeft het doelformaat gewijzigd. Klik op Reset om uw afbeeldingen naar het nieuwe formaat te converteren."
+    },
+    "mainCard": {
+      "title": "CONVERTEER AFBEELDINGEN NAAR ELK FORMAAT",
+      "info": {
+        "title": "AFBEELDINGSFORMAATCONVERSIE",
+        "description": "Converteer uw afbeeldingen tussen formaten zoals JPG, PNG, WebP en AVIF. U kunt uw afbeeldingen ook tijdens de conversie vergroten of verkleinen."
+      },
+      "upload": {
+        "title": "Selecteer afbeeldingen om te converteren",
+        "buttonFree": "SELECTEER AFBEELDINGEN",
+        "buttonPro": "SELECTEER AFBEELDINGEN",
+        "helpTextFree": "Gratis gebruikers kunnen maximaal {maxImages} afbeeldingen tegelijk selecteren.",
+        "helpTextPro": "U kunt maximaal 100 afbeeldingen tegelijk selecteren."
+      },
+      "actions": {
+        "clear": "WISSEN",
+        "addMore": "MEER TOEVOEGEN",
+        "download": "GECONVERTEERDE DOWNLOADEN",
+        "downloadZip": "ALLES DOWNLOADEN ALS ZIP",
+        "convertImageTo": "CONVERTEREN NAAR {format}",
+        "convertImagesTo": "ALLES CONVERTEREN NAAR {format}",
+        "converting": "CONVERTEREN...",
+        "convertingMultiple": "AFBEELDINGEN CONVERTEREN...",
+        "resetConversion": "RESETTEN"
+      },
+      "progress": {
+        "processing": "Verwerken...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "UPGRADE NAAR PRO",
+        "plan": {
+          "title": "PRO PLAN",
+          "price": "$19.99",
+          "features": [
+            "Converteer tot 100 afbeeldingen tegelijk",
+            "Afbeeldingen vergroten/verkleinen tijdens conversie",
+            "Converteer van HEIC/HEIF naar elk formaat",
+            "Achtergrondverwijdering voor productfoto's",
+            "Eenmalige betaling, levenslange toegang"
+          ],
+          "buttonText": "NU UPGRADEN"
+        }
+      }
+    },
+    "targetFormat": {
+      "title": "SELECTEER DOELFORMAAT"
+    },
+    "resize": {
+      "title": "FORMAAT WIJZIGEN TIJDENS CONVERSIE (OPTIONEEL)"
+    },
+    "convertedImages": {
+      "title": "GECONVERTEERDE AFBEELDINGEN",
+      "description": "Uw afbeeldingen zijn succesvol geconverteerd. Klik op Downloaden om ze op te slaan."
+    },
+    "howItWorks": {
+      "title": "HOE HET WERKT",
+      "step1": {
+        "title": "1. SELECTEER UW AFBEELDINGEN",
+        "description": "Upload een of meer afbeeldingen die u wilt converteren.",
+        "proNote": "PRO-gebruikers kunnen tot 100 afbeeldingen tegelijk selecteren!"
+      },
+      "step2": {
+        "title": "2. KIES DOELFORMAAT",
+        "description": "Selecteer het gewenste uitvoerformaat (JPG, PNG, WebP of AVIF)."
+      },
+      "step3": {
+        "title": "3. FORMAAT WIJZIGEN (OPTIONEEL)",
+        "description": "Selecteer optioneel een voorinstelling om uw afbeeldingen tijdens de conversie van formaat te wijzigen."
+      },
+      "step4": {
+        "title": "4. DOWNLOADEN & GEBRUIKEN",
+        "description": "Converteer uw afbeeldingen en download ze afzonderlijk of als ZIP-archief."
+      }
+    },
+    "supportedFormats": {
+      "title": "ONDERSTEUNDE FORMATEN",
+      "input": {
+        "title": "INVOERFORMATEN",
+        "description": "U kunt afbeeldingen in deze formaten uploaden:"
+      },
+      "output": {
+        "title": "UITVOERFORMATEN",
+        "description": "Converteer uw afbeeldingen naar een van deze formaten:"
+      }
+    },
+    "alerts": {
+      "freeUserLimit": "Gratis gebruikers kunnen maximaal 5 afbeeldingen tegelijk converteren. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren!",
+      "maxImagesLimit": "Maximaal 100 afbeeldingen tegelijk toegestaan.",
+      "conversionFailed": "Formaatconversie mislukt. Probeer het opnieuw."
+    },
+    "proDialog": {
+      "title": "UPGRADE NAAR PRO",
+      "featureTitle": "PRO-FUNCTIE: Batch Formaatconversie",
+      "description": "Gratis gebruikers kunnen slechts {maxImages} afbeeldingen tegelijk converteren. Upgrade naar PRO om tot 100 afbeeldingen in bulk te converteren, wat u uren werk bespaart!",
+      "pricing": {
+        "title": "EENMALIGE BETALING",
+        "price": "$19.99",
+        "note": "Geen abonnement, levenslange toegang"
+      },
+      "actions": {
+        "upgrade": "UPGRADE NAAR PRO",
+        "continue": "DOORGAAN MET GRATIS MODUS"
+      }
+    },
+    "allImages": "ALLE AFBEELDINGEN ({current}/{max})",
+    "imagesCount": "{current}/{max} afbeeldingen",
+    "upgradeFor": "(Upgrade voor maximaal 100)"
+  },
+  "ImageDuplicateDetectionPage": {
+    "metadata": {
+      "title": "AI Dubbele Foto Zoeker & Opschoner | Batch Shots",
+      "description": "Vind en verwijder snel dubbele of vergelijkbare foto's met onze AI-tool. Identificeert de beste kwaliteitsfoto's in dubbele sets. Gratis & in-browser.",
+      "keywords": "dubbele foto zoeker, dubbele afbeeldingen verwijderen, vergelijkbare foto zoeker, ai foto opschoner, afbeelding duplicaten detectie, beste kwaliteit foto, foto's opruimen, batchshots"
+    },
+    "PageTitle": "AI Dubbele Foto Zoeker & Opschoner",
+    "AppInitializing": "Slimme Fotoanalyzer Initialiseren...",
+    "AISetup": "AI Engine Instellen...",
+    "AIEngineInitializing": "AI Engine Initialiseren...",
+    "AIEngineStarted": "AI Engine Gestart.",
+    "AIInitializing": "AI Initialiseren...",
+    "AILoadingModel": "Geavanceerd AI Model Laden...",
+    "AIModelLoaded": "AI Model Geladen.",
+    "AIReady": "AI Klaar. Selecteer foto's om duplicaten te vinden.",
+    "AIReadyPrompt": "AI Klaar. Selecteer foto's om duplicaten te vinden.",
+    "ProcessingImage": "Foto {imageId} Analyseren...",
+    "ErrorProcessingImage": "Fout bij analyseren van foto {imageId}: {data}.",
+    "AIEngineError": "AI Engine Fout: {data}.",
+    "AIEngineErrorRefresh": "AI Engine Fout: {data}. Vernieuw de pagina of probeer opnieuw.",
+    "AICriticalError": "AI ondervond een kritieke fout.",
+    "AICriticalErrorRefresh": "Er is een kritieke fout opgetreden bij onze AI-analyse. Vernieuw de pagina.",
+    "QualityToolsError": "Kwaliteitsanalysetools konden niet worden geladen. Gedetailleerde kwaliteitsstatistieken zijn mogelijk niet beschikbaar.",
+    "AllImagesProcessedAnalyzing": "Alle foto's verwerkt. Duplicaten identificeren...",
+    "AnalysisCompleteSummary": "Analyse voltooid. {groupSummary} {successfullyProcessedCount} van {totalImagesCount} foto's verwerkt.",
+    "DuplicateSetsFound": "{count} dubbele set(s) gevonden.",
+    "NoDuplicatesFound": "Geen directe duplicaten gevonden.",
+    "NoImagesProcessedSuccessfully": "Geen foto's succesvol verwerkt. {successfullyProcessedCount} van {totalImagesCount} foto's verwerkt.",
+    "NoImagesForNewThreshold": "Geen foto's om te analyseren met de nieuwe gelijkenisinstelling.",
+    "ReanalyzingWithThreshold": "Foto's opnieuw analyseren met gelijkenisinstelling: {threshold}...",
+    "AnalysisCompleteWithThreshold": "Analyse voltooid met gelijkenis {threshold}. {groupSummary}",
+    "PleaseSelectImages": "Selecteer alstublieft foto's...",
+    "AINotReadyError": "AI-analyse engine is niet klaar. Wacht alstublieft of vernieuw de pagina.",
+    "ProcessingFilesHEIC": "Geselecteerde bestanden voorbereiden (converteren indien nodig)...",
+    "HEICConversionFailedSkip": "Converteren van afbeelding mislukt: {fileName}. Deze wordt overgeslagen.",
+    "HEICConversionErrorSkip": "Fout bij converteren van afbeelding: {fileName}. Deze wordt overgeslagen.",
+    "NoValidFilesAfterConversion": "Geen geldige bestanden om te verwerken na conversiepogingen.",
+    "SendingImagesToAI": "{count} foto's verzenden voor AI-analyse...",
+    "NoValidImagesSelected": "Geen geldige foto's geselecteerd om te verwerken.",
+    "QualityToolsNotReadyKPI": "Kwaliteitsanalysetools niet klaar. Kan gedetailleerde kwaliteit niet berekenen.",
+    "QualityToolsNotReadyQuality": "Kwaliteitsanalysetools niet klaar. Kan kwaliteit niet berekenen.",
+    "ErrorCalculatingQuality": "Fout bij berekenen van kwaliteit voor foto {imageId}: {error}",
+    "QualityToolsNotReadyAnalysisWait": "Kwaliteitsanalysetools zijn niet klaar. Wacht alstublieft.",
+    "NoDuplicatesInGroup": "Geen duplicaten in deze groep om te analyseren.",
+    "AnalyzingGroupQuality": "Kwaliteit analyseren voor foto's in groep {groupNumber}...",
+    "AnalyzedProgressInGroup": "{processedCount} van {groupTotal} geanalyseerd in groep {groupNumber}. Foto: {imageName}",
+    "QualityAnalysisCompleteForGroup": "Kwaliteitsanalyse voltooid voor groep {groupNumber}.",
+    "QualityAnalysisPartialForGroup": "Kwaliteitsanalyse gedeeltelijk voltooid voor groep {groupNumber}. Sommige foto's zijn mogelijk mislukt of overgeslagen.",
+    "QualityToolsNotReadyBestSelection": "Kwaliteitsanalysetools niet klaar. Kan selectie van beste foto niet garanderen.",
+    "AnalyzingQualityForBestDownload": "Kwaliteit analyseren voor {count} foto('s) om de beste te selecteren voor download...",
+    "PreDownloadAnalysisComplete": "Pre-download kwaliteitsanalyse voltooid voor de huidige groep.",
+    "NoImagesToDownload": "Geen foto's om te downloaden.",
+    "QualityToolsNotReadyDownloadAll": "Kwaliteitsanalysetools niet klaar. Gedetailleerde analyse voor dubbele sets kan niet worden uitgevoerd voor 'Alles Downloaden'. Wacht alstublieft of analyseer groepen eerst afzonderlijk.",
+    "PreparingDownload": "Bestanden voorbereiden voor download...",
+    "BestImageDeterminationFailed": "Kon de beste foto voor een groep niet bepalen. Deze groep wordt weggelaten uit het ZIP-bestand.",
+    "WarningBestImageOmitted": "Waarschuwing: De beste foto voor een groep kon niet worden bepaald en is weggelaten.",
+    "ZippingImages": "{count} foto('s) zippen...",
+    "DownloadComplete": "Download voltooid!",
+    "ErrorCreatingZIP": "Fout bij het maken van ZIP-bestand voor download.",
+    "NoImagesSelectedForDownload": "Geen foto's geselecteerd voor download (bijv. geen unieke foto's of geen beste foto's geïdentificeerd in groepen).",
+    "ImageDataMissingDownload": "Fotogegevens ontbreken, kan niet downloaden.",
+    "DownloadingImage": "{imageName} downloaden...",
+    "ImageDownloadedSuccessfully": "{imageName} succesvol gedownload.",
+    "FailedToDownloadImage": "Downloaden van {imageName} mislukt.",
+    "QualityToolsNotReadyAnalyzeAllGroups": "Kwaliteitsanalysetools niet klaar. Gedetailleerde analyse voor dubbele sets kan niet worden uitgevoerd. Wacht alstublieft.",
+    "OnlyUniqueImagesReadyDownload": "Alleen unieke foto's aanwezig. Klaar om te downloaden.",
+    "NoImagesToAnalyzeOrDownload": "Geen foto's om te analyseren of te downloaden.",
+    "AnalyzingAllGroupsForBest": "Alle groepen analyseren voor selectie van de beste foto...",
+    "AnalyzingGroupForBest": "Groep {currentGroup} van {totalGroups} analyseren voor de beste foto...",
+    "AllGroupsAnalyzedReadyDownload": "Alle {count} dubbele groepen geanalyseerd. Klaar om {downloadCount} beste foto's te downloaden.",
+    "AnalysisPartialReadyDownload": "Analyse voor beste selectie gedeeltelijk voltooid ({processedGroups}/{totalGroups} groepen). Klaar om {downloadCount} foto's te downloaden (best beschikbare wordt gekozen).",
+    "NoImagesProcessedOrGroups": "Geen foto's verwerkt of nog geen groepen gevormd. Zorg ervoor dat foto's zijn geselecteerd en de AI-analyse is voltooid.",
+
+    "LoaderTitleInitializing": "Slimme Tools Initialiseren...",
+    "LoaderTitleLoadingModel": "AI Kern Laden...",
+    "LoaderTitleQualityTools": "Kwaliteitsanalyzer Voorbereiden...",
+    "LoaderDescriptionInitializing": "Voorbereidingen treffen voor slimme duplicatendetectie. Een ogenblik geduld.",
+    "LoaderDescriptionLoadingModel": "Onze geavanceerde AI warmt op. Dit kan even duren.",
+    "LoaderDescriptionQualityTools": "Tools voorbereiden voor gedetailleerde inzichten in fotokwaliteit...",
+
+    "MainCardTitle": "Vind & Beheer Dubbele Foto's",
+    "UploadSectionTitle": "Upload Uw Foto's",
+    "UploadSectionDescription": "Selecteer meerdere foto's. Onze AI zal ze intelligent analyseren en vergelijkbare foto's groeperen.",
+    "ButtonSelectImages": "Selecteer Foto's",
+    "ButtonSelectImagesLoading": "Laden...",
+    "ButtonSelectImagesInitializing": "Tools Laden...",
+    "ButtonAddMoreImages": "Meer Foto's Toevoegen",
+    "ButtonAddMoreImagesLoading": "Foto's Toevoegen...",
+    "SupportedFormats": "Ondersteunt JPG, PNG, WEBP, HEIC formaten",
+    "AIStatusLabel": "AI Status: {status}",
+    "QualityAnalyzerStatusLoading": "Kwaliteitsanalyzer: Laden...",
+
+    "SimilarityThresholdTitle": "Gelijkenisinstelling",
+    "SimilarityThresholdDescription": "Bepaal hoe nauwkeurig foto's moeten overeenkomen om als duplicaten te worden gemarkeerd. Hogere waarden betekenen striktere overeenkomst.",
+    "SimilarityLessStrict": "Minder Strikt",
+    "SimilarityCurrent": "Huidig: {threshold}",
+    "SimilarityMoreStrict": "Strikter",
+    "ButtonApplyThreshold": "Instelling Toepassen",
+    "ButtonApplyThresholdLoading": "Opnieuw Analyseren...",
+
+    "ResultsTitle": "Detectieresultaten:",
+    "DuplicateSetTitle": "Dubbele Set {number} ({count} vergelijkbare foto's)",
+    "ButtonAnalyzeQuality": "Analyseer Kwaliteit",
+    "ButtonAnalyzeQualityLoading": "Analyseren...",
+    "ButtonReanalyzeQuality": "Heranalyseer Kwaliteit",
+    "ImageMissing": "Fotogegevens ontbreken (index: {index})",
+    "BestLabel": "Beste",
+    "KpiRes": "Res:",
+    "KpiSharp": "Scherp:",
+    "KpiNoise": "Ruis:",
+    "KpiContrast": "Contr.:",
+    "KpiExposure": "Belicht.:",
+    "ButtonDownload": "Downloaden",
+    "ButtonDownloading": "Downloaden...",
+
+    "UniqueImagesTitle": "Unieke Foto's ({count} foto('s) zonder directe duplicaten)",
+
+    "ButtonAnalyzeAllGroups": "Analyseer Alle Groepen voor Beste Selectie",
+    "ButtonAnalyzeAllGroupsLoading": "Alle Groepen Analyseren...",
+    "ButtonDownloadBest": "Download {count} Beste Foto's",
+    "ButtonDownloadBestLoading": "Download Voorbereiden...",
+
+    "HowItWorksTitle": "Hoe Onze AI Duplicaten Vindt",
+    "HowItWorksStep1Title": "1. Upload Uw Foto's",
+    "HowItWorksStep1Desc": "Klik op \"Selecteer Foto's\" en kies de afbeeldingen die u wilt controleren. U kunt er meerdere tegelijk selecteren.",
+    "HowItWorksStep2Title": "2. Intelligente AI Analyse",
+    "HowItWorksStep2Desc": "Onze geavanceerde AI (gebaseerd op Vision Transformer technologie) analyseert intelligent de visuele inhoud van elke foto, en begrijpt de unieke kenmerken en het uiterlijk ervan.",
+    "HowItWorksStep3Title": "3. Slimme Gelijkenisscore",
+    "HowItWorksStep3Desc": "De AI vergelijkt foto's met behulp van geavanceerde visuele analyse (cosinusgelijkheid) om te bepalen hoe sterk ze op elkaar lijken op basis van hun inhoud.",
+    "HowItWorksStep4Title": "4. Verfijn Gelijkenis",
+    "HowItWorksStep4Desc": "Gebruik de gelijkenisschuifregelaar om te bepalen hoe strikt de overeenkomst is. Een hogere waarde betekent dat foto's bijna identiek moeten zijn om als duplicaten te worden gemarkeerd.",
+    "HowItWorksStep5Title": "5. Beoordeel & Organiseer",
+    "HowItWorksStep5Desc": "Resultaten tonen duidelijk dubbele sets en unieke foto's. Onze AI kan ook de foto van de beste kwaliteit in elke dubbele groep markeren, zodat u kunt beslissen welke u wilt behouden.",
+
+    "FreeUserLimit": "Gratis gebruikers kunnen tot {limit} foto's tegelijk uploaden.",
+    "ButtonSelectImagesLimit": "Selecteer Foto's (maximaal {limit})",
+    "UpgradeMessage": "Upgrade naar PRO om onbeperkt foto's tegelijk te analyseren.",
+    "UpgradeLink": "Nu upgraden",
+    "HowItWorksStep1Free": "Gratis gebruikers zijn beperkt tot {limit} foto's tegelijk.",
+    "HowItWorksStep1Pro": "Als PRO-gebruiker kun je onbeperkt foto's tegelijk analyseren.",
+    "ProFeatureName": "Onbeperkte Foto Analyse",
+
+    "FreeModeTitle": "GRATIS MODUS",
+    "FreeModeDescription": "Verwerk tot {limit} foto's tegelijk. Upgrade naar PRO om onbeperkt foto's te analyseren!",
+    "ProModeTitle": "PRO MODUS",
+    "ProModeDescription": "Verwerk onbeperkt foto's met je PRO-account!",
+    "MaxImagesExceeded": "Maximaal 100 afbeeldingen toegestaan. Alleen de eerste 100 zijn verwerkt.",
+    "ProcessingErrors": "Verwerkingsfouten",
+    "imagesCount": "{current}/{max} foto's",
+    "upgradeFor": "(Upgrade voor onbeperkt)",
+
+    "UpgradeCardTitle": "UPGRADEN NAAR PRO",
+    "UpgradeCardPlanTitle": "PRO PLAN",
+    "UpgradeCardPlanPrice": "$19.99",
+    "UpgradeCardPlanNote": "Eenmalige betaling, levenslange toegang",
+    "UpgradeCardFeature1": "Analyseer onbeperkt foto's tegelijk (t.o.v. 5 in gratis modus)",
+    "UpgradeCardFeature2": "Vind snel duplicaten in grote fotocollecties",
+    "UpgradeCardFeature3": "Kwaliteitsanalyse om automatisch de beste foto's te vinden",
+    "UpgradeCardFeature4": "Batch-download van beste foto's uit duplicaatsets",
+    "UpgradeCardFeature5": "Toegang tot alle andere PRO-functies (achtergrond verwijderen, enz.)",
+    "UpgradeCardButton": "NU UPGRADEN",
+
+    "ProUpgradeTitle": "Upgrade naar Pro voor onbeperkte foto's",
+
+    "SimilarityControlsTitle": "Gelijkenisalgoritme & drempelwaarde",
+    "SimilarityAlgorithmLabel": "Gelijkenisalgoritme",
+    "SimilarityThresholdLabel": "Gelijkenisdrempel",
+    "SimilarityThresholdDescDistance": "Lagere waarden betekenen meer gelijkaardige afbeeldingen (afstandsmetriek)",
+    "SimilarityThresholdDescSimilarity": "Hogere waarden betekenen meer gelijkaardige afbeeldingen (gelijkenismetriek)",
+
+    "ProcessingChanges": "Wijzigingen verwerken...",
+    "ReanalyzingWithAlgorithm": "Heranalyse met nieuw algoritme...",
+    "AnalysisCompleteWithAlgorithm": "Analyse voltooid met nieuw algoritme. {groupSummary}",
+
+    "DuplicateAnalysisComplete": "Duplikatanalyse fullført",
+
+    "VisualizationTitle": "AI Vektorrom",
+    "VisualizationDescription": "Visualiser hvordan AI ser bildene dine i høy-dimensjonalt rom, redusert til 2D ved hjelp av UMAP-algoritmen. Lignende bilder grupperer seg sammen.",
+    "VisualizationShowButton": "Vis Visualisering",
+    "VisualizationHideButton": "Skjul Visualisering",
+    "VisualizationGeneratingButton": "Genererer Visualisering...",
+    "VisualizationNoData": "Last opp og behandl bilder først for å aktivere visualisering",
+    "VisualizationProcessingStatus": "Dette kan ta litt tid for store datasett...",
+    "VisualizationLegendUnique": "Unike Bilder",
+    "VisualizationLegendDuplicates": "Duplikatgrupper (farget etter likhet)",
+    "VisualizationHelpText": "Hold musepekeren over punkter for å se miniatyrbilder • Nærmere punkter = mer lignende bilder",
+    "VisualizationNeedMinImages": "Trenger minst 3 bilder for visualisering",
+    "VisualizationNoDataAvailable": "Ingen visualiseringsdata tilgjengelig"
+  },
+  "ImageSeoGenerationPage": {
+    "metadata": {
+      "title": "AI Afbeelding SEO Generatie - Genereer SEO URL Slugs & Onderschriften",
+      "description": "Upload uw afbeeldingen om automatisch SEO-vriendelijke namen, URL-slugs en onderschriften te genereren met AI.",
+      "keywords": "afbeelding seo, url slug generator, seo afbeelding onderschrift generator, ai content creatie, afbeelding optimalisatie"
+    },
+    "AppInitializing": "AI SEO Generator initialiseren...",
+    "AISetup": "AI instellen voor SEO-inhoud...",
+    "AIEngineInitializing": "AI SEO Engine wordt geïnitialiseerd...",
+    "AIEngineStarted": "AI SEO Engine gestart.",
+    "AIInitializing": "AI-model voor SEO wordt geïnitialiseerd...",
+    "AILoadingModel": "AI SEO-model laden...",
+    "AIModelLoaded": "AI SEO-model geladen.",
+    "AIReady": "AI SEO Engine is klaar.",
+    "AIReadyPrompt": "Klaar voor AI SEO. Upload uw afbeeldingen.",
+    "ProcessingImage": "AI verwerkt voor SEO: Afbeelding {imageId}...",
+    "ErrorProcessingImage": "Fout bij AI SEO-verwerking voor afbeelding {imageId}: {data}",
+    "AIEngineError": "AI SEO Engine-fout: {data}",
+    "AIEngineErrorRefresh": "AI SEO Engine-fout: {data}. Vernieuw de pagina.",
+    "AICriticalError": "Kritieke AI SEO Engine-fout.",
+    "AICriticalErrorRefresh": "Kritieke AI SEO Engine-fout. Vernieuw de pagina en probeer opnieuw.",
+    "PleaseSelectImages": "Selecteer afbeeldingen voor AI SEO-generatie.",
+    "AINotReadyError": "AI SEO Engine is nog niet klaar. Even geduld alstublieft.",
+    "ProcessingFiles": "Afbeeldingen verwerken voor AI SEO...",
+    "ProcessingFilesHEIC": "Afbeeldingen verwerken voor AI SEO, HEIC wordt indien nodig geconverteerd...",
+    "HEICConversionFailedSkip": "HEIC naar SEO-vriendelijk formaat conversie mislukt voor: {fileName}. Overgeslagen.",
+    "HEICConversionErrorSkip": "Fout bij HEIC-conversie voor SEO: {fileName}. Overgeslagen.",
+    "NoValidFilesAfterConversion": "Geen geldige afbeeldingen voor AI SEO na conversiepogingen.",
+    "NoValidFiles": "Geen geldige afbeeldingen geselecteerd voor AI SEO-verwerking.",
+    "SendingImagesToAI": "{count} afbeeldingen worden naar AI gestuurd voor SEO-inhoudsgeneratie...",
+    "AllImagesProcessed": "AI SEO-verwerking voltooid. Bekijk hieronder uw geoptimaliseerde inhoud.",
+    "PageTitle": "AI Afbeelding SEO & Alt-tekst Generator",
+    "PageTitlePro": "PRO AI Afbeelding SEO & Alt-tekst Generator",
+    "PageTitleFree": "AI Afbeelding SEO & Onderschrift Generator",
+    "MainCardTitle": "Genereer SEO-namen & onderschriften met AI",
+    "UploadSectionTitle": "1. Upload Afbeeldingen voor AI SEO",
+    "UploadSectionDescription": "Upload JPG, PNG, WEBP, GIF, HEIC afbeeldingen. Onze AI genereert SEO-vriendelijke bestandsnamen en alt-tekst. Voeg trefwoorden toe om de resultaten te verfijnen.",
+    "UploadSectionDescriptionWithLimit": "Upload JPG, PNG, WEBP, GIF, HEIC (max {maxImages} voor uw plan). AI genereert SEO-bestandsnamen & alt-tekst. Voeg trefwoorden toe voor aangepaste resultaten.",
+    "ButtonSelectImages": "Selecteer Afbeeldingen voor AI SEO",
+    "ButtonSelectImagesLoading": "AI initialiseren...",
+    "ResultsTitle": "AI-gegenereerde SEO-inhoud",
+    "ImageMissing": "Afbeeldingsgegevens ontbreken voor AI SEO (index: {index})",
+    "GeneratedSeoName": "AI-gegenereerde SEO-bestandsnaam:",
+    "GeneratedDescription": "AI-gegenereerde alt-tekst/onderschrift:",
+    "StatusLabel": "Huidige status:",
+    "AIStatusLabel": "AI SEO-status: {status}",
+    "HowItWorksTitle": "Hoe AI Afbeelding SEO Werkt",
+    "HowItWorksStep1Title": "Upload Uw Afbeeldingen",
+    "HowItWorksStep1Desc": "Selecteer of sleep afbeeldingen. Onze AI bereidt ze voor op SEO-analyse.",
+    "HowItWorksStep2Title": "AI Inhoudsanalyse",
+    "HowItWorksStep2Desc": "Onze AI analyseert elke afbeelding om de inhoud, context en SEO-potentie te begrijpen.",
+    "HowItWorksStep3Title": "SEO-naam & Alt-tekst Generatie",
+    "HowItWorksStep3Desc": "AI maakt SEO-vriendelijke bestandsnamen en beschrijvende alt-tekst. Trefwoorden verbeteren de optimalisatie.",
+    "HowItWorksStep4Title": "Controleer & Versterk Uw SEO",
+    "HowItWorksStep4Desc": "Kopieer de door AI gegenereerde SEO-inhoud om de vindbaarheid en toegankelijkheid van uw website, blog of sociale media te verbeteren.",
+    "NoResultsYet": "Upload afbeeldingen om AI-gegenereerde SEO-inhoud te zien.",
+    "KeywordsSectionTitle": "2. Verbeter met Trefwoorden (Optioneel)",
+    "KeywordsSectionDescription": "Voeg komma-gescheiden trefwoorden toe. Onze AI verwerkt deze strategisch in de alt-tekst voor betere SEO.",
+    "KeywordsPlaceholder": "bijv. reizen, eten, e-commerce, productcategorie",
+    "ButtonRegenerateWithKeywords": "Genereer SEO-inhoud opnieuw met trefwoorden",
+    "ButtonRegenerating": "SEO-inhoud opnieuw genereren...",
+    "RegeneratingStatus": "AI genereert alt-tekst opnieuw met nieuwe SEO-trefwoorden...",
+    "RegenerationComplete": "AI-aangedreven SEO-regeneratie voltooid.",
+    "ButtonDownloadAll": "Download alle AI SEO-resultaten (ZIP)",
+    "ButtonDownloadingAll": "AI SEO ZIP downloaden...",
+    "PreparingDownload": "AI SEO-bestanden voorbereiden voor download...",
+    "ZippingFiles": "{count} AI-geoptimaliseerde bestanden worden gecomprimeerd...",
+    "NoFilesToDownload": "Geen AI-verwerkte afbeeldingen met SEO-gegevens om te downloaden.",
+    "ErrorCreatingZIP": "Fout bij het maken van AI SEO ZIP. Probeer het opnieuw.",
+    "DownloadComplete": "AI SEO-download voltooid!",
+    "ImageUploadFeatureName": "Onbeperkt AI SEO Afbeeldingen Uploaden",
+    "FreeLimitReachedDialogTitle": "Upgrade voor Meer AI SEO-mogelijkheden",
+    "FreeLimitReachedDialogMessage": "U heeft de gratis limiet voor AI SEO bereikt. Upgrade naar Pro om meer afbeeldingen te verwerken.",
+    "FreeLimitReachedSomeProcessed": "Gratis limiet van {count} afbeeldingen bereikt voor AI SEO. De eerste {count} worden verwerkt. Upgrade voor meer.",
+    "ProLimitReachedSomeProcessed": "Pro-limiet van {count} afbeeldingen bereikt voor AI SEO. De eerste {count} worden verwerkt.",
+    "NoValidFilesToProcessAfterLimit": "Geen afbeeldingen om te verwerken voor AI SEO na planlimieten.",
+    "ProUserCardTitle": "AI SEO Pro Plan Actief",
+    "ProUserCardDescription": "U heeft het Pro-plan! Geniet van onbeperkte AI SEO-afbeeldingengeneratie per batch en alle premium functies.",
+    "UpgradeToProCardTitle": "Upgrade naar Pro",
+    "UpgradeToProCardDescription": "Ontgrendel volledige AI SEO-kracht! Gratis gebruikers kunnen {maxImagesFree} afbeeldingen verwerken. Pro-gebruikers genieten van onbeperkte verwerking & meer voordelen.",
+    "ButtonUpgradeNow": "Nu upgraden naar Pro",
+    "ProUserPlanIndicator": "Pro Plan: Onbeperkte AI SEO-afbeeldingengeneratie.",
+    "FreeUserPlanIndicator": "Gratis Plan: AI SEO voor maximaal 3 afbeeldingen. Upgrade voor onbeperkt!",
+    "FreePlanInfoBoxTitle": "GRATIS PLAN",
+    "ProFeatureUnlimitedImages": "Onbeperkte AI SEO-afbeeldingengeneratie"
+  }
+}

@@ -47,7 +47,6 @@
         },
         "upgradeProTitle": "DÉBLOQUER LES FONCTIONNALITÉS PRO",
         "upgradeProDescription": "Obtenez plus d'images, la suppression de l'arrière-plan et des fonctionnalités avancées avec notre mise à niveau Pro unique.",
-        "proMode": "MODE PRO ACTIVÉ",
         "freePlan": "PLAN GRATUIT",
         "proDescription": "Traitez jusqu'à {maxImages} images à la fois avec toutes les fonctionnalités premium débloquées.",
         "freeDescription": "Limité à {maxImages} images. Passez à PRO pour traiter jusqu'à 100 images à la fois.",
@@ -282,14 +281,6 @@
                 "info": {
                     "title": "QU'EST-CE QUE CET OUTIL ?",
                     "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche.",
-                    "freeMode": {
-                        "title": "MODE GRATUIT",
-                        "description": "Générez jusqu'à 5 descriptions de produits SEO par jour. Passez à PRO pour une génération illimitée et un accès à tous les champs de contenu SEO."
-                    },
-                    "proMode": {
-                        "title": "MODE PRO",
-                        "description": "Accès illimité pour générer des descriptions de produits SEO complètes avec toutes les fonctionnalités premium débloquées."
-                    }
                 },
                 "benefits": {
                     "complete": "PACKAGE SEO COMPLET",
@@ -315,14 +306,6 @@
                 "info": {
                     "title": "QU'EST-CE QUE CET OUTIL ?",
                     "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche.",
-                    "freeMode": {
-                        "title": "MODE GRATUIT",
-                        "description": "Accès limité pour générer quelques descriptions. Passez à PRO pour une génération illimitée et l'accès à tous les champs de contenu SEO."
-                    },
-                    "proMode": {
-                        "title": "MODE PRO",
-                        "description": "Accès illimité pour générer des descriptions de produits SEO complètes avec toutes les fonctionnalités premium débloquées."
-                    }
                 },
                 "benefits": {
                     "complete": "PACKAGE SEO COMPLET",
@@ -463,14 +446,6 @@
                 "info": {
                     "title": "SUPPRESSION D'ARRIÈRE-PLAN IA",
                     "description": "Supprimez l'arrière-plan de vos images de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité.",
-                    "freeMode": {
-                        "title": "MODE GRATUIT",
-                        "description": "Traitez 1 image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse !"
-                    },
-                    "proMode": {
-                        "title": "MODE PRO",
-                        "description": "Traitez jusqu'à 100 images à la fois avec votre compte PRO !"
-                    }
                 },
                 "upload": {
                     "title": "Sélectionner des images",
@@ -824,14 +799,6 @@
             "info": {
                 "title": "COMMENT ÇA FONCTIONNE",
                 "description": "Supprimez les objets indésirables, les personnes ou le texte de vos images grâce à l'IA. Le traitement se fait entièrement dans votre navigateur.",
-                "freeMode": {
-                    "title": "MODE GRATUIT",
-                    "description": "Traitez 1 image à la fois. Passez au PRO pour le traitement par lots (bientôt disponible!)."
-                },
-                "proMode": {
-                    "title": "MODE PRO",
-                    "description": "Traitez jusqu'à 100 images par lot. Dessinez un masque une fois et appliquez-le à toutes vos images!"
-                }
             },
             "upload": {
                 "title": "Télécharger une image",
@@ -932,14 +899,6 @@
             "info": {
                 "title": "AJOUTER DES FILIGRANES PERSONNALISÉS",
                 "description": "Protégez vos images avec des filigranes texte ou logo personnalisés. Personnalisez l'opacité, la taille et la position pour répondre à vos besoins de marque.",
-                "freeMode": {
-                    "title": "MODE GRATUIT",
-                    "description": "Traitez 1 image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse !"
-                },
-                "proMode": {
-                    "title": "MODE PRO",
-                    "description": "Traitez jusqu'à 100 images en masse avec votre compte PRO !"
-                }
             },
             "upload": {
                 "title": "Sélectionner des images",
@@ -1042,14 +1001,7 @@
             "info": {
                 "title": "CONVERSION DE FORMAT D'IMAGE",
                 "description": "Convertissez vos images entre des formats comme JPG, PNG, WebP et AVIF. Vous pouvez également redimensionner vos images pendant la conversion.",
-                "freeMode": {
-                    "title": "MODE GRATUIT",
-                    "description": "Traitez jusqu'à {maxImages} images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse !"
                 },
-                "proMode": {
-                    "title": "MODE PRO",
-                    "description": "Traitez jusqu'à 100 images en masse avec votre compte PRO !"
-                }
             },
             "upload": {
                 "title": "Sélectionner les images à convertir",

@@ -46,7 +46,6 @@
         },
         "upgradeProTitle": "ODBLOKUJ FUNKCJE PRO",
         "upgradeProDescription": "Zyskaj więcej obrazów, usuwanie tła i zaawansowane funkcje dzięki naszej jednorazowej aktualizacji do wersji Pro.",
-        "proMode": "TRYB PRO AKTYWOWANY",
         "freePlan": "DARMOWY PLAN",
         "proDescription": "Przetwarzaj do {maxImages} obrazów jednocześnie ze wszystkimi odblokowanymi funkcjami premium.",
         "freeDescription": "Ograniczone do {maxImages} obrazów. Zaktualizuj do PRO, aby przetwarzać do 100 obrazów jednocześnie.",
@@ -282,14 +281,6 @@
                 "info": {
                     "title": "CZYM JEST TO NARZĘDZIE?",
                     "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek.",
-                    "freeMode": {
-                        "title": "TRYB DARMOWY",
-                        "description": "Ograniczony dostęp do generowania kilku opisów. Przejdź na PRO, aby uzyskać nieograniczone generowanie i dostęp do wszystkich pól treści SEO."
-                    },
-                    "proMode": {
-                        "title": "TRYB PRO",
-                        "description": "Nieograniczony dostęp do generowania kompletnych opisów produktów SEO ze wszystkimi odblokowanymi funkcjami premium."
-                    }
                 },
                 "benefits": {
                     "complete": "KOMPLETNY PAKIET SEO",
@@ -315,14 +306,6 @@
                 "info": {
                     "title": "CZYM JEST TO NARZĘDZIE?",
                     "description": "To narzędzie oparte na AI generuje kompletny pakiet SEO dla Twoich produktów na podstawie podstawowych informacji. Otrzymasz tytuł produktu, meta tytuł, meta opis, krótkie i długie opisy, kategorie, tagi i slug URL, wszystko zoptymalizowane pod kątem wyszukiwarek.",
-                    "freeMode": {
-                        "title": "TRYB DARMOWY",
-                        "description": "Ograniczony dostęp do generowania kilku opisów. Przejdź na PRO, aby uzyskać nieograniczone generowanie i dostęp do wszystkich pól treści SEO."
-                    },
-                    "proMode": {
-                        "title": "TRYB PRO",
-                        "description": "Nieograniczony dostęp do generowania kompletnych opisów produktów SEO ze wszystkimi odblokowanymi funkcjami premium."
-                    }
                 },
                 "benefits": {
                     "complete": "KOMPLETNY PAKIET SEO",
@@ -417,14 +400,6 @@
                 "info": {
                     "title": "USUWANIE TŁA AI",
                     "description": "Usuń tło z obrazów produktów za pomocą technologii AI. Przetwarzanie odbywa się całkowicie w Twojej przeglądarce dla zachowania prywatności.",
-                    "freeMode": {
-                        "title": "TRYB DARMOWY",
-                        "description": "Przetwarzaj 1 obraz jednocześnie. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!"
-                    },
-                    "proMode": {
-                        "title": "TRYB PRO",
-                        "description": "Przetwarzaj do 100 obrazów jednocześnie z kontem PRO!"
-                    }
                 },
                 "upload": {
                     "title": "Wybierz obrazy",
@@ -822,14 +797,6 @@
             "info": {
                 "title": "JAK TO DZIAŁA",
                 "description": "Usuń niechciane obiekty, osoby lub tekst ze swoich zdjęć za pomocą AI. Przetwarzanie odbywa się w całości w Twojej przeglądarce.",
-                "freeMode": {
-                    "title": "TRYB DARMOWY",
-                    "description": "Przetwarzaj 1 zdjęcie na raz. Przejdź na PRO, aby korzystać z przetwarzania wsadowego (wkrótce!)."
-                },
-                "proMode": {
-                    "title": "TRYB PRO",
-                    "description": "Przetwarzaj do 100 zdjęć wsadowo. Narysuj maskę raz i zastosuj ją do wszystkich zdjęć!"
-                }
             },
             "upload": {
                 "title": "Wgraj zdjęcie",
@@ -930,14 +897,6 @@
             "info": {
                 "title": "DODAJ NIESTANDARDOWE ZNAKI WODNE",
                 "description": "Chroń swoje obrazy za pomocą niestandardowych znaków wodnych tekstowych lub logo. Dostosuj przezroczystość, rozmiar i pozycję do swoich preferencji brandingowych.",
-                "freeMode": {
-                    "title": "TRYB DARMOWY",
-                    "description": "Przetwarzaj 1 obraz na raz. Ulepsz do PRO, aby przetwarzać do 100 obrazów zbiorczo!"
-                },
-                "proMode": {
-                    "title": "TRYB PRO",
-                    "description": "Przetwarzaj do 100 obrazów zbiorczo za pomocą swojego konta PRO!"
-                }
             },
             "upload": {
                 "title": "Wybierz obrazy",
@@ -1040,14 +999,7 @@
             "info": {
                 "title": "KONWERSJA FORMATU OBRAZU",
                 "description": "Konwertuj swoje obrazy między formatami takimi jak JPG, PNG, WebP i AVIF. Możesz także zmieniać rozmiar obrazów podczas konwersji.",
-                "freeMode": {
-                    "title": "TRYB DARMOWY",
-                    "description": "Przetwarzaj do {maxImages} obrazów naraz. Uaktualnij do PRO, aby konwertować do 100 obrazów wsadowo!"
                 },
-                "proMode": {
-                    "title": "TRYB PRO",
-                    "description": "Przetwarzaj do 100 obrazów wsadowo za pomocą swojego konta PRO!"
-                }
             },
             "upload": {
                 "title": "Wybierz obrazy do konwersji",

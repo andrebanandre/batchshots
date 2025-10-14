@@ -45,7 +45,6 @@
         },
         "upgradeProTitle": "ODEMKNOUT PRO FUNKCE",
         "upgradeProDescription": "Získejte více obrázků, odstranění pozadí a pokročilé funkce s naším jednorázovým Pro upgradem.",
-        "proMode": "PRO REŽIM AKTIVOVÁN",
         "freePlan": "PLÁN ZDARMA",
         "proDescription": "Zpracujte až {maxImages} obrázků najednou se všemi prémiovými funkcemi odemčenými.",
         "freeDescription": "Omezeno na {maxImages} obrázků. Upgradujte na PRO a zpracujte až 100 obrázků najednou.",
@@ -292,14 +291,6 @@
                 "info": {
                     "title": "CO JE TENTO NÁSTROJ?",
                     "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače.",
-                    "freeMode": {
-                        "title": "REŽIM ZDARMA",
-                        "description": "Omezený přístup ke generování několika popisů. Upgradujte na PRO pro neomezené generování a přístup ke všem polím SEO obsahu."
-                    },
-                    "proMode": {
-                        "title": "REŽIM PRO",
-                        "description": "Neomezený přístup ke generování kompletních SEO popisů produktů se všemi odemčenými prémiovými funkcemi."
-                    }
                 },
                 "benefits": {
                     "complete": "KOMPLETNÍ SEO BALÍČEK",
@@ -325,14 +316,6 @@
                 "info": {
                     "title": "CO JE TENTO NÁSTROJ?",
                     "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače.",
-                    "freeMode": {
-                        "title": "REŽIM ZDARMA",
-                        "description": "Omezený přístup ke generování několika popisů. Upgradujte na PRO pro neomezené generování a přístup ke všem polím SEO obsahu."
-                    },
-                    "proMode": {
-                        "title": "REŽIM PRO",
-                        "description": "Neomezený přístup ke generování kompletních SEO popisů produktů se všemi odemčenými prémiovými funkcemi."
-                    }
                 },
                 "benefits": {
                     "complete": "KOMPLETNÍ SEO BALÍČEK",
@@ -427,14 +410,6 @@
                 "info": {
                     "title": "ODSTRANĚNÍ POZADÍ AI",
                     "description": "Odstraňte pozadí z produktových obrázků pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí.",
-                    "freeMode": {
-                        "title": "ZDARMA REŽIM",
-                        "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro zpracování až 100 obrázků hromadně!"
-                    },
-                    "proMode": {
-                        "title": "PRO REŽIM",
-                        "description": "Zpracujte až 100 obrázků současně s PRO účtem!"
-                    }
                 },
                 "upload": {
                     "title": "Vyberte obrázky",
@@ -619,14 +594,6 @@
             "info": {
                 "title": "PŘIDAT VLASTNÍ VODOTISKY",
                 "description": "Chraňte své obrázky vlastními textovými nebo logovými vodotisky. Přizpůsobte krytí, velikost a pozici podle vašich potřeb značky.",
-                "freeMode": {
-                    "title": "BEZPLATNÝ REŽIM",
-                    "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro zpracování až 100 obrázků najednou!"
-                },
-                "proMode": {
-                    "title": "PRO REŽIM",
-                    "description": "Zpracujte až 100 obrázků najednou s vaším PRO účtem!"
-                }
             },
             "upload": {
                 "title": "Vybrat obrázky",
@@ -729,14 +696,7 @@
             "info": {
                 "title": "KONVERZE FORMÁTU OBRÁZKU",
                 "description": "Převeďte své obrázky mezi formáty jako JPG, PNG, WebP a AVIF. Během konverze můžete také změnit velikost obrázků.",
-                "freeMode": {
-                    "title": "BEZPLATNÝ REŽIM",
-                    "description": "Zpracujte až {maxImages} obrázků najednou. Upgradujte na PRO pro konverzi až 100 obrázků hromadně!"
                 },
-                "proMode": {
-                    "title": "PRO REŽIM",
-                    "description": "Zpracujte až 100 obrázků hromadně s vaším PRO účtem!"
-                }
             },
             "upload": {
                 "title": "Vyberte obrázky k převodu",
@@ -890,14 +850,6 @@
             "info": {
                 "title": "JAK TO FUNGUJE",
                 "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí AI. Zpracování probíhá zcela ve vašem prohlížeči.",
-                "freeMode": {
-                    "title": "ZDARMA",
-                    "description": "Zpracujte 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování (již brzy!)."
-                },
-                "proMode": {
-                    "title": "PRO REŽIM",
-                    "description": "Zpracujte až 100 obrázků v dávkovém režimu. Nakreslete masku jednou a aplikujte ji na všechny vaše obrázky!"
-                }
             },
             "upload": {
                 "title": "Nahrajte svůj obrázek",

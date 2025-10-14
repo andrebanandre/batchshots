@@ -1,63 +1,78 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import Card from '../components/Card';
-import Button from '../components/Button';
-import ImagePreview, { ImageFile } from '../components/ImagePreview';
-import ImageProcessingControls, { ImageAdjustments, defaultAdjustments } from '../components/ImageProcessingControls';
-import PresetsSelector, { defaultPresets, Preset } from '../components/PresetsSelector';
-import WatermarkControl, { WatermarkSettings, defaultWatermarkSettings } from '../components/WatermarkControl';
-import DownloadOptions, { ImageFormat } from '../components/DownloadOptions';
-import DownloadDialog from '../components/DownloadDialog';
-import SeoNameGenerator, { SeoImageName } from '../components/SeoNameGenerator';
+import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
+import Card from "../components/Card";
+import Button from "../components/Button";
+import ImagePreview, { ImageFile } from "../components/ImagePreview";
+import ImageProcessingControls, {
+  ImageAdjustments,
+  defaultAdjustments,
+} from "../components/ImageProcessingControls";
+import PresetsSelector, {
+  defaultPresets,
+  Preset,
+} from "../components/PresetsSelector";
+import WatermarkControl, {
+  WatermarkSettings,
+  defaultWatermarkSettings,
+} from "../components/WatermarkControl";
+import DownloadOptions, { ImageFormat } from "../components/DownloadOptions";
+import DownloadDialog from "../components/DownloadDialog";
+import SeoNameGenerator, { SeoImageName } from "../components/SeoNameGenerator";
 // Pro removed
 // Router not used
-import { YouTubeEmbed } from '@next/third-parties/google';
+import { YouTubeEmbed } from "@next/third-parties/google";
 // Import heic-to for HEIC conversion
-import { heicTo, isHeic } from 'heic-to';
-import { 
-  initOpenCV, 
-  processImage, 
-  createImageFile, 
+import { heicTo, isHeic } from "heic-to";
+import {
+  initOpenCV,
+  processImage,
+  createImageFile,
   downloadAllImages,
   downloadImage,
-  ImageFormat as LibImageFormat
-} from '../lib/imageProcessing';
-import Loader from '../components/Loader';
-import { ImageProcessingProvider } from '../contexts/ImageProcessingContext';
+  ImageFormat as LibImageFormat,
+} from "../lib/imageProcessing";
+import Loader from "../components/Loader";
+import { ImageProcessingProvider } from "../contexts/ImageProcessingContext";
 // Upgrade dialog removed
-import ProBadge from '../components/ProBadge';
 
 // Helper function to detect HEIC/HEIF files
 const isHeicFormat = async (file: File): Promise<boolean> => {
   // Check extension first for efficiency
-  if (file.name.toLowerCase().endsWith('.heic') || 
-      file.name.toLowerCase().endsWith('.heif') ||
-      file.type === 'image/heic' || 
-      file.type === 'image/heif') {
+  if (
+    file.name.toLowerCase().endsWith(".heic") ||
+    file.name.toLowerCase().endsWith(".heif") ||
+    file.type === "image/heic" ||
+    file.type === "image/heif"
+  ) {
     return true;
   }
-  
+
   // Try the heic-to library detection
   try {
     return await isHeic(file);
   } catch (error) {
-    console.warn('heic-to detection failed, falling back to header check', error);
-    
+    console.warn(
+      "heic-to detection failed, falling back to header check",
+      error
+    );
+
     // If heic-to detection fails, examine file header bytes
     try {
       const arr = new Uint8Array(await file.slice(0, 12).arrayBuffer());
-      const header = Array.from(arr).map(byte => byte.toString(16).padStart(2, '0')).join('');
-      
+      const header = Array.from(arr)
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+
       // HEIC files typically start with a "ftyp" box with brand "heic" or "heix" or "hevc" or "hevx"
       return (
-        header.includes('66747970686569') || // ftyp + heic/heis/heif
-        header.includes('6674797068656a') || // ftyp + hejs/hejk
-        header.includes('66747970686576')    // ftyp + hevc/hevs/hevx
+        header.includes("66747970686569") || // ftyp + heic/heis/heif
+        header.includes("6674797068656a") || // ftyp + hejs/hejk
+        header.includes("66747970686576") // ftyp + hevc/hevs/hevx
       );
     } catch (headerError) {
-      console.error('Error checking file header:', headerError);
+      console.error("Error checking file header:", headerError);
       return false;
     }
   }
@@ -66,58 +81,61 @@ const isHeicFormat = async (file: File): Promise<boolean> => {
 // Helper function to convert HEIC to PNG using heic-to
 const convertHeicToPng = async (file: File): Promise<File | null> => {
   try {
-    console.log('Converting HEIC image to PNG:', file.name);
-    
+    console.log("Converting HEIC image to PNG:", file.name);
+
     // Convert using heic-to
     const pngBlob = await heicTo({
       blob: file,
-      type: 'image/png',
-      quality: 1
+      type: "image/png",
+      quality: 1,
     });
-    
-    const pngFileName = file.name.replace(/\.(heic|heif)$/i, '.png');
-    return new File([pngBlob], pngFileName, { type: 'image/png' });
+
+    const pngFileName = file.name.replace(/\.(heic|heif)$/i, ".png");
+    return new File([pngBlob], pngFileName, { type: "image/png" });
   } catch (error) {
-    console.error('HEIC conversion failed:', error);
+    console.error("HEIC conversion failed:", error);
     return null;
   }
 };
 
 export default function Home() {
-  const t = useTranslations('Home');
+  const t = useTranslations("Home");
   // const tDialogs = useTranslations('Dialogs');
   // Pricing removed
   // locale not needed in free static mode
   const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
-  const [adjustments, setAdjustments] = useState<ImageAdjustments>(defaultAdjustments);
-  const [watermarkSettings, setWatermarkSettings] = useState<WatermarkSettings>(defaultWatermarkSettings);
+  const [adjustments, setAdjustments] =
+    useState<ImageAdjustments>(defaultAdjustments);
+  const [watermarkSettings, setWatermarkSettings] = useState<WatermarkSettings>(
+    defaultWatermarkSettings
+  );
   const [selectedPreset, setSelectedPreset] = useState<string | null>(null);
-  const [customPresetSettings, setCustomPresetSettings] = useState<Preset | null>(null);
+  const [customPresetSettings, setCustomPresetSettings] =
+    useState<Preset | null>(null);
   const [isOpenCVReady, setIsOpenCVReady] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [applyToAll, setApplyToAll] = useState(true);
-  const isProUser = false;
   // const router = useRouter();
-  
+
   // Calculate max images based on pro status
   // Free version: set generous but static limit, no pro gating
   const MAX_IMAGES = 100;
-  
+
   // Show upgrade dialog
   // Upgrade dialog removed
-  
+
   // Download dialog state
   const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadComplete, setDownloadComplete] = useState(false);
-  const [downloadFormat, setDownloadFormat] = useState<LibImageFormat>('jpg');
-  
+  const [downloadFormat, setDownloadFormat] = useState<LibImageFormat>("jpg");
+
   // SEO name generation state
   const [seoNames, setSeoNames] = useState<SeoImageName[]>([]);
   const [isGeneratingSeoNames, setIsGeneratingSeoNames] = useState(false);
-  
+
   // SEO product description state
   // Removed Gemini SEO product description
 
@@ -127,9 +145,9 @@ export default function Home() {
       try {
         await initOpenCV();
         setIsOpenCVReady(true);
-        console.log('OpenCV.js initialized successfully');
+        console.log("OpenCV.js initialized successfully");
       } catch (error) {
-        console.error('Failed to initialize OpenCV.js', error);
+        console.error("Failed to initialize OpenCV.js", error);
       }
     };
 
@@ -137,17 +155,23 @@ export default function Home() {
   }, []);
 
   // Handle custom preset settings
-  const handleCustomSettingsChange = (settings: { width: number; height: number | null; quality: number }) => {
+  const handleCustomSettingsChange = (settings: {
+    width: number;
+    height: number | null;
+    quality: number;
+  }) => {
     // Create a custom preset
     const updatedCustomPreset: Preset = {
-      id: 'custom',
-      name: 'Custom',
+      id: "custom",
+      name: "Custom",
       width: settings.width,
       height: settings.height,
       quality: settings.quality,
-      description: `Custom ${settings.width}x${settings.height || 'auto'} @ ${settings.quality}%`
+      description: `Custom ${settings.width}x${settings.height || "auto"} @ ${
+        settings.quality
+      }%`,
     };
-    
+
     // Update the custom preset in the presets list
     setCustomPresetSettings(updatedCustomPreset);
   };
@@ -155,12 +179,12 @@ export default function Home() {
   // Get current preset details
   const getCurrentPreset = (): Preset | null => {
     if (!selectedPreset) return null;
-    
-    if (selectedPreset === 'custom' && customPresetSettings) {
+
+    if (selectedPreset === "custom" && customPresetSettings) {
       return customPresetSettings;
     }
-    
-    return defaultPresets.find(p => p.id === selectedPreset) || null;
+
+    return defaultPresets.find((p) => p.id === selectedPreset) || null;
   };
 
   // Get current preset name for display
@@ -177,58 +201,62 @@ export default function Home() {
       // Set processing state to true only if changes require processing
       // Watermark and adjustment changes trigger processing
       if (adjustments !== defaultAdjustments || watermarkSettings.enabled) {
-          setIsProcessing(true);
+        setIsProcessing(true);
       }
-      
+
       console.log("Applying preview updates:", {
         adjustments,
         watermarkSettings,
         selectedImageId,
         applyToAll,
-        hasImages: images.length > 0
+        hasImages: images.length > 0,
       });
 
       try {
         const currentPreset = getCurrentPreset();
-        
+
         // Use the current images from state closure
         const imagesToProcess = [...images];
         const updatedImages = await Promise.all(
           imagesToProcess.map(async (image) => {
             // Only update the selected image (or all images if applyToAll is true)
-            if ((selectedImageId && image.id === selectedImageId) || applyToAll) {
+            if (
+              (selectedImageId && image.id === selectedImageId) ||
+              applyToAll
+            ) {
               console.log(`Processing image ${image.id} with settings...`);
-              
+
               // Process only thumbnails for preview - much faster
               const { processedThumbnailUrl } = await processImage(
-                  image, 
-                  adjustments, 
-                  currentPreset, 
-                  watermarkSettings, // Pass watermark settings
-                  false // Process thumbnail (false)
+                image,
+                adjustments,
+                currentPreset,
+                watermarkSettings, // Pass watermark settings
+                false // Process thumbnail (false)
               );
-              
-              
+
               return {
                 ...image,
                 processedThumbnailUrl, // Update thumbnail URL
                 // Store the applied preset information
-                appliedPreset: currentPreset ? {
-                  name: currentPreset.name,
-                  width: currentPreset.width,
-                  height: currentPreset.height,
-                  quality: currentPreset.quality
-                } : undefined
+                appliedPreset: currentPreset
+                  ? {
+                      name: currentPreset.name,
+                      width: currentPreset.width,
+                      height: currentPreset.height,
+                      quality: currentPreset.quality,
+                    }
+                  : undefined,
               };
             }
             return image; // Return unchanged image if not selected/applyToAll
           })
         );
-        
+
         setImages(updatedImages);
         console.log("Preview processing complete, images updated");
       } catch (error) {
-        console.error('Error applying preview adjustments/watermark', error);
+        console.error("Error applying preview adjustments/watermark", error);
       } finally {
         // Set processing state to false when done
         setIsProcessing(false);
@@ -242,87 +270,87 @@ export default function Home() {
 
     return () => clearTimeout(timeoutId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [adjustments, watermarkSettings, isOpenCVReady, selectedImageId, selectedPreset, applyToAll, customPresetSettings]); // Add watermarkSettings dependency
+  }, [
+    adjustments,
+    watermarkSettings,
+    isOpenCVReady,
+    selectedImageId,
+    selectedPreset,
+    applyToAll,
+    customPresetSettings,
+  ]); // Add watermarkSettings dependency
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
 
     const fileArray = Array.from(e.target.files);
-    
+
     try {
       setIsUploading(true);
       setIsProcessing(true);
-      
+
       // Process each file, converting HEIC files to PNG first
-      const processedFiles = await Promise.all(fileArray.map(async (file) => {
-        // Check if file is HEIC/HEIF format
-        const isHeic = await isHeicFormat(file);
-        
-        if (isHeic) {
-          // Use the heic-to library for HEIC conversion
-          const convertedFile = await convertHeicToPng(file);
-          if (convertedFile) {
-            console.log('HEIC conversion complete:', convertedFile.name);
-            return convertedFile;
-          } else {
-            // Alert user about failed conversion and skip this file
-            alert(t('heicConversionFailed', { fileName: file.name }));
-            return null;
+      const processedFiles = await Promise.all(
+        fileArray.map(async (file) => {
+          // Check if file is HEIC/HEIF format
+          const isHeic = await isHeicFormat(file);
+
+          if (isHeic) {
+            // Use the heic-to library for HEIC conversion
+            const convertedFile = await convertHeicToPng(file);
+            if (convertedFile) {
+              console.log("HEIC conversion complete:", convertedFile.name);
+              return convertedFile;
+            } else {
+              // Alert user about failed conversion and skip this file
+              alert(t("heicConversionFailed", { fileName: file.name }));
+              return null;
+            }
           }
-        }
-        
-        // Return original file for non-HEIC formats
-        return file;
-      }));
-      
+
+          // Return original file for non-HEIC formats
+          return file;
+        })
+      );
+
       // Filter out null values (failed conversions)
-      const validFiles = processedFiles.filter(file => file !== null) as File[];
-      
+      const validFiles = processedFiles.filter(
+        (file) => file !== null
+      ) as File[];
+
       if (validFiles.length === 0) {
         setIsProcessing(false);
         setIsUploading(false);
         return; // No valid files to process
       }
-      
+
       const newImages = await Promise.all(validFiles.map(createImageFile));
-      
+
       // Check total images against limit
       const totalImages = [...images, ...newImages];
       if (totalImages.length > MAX_IMAGES) {
-        // For pro users, just limit the number of images
-        if (isProUser) {
-          alert(`Maximum ${MAX_IMAGES} images allowed. Only the first ${MAX_IMAGES - images.length} images will be added.`);
-          const limitedNewImages = newImages.slice(0, MAX_IMAGES - images.length);
-          setImages([...images, ...limitedNewImages]);
-          
-          // Select the first image if none is selected
-          if (!selectedImageId && limitedNewImages.length > 0) {
-            setSelectedImageId(limitedNewImages[0].id);
-          }
-        } 
-        // For free users, show the upgrade dialog if they try to add more than the limit
-        else {
-          const limitedNewImages = newImages.slice(0, MAX_IMAGES - images.length);
-          setImages([...images, ...limitedNewImages]);
-          
-          // Select the first image if none is selected
-          if (!selectedImageId && limitedNewImages.length > 0) {
-            setSelectedImageId(limitedNewImages[0].id);
-          }
-          
-          // Show dialog for upgrade if user hit the limit with this upload
-          // No upgrade dialog in all-free version
+        alert(
+          `Maximum ${MAX_IMAGES} images allowed. Only the first ${
+            MAX_IMAGES - images.length
+          } images will be added.`
+        );
+        const limitedNewImages = newImages.slice(0, MAX_IMAGES - images.length);
+        setImages([...images, ...limitedNewImages]);
+
+        // Select the first image if none is selected
+        if (!selectedImageId && limitedNewImages.length > 0) {
+          setSelectedImageId(limitedNewImages[0].id);
         }
       } else {
         setImages(totalImages);
-        
+
         // Select the first image if none is selected
         if (!selectedImageId && newImages.length > 0) {
           setSelectedImageId(newImages[0].id);
         }
       }
     } catch (error) {
-      console.error('Error processing uploaded files', error);
+      console.error("Error processing uploaded files", error);
     } finally {
       setIsProcessing(false);
       setIsUploading(false);
@@ -332,12 +360,14 @@ export default function Home() {
   // Handle deleting an image
   const handleDeleteImage = (imageId: string) => {
     // Remove the image from the state
-    const updatedImages = images.filter(img => img.id !== imageId);
+    const updatedImages = images.filter((img) => img.id !== imageId);
     setImages(updatedImages);
-    
+
     // Remove from SEO names list if present
-    setSeoNames(prevSeoNames => prevSeoNames.filter(name => name.id !== imageId));
-    
+    setSeoNames((prevSeoNames) =>
+      prevSeoNames.filter((name) => name.id !== imageId)
+    );
+
     // If the deleted image was selected, select another one if available
     if (selectedImageId === imageId) {
       if (updatedImages.length > 0) {
@@ -349,45 +379,82 @@ export default function Home() {
   };
 
   // Handle download - process the full image if needed
-  const handleDownloadImage = async (image: ImageFile, format: LibImageFormat = 'jpg') => {
-    console.log("Download requested for image:", image.id, "with adjustments:", adjustments, "and watermark:", watermarkSettings);
-    
+  const handleDownloadImage = async (
+    image: ImageFile,
+    format: LibImageFormat = "jpg"
+  ) => {
+    console.log(
+      "Download requested for image:",
+      image.id,
+      "with adjustments:",
+      adjustments,
+      "and watermark:",
+      watermarkSettings
+    );
+
     // For regular images - continue with existing logic
-    if (image.processedThumbnailUrl || watermarkSettings.enabled) { // Reprocess if watermark is enabled
+    if (image.processedThumbnailUrl || watermarkSettings.enabled) {
+      // Reprocess if watermark is enabled
       setIsProcessing(true);
       try {
         const currentPreset = getCurrentPreset();
         const { processedDataUrl } = await processImage(
-            image, 
-            adjustments, 
-            currentPreset, 
-            watermarkSettings, // Pass watermark settings
-            true // Process full size
+          image,
+          adjustments,
+          currentPreset,
+          watermarkSettings, // Pass watermark settings
+          true // Process full size
         );
-        
+
         if (processedDataUrl) {
-           setImages(prev => prev.map(img => img.id === image.id ? { ...img, processedDataUrl } : img));
-           downloadImage(processedDataUrl, `processed_${image.file.name}`, format, image.seoName || undefined);
+          setImages((prev) =>
+            prev.map((img) =>
+              img.id === image.id ? { ...img, processedDataUrl } : img
+            )
+          );
+          downloadImage(
+            processedDataUrl,
+            `processed_${image.file.name}`,
+            format,
+            image.seoName || undefined
+          );
         } else {
-           // Fallback to original dataUrl but still attempt processing for download (like adjustments only)
-           downloadImage(image.dataUrl || '', image.file.name, format, image.seoName || undefined, adjustments);
+          // Fallback to original dataUrl but still attempt processing for download (like adjustments only)
+          downloadImage(
+            image.dataUrl || "",
+            image.file.name,
+            format,
+            image.seoName || undefined,
+            adjustments
+          );
         }
       } catch (error) {
-        console.error('Error processing full image for download', error);
-        downloadImage(image.dataUrl || '', image.file.name, format, image.seoName || undefined, adjustments);
+        console.error("Error processing full image for download", error);
+        downloadImage(
+          image.dataUrl || "",
+          image.file.name,
+          format,
+          image.seoName || undefined,
+          adjustments
+        );
       } finally {
         setIsProcessing(false);
       }
     } else {
       // Download the original if no processing has been done
-      downloadImage(image.dataUrl || '', image.file.name, format, image.seoName || undefined);
+      downloadImage(
+        image.dataUrl || "",
+        image.file.name,
+        format,
+        image.seoName || undefined
+      );
     }
   };
 
   const handleInitiateDownload = (format: ImageFormat) => {
     // Use the format chosen by the user
     const selectedFormat = format as LibImageFormat;
-    
+
     setDownloadFormat(selectedFormat);
     setDownloadComplete(false);
     setIsDownloadDialogOpen(true);
@@ -400,80 +467,98 @@ export default function Home() {
     setDownloadComplete(true);
   };
 
-  const handleDownloadAll = async (format: LibImageFormat = 'jpg') => {
+  const handleDownloadAll = async (format: LibImageFormat = "jpg") => {
     const imagesToDownload = images; // Download all images
     if (imagesToDownload.length === 0) return;
-    
+
     setIsProcessing(true);
     try {
       const currentPreset = getCurrentPreset();
-      
+
       // Process full-size versions of all images before download
       const fullyProcessedImages = await Promise.all(
         imagesToDownload.map(async (image) => {
           // Process all images
-          const { processedDataUrl, processedThumbnailUrl } = await processImage(
-              image, 
-              adjustments, 
-              currentPreset, 
+          const { processedDataUrl, processedThumbnailUrl } =
+            await processImage(
+              image,
+              adjustments,
+              currentPreset,
               watermarkSettings, // Pass watermark settings
               true // Process full size
-          );
-          
+            );
+
           return {
             ...image,
             processedThumbnailUrl, // Keep thumbnail updated too
             processedDataUrl, // Store full processed URL
-            appliedPreset: currentPreset ? {
-              name: currentPreset.name,
-              width: currentPreset.width,
-              height: currentPreset.height,
-              quality: currentPreset.quality
-            } : undefined
+            appliedPreset: currentPreset
+              ? {
+                  name: currentPreset.name,
+                  width: currentPreset.width,
+                  height: currentPreset.height,
+                  quality: currentPreset.quality,
+                }
+              : undefined,
           };
         })
       );
-      
+
       // Update state with processed images (contains processedDataUrl)
       setImages(fullyProcessedImages);
-      
-      // Download all the processed images 
+
+      // Download all the processed images
       downloadAllImages(fullyProcessedImages, format, true); // Removed adjustments from here as they are baked in
-      
     } catch (error) {
-      console.error('Error processing images for download all', error);
+      console.error("Error processing images for download all", error);
     } finally {
       setIsProcessing(false);
     }
   };
 
   // Generate SEO-friendly names for images
-  const handleGenerateSeoNames = async (description: string, _recaptchaToken: string, imageCount: number) => {
+  const handleGenerateSeoNames = async (
+    description: string,
+    _recaptchaToken: string,
+    imageCount: number
+  ) => {
     if (!description.trim() || images.length === 0) return;
     setIsGeneratingSeoNames(true);
     try {
       // Generate simple slug-based names client-side (free, no server)
-      const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s-]/g, '').trim().replace(/\s+/g, '-');
-      const base = normalize(description).slice(0, 50) || 'image';
+      const normalize = (s: string) =>
+        s
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-");
+      const base = normalize(description).slice(0, 50) || "image";
       const count = imageCount || images.length;
-      const generated = Array.from({ length: count }, (_, i) => `${base}-${i + 1}`);
+      const generated = Array.from(
+        { length: count },
+        (_, i) => `${base}-${i + 1}`
+      );
       const newSeoNames: SeoImageName[] = images.map((image, index) => ({
         id: image.id,
         originalName: image.file.name,
         seoName: generated[index] || `${base}-${index + 1}`,
         description,
-        extension: image.file.name.split('.').pop() || 'jpg'
+        extension: image.file.name.split(".").pop() || "jpg",
       }));
       setSeoNames(newSeoNames);
-      setImages(prev => prev.map(img => {
-        const m = newSeoNames.find(n => n.id === img.id);
-        return m ? { ...img, seoName: m.seoName, originalName: img.file.name } : img;
-      }));
+      setImages((prev) =>
+        prev.map((img) => {
+          const m = newSeoNames.find((n) => n.id === img.id);
+          return m
+            ? { ...img, seoName: m.seoName, originalName: img.file.name }
+            : img;
+        })
+      );
     } finally {
       setIsGeneratingSeoNames(false);
     }
   };
-  
+
   // Handle reset of all adjustments and watermarks
   const handleReset = () => {
     setAdjustments(defaultAdjustments);
@@ -481,21 +566,21 @@ export default function Home() {
     setSelectedPreset(null);
     setCustomPresetSettings(null);
   };
-  
+
   // Get all presets including custom preset if available
   const getAllPresets = () => {
     let presets = [...defaultPresets];
-    
+
     if (customPresetSettings) {
       // Replace existing custom preset or add new one
-      const customIndex = presets.findIndex(p => p.id === 'custom');
+      const customIndex = presets.findIndex((p) => p.id === "custom");
       if (customIndex >= 0) {
         presets[customIndex] = customPresetSettings;
       } else {
         presets = [...presets, customPresetSettings];
       }
     }
-    
+
     return presets;
   };
 
@@ -526,9 +611,9 @@ export default function Home() {
         {!isOpenCVReady ? (
           <div className="brutalist-border p-4 text-center mb-6 bg-white">
             <div className="flex flex-col items-center justify-center py-8">
-            <Loader size="lg" />
-              <h3 className="text-lg font-bold mb-2">{t('loading')}</h3>
-              <p className="text-sm text-gray-600">{t('loadingDescription')}</p>
+              <Loader size="lg" />
+              <h3 className="text-lg font-bold mb-2">{t("loading")}</h3>
+              <p className="text-sm text-gray-600">{t("loadingDescription")}</p>
             </div>
           </div>
         ) : (
@@ -540,16 +625,19 @@ export default function Home() {
                   {isUploading && (
                     <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
                       <Loader size="lg" />
-                      <p className="mt-4 text-lg font-bold text-gray-700">{t('preparingImagesPreview')}</p>
+                      <p className="mt-4 text-lg font-bold text-gray-700">
+                        {t("preparingImagesPreview")}
+                      </p>
                     </div>
                   )}
                   <div className="brutalist-border p-6 bg-white">
                     <div className="flex justify-between items-center mb-4">
-                      <h2 className="text-xl font-bold uppercase">{t('transformTitle')}</h2>
-                      {isProUser && <ProBadge className="ml-2" />}
+                      <h2 className="text-xl font-bold uppercase">
+                        {t("transformTitle")}
+                      </h2>
                     </div>
-                    <p className="text-lg mb-6">{t('heroDescription')}</p>
-                    
+                    <p className="text-lg mb-6">{t("heroDescription")}</p>
+
                     {/* Upload area with drag and drop */}
                     <input
                       type="file"
@@ -559,8 +647,8 @@ export default function Home() {
                       className="hidden"
                       id="fileInput"
                     />
-                    
-                    <label 
+
+                    <label
                       htmlFor="fileInput"
                       className="brutalist-border border-3 border-dotted border-primary flex flex-col items-center justify-center w-full aspect-video bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
                       onDragOver={(e) => {
@@ -572,10 +660,14 @@ export default function Home() {
                         e.stopPropagation();
                         const files = e.dataTransfer.files;
                         if (files && files.length > 0) {
-                          const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+                          const fileInput = document.getElementById(
+                            "fileInput"
+                          ) as HTMLInputElement;
                           if (fileInput) {
                             fileInput.files = files;
-                            const event = new Event('change', { bubbles: true });
+                            const event = new Event("change", {
+                              bubbles: true,
+                            });
                             fileInput.dispatchEvent(event);
                           }
                         }
@@ -583,199 +675,217 @@ export default function Home() {
                     >
                       <div className="text-center p-6">
                         {/* Minimalist image upload icon with brand colors and black border */}
-                        <svg className="w-16 h-16 mx-auto mb-4" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg
+                          className="w-16 h-16 mx-auto mb-4"
+                          viewBox="0 0 64 64"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
                           {/* Image frame in primary color with black border */}
-                          <rect x="8" y="16" width="48" height="40" fill="#4F46E5" stroke="#000" strokeWidth="1.5" />
+                          <rect
+                            x="8"
+                            y="16"
+                            width="48"
+                            height="40"
+                            fill="#4F46E5"
+                            stroke="#000"
+                            strokeWidth="1.5"
+                          />
                           {/* Mountains in #fdc700 with black border */}
-                          <polygon points="14,52 28,36 38,46 50,28 56,56 8,56" fill="#fdc700" stroke="#000" strokeWidth="1.5" />
+                          <polygon
+                            points="14,52 28,36 38,46 50,28 56,56 8,56"
+                            fill="#fdc700"
+                            stroke="#000"
+                            strokeWidth="1.5"
+                          />
                           {/* Sun in accent color with black border */}
-                          <circle cx="48" cy="24" r="6" fill="#FF6B6B" stroke="#000" strokeWidth="1.5" />
+                          <circle
+                            cx="48"
+                            cy="24"
+                            r="6"
+                            fill="#FF6B6B"
+                            stroke="#000"
+                            strokeWidth="1.5"
+                          />
                           {/* Up arrow in accent color, above the frame, with black border */}
-                          <path d="M32 6L40 16H36V28H28V16H24L32 6Z" fill="#FF6B6B" stroke="#000" strokeWidth="1.5" />
+                          <path
+                            d="M32 6L40 16H36V28H28V16H24L32 6Z"
+                            fill="#FF6B6B"
+                            stroke="#000"
+                            strokeWidth="1.5"
+                          />
                         </svg>
-                        <p className="font-medium mb-2">{t('selectImages', { maxImages: isProUser ? "100" : "5" })}</p>
+                        <p className="font-medium mb-2">
+                          {t("selectImages", {
+                            maxImages: "100",
+                          })}
+                        </p>
                         <p className="text-sm text-gray-500">
-                          {t.rich('dragAndDropPrivacy', {
-                            strong: (chunks) => <strong>{chunks}</strong>
+                          {t.rich("dragAndDropPrivacy", {
+                            strong: (chunks) => <strong>{chunks}</strong>,
                           })}
                         </p>
                       </div>
                     </label>
-
-                        {/* Video Introduction Section */}
-                        <div className="pt-6 pb-6 pr-2 pl-2 mt-6">
-                      
-                      {/* YouTube Video Embed with Brutalist S  tyling */}
-<div>
-  <div className="relative w-full m-2" style={{
-      border: '2px solid #000',
-      boxShadow: '4px 4px 0px #000'
-    }} >
-    <YouTubeEmbed videoid="fMGOvRdo_wU"  />
-  </div>
-</div>
-
-
-</div>
-
-                    {/* Pro status - FREE PLAN card for non-pro users */}
-                    {!isProUser && (
-                      <>
-                        <div className="brutalist-border p-4 bg-white mt-6">
-                 
-                          <p className="text-sm mb-3">{t('freeDescription', { maxImages: MAX_IMAGES })}</p>
-                          <div className="text-center mt-2">
-                            {/* Premium CTA removed */}
-                          </div>
-                        </div>
-                        {/* Upgrade banner removed */}
-                      </>
-                    )}
-
-                
                   </div>
                 </div>
-                
+
                 {/* Right column - Features showcase and information */}
                 <div className="space-y-4">
                   {/* Features showcase grid */}
-                  <div >
+                  <div>
                     <div className="space-y-4">
                       <div className="brutalist-border p-3 bg-gray-50">
-                        <p className="font-bold mb-1">🎯 {t('features.presets.title')}</p>
-                        <p className="text-sm">{t('features.presets.description')}</p>
+                        <p className="font-bold mb-1">
+                          🎯 {t("features.presets.title")}
+                        </p>
+                        <p className="text-sm">
+                          {t("features.presets.description")}
+                        </p>
                       </div>
                       <div className="brutalist-border p-3 bg-gray-50">
-                        <p className="font-bold mb-1">🤖 {t('features.aiPowered.title')}</p>
-                        <p className="text-sm">{t('features.aiPowered.description')}</p>
+                        <p className="font-bold mb-1">
+                          🤖 {t("features.aiPowered.title")}
+                        </p>
+                        <p className="text-sm">
+                          {t("features.aiPowered.description")}
+                        </p>
                       </div>
                       <div className="brutalist-border p-3 bg-gray-50">
-                        <p className="font-bold mb-1">🎚️ {t('features.advancedControls.title')}</p>
-                        <p className="text-sm">{t('features.advancedControls.description')}</p>
+                        <p className="font-bold mb-1">
+                          🎚️ {t("features.advancedControls.title")}
+                        </p>
+                        <p className="text-sm">
+                          {t("features.advancedControls.description")}
+                        </p>
                       </div>
                       <div className="brutalist-border p-3 bg-gray-50">
-                        <p className="font-bold mb-1">⚡ {t('features.batchProcessing.title')}</p>
-                        <p className="text-sm">{t('features.batchProcessing.description')}</p>
+                        <p className="font-bold mb-1">
+                          ⚡ {t("features.batchProcessing.title")}
+                        </p>
+                        <p className="text-sm">
+                          {t("features.batchProcessing.description")}
+                        </p>
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Privacy notice - Moved from left column */}
                   <div className="brutalist-border p-4 bg-white">
-                    <p className="font-medium mb-2">✨ <span className="font-bold">{t('privacyFocused')}</span></p>
-                    <p className="text-sm">
-                      {t('privacyDescription')}
+                    <p className="font-medium mb-2">
+                      ✨{" "}
+                      <span className="font-bold">{t("privacyFocused")}</span>
                     </p>
+                    <p className="text-sm">{t("privacyDescription")}</p>
                   </div>
-                  
-               
                 </div>
               </div>
             ) : (
               // Existing editor layout for when images are uploaded
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 md:sticky md:top-4 md:self-start space-y-6 relative">
-              {isUploading && (
-                <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
-                  <Loader size="lg" />
-                  <p className="mt-4 text-lg font-bold text-gray-700">{t('preparingImagesPreview')}</p>
-                </div>
-              )}
-              <div className="flex justify-between items-center">
-                <h2 className="text-xl font-bold">{t('imageEditor')}</h2>
-                {/* Pro badge removed */}
-              </div>
-            
-              <ImagePreview
-                images={images}
-                selectedImageId={selectedImageId}
-                onSelectImage={setSelectedImageId}
-                onDownloadImage={handleDownloadImage}
-                onDeleteImage={handleDeleteImage}
-                isProcessing={isProcessing}
-                className="mb-6"
-                appliedSettings={{
-                  preset: selectedPreset,
-                  presetName: getCurrentPresetName(),
-                  applyToAll
-                }}
-                maxImagesAllowed={MAX_IMAGES}
-                isPro={isProUser}
-              />
-              
-              <div className="mb-6 flex justify-between items-center flex-col space-y-4">
-                <div className="flex space-x-2 justify-between items-center">
-                  <input
-                    type="file"
-                    accept="image/*,.heic,.heif"
-                    multiple
-                    onChange={handleFileChange}
-                    className="hidden"
-                    id="fileInputMore"
-                  />
-                  <label htmlFor="fileInputMore">
-                    <Button 
-                      as="span" 
-                      variant="default" 
-                      disabled={isProcessing || (images.length >= MAX_IMAGES && isProUser)}
-                    >
-                      {images.length >= MAX_IMAGES ? t('maxImagesReached') : t('selectMoreImages')}
-                    </Button>
-                  </label>
-                  
-                  {/* Upgrade button removed */}
-                </div>
-                
-                <div className="text-sm">
-                  {t('imagesCount', { current: images.length, max: MAX_IMAGES })}
-                  {!isProUser && (
-                    <span className="ml-2 text-xs text-gray-600">
-                      {t('upgradeFor')}
-                    </span>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="md:col-span-2 md:sticky md:top-4 md:self-start space-y-6 relative">
+                  {isUploading && (
+                    <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                      <Loader size="lg" />
+                      <p className="mt-4 text-lg font-bold text-gray-700">
+                        {t("preparingImagesPreview")}
+                      </p>
+                    </div>
                   )}
+                  <div className="flex justify-between items-center">
+                    <h2 className="text-xl font-bold">{t("imageEditor")}</h2>
+                    {/* Pro badge removed */}
+                  </div>
+
+                  <ImagePreview
+                    images={images}
+                    selectedImageId={selectedImageId}
+                    onSelectImage={setSelectedImageId}
+                    onDownloadImage={handleDownloadImage}
+                    onDeleteImage={handleDeleteImage}
+                    isProcessing={isProcessing}
+                    className="mb-6"
+                    appliedSettings={{
+                      preset: selectedPreset,
+                      presetName: getCurrentPresetName(),
+                      applyToAll,
+                    }}
+                    maxImagesAllowed={MAX_IMAGES}
+                  />
+
+                  <div className="mb-6 flex justify-between items-center flex-col space-y-4">
+                    <div className="flex space-x-2 justify-between items-center">
+                      <input
+                        type="file"
+                        accept="image/*,.heic,.heif"
+                        multiple
+                        onChange={handleFileChange}
+                        className="hidden"
+                        id="fileInputMore"
+                      />
+                      <label htmlFor="fileInputMore">
+                        <Button
+                          as="span"
+                          variant="default"
+                          disabled={isProcessing || images.length >= MAX_IMAGES}
+                        >
+                          {images.length >= MAX_IMAGES
+                            ? t("maxImagesReached")
+                            : t("selectMoreImages")}
+                        </Button>
+                      </label>
+
+                      {/* Upgrade button removed */}
+                    </div>
+
+                    <div className="text-sm">
+                      {t("imagesCount", {
+                        current: images.length,
+                        max: MAX_IMAGES,
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <ImageProcessingProvider
+                    adjustments={adjustments}
+                    onAdjustmentsChange={setAdjustments}
+                    watermarkSettings={watermarkSettings}
+                    onWatermarkSettingsChange={setWatermarkSettings}
+                    applyToAll={applyToAll}
+                    setApplyToAll={setApplyToAll}
+                    onReset={handleReset}
+                    isProcessing={isProcessing}
+                  >
+                    <ImageProcessingControls />
+                    <WatermarkControl />
+                  </ImageProcessingProvider>
+
+                  <Card title={t("imageOptimization")} variant="accent">
+                    <PresetsSelector
+                      presets={getAllPresets()}
+                      selectedPreset={selectedPreset}
+                      onSelectPreset={setSelectedPreset}
+                      onCustomSettingsChange={handleCustomSettingsChange}
+                    />
+                  </Card>
+
+                  <SeoNameGenerator
+                    seoNames={seoNames}
+                    onGenerateSeoNames={handleGenerateSeoNames}
+                    isGenerating={isGeneratingSeoNames}
+                    imageCount={images.length}
+                  />
+
+                  {/* Removed SEO Product Description generator */}
+
+                  <DownloadOptions
+                    onDownload={handleInitiateDownload}
+                    hasSeoProductDescription={false}
+                  />
                 </div>
               </div>
-            </div>
-
-            <div className="space-y-6">
-              <ImageProcessingProvider
-                adjustments={adjustments}
-                onAdjustmentsChange={setAdjustments}
-                watermarkSettings={watermarkSettings}
-                onWatermarkSettingsChange={setWatermarkSettings}
-                applyToAll={applyToAll}
-                setApplyToAll={setApplyToAll}
-                onReset={handleReset}
-                isProcessing={isProcessing}
-              >
-                <ImageProcessingControls />
-                <WatermarkControl />
-              </ImageProcessingProvider>
-
-              <Card title={t('imageOptimization')} variant="accent">
-                <PresetsSelector
-                  presets={getAllPresets()}
-                  selectedPreset={selectedPreset}
-                  onSelectPreset={setSelectedPreset}
-                  onCustomSettingsChange={handleCustomSettingsChange}
-                />
-              </Card>
-
-              <SeoNameGenerator
-                seoNames={seoNames}
-                onGenerateSeoNames={handleGenerateSeoNames}
-                isGenerating={isGeneratingSeoNames}
-                imageCount={images.length}
-              />
-
-              {/* Removed SEO Product Description generator */}
-
-              <DownloadOptions
-                onDownload={handleInitiateDownload}
-                hasSeoProductDescription={false}
-              />
-            </div>
-          </div>
             )}
           </>
         )}
@@ -784,23 +894,27 @@ export default function Home() {
       {/* Download Dialog */}
       <DownloadDialog
         isOpen={isDownloadDialogOpen}
-        onClose={downloadComplete ? handleContinueEditing : handleConfirmDownload}
+        onClose={
+          downloadComplete ? handleContinueEditing : handleConfirmDownload
+        }
         imageCount={images.length}
         onStartNewBundle={handleStartNewBundle}
         onContinueEditing={handleContinueEditing}
-        hasAppliedChanges={images.some(img => img.processedThumbnailUrl || watermarkSettings.enabled)}
+        hasAppliedChanges={images.some(
+          (img) => img.processedThumbnailUrl || watermarkSettings.enabled
+        )}
         appliedPresetName={getCurrentPresetName()}
         isDownloading={isDownloading}
         downloadComplete={downloadComplete}
         formatType={downloadFormat}
-        hasSeoNames={images.some(img => !!img.seoName)}
+        hasSeoNames={images.some((img) => !!img.seoName)}
         hasSeoProductDescription={false}
         hasWatermark={watermarkSettings.enabled}
       />
-      
+
       {/* Pro Upgrade Dialog */}
       {/* Upgrade dialog removed */}
-      
+
       {/* Sticky CTA Styles */}
       <style jsx global>{`
         @media (max-width: 768px) {
@@ -815,7 +929,7 @@ export default function Home() {
             padding: 1rem;
             border-top: 2px solid #000;
           }
-          
+
           .cta-button {
             width: 100%;
             font-size: 1.125rem;
@@ -826,4 +940,3 @@ export default function Home() {
     </main>
   );
 }
-

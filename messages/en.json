@@ -1,1467 +1,1434 @@
 {
-    "Manifest": {
-        "name": "Batch Shots"
+  "Manifest": {
+    "name": "Batch Shots"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+  },
+  "CookieConsent": {
+    "title": "COOKIE NOTICE",
+    "message": "We use essential cookies for authentication, preferences, and app functionality. By continuing to use our site, you agree to this.",
+    "privacyLink": "Privacy Policy",
+    "termsLink": "Terms of Use",
+    "acceptButton": "ACCEPT",
+    "rejectButton": "REJECT",
+    "learnMoreButton": "LEARN MORE"
+  },
+  "Home": {
+    "title": "Batch Shots: SEO IMAGE OPTIMIZER",
+    "loading": "LOADING APP...",
+    "loadingDescription": "Please wait while we initialize image processing capabilities.",
+    "transformTitle": "TRANSFORM YOUR PRODUCT PHOTOS",
+    "heroDescription": "Quickly optimize your product images for web, e-commerce, and social media with our browser-based tool.",
+    "privacyFocused": "PRIVACY-FOCUSED",
+    "privacyDescription": "Batch Shots processes all images directly in your browser. We don't store your photos or data on our servers.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "heicConversionFailed": "Failed to convert HEIC image: {fileName}. The file format may not be supported or the file may be corrupted.",
+    "preparingImagesPreview": "Preparing images...",
+    "features": {
+      "presets": {
+        "title": "PROFESSIONAL PRESETS",
+        "description": "Apply optimized presets for e-commerce, social media, and web display with a single click."
+      },
+      "aiPowered": {
+        "title": "AI-POWERED SEO",
+        "description": "Generate SEO-friendly filenames with our AI tools to improve your product discoverability."
+      },
+      "advancedControls": {
+        "title": "ADVANCED CONTROLS",
+        "description": "Fine-tune brightness, contrast, white balance, and more to perfect your product images."
+      },
+      "batchProcessing": {
+        "title": "BATCH PROCESSING",
+        "description": "Process multiple images at once to save time and ensure consistent results."
+      }
     },
-    "LocaleSwitcher": {
-        "label": "Change language",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+    "upgradeProTitle": "UNLOCK PRO FEATURES",
+    "upgradeProDescription": "Get more images, background removal, and advanced features with our one-time Pro upgrade.",
+    "freePlan": "FREE PLAN",
+    "proDescription": "Process images freely with all features unlocked.",
+    "freeDescription": "All features are free and unlimited.",
+    "upgradeToPro": "",
+    "learnMoreAboutPro": "",
+    "selectImages": "SELECT IMAGES",
+    "imageEditor": "IMAGE EDITOR",
+    "selectMoreImages": "SELECT MORE IMAGES",
+    "maxImagesReached": "MAX IMAGES REACHED",
+    "imagesCount": "{current}/{max} images",
+    "upgradeFor": "",
+    "imageOptimization": "IMAGE OPTIMIZATION",
+    "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong> Your privacy and security are guaranteed."
+  },
+  "Navbar": {
+    "imageOptimizer": "Image Optimizer",
+    "removeBackgrounds": "Remove Backgrounds",
+    "aiPhotoDuplicateFinder": "AI Photo Duplicate Finder",
+    "aiImageSeoCaptionGeneration": "AI Image SEO Caption Generation",
+    "aiBackgrounds": "AI Backgrounds",
+    "pricing": "Pricing",
+    "login": "LOG IN",
+    "objectRemoval": "Object Removal",
+    "tools": "Tools",
+    "addWatermark": "Add Watermark",
+    "seoDescription": "SEO Description",
+    "imageFormatConvertor": "Image Format Convertor",
+    "profile": "Profile",
+    "logout": "Logout"
+  },
+  "Footer": {
+    "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
+    "quickLinks": "QUICK LINKS",
+    "stayUpdated": "STAY UPDATED",
+    "subscribeText": "Subscribe to our newsletter for updates, tips, and special offers.",
+    "emailPlaceholder": "Your email",
+    "subscribe": "SUBSCRIBE",
+    "copyright": "© {year} Batch Shots. All rights reserved.",
+    "madeWith": "Made with ♥ by the Batch Shots team",
+    "contactUs": "Contact Us"
+  },
+  "Layout": {
+    "title": "AI Batch Image Editor & SEO Optimizer | Batch Shots",
+    "description": "Effortlessly edit, resize, watermark, and optimize images in bulk for SEO. AI-powered features for product photos, background removal, and SEO name generation.",
+    "keywords": "image editor, batch image processing, seo image optimization, watermark photos, background removal, product photos, ai image editing, batchshots"
+  },
+  "PrivacyPage": {
+    "title": "Privacy Policy | Batch Shots",
+    "description": "Understand how Batch Shots handles your data. Our privacy policy details data collection, usage, and protection practices.",
+    "keywords": "privacy policy, data protection, user data, GDPR, batchshots"
+  },
+  "TermsPage": {
+    "title": "Terms of Service | Batch Shots",
+    "description": "Review the terms and conditions for using Batch Shots. Learn about user responsibilities, service limitations, and intellectual property.",
+    "keywords": "terms of service, terms and conditions, user agreement, batchshots"
+  },
+  "PricingPage": {
+    "title": "Pricing Plans | Batch Shots Pro",
+    "description": "Explore Batch Shots pricing plans. Choose the best plan for your image editing needs, from free tier to Pro features like background removal and increased limits.",
+    "keywords": "pricing, batch shots pro, subscription plans, image editing cost, background removal pricing"
+  },
+  "BackgroundRemovalPage": {
+    "metadata": {
+      "title": "AI Background Remover | Batch Shots",
+      "description": "Automatically remove backgrounds from your images with Batch Shots' AI-powered tool. Perfect for product photos, portraits, and creative projects. Try it free!",
+      "keywords": "background remover, remove background, ai background removal, transparent background, product photography, batch image editing"
     },
-    "CookieConsent": {
-        "title": "COOKIE NOTICE",
-        "message": "We use essential cookies for authentication, preferences, and app functionality. By continuing to use our site, you agree to this.",
-        "privacyLink": "Privacy Policy",
-        "termsLink": "Terms of Use",
-        "acceptButton": "ACCEPT",
-        "rejectButton": "REJECT",
-        "learnMoreButton": "LEARN MORE"
+    "title": "BACKGROUND REMOVAL TOOL",
+    "loading": {
+      "tool": "LOADING TOOL...",
+      "proStatus": "CHECKING PRO STATUS...",
+      "description": "Please wait while we initialize image processing capabilities.",
+      "proDescription": "Please wait while we verify your account status."
     },
-    "Home": {
-        "title": "Batch Shots: SEO IMAGE OPTIMIZER",
-        "loading": "LOADING APP...",
-        "loadingDescription": "Please wait while we initialize image processing capabilities.",
-        "transformTitle": "TRANSFORM YOUR PRODUCT PHOTOS",
-        "heroDescription": "Quickly optimize your product images for web, e-commerce, and social media with our browser-based tool.",
-        "privacyFocused": "PRIVACY-FOCUSED",
-        "privacyDescription": "Batch Shots processes all images directly in your browser. We don't store your photos or data on our servers.",
-        "privacyPolicy": "Privacy Policy",
-        "termsOfUse": "Terms of Use",
-        "heicConversionFailed": "Failed to convert HEIC image: {fileName}. The file format may not be supported or the file may be corrupted.",
-        "preparingImagesPreview": "Preparing images...",
-        "features": {
-            "presets": {
-                "title": "PROFESSIONAL PRESETS",
-                "description": "Apply optimized presets for e-commerce, social media, and web display with a single click."
-            },
-            "aiPowered": {
-                "title": "AI-POWERED SEO",
-                "description": "Generate SEO-friendly filenames with our AI tools to improve your product discoverability."
-            },
-            "advancedControls": {
-                "title": "ADVANCED CONTROLS",
-                "description": "Fine-tune brightness, contrast, white balance, and more to perfect your product images."
-            },
-            "batchProcessing": {
-                "title": "BATCH PROCESSING",
-                "description": "Process multiple images at once to save time and ensure consistent results."
-            }
+    "mainCard": {
+      "title": "REMOVE IMAGE BACKGROUNDS",
+      "info": {
+        "title": "AI BACKGROUND REMOVAL",
+        "description": "Remove the background from your product images with AI technology. The process occurs entirely in your browser for privacy.",
+        "freeMode": {
+          "title": "ALL FEATURES",
+          "description": "Process as many images as you want. Everything is free."
+        }
+      },
+      "upload": {
+        "title": "Select Images",
+        "buttonFree": "SELECT IMAGES",
+        "buttonPro": "SELECT IMAGES",
+        "helpTextFree": "",
+        "helpTextPro": ""
+      },
+      "actions": {
+        "clear": "CLEAR",
+        "download": "DOWNLOAD",
+        "downloadZip": "DOWNLOAD AS ZIP",
+        "downloading": "DOWNLOADING...",
+        "downloadingZip": "CREATING ZIP...",
+        "removeBackground": "REMOVE BACKGROUND",
+        "removeBackgrounds": "REMOVE BACKGROUNDS",
+        "processing": "REMOVING BACKGROUND...",
+        "processingMultiple": "REMOVING BACKGROUNDS...",
+        "tryFullEditor": "TRY FULL EDITOR"
+      },
+      "progress": {
+        "processing": "Processing...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "UPGRADE TO PRO",
+        "plan": {
+          "title": "PRO PLAN",
+          "price": "$19.99",
+          "features": [
+            "Remove backgrounds from up to 100 images at once",
+            "Advanced image adjustments and presets",
+            "SEO name generation for product images",
+            "Batch processing for all features",
+            "One-time payment, lifetime access"
+          ],
+          "buttonText": ""
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "HOW IT WORKS",
+      "step1": {
+        "title": "1. SELECT YOUR IMAGES",
+        "description": "Upload one or more product images you want to process.",
+        "proNote": "PRO users can select up to 100 images at once!"
+      },
+      "step2": {
+        "title": "2. REMOVE BACKGROUNDS",
+        "description": "Our AI technology will detect and remove the background from your images, creating transparent PNGs perfect for e-commerce."
+      },
+      "step3": {
+        "title": "3. DOWNLOAD & USE",
+        "description": "Download your processed images and use them on your website, marketplace listings, or marketing materials."
+      }
+    },
+    "proDialog": {
+      "title": "UPGRADE TO PRO",
+      "featureTitle": "PRO FEATURE: Bulk Background Removal",
+      "description": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk, saving you hours of work!",
+      "pricing": {
+        "title": "ONE-TIME PAYMENT",
+        "price": "$19.99",
+        "note": "No subscription, lifetime access"
+      },
+      "actions": {
+        "upgrade": "UPGRADE TO PRO",
+        "continue": "CONTINUE WITH FREE MODE"
+      }
+    }
+  },
+  "Components": {
+    "ImageProcessingControls": {
+      "title": "IMAGE ADJUSTMENTS",
+      "reset": "RESET",
+      "applyToAll": "APPLY TO ALL IMAGES",
+      "basic": "BASIC",
+      "advanced": "ADVANCED",
+      "ai": "AI",
+      "brightness": "BRIGHTNESS",
+      "contrast": "CONTRAST",
+      "sharpen": "SHARPEN",
+      "colorAdjust": "COLOR ADJUST (HSL)",
+      "hue": "HUE",
+      "cooler": "COOLER",
+      "warmer": "WARMER",
+      "saturation": "SATURATION",
+      "less": "LESS",
+      "more": "MORE",
+      "lightness": "LIGHTNESS",
+      "darker": "DARKER",
+      "lighter": "LIGHTER",
+      "colorBalance": "COLOR BALANCE (RGB)",
+      "red": "RED",
+      "green": "GREEN",
+      "blue": "BLUE",
+      "processing": "PROCESSING IMAGES..."
+    },
+    "BackgroundRemoval": {
+      "title": "BACKGROUND REMOVAL",
+      "selected": "Selected Image",
+      "removeBackground": "REMOVE BACKGROUND",
+      "allImages": "All Images",
+      "backgroundsRemoved": "{count} of {total} backgrounds removed",
+      "removeAllBackgrounds": "REMOVE ALL BACKGROUNDS",
+      "processing": "Processing...",
+      "backgroundRemoved": "Background removed successfully!",
+      "transparent": "Transparent background detected",
+      "description": "Remove the background from your product image with AI technology. The process occurs entirely in your browser for privacy.",
+      "processingInfo": {
+        "process": "Process",
+        "processValue": "In-browser AI processing",
+        "result": "Result",
+        "resultValue": "Transparent background PNG",
+        "mode": "Mode"
+      },
+      "proDialog": {
+        "title": "UPGRADE TO PRO",
+        "featureTitle": "PRO FEATURE: Background Removal",
+        "description": "Upgrade to PRO to unlock background removal for all your images (up to 100 at once)! Get professional-looking product photos with transparent backgrounds.",
+        "pricing": {
+          "title": "ONE-TIME PAYMENT",
+          "price": "$19.99",
+          "note": "No subscription, lifetime access"
         },
-        "upgradeProTitle": "UNLOCK PRO FEATURES",
-        "upgradeProDescription": "Get more images, background removal, and advanced features with our one-time Pro upgrade.",
-        "proMode": "PRO MODE ACTIVATED",
-        "freePlan": "FREE PLAN",
-        "proDescription": "Process images freely with all features unlocked.",
-        "freeDescription": "All features are free and unlimited.",
-        "upgradeToPro": "",
-        "learnMoreAboutPro": "",
-        "selectImages": "SELECT IMAGES",
-        "imageEditor": "IMAGE EDITOR",
-        "selectMoreImages": "SELECT MORE IMAGES",
-        "maxImagesReached": "MAX IMAGES REACHED",
-        "imagesCount": "{current}/{max} images",
-        "upgradeFor": "",
-        "imageOptimization": "IMAGE OPTIMIZATION",
-        "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong> Your privacy and security are guaranteed."
+        "actions": {
+          "upgrade": "UPGRADE TO PRO",
+          "try": "TRY HOW IT WORKS",
+          "later": "Maybe later"
+        }
+      },
+      "compactDescription": "Removes background from product images using AI. Processing takes 10-30 seconds."
     },
-    "Navbar": {
-        "imageOptimizer": "Image Optimizer",
-        "removeBackgrounds": "Remove Backgrounds",
-        "aiPhotoDuplicateFinder": "AI Photo Duplicate Finder",
-        "aiImageSeoCaptionGeneration": "AI Image SEO Caption Generation",
-        "aiBackgrounds": "AI Backgrounds",
-        "pricing": "Pricing",
-        "login": "LOG IN",
-        "objectRemoval": "Object Removal",
-        "tools": "Tools",
-        "addWatermark": "Add Watermark",
-        "seoDescription": "SEO Description",
-        "imageFormatConvertor": "Image Format Convertor",
-        "profile": "Profile",
-        "logout": "Logout"
+    "PresetsSelector": {
+      "title": "PRESETS",
+      "custom": "Custom",
+      "dimensions": "DIMENSIONS",
+      "width": "Width",
+      "height": "Height",
+      "auto": "auto",
+      "quality": "QUALITY",
+      "apply": "APPLY",
+      "presets": {
+        "web-optimized": {
+          "name": "Web Optimized",
+          "description": "1080px, 75% quality (Smallest file size, good for web)"
+        },
+        "standard": {
+          "name": "Standard",
+          "description": "1080px, 85% quality (Balanced size and quality)"
+        },
+        "high-quality": {
+          "name": "High Quality",
+          "description": "1440px, 95% quality (High quality, larger file size)"
+        },
+        "max-quality": {
+          "name": "Maximum",
+          "description": "2160px, 100% quality (Maximum quality, largest file size)"
+        },
+        "custom": {
+          "name": "Custom",
+          "description": "Custom dimensions and quality settings"
+        }
+      }
     },
-    "Footer": {
-        "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
-        "quickLinks": "QUICK LINKS",
-        "stayUpdated": "STAY UPDATED",
-        "subscribeText": "Subscribe to our newsletter for updates, tips, and special offers.",
-        "emailPlaceholder": "Your email",
-        "subscribe": "SUBSCRIBE",
-        "copyright": "© {year} Batch Shots. All rights reserved.",
-        "madeWith": "Made with ♥ by the Batch Shots team",
-        "contactUs": "Contact Us"
+    "DownloadOptions": {
+      "title": "DOWNLOAD",
+      "format": "FORMAT",
+      "downloadAll": "DOWNLOAD ALL",
+      "transparentNote": "Note: Images with removed backgrounds will be saved as transparent PNGs",
+      "seoProductDescription": "A TXT file with the SEO product description will be included in the ZIP download"
     },
-    "Layout": {
-        "title": "AI Batch Image Editor & SEO Optimizer | Batch Shots",
-        "description": "Effortlessly edit, resize, watermark, and optimize images in bulk for SEO. AI-powered features for product photos, background removal, and SEO name generation.",
-        "keywords": "image editor, batch image processing, seo image optimization, watermark photos, background removal, product photos, ai image editing, batchshots"
+    "ProUpgrade": {
+      "title": "Upgrade to Pro",
+      "unlock": "Unlock All Premium Features",
+      "description": "Upgrade to Pro to unlock {feature} and process up to {count} images at once.",
+      "pricing": {
+        "title": "ONE-TIME PAYMENT",
+        "price": "$19.99",
+        "note": "No subscription, lifetime access"
+      },
+      "learnMore": "LEARN MORE",
+      "close": "Close"
     },
-    "PrivacyPage": {
-        "title": "Privacy Policy | Batch Shots",
-        "description": "Understand how Batch Shots handles your data. Our privacy policy details data collection, usage, and protection practices.",
-        "keywords": "privacy policy, data protection, user data, GDPR, batchshots"
+    "SeoNameGenerator": {
+      "title": "AI SEO NAME GENERATOR",
+      "description": "Generate SEO-friendly filenames for your images",
+      "enterDescription": "Enter your product description",
+      "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain...",
+      "generate": "GENERATE SEO NAMES",
+      "generating": "GENERATING...",
+      "proLimit": "Generate up to 100 names at once with Pro",
+      "originalName": "Original Name",
+      "seoName": "SEO Name",
+      "appliedNames": {
+        "title": "Applied SEO Names",
+        "description": "Our AI has generated SEO-optimized filenames for your images. You can edit individual names in the image preview section."
+      },
+      "tryFeature": "TRY HOW IT WORKS"
     },
-    "TermsPage": {
-        "title": "Terms of Service | Batch Shots",
-        "description": "Review the terms and conditions for using Batch Shots. Learn about user responsibilities, service limitations, and intellectual property.",
-        "keywords": "terms of service, terms and conditions, user agreement, batchshots"
+    "SeoProductDescription": {
+      "title": "AI SEO PRODUCT DESCRIPTION",
+      "description": "Generate complete SEO-optimized product description",
+      "enterDescription": "Enter basic product information",
+      "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
+      "generate": "GENERATE PRODUCT DESCRIPTION",
+      "generating": "GENERATING...",
+      "generateWithCount": "GENERATE ({remaining} remaining today)",
+      "dailyLimitReached": "DAILY LIMIT REACHED",
+      "dailyLimitExceeded": "Daily limit of 5 descriptions reached. Upgrade to PRO for unlimited access or try again tomorrow.",
+      "dailyUsageInfo": "{remaining} of {total} daily generations remaining",
+      "proUnlimited": "PRO: Unlimited generations",
+      "upgradeToPro": "UPGRADE TO PRO",
+      "loginRequired": "LOGIN REQUIRED",
+      "loginToGenerate": "Please log in to generate SEO product descriptions. Free users get 5 descriptions per day, PRO users get unlimited access.",
+      "loginButton": "LOG IN",
+      "cancel": "CANCEL",
+      "copyToClipboard": "COPY TO CLIPBOARD",
+      "downloadAsTxt": "DOWNLOAD AS TXT",
+      "copied": "Copied!",
+      "tryFeature": "TRY HOW IT WORKS",
+      "tabs": {
+        "content": "CONTENT",
+        "meta": "META",
+        "categories": "CATEGORIES",
+        "previews": "PREVIEWS"
+      },
+      "previews": {
+        "googleSearch": "GOOGLE SEARCH PREVIEW",
+        "ecommerce": "E-COMMERCE PREVIEW",
+        "productImage": "Product Image",
+        "addToCart": "Add to Cart",
+        "wishlist": "Wishlist"
+      },
+      "sections": {
+        "productTitle": "Product Title",
+        "metaTitle": "Meta Title",
+        "metaDescription": "Meta Description",
+        "shortDescription": "Short Description",
+        "longDescription": "Long Description",
+        "categories": "Categories",
+        "tags": "Tags",
+        "urlSlug": "URL Slug"
+      },
+      "downloadAll": "DOWNLOAD ALL DATA"
     },
-    "PricingPage": {
-        "title": "Pricing Plans | Batch Shots Pro",
-        "description": "Explore Batch Shots pricing plans. Choose the best plan for your image editing needs, from free tier to Pro features like background removal and increased limits.",
-        "keywords": "pricing, batch shots pro, subscription plans, image editing cost, background removal pricing"
+    "QuickPresets": {
+      "title": "QUICK PRESETS",
+      "productSpecialty": "PRODUCT SPECIALTY",
+      "colorStyle": "COLOR STYLE",
+      "presets": {
+        "white-bg": {
+          "name": "WHITE BACKGROUND",
+          "description": "Clean white background product photography"
+        },
+        "clean": {
+          "name": "CLEAN PRODUCT",
+          "description": "Product photography with clean, neutral colors"
+        },
+        "jewelry": {
+          "name": "JEWELRY/METAL",
+          "description": "Optimized for jewelry and metallic products"
+        },
+        "sharp": {
+          "name": "SHARP DETAIL",
+          "description": "Enhanced sharpness and detail"
+        },
+        "textile": {
+          "name": "TEXTILE/FABRIC",
+          "description": "For fabric and textile products - enhances texture and color"
+        },
+        "soft-product": {
+          "name": "SOFT PRODUCTS",
+          "description": "For soft products like pillows, cushions, plush toys"
+        },
+        "furniture": {
+          "name": "FURNITURE/WOOD",
+          "description": "Wooden furniture and home decor"
+        },
+        "transparent": {
+          "name": "GLASS",
+          "description": "Glass and transparent products"
+        },
+        "food": {
+          "name": "FOOD PRODUCTS",
+          "description": "Food photography - enhances freshness and color appeal"
+        },
+        "dramatic": {
+          "name": "DRAMATIC",
+          "description": "High contrast product photography"
+        },
+        "vivid": {
+          "name": "VIVID COLORS",
+          "description": "Enhanced color saturation and brightness"
+        },
+        "classic": {
+          "name": "CLASSIC",
+          "description": "Classic look with balanced colors"
+        }
+      }
+    },
+    "ImagePreview": {
+      "noImages": "No images selected",
+      "zoomInstructions": "Pinch to zoom, drag to move",
+      "zoomLevel": "{scale}%",
+      "removingBackground": "Removing Background...",
+      "seoName": {
+        "label": "SEO-Friendly Name:",
+        "edit": "EDIT",
+        "cancel": "CANCEL",
+        "save": "SAVE"
+      },
+      "originalName": "Original name:",
+      "fileInfo": {
+        "dimensions": "Dimensions:",
+        "size": "Size:",
+        "output": "Output:",
+        "quality": "Quality:",
+        "background": "Background:",
+        "backgroundRemoved": "Removed",
+        "custom": "Custom",
+        "auto": "auto"
+      },
+      "actions": {
+        "download": "DOWNLOAD",
+        "reset": "RESET"
+      },
+      "allImages": "ALL IMAGES ({current}/{max})"
+    },
+    "PricingCard": {
+      "oneTime": "one-time",
+      "currentPlan": "CURRENT PLAN"
+    },
+    "WatermarkControl": {
+      "title": "WATERMARK",
+      "addTab": "ADD WATERMARK",
+      "removeTab": "REMOVE OBJECTS",
+      "type": "TYPE",
+      "text": "TEXT",
+      "logo": "LOGO",
+      "enterText": "Enter watermark text",
+      "font": "FONT",
+      "size": "SIZE",
+      "color": "COLOR",
+      "opacity": "OPACITY",
+      "position": "POSITION",
+      "uploadLogo": "UPLOAD LOGO",
+      "logoPlaceholder": "Click or drag logo here",
+      "reset": "RESET",
+      "presets": {
+        "bottomRight": "Bottom-Right",
+        "bottomLeft": "Bottom-Left",
+        "topLeft": "Top-Left",
+        "topRight": "Top-Right",
+        "center": "Center",
+        "diagonal": "Diagonal",
+        "tile": "Tile (Pattern)"
+      },
+      "removeDescription": "AI-powered watermark removal coming soon!"
     },
     "BackgroundRemovalPage": {
-        "metadata": {
-            "title": "AI Background Remover | Batch Shots",
-            "description": "Automatically remove backgrounds from your images with Batch Shots' AI-powered tool. Perfect for product photos, portraits, and creative projects. Try it free!",
-            "keywords": "background remover, remove background, ai background removal, transparent background, product photography, batch image editing"
+      "title": "BACKGROUND REMOVAL TOOL",
+      "loading": {
+        "tool": "LOADING TOOL...",
+        "proStatus": "CHECKING PRO STATUS...",
+        "description": "Please wait while we initialize image processing capabilities.",
+        "proDescription": "Please wait while we verify your account status."
+      },
+      "mainCard": {
+        "title": "REMOVE IMAGE BACKGROUNDS",
+        "info": {
+          "title": "AI BACKGROUND REMOVAL",
+          "description": "Remove the background from your product images with AI technology. The process occurs entirely in your browser for privacy."
         },
-        "title": "BACKGROUND REMOVAL TOOL",
-        "loading": {
-            "tool": "LOADING TOOL...",
-            "proStatus": "CHECKING PRO STATUS...",
-            "description": "Please wait while we initialize image processing capabilities.",
-            "proDescription": "Please wait while we verify your account status."
+        "upload": {
+          "title": "Select Images",
+          "buttonFree": "SELECT AN IMAGE",
+          "buttonPro": "SELECT IMAGES",
+          "helpTextFree": "Free users can select 1 image at a time.",
+          "helpTextPro": "You can select up to 100 images at once."
         },
-        "mainCard": {
-            "title": "REMOVE IMAGE BACKGROUNDS",
-            "info": {
-                "title": "AI BACKGROUND REMOVAL",
-                "description": "Remove the background from your product images with AI technology. The process occurs entirely in your browser for privacy.",
-            "freeMode": {
-                "title": "ALL FEATURES",
-                "description": "Process as many images as you want. Everything is free."
-            }
-            },
-            "upload": {
-                "title": "Select Images",
-            "buttonFree": "SELECT IMAGES",
-            "buttonPro": "SELECT IMAGES",
-            "helpTextFree": "",
-            "helpTextPro": ""
-            },
-            "actions": {
-                "clear": "CLEAR",
-                "download": "DOWNLOAD",
-                "downloadZip": "DOWNLOAD AS ZIP",
-                "downloading": "DOWNLOADING...",
-                "downloadingZip": "CREATING ZIP...",
-                "removeBackground": "REMOVE BACKGROUND",
-                "removeBackgrounds": "REMOVE BACKGROUNDS",
-                "processing": "REMOVING BACKGROUND...",
-                "processingMultiple": "REMOVING BACKGROUNDS...",
-                "tryFullEditor": "TRY FULL EDITOR"
-            },
-            "progress": {
-                "processing": "Processing...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "UPGRADE TO PRO",
-                "plan": {
-                    "title": "PRO PLAN",
-                    "price": "$19.99",
-                    "features": [
-                        "Remove backgrounds from up to 100 images at once",
-                        "Advanced image adjustments and presets",
-                        "SEO name generation for product images",
-                        "Batch processing for all features",
-                        "One-time payment, lifetime access"
-                    ],
-                    "buttonText": ""
-                }
-            }
+        "actions": {
+          "clear": "CLEAR",
+          "download": "DOWNLOAD",
+          "downloadZip": "DOWNLOAD AS ZIP",
+          "downloading": "DOWNLOADING...",
+          "downloadingZip": "CREATING ZIP...",
+          "removeBackground": "REMOVE BACKGROUND",
+          "removeBackgrounds": "REMOVE BACKGROUNDS",
+          "processing": "REMOVING BACKGROUND...",
+          "processingMultiple": "REMOVING BACKGROUNDS...",
+          "tryFullEditor": "TRY FULL EDITOR"
         },
-        "howItWorks": {
-            "title": "HOW IT WORKS",
-            "step1": {
-                "title": "1. SELECT YOUR IMAGES",
-                "description": "Upload one or more product images you want to process.",
-                "proNote": "PRO users can select up to 100 images at once!"
-            },
-            "step2": {
-                "title": "2. REMOVE BACKGROUNDS",
-                "description": "Our AI technology will detect and remove the background from your images, creating transparent PNGs perfect for e-commerce."
-            },
-            "step3": {
-                "title": "3. DOWNLOAD & USE",
-                "description": "Download your processed images and use them on your website, marketplace listings, or marketing materials."
-            }
-        },
-        "proDialog": {
-            "title": "UPGRADE TO PRO",
-            "featureTitle": "PRO FEATURE: Bulk Background Removal",
-            "description": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk, saving you hours of work!",
-            "pricing": {
-                "title": "ONE-TIME PAYMENT",
-                "price": "$19.99",
-                "note": "No subscription, lifetime access"
-            },
-            "actions": {
-                "upgrade": "UPGRADE TO PRO",
-                "continue": "CONTINUE WITH FREE MODE"
-            }
-        }
-    },
-    "Components": {
-        "ImageProcessingControls": {
-            "title": "IMAGE ADJUSTMENTS",
-            "reset": "RESET",
-            "applyToAll": "APPLY TO ALL IMAGES",
-            "basic": "BASIC",
-            "advanced": "ADVANCED",
-            "ai": "AI",
-            "brightness": "BRIGHTNESS",
-            "contrast": "CONTRAST",
-            "sharpen": "SHARPEN",
-            "colorAdjust": "COLOR ADJUST (HSL)",
-            "hue": "HUE",
-            "cooler": "COOLER",
-            "warmer": "WARMER",
-            "saturation": "SATURATION",
-            "less": "LESS",
-            "more": "MORE",
-            "lightness": "LIGHTNESS",
-            "darker": "DARKER",
-            "lighter": "LIGHTER",
-            "colorBalance": "COLOR BALANCE (RGB)",
-            "red": "RED",
-            "green": "GREEN",
-            "blue": "BLUE",
-            "processing": "PROCESSING IMAGES..."
-        },
-        "BackgroundRemoval": {
-            "title": "BACKGROUND REMOVAL",
-            "selected": "Selected Image",
-            "removeBackground": "REMOVE BACKGROUND",
-            "allImages": "All Images",
-            "backgroundsRemoved": "{count} of {total} backgrounds removed",
-            "removeAllBackgrounds": "REMOVE ALL BACKGROUNDS",
-            "processing": "Processing...",
-            "backgroundRemoved": "Background removed successfully!",
-            "transparent": "Transparent background detected",
-            "description": "Remove the background from your product image with AI technology. The process occurs entirely in your browser for privacy.",
-            "processingInfo": {
-                "process": "Process",
-                "processValue": "In-browser AI processing",
-                "result": "Result",
-                "resultValue": "Transparent background PNG",
-                "mode": "Mode"
-            },
-            "proDialog": {
-                "title": "UPGRADE TO PRO",
-                "featureTitle": "PRO FEATURE: Background Removal",
-                "description": "Upgrade to PRO to unlock background removal for all your images (up to 100 at once)! Get professional-looking product photos with transparent backgrounds.",
-                "pricing": {
-                    "title": "ONE-TIME PAYMENT",
-                    "price": "$19.99",
-                    "note": "No subscription, lifetime access"
-                },
-                "actions": {
-                    "upgrade": "UPGRADE TO PRO",
-                    "try": "TRY HOW IT WORKS",
-                    "later": "Maybe later"
-                }
-            },
-            "compactDescription": "Removes background from product images using AI. Processing takes 10-30 seconds."
-        },
-        "PresetsSelector": {
-            "title": "PRESETS",
-            "custom": "Custom",
-            "dimensions": "DIMENSIONS",
-            "width": "Width",
-            "height": "Height",
-            "auto": "auto",
-            "quality": "QUALITY",
-            "apply": "APPLY",
-            "presets": {
-                "web-optimized": {
-                    "name": "Web Optimized",
-                    "description": "1080px, 75% quality (Smallest file size, good for web)"
-                },
-                "standard": {
-                    "name": "Standard",
-                    "description": "1080px, 85% quality (Balanced size and quality)"
-                },
-                "high-quality": {
-                    "name": "High Quality",
-                    "description": "1440px, 95% quality (High quality, larger file size)"
-                },
-                "max-quality": {
-                    "name": "Maximum",
-                    "description": "2160px, 100% quality (Maximum quality, largest file size)"
-                },
-                "custom": {
-                    "name": "Custom",
-                    "description": "Custom dimensions and quality settings"
-                }
-            }
-        },
-        "DownloadOptions": {
-            "title": "DOWNLOAD",
-            "format": "FORMAT",
-            "downloadAll": "DOWNLOAD ALL",
-            "transparentNote": "Note: Images with removed backgrounds will be saved as transparent PNGs",
-            "seoProductDescription": "A TXT file with the SEO product description will be included in the ZIP download"
-        },
-        "ProUpgrade": {
-            "title": "Upgrade to Pro",
-            "unlock": "Unlock All Premium Features",
-            "description": "Upgrade to Pro to unlock {feature} and process up to {count} images at once.",
-            "pricing": {
-                "title": "ONE-TIME PAYMENT",
-                "price": "$19.99",
-                "note": "No subscription, lifetime access"
-            },
-            "learnMore": "LEARN MORE",
-            "close": "Close"
-        },
-        "SeoNameGenerator": {
-            "title": "AI SEO NAME GENERATOR",
-            "description": "Generate SEO-friendly filenames for your images",
-            "enterDescription": "Enter your product description",
-            "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain...",
-            "generate": "GENERATE SEO NAMES",
-            "generating": "GENERATING...",
-            "proLimit": "Generate up to 100 names at once with Pro",
-            "originalName": "Original Name",
-            "seoName": "SEO Name",
-            "appliedNames": {
-                "title": "Applied SEO Names",
-                "description": "Our AI has generated SEO-optimized filenames for your images. You can edit individual names in the image preview section."
-            },
-            "tryFeature": "TRY HOW IT WORKS"
-        },
-        "SeoProductDescription": {
-            "title": "AI SEO PRODUCT DESCRIPTION",
-            "description": "Generate complete SEO-optimized product description",
-            "enterDescription": "Enter basic product information",
-            "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
-            "generate": "GENERATE PRODUCT DESCRIPTION",
-            "generating": "GENERATING...",
-            "generateWithCount": "GENERATE ({remaining} remaining today)",
-            "dailyLimitReached": "DAILY LIMIT REACHED",
-            "dailyLimitExceeded": "Daily limit of 5 descriptions reached. Upgrade to PRO for unlimited access or try again tomorrow.",
-            "dailyUsageInfo": "{remaining} of {total} daily generations remaining",
-            "proUnlimited": "PRO: Unlimited generations",
-            "upgradeToPro": "UPGRADE TO PRO",
-            "loginRequired": "LOGIN REQUIRED",
-            "loginToGenerate": "Please log in to generate SEO product descriptions. Free users get 5 descriptions per day, PRO users get unlimited access.",
-            "loginButton": "LOG IN",
-            "cancel": "CANCEL",
-            "copyToClipboard": "COPY TO CLIPBOARD",
-            "downloadAsTxt": "DOWNLOAD AS TXT",
-            "copied": "Copied!",
-            "tryFeature": "TRY HOW IT WORKS",
-            "tabs": {
-                "content": "CONTENT",
-                "meta": "META",
-                "categories": "CATEGORIES",
-                "previews": "PREVIEWS"
-            },
-            "previews": {
-                "googleSearch": "GOOGLE SEARCH PREVIEW",
-                "ecommerce": "E-COMMERCE PREVIEW",
-                "productImage": "Product Image",
-                "addToCart": "Add to Cart",
-                "wishlist": "Wishlist"
-            },
-            "sections": {
-                "productTitle": "Product Title",
-                "metaTitle": "Meta Title",
-                "metaDescription": "Meta Description",
-                "shortDescription": "Short Description", 
-                "longDescription": "Long Description",
-                "categories": "Categories",
-                "tags": "Tags",
-                "urlSlug": "URL Slug"
-            },
-            "downloadAll": "DOWNLOAD ALL DATA"
-        },
-        "QuickPresets": {
-            "title": "QUICK PRESETS",
-            "productSpecialty": "PRODUCT SPECIALTY",
-            "colorStyle": "COLOR STYLE",
-            "presets": {
-                "white-bg": {
-                    "name": "WHITE BACKGROUND",
-                    "description": "Clean white background product photography"
-                },
-                "clean": {
-                    "name": "CLEAN PRODUCT",
-                    "description": "Product photography with clean, neutral colors"
-                },
-                "jewelry": {
-                    "name": "JEWELRY/METAL",
-                    "description": "Optimized for jewelry and metallic products"
-                },
-                "sharp": {
-                    "name": "SHARP DETAIL",
-                    "description": "Enhanced sharpness and detail"
-                },
-                "textile": {
-                    "name": "TEXTILE/FABRIC",
-                    "description": "For fabric and textile products - enhances texture and color"
-                },
-                "soft-product": {
-                    "name": "SOFT PRODUCTS",
-                    "description": "For soft products like pillows, cushions, plush toys"
-                },
-                "furniture": {
-                    "name": "FURNITURE/WOOD",
-                    "description": "Wooden furniture and home decor"
-                },
-                "transparent": {
-                    "name": "GLASS",
-                    "description": "Glass and transparent products"
-                },
-                "food": {
-                    "name": "FOOD PRODUCTS",
-                    "description": "Food photography - enhances freshness and color appeal"
-                },
-                "dramatic": {
-                    "name": "DRAMATIC",
-                    "description": "High contrast product photography"
-                },
-                "vivid": {
-                    "name": "VIVID COLORS",
-                    "description": "Enhanced color saturation and brightness"
-                },
-                "classic": {
-                    "name": "CLASSIC",
-                    "description": "Classic look with balanced colors"
-                }
-            }
-        },
-        "ImagePreview": {
-            "noImages": "No images selected",
-            "zoomInstructions": "Pinch to zoom, drag to move",
-            "zoomLevel": "{scale}%",
-            "removingBackground": "Removing Background...",
-            "seoName": {
-                "label": "SEO-Friendly Name:",
-                "edit": "EDIT",
-                "cancel": "CANCEL",
-                "save": "SAVE"
-            },
-            "originalName": "Original name:",
-            "fileInfo": {
-                "dimensions": "Dimensions:",
-                "size": "Size:",
-                "output": "Output:",
-                "quality": "Quality:",
-                "background": "Background:",
-                "backgroundRemoved": "Removed",
-                "custom": "Custom",
-                "auto": "auto"
-            },
-            "actions": {
-                "download": "DOWNLOAD",
-                "reset": "RESET"
-            },
-            "allImages": "ALL IMAGES ({current}/{max})"
-        },
-        "PricingCard": {
-            "oneTime": "one-time",
-            "currentPlan": "CURRENT PLAN"
-        },
-        "WatermarkControl": {
-            "title": "WATERMARK",
-            "addTab": "ADD WATERMARK",
-            "removeTab": "REMOVE OBJECTS",
-            "type": "TYPE",
-            "text": "TEXT",
-            "logo": "LOGO",
-            "enterText": "Enter watermark text",
-            "font": "FONT",
-            "size": "SIZE",
-            "color": "COLOR",
-            "opacity": "OPACITY",
-            "position": "POSITION",
-            "uploadLogo": "UPLOAD LOGO",
-            "logoPlaceholder": "Click or drag logo here",
-            "reset": "RESET",
-            "presets": {
-                "bottomRight": "Bottom-Right",
-                "bottomLeft": "Bottom-Left",
-                "topLeft": "Top-Left",
-                "topRight": "Top-Right",
-                "center": "Center",
-                "diagonal": "Diagonal",
-                "tile": "Tile (Pattern)"
-            },
-            "removeDescription": "AI-powered watermark removal coming soon!"
-        },
-        "BackgroundRemovalPage": {
-            "title": "BACKGROUND REMOVAL TOOL",
-            "loading": {
-                "tool": "LOADING TOOL...",
-                "proStatus": "CHECKING PRO STATUS...",
-                "description": "Please wait while we initialize image processing capabilities.",
-                "proDescription": "Please wait while we verify your account status."
-            },
-            "mainCard": {
-                "title": "REMOVE IMAGE BACKGROUNDS",
-                "info": {
-                    "title": "AI BACKGROUND REMOVAL",
-                    "description": "Remove the background from your product images with AI technology. The process occurs entirely in your browser for privacy.",
-                    "freeMode": {
-                        "title": "FREE MODE",
-                        "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
-                    },
-                    "proMode": {
-                        "title": "PRO MODE",
-                        "description": "Process up to 100 images in bulk with your PRO account!"
-                    }
-                },
-                "upload": {
-                    "title": "Select Images",
-                    "buttonFree": "SELECT AN IMAGE",
-                    "buttonPro": "SELECT IMAGES",
-                    "helpTextFree": "Free users can select 1 image at a time.",
-                    "helpTextPro": "You can select up to 100 images at once."
-                },
-                "actions": {
-                    "clear": "CLEAR",
-                    "download": "DOWNLOAD",
-                    "downloadZip": "DOWNLOAD AS ZIP",
-                    "downloading": "DOWNLOADING...",
-                    "downloadingZip": "CREATING ZIP...",
-                    "removeBackground": "REMOVE BACKGROUND",
-                    "removeBackgrounds": "REMOVE BACKGROUNDS",
-                    "processing": "REMOVING BACKGROUND...",
-                    "processingMultiple": "REMOVING BACKGROUNDS...",
-                    "tryFullEditor": "TRY FULL EDITOR"
-                },
-                "progress": {
-                    "processing": "Processing...",
-                    "percent": "{percent}%"
-                },
-                "upgradeCard": {
-                    "title": "UPGRADE TO PRO",
-                    "plan": {
-                        "title": "PRO PLAN",
-                        "price": "$19.99",
-                        "features": [
-                            "Remove backgrounds from up to 100 images at once",
-                            "Advanced image adjustments and presets",
-                            "SEO name generation for product images",
-                            "Batch processing for all features",
-                            "One-time payment, lifetime access"
-                        ],
-                        "buttonText": "UPGRADE NOW"
-                    }
-                }
-            },
-            "howItWorks": {
-                "title": "HOW IT WORKS",
-                "step1": {
-                    "title": "1. SELECT YOUR IMAGES",
-                    "description": "Upload one or more product images you want to process.",
-                    "proNote": "PRO users can select up to 100 images at once!"
-                },
-                "step2": {
-                    "title": "2. REMOVE BACKGROUNDS",
-                    "description": "Our AI technology will detect and remove the background from your images, creating transparent PNGs perfect for e-commerce."
-                },
-                "step3": {
-                    "title": "3. DOWNLOAD & USE",
-                    "description": "Download your processed images and use them on your website, marketplace listings, or marketing materials."
-                }
-            },
-            "proDialog": {
-                "title": "UPGRADE TO PRO",
-                "featureTitle": "PRO FEATURE: Bulk Background Removal",
-                "description": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk, saving you hours of work!",
-                "pricing": {
-                    "title": "ONE-TIME PAYMENT",
-                    "price": "$19.99",
-                    "note": "No subscription, lifetime access"
-                },
-                "actions": {
-                    "upgrade": "UPGRADE TO PRO",
-                    "continue": "CONTINUE WITH FREE MODE"
-                }
-            }
-        },
-        "SeoProductDescriptionGenerator": {
-            "title": "AI SEO PRODUCT DESCRIPTION",
-            "description": "Generate complete SEO-optimized product description",
-            "enterDescription": "Enter basic product information",
-            "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
-            "generate": "GENERATE PRODUCT DESCRIPTION",
-            "generating": "GENERATING...",
-            "generateWithCount": "GENERATE ({remaining} remaining today)",
-            "dailyLimitReached": "DAILY LIMIT REACHED",
-            "dailyLimitExceeded": "Daily limit of 5 descriptions reached. Upgrade to PRO for unlimited access or try again tomorrow.",
-            "dailyUsageInfo": "{remaining} of {total} daily generations remaining",
-            "proUnlimited": "PRO: Unlimited generations",
-            "upgradeToPro": "UPGRADE TO PRO",
-            "loginRequired": "LOGIN REQUIRED",
-            "loginToGenerate": "Please log in to generate SEO product descriptions. Free users get 5 descriptions per day, PRO users get unlimited access.",
-            "loginButton": "LOG IN",
-            "cancel": "CANCEL",
-            "copyToClipboard": "COPY TO CLIPBOARD",
-            "downloadAsTxt": "DOWNLOAD AS TXT",
-            "copied": "Copied!",
-            "tryFeature": "TRY HOW IT WORKS",
-            "tabs": {
-                "content": "CONTENT",
-                "meta": "META",
-                "categories": "CATEGORIES",
-                "previews": "PREVIEWS"
-            },
-            "previews": {
-                "googleSearch": "GOOGLE SEARCH PREVIEW",
-                "ecommerce": "E-COMMERCE PREVIEW",
-                "productImage": "Product Image",
-                "addToCart": "Add to Cart",
-                "wishlist": "Wishlist"
-            },
-            "sections": {
-                "productTitle": "Product Title",
-                "metaTitle": "Meta Title",
-                "metaDescription": "Meta Description",
-                "shortDescription": "Short Description", 
-                "longDescription": "Long Description",
-                "categories": "Categories",
-                "tags": "Tags",
-                "urlSlug": "URL Slug"
-            },
-            "downloadAll": "DOWNLOAD ALL DATA"
-        },
-        "SeoDescriptionPage": {
-            "metadata": {
-                "title": "AI SEO Product Description Generator | Batch Shots",
-                "description": "Generate complete, SEO-optimized product descriptions (title, meta title/description, short/long description, categories, tags, URL slug) from basic info.",
-                "keywords": "seo product description, ai product description, ecommerce seo, product description generator, meta description generator, product title generator"
-            },
-            "title": "AI SEO PRODUCT DESCRIPTION GENERATOR",
-            "mainCard": {
-                "title": "GENERATE SEO CONTENT",
-                "info": {
-                    "title": "WHAT IS THIS TOOL?",
-                    "description": "This AI-powered tool generates a complete SEO package for your products from basic information. You'll receive a product title, meta title, meta description, short and long descriptions, categories, tags, and a URL slug, all optimized for search engines.",
-                                    "freeMode": {
-                    "title": "FREE MODE",
-                    "description": "Generate up to 5 SEO product descriptions per day. Upgrade to PRO for unlimited generation and access to all SEO content fields."
-                },
-                    "proMode": {
-                        "title": "PRO MODE",
-                        "description": "Unlimited access to generate complete SEO product descriptions with all premium features unlocked."
-                    }
-                },
-                "benefits": {
-                    "complete": "COMPLETE SEO PACKAGE",
-                    "completeDesc": "Get a full set of SEO content for your product, ready to use.",
-                    "aiPowered": "AI-POWERED CONTENT",
-                    "aiPoweredDesc": "Generates unique, compelling, and keyword-rich descriptions.",
-                    "bestPractices": "SEO BEST PRACTICES",
-                    "bestPracticesDesc": "Follows guidelines for character counts, keyword placement, and readability.",
-                    "quickEasy": "QUICK & EASY",
-                    "quickEasyDesc": "Save hours by generating professional descriptions in seconds."
-                }
-            },
-            "upgradeCard": {
-                "title": "UPGRADE TO PRO",
-                "description": "Unlock unlimited SEO product description generation and access all features.",
-                "button": "UPGRADE NOW"
-            },
-            "instructionsCard": {
-                "title": "HOW TO USE",
-                "step1": "Enter basic details about your product (name, features, materials, etc.).",
-                "step2": "Click the 'Generate Product Description' button.",
-                "step3": "Review the generated content (title, meta, descriptions, etc.).",
-                "step4": "Copy the content or download it as a text file.",
-                "step5": "Use the generated SEO content on your e-commerce store or website."
-            }
-        }
-    },
-    "Dialogs": {
-        "download": {
-            "title": "Download Images",
-            "confirmTitle": "READY TO DOWNLOAD",
-            "successTitle": "DOWNLOAD COMPLETE",
-            "summary": "SUMMARY",
-            "images": "{count, plural, =1 {1 image} other {# images}}",
-            "format": "Format:",
-            "appliedPreset": "Applied preset:",
-            "adjustmentsApplied": "Image adjustments applied",
-            "backgroundRemoval": "Background removal applied (transparent PNGs)",
-            "seoFilenames": "SEO-optimized filenames",
-            "seoProductDescription": "SEO Product Description (TXT)",
-            "watermarkApplied": "Watermark applied",
-            "zipPackage": "All files packaged in a ZIP archive",
-            "processingNote": "Please wait while your images are processed. This may take a moment for high-quality images.",
-            "cancel": "CANCEL",
-            "download": "DOWNLOAD",
-            "processing": "PROCESSING...",
-            "successMessage": "Your images have been downloaded successfully. What would you like to do next?",
-            "startNewBundleDesc": "Start a new batch of images (clears current images)",
-            "continueEditingDesc": "Continue editing the current images",
-            "startNewBundle": "START NEW BATCH",
-            "continueEditing": "CONTINUE EDITING"
-        },
-        "proUpgrade": {
-            "feature": "Batch Processing"
-        }
-    },
-    "Pricing": {
-        "title": "PRICING PLANS",
-        "subtitle": "Choose the perfect plan for your image optimization needs. Our PRO plan offers a lifetime license with a one-time payment.",
-        "alreadyPro": {
-            "title": "You're already a PRO user!",
-            "description": "Thank you for your support. You have access to all PRO features including bulk background removal, advanced image adjustments, and SEO filename generation.",
-            "backToEditor": "BACK TO EDITOR"
-        },
-        "checkout": {
-            "title": "COMPLETE YOUR PURCHASE",
-            "planTitle": "PRO LIFETIME LICENSE",
-            "price": "$19.99",
-            "description": "One-time payment, lifetime access to all PRO features",
-            "email": "EMAIL",
-            "cardInfo": "CARD INFORMATION",
-            "cardNumber": "1234 5678 9012 3456",
-            "expiryDate": "MM/YY",
-            "cvc": "CVC",
-            "completePurchase": "COMPLETE PURCHASE",
-            "goBack": "Go back"
-        },
-        "plans": {
-            "free": {
-                "title": "FREE",
-                "price": "FREE",
-                "features": [
-                    "Batch process max 5 images",
-                    "Single image AI background removal (preview)",
-                    "AI objects removal from single image",
-                    "Watermark adding max 5 images",
-                    "Image converter max 5 images in bulk",
-                    "AI Photo Duplicate Finder max 5 images",
-                    "AI SEO images naming generation (Not available)",
-                    "AI SEO description and metatags (Not available)"
-                ],
-                "buttonText": "CONTINUE WITH FREE"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "$19.99",
-                "features": [
-                    "Batch process max 100 images",
-                    "Up to 100 AI background removals in one batch",
-                    "AI objects removal up to 100 images",
-                    "Watermark adding 100 images in one batch",
-                    "Image converter max 100 images in bulk",
-                    "AI Photo Duplicate Finder unlimited batch",
-                    "AI SEO images naming generation (up to 100)",
-                    "AI SEO description and metatags available",
-                    "**One-time payment, lifetime access**"
-                ],
-                "buttonText": "UPGRADE TO PRO"
-            }
-        },
-        "faq": {
-            "title": "FREQUENTLY ASKED QUESTIONS",
-            "questions": {
-                "oneTime": {
-                    "question": "Is this really a one-time payment?",
-                    "answer": "Yes! Pay once and get lifetime access to all PRO features. No recurring subscriptions."
-                },
-                "backgroundRemoval": {
-                    "question": "How does background removal work?",
-                    "answer": "We use advanced AI algorithms to detect and remove backgrounds from your product images. The entire process happens in your browser - we never store your images on our servers."
-                },
-                "imageLimits": {
-                    "question": "What are the image limits?",
-                    "answer": "Free users can process up to 10 images at once with basic features and remove the background from 1 image at a time. PRO users can process up to 100 images simultaneously, including bulk background removal."
-                },
-                "refund": {
-                    "question": "Can I request a refund?",
-                    "answer": "Yes, we offer a 30-day money-back guarantee if you're not satisfied with the PRO features. Contact our support team for assistance."
-                }
-            }
-        }
-    },
-    "PrivacyPolicy": {
-        "title": "PRIVACY POLICY",
-        "section1Title": "1. Introduction",
-        "section1P1": "Welcome to Batch Shots (“we”, “our”, “us”). We are committed to protecting your privacy and ensuring the security of your personal information.",
-        "section1P2": "This Privacy Policy explains how we handle your data when you use our browser-based image optimization tool.",
-        "section2Title": "2. Information We Do Not Collect",
-        "section2P1Bold": "We do not collect or store your images.",
-        "section2P1": "Our core principle is privacy by design.",
-        "section2P2": "Batch Shots operates entirely within your browser. When you upload images to optimize:",
-        "section2Li1": "Your images are processed locally in your browser using client-side JavaScript.",
-        "section2Li2": "Your images never leave your device and are not transmitted to our servers.",
-        "section2Li3": "We do not store copies of your original or processed images.",
-        "section2Li4": "We do not track the content of your images.",
-        "section3Title": "3. AI-POWERED FEATURES",
-        "section3P1": "When you use our AI-powered SEO name generation features:",
-        "section3Li1": "We send only the descriptive text you provide to our API.",
-        "section3Li2": "We do not send or process your actual images through our AI systems.",
-        "section3Li3": "Your generated SEO names are delivered back to your browser and are not permanently stored on our servers.",
-        "section4Title": "4. ANALYTICS & COOKIES",
-        "section4P1": "We use minimal analytics to understand how our site is used:",
-        "section4Li1": "We collect anonymous usage statistics like page views and feature usage.",
-        "section4Li2": "We use essential cookies to provide functionality like reCAPTCHA protection.",
-        "section4Li3": "We do not use cookies for advertising or tracking across other websites.",
-        "section5Title": "5. THIRD-PARTY SERVICES",
-        "section5P1": "We use the following third-party services:",
-        "section5Li1": "Google reCAPTCHA for spam protection on our AI features.",
-        "section5Li2": "OpenCV.js for image processing (runs entirely in your browser).",
-        "section5P2": "Each of these services has its own privacy policy governing how they handle data.",
-        "section6Title": "6. CHANGES TO THIS POLICY",
-        "section6P1": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date.",
-        "section7Title": "7. Contact Us",
-        "section7P1": "If you have any questions about this Privacy Policy, please contact us at privacy@batchshots.com.",
-        "returnButton": "RETURN TO HOME"
-    },
-    "TermsOfUse": {
-        "title": "TERMS OF USE",
-        "lastUpdated": "Last Updated: May 30, 2025",
-        "section1Title": "1. Acceptance of Terms",
-        "section1P1": "By accessing and using Batch Shots, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you may not use our service.",
-        "section2Title": "2. Description of Service",
-        "section2P1": "Batch Shots is a browser-based image optimization tool that allows users to:",
-        "section2Li1": "Adjust image properties such as brightness, contrast, and white balance",
-        "section2Li2": "Resize and optimize images for web use",
-        "section2Li3": "Generate SEO-friendly filenames",
-        "section2Li4": "Process multiple images simultaneously",
-        "section2P2": "All image processing occurs locally in your browser; no images are uploaded to or stored on our servers.",
-        "section3Title": "3. User Responsibilities",
-        "section3P1": "Users of Batch Shots are solely responsible for ensuring they have the necessary rights and permissions to use, upload, and process any images with our service. Batch Shots is not responsible for any copyright or intellectual property violations arising from your use of the service. You must use the service in compliance with all applicable laws and regulations.",
-        "section3Li1": "Ensuring they have the necessary rights and permissions to modify and process the images they use",
-        "section3Li2": "Using the service in compliance with applicable laws and regulations",
-        "section3Li3": "Not using the service to process, create, or distribute inappropriate, offensive, or illegal content",
-        "section3Li4": "Not attempting to reverse engineer, modify, or hack the service",
-        "section4Title": "4. Intellectual Property",
-        "section4P1": "All original content, features, and functionality of Batch Shots are owned by us and are protected by international copyright, trademark, and other intellectual property laws.",
-        "section4P2": "You retain all rights to your original images. We claim no ownership over the images you process using our service.",
-        "section4aTitle": "4A. User Content, Ownership, and Lifetime Pro Access",
-        "section4aP1": "All images and content uploaded or processed using Batch Shots remain the sole property of the user. Batch Shots does not store, view, or transmit your images to our servers; all processing occurs locally in your browser. You are solely responsible for ensuring you have the necessary rights and permissions to use and process any images with our service. Batch Shots is not responsible for any copyright or intellectual property violations arising from your use of the service.",
-        "section4aP2": "\"Lifetime\" access to Pro features means you will have access to all Pro features for as long as Batch Shots is operated and maintained as a service. If Batch Shots is discontinued, we will make reasonable efforts to provide Pro users with access to the software code or to open source the application, enabling continued use.",
-        "section5Title": "5. Disclaimers",
-        "section5Li1": "Batch Shots is provided “as is” and “as available” without any warranties of any kind.",
-        "section5Li2": "We do not guarantee that the service will be uninterrupted, secure, or error-free.",
-        "section5Li3": "We are not responsible for any loss of data that may occur during processing. Users are responsible for keeping their own backups.",
-        "section5Li4": "We make no warranties regarding the accuracy or effectiveness of the SEO name generation feature.",
-        "section5Li5": "Batch Shots is not responsible for any legal claims, damages, or disputes arising from user content or the use of the service.",
-        "section6Title": "6. Limitation of Liability",
-        "section6P1": "To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service, or from any legal claims arising from your content.",
-        "section7Title": "7. Modifications to Service",
-        "section7P1": "We reserve the right to modify, suspend, or discontinue any part of Batch Shots at any time without prior notice or liability.",
-        "section8Title": "8. Governing Law",
-        "section8P1": "These Terms of Use shall be governed by and construed in accordance with the laws of the jurisdiction in which we operate, without regard to its conflict of law provisions.",
-        "section9Title": "9. Changes to Terms",
-        "section9P1": "We may update these Terms of Use from time to time. We will notify you of any changes by posting the new Terms on this page and updating the “Last Updated” date.",
-        "section10Title": "10. Contact Us",
-        "section10P1": "If you have any questions about these Terms of Use, please contact us at terms@batchshots.com.",
-        "returnButton": "RETURN TO HOME"
-    },
-    "ObjectRemovalPage": {
-        "metadata": {
-            "title": "AI Object Removal Tool | Batch Shots",
-            "description": "Remove unwanted objects, people, or text from your images with our AI-powered tool. Works entirely in your browser for privacy. Try it for free!",
-            "keywords": "object removal, ai object removal, remove objects from image, remove text from image, remove people from photo, inpainting, image editing tool"
-        },
-        "title": "AI OBJECT REMOVER",
-        "loading": {
-            "ort": "Loading AI Engine...",
-            "opencv": "Loading Image Tools...",
-            "model": "Loading Object Removal Model...",
-            "proStatus": "Checking Account Status...",
-            "generic": "Loading..."
-        },
-        "mainCard": {
-            "title": "AI OBJECT REMOVAL CANVAS",
-            "info": {
-                "title": "HOW IT WORKS",
-                "description": "Remove unwanted objects, people, or text from your images using AI. The processing happens entirely in your browser.",
-                "freeMode": {
-                    "title": "FREE MODE",
-                    "description": "Process 1 image at a time. Upgrade to PRO for batch processing (coming soon!)."
-                },
-                "proMode": {
-                    "title": "PRO MODE",
-                    "description": "Process up to 100 images in batch mode. Draw a mask once and apply it to all your images!"
-                }
-            },
-            "upload": {
-                "title": "Upload Your Image",
-                "button": "SELECT IMAGE",
-                "helpTextFree": "Select the image you want to edit.",
-                "helpTextPro": "Select up to 100 images for batch processing."
-            },
-            "canvas": {
-                "drawTitle": "DRAW MASK OVER OBJECTS",
-                "brushSize": "Brush Size",
-                "clearMask": "CLEAR MASK",
-                "outputTitle": "2. VIEW RESULT",
-                "outputPlaceholder": "Result will appear here"
-            },
-            "actions": {
-                "reset": "RESET",
-                "remove": "REMOVE OBJECTS",
-                "removeAllObjects": "REMOVE FROM ALL IMAGES",
-                "processing": "PROCESSING...",
-                "download": "DOWNLOAD",
-                "downloadAll": "DOWNLOAD ALL"
-            }
+        "progress": {
+          "processing": "Processing...",
+          "percent": "{percent}%"
         },
         "upgradeCard": {
-            "title": "UPGRADE TO PRO",
-            "description": "Unlock batch object removal for up to 100 images and other PRO features like bulk background removal and advanced editing.",
-            "button": "LEARN MORE & UPGRADE"
-        },
-        "instructionsCard": {
-            "title": "INSTRUCTIONS",
-            "step1": "Upload your image using the 'Select Image' button.",
-            "step2": "Carefully paint over the object(s) you want to remove using the red brush.",
-            "step3": "Adjust the Brush Size slider for precision.",
-            "step4": "Click the 'Remove Objects' button and wait for the AI to process.",
-            "step5": "Once processed, download your clean image using the 'Download' button.",
-            "step6": "For batch processing, check 'Apply mask to all images' to remove similar objects from all selected images.",
-            "noteTitle": "Note:",
-            "noteText": "Processing can take 15-60 seconds depending on image size and your device. Ensure your mask fully covers the object for best results."
-        },
-        "imageGallery": {
-            "selectedImages": "Selected Images",
-            "selectedImage": "Selected Image",
-            "clearAll": "Clear All",
-            "applyMaskToAll": "Apply mask to all images (batch processing)",
-            "hasMask": "Has mask drawn"
-        },
-        "processing": {
-            "readingFile": "Reading file...",
-            "loadingImage": "Loading image...",
-            "exportingMask": "Preparing mask...",
-            "runningModel": "Running AI model...",
-            "rendering": "Rendering result...",
-            "preparingBatch": "Preparing batch processing...",
-            "processingImage": "Processing image {current} of {total}...",
-            "finishingBatch": "Finalizing results...",
-            "preparingDownload": "Preparing download...",
-            "batchProgress": "Batch progress",
-            "loadingDimensions": "Calculating image dimensions...",
-            "generic": "Processing image..."
-        },
-        "errors": {
-            "ortLoad": "Failed to load AI Engine. Please try refreshing the page.",
-            "sessionCreate": "Failed to initialize the object removal model.",
-            "freeLimit": "Free users can only process 1 image at a time. Please upgrade to PRO for batch processing.",
-            "tooManyImages": "Maximum 100 images allowed. Only the first 100 images will be processed.",
-            "imageLoad": "Error loading the selected image.",
-            "fileRead": "Error reading the selected file.",
-            "canvasError": "Error accessing the image canvas.",
-            "prerequisites": "Cannot process. Missing required components: {missing}",
-            "noMask": "Please draw a mask over the object you want to remove first.",
-            "processingFailed": "Object removal failed",
-            "resultLoadFailed": "Failed to display the processed image result.",
-            "noDownloadData": "No processed image available to download.",
-            "downloadFailed": "Failed to prepare image for download."
+          "title": "UPGRADE TO PRO",
+          "plan": {
+            "title": "PRO PLAN",
+            "price": "$19.99",
+            "features": [
+              "Remove backgrounds from up to 100 images at once",
+              "Advanced image adjustments and presets",
+              "SEO name generation for product images",
+              "Batch processing for all features",
+              "One-time payment, lifetime access"
+            ],
+            "buttonText": "UPGRADE NOW"
+          }
         }
-    },
-    "WatermarkPage": {
-        "metadata": {
-            "title": "Add Watermark to Images | Batch Shots",
-            "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
-            "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+      },
+      "howItWorks": {
+        "title": "HOW IT WORKS",
+        "step1": {
+          "title": "1. SELECT YOUR IMAGES",
+          "description": "Upload one or more product images you want to process.",
+          "proNote": "PRO users can select up to 100 images at once!"
         },
-        "title": "ADD WATERMARK TO IMAGES",
-        "loading": {
-            "proStatus": "CHECKING PRO STATUS...",
-            "proDescription": "Please wait while we verify your account status."
+        "step2": {
+          "title": "2. REMOVE BACKGROUNDS",
+          "description": "Our AI technology will detect and remove the background from your images, creating transparent PNGs perfect for e-commerce."
         },
-        "preview": {
-            "title": "IMAGE PREVIEW"
-        },
-        "alerts": {
-            "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
-            "maxImagesLimit": "Maximum 100 images allowed at once.",
-            "watermarkFailed": "Watermark application failed. Please try again."
-        },
-        "mainCard": {
-            "title": "WATERMARK YOUR IMAGES",
-            "info": {
-                "title": "ADD CUSTOM WATERMARKS",
-                "description": "Protect your images with custom text or logo watermarks. Customize opacity, size, and position to match your branding needs.",
-                "freeMode": {
-                    "title": "FREE MODE",
-                    "description": "Process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!"
-                },
-                "proMode": {
-                    "title": "PRO MODE",
-                    "description": "Process up to 100 images in bulk with your PRO account!"
-                }
-            },
-            "upload": {
-                "title": "Select Images",
-                "buttonFree": "SELECT AN IMAGE",
-                "buttonPro": "SELECT IMAGES",
-                "helpTextFree": "Free users can select 1 image at a time.",
-                "helpTextPro": "You can select up to 100 images at once."
-            },
-            "actions": {
-                "clear": "CLEAR",
-                "download": "DOWNLOAD",
-                "downloadZip": "DOWNLOAD AS ZIP",
-                "applyWatermark": "APPLY WATERMARK",
-                "applyWatermarks": "APPLY WATERMARKS",
-                "processing": "APPLYING WATERMARK...",
-                "processingMultiple": "APPLYING WATERMARKS...",
-                "tryFullEditor": "TRY FULL EDITOR"
-            },
-            "progress": {
-                "processing": "Processing...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "UPGRADE TO PRO",
-                "plan": {
-                    "title": "PRO PLAN",
-                    "price": "$19.99",
-                    "features": [
-                        "Watermark up to 100 images at once",
-                        "Advanced image adjustments and presets",
-                        "Background removal for product images",
-                        "Batch processing for all features",
-                        "One-time payment, lifetime access"
-                    ],
-                    "buttonText": "UPGRADE NOW"
-                }
-            }
-        },
-        "howItWorks": {
-            "title": "HOW IT WORKS",
-            "step1": {
-                "title": "1. SELECT YOUR IMAGES",
-                "description": "Upload one or more images you want to watermark.",
-                "proNote": "PRO users can select up to 100 images at once!"
-            },
-            "step2": {
-                "title": "2. CUSTOMIZE WATERMARK",
-                "description": "Choose between text or logo watermarks. Adjust opacity, size, and position to your preferences."
-            },
-            "step3": {
-                "title": "3. DOWNLOAD & USE",
-                "description": "Apply your watermark and download the processed images ready for web, social media, or portfolio use."
-            }
-        },
-        "proDialog": {
-            "title": "UPGRADE TO PRO",
-            "featureTitle": "PRO FEATURE: Bulk Watermarking",
-            "description": "Free users can only process 1 image at a time. Upgrade to PRO to watermark up to 100 images in bulk, saving you hours of work!",
-            "pricing": {
-                "title": "ONE-TIME PAYMENT",
-                "price": "$19.99",
-                "note": "No subscription, lifetime access"
-            },
-            "actions": {
-                "upgrade": "UPGRADE TO PRO",
-                "continue": "CONTINUE WITH FREE MODE"
-            }
+        "step3": {
+          "title": "3. DOWNLOAD & USE",
+          "description": "Download your processed images and use them on your website, marketplace listings, or marketing materials."
         }
+      },
+      "proDialog": {
+        "title": "UPGRADE TO PRO",
+        "featureTitle": "PRO FEATURE: Bulk Background Removal",
+        "description": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk, saving you hours of work!",
+        "pricing": {
+          "title": "ONE-TIME PAYMENT",
+          "price": "$19.99",
+          "note": "No subscription, lifetime access"
+        },
+        "actions": {
+          "upgrade": "UPGRADE TO PRO",
+          "continue": "CONTINUE WITH FREE MODE"
+        }
+      }
     },
-    "ImageFormatConvertorPage": {
-        "metadata": {
-            "title": "Image Format Convertor | Batch Shots",
-            "description": "Convert images between formats (JPG, PNG, WebP, AVIF) with our easy-to-use tool. Supports HEIC conversion and batch processing.",
-            "keywords": "image format converter, convert jpg to png, convert heic to jpg, webp converter, image format conversion, batch convert images, convert heic"
-        },
-        "title": "IMAGE FORMAT CONVERTER",
-        "loading": {
-            "tool": "LOADING CONVERTER...",
-            "proStatus": "CHECKING PRO STATUS...",
-            "description": "Please wait while we initialize image processing capabilities.",
-            "proDescription": "Please wait while we verify your account status."
-        },
-        "uploadArea": {
-            "title": "CONVERT YOUR IMAGES",
-            "description": "Convert your images to different formats with just a few clicks.",
-            "selectImages": "SELECT IMAGES (UP TO {maxImages})",
-            "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong>",
-            "freeLimitInfo": "",
-            "upgradeLink": ""
-        },
-        "selectedImages": {
-            "title": "SELECTED IMAGES ({count})"
-        },
-        "formatChanged": {
-            "title": "FORMAT CHANGED",
-            "description": "You've changed the target format. Click Reset to convert your images to the new format."
-        },
-        "mainCard": {
-            "title": "CONVERT IMAGES TO ANY FORMAT",
-            "info": {
-                "title": "IMAGE FORMAT CONVERSION",
-                "description": "Convert your images between formats like JPG, PNG, WebP, and AVIF. You can also resize your images during conversion.",
-                "freeMode": {
-                    "title": "ALL FEATURES",
-                    "description": "Process any number of images. Everything is free."
-                }
-            },
-            "upload": {
-                "title": "Select Images to Convert",
-                "buttonFree": "SELECT IMAGES",
-                "buttonPro": "SELECT IMAGES",
-                "helpTextFree": "",
-                "helpTextPro": ""
-            },
-            "actions": {
-                "clear": "CLEAR",
-                "addMore": "ADD MORE",
-                "download": "DOWNLOAD CONVERTED",
-                "downloadZip": "DOWNLOAD ALL AS ZIP",
-                "convertImageTo": "CONVERT TO {format}",
-                "convertImagesTo": "CONVERT ALL TO {format}",
-                "converting": "CONVERTING...",
-                "convertingMultiple": "CONVERTING IMAGES...",
-                "resetConversion": "RESET"
-            },
-            "progress": {
-                "processing": "Processing...",
-                "percent": "{percent}%"
-            },
-                "upgradeCard": {}
-        },
-        "targetFormat": {
-            "title": "SELECT TARGET FORMAT"
-        },
-        "resize": {
-            "title": "RESIZE DURING CONVERSION (OPTIONAL)"
-        },
-        "convertedImages": {
-            "title": "CONVERTED IMAGES",
-            "description": "Your images have been successfully converted. Click Download to save them."
-        },
-        "howItWorks": {
-            "title": "HOW IT WORKS",
-            "step1": {
-                "title": "1. SELECT YOUR IMAGES",
-                "description": "Upload one or more images you want to convert.",
-                "proNote": "PRO users can select up to 100 images at once!"
-            },
-            "step2": {
-                "title": "2. CHOOSE TARGET FORMAT",
-                "description": "Select the desired output format (JPG, PNG, WebP, or AVIF)."
-            },
-            "step3": {
-                "title": "3. RESIZE (OPTIONAL)",
-                "description": "Optionally select a preset to resize your images during conversion."
-            },
-            "step4": {
-                "title": "4. DOWNLOAD & USE",
-                "description": "Convert your images and download them individually or as a ZIP archive."
-            }
-        },
-        "supportedFormats": {
-            "title": "SUPPORTED FORMATS",
-            "input": {
-                "title": "INPUT FORMATS",
-                "description": "You can upload images in these formats:"
-            },
-            "output": {
-                "title": "OUTPUT FORMATS",
-                "description": "Convert your images to any of these formats:"
-            }
-        },
-        "alerts": {
-            "conversionFailed": "Format conversion failed. Please try again."
-        },
-        "proDialog": {
-            "title": "UPGRADE TO PRO",
-            "featureTitle": "PRO FEATURE: Bulk Format Conversion",
-            "description": "Free users can only convert up to {maxImages} images at a time. Upgrade to PRO to convert up to 100 images in bulk, saving you hours of work!",
-            "pricing": {
-                "title": "ONE-TIME PAYMENT",
-                "price": "$19.99",
-                "note": "No subscription, lifetime access"
-            },
-            "actions": {
-                "upgrade": "UPGRADE TO PRO",
-                "continue": "CONTINUE WITH FREE MODE"
-            }
-        },
-        "allImages": "ALL IMAGES ({current}/{max})",
-        "imagesCount": "{current}/{max} images",
-        "upgradeFor": "(Upgrade for up to 100)"
+    "SeoProductDescriptionGenerator": {
+      "title": "AI SEO PRODUCT DESCRIPTION",
+      "description": "Generate complete SEO-optimized product description",
+      "enterDescription": "Enter basic product information",
+      "placeholder": "E.g., vintage leather wallet, handcrafted, brown, full grain leather, multiple card slots...",
+      "generate": "GENERATE PRODUCT DESCRIPTION",
+      "generating": "GENERATING...",
+      "generateWithCount": "GENERATE ({remaining} remaining today)",
+      "dailyLimitReached": "DAILY LIMIT REACHED",
+      "dailyLimitExceeded": "Daily limit of 5 descriptions reached. Upgrade to PRO for unlimited access or try again tomorrow.",
+      "dailyUsageInfo": "{remaining} of {total} daily generations remaining",
+      "proUnlimited": "PRO: Unlimited generations",
+      "upgradeToPro": "UPGRADE TO PRO",
+      "loginRequired": "LOGIN REQUIRED",
+      "loginToGenerate": "Please log in to generate SEO product descriptions. Free users get 5 descriptions per day, PRO users get unlimited access.",
+      "loginButton": "LOG IN",
+      "cancel": "CANCEL",
+      "copyToClipboard": "COPY TO CLIPBOARD",
+      "downloadAsTxt": "DOWNLOAD AS TXT",
+      "copied": "Copied!",
+      "tryFeature": "TRY HOW IT WORKS",
+      "tabs": {
+        "content": "CONTENT",
+        "meta": "META",
+        "categories": "CATEGORIES",
+        "previews": "PREVIEWS"
+      },
+      "previews": {
+        "googleSearch": "GOOGLE SEARCH PREVIEW",
+        "ecommerce": "E-COMMERCE PREVIEW",
+        "productImage": "Product Image",
+        "addToCart": "Add to Cart",
+        "wishlist": "Wishlist"
+      },
+      "sections": {
+        "productTitle": "Product Title",
+        "metaTitle": "Meta Title",
+        "metaDescription": "Meta Description",
+        "shortDescription": "Short Description",
+        "longDescription": "Long Description",
+        "categories": "Categories",
+        "tags": "Tags",
+        "urlSlug": "URL Slug"
+      },
+      "downloadAll": "DOWNLOAD ALL DATA"
     },
-    "ImageDuplicateDetectionPage": {
-        "metadata": {
-            "title": "AI Duplicate Photo Finder & Cleaner | Batch Shots",
-            "description": "Quickly find and remove duplicate or similar photos with our AI-powered tool. Identifies best quality images in duplicate sets. Free & in-browser.",
-            "keywords": "duplicate photo finder, remove duplicate images, similar photo finder, ai photo cleaner, image duplicate detection, best quality photo, declutter photos, batchshots"
+    "SeoDescriptionPage": {
+      "metadata": {
+        "title": "AI SEO Product Description Generator | Batch Shots",
+        "description": "Generate complete, SEO-optimized product descriptions (title, meta title/description, short/long description, categories, tags, URL slug) from basic info.",
+        "keywords": "seo product description, ai product description, ecommerce seo, product description generator, meta description generator, product title generator"
+      },
+      "title": "AI SEO PRODUCT DESCRIPTION GENERATOR",
+      "mainCard": {
+        "title": "GENERATE SEO CONTENT",
+        "info": {
+          "title": "WHAT IS THIS TOOL?",
+          "description": "This AI-powered tool generates a complete SEO package for your products from basic information. You'll receive a product title, meta title, meta description, short and long descriptions, categories, tags, and a URL slug, all optimized for search engines."
         },
-        "PageTitle": "AI Duplicate Photo Finder & Cleaner",
-        "AppInitializing": "Initializing Smart Photo Analyzer...",
-        "AISetup": "Setting up AI Engine...",
-        "AIEngineInitializing": "AI Engine Initializing...",
-        "AIEngineStarted": "AI Engine Started.",
-        "AIInitializing": "AI Initializing...",
-        "AILoadingModel": "Loading Advanced AI Model...",
-        "AIModelLoaded": "AI Model Loaded.",
-        "AIReady": "AI Ready. Select photos to find duplicates.",
-        "AIReadyPrompt": "AI Ready. Select photos to find duplicates.",
-        "ProcessingImage": "Analyzing photo {imageId}...",
-        "ErrorProcessingImage": "Error analyzing photo {imageId}: {data}.",
-        "AIEngineError": "AI Engine Error: {data}.",
-        "AIEngineErrorRefresh": "AI Engine Error: {data}. Please refresh or try again.",
-        "AICriticalError": "AI encountered a critical error.",
-        "AICriticalErrorRefresh": "A critical error occurred with our AI analysis. Please refresh the page.",
-        "QualityToolsError": "Quality analysis tools failed to load. Detailed quality metrics may be unavailable.",
-        "AllImagesProcessedAnalyzing": "All photos processed. Identifying duplicates...",
-        "AnalysisCompleteSummary": "Analysis complete. {groupSummary} Processed {successfullyProcessedCount} of {totalImagesCount} photos.",
-        "DuplicateSetsFound": "{count} duplicate set(s) found.",
-        "NoDuplicatesFound": "No direct duplicates found.",
-        "NoImagesProcessedSuccessfully": "No photos could be processed successfully. Processed {successfullyProcessedCount} of {totalImagesCount} photos.",
-        "NoImagesForNewThreshold": "No photos to analyze with the new similarity setting.",
-        "ReanalyzingWithThreshold": "Reanalyzing photos with similarity setting: {threshold}...",
-        "AnalysisCompleteWithThreshold": "Analysis complete with similarity {threshold}. {groupSummary}",
-        "PleaseSelectImages": "Please select photos...",
-        "AINotReadyError": "AI analysis engine is not ready. Please wait or refresh.",
-        "ProcessingFilesHEIC": "Preparing selected files (converting if necessary)...",
-        "HEICConversionFailedSkip": "Failed to convert image: {fileName}. It will be skipped.",
-        "HEICConversionErrorSkip": "Error converting image: {fileName}. It will be skipped.",
-        "NoValidFilesAfterConversion": "No valid files to process after conversion attempts.",
-        "SendingImagesToAI": "Sending {count} photos for AI analysis...",
-        "NoValidImagesSelected": "No valid photos selected to process.",
-        "QualityToolsNotReadyKPI": "Quality analysis tools not ready. Cannot calculate detailed quality.",
-        "QualityToolsNotReadyQuality": "Quality analysis tools not ready. Cannot calculate quality.",
-        "ErrorCalculatingQuality": "Error calculating quality for photo {imageId}: {error}",
-        "QualityToolsNotReadyAnalysisWait": "Quality analysis tools are not ready. Please wait.",
-        "NoDuplicatesInGroup": "No duplicates in this group to analyze.",
-        "AnalyzingGroupQuality": "Analyzing quality for photos in group {groupNumber}...",
-        "AnalyzedProgressInGroup": "Analyzed {processedCount} of {groupTotal} in group {groupNumber}. Photo: {imageName}",
-        "QualityAnalysisCompleteForGroup": "Quality analysis complete for group {groupNumber}.",
-        "QualityAnalysisPartialForGroup": "Quality analysis partially done for group {groupNumber}. Some photos might have failed or were skipped.",
-        "QualityToolsNotReadyBestSelection": "Quality analysis tools not ready. Cannot ensure best photo selection.",
-        "AnalyzingQualityForBestDownload": "Analyzing quality for {count} photo(s) to select the best for download...",
-        "PreDownloadAnalysisComplete": "Pre-download quality analysis complete for the current group.",
-        "NoImagesToDownload": "No photos to download.",
-        "QualityToolsNotReadyDownloadAll": "Quality analysis tools are not ready. Detailed analysis for duplicate sets cannot be performed for 'Download All'. Please wait or analyze groups individually first.",
-        "PreparingDownload": "Preparing files for download...",
-        "BestImageDeterminationFailed": "Could not determine the best photo for a group. This group will be omitted from the ZIP.",
-        "WarningBestImageOmitted": "Warning: The best photo for a group could not be determined and was omitted.",
-        "ZippingImages": "Zipping {count} photo(s)...",
-        "DownloadComplete": "Download complete!",
-        "ErrorCreatingZIP": "Error creating ZIP file for download.",
-        "NoImagesSelectedForDownload": "No photos were selected for download (e.g., no unique photos or no best photos identified in groups).",
-        "ImageDataMissingDownload": "Photo data is missing, cannot download.",
-        "DownloadingImage": "Downloading {imageName}...",
-        "ImageDownloadedSuccessfully": "{imageName} downloaded successfully.",
-        "FailedToDownloadImage": "Failed to download {imageName}.",
-        "QualityToolsNotReadyAnalyzeAllGroups": "Quality analysis tools are not ready. Detailed analysis for duplicate sets cannot be performed. Please wait.",
-        "OnlyUniqueImagesReadyDownload": "Only unique photos present. Ready to download.",
-        "NoImagesToAnalyzeOrDownload": "No photos to analyze or download.",
-        "AnalyzingAllGroupsForBest": "Analyzing all groups for best photo selection...",
-        "AnalyzingGroupForBest": "Analyzing group {currentGroup} of {totalGroups} for best photo...",
-        "AllGroupsAnalyzedReadyDownload": "All {count} duplicate groups analyzed. Ready to download {downloadCount} best photos.",
-        "AnalysisPartialReadyDownload": "Analysis for best selection partially complete ({processedGroups}/{totalGroups} groups). Ready to download {downloadCount} photos (best available will be chosen).",
-        "NoImagesProcessedOrGroups": "No photos processed or no groups formed yet. Ensure photos were selected and AI analysis completed.",
-
-        "LoaderTitleInitializing": "Initializing Smart Tools...",
-        "LoaderTitleLoadingModel": "Loading AI Brain...",
-        "LoaderTitleQualityTools": "Preparing Quality Analyzer...",
-        "LoaderProStatus": "Checking Your Account Status...",
-        "LoaderDescriptionInitializing": "Getting things ready for smart duplicate detection. Please wait.",
-        "LoaderDescriptionLoadingModel": "Our advanced AI is warming up. This might take a moment.",
-        "LoaderDescriptionQualityTools": "Preparing tools for detailed photo quality insights...",
-        "LoaderProDescription": "Verifying your account status to enable all available features...",
-        
-        "MainCardTitle": "Find & Manage Duplicate Photos",
-        "UploadSectionTitle": "Upload Your Photos",
-        "UploadSectionDescription": "Select multiple photos. Our AI will intelligently analyze them and group similar ones together.",
-        "ButtonSelectImages": "Select Photos",
-        "ButtonSelectImagesLoading": "Loading...",
-        "ButtonSelectImagesInitializing": "Tools Loading...",
-        "ButtonAddMoreImages": "Add More Photos",
-        "ButtonAddMoreImagesLoading": "Adding Photos...",
-        "SupportedFormats": "Supports JPG, PNG, WEBP, HEIC formats",
-        "AIStatusLabel": "AI Status: {status}",
-        "QualityAnalyzerStatusLoading": "Quality Analyzer: Loading...",
-
-        "SimilarityThresholdTitle": "Similarity Setting",
-        "SimilarityThresholdDescription": "Control how closely photos must match to be flagged as duplicates. Higher values mean stricter matching.",
-        "SimilarityLessStrict": "Less Strict",
-        "SimilarityCurrent": "Current: {threshold}",
-        "SimilarityMoreStrict": "More Strict",
-        "ButtonApplyThreshold": "Apply Setting",
-        "ButtonApplyThresholdLoading": "Re-analyzing...",
-
-        "ResultsTitle": "Detection Results:",
-        "DuplicateSetTitle": "Duplicate Set {number} ({count} similar photos)",
-        "ButtonAnalyzeQuality": "Analyze Quality",
-        "ButtonAnalyzeQualityLoading": "Analyzing...",
-        "ButtonReanalyzeQuality": "Re-Analyze Quality",
-        "ImageMissing": "Photo data missing (index: {index})",
-        "BestLabel": "Best",
-        "KpiRes": "Res:",
-        "KpiSharp": "Sharp:",
-        "KpiNoise": "Noise:",
-        "KpiContrast": "Contrast:",
-        "KpiExposure": "Exposure:",
-        "ButtonDownload": "Download",
-        "ButtonDownloading": "Downloading...",
-
-        "UniqueImagesTitle": "Unique Photos ({count} photo(s) with no direct duplicates)",
-
-        "ButtonAnalyzeAllGroups": "Analyze All Groups for Best Selection",
-        "ButtonAnalyzeAllGroupsLoading": "Analyzing All Groups...",
-        "ButtonDownloadBest": "Download {count} Best Photos",
-        "ButtonDownloadBestLoading": "Preparing Download...",
-
-        "HowItWorksTitle": "How Our AI Finds Duplicates",
-        "HowItWorksStep1Title": "1. Upload Your Photos",
-        "HowItWorksStep1Desc": "Click \"Select Photos\" and choose the images you want to check. You can select many at once.",
-        "HowItWorksStep2Title": "2. Intelligent AI Analysis",
-        "HowItWorksStep2Desc": "Our advanced AI (based on Vision Transformer technology) intelligently analyzes the visual content of each photo, understanding its unique features and appearance.",
-        "HowItWorksStep3Title": "3. Smart Similarity Scoring",
-        "HowItWorksStep3Desc": "The AI compares photos using sophisticated visual analysis (cosine similarity) to determine how alike they are based on their content.",
-        "HowItWorksStep4Title": "4. Fine-Tune Similarity",
-        "HowItWorksStep4Desc": "Use the similarity slider to control how strict the matching is. A higher value means photos must be almost identical to be flagged as duplicates.",
-        "HowItWorksStep5Title": "5. Review & Organize",
-        "HowItWorksStep5Desc": "Results clearly show duplicate sets and unique photos. Our AI can also highlight the best quality photo in each duplicate group, helping you decide which to keep.",
-
-        "FreeUserLimit": "Free users can upload up to {limit} photos at a time.",
-        "ButtonSelectImagesLimit": "Select Photos (Up to {limit})",
-        "UpgradeMessage": "Upgrade to PRO to analyze unlimited photos at once.",
-        "UpgradeLink": "Upgrade Now",
-        "HowItWorksStep1Free": "Free users are limited to {limit} photos at a time.",
-        "HowItWorksStep1Pro": "As a PRO user, you can analyze unlimited photos at once.",
-        "ProFeatureName": "Unlimited Photo Analysis",
-        
-        "FreeModeTitle": "FREE MODE",
-        "FreeModeDescription": "Process up to {limit} photos at a time. Upgrade to PRO to analyze unlimited photos!",
-        "ProModeTitle": "PRO MODE",
-        "ProModeDescription": "Process unlimited photos with your PRO account!",
-        "MaxImagesExceeded": "Maximum 100 images allowed. Only the first 100 were processed.",
-        "ProcessingErrors": "Processing Errors",
-        "imagesCount": "{current}/{max} photos",
-        "upgradeFor": "(Upgrade for unlimited)",
-        
-        "UpgradeCardTitle": "UPGRADE TO PRO",
-        "UpgradeCardPlanTitle": "PRO PLAN",
-        "UpgradeCardPlanPrice": "$19.99",
-        "UpgradeCardPlanNote": "One-time payment, lifetime access",
-        "UpgradeCardFeature1": "Analyze unlimited photos at once (vs. 5 in free mode)",
-        "UpgradeCardFeature2": "Find duplicates in large photo collections quickly",
-        "UpgradeCardFeature3": "Quality analysis to find the best photos automatically",
-        "UpgradeCardFeature4": "Batch download of best photos from duplicate sets",
-        "UpgradeCardFeature5": "Access to all other PRO features (background removal, etc.)",
-        "UpgradeCardButton": "UPGRADE NOW",
-        
-        "ProUpgradeTitle": "Upgrade to Pro for Unlimited Photos",
-
-        "SimilarityControlsTitle": "Similarity Algorithm & Threshold",
-        "SimilarityAlgorithmLabel": "Similarity Algorithm",
-        "SimilarityThresholdLabel": "Similarity Threshold",
-        "SimilarityThresholdDescDistance": "Lower values mean more similar images (distance metric)",
-        "SimilarityThresholdDescSimilarity": "Higher values mean more similar images (similarity metric)",
-        
-        "ProcessingChanges": "Processing changes...",
-        "ReanalyzingWithAlgorithm": "Reanalyzing with new algorithm...",
-        "AnalysisCompleteWithAlgorithm": "Analysis complete with new algorithm. {groupSummary}",
-        
-        "AnalyzingDuplicates": "Analyzing duplicates...",
-        "AnalyzingDuplicatesProgress": "Analyzing duplicates... {progress}%",
-        "DuplicateAnalysisComplete": "Duplicate analysis complete",
-        
-        "VisualizationTitle": "AI Vector Space",
-        "VisualizationDescription": "Visualize how AI sees your images in high-dimensional space, reduced to 2D using UMAP algorithm. Similar images cluster together.",
-        "VisualizationShowButton": "Show Visualization",
-        "VisualizationHideButton": "Hide Visualization",
-        "VisualizationGeneratingButton": "Generating Visualization...",
-        "VisualizationNoData": "Upload and process images first to enable visualization",
-        "VisualizationProcessingStatus": "This may take a moment for large datasets...",
-        "VisualizationLegendUnique": "Unique Images",
-        "VisualizationLegendDuplicates": "Duplicate Groups (colored by similarity)",
-        "VisualizationHelpText": "Hover over points to see image thumbnails • Closer points = more similar images",
-        "VisualizationNeedMinImages": "Need at least 3 images for visualization",
-        "VisualizationNoDataAvailable": "No visualization data available"
-    },
-    "ImageSeoGenerationPage": {
-        "metadata": {
-            "title": "AI Image SEO Generation - Generate SEO URL Slugs & Captions",
-            "description": "Upload your images to automatically generate SEO-friendly names, URL slugs, and captions using AI.",
-            "keywords": "image seo, url slug generator, image seo caption generator, ai content creation, image optimization"
-        },
-        "AppInitializing": "Initializing AI SEO Generator...",
-        "AISetup": "Setting Up AI for SEO Content...",
-        "AIEngineInitializing": "AI SEO Engine Initializing...",
-        "AIEngineStarted": "AI SEO Engine Started.",
-        "AIInitializing": "AI Model for SEO Initializing...",
-        "AILoadingModel": "Loading AI SEO Model...",
-        "AIModelLoaded": "AI SEO Model Loaded.",
-        "AIReady": "AI SEO Engine Ready.",
-        "AIReadyPrompt": "Ready for AI SEO. Please upload your images.",
-        "ProcessingImage": "AI Processing for SEO: Image {imageId}...",
-        "ErrorProcessingImage": "Error in AI SEO Processing for image {imageId}: {data}",
-        "AIEngineError": "AI SEO Engine Error: {data}",
-        "AIEngineErrorRefresh": "AI SEO Engine Error: {data}. Please refresh.",
-        "AICriticalError": "Critical AI SEO Engine Error.",
-        "AICriticalErrorRefresh": "Critical AI SEO Engine Error. Please refresh and try again.",
-        "PleaseSelectImages": "Please select images for AI SEO generation.",
-        "AINotReadyError": "AI SEO Engine not ready. Please wait.",
-        "ProcessingFiles": "Processing images for AI SEO...",
-        "ProcessingFilesHEIC": "Processing images for AI SEO, converting HEIC if needed...",
-        "HEICConversionFailedSkip": "HEIC to SEO-friendly format conversion failed for: {fileName}. Skipping.",
-        "HEICConversionErrorSkip": "Error converting HEIC for SEO: {fileName}. Skipping.",
-        "NoValidFilesAfterConversion": "No valid images for AI SEO after conversion attempts.",
-        "NoValidFiles": "No valid images selected for AI SEO processing.",
-        "SendingImagesToAI": "Sending {count} images to AI for SEO content generation...",
-        "AllImagesProcessed": "AI SEO processing complete. View your optimized content below.",
-        "PageTitle": "AI Image SEO & Alt Text Generator",
-        "PageTitlePro": "PRO AI Image SEO & Alt Text Generator",
-        "PageTitleFree": "AI Image SEO & Caption Generator",
-        "MainCardTitle": "Generate SEO Names & Captions with AI",
-        "UploadSectionTitle": "1. Upload Images for AI SEO",
-        "UploadSectionDescription": "Upload JPG, PNG, WEBP, GIF, HEIC images. Our AI generates SEO-friendly filenames and alt text. Add keywords to refine results.",
-        "UploadSectionDescriptionWithLimit": "Upload JPG, PNG, WEBP, GIF, HEIC (max {maxImages} for your plan). AI generates SEO filenames & alt text. Add keywords for custom results.",
-        "ButtonSelectImages": "Select Images for AI SEO",
-        "ButtonSelectImagesLoading": "Initializing AI...",
-        "ResultsTitle": "AI-Generated SEO Content",
-        "ImageMissing": "Image data missing for AI SEO (index: {index})",
-        "GeneratedSeoName": "AI-Generated SEO Filename:",
-        "GeneratedDescription": "AI-Generated Alt Text/Caption:",
-        "StatusLabel": "Current Status:",
-        "AIStatusLabel": "AI SEO Status: {status}",
-        "HowItWorksTitle": "How AI Image SEO Works",
-        "HowItWorksStep1Title": "Upload Your Images",
-        "HowItWorksStep1Desc": "Select or drag & drop images. Our AI prepares them for SEO analysis.",
-        "HowItWorksStep2Title": "AI Content Analysis",
-        "HowItWorksStep2Desc": "Our AI analyzes each image to understand its content, context, and SEO potential.",
-        "HowItWorksStep3Title": "SEO Name & Alt Text Generation",
-        "HowItWorksStep3Desc": "AI crafts SEO-friendly filenames and descriptive alt text. Keywords enhance optimization.",
-        "HowItWorksStep4Title": "Review & Boost Your SEO",
-        "HowItWorksStep4Desc": "Copy the AI-generated SEO content to improve your website, blog, or social media's search ranking and accessibility.",
-        "NoResultsYet": "Upload images to see AI-generated SEO content.",
-        "KeywordsSectionTitle": "2. Enhance with Keywords (Optional)",
-        "KeywordsSectionDescription": "Add comma-separated keywords. Our AI will strategically incorporate them into image alt text for better SEO.",
-        "KeywordsPlaceholder": "e.g., travel, food, e-commerce, product category",
-        "ButtonRegenerateWithKeywords": "Regenerate SEO Content with Keywords",
-        "ButtonRegenerating": "Regenerating SEO Content...",
-        "RegeneratingStatus": "AI regenerating alt text with new SEO keywords...",
-        "RegenerationComplete": "AI-powered SEO regeneration complete.",
-        "ButtonDownloadAll": "Download All AI SEO Results (ZIP)",
-        "ButtonDownloadingAll": "Downloading AI SEO ZIP...",
-        "PreparingDownload": "Preparing AI SEO files for download...",
-        "ZippingFiles": "Zipping {count} AI-optimized files...",
-        "NoFilesToDownload": "No AI-processed images with SEO data to download.",
-        "ErrorCreatingZIP": "Error creating AI SEO ZIP. Please try again.",
-        "DownloadComplete": "AI SEO Download Complete!",
-        "ImageUploadFeatureName": "Unlimited AI SEO Image Uploads",
-        "FreeLimitReachedDialogTitle": "Upgrade for More AI SEO Power",
-        "FreeLimitReachedDialogMessage": "You've reached the free limit for AI SEO. Upgrade to Pro to process more images.",
-        "FreeLimitReachedSomeProcessed": "Free plan limit of {count} images reached for AI SEO. Processing the first {count}. Upgrade for more.",
-        "ProLimitReachedSomeProcessed": "Pro plan limit of {count} images reached for AI SEO. Processing the first {count}.",
-        "NoValidFilesToProcessAfterLimit": "No images to process for AI SEO after plan limits.",
-        "ProUserCardTitle": "AI SEO Pro Plan Active",
-        "ProUserCardDescription": "You're on the Pro plan! Enjoy unlimited AI SEO image generation per batch and all premium features.",
-        "UpgradeToProCardTitle": "Upgrade to Pro",
-        "UpgradeToProCardDescription": "Unlock full AI SEO power! Free users can process {maxImagesFree} images. Pro users enjoy unlimited image processing & more benefits.",
-        "ButtonUpgradeNow": "Upgrade to Pro Now",
-        "ProUserPlanIndicator": "Pro Plan: Unlimited AI SEO image generation.",
-        "FreeUserPlanIndicator": "Free Plan: AI SEO for up to 3 images. Upgrade for unlimited!",
-        "FreePlanInfoBoxTitle": "FREE PLAN",
-        "ProFeatureUnlimitedImages": "Unlimited AI SEO image generation"
+        "benefits": {
+          "complete": "COMPLETE SEO PACKAGE",
+          "completeDesc": "Get a full set of SEO content for your product, ready to use.",
+          "aiPowered": "AI-POWERED CONTENT",
+          "aiPoweredDesc": "Generates unique, compelling, and keyword-rich descriptions.",
+          "bestPractices": "SEO BEST PRACTICES",
+          "bestPracticesDesc": "Follows guidelines for character counts, keyword placement, and readability.",
+          "quickEasy": "QUICK & EASY",
+          "quickEasyDesc": "Save hours by generating professional descriptions in seconds."
+        }
+      },
+      "upgradeCard": {
+        "title": "UPGRADE TO PRO",
+        "description": "Unlock unlimited SEO product description generation and access all features.",
+        "button": "UPGRADE NOW"
+      },
+      "instructionsCard": {
+        "title": "HOW TO USE",
+        "step1": "Enter basic details about your product (name, features, materials, etc.).",
+        "step2": "Click the 'Generate Product Description' button.",
+        "step3": "Review the generated content (title, meta, descriptions, etc.).",
+        "step4": "Copy the content or download it as a text file.",
+        "step5": "Use the generated SEO content on your e-commerce store or website."
+      }
     }
+  },
+  "Dialogs": {
+    "download": {
+      "title": "Download Images",
+      "confirmTitle": "READY TO DOWNLOAD",
+      "successTitle": "DOWNLOAD COMPLETE",
+      "summary": "SUMMARY",
+      "images": "{count, plural, =1 {1 image} other {# images}}",
+      "format": "Format:",
+      "appliedPreset": "Applied preset:",
+      "adjustmentsApplied": "Image adjustments applied",
+      "backgroundRemoval": "Background removal applied (transparent PNGs)",
+      "seoFilenames": "SEO-optimized filenames",
+      "seoProductDescription": "SEO Product Description (TXT)",
+      "watermarkApplied": "Watermark applied",
+      "zipPackage": "All files packaged in a ZIP archive",
+      "processingNote": "Please wait while your images are processed. This may take a moment for high-quality images.",
+      "cancel": "CANCEL",
+      "download": "DOWNLOAD",
+      "processing": "PROCESSING...",
+      "successMessage": "Your images have been downloaded successfully. What would you like to do next?",
+      "startNewBundleDesc": "Start a new batch of images (clears current images)",
+      "continueEditingDesc": "Continue editing the current images",
+      "startNewBundle": "START NEW BATCH",
+      "continueEditing": "CONTINUE EDITING"
+    },
+    "proUpgrade": {
+      "feature": "Batch Processing"
+    }
+  },
+  "Pricing": {
+    "title": "PRICING PLANS",
+    "subtitle": "Choose the perfect plan for your image optimization needs. Our PRO plan offers a lifetime license with a one-time payment.",
+    "alreadyPro": {
+      "title": "You're already a PRO user!",
+      "description": "Thank you for your support. You have access to all PRO features including bulk background removal, advanced image adjustments, and SEO filename generation.",
+      "backToEditor": "BACK TO EDITOR"
+    },
+    "checkout": {
+      "title": "COMPLETE YOUR PURCHASE",
+      "planTitle": "PRO LIFETIME LICENSE",
+      "price": "$19.99",
+      "description": "One-time payment, lifetime access to all PRO features",
+      "email": "EMAIL",
+      "cardInfo": "CARD INFORMATION",
+      "cardNumber": "1234 5678 9012 3456",
+      "expiryDate": "MM/YY",
+      "cvc": "CVC",
+      "completePurchase": "COMPLETE PURCHASE",
+      "goBack": "Go back"
+    },
+    "plans": {
+      "free": {
+        "title": "FREE",
+        "price": "FREE",
+        "features": [
+          "Batch process max 5 images",
+          "Single image AI background removal (preview)",
+          "AI objects removal from single image",
+          "Watermark adding max 5 images",
+          "Image converter max 5 images in bulk",
+          "AI Photo Duplicate Finder max 5 images",
+          "AI SEO images naming generation (Not available)",
+          "AI SEO description and metatags (Not available)"
+        ],
+        "buttonText": "CONTINUE WITH FREE"
+      },
+      "pro": {
+        "title": "PRO",
+        "price": "$19.99",
+        "features": [
+          "Batch process max 100 images",
+          "Up to 100 AI background removals in one batch",
+          "AI objects removal up to 100 images",
+          "Watermark adding 100 images in one batch",
+          "Image converter max 100 images in bulk",
+          "AI Photo Duplicate Finder unlimited batch",
+          "AI SEO images naming generation (up to 100)",
+          "AI SEO description and metatags available",
+          "**One-time payment, lifetime access**"
+        ],
+        "buttonText": "UPGRADE TO PRO"
+      }
+    },
+    "faq": {
+      "title": "FREQUENTLY ASKED QUESTIONS",
+      "questions": {
+        "oneTime": {
+          "question": "Is this really a one-time payment?",
+          "answer": "Yes! Pay once and get lifetime access to all PRO features. No recurring subscriptions."
+        },
+        "backgroundRemoval": {
+          "question": "How does background removal work?",
+          "answer": "We use advanced AI algorithms to detect and remove backgrounds from your product images. The entire process happens in your browser - we never store your images on our servers."
+        },
+        "imageLimits": {
+          "question": "What are the image limits?",
+          "answer": "Free users can process up to 10 images at once with basic features and remove the background from 1 image at a time. PRO users can process up to 100 images simultaneously, including bulk background removal."
+        },
+        "refund": {
+          "question": "Can I request a refund?",
+          "answer": "Yes, we offer a 30-day money-back guarantee if you're not satisfied with the PRO features. Contact our support team for assistance."
+        }
+      }
+    }
+  },
+  "PrivacyPolicy": {
+    "title": "PRIVACY POLICY",
+    "section1Title": "1. Introduction",
+    "section1P1": "Welcome to Batch Shots (“we”, “our”, “us”). We are committed to protecting your privacy and ensuring the security of your personal information.",
+    "section1P2": "This Privacy Policy explains how we handle your data when you use our browser-based image optimization tool.",
+    "section2Title": "2. Information We Do Not Collect",
+    "section2P1Bold": "We do not collect or store your images.",
+    "section2P1": "Our core principle is privacy by design.",
+    "section2P2": "Batch Shots operates entirely within your browser. When you upload images to optimize:",
+    "section2Li1": "Your images are processed locally in your browser using client-side JavaScript.",
+    "section2Li2": "Your images never leave your device and are not transmitted to our servers.",
+    "section2Li3": "We do not store copies of your original or processed images.",
+    "section2Li4": "We do not track the content of your images.",
+    "section3Title": "3. AI-POWERED FEATURES",
+    "section3P1": "When you use our AI-powered SEO name generation features:",
+    "section3Li1": "We send only the descriptive text you provide to our API.",
+    "section3Li2": "We do not send or process your actual images through our AI systems.",
+    "section3Li3": "Your generated SEO names are delivered back to your browser and are not permanently stored on our servers.",
+    "section4Title": "4. ANALYTICS & COOKIES",
+    "section4P1": "We use minimal analytics to understand how our site is used:",
+    "section4Li1": "We collect anonymous usage statistics like page views and feature usage.",
+    "section4Li2": "We use essential cookies to provide functionality like reCAPTCHA protection.",
+    "section4Li3": "We do not use cookies for advertising or tracking across other websites.",
+    "section5Title": "5. THIRD-PARTY SERVICES",
+    "section5P1": "We use the following third-party services:",
+    "section5Li1": "Google reCAPTCHA for spam protection on our AI features.",
+    "section5Li2": "OpenCV.js for image processing (runs entirely in your browser).",
+    "section5P2": "Each of these services has its own privacy policy governing how they handle data.",
+    "section6Title": "6. CHANGES TO THIS POLICY",
+    "section6P1": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date.",
+    "section7Title": "7. Contact Us",
+    "section7P1": "If you have any questions about this Privacy Policy, please contact us at privacy@batchshots.com.",
+    "returnButton": "RETURN TO HOME"
+  },
+  "TermsOfUse": {
+    "title": "TERMS OF USE",
+    "lastUpdated": "Last Updated: May 30, 2025",
+    "section1Title": "1. Acceptance of Terms",
+    "section1P1": "By accessing and using Batch Shots, you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, you may not use our service.",
+    "section2Title": "2. Description of Service",
+    "section2P1": "Batch Shots is a browser-based image optimization tool that allows users to:",
+    "section2Li1": "Adjust image properties such as brightness, contrast, and white balance",
+    "section2Li2": "Resize and optimize images for web use",
+    "section2Li3": "Generate SEO-friendly filenames",
+    "section2Li4": "Process multiple images simultaneously",
+    "section2P2": "All image processing occurs locally in your browser; no images are uploaded to or stored on our servers.",
+    "section3Title": "3. User Responsibilities",
+    "section3P1": "Users of Batch Shots are solely responsible for ensuring they have the necessary rights and permissions to use, upload, and process any images with our service. Batch Shots is not responsible for any copyright or intellectual property violations arising from your use of the service. You must use the service in compliance with all applicable laws and regulations.",
+    "section3Li1": "Ensuring they have the necessary rights and permissions to modify and process the images they use",
+    "section3Li2": "Using the service in compliance with applicable laws and regulations",
+    "section3Li3": "Not using the service to process, create, or distribute inappropriate, offensive, or illegal content",
+    "section3Li4": "Not attempting to reverse engineer, modify, or hack the service",
+    "section4Title": "4. Intellectual Property",
+    "section4P1": "All original content, features, and functionality of Batch Shots are owned by us and are protected by international copyright, trademark, and other intellectual property laws.",
+    "section4P2": "You retain all rights to your original images. We claim no ownership over the images you process using our service.",
+    "section4aTitle": "4A. User Content, Ownership, and Lifetime Pro Access",
+    "section4aP1": "All images and content uploaded or processed using Batch Shots remain the sole property of the user. Batch Shots does not store, view, or transmit your images to our servers; all processing occurs locally in your browser. You are solely responsible for ensuring you have the necessary rights and permissions to use and process any images with our service. Batch Shots is not responsible for any copyright or intellectual property violations arising from your use of the service.",
+    "section4aP2": "\"Lifetime\" access to Pro features means you will have access to all Pro features for as long as Batch Shots is operated and maintained as a service. If Batch Shots is discontinued, we will make reasonable efforts to provide Pro users with access to the software code or to open source the application, enabling continued use.",
+    "section5Title": "5. Disclaimers",
+    "section5Li1": "Batch Shots is provided “as is” and “as available” without any warranties of any kind.",
+    "section5Li2": "We do not guarantee that the service will be uninterrupted, secure, or error-free.",
+    "section5Li3": "We are not responsible for any loss of data that may occur during processing. Users are responsible for keeping their own backups.",
+    "section5Li4": "We make no warranties regarding the accuracy or effectiveness of the SEO name generation feature.",
+    "section5Li5": "Batch Shots is not responsible for any legal claims, damages, or disputes arising from user content or the use of the service.",
+    "section6Title": "6. Limitation of Liability",
+    "section6P1": "To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service, or from any legal claims arising from your content.",
+    "section7Title": "7. Modifications to Service",
+    "section7P1": "We reserve the right to modify, suspend, or discontinue any part of Batch Shots at any time without prior notice or liability.",
+    "section8Title": "8. Governing Law",
+    "section8P1": "These Terms of Use shall be governed by and construed in accordance with the laws of the jurisdiction in which we operate, without regard to its conflict of law provisions.",
+    "section9Title": "9. Changes to Terms",
+    "section9P1": "We may update these Terms of Use from time to time. We will notify you of any changes by posting the new Terms on this page and updating the “Last Updated” date.",
+    "section10Title": "10. Contact Us",
+    "section10P1": "If you have any questions about these Terms of Use, please contact us at terms@batchshots.com.",
+    "returnButton": "RETURN TO HOME"
+  },
+  "ObjectRemovalPage": {
+    "metadata": {
+      "title": "AI Object Removal Tool | Batch Shots",
+      "description": "Remove unwanted objects, people, or text from your images with our AI-powered tool. Works entirely in your browser for privacy. Try it for free!",
+      "keywords": "object removal, ai object removal, remove objects from image, remove text from image, remove people from photo, inpainting, image editing tool"
+    },
+    "title": "AI OBJECT REMOVER",
+    "loading": {
+      "ort": "Loading AI Engine...",
+      "opencv": "Loading Image Tools...",
+      "model": "Loading Object Removal Model...",
+      "proStatus": "Checking Account Status...",
+      "generic": "Loading..."
+    },
+    "mainCard": {
+      "title": "AI OBJECT REMOVAL CANVAS",
+      "info": {
+        "title": "HOW IT WORKS",
+        "description": "Remove unwanted objects, people, or text from your images using AI. The processing happens entirely in your browser."
+      },
+      "upload": {
+        "title": "Upload Your Image",
+        "button": "SELECT IMAGE",
+        "helpTextFree": "Select the image you want to edit.",
+        "helpTextPro": "Select up to 100 images for batch processing."
+      },
+      "canvas": {
+        "drawTitle": "DRAW MASK OVER OBJECTS",
+        "brushSize": "Brush Size",
+        "clearMask": "CLEAR MASK",
+        "outputTitle": "2. VIEW RESULT",
+        "outputPlaceholder": "Result will appear here"
+      },
+      "actions": {
+        "reset": "RESET",
+        "remove": "REMOVE OBJECTS",
+        "removeAllObjects": "REMOVE FROM ALL IMAGES",
+        "processing": "PROCESSING...",
+        "download": "DOWNLOAD",
+        "downloadAll": "DOWNLOAD ALL"
+      }
+    },
+    "upgradeCard": {
+      "title": "UPGRADE TO PRO",
+      "description": "Unlock batch object removal for up to 100 images and other PRO features like bulk background removal and advanced editing.",
+      "button": "LEARN MORE & UPGRADE"
+    },
+    "instructionsCard": {
+      "title": "INSTRUCTIONS",
+      "step1": "Upload your image using the 'Select Image' button.",
+      "step2": "Carefully paint over the object(s) you want to remove using the red brush.",
+      "step3": "Adjust the Brush Size slider for precision.",
+      "step4": "Click the 'Remove Objects' button and wait for the AI to process.",
+      "step5": "Once processed, download your clean image using the 'Download' button.",
+      "step6": "For batch processing, check 'Apply mask to all images' to remove similar objects from all selected images.",
+      "noteTitle": "Note:",
+      "noteText": "Processing can take 15-60 seconds depending on image size and your device. Ensure your mask fully covers the object for best results."
+    },
+    "imageGallery": {
+      "selectedImages": "Selected Images",
+      "selectedImage": "Selected Image",
+      "clearAll": "Clear All",
+      "applyMaskToAll": "Apply mask to all images (batch processing)",
+      "hasMask": "Has mask drawn"
+    },
+    "processing": {
+      "readingFile": "Reading file...",
+      "loadingImage": "Loading image...",
+      "exportingMask": "Preparing mask...",
+      "runningModel": "Running AI model...",
+      "rendering": "Rendering result...",
+      "preparingBatch": "Preparing batch processing...",
+      "processingImage": "Processing image {current} of {total}...",
+      "finishingBatch": "Finalizing results...",
+      "preparingDownload": "Preparing download...",
+      "batchProgress": "Batch progress",
+      "loadingDimensions": "Calculating image dimensions...",
+      "generic": "Processing image..."
+    },
+    "errors": {
+      "ortLoad": "Failed to load AI Engine. Please try refreshing the page.",
+      "sessionCreate": "Failed to initialize the object removal model.",
+      "freeLimit": "Free users can only process 1 image at a time. Please upgrade to PRO for batch processing.",
+      "tooManyImages": "Maximum 100 images allowed. Only the first 100 images will be processed.",
+      "imageLoad": "Error loading the selected image.",
+      "fileRead": "Error reading the selected file.",
+      "canvasError": "Error accessing the image canvas.",
+      "prerequisites": "Cannot process. Missing required components: {missing}",
+      "noMask": "Please draw a mask over the object you want to remove first.",
+      "processingFailed": "Object removal failed",
+      "resultLoadFailed": "Failed to display the processed image result.",
+      "noDownloadData": "No processed image available to download.",
+      "downloadFailed": "Failed to prepare image for download."
+    }
+  },
+  "WatermarkPage": {
+    "metadata": {
+      "title": "Add Watermark to Images | Batch Shots",
+      "description": "Add custom text or logo watermarks to your images easily. Protect your photos with watermarks with control over opacity, position, and size.",
+      "keywords": "watermark, add watermark to images, photo watermark, watermark image, logo watermark, text watermark, image branding, watermark photos"
+    },
+    "title": "ADD WATERMARK TO IMAGES",
+    "loading": {
+      "proStatus": "CHECKING PRO STATUS...",
+      "proDescription": "Please wait while we verify your account status."
+    },
+    "preview": {
+      "title": "IMAGE PREVIEW"
+    },
+    "alerts": {
+      "freeUserLimit": "Free users can only process 1 image at a time. Upgrade to PRO to process up to 100 images in bulk!",
+      "maxImagesLimit": "Maximum 100 images allowed at once.",
+      "watermarkFailed": "Watermark application failed. Please try again."
+    },
+    "mainCard": {
+      "title": "WATERMARK YOUR IMAGES",
+      "info": {
+        "title": "ADD CUSTOM WATERMARKS",
+        "description": "Protect your images with custom text or logo watermarks. Customize opacity, size, and position to match your branding needs."
+      },
+      "upload": {
+        "title": "Select Images",
+        "buttonFree": "SELECT AN IMAGE",
+        "buttonPro": "SELECT IMAGES",
+        "helpTextFree": "Free users can select 1 image at a time.",
+        "helpTextPro": "You can select up to 100 images at once."
+      },
+      "actions": {
+        "clear": "CLEAR",
+        "download": "DOWNLOAD",
+        "downloadZip": "DOWNLOAD AS ZIP",
+        "applyWatermark": "APPLY WATERMARK",
+        "applyWatermarks": "APPLY WATERMARKS",
+        "processing": "APPLYING WATERMARK...",
+        "processingMultiple": "APPLYING WATERMARKS...",
+        "tryFullEditor": "TRY FULL EDITOR"
+      },
+      "progress": {
+        "processing": "Processing...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "UPGRADE TO PRO",
+        "plan": {
+          "title": "PRO PLAN",
+          "price": "$19.99",
+          "features": [
+            "Watermark up to 100 images at once",
+            "Advanced image adjustments and presets",
+            "Background removal for product images",
+            "Batch processing for all features",
+            "One-time payment, lifetime access"
+          ],
+          "buttonText": "UPGRADE NOW"
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "HOW IT WORKS",
+      "step1": {
+        "title": "1. SELECT YOUR IMAGES",
+        "description": "Upload one or more images you want to watermark.",
+        "proNote": "PRO users can select up to 100 images at once!"
+      },
+      "step2": {
+        "title": "2. CUSTOMIZE WATERMARK",
+        "description": "Choose between text or logo watermarks. Adjust opacity, size, and position to your preferences."
+      },
+      "step3": {
+        "title": "3. DOWNLOAD & USE",
+        "description": "Apply your watermark and download the processed images ready for web, social media, or portfolio use."
+      }
+    },
+    "proDialog": {
+      "title": "UPGRADE TO PRO",
+      "featureTitle": "PRO FEATURE: Bulk Watermarking",
+      "description": "Free users can only process 1 image at a time. Upgrade to PRO to watermark up to 100 images in bulk, saving you hours of work!",
+      "pricing": {
+        "title": "ONE-TIME PAYMENT",
+        "price": "$19.99",
+        "note": "No subscription, lifetime access"
+      },
+      "actions": {
+        "upgrade": "UPGRADE TO PRO",
+        "continue": "CONTINUE WITH FREE MODE"
+      }
+    }
+  },
+  "ImageFormatConvertorPage": {
+    "metadata": {
+      "title": "Image Format Convertor | Batch Shots",
+      "description": "Convert images between formats (JPG, PNG, WebP, AVIF) with our easy-to-use tool. Supports HEIC conversion and batch processing.",
+      "keywords": "image format converter, convert jpg to png, convert heic to jpg, webp converter, image format conversion, batch convert images, convert heic"
+    },
+    "title": "IMAGE FORMAT CONVERTER",
+    "loading": {
+      "tool": "LOADING CONVERTER...",
+      "proStatus": "CHECKING PRO STATUS...",
+      "description": "Please wait while we initialize image processing capabilities.",
+      "proDescription": "Please wait while we verify your account status."
+    },
+    "uploadArea": {
+      "title": "CONVERT YOUR IMAGES",
+      "description": "Convert your images to different formats with just a few clicks.",
+      "selectImages": "SELECT IMAGES (UP TO {maxImages})",
+      "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong>",
+      "freeLimitInfo": "",
+      "upgradeLink": ""
+    },
+    "selectedImages": {
+      "title": "SELECTED IMAGES ({count})"
+    },
+    "formatChanged": {
+      "title": "FORMAT CHANGED",
+      "description": "You've changed the target format. Click Reset to convert your images to the new format."
+    },
+    "mainCard": {
+      "title": "CONVERT IMAGES TO ANY FORMAT",
+      "info": {
+        "title": "IMAGE FORMAT CONVERSION",
+        "description": "Convert your images between formats like JPG, PNG, WebP, and AVIF. You can also resize your images during conversion.",
+        "freeMode": {
+          "title": "ALL FEATURES",
+          "description": "Process any number of images. Everything is free."
+        }
+      },
+      "upload": {
+        "title": "Select Images to Convert",
+        "buttonFree": "SELECT IMAGES",
+        "buttonPro": "SELECT IMAGES",
+        "helpTextFree": "",
+        "helpTextPro": ""
+      },
+      "actions": {
+        "clear": "CLEAR",
+        "addMore": "ADD MORE",
+        "download": "DOWNLOAD CONVERTED",
+        "downloadZip": "DOWNLOAD ALL AS ZIP",
+        "convertImageTo": "CONVERT TO {format}",
+        "convertImagesTo": "CONVERT ALL TO {format}",
+        "converting": "CONVERTING...",
+        "convertingMultiple": "CONVERTING IMAGES...",
+        "resetConversion": "RESET"
+      },
+      "progress": {
+        "processing": "Processing...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {}
+    },
+    "targetFormat": {
+      "title": "SELECT TARGET FORMAT"
+    },
+    "resize": {
+      "title": "RESIZE DURING CONVERSION (OPTIONAL)"
+    },
+    "convertedImages": {
+      "title": "CONVERTED IMAGES",
+      "description": "Your images have been successfully converted. Click Download to save them."
+    },
+    "howItWorks": {
+      "title": "HOW IT WORKS",
+      "step1": {
+        "title": "1. SELECT YOUR IMAGES",
+        "description": "Upload one or more images you want to convert.",
+        "proNote": "PRO users can select up to 100 images at once!"
+      },
+      "step2": {
+        "title": "2. CHOOSE TARGET FORMAT",
+        "description": "Select the desired output format (JPG, PNG, WebP, or AVIF)."
+      },
+      "step3": {
+        "title": "3. RESIZE (OPTIONAL)",
+        "description": "Optionally select a preset to resize your images during conversion."
+      },
+      "step4": {
+        "title": "4. DOWNLOAD & USE",
+        "description": "Convert your images and download them individually or as a ZIP archive."
+      }
+    },
+    "supportedFormats": {
+      "title": "SUPPORTED FORMATS",
+      "input": {
+        "title": "INPUT FORMATS",
+        "description": "You can upload images in these formats:"
+      },
+      "output": {
+        "title": "OUTPUT FORMATS",
+        "description": "Convert your images to any of these formats:"
+      }
+    },
+    "alerts": {
+      "conversionFailed": "Format conversion failed. Please try again."
+    },
+    "proDialog": {
+      "title": "UPGRADE TO PRO",
+      "featureTitle": "PRO FEATURE: Bulk Format Conversion",
+      "description": "Free users can only convert up to {maxImages} images at a time. Upgrade to PRO to convert up to 100 images in bulk, saving you hours of work!",
+      "pricing": {
+        "title": "ONE-TIME PAYMENT",
+        "price": "$19.99",
+        "note": "No subscription, lifetime access"
+      },
+      "actions": {
+        "upgrade": "UPGRADE TO PRO",
+        "continue": "CONTINUE WITH FREE MODE"
+      }
+    },
+    "allImages": "ALL IMAGES ({current}/{max})",
+    "imagesCount": "{current}/{max} images",
+    "upgradeFor": "(Upgrade for up to 100)"
+  },
+  "ImageDuplicateDetectionPage": {
+    "metadata": {
+      "title": "AI Duplicate Photo Finder & Cleaner | Batch Shots",
+      "description": "Quickly find and remove duplicate or similar photos with our AI-powered tool. Identifies best quality images in duplicate sets. Free & in-browser.",
+      "keywords": "duplicate photo finder, remove duplicate images, similar photo finder, ai photo cleaner, image duplicate detection, best quality photo, declutter photos, batchshots"
+    },
+    "PageTitle": "AI Duplicate Photo Finder & Cleaner",
+    "AppInitializing": "Initializing Smart Photo Analyzer...",
+    "AISetup": "Setting up AI Engine...",
+    "AIEngineInitializing": "AI Engine Initializing...",
+    "AIEngineStarted": "AI Engine Started.",
+    "AIInitializing": "AI Initializing...",
+    "AILoadingModel": "Loading Advanced AI Model...",
+    "AIModelLoaded": "AI Model Loaded.",
+    "AIReady": "AI Ready. Select photos to find duplicates.",
+    "AIReadyPrompt": "AI Ready. Select photos to find duplicates.",
+    "ProcessingImage": "Analyzing photo {imageId}...",
+    "ErrorProcessingImage": "Error analyzing photo {imageId}: {data}.",
+    "AIEngineError": "AI Engine Error: {data}.",
+    "AIEngineErrorRefresh": "AI Engine Error: {data}. Please refresh or try again.",
+    "AICriticalError": "AI encountered a critical error.",
+    "AICriticalErrorRefresh": "A critical error occurred with our AI analysis. Please refresh the page.",
+    "QualityToolsError": "Quality analysis tools failed to load. Detailed quality metrics may be unavailable.",
+    "AllImagesProcessedAnalyzing": "All photos processed. Identifying duplicates...",
+    "AnalysisCompleteSummary": "Analysis complete. {groupSummary} Processed {successfullyProcessedCount} of {totalImagesCount} photos.",
+    "DuplicateSetsFound": "{count} duplicate set(s) found.",
+    "NoDuplicatesFound": "No direct duplicates found.",
+    "NoImagesProcessedSuccessfully": "No photos could be processed successfully. Processed {successfullyProcessedCount} of {totalImagesCount} photos.",
+    "NoImagesForNewThreshold": "No photos to analyze with the new similarity setting.",
+    "ReanalyzingWithThreshold": "Reanalyzing photos with similarity setting: {threshold}...",
+    "AnalysisCompleteWithThreshold": "Analysis complete with similarity {threshold}. {groupSummary}",
+    "PleaseSelectImages": "Please select photos...",
+    "AINotReadyError": "AI analysis engine is not ready. Please wait or refresh.",
+    "ProcessingFilesHEIC": "Preparing selected files (converting if necessary)...",
+    "HEICConversionFailedSkip": "Failed to convert image: {fileName}. It will be skipped.",
+    "HEICConversionErrorSkip": "Error converting image: {fileName}. It will be skipped.",
+    "NoValidFilesAfterConversion": "No valid files to process after conversion attempts.",
+    "SendingImagesToAI": "Sending {count} photos for AI analysis...",
+    "NoValidImagesSelected": "No valid photos selected to process.",
+    "QualityToolsNotReadyKPI": "Quality analysis tools not ready. Cannot calculate detailed quality.",
+    "QualityToolsNotReadyQuality": "Quality analysis tools not ready. Cannot calculate quality.",
+    "ErrorCalculatingQuality": "Error calculating quality for photo {imageId}: {error}",
+    "QualityToolsNotReadyAnalysisWait": "Quality analysis tools are not ready. Please wait.",
+    "NoDuplicatesInGroup": "No duplicates in this group to analyze.",
+    "AnalyzingGroupQuality": "Analyzing quality for photos in group {groupNumber}...",
+    "AnalyzedProgressInGroup": "Analyzed {processedCount} of {groupTotal} in group {groupNumber}. Photo: {imageName}",
+    "QualityAnalysisCompleteForGroup": "Quality analysis complete for group {groupNumber}.",
+    "QualityAnalysisPartialForGroup": "Quality analysis partially done for group {groupNumber}. Some photos might have failed or were skipped.",
+    "QualityToolsNotReadyBestSelection": "Quality analysis tools not ready. Cannot ensure best photo selection.",
+    "AnalyzingQualityForBestDownload": "Analyzing quality for {count} photo(s) to select the best for download...",
+    "PreDownloadAnalysisComplete": "Pre-download quality analysis complete for the current group.",
+    "NoImagesToDownload": "No photos to download.",
+    "QualityToolsNotReadyDownloadAll": "Quality analysis tools are not ready. Detailed analysis for duplicate sets cannot be performed for 'Download All'. Please wait or analyze groups individually first.",
+    "PreparingDownload": "Preparing files for download...",
+    "BestImageDeterminationFailed": "Could not determine the best photo for a group. This group will be omitted from the ZIP.",
+    "WarningBestImageOmitted": "Warning: The best photo for a group could not be determined and was omitted.",
+    "ZippingImages": "Zipping {count} photo(s)...",
+    "DownloadComplete": "Download complete!",
+    "ErrorCreatingZIP": "Error creating ZIP file for download.",
+    "NoImagesSelectedForDownload": "No photos were selected for download (e.g., no unique photos or no best photos identified in groups).",
+    "ImageDataMissingDownload": "Photo data is missing, cannot download.",
+    "DownloadingImage": "Downloading {imageName}...",
+    "ImageDownloadedSuccessfully": "{imageName} downloaded successfully.",
+    "FailedToDownloadImage": "Failed to download {imageName}.",
+    "QualityToolsNotReadyAnalyzeAllGroups": "Quality analysis tools are not ready. Detailed analysis for duplicate sets cannot be performed. Please wait.",
+    "OnlyUniqueImagesReadyDownload": "Only unique photos present. Ready to download.",
+    "NoImagesToAnalyzeOrDownload": "No photos to analyze or download.",
+    "AnalyzingAllGroupsForBest": "Analyzing all groups for best photo selection...",
+    "AnalyzingGroupForBest": "Analyzing group {currentGroup} of {totalGroups} for best photo...",
+    "AllGroupsAnalyzedReadyDownload": "All {count} duplicate groups analyzed. Ready to download {downloadCount} best photos.",
+    "AnalysisPartialReadyDownload": "Analysis for best selection partially complete ({processedGroups}/{totalGroups} groups). Ready to download {downloadCount} photos (best available will be chosen).",
+    "NoImagesProcessedOrGroups": "No photos processed or no groups formed yet. Ensure photos were selected and AI analysis completed.",
+
+    "LoaderTitleInitializing": "Initializing Smart Tools...",
+    "LoaderTitleLoadingModel": "Loading AI Brain...",
+    "LoaderTitleQualityTools": "Preparing Quality Analyzer...",
+    "LoaderProStatus": "Checking Your Account Status...",
+    "LoaderDescriptionInitializing": "Getting things ready for smart duplicate detection. Please wait.",
+    "LoaderDescriptionLoadingModel": "Our advanced AI is warming up. This might take a moment.",
+    "LoaderDescriptionQualityTools": "Preparing tools for detailed photo quality insights...",
+    "LoaderProDescription": "Verifying your account status to enable all available features...",
+
+    "MainCardTitle": "Find & Manage Duplicate Photos",
+    "UploadSectionTitle": "Upload Your Photos",
+    "UploadSectionDescription": "Select multiple photos. Our AI will intelligently analyze them and group similar ones together.",
+    "ButtonSelectImages": "Select Photos",
+    "ButtonSelectImagesLoading": "Loading...",
+    "ButtonSelectImagesInitializing": "Tools Loading...",
+    "ButtonAddMoreImages": "Add More Photos",
+    "ButtonAddMoreImagesLoading": "Adding Photos...",
+    "SupportedFormats": "Supports JPG, PNG, WEBP, HEIC formats",
+    "AIStatusLabel": "AI Status: {status}",
+    "QualityAnalyzerStatusLoading": "Quality Analyzer: Loading...",
+
+    "SimilarityThresholdTitle": "Similarity Setting",
+    "SimilarityThresholdDescription": "Control how closely photos must match to be flagged as duplicates. Higher values mean stricter matching.",
+    "SimilarityLessStrict": "Less Strict",
+    "SimilarityCurrent": "Current: {threshold}",
+    "SimilarityMoreStrict": "More Strict",
+    "ButtonApplyThreshold": "Apply Setting",
+    "ButtonApplyThresholdLoading": "Re-analyzing...",
+
+    "ResultsTitle": "Detection Results:",
+    "DuplicateSetTitle": "Duplicate Set {number} ({count} similar photos)",
+    "ButtonAnalyzeQuality": "Analyze Quality",
+    "ButtonAnalyzeQualityLoading": "Analyzing...",
+    "ButtonReanalyzeQuality": "Re-Analyze Quality",
+    "ImageMissing": "Photo data missing (index: {index})",
+    "BestLabel": "Best",
+    "KpiRes": "Res:",
+    "KpiSharp": "Sharp:",
+    "KpiNoise": "Noise:",
+    "KpiContrast": "Contrast:",
+    "KpiExposure": "Exposure:",
+    "ButtonDownload": "Download",
+    "ButtonDownloading": "Downloading...",
+
+    "UniqueImagesTitle": "Unique Photos ({count} photo(s) with no direct duplicates)",
+
+    "ButtonAnalyzeAllGroups": "Analyze All Groups for Best Selection",
+    "ButtonAnalyzeAllGroupsLoading": "Analyzing All Groups...",
+    "ButtonDownloadBest": "Download {count} Best Photos",
+    "ButtonDownloadBestLoading": "Preparing Download...",
+
+    "HowItWorksTitle": "How Our AI Finds Duplicates",
+    "HowItWorksStep1Title": "1. Upload Your Photos",
+    "HowItWorksStep1Desc": "Click \"Select Photos\" and choose the images you want to check. You can select many at once.",
+    "HowItWorksStep2Title": "2. Intelligent AI Analysis",
+    "HowItWorksStep2Desc": "Our advanced AI (based on Vision Transformer technology) intelligently analyzes the visual content of each photo, understanding its unique features and appearance.",
+    "HowItWorksStep3Title": "3. Smart Similarity Scoring",
+    "HowItWorksStep3Desc": "The AI compares photos using sophisticated visual analysis (cosine similarity) to determine how alike they are based on their content.",
+    "HowItWorksStep4Title": "4. Fine-Tune Similarity",
+    "HowItWorksStep4Desc": "Use the similarity slider to control how strict the matching is. A higher value means photos must be almost identical to be flagged as duplicates.",
+    "HowItWorksStep5Title": "5. Review & Organize",
+    "HowItWorksStep5Desc": "Results clearly show duplicate sets and unique photos. Our AI can also highlight the best quality photo in each duplicate group, helping you decide which to keep.",
+
+    "FreeUserLimit": "Free users can upload up to {limit} photos at a time.",
+    "ButtonSelectImagesLimit": "Select Photos (Up to {limit})",
+    "UpgradeMessage": "Upgrade to PRO to analyze unlimited photos at once.",
+    "UpgradeLink": "Upgrade Now",
+    "HowItWorksStep1Free": "Free users are limited to {limit} photos at a time.",
+    "HowItWorksStep1Pro": "As a PRO user, you can analyze unlimited photos at once.",
+    "ProFeatureName": "Unlimited Photo Analysis",
+
+    "FreeModeTitle": "FREE MODE",
+    "FreeModeDescription": "Process up to {limit} photos at a time. Upgrade to PRO to analyze unlimited photos!",
+    "ProModeTitle": "PRO MODE",
+    "ProModeDescription": "Process unlimited photos with your PRO account!",
+    "MaxImagesExceeded": "Maximum 100 images allowed. Only the first 100 were processed.",
+    "ProcessingErrors": "Processing Errors",
+    "imagesCount": "{current}/{max} photos",
+    "upgradeFor": "(Upgrade for unlimited)",
+
+    "UpgradeCardTitle": "UPGRADE TO PRO",
+    "UpgradeCardPlanTitle": "PRO PLAN",
+    "UpgradeCardPlanPrice": "$19.99",
+    "UpgradeCardPlanNote": "One-time payment, lifetime access",
+    "UpgradeCardFeature1": "Analyze unlimited photos at once (vs. 5 in free mode)",
+    "UpgradeCardFeature2": "Find duplicates in large photo collections quickly",
+    "UpgradeCardFeature3": "Quality analysis to find the best photos automatically",
+    "UpgradeCardFeature4": "Batch download of best photos from duplicate sets",
+    "UpgradeCardFeature5": "Access to all other PRO features (background removal, etc.)",
+    "UpgradeCardButton": "UPGRADE NOW",
+
+    "ProUpgradeTitle": "Upgrade to Pro for Unlimited Photos",
+
+    "SimilarityControlsTitle": "Similarity Algorithm & Threshold",
+    "SimilarityAlgorithmLabel": "Similarity Algorithm",
+    "SimilarityThresholdLabel": "Similarity Threshold",
+    "SimilarityThresholdDescDistance": "Lower values mean more similar images (distance metric)",
+    "SimilarityThresholdDescSimilarity": "Higher values mean more similar images (similarity metric)",
+
+    "ProcessingChanges": "Processing changes...",
+    "ReanalyzingWithAlgorithm": "Reanalyzing with new algorithm...",
+    "AnalysisCompleteWithAlgorithm": "Analysis complete with new algorithm. {groupSummary}",
+
+    "AnalyzingDuplicates": "Analyzing duplicates...",
+    "AnalyzingDuplicatesProgress": "Analyzing duplicates... {progress}%",
+    "DuplicateAnalysisComplete": "Duplicate analysis complete",
+
+    "VisualizationTitle": "AI Vector Space",
+    "VisualizationDescription": "Visualize how AI sees your images in high-dimensional space, reduced to 2D using UMAP algorithm. Similar images cluster together.",
+    "VisualizationShowButton": "Show Visualization",
+    "VisualizationHideButton": "Hide Visualization",
+    "VisualizationGeneratingButton": "Generating Visualization...",
+    "VisualizationNoData": "Upload and process images first to enable visualization",
+    "VisualizationProcessingStatus": "This may take a moment for large datasets...",
+    "VisualizationLegendUnique": "Unique Images",
+    "VisualizationLegendDuplicates": "Duplicate Groups (colored by similarity)",
+    "VisualizationHelpText": "Hover over points to see image thumbnails • Closer points = more similar images",
+    "VisualizationNeedMinImages": "Need at least 3 images for visualization",
+    "VisualizationNoDataAvailable": "No visualization data available"
+  },
+  "ImageSeoGenerationPage": {
+    "metadata": {
+      "title": "AI Image SEO Generation - Generate SEO URL Slugs & Captions",
+      "description": "Upload your images to automatically generate SEO-friendly names, URL slugs, and captions using AI.",
+      "keywords": "image seo, url slug generator, image seo caption generator, ai content creation, image optimization"
+    },
+    "AppInitializing": "Initializing AI SEO Generator...",
+    "AISetup": "Setting Up AI for SEO Content...",
+    "AIEngineInitializing": "AI SEO Engine Initializing...",
+    "AIEngineStarted": "AI SEO Engine Started.",
+    "AIInitializing": "AI Model for SEO Initializing...",
+    "AILoadingModel": "Loading AI SEO Model...",
+    "AIModelLoaded": "AI SEO Model Loaded.",
+    "AIReady": "AI SEO Engine Ready.",
+    "AIReadyPrompt": "Ready for AI SEO. Please upload your images.",
+    "ProcessingImage": "AI Processing for SEO: Image {imageId}...",
+    "ErrorProcessingImage": "Error in AI SEO Processing for image {imageId}: {data}",
+    "AIEngineError": "AI SEO Engine Error: {data}",
+    "AIEngineErrorRefresh": "AI SEO Engine Error: {data}. Please refresh.",
+    "AICriticalError": "Critical AI SEO Engine Error.",
+    "AICriticalErrorRefresh": "Critical AI SEO Engine Error. Please refresh and try again.",
+    "PleaseSelectImages": "Please select images for AI SEO generation.",
+    "AINotReadyError": "AI SEO Engine not ready. Please wait.",
+    "ProcessingFiles": "Processing images for AI SEO...",
+    "ProcessingFilesHEIC": "Processing images for AI SEO, converting HEIC if needed...",
+    "HEICConversionFailedSkip": "HEIC to SEO-friendly format conversion failed for: {fileName}. Skipping.",
+    "HEICConversionErrorSkip": "Error converting HEIC for SEO: {fileName}. Skipping.",
+    "NoValidFilesAfterConversion": "No valid images for AI SEO after conversion attempts.",
+    "NoValidFiles": "No valid images selected for AI SEO processing.",
+    "SendingImagesToAI": "Sending {count} images to AI for SEO content generation...",
+    "AllImagesProcessed": "AI SEO processing complete. View your optimized content below.",
+    "PageTitle": "AI Image SEO & Alt Text Generator",
+    "PageTitlePro": "PRO AI Image SEO & Alt Text Generator",
+    "PageTitleFree": "AI Image SEO & Caption Generator",
+    "MainCardTitle": "Generate SEO Names & Captions with AI",
+    "UploadSectionTitle": "1. Upload Images for AI SEO",
+    "UploadSectionDescription": "Upload JPG, PNG, WEBP, GIF, HEIC images. Our AI generates SEO-friendly filenames and alt text. Add keywords to refine results.",
+    "UploadSectionDescriptionWithLimit": "Upload JPG, PNG, WEBP, GIF, HEIC (max {maxImages} for your plan). AI generates SEO filenames & alt text. Add keywords for custom results.",
+    "ButtonSelectImages": "Select Images for AI SEO",
+    "ButtonSelectImagesLoading": "Initializing AI...",
+    "ResultsTitle": "AI-Generated SEO Content",
+    "ImageMissing": "Image data missing for AI SEO (index: {index})",
+    "GeneratedSeoName": "AI-Generated SEO Filename:",
+    "GeneratedDescription": "AI-Generated Alt Text/Caption:",
+    "StatusLabel": "Current Status:",
+    "AIStatusLabel": "AI SEO Status: {status}",
+    "HowItWorksTitle": "How AI Image SEO Works",
+    "HowItWorksStep1Title": "Upload Your Images",
+    "HowItWorksStep1Desc": "Select or drag & drop images. Our AI prepares them for SEO analysis.",
+    "HowItWorksStep2Title": "AI Content Analysis",
+    "HowItWorksStep2Desc": "Our AI analyzes each image to understand its content, context, and SEO potential.",
+    "HowItWorksStep3Title": "SEO Name & Alt Text Generation",
+    "HowItWorksStep3Desc": "AI crafts SEO-friendly filenames and descriptive alt text. Keywords enhance optimization.",
+    "HowItWorksStep4Title": "Review & Boost Your SEO",
+    "HowItWorksStep4Desc": "Copy the AI-generated SEO content to improve your website, blog, or social media's search ranking and accessibility.",
+    "NoResultsYet": "Upload images to see AI-generated SEO content.",
+    "KeywordsSectionTitle": "2. Enhance with Keywords (Optional)",
+    "KeywordsSectionDescription": "Add comma-separated keywords. Our AI will strategically incorporate them into image alt text for better SEO.",
+    "KeywordsPlaceholder": "e.g., travel, food, e-commerce, product category",
+    "ButtonRegenerateWithKeywords": "Regenerate SEO Content with Keywords",
+    "ButtonRegenerating": "Regenerating SEO Content...",
+    "RegeneratingStatus": "AI regenerating alt text with new SEO keywords...",
+    "RegenerationComplete": "AI-powered SEO regeneration complete.",
+    "ButtonDownloadAll": "Download All AI SEO Results (ZIP)",
+    "ButtonDownloadingAll": "Downloading AI SEO ZIP...",
+    "PreparingDownload": "Preparing AI SEO files for download...",
+    "ZippingFiles": "Zipping {count} AI-optimized files...",
+    "NoFilesToDownload": "No AI-processed images with SEO data to download.",
+    "ErrorCreatingZIP": "Error creating AI SEO ZIP. Please try again.",
+    "DownloadComplete": "AI SEO Download Complete!",
+    "ImageUploadFeatureName": "Unlimited AI SEO Image Uploads",
+    "FreeLimitReachedDialogTitle": "Upgrade for More AI SEO Power",
+    "FreeLimitReachedDialogMessage": "You've reached the free limit for AI SEO. Upgrade to Pro to process more images.",
+    "FreeLimitReachedSomeProcessed": "Free plan limit of {count} images reached for AI SEO. Processing the first {count}. Upgrade for more.",
+    "ProLimitReachedSomeProcessed": "Pro plan limit of {count} images reached for AI SEO. Processing the first {count}.",
+    "NoValidFilesToProcessAfterLimit": "No images to process for AI SEO after plan limits.",
+    "ProUserCardTitle": "AI SEO Pro Plan Active",
+    "ProUserCardDescription": "You're on the Pro plan! Enjoy unlimited AI SEO image generation per batch and all premium features.",
+    "UpgradeToProCardTitle": "Upgrade to Pro",
+    "UpgradeToProCardDescription": "Unlock full AI SEO power! Free users can process {maxImagesFree} images. Pro users enjoy unlimited image processing & more benefits.",
+    "ButtonUpgradeNow": "Upgrade to Pro Now",
+    "ProUserPlanIndicator": "Pro Plan: Unlimited AI SEO image generation.",
+    "FreeUserPlanIndicator": "Free Plan: AI SEO for up to 3 images. Upgrade for unlimited!",
+    "FreePlanInfoBoxTitle": "FREE PLAN",
+    "ProFeatureUnlimitedImages": "Unlimited AI SEO image generation"
+  }
 }

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import Button from './Button';
-import type { ImageFormat } from '../lib/imageProcessing';
-import { useTranslations } from 'next-intl';
+import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Button from "./Button";
+import type { ImageFormat } from "../lib/imageProcessing";
+import { useTranslations } from "next-intl";
 
 export interface ImageFile {
   id: string;
@@ -40,7 +40,6 @@ interface ImagePreviewProps {
     applyToAll: boolean;
   };
   maxImagesAllowed?: number;
-  isPro?: boolean;
 }
 
 export default function ImagePreview({
@@ -50,86 +49,89 @@ export default function ImagePreview({
   onDownloadImage,
   onDeleteImage,
   isProcessing = false,
-  className = '',
+  className = "",
   appliedSettings,
   maxImagesAllowed = 10,
 }: ImagePreviewProps) {
-  const t = useTranslations('Components.ImagePreview');
-  
+  const t = useTranslations("Components.ImagePreview");
+
   // State to store image dimensions
-  const [imageDimensions, setImageDimensions] = useState<Record<string, { width: number; height: number; size: string }>>({});
+  const [imageDimensions, setImageDimensions] = useState<
+    Record<string, { width: number; height: number; size: string }>
+  >({});
   // State for editing SEO name
   const [editingSeoName, setEditingSeoName] = useState<string | null>(null);
-  const [seoNameValue, setSeoNameValue] = useState('');
+  const [seoNameValue, setSeoNameValue] = useState("");
   // State to store locally updated images
   const [localImages, setLocalImages] = useState<ImageFile[]>(images);
-  
+
   // State for image zoom and pan functionality
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const imageContainerRef = useRef<HTMLDivElement>(null);
-  
+
   // Reset zoom and position when selected image changes
   useEffect(() => {
     setScale(1);
     setPosition({ x: 0, y: 0 });
   }, [selectedImageId]);
-  
+
   // Add wheel event listener with passive: false to prevent scrolling
   useEffect(() => {
     const container = imageContainerRef.current;
     if (!container) return;
-    
+
     const handleWheelEvent = (e: WheelEvent) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       // Zoom in or out based on wheel direction
       if (e.deltaY < 0) {
-        setScale(prev => Math.min(prev + 0.1, 5));
+        setScale((prev) => Math.min(prev + 0.1, 5));
       } else {
-        setScale(prev => Math.max(prev - 0.1, 0.5));
+        setScale((prev) => Math.max(prev - 0.1, 0.5));
       }
     };
-    
+
     // Use the capture phase to intercept the event early
-    container.addEventListener('wheel', handleWheelEvent, { passive: false });
-    
+    container.addEventListener("wheel", handleWheelEvent, { passive: false });
+
     return () => {
-      container.removeEventListener('wheel', handleWheelEvent);
+      container.removeEventListener("wheel", handleWheelEvent);
     };
   }, []);
-  
+
   // Update local images when prop changes
   useEffect(() => {
     setLocalImages(images);
   }, [images]);
-  
+
   // Effect to calculate dimensions for each image
   useEffect(() => {
-    localImages.forEach(image => {
+    localImages.forEach((image) => {
       if (!imageDimensions[image.id]) {
         const img = new window.Image();
         img.onload = () => {
           // Calculate file size in KB or MB
           const sizeInBytes = image.file.size;
           const sizeInKB = sizeInBytes / 1024;
-          const sizeFormatted = sizeInKB >= 1024 
-            ? `${(sizeInKB / 1024).toFixed(2)} MB` 
-            : `${sizeInKB.toFixed(2)} KB`;
-          
-          setImageDimensions(prev => ({
+          const sizeFormatted =
+            sizeInKB >= 1024
+              ? `${(sizeInKB / 1024).toFixed(2)} MB`
+              : `${sizeInKB.toFixed(2)} KB`;
+
+          setImageDimensions((prev) => ({
             ...prev,
             [image.id]: {
               width: img.width,
               height: img.height,
-              size: sizeFormatted
-            }
+              size: sizeFormatted,
+            },
           }));
         };
-        img.src = image.dataUrl || '';
+        img.src = image.dataUrl || "";
       }
     });
   }, [localImages, imageDimensions]);
@@ -155,8 +157,8 @@ export default function ImagePreview({
   const handleSaveSeoName = () => {
     if (editingSeoName) {
       // Update the SEO name locally
-      setLocalImages(prevImages => 
-        prevImages.map(image => 
+      setLocalImages((prevImages) =>
+        prevImages.map((image) =>
           image.id === editingSeoName
             ? { ...image, seoName: seoNameValue }
             : image
@@ -173,11 +175,11 @@ export default function ImagePreview({
 
   // Zoom handling functions
   const handleZoomIn = () => {
-    setScale(prev => Math.min(prev + 0.5, 5)); // Limit max zoom to 5x
+    setScale((prev) => Math.min(prev + 0.5, 5)); // Limit max zoom to 5x
   };
 
   const handleZoomOut = () => {
-    setScale(prev => Math.max(prev - 0.5, 0.5)); // Limit min zoom to 0.5x
+    setScale((prev) => Math.max(prev - 0.5, 0.5)); // Limit min zoom to 0.5x
   };
 
   const handleReset = () => {
@@ -196,9 +198,9 @@ export default function ImagePreview({
     if (e.touches.length === 1) {
       e.preventDefault();
       setIsDragging(true);
-      setDragStart({ 
-        x: e.touches[0].clientX - position.x, 
-        y: e.touches[0].clientY - position.y 
+      setDragStart({
+        x: e.touches[0].clientX - position.x,
+        y: e.touches[0].clientY - position.y,
       });
     }
   };
@@ -234,25 +236,25 @@ export default function ImagePreview({
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (e.deltaY < 0) {
-      setScale(prev => Math.min(prev + 0.1, 5));
+      setScale((prev) => Math.min(prev + 0.1, 5));
     } else {
-      setScale(prev => Math.max(prev - 0.1, 0.5));
+      setScale((prev) => Math.max(prev - 0.1, 0.5));
     }
   };
 
   if (localImages.length === 0) {
     return (
       <div className={`brutalist-border p-4 text-center ${className}`}>
-        <p className="text-lg">{t('noImages')}</p>
+        <p className="text-lg">{t("noImages")}</p>
       </div>
     );
   }
 
   // Find the selected image
-  const selectedImage = selectedImageId 
-    ? localImages.find(img => img.id === selectedImageId) 
+  const selectedImage = selectedImageId
+    ? localImages.find((img) => img.id === selectedImageId)
     : null;
 
   // Get dimensions of the selected image
@@ -260,7 +262,6 @@ export default function ImagePreview({
 
   // Get the appropriate image URL to display (thumbnail or full)
   const getDisplayUrl = (image: ImageFile) => {
-
     // For regular images, use standard priority order
     // Prefer processed thumbnail for previews
     if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
@@ -269,13 +270,13 @@ export default function ImagePreview({
     // Fall back to thumbnail if available
     if (image.thumbnailDataUrl) return image.thumbnailDataUrl;
     // Last resort - original image
-    return image.dataUrl || '';
+    return image.dataUrl || "";
   };
 
   // Get file extension from name
   const getFileExtension = (filename: string): string => {
-    const parts = filename.split('.');
-    return parts.length > 1 ? parts.pop()!.toLowerCase() : '';
+    const parts = filename.split(".");
+    return parts.length > 1 ? parts.pop()!.toLowerCase() : "";
   };
 
   // Format display name (SEO name if available, otherwise original filename)
@@ -289,28 +290,27 @@ export default function ImagePreview({
 
   return (
     <div className={`${className}`}>
-      
       {/* Selected Image (Large View) */}
       {selectedImage && (
         <div className="mb-6 relative">
           <div className="brutalist-accent-card relative">
             {/* Zoom controls */}
             <div className="absolute top-2 right-2 z-10 flex gap-2">
-              <button 
+              <button
                 onClick={handleZoomIn}
                 className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
                 aria-label="Zoom in"
               >
                 +
               </button>
-              <button 
+              <button
                 onClick={handleZoomOut}
                 className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
                 aria-label="Zoom out"
               >
                 -
               </button>
-              <button 
+              <button
                 onClick={handleReset}
                 className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black w-auto px-2 h-8 flex items-center justify-center text-xs font-bold shadow-brutalist hover:translate-y-[-2px] transition-transform"
                 aria-label="Reset zoom"
@@ -318,8 +318,8 @@ export default function ImagePreview({
                 RESET
               </button>
             </div>
-            
-            <div 
+
+            <div
               ref={imageContainerRef}
               className={`relative aspect-video w-full overflow-hidden cursor-grab touch-none`}
               onMouseDown={handleMouseDown}
@@ -330,15 +330,15 @@ export default function ImagePreview({
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
               onWheel={handleWheel}
-              style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+              style={{ cursor: isDragging ? "grabbing" : "grab" }}
             >
-              <div 
+              <div
                 className="absolute transition-transform duration-75 ease-out"
-                style={{ 
+                style={{
                   transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-                  transformOrigin: 'center',
-                  width: '100%',
-                  height: '100%'
+                  transformOrigin: "center",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
                 <Image
@@ -351,20 +351,16 @@ export default function ImagePreview({
                   draggable={false}
                 />
               </div>
-              
-           
+
               {/* Mobile zoom instructions */}
               <div className="absolute bottom-2 left-2 brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs p-2 md:hidden">
-                {t('zoomInstructions')}
-              </div>
-              
-              {/* Zoom level indicator */}
-              <div className="absolute bottom-2 right-2 brutalist-border border-3 bg-white text-black text-xs p-2">
-                {t('zoomLevel', { scale: Math.round(scale * 100) })}
+                {t("zoomInstructions")}
               </div>
 
-           
-          
+              {/* Zoom level indicator */}
+              <div className="absolute bottom-2 right-2 brutalist-border border-3 bg-white text-black text-xs p-2">
+                {t("zoomLevel", { scale: Math.round(scale * 100) })}
+              </div>
             </div>
 
             <div className="p-4 flex flex-col space-y-2">
@@ -372,7 +368,9 @@ export default function ImagePreview({
               {editingSeoName === selectedImage.id ? (
                 <div className="flex flex-col space-y-2">
                   <div className="flex flex-col">
-                    <label className="text-xs font-bold">{t('seoName.label')}</label>
+                    <label className="text-xs font-bold">
+                      {t("seoName.label")}
+                    </label>
                     <div className="flex items-center">
                       <input
                         type="text"
@@ -380,23 +378,25 @@ export default function ImagePreview({
                         value={seoNameValue}
                         onChange={(e) => setSeoNameValue(e.target.value)}
                       />
-                      <span className="text-sm">.{getFileExtension(selectedImage.file.name)}</span>
+                      <span className="text-sm">
+                        .{getFileExtension(selectedImage.file.name)}
+                      </span>
                     </div>
                   </div>
                   <div className="flex justify-end space-x-2">
-                    <Button 
+                    <Button
                       onClick={handleCancelEditSeoName}
                       size="sm"
                       variant="secondary"
                     >
-                      {t('seoName.cancel')}
+                      {t("seoName.cancel")}
                     </Button>
-                    <Button 
+                    <Button
                       onClick={handleSaveSeoName}
                       size="sm"
                       variant="accent"
                     >
-                      {t('seoName.save')}
+                      {t("seoName.save")}
                     </Button>
                   </div>
                 </div>
@@ -406,64 +406,82 @@ export default function ImagePreview({
                     {getDisplayName(selectedImage)}
                     {selectedImage.seoName && (
                       <button
-                        onClick={() => handleStartEditSeoName(selectedImage.id, selectedImage.seoName!)}
+                        onClick={() =>
+                          handleStartEditSeoName(
+                            selectedImage.id,
+                            selectedImage.seoName!
+                          )
+                        }
                         className="ml-2 text-xs font-bold py-1 px-2 brutalist-border hover:bg-slate-100 text-gray-700"
                         title="Edit SEO name"
                       >
-                        {t('seoName.edit')}
+                        {t("seoName.edit")}
                       </button>
                     )}
                   </div>
-                  <Button 
+                  <Button
                     onClick={() => handleLocalDownloadImage(selectedImage)}
                     size="sm"
                     variant="secondary"
                     disabled={isProcessing}
                   >
-                    {t('actions.download')}
+                    {t("actions.download")}
                   </Button>
                 </div>
               )}
 
               {/* Original filename if SEO name exists */}
-              {selectedImage.seoName && selectedImage.originalName && !editingSeoName && (
-                <div className="text-xs text-gray-500">
-                  <span className="font-bold">{t('originalName')} </span>
-                  {selectedImage.originalName}
-                </div>
-              )}
+              {selectedImage.seoName &&
+                selectedImage.originalName &&
+                !editingSeoName && (
+                  <div className="text-xs text-gray-500">
+                    <span className="font-bold">{t("originalName")} </span>
+                    {selectedImage.originalName}
+                  </div>
+                )}
 
               <div className="text-sm grid grid-cols-2 gap-x-4">
                 {selectedDimensions && (
                   <>
                     <div>
-                      <span className="font-bold">{t('fileInfo.dimensions')} </span> 
+                      <span className="font-bold">
+                        {t("fileInfo.dimensions")}{" "}
+                      </span>
                       {selectedDimensions.width} × {selectedDimensions.height}px
                     </div>
                     <div>
-                      <span className="font-bold">{t('fileInfo.size')} </span>
+                      <span className="font-bold">{t("fileInfo.size")} </span>
                       {selectedDimensions.size}
                     </div>
                   </>
                 )}
-                
+
                 {/* Applied preset info */}
-                {(selectedImage.appliedPreset || (appliedSettings && selectedImage.id === selectedImageId)) && (
+                {(selectedImage.appliedPreset ||
+                  (appliedSettings &&
+                    selectedImage.id === selectedImageId)) && (
                   <>
                     <div>
-                      <span className="font-bold">{t('fileInfo.output')} </span>
-                      {selectedImage.appliedPreset 
-                        ? `${selectedImage.appliedPreset.width}x${selectedImage.appliedPreset.height || t('fileInfo.auto')}`
-                        : appliedSettings?.presetName ? `[${appliedSettings.presetName}]` : t('fileInfo.custom')}
+                      <span className="font-bold">{t("fileInfo.output")} </span>
+                      {selectedImage.appliedPreset
+                        ? `${selectedImage.appliedPreset.width}x${
+                            selectedImage.appliedPreset.height ||
+                            t("fileInfo.auto")
+                          }`
+                        : appliedSettings?.presetName
+                        ? `[${appliedSettings.presetName}]`
+                        : t("fileInfo.custom")}
                     </div>
                     <div>
-                      <span className="font-bold">{t('fileInfo.quality')} </span>
-                      {selectedImage.appliedPreset ? `${selectedImage.appliedPreset.quality}%` : 'Applied'}
+                      <span className="font-bold">
+                        {t("fileInfo.quality")}{" "}
+                      </span>
+                      {selectedImage.appliedPreset
+                        ? `${selectedImage.appliedPreset.quality}%`
+                        : "Applied"}
                     </div>
                   </>
                 )}
-
-               
               </div>
             </div>
           </div>
@@ -472,7 +490,7 @@ export default function ImagePreview({
 
       {/* Thumbnail Grid */}
       <h3 className="font-bold text-lg uppercase mb-2">
-        {t('allImages', { current: images.length, max: maxImagesAllowed })}
+        {t("allImages", { current: images.length, max: maxImagesAllowed })}
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {images.map((image, index) => {
@@ -482,8 +500,8 @@ export default function ImagePreview({
               key={image.id}
               className={`brutalist-border p-2 cursor-pointer transition-transform hover:translate-y-[-2px] ${
                 selectedImageId === image.id
-                  ? 'border-3 border-l-accent border-t-primary border-r-black border-b-black'
-                  : 'border-black'
+                  ? "border-3 border-l-accent border-t-primary border-r-black border-b-black"
+                  : "border-black"
               }`}
               onClick={() => onSelectImage(image.id)}
             >
@@ -501,15 +519,13 @@ export default function ImagePreview({
                   {index + 1}/{maxImagesAllowed}
                 </div>
                 {/* Delete button */}
-                <button 
+                <button
                   onClick={(e) => handleDelete(e, image.id)}
                   className="absolute top-1 right-1 brutalist-border border-2 border-black bg-accent text-black text-xs px-2 py-1 shadow-brutalist hover:translate-y-[-2px] transition-transform z-10"
                   disabled={isProcessing}
                 >
                   ×
                 </button>
-                
-               
               </div>
               <div className="mt-2 text-xs truncate">
                 {getDisplayName(image)}
@@ -525,4 +541,4 @@ export default function ImagePreview({
       </div>
     </div>
   );
-} 
+}

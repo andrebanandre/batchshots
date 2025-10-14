@@ -46,7 +46,6 @@
         },
         "upgradeProTitle": "PRO FUNKTIONEN FREISCHALTEN",
         "upgradeProDescription": "Erhalte mehr Bilder, Hintergrundentfernung und erweiterte Funktionen mit unserem einmaligen Pro-Upgrade.",
-        "proMode": "PRO MODUS AKTIVIERT",
         "freePlan": "KOSTENLOSER PLAN",
         "proDescription": "Verarbeite bis zu {maxImages} Bilder auf einmal mit allen freigeschalteten Premium-Funktionen.",
         "freeDescription": "Beschränkt auf {maxImages} Bilder. Upgrade auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten.",
@@ -287,14 +286,6 @@
                 "info": {
                     "title": "WAS IST DIESES TOOL?",
                     "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen.",
-                    "freeMode": {
-                        "title": "KOSTENLOSER MODUS",
-                        "description": "Begrenzter Zugriff zum Generieren einiger Beschreibungen. Upgraden Sie auf PRO für unbegrenzte Generierung und Zugriff auf alle SEO-Inhaltsfelder."
-                    },
-                    "proMode": {
-                        "title": "PRO-MODUS",
-                        "description": "Unbegrenzter Zugriff zum Generieren vollständiger SEO-Produktbeschreibungen mit allen freigeschalteten Premium-Funktionen."
-                    }
                 },
                 "benefits": {
                     "complete": "KOMPLETTES SEO-PAKET",
@@ -325,14 +316,6 @@
                 "info": {
                     "title": "WAS IST DIESES TOOL?",
                     "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen.",
-                    "freeMode": {
-                        "title": "KOSTENLOSER MODUS",
-                        "description": "Begrenzter Zugriff zum Generieren einiger Beschreibungen. Upgraden Sie auf PRO für unbegrenzte Generierung und Zugriff auf alle SEO-Inhaltsfelder."
-                    },
-                    "proMode": {
-                        "title": "PRO-MODUS",
-                        "description": "Unbegrenzter Zugriff zum Generieren vollständiger SEO-Produktbeschreibungen mit allen freigeschalteten Premium-Funktionen."
-                    }
                 },
                 "benefits": {
                     "complete": "KOMPLETTES SEO-PAKET",
@@ -473,14 +456,6 @@
                 "info": {
                     "title": "KI-HINTERGRUNDENTFERNUNG",
                     "description": "Entfernen Sie den Hintergrund Ihrer Produktbilder mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz.",
-                    "freeMode": {
-                        "title": "KOSTENLOSER MODUS",
-                        "description": "Verarbeiten Sie 1 Bild gleichzeitig. Upgraden Sie auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten!"
-                    },
-                    "proMode": {
-                        "title": "PRO-MODUS",
-                        "description": "Verarbeiten Sie bis zu 100 Bilder gleichzeitig mit Ihrem PRO-Konto!"
-                    }
                 },
                 "upload": {
                     "title": "Bilder auswählen",
@@ -834,14 +809,6 @@
             "info": {
                 "title": "SO FUNKTIONIERT ES",
                 "description": "Entfernen Sie unerwünschte Objekte, Personen oder Text aus Ihren Bildern mit KI. Die Verarbeitung erfolgt vollständig in Ihrem Browser.",
-                "freeMode": {
-                    "title": "KOSTENLOSER MODUS",
-                    "description": "Verarbeiten Sie 1 Bild gleichzeitig. Upgraden Sie auf PRO für Batch-Verarbeitung (bald verfügbar!)."
-                },
-                "proMode": {
-                    "title": "PRO-MODUS",
-                    "description": "Verarbeiten Sie bis zu 100 Bilder im Batch. Zeichnen Sie eine Maske einmal und wenden Sie sie auf alle Ihre Bilder an!"
-                }
             },
             "upload": {
                 "title": "Bild hochladen",
@@ -942,14 +909,6 @@
             "info": {
                 "title": "BENUTZERDEFINIERTE WASSERZEICHEN HINZUFÜGEN",
                 "description": "Schützen Sie Ihre Bilder mit benutzerdefinierten Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position an Ihre Markenbedürfnisse an.",
-                "freeMode": {
-                    "title": "KOSTENLOSER MODUS",
-                    "description": "Verarbeiten Sie 1 Bild gleichzeitig. Upgraden Sie auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten!"
-                },
-                "proMode": {
-                    "title": "PRO-MODUS",
-                    "description": "Verarbeiten Sie bis zu 100 Bilder gleichzeitig mit Ihrem PRO-Konto!"
-                }
             },
             "upload": {
                 "title": "Bilder auswählen",
@@ -1052,14 +1011,7 @@
             "info": {
                 "title": "BILDFORMATKONVERTIERUNG",
                 "description": "Konvertieren Sie Ihre Bilder zwischen Formaten wie JPG, PNG, WebP und AVIF. Sie können Ihre Bilder auch während der Konvertierung in der Größe ändern.",
-                "freeMode": {
-                    "title": "KOSTENLOSER MODUS",
-                    "description": "Verarbeiten Sie bis zu {maxImages} Bilder gleichzeitig. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren!"
                 },
-                "proMode": {
-                    "title": "PRO-MODUS",
-                    "description": "Verarbeiten Sie bis zu 100 Bilder im Stapel mit Ihrem PRO-Konto!"
-                }
             },
             "upload": {
                 "title": "Zu konvertierende Bilder auswählen",
