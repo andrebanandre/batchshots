@@ -22,7 +22,6 @@ import DownloadDialog from "../components/DownloadDialog";
 import SeoNameGenerator, { SeoImageName } from "../components/SeoNameGenerator";
 // Pro removed
 // Router not used
-import { YouTubeEmbed } from "@next/third-parties/google";
 // Import heic-to for HEIC conversion
 import { heicTo, isHeic } from "heic-to";
 import {
