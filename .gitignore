@@ -45,3 +45,7 @@ next-env.d.ts
 
 # local env files
 .env*.local
+
+# docker compose files (often contain sensitive config)
+docker-*.yml
+docker-compose*.yml
