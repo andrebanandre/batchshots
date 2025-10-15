@@ -388,6 +388,11 @@
       }
     },
     "BackgroundRemovalPage": {
+      "metadata": {
+        "title": "Usuwanie Tła AI | Batch Shots",
+        "description": "Automatycznie usuwaj tła ze swoich obrazów za pomocą narzędzia AI Batch Shots. Idealne do zdjęć produktów, portretów i projektów kreatywnych. Wypróbuj za darmo!",
+        "keywords": "usuwanie tła, usuń tło, usuwanie tła ai, przezroczyste tło, fotografia produktowa, edycja zbiorcza obrazów"
+      },
       "title": "NARZĘDZIE DO USUWANIA TŁA",
       "loading": {
         "tool": "ŁADOWANIE NARZĘDZIA...",
@@ -1331,6 +1336,8 @@
     "UploadSectionDescription": "Prześlij obrazy JPG, PNG, WEBP, GIF, HEIC. Nasze AI generuje przyjazne SEO nazwy plików i teksty alt. Dodaj słowa kluczowe, aby doprecyzować wyniki.",
     "UploadSectionDescriptionWithLimit": "Prześlij JPG, PNG, WEBP, GIF, HEIC (maks. {maxImages} dla Twojego planu). AI generuje SEO nazwy plików i teksty alt. Dodaj słowa kluczowe dla własnych rezultatów.",
     "ButtonSelectImages": "Wybierz obrazy do AI SEO",
+    "MainCardInfoTitle": "CO TO JEST TO NARZĘDZIE?",
+    "MainCardInfoDescription": "Prześlij swoje obrazy, a nasze AI automatycznie wygeneruje szczegółowe, opisowe podpisy dla każdego obrazu. Model FastVLM analizuje zawartość wizualną i tworzy naturalne opisy językowe.",
     "ButtonSelectImagesLoading": "Inicjalizowanie AI...",
     "ResultsTitle": "Treści SEO wygenerowane przez AI",
     "ImageMissing": "Brak danych obrazu dla AI SEO (indeks: {index})",
@@ -1347,6 +1354,8 @@
     "HowItWorksStep3Desc": "AI tworzy przyjazne SEO nazwy plików i opisowe teksty alt. Słowa kluczowe zwiększają optymalizację.",
     "HowItWorksStep4Title": "Przejrzyj i popraw swoje SEO",
     "HowItWorksStep4Desc": "Skopiuj treści SEO wygenerowane przez AI, aby poprawić pozycję i dostępność swojej strony, bloga lub mediów społecznościowych.",
+    "goBack": "Wyczyść wszystko",
+    "ButtonDownload": "Kopiuj",
     "NoResultsYet": "Prześlij obrazy, aby zobaczyć treści SEO wygenerowane przez AI.",
     "KeywordsSectionTitle": "2. Wzbogacenie słowami kluczowymi (opcjonalnie)",
     "KeywordsSectionDescription": "Dodaj słowa kluczowe oddzielone przecinkami. Nasze AI strategicznie wplecie je w tekst alt dla lepszego SEO.",

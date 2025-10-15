@@ -1,98 +1,98 @@
 {
-    "Manifest": {
-        "name": "Batch Shots"
+  "Manifest": {
+    "name": "Batch Shots"
+  },
+  "LocaleSwitcher": {
+    "label": "Změnit jazyk",
+    "locale": "{locale, select, cs {🇨🇿 Čeština} en {🇺🇸 English} other {Neznámý}}"
+  },
+  "CookieConsent": {
+    "title": "OZNÁMENÍ O COOKIES",
+    "message": "Tento web používá nezbytné soubory cookie k zajištění jeho správného fungování. Pokračováním v používání našeho webu s tím souhlasíte.",
+    "privacyLink": "Zásady ochrany osobních údajů",
+    "termsLink": "Podmínky použití",
+    "acceptButton": "PŘIJMOUT",
+    "rejectButton": "ODMÍTNOUT",
+    "learnMoreButton": "DOZVĚDĚT SE VÍCE"
+  },
+  "Home": {
+    "title": "Batch Shots: SEO OPTIMALIZÁTOR OBRÁZKŮ",
+    "loading": "NAČÍTÁNÍ APLIKACE...",
+    "loadingDescription": "Počkejte prosím, inicializujeme možnosti zpracování obrázků.",
+    "transformTitle": "PŘEMĚŇTE SVÉ PRODUKTOVÉ FOTOGRAFIE",
+    "heroDescription": "Rychle optimalizujte své produktové obrázky pro web, e-commerce a sociální média pomocí našeho nástroje přímo v prohlížeči.",
+    "privacyFocused": "S DŮRAZEM NA SOUKROMÍ",
+    "privacyDescription": "Batch Shots zpracovává všechny obrázky přímo ve vašem prohlížeči. Neukládáme vaše fotografie ani data na našich serverech.",
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "termsOfUse": "Podmínky použití",
+    "features": {
+      "presets": {
+        "title": "PROFESIONÁLNÍ PŘEDVOLBY",
+        "description": "Aplikujte optimalizované předvolby pro e-commerce, sociální média a webové zobrazení jedním kliknutím."
+      },
+      "aiPowered": {
+        "title": "SEO S PODPOROU AI",
+        "description": "Generujte názvy souborů přátelské k SEO pomocí našich AI nástrojů a zlepšete tak objevitelnost vašich produktů."
+      },
+      "advancedControls": {
+        "title": "POKROČILÉ OVLÁDÁNÍ",
+        "description": "Dolaďte jas, kontrast, vyvážení bílé a další parametry pro dokonalé produktové obrázky."
+      },
+      "batchProcessing": {
+        "title": "DÁVKOVÉ ZPRACOVÁNÍ",
+        "description": "Zpracujte více obrázků najednou, ušetřete čas a zajistěte konzistentní výsledky."
+      }
     },
-    "LocaleSwitcher": {
-        "label": "Změnit jazyk",
-        "locale": "{locale, select, cs {🇨🇿 Čeština} en {🇺🇸 English} other {Neznámý}}"
-    },
-    "CookieConsent": {
-        "title": "OZNÁMENÍ O COOKIES",
-        "message": "Tento web používá nezbytné soubory cookie k zajištění jeho správného fungování. Pokračováním v používání našeho webu s tím souhlasíte.",
-        "privacyLink": "Zásady ochrany osobních údajů",
-        "termsLink": "Podmínky použití",
-        "acceptButton": "PŘIJMOUT",
-        "rejectButton": "ODMÍTNOUT",
-        "learnMoreButton": "DOZVĚDĚT SE VÍCE"
-    },
-    "Home": {
-        "title": "Batch Shots: SEO OPTIMALIZÁTOR OBRÁZKŮ",
-        "loading": "NAČÍTÁNÍ APLIKACE...",
-        "loadingDescription": "Počkejte prosím, inicializujeme možnosti zpracování obrázků.",
-        "transformTitle": "PŘEMĚŇTE SVÉ PRODUKTOVÉ FOTOGRAFIE",
-        "heroDescription": "Rychle optimalizujte své produktové obrázky pro web, e-commerce a sociální média pomocí našeho nástroje přímo v prohlížeči.",
-        "privacyFocused": "S DŮRAZEM NA SOUKROMÍ",
-        "privacyDescription": "Batch Shots zpracovává všechny obrázky přímo ve vašem prohlížeči. Neukládáme vaše fotografie ani data na našich serverech.",
-        "privacyPolicy": "Zásady ochrany osobních údajů",
-        "termsOfUse": "Podmínky použití",
-        "features": {
-            "presets": {
-                "title": "PROFESIONÁLNÍ PŘEDVOLBY",
-                "description": "Aplikujte optimalizované předvolby pro e-commerce, sociální média a webové zobrazení jedním kliknutím."
-            },
-            "aiPowered": {
-                "title": "SEO S PODPOROU AI",
-                "description": "Generujte názvy souborů přátelské k SEO pomocí našich AI nástrojů a zlepšete tak objevitelnost vašich produktů."
-            },
-            "advancedControls": {
-                "title": "POKROČILÉ OVLÁDÁNÍ",
-                "description": "Dolaďte jas, kontrast, vyvážení bílé a další parametry pro dokonalé produktové obrázky."
-            },
-            "batchProcessing": {
-                "title": "DÁVKOVÉ ZPRACOVÁNÍ",
-                "description": "Zpracujte více obrázků najednou, ušetřete čas a zajistěte konzistentní výsledky."
-            }
-        },
-        "upgradeProTitle": "ODEMKNOUT PRO FUNKCE",
-        "upgradeProDescription": "Získejte více obrázků, odstranění pozadí a pokročilé funkce s naším jednorázovým Pro upgradem.",
-        "freePlan": "PLÁN ZDARMA",
-        "proDescription": "Zpracujte až {maxImages} obrázků najednou se všemi prémiovými funkcemi odemčenými.",
-        "freeDescription": "Omezeno na {maxImages} obrázků. Upgradujte na PRO a zpracujte až 100 obrázků najednou.",
-        "upgradeToPro": "UPGRADOVAT NA PRO",
-        "learnMoreAboutPro": "ZJISTIT VÍCE O PRO",
-        "selectImages": "VYBRAT OBRÁZKY (AŽ {maxImages})",
-        "imageEditor": "EDITOR OBRÁZKŮ",
-        "selectMoreImages": "VYBRAT DALŠÍ OBRÁZKY",
-        "maxImagesReached": "MAXIMÁLNÍ POČET OBRÁZKŮ DOSAŽEN",
-        "imagesCount": "{current}/{max} obrázků",
-        "upgradeFor": "(Upgrade pro až 100)",
-        "imageOptimization": "OPTIMALIZACE OBRÁZKŮ",
-        "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Vaše obrázky nikdy nenahráváme na naše servery.</strong> Vaše soukromí a bezpečnost jsou zaručeny.",
-        "heicConversionFailed": "Nepodařilo se převést HEIC obrázek: {fileName}. Formát souboru nemusí být podporován nebo je soubor poškozený.",
-        "preparingImagesPreview": "Připravuji náhledy obrázků..."
-    },
-    "Navbar": {
-        "imageOptimizer": "Optimalizátor obrázků",
-        "removeBackgrounds": "Odstranit pozadí",
-        "aiPhotoDuplicateFinder": "AI duplicitní nález",
-        "aiImageSeoCaptionGeneration": "AI SEO popis obrázků",
-        "aiBackgrounds": "AI pozadí",
-        "pricing": "Ceny",
-        "login": "PŘIHLÁSIT SE",
-        "objectRemoval": "Odstranění objektů",
-        "tools": "Nástroje",
-        "addWatermark": "Přidat vodoznak",
-        "seoDescription": "SEO popis",
-        "imageFormatConvertor": "Konvertor formátů obrázků",
-        "profile": "Profil",
-        "logout": "Odhlásit se"
-    },
-    "Footer": {
-        "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
-        "quickLinks": "RYCHLÉ ODKAZY",
-        "stayUpdated": "ZŮSTAŇTE INFORMOVÁNI",
-        "subscribeText": "Přihlaste se k odběru našeho newsletteru pro aktualizace, tipy a speciální nabídky.",
-        "emailPlaceholder": "Váš email",
-        "subscribe": "PŘIHLÁSIT SE",
-        "copyright": "© {year} Batch Shots. Všechna práva vyhrazena.",
-        "madeWith": "Vytvořeno s ♥ týmem Batch Shots",
-        "contactUs": "Kontaktujte nás"
-    },
-    "Layout": {
-        "title": "Hromadný Editor Obrázků & SEO Optimalizátor | Batch Shots",
-        "description": "Snadno upravujte, měňte velikost, přidávejte vodoznaky a optimalizujte obrázky hromadně pro SEO. Funkce s podporou AI pro produktové fotografie, odstranění pozadí a generování SEO názvů.",
-        "keywords": "editor obrázků, hromadné zpracování obrázků, seo optimalizace obrázků, vodoznak na fotkách, odstranění pozadí, produktové fotografie, ai úprava fotek, batchshots"
-    },
+    "upgradeProTitle": "ODEMKNOUT PRO FUNKCE",
+    "upgradeProDescription": "Získejte více obrázků, odstranění pozadí a pokročilé funkce s naším jednorázovým Pro upgradem.",
+    "freePlan": "PLÁN ZDARMA",
+    "proDescription": "Zpracujte až {maxImages} obrázků najednou se všemi prémiovými funkcemi odemčenými.",
+    "freeDescription": "Omezeno na {maxImages} obrázků. Upgradujte na PRO a zpracujte až 100 obrázků najednou.",
+    "upgradeToPro": "UPGRADOVAT NA PRO",
+    "learnMoreAboutPro": "ZJISTIT VÍCE O PRO",
+    "selectImages": "VYBRAT OBRÁZKY (AŽ {maxImages})",
+    "imageEditor": "EDITOR OBRÁZKŮ",
+    "selectMoreImages": "VYBRAT DALŠÍ OBRÁZKY",
+    "maxImagesReached": "MAXIMÁLNÍ POČET OBRÁZKŮ DOSAŽEN",
+    "imagesCount": "{current}/{max} obrázků",
+    "upgradeFor": "(Upgrade pro až 100)",
+    "imageOptimization": "OPTIMALIZACE OBRÁZKŮ",
+    "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Vaše obrázky nikdy nenahráváme na naše servery.</strong> Vaše soukromí a bezpečnost jsou zaručeny.",
+    "heicConversionFailed": "Nepodařilo se převést HEIC obrázek: {fileName}. Formát souboru nemusí být podporován nebo je soubor poškozený.",
+    "preparingImagesPreview": "Připravuji náhledy obrázků..."
+  },
+  "Navbar": {
+    "imageOptimizer": "Optimalizátor obrázků",
+    "removeBackgrounds": "Odstranit pozadí",
+    "aiPhotoDuplicateFinder": "AI duplicitní nález",
+    "aiImageSeoCaptionGeneration": "AI SEO popis obrázků",
+    "aiBackgrounds": "AI pozadí",
+    "pricing": "Ceny",
+    "login": "PŘIHLÁSIT SE",
+    "objectRemoval": "Odstranění objektů",
+    "tools": "Nástroje",
+    "addWatermark": "Přidat vodoznak",
+    "seoDescription": "SEO popis",
+    "imageFormatConvertor": "Konvertor formátů obrázků",
+    "profile": "Profil",
+    "logout": "Odhlásit se"
+  },
+  "Footer": {
+    "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
+    "quickLinks": "RYCHLÉ ODKAZY",
+    "stayUpdated": "ZŮSTAŇTE INFORMOVÁNI",
+    "subscribeText": "Přihlaste se k odběru našeho newsletteru pro aktualizace, tipy a speciální nabídky.",
+    "emailPlaceholder": "Váš email",
+    "subscribe": "PŘIHLÁSIT SE",
+    "copyright": "© {year} Batch Shots. Všechna práva vyhrazena.",
+    "madeWith": "Vytvořeno s ♥ týmem Batch Shots",
+    "contactUs": "Kontaktujte nás"
+  },
+  "Layout": {
+    "title": "Hromadný Editor Obrázků & SEO Optimalizátor | Batch Shots",
+    "description": "Snadno upravujte, měňte velikost, přidávejte vodoznaky a optimalizujte obrázky hromadně pro SEO. Funkce s podporou AI pro produktové fotografie, odstranění pozadí a generování SEO názvů.",
+    "keywords": "editor obrázků, hromadné zpracování obrázků, seo optimalizace obrázků, vodoznak na fotkách, odstranění pozadí, produktové fotografie, ai úprava fotek, batchshots"
+  },
   "PrivacyPage": {
     "title": "Zásady ochrany osobních údajů | Batch Shots",
     "description": "Pochopte, jak Batch Shots nakládá s vašimi daty. Naše zásady popisují postupy ochrany soukromí a bezpečnosti.",
@@ -103,1252 +103,1261 @@
     "description": "Seznamte se s podmínkami používání Batch Shots, odpovědností uživatelů a dalšími právními informacemi.",
     "keywords": "podmínky služby, obchodní podmínky, uživatelská smlouva, batchshots"
   },
-    "Components": {
-        "ImageProcessingControls": {
-            "title": "NASTAVENÍ OBRÁZKU",
-            "reset": "RESETOVAT",
-            "applyToAll": "POUŽÍT NA VŠECHNY OBRÁZKY",
-            "basic": "ZÁKLADNÍ",
-            "advanced": "POKROČILÉ",
-            "ai": "AI",
-            "brightness": "JAS",
-            "contrast": "KONTRAST",
-            "sharpen": "OSTROST",
-            "colorAdjust": "ÚPRAVA BARVY (HSL)",
-            "hue": "ODSTÍN",
-            "cooler": "CHLADNĚJŠÍ",
-            "warmer": "TEPLEJŠÍ",
-            "saturation": "SATURACE",
-            "less": "MÉNĚ",
-            "more": "VÍCE",
-            "lightness": "SVĚTLOST",
-            "darker": "TMAVŠÍ",
-            "lighter": "SVĚTLEJŠÍ",
-            "colorBalance": "VYVÁŽENÍ BARVY (RGB)",
-            "red": "ČERVENÁ",
-            "green": "ZELENÁ",
-            "blue": "MODRÁ",
-            "processing": "ZPRACOVÁVÁNÍ..."
-        },
-        "BackgroundRemoval": {
-            "title": "ODSTRANĚNÍ POZADÍ",
-            "selected": "Vybraný obrázek",
-            "removeBackground": "ODSTRANIT POZADÍ",
-            "allImages": "Všechny obrázky",
-            "backgroundsRemoved": "{count} z {total} pozadí odstraněno",
-            "removeAllBackgrounds": "ODSTRANIT VŠECHNA POZADÍ",
-            "processing": "Zpracování...",
-            "backgroundRemoved": "Pozadí bylo úspěšně odstraněno!",
-            "transparent": "Detekováno průhledné pozadí",
-            "description": "Odstraňte pozadí z produktového obrázku pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí.",
-            "processingInfo": {
-                "process": "Proces",
-                "processValue": "AI zpracování v prohlížeči",
-                "result": "Výsledek",
-                "resultValue": "Průhledné PNG pozadí",
-                "mode": "Režim"
-            },
-            "proDialog": {
-                "title": "UPGRADUJTE NA PRO",
-                "featureTitle": "PRO FUNKCE: Odstranění pozadí",
-                "description": "Upgradujte na PRO pro odemčení odstranění pozadí pro všechny vaše obrázky (až 100 současně)! Získejte profesionálně vypadající produktové fotografie s průhledným pozadím.",
-                "pricing": {
-                    "title": "JEDNORÁZOVÁ PLATBA",
-                    "price": "19,99 €",
-                    "note": "Bez předplatného, doživotní přístup"
-                },
-                "actions": {
-                    "upgrade": "UPGRADUJTE NA PRO",
-                    "try": "VYZKOUŠEJTE, JAK TO FUNGUJE",
-                    "later": "Možná později"
-                }
-            },
-            "compactDescription": "Odstraňuje pozadí z produktových obrázků pomocí AI. Zpracování trvá 10-30 sekund."
-        },
-        "PresetsSelector": {
-            "title": "PŘEDNASTAVENÍ",
-            "custom": "Vlastní",
-            "dimensions": "ROZMĚRY",
-            "width": "Šířka",
-            "height": "Výška",
-            "auto": "auto",
-            "quality": "KVALITA",
-            "apply": "POUŽÍT",
-            "presets": {
-                "web-optimized": {
-                    "name": "Optimalizováno pro web",
-                    "description": "1080px, 75% kvalita (Nejmenší velikost souboru, vhodné pro web)"
-                },
-                "standard": {
-                    "name": "Standardní",
-                    "description": "1080px, 85% kvalita (Vyvážená velikost a kvalita)"
-                },
-                "high-quality": {
-                    "name": "Vysoká kvalita",
-                    "description": "1440px, 95% kvalita (Vysoká kvalita, větší velikost souboru)"
-                },
-                "max-quality": {
-                    "name": "Maximální",
-                    "description": "2160px, 100% kvalita (Maximální kvalita, největší velikost souboru)"
-                },
-                "custom": {
-                    "name": "Vlastní",
-                    "description": "Vlastní rozměry a nastavení kvality"
-                }
-            }
-        },
-        "DownloadOptions": {
-            "title": "STÁHNOUT",
-            "format": "FORMÁT",
-            "downloadAll": "STÁHNOUT VŠE",
-            "transparentNote": "Poznámka: Obrázky s odstraněným pozadím budou uloženy jako průhledné PNG",
-            "seoProductDescription": "TXT soubor s SEO popisem produktu bude zahrnut v ZIP souboru ke stažení"
-        },
-        "ProUpgrade": {
-            "title": "Upgradujte na Pro",
-            "unlock": "Odemkněte všechny prémiové funkce",
-            "description": "Upgradujte na Pro pro odemčení {feature} a zpracování až {count} obrázků současně.",
-            "pricing": {
-                "title": "JEDNORÁZOVÁ PLATBA",
-                "price": "19,99 €",
-                "note": "Bez předplatného, doživotní přístup"
-            },
-            "learnMore": "DOWIEDZ SIĚ WIĘCEJ",
-            "close": "Zavřít"
-        },
-        "SeoNameGenerator": {
-            "title": "AI SEO GENERÁTOR NÁZVŮ",
-            "description": "Generujte SEO přátelské názvy souborů pro vaše obrázky",
-            "enterDescription": "Zadejte popis vašeho produktu",
-            "placeholder": "Např. vintage kožená peněženka, ručně vyrobená, hnědá, z plnozrnné kůže...",
-            "generate": "GENEROVAT SEO NÁZVY",
-            "generating": "GENEROVÁNÍ...",
-            "proLimit": "Generujte až 100 názvů najednou s verzí Pro",
-            "originalName": "Původní název",
-            "seoName": "SEO název",
-            "appliedNames": {
-                "title": "Použité SEO názvy",
-                "description": "Naše AI vygenerovala SEO optimalizované názvy souborů pro vaše obrázky. Jednotlivé názvy můžete upravit v sekci náhledu obrázků."
-            },
-            "tryFeature": "VYZKOUŠET JAK TO FUNGUJE"
-        },
-        "SeoProductDescription": {
-            "title": "AI SEO POPIS PRODUKTU",
-            "description": "Generujte kompletní SEO optimalizovaný popis produktu",
-            "enterDescription": "Zadejte základní informace o produktu",
-            "placeholder": "Např. vintage kožená peněženka, ručně vyrobená, hnědá, z plnozrnné kůže, více přihrádek na karty...",
-            "generate": "GENEROVAT POPIS PRODUKTU",
-            "generating": "GENEROVÁNÍ...",
-            "generateWithCount": "GENEROVAT ({remaining} zbývá dnes)",
-            "dailyLimitReached": "DENNÍ LIMIT PŘEKROČEN",
-            "dailyLimitExceeded": "Denní limit 5 popisů byl dosažen. Upgradujte na PRO pro neomezený přístup nebo to zkuste znovu zítra.",
-            "dailyUsageInfo": "Zbývá {remaining} z {total} denních generování",
-            "proUnlimited": "PRO: Neomezené generování",
-            "upgradeToPro": "UPGRADOVAT NA PRO",
-            "loginRequired": "JE VYŽADOVÁNO PŘIHLÁŠENÍ",
-            "loginToGenerate": "Prosím, přihlaste se, abyste mohli generovat SEO popisy produktů. Uživatelé zdarma mají 5 popisů denně, PRO uživatelé mají neomezený přístup.",
-            "loginButton": "PŘIHLÁSIT SE",
-            "cancel": "ZRUŠIT",
-            "copyToClipboard": "KOPÍROVAT DO SCHRÁNKY",
-            "downloadAsTxt": "STÁHNOUT JAKO TXT",
-            "copied": "Zkopírováno!",
-            "tryFeature": "VYZKOUŠET JAK TO FUNGUJE",
-            "tabs": {
-                "content": "OBSAH",
-                "meta": "META",
-                "categories": "KATEGORIE",
-                "previews": "NÁHLEDY"
-            },
-            "previews": {
-                "googleSearch": "NÁHLED VYHLEDÁVÁNÍ GOOGLE",
-                "ecommerce": "NÁHLED E-SHOPU",
-                "productImage": "Obrázek produktu",
-                "addToCart": "Přidat do košíku",
-                "wishlist": "Seznam přání"
-            },
-            "sections": {
-                "productTitle": "Název produktu",
-                "metaTitle": "Meta název",
-                "metaDescription": "Meta popis",
-                "shortDescription": "Krátký popis", 
-                "longDescription": "Dlouhý popis",
-                "categories": "Kategorie",
-                "tags": "Tagy",
-                "urlSlug": "URL slug"
-            },
-            "downloadAll": "STÁHNOUT VŠECHNA DATA",
-            "keywords": "SEO popis produktu, generátor obsahu AI, SEO pro e-commerce, optimalizace výpisů produktů, meta popisy",
-            "instructionsCard": {
-                "title": "JAK POUŽÍVAT",
-                "step1": "Zadejte základní údaje o vašem produktu (název, vlastnosti, materiály atd.).",
-                "step2": "Klikněte na tlačítko 'Generovat popis produktu'.",
-                "step3": "Zkontrolujte vygenerovaný obsah (název, meta, popisy atd.).",
-                "step4": "Zkopírujte obsah nebo jej stáhněte jako textový soubor.",
-                "step5": "Použijte vygenerovaný SEO obsah ve svém e-shopu nebo na webových stránkách."
-            },
-            "mainCard": {
-                "title": "GENERUJTE SEO OBSAH",
-                "info": {
-                    "title": "CO JE TENTO NÁSTROJ?",
-                    "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače."
-                },
-                "benefits": {
-                    "complete": "KOMPLETNÍ SEO BALÍČEK",
-                    "completeDesc": "Získejte kompletní sadu SEO obsahu pro váš produkt, připravenou k použití.",
-                    "aiPowered": "OBSAH S PODPOROU AI",
-                    "aiPoweredDesc": "Generuje jedinečné, přesvědčivé a na klíčová slova bohaté popisy.",
-                    "bestPractices": "NEJLEPŠÍ POSTUPY SEO",
-                    "bestPracticesDesc": "Dodržuje pokyny pro počet znaků, umístění klíčových slov a čitelnost.",
-                    "quickEasy": "RYCHLE & SNADNO",
-                    "quickEasyDesc": "Ušetřete hodiny generováním profesionálních popisů během několika sekund."
-                }
-            }
-        },
-        "SeoDescriptionPage": {
-            "metadata": {
-                "title": "AI SEO Generátor popisu produktu | Batch Shots",
-                "description": "Generujte kompletní, SEO optimalizované popisy produktů (název, meta název/popis, krátký/dlouhý popis, kategorie, tagy, URL slug) ze základních informací.",
-                "keywords": "seo popis produktu, ai popis produktu, ecommerce seo, generátor popisu produktu, generátor meta popisu, generátor názvu produktu"
-            },
-            "title": "AI SEO GENERÁTOR POPISU PRODUKTU",
-            "mainCard": {
-                "title": "GENERUJTE SEO OBSAH",
-                "info": {
-                    "title": "CO JE TENTO NÁSTROJ?",
-                    "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače."
-                },
-                "benefits": {
-                    "complete": "KOMPLETNÍ SEO BALÍČEK",
-                    "completeDesc": "Získejte kompletní sadu SEO obsahu pro váš produkt, připravenou k použití.",
-                    "aiPowered": "OBSAH S PODPOROU AI",
-                    "aiPoweredDesc": "Generuje jedinečné, přesvědčivé a na klíčová slova bohaté popisy.",
-                    "bestPractices": "NEJLEPŠÍ POSTUPY SEO",
-                    "bestPracticesDesc": "Dodržuje pokyny pro počet znaků, umístění klíčových slov a čitelnost.",
-                    "quickEasy": "RYCHLE & SNADNO",
-                    "quickEasyDesc": "Ušetřete hodiny generováním profesionálních popisů během několika sekund."
-                }
-            },
-            "upgradeCard": {
-                "title": "UPGRADUJTE NA PRO",
-                "description": "Odemkněte neomezené generování SEO popisů produktů a získejte přístup ke všem funkcím.",
-                "button": "UPGRADUJTE NYNÍ"
-            },
-            "instructionsCard": {
-                "title": "JAK POUŽÍVAT",
-                "step1": "Zadejte základní údaje o vašem produktu (název, vlastnosti, materiály atd.).",
-                "step2": "Klikněte na tlačítko 'Generovat popis produktu'.",
-                "step3": "Zkontrolujte vygenerovaný obsah (název, meta, popisy atd.).",
-                "step4": "Zkopírujte obsah nebo jej stáhněte jako textový soubor.",
-                "step5": "Použijte vygenerovaný SEO obsah ve svém e-shopu nebo na webových stránkách."
-            }
-        },
-        "QuickPresets": {
-            "title": "RYCHLÁ PŘEDNASTAVENÍ",
-            "productSpecialty": "SPECIALIZACE PRODUKTU",
-            "colorStyle": "STYL BARVY",
-            "presets": {
-                "white-bg": {
-                    "name": "BÍLÉ POZADÍ",
-                    "description": "Čistá produktová fotografie na bílém pozadí"
-                },
-                "clean": {
-                    "name": "ČISTÝ PRODUKT",
-                    "description": "Produktová fotografie s čistými, neutrálními barvami"
-                },
-                "jewelry": {
-                    "name": "ŠPERKY/KOV",
-                    "description": "Optimalizováno pro šperky a kovové výrobky"
-                },
-                "sharp": {
-                    "name": "OSTRÉ DETAIly",
-                    "description": "Vylepšená ostrost a detaily"
-                },
-                "textile": {
-                    "name": "TEXTIL/LÁTKA",
-                    "description": "Pro textilní a látkové výrobky - zlepšuje texturu a barvu"
-                },
-                "soft-product": {
-                    "name": "MĚKKÉ PRODUKTY",
-                    "description": "Pro měkké výrobky jako polštáře, polštářky, plyšové hračky"
-                },
-                "furniture": {
-                    "name": "NÁBYTEK/DŘEVO",
-                    "description": "Dřevěný nábytek a interiérové dekorace"
-                },
-                "transparent": {
-                    "name": "SKLO",
-                    "description": "Sklo a průhledné výrobky"
-                },
-                "food": {
-                    "name": "POTRAVINY",
-                    "description": "Potravinová fotografie - zlepšuje čerstvost a přitažlivost barev"
-                },
-                "dramatic": {
-                    "name": "DRAMATICKÉ",
-                    "description": "Produktová fotografie s vysokým kontrastem"
-                },
-                "vivid": {
-                    "name": "ŽIVÉ BARVY",
-                    "description": "Vylepšená saturace a jasnost barev"
-                },
-                "classic": {
-                    "name": "KLASICKÉ",
-                    "description": "Klasický vzhled s vyváženými barvami"
-                }
-            }
-        },
-        "BackgroundRemovalPage": {
-            "title": "NÁSTROJ PRO ODSTRANĚNÍ POZADÍ",
-            "loading": {
-                "tool": "NAČÍTÁNÍ NÁSTROJE...",
-                "proStatus": "KONTROLA PRO STATUSU...",
-                "description": "Počkejte prosím, zatímco inicializujeme možnosti zpracování obrázků.",
-                "proDescription": "Počkejte prosím, zatímco kontrolujeme stav vašeho účtu."
-            },
-            "mainCard": {
-                "title": "ODSTRANIT POZADÍ Z OBRÁZKŮ",
-                "info": {
-                    "title": "ODSTRANĚNÍ POZADÍ AI",
-                    "description": "Odstraňte pozadí z produktových obrázků pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí."
-                },
-                "upload": {
-                    "title": "Vyberte obrázky",
-                    "buttonFree": "VYBRAT OBRÁZEK",
-                    "buttonPro": "VYBRAT OBRÁZKY",
-                    "helpTextFree": "Uživatelé zdarma mohou vybrat 1 obrázek současně.",
-                    "helpTextPro": "Můžete vybrat až 100 obrázků současně."
-                },
-                "actions": {
-                    "clear": "VYMAZAT",
-                    "download": "STÁHNOUT",
-                    "downloadZip": "STÁHNOUT JAKO ZIP",
-                    "downloading": "STAHOVÁNÍ...",
-                    "downloadingZip": "VYTVÁŘENÍ ZIP...",
-                    "removeBackground": "ODSTRANIT POZADÍ",
-                    "removeBackgrounds": "ODSTRANIT POZADÍ",
-                    "processing": "ODSTRAŇOVÁNÍ POZADÍ...",
-                    "processingMultiple": "ODSTRAŇOVÁNÍ POZADÍ...",
-                    "tryFullEditor": "VYZKOUŠEJTE PLNÝ EDITOR"
-                },
-                "progress": {
-                    "processing": "Zpracování...",
-                    "percent": "{percent}%"
-                },
-                "upgradeCard": {
-                    "title": "UPGRADUJTE NA PRO",
-                    "plan": {
-                        "title": "PRO PLÁN",
-                        "price": "19,99 €",
-                        "features": [
-                            "Odstraňujte pozadí z až 100 obrázků současně",
-                            "Pokročilé úpravy obrázků a přednastavení",
-                            "Generování SEO názvů pro produktové obrázky",
-                            "Hromadné zpracování pro všechny funkce",
-                            "Jednorázová platba, doživotní přístup"
-                        ],
-                        "buttonText": "UPGRADUJTE NYNÍ"
-                    }
-                }
-            },
-            "howItWorks": {
-                "title": "JAK TO FUNGUJE",
-                "step1": {
-                    "title": "1. VYBERTE SVÉ OBRÁZKY",
-                    "description": "Nahrajte jeden nebo více produktových obrázků, které chcete zpracovat.",
-                    "proNote": "PRO uživatelé mohou vybrat až 100 obrázků současně!"
-                },
-                "step2": {
-                    "title": "2. ODSTRANIT POZADÍ",
-                    "description": "Naše AI technologie detekuje a odstraňuje pozadí z vašich obrázků, vytvářejíc průhledné PNG ideální pro e-commerce."
-                },
-                "step3": {
-                    "title": "3. STÁHNOUT & POUŽÍT",
-                    "description": "Stáhněte zpracované obrázky a používejte je na svém webu, marketplace aukcích nebo marketingových materiálech."
-                }
-            },
-            "proDialog": {
-                "title": "PŘEJÍT NA PRO",
-                "featureTitle": "PRO FUNKCE: Hromadné odstranění pozadí",
-                "description": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Přejděte na PRO a zpracujte až 100 obrázků hromadně, ušetříte hodiny práce!",
-                "pricing": {
-                    "title": "JEDNORÁZOVÁ PLATBA",
-                    "price": "19,99 €",
-                    "note": "Žádné předplatné, doživotní přístup"
-                },
-                "actions": {
-                    "upgrade": "PŘEJÍT NA PRO",
-                    "continue": "POKRAČUJTE VE ZDARMA REŽIMU"
-                }
-            }
-        },
-        "ImagePreview": {
-            "noImages": "Nebyly vybrány žádné obrázky",
-            "zoomInstructions": "Štípněte pro přiblížení, táhněte pro posun",
-            "zoomLevel": "{scale}%",
-            "removingBackground": "Odstraňování pozadí...",
-            "seoName": {
-                "label": "SEO-optimalizovaný název:",
-                "edit": "UPRAVIT",
-                "cancel": "ZRUŠIT",
-                "save": "ULOŽIT"
-            },
-            "originalName": "Původní název:",
-            "fileInfo": {
-                "dimensions": "Rozměry:",
-                "size": "Velikost:",
-                "output": "Výstup:",
-                "quality": "Kvalita:",
-                "background": "Pozadí:",
-                "backgroundRemoved": "Odstraněno",
-                "custom": "Vlastní",
-                "auto": "auto"
-            },
-            "actions": {
-                "download": "STÁHNOUT",
-                "reset": "RESETOVAT"
-            },
-            "allImages": "VŠECHNY OBRÁZKY ({current}/{max})"
-        },
-        "PricingCard": {
-            "oneTime": "jednorázově",
-            "currentPlan": "AKTUÁLNÍ PLÁN"
-        },
-        "WatermarkControl": {
-            "title": "VODOTISK",
-            "addTab": "PŘIDAT VODOTISK",
-            "removeTab": "ODSTRANIT VODOTISK (AI)",
-            "type": "TYP",
-            "text": "TEXT",
-            "logo": "LOGO",
-            "enterText": "Zadejte text vodotisku",
-            "font": "PÍSMO",
-            "size": "VELIKOST",
-            "color": "BARVA",
-            "opacity": "KRYTÍ",
-            "position": "POZICE",
-            "uploadLogo": "NAHRÁT LOGO",
-            "logoPlaceholder": "Klikněte nebo přetáhněte logo sem",
-            "reset": "RESET",
-            "presets": {
-                "bottomRight": "Vpravo dole",
-                "bottomLeft": "Vlevo dole",
-                "topLeft": "Vlevo nahoře",
-                "topRight": "Vpravo nahoře",
-                "center": "Střed",
-                "diagonal": "Diagonálně",
-                "tile": "Dlaždice (Vzor)"
-            },
-            "removeDescription": "Odstranění vodotisku pomocí AI již brzy!"
-        }
+  "Components": {
+    "ImageProcessingControls": {
+      "title": "NASTAVENÍ OBRÁZKU",
+      "reset": "RESETOVAT",
+      "applyToAll": "POUŽÍT NA VŠECHNY OBRÁZKY",
+      "basic": "ZÁKLADNÍ",
+      "advanced": "POKROČILÉ",
+      "ai": "AI",
+      "brightness": "JAS",
+      "contrast": "KONTRAST",
+      "sharpen": "OSTROST",
+      "colorAdjust": "ÚPRAVA BARVY (HSL)",
+      "hue": "ODSTÍN",
+      "cooler": "CHLADNĚJŠÍ",
+      "warmer": "TEPLEJŠÍ",
+      "saturation": "SATURACE",
+      "less": "MÉNĚ",
+      "more": "VÍCE",
+      "lightness": "SVĚTLOST",
+      "darker": "TMAVŠÍ",
+      "lighter": "SVĚTLEJŠÍ",
+      "colorBalance": "VYVÁŽENÍ BARVY (RGB)",
+      "red": "ČERVENÁ",
+      "green": "ZELENÁ",
+      "blue": "MODRÁ",
+      "processing": "ZPRACOVÁVÁNÍ..."
     },
-    "Dialogs": {
-        "download": {
-            "title": "Stáhnout obrázky",
-            "confirmTitle": "Potvrdit stažení",
-            "successTitle": "Stažení úspěšné",
-            "summary": "Shrnutí stažení:",
-            "images": "{count, plural, =1 {# obrázek} other {# obrázky}} budou staženy",
-            "format": "Formát:",
-            "appliedPreset": "Použitý preset:",
-            "adjustmentsApplied": "Úpravy obrázku byly aplikovány",
-            "backgroundRemoval": "Odstranění pozadí bylo aplikováno",
-            "seoFilenames": "Včetně SEO optimalizovaných názvů souborů AI",
-            "watermarkApplied": "Vodotisk použit",
-            "zipPackage": "Soubory budou zabaleny do ZIP archivu",
-            "processingNote": "Zpracování může u více nebo velkých obrázků chvíli trvat.",
-            "cancel": "ZRUŠIT",
-            "download": "STÁHNOUT",
-            "processing": "ZPRACOVÁVÁNÍ...",
-            "successMessage": "Vaše obrázky byly úspěšně staženy. Co chcete udělat dál?",
-            "startNewBundleDesc": "Začít nový balíček: Vymažte současné obrázky a začněte znovu",
-            "continueEditingDesc": "Pokračovat v úpravách: Pokračujte v práci se současnými obrázky",
-            "startNewBundle": "ZAČÍT NOVÝ BALÍČEK",
-            "continueEditing": "POKRAČOVAT V ÚPRAVÁCH",
-            "seoProductDescription": "SEO Popis produktu (TXT)"
+    "BackgroundRemoval": {
+      "title": "ODSTRANĚNÍ POZADÍ",
+      "selected": "Vybraný obrázek",
+      "removeBackground": "ODSTRANIT POZADÍ",
+      "allImages": "Všechny obrázky",
+      "backgroundsRemoved": "{count} z {total} pozadí odstraněno",
+      "removeAllBackgrounds": "ODSTRANIT VŠECHNA POZADÍ",
+      "processing": "Zpracování...",
+      "backgroundRemoved": "Pozadí bylo úspěšně odstraněno!",
+      "transparent": "Detekováno průhledné pozadí",
+      "description": "Odstraňte pozadí z produktového obrázku pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí.",
+      "processingInfo": {
+        "process": "Proces",
+        "processValue": "AI zpracování v prohlížeči",
+        "result": "Výsledek",
+        "resultValue": "Průhledné PNG pozadí",
+        "mode": "Režim"
+      },
+      "proDialog": {
+        "title": "UPGRADUJTE NA PRO",
+        "featureTitle": "PRO FUNKCE: Odstranění pozadí",
+        "description": "Upgradujte na PRO pro odemčení odstranění pozadí pro všechny vaše obrázky (až 100 současně)! Získejte profesionálně vypadající produktové fotografie s průhledným pozadím.",
+        "pricing": {
+          "title": "JEDNORÁZOVÁ PLATBA",
+          "price": "19,99 €",
+          "note": "Bez předplatného, doživotní přístup"
         },
-        "proUpgrade": {
-            "feature": "Hromadné zpracování"
+        "actions": {
+          "upgrade": "UPGRADUJTE NA PRO",
+          "try": "VYZKOUŠEJTE, JAK TO FUNGUJE",
+          "later": "Možná později"
         }
+      },
+      "compactDescription": "Odstraňuje pozadí z produktových obrázků pomocí AI. Zpracování trvá 10-30 sekund."
     },
-    "WatermarkPage": {
-        "metadata": {
-            "title": "Přidat vodotisk k obrázkům | Batch Shots",
-            "description": "Snadno přidejte vlastní textové nebo logové vodotisky k vašim obrázkům. Chraňte své fotografie vodotisky s kontrolou nad krytím, pozicí a velikostí.",
-            "keywords": "vodotisk, přidat vodotisk k obrázkům, vodotisk fotografií, vodotisk obrázků, vodotisk loga, textový vodotisk, značení obrázků, vodotisk fotografií"
+    "PresetsSelector": {
+      "title": "PŘEDNASTAVENÍ",
+      "custom": "Vlastní",
+      "dimensions": "ROZMĚRY",
+      "width": "Šířka",
+      "height": "Výška",
+      "auto": "auto",
+      "quality": "KVALITA",
+      "apply": "POUŽÍT",
+      "presets": {
+        "web-optimized": {
+          "name": "Optimalizováno pro web",
+          "description": "1080px, 75% kvalita (Nejmenší velikost souboru, vhodné pro web)"
         },
-        "title": "PŘIDAT VODOTISK K OBRÁZKŮM",
-        "loading": {
-            "proStatus": "KONTROLA PRO STATUSU...",
-            "proDescription": "Počkejte prosím, zatímco ověřujeme stav vašeho účtu."
+        "standard": {
+          "name": "Standardní",
+          "description": "1080px, 85% kvalita (Vyvážená velikost a kvalita)"
         },
-        "preview": {
-            "title": "NÁHLED OBRÁZKU"
+        "high-quality": {
+          "name": "Vysoká kvalita",
+          "description": "1440px, 95% kvalita (Vysoká kvalita, větší velikost souboru)"
         },
-        "alerts": {
-            "freeUserLimit": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro zpracování až 100 obrázků najednou!",
-            "maxImagesLimit": "Maximálně 100 obrázků najednou.",
-            "watermarkFailed": "Aplikace vodotisku selhala. Prosím zkuste to znovu."
+        "max-quality": {
+          "name": "Maximální",
+          "description": "2160px, 100% kvalita (Maximální kvalita, největší velikost souboru)"
         },
-        "mainCard": {
-            "title": "VODOTISK NA OBRÁZKY",
-            "info": {
-                "title": "PŘIDAT VLASTNÍ VODOTISKY",
-                "description": "Chraňte své obrázky vlastními textovými nebo logovými vodotisky. Přizpůsobte krytí, velikost a pozici podle vašich potřeb značky."
-            },
-            "upload": {
-                "title": "Vybrat obrázky",
-                "buttonFree": "VYBRAT OBRÁZEK",
-                "buttonPro": "VYBRAT OBRÁZKY",
-                "helpTextFree": "Bezplatní uživatelé mohou vybrat 1 obrázek najednou.",
-                "helpTextPro": "Můžete vybrat až 100 obrázků najednou."
-            },
-            "actions": {
-                "clear": "VYMAZAT",
-                "download": "STÁHNOUT",
-                "downloadZip": "STÁHNOUT JAKO ZIP",
-                "applyWatermark": "POUŽÍT VODOTISK",
-                "applyWatermarks": "POUŽÍT VODOTISKY",
-                "processing": "POUŽÍVÁNÍ VODOTISKU...",
-                "processingMultiple": "POUŽÍVÁNÍ VODOTISKŮ...",
-                "tryFullEditor": "VYZKOUŠET PLNÝ EDITOR"
-            },
-            "progress": {
-                "processing": "Zpracování...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "UPGRADE NA PRO",
-                "plan": {
-                    "title": "PRO PLÁN",
-                    "price": "$19.99",
-                    "features": [
-                        "Vodotisk až 100 obrázků najednou",
-                        "Pokročilé úpravy obrázků a předvolby",
-                        "Odstranění pozadí pro produktové fotografie",
-                        "Hromadné zpracování pro všechny funkce",
-                        "Jednorázová platba, doživotní přístup"
-                    ],
-                    "buttonText": "UPGRADE NYNÍ"
-                }
-            }
-        },
-        "howItWorks": {
-            "title": "JAK TO FUNGUJE",
-            "step1": {
-                "title": "1. VYBERTE OBRÁZKY",
-                "description": "Nahrajte jeden nebo více obrázků, ke kterým chcete přidat vodotisk.",
-                "proNote": "PRO uživatelé mohou vybrat až 100 obrázků najednou!"
-            },
-            "step2": {
-                "title": "2. PŘIZPŮSOBTE VODOTISK",
-                "description": "Vyberte mezi textovým nebo logovým vodotiskem. Upravte krytí, velikost a pozici podle vašich preferencí."
-            },
-            "step3": {
-                "title": "3. STÁHNOUT A POUŽÍT",
-                "description": "Použijte vodotisk a stáhněte zpracované obrázky připravené pro web, sociální sítě nebo portfolio."
-            }
-        },
-        "proDialog": {
-            "title": "UPGRADE NA PRO",
-            "featureTitle": "PRO FUNKCE: Hromadné vodotisky",
-            "description": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro vodotisk až 100 obrázků najednou, ušetříte tak hodiny práce!",
-            "pricing": {
-                "title": "JEDNORÁZOVÁ PLATBA",
-                "price": "$19.99",
-                "note": "Bez předplatného, doživotní přístup"
-            },
-            "actions": {
-                "upgrade": "UPGRADE NA PRO",
-                "continue": "POKRAČOVAT V BEZPLATNÉM REŽIMU"
-            }
+        "custom": {
+          "name": "Vlastní",
+          "description": "Vlastní rozměry a nastavení kvality"
         }
+      }
     },
-    "ImageFormatConvertorPage": {
-        "metadata": {
-            "title": "Konvertor formátů obrázků | Batch Shots",
-            "description": "Konvertujte obrázky mezi formáty (JPG, PNG, WebP, AVIF) pomocí našeho snadno použitelného nástroje. Podporuje konverzi HEIC a dávkové zpracování.",
-            "keywords": "konvertor formátů obrázků, konvertovat jpg na png, konvertovat heic na jpg, webp konvertor, konverze formátu obrázku, dávková konverze obrázků, konvertovat heic"
+    "DownloadOptions": {
+      "title": "STÁHNOUT",
+      "format": "FORMÁT",
+      "downloadAll": "STÁHNOUT VŠE",
+      "transparentNote": "Poznámka: Obrázky s odstraněným pozadím budou uloženy jako průhledné PNG",
+      "seoProductDescription": "TXT soubor s SEO popisem produktu bude zahrnut v ZIP souboru ke stažení"
+    },
+    "ProUpgrade": {
+      "title": "Upgradujte na Pro",
+      "unlock": "Odemkněte všechny prémiové funkce",
+      "description": "Upgradujte na Pro pro odemčení {feature} a zpracování až {count} obrázků současně.",
+      "pricing": {
+        "title": "JEDNORÁZOVÁ PLATBA",
+        "price": "19,99 €",
+        "note": "Bez předplatného, doživotní přístup"
+      },
+      "learnMore": "DOWIEDZ SIĚ WIĘCEJ",
+      "close": "Zavřít"
+    },
+    "SeoNameGenerator": {
+      "title": "AI SEO GENERÁTOR NÁZVŮ",
+      "description": "Generujte SEO přátelské názvy souborů pro vaše obrázky",
+      "enterDescription": "Zadejte popis vašeho produktu",
+      "placeholder": "Např. vintage kožená peněženka, ručně vyrobená, hnědá, z plnozrnné kůže...",
+      "generate": "GENEROVAT SEO NÁZVY",
+      "generating": "GENEROVÁNÍ...",
+      "proLimit": "Generujte až 100 názvů najednou s verzí Pro",
+      "originalName": "Původní název",
+      "seoName": "SEO název",
+      "appliedNames": {
+        "title": "Použité SEO názvy",
+        "description": "Naše AI vygenerovala SEO optimalizované názvy souborů pro vaše obrázky. Jednotlivé názvy můžete upravit v sekci náhledu obrázků."
+      },
+      "tryFeature": "VYZKOUŠET JAK TO FUNGUJE"
+    },
+    "SeoProductDescription": {
+      "title": "AI SEO POPIS PRODUKTU",
+      "description": "Generujte kompletní SEO optimalizovaný popis produktu",
+      "enterDescription": "Zadejte základní informace o produktu",
+      "placeholder": "Např. vintage kožená peněženka, ručně vyrobená, hnědá, z plnozrnné kůže, více přihrádek na karty...",
+      "generate": "GENEROVAT POPIS PRODUKTU",
+      "generating": "GENEROVÁNÍ...",
+      "generateWithCount": "GENEROVAT ({remaining} zbývá dnes)",
+      "dailyLimitReached": "DENNÍ LIMIT PŘEKROČEN",
+      "dailyLimitExceeded": "Denní limit 5 popisů byl dosažen. Upgradujte na PRO pro neomezený přístup nebo to zkuste znovu zítra.",
+      "dailyUsageInfo": "Zbývá {remaining} z {total} denních generování",
+      "proUnlimited": "PRO: Neomezené generování",
+      "upgradeToPro": "UPGRADOVAT NA PRO",
+      "loginRequired": "JE VYŽADOVÁNO PŘIHLÁŠENÍ",
+      "loginToGenerate": "Prosím, přihlaste se, abyste mohli generovat SEO popisy produktů. Uživatelé zdarma mají 5 popisů denně, PRO uživatelé mají neomezený přístup.",
+      "loginButton": "PŘIHLÁSIT SE",
+      "cancel": "ZRUŠIT",
+      "copyToClipboard": "KOPÍROVAT DO SCHRÁNKY",
+      "downloadAsTxt": "STÁHNOUT JAKO TXT",
+      "copied": "Zkopírováno!",
+      "tryFeature": "VYZKOUŠET JAK TO FUNGUJE",
+      "tabs": {
+        "content": "OBSAH",
+        "meta": "META",
+        "categories": "KATEGORIE",
+        "previews": "NÁHLEDY"
+      },
+      "previews": {
+        "googleSearch": "NÁHLED VYHLEDÁVÁNÍ GOOGLE",
+        "ecommerce": "NÁHLED E-SHOPU",
+        "productImage": "Obrázek produktu",
+        "addToCart": "Přidat do košíku",
+        "wishlist": "Seznam přání"
+      },
+      "sections": {
+        "productTitle": "Název produktu",
+        "metaTitle": "Meta název",
+        "metaDescription": "Meta popis",
+        "shortDescription": "Krátký popis",
+        "longDescription": "Dlouhý popis",
+        "categories": "Kategorie",
+        "tags": "Tagy",
+        "urlSlug": "URL slug"
+      },
+      "downloadAll": "STÁHNOUT VŠECHNA DATA",
+      "keywords": "SEO popis produktu, generátor obsahu AI, SEO pro e-commerce, optimalizace výpisů produktů, meta popisy",
+      "instructionsCard": {
+        "title": "JAK POUŽÍVAT",
+        "step1": "Zadejte základní údaje o vašem produktu (název, vlastnosti, materiály atd.).",
+        "step2": "Klikněte na tlačítko 'Generovat popis produktu'.",
+        "step3": "Zkontrolujte vygenerovaný obsah (název, meta, popisy atd.).",
+        "step4": "Zkopírujte obsah nebo jej stáhněte jako textový soubor.",
+        "step5": "Použijte vygenerovaný SEO obsah ve svém e-shopu nebo na webových stránkách."
+      },
+      "mainCard": {
+        "title": "GENERUJTE SEO OBSAH",
+        "info": {
+          "title": "CO JE TENTO NÁSTROJ?",
+          "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače."
         },
-        "title": "KONVERTOR FORMÁTŮ OBRÁZKŮ",
-        "loading": {
-            "tool": "NAČÍTÁNÍ KONVERTORU...",
-            "proStatus": "KONTROLA STAVU PRO...",
-            "description": "Počkejte prosím, než inicializujeme možnosti zpracování obrázků.",
-            "proDescription": "Počkejte prosím, než ověříme stav vašeho účtu."
-        },
-        "uploadArea": {
-            "title": "KONVERTUJTE SVÉ OBRÁZKY",
-            "description": "Převeďte své obrázky do různých formátů pomocí několika kliknutí.",
-            "selectImages": "VYBRAT OBRÁZKY (AŽ {maxImages})",
-            "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Nikdy nenahráváme vaše obrázky na naše servery.</strong>",
-            "freeLimitInfo": "Bezplatní uživatelé mohou najednou převést až {maxImages} obrázků.",
-            "upgradeLink": "Upgradovat na PRO"
-        },
-        "selectedImages": {
-            "title": "VYBRANÉ OBRÁZKY ({count})"
-        },
-        "formatChanged": {
-            "title": "FORMÁT ZMĚNĚN",
-            "description": "Změnili jste cílový formát. Klikněte na Reset pro konverzi obrázků do nového formátu."
-        },
-        "mainCard": {
-            "title": "KONVERTOVAT OBRÁZKY DO LIBOVOLNÉHO FORMÁTU",
-            "info": {
-                "title": "KONVERZE FORMÁTU OBRÁZKU",
-                "description": "Převeďte své obrázky mezi formáty jako JPG, PNG, WebP a AVIF. Během konverze můžete také změnit velikost obrázků."
-            },
-            "upload": {
-                "title": "Vyberte obrázky k převodu",
-                "buttonFree": "VYBRAT OBRÁZKY",
-                "buttonPro": "VYBRAT OBRÁZKY",
-                "helpTextFree": "Bezplatní uživatelé mohou najednou vybrat až {maxImages} obrázků.",
-                "helpTextPro": "Najednou můžete vybrat až 100 obrázků."
-            },
-            "actions": {
-                "clear": "VYMAZAT",
-                "addMore": "PŘIDAT DALŠÍ",
-                "download": "STÁHNOUT PŘEVEDENÉ",
-                "downloadZip": "STÁHNOUT VŠE JAKO ZIP",
-                "convertImageTo": "KONVERTOVAT DO {format}",
-                "convertImagesTo": "KONVERTOVAT VŠE DO {format}",
-                "converting": "KONVERZE...",
-                "convertingMultiple": "KONVERZE OBRÁZKŮ...",
-                "resetConversion": "RESETOVAT"
-            },
-            "progress": {
-                "processing": "Zpracovávání...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "UPGRADOVAT NA PRO",
-                "plan": {
-                    "title": "PRO PLÁN",
-                    "price": "$19.99",
-                    "features": [
-                        "Převeďte až 100 obrázků najednou",
-                        "Změňte velikost obrázků během konverze",
-                        "Převeďte z HEIC/HEIF do libovolného formátu",
-                        "Odstranění pozadí pro produktové fotografie",
-                        "Jednorázová platba, doživotní přístup"
-                    ],
-                    "buttonText": "UPGRADOVAT NYNÍ"
-                }
-            }
-        },
-        "targetFormat": {
-            "title": "VYBRAT CÍLOVÝ FORMÁT"
-        },
-        "resize": {
-            "title": "ZMĚNIT VELIKOST BĚHEM KONVERZE (VOLITELNÉ)"
-        },
-        "convertedImages": {
-            "title": "PŘEVEDENÉ OBRÁZKY",
-            "description": "Vaše obrázky byly úspěšně převedeny. Klikněte na Stáhnout pro jejich uložení."
-        },
-        "howItWorks": {
-            "title": "JAK TO FUNGUJE",
-            "step1": {
-                "title": "1. VYBERTE SVÉ OBRÁZKY",
-                "description": "Nahrajte jeden nebo více obrázků, které chcete převést.",
-                "proNote": "PRO uživatelé mohou najednou vybrat až 100 obrázků!"
-            },
-            "step2": {
-                "title": "2. ZVOLTE CÍLOVÝ FORMÁT",
-                "description": "Vyberte požadovaný výstupní formát (JPG, PNG, WebP nebo AVIF)."
-            },
-            "step3": {
-                "title": "3. ZMĚNIT VELIKOST (VOLITELNÉ)",
-                "description": "Volitelně vyberte přednastavení pro změnu velikosti obrázků během konverze."
-            },
-            "step4": {
-                "title": "4. STÁHNOUT A POUŽÍT",
-                "description": "Převeďte své obrázky a stáhněte je jednotlivě nebo jako ZIP archiv."
-            }
-        },
-        "supportedFormats": {
-            "title": "PODPOROVANÉ FORMÁTY",
-            "input": {
-                "title": "VSTUPNÍ FORMÁTY",
-                "description": "Můžete nahrát obrázky v těchto formátech:"
-            },
-            "output": {
-                "title": "VÝSTUPNÍ FORMÁTY",
-                "description": "Převeďte své obrázky do libovolného z těchto formátů:"
-            }
-        },
-        "alerts": {
-            "freeUserLimit": "Bezplatní uživatelé mohou najednou převést až 5 obrázků. Upgradujte na PRO pro konverzi až 100 obrázků hromadně!",
-            "maxImagesLimit": "Najednou je povoleno maximálně 100 obrázků.",
-            "conversionFailed": "Konverze formátu selhala. Zkuste to prosím znovu."
-        },
-        "proDialog": {
-            "title": "UPGRADOVAT NA PRO",
-            "featureTitle": "PRO FUNKCE: Hromadná konverze formátu",
-            "description": "Bezplatní uživatelé mohou najednou převést pouze {maxImages} obrázků. Upgradujte na PRO pro konverzi až 100 obrázků hromadně, což vám ušetří hodiny práce!",
-            "pricing": {
-                "title": "JEDNORÁZOVÁ PLATBA",
-                "price": "$19.99",
-                "note": "Bez předplatného, doživotní přístup"
-            },
-            "actions": {
-                "upgrade": "UPGRADOVAT NA PRO",
-                "continue": "POKRAČOVAT V BEZPLATNÉM REŽIMU"
-            }
-        },
-        "allImages": "VŠECHNY OBRÁZKY ({current}/{max})",
-        "imagesCount": "{current}/{max} obrázků",
-        "upgradeFor": "(Upgrade pro až 100)",
-        "plans": {
-            "free": {
-                "title": "ZDARMA",
-                "price": "ZDARMA",
-                "features": [
-                    "Dávkové zpracování max 5 obrázků",
-                    "Odstranění pozadí AI jednoho obrázku (náhled)",
-                    "Odstranění objektů AI z jednoho obrázku",
-                    "Přidání vodoznaku max 5 obrázků",
-                    "Konvertor obrázků max 5 obrázků dávkově",
-                    "Generování názvů obrázků SEO AI (Není k dispozici)",
-                    "Popis SEO AI a metatagy (Není k dispozici)"
-                ],
-                "buttonText": "POKRAČOVAT ZDARMA"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "$19.99",
-                "features": [
-                    "Dávkové zpracování max 100 obrázků",
-                    "Až 100 odstranění pozadí AI v jedné dávce",
-                    "Odstranění objektů AI až 100 obrázků",
-                    "Přidání vodoznaku 100 obrázků v jedné dávce",
-                    "Konvertor obrázků max 100 obrázků dávkově",
-                    "Generování názvů obrázků SEO AI (až 100)",
-                    "Popis SEO AI a metatagy k dispozici",
-                    "**Jednorázová platba, doživotní přístup**"
-                ],
-                "buttonText": "PŘEJÍT NA PRO"
-            }
+        "benefits": {
+          "complete": "KOMPLETNÍ SEO BALÍČEK",
+          "completeDesc": "Získejte kompletní sadu SEO obsahu pro váš produkt, připravenou k použití.",
+          "aiPowered": "OBSAH S PODPOROU AI",
+          "aiPoweredDesc": "Generuje jedinečné, přesvědčivé a na klíčová slova bohaté popisy.",
+          "bestPractices": "NEJLEPŠÍ POSTUPY SEO",
+          "bestPracticesDesc": "Dodržuje pokyny pro počet znaků, umístění klíčových slov a čitelnost.",
+          "quickEasy": "RYCHLE & SNADNO",
+          "quickEasyDesc": "Ušetřete hodiny generováním profesionálních popisů během několika sekund."
         }
+      }
     },
-    "ObjectRemovalPage": {
-        "metadata": {
-            "title": "AI Nástroj pro odstranění objektů | Batch Shots",
-            "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí našeho AI nástroje. Funguje zcela ve vašem prohlížeči pro zachování soukromí. Vyzkoušejte zdarma!",
-            "keywords": "odstranění objektů, ai odstranění objektů, odstranit objekty z obrázku, odstranit text z obrázku, odstranit osoby z fotografie, inpainting, nástroj pro úpravu obrázků"
+    "SeoDescriptionPage": {
+      "metadata": {
+        "title": "AI SEO Generátor popisu produktu | Batch Shots",
+        "description": "Generujte kompletní, SEO optimalizované popisy produktů (název, meta název/popis, krátký/dlouhý popis, kategorie, tagy, URL slug) ze základních informací.",
+        "keywords": "seo popis produktu, ai popis produktu, ecommerce seo, generátor popisu produktu, generátor meta popisu, generátor názvu produktu"
+      },
+      "title": "AI SEO GENERÁTOR POPISU PRODUKTU",
+      "mainCard": {
+        "title": "GENERUJTE SEO OBSAH",
+        "info": {
+          "title": "CO JE TENTO NÁSTROJ?",
+          "description": "Tento nástroj s podporou AI generuje kompletní SEO balíček pro vaše produkty z základních informací. Obdržíte název produktu, meta název, meta popis, krátké a dlouhé popisy, kategorie, tagy a URL slug, vše optimalizované pro vyhledávače."
         },
-        "title": "AI ODSTRANĚNÍ OBJEKTŮ",
-        "loading": {
-            "ort": "Načítání AI Engine...",
-            "opencv": "Načítání nástrojů pro obrázky...",
-            "model": "Načítání modelu pro odstranění objektů...",
-            "proStatus": "Kontrola stavu účtu...",
-            "generic": "Načítání..."
+        "benefits": {
+          "complete": "KOMPLETNÍ SEO BALÍČEK",
+          "completeDesc": "Získejte kompletní sadu SEO obsahu pro váš produkt, připravenou k použití.",
+          "aiPowered": "OBSAH S PODPOROU AI",
+          "aiPoweredDesc": "Generuje jedinečné, přesvědčivé a na klíčová slova bohaté popisy.",
+          "bestPractices": "NEJLEPŠÍ POSTUPY SEO",
+          "bestPracticesDesc": "Dodržuje pokyny pro počet znaků, umístění klíčových slov a čitelnost.",
+          "quickEasy": "RYCHLE & SNADNO",
+          "quickEasyDesc": "Ušetřete hodiny generováním profesionálních popisů během několika sekund."
+        }
+      },
+      "upgradeCard": {
+        "title": "UPGRADUJTE NA PRO",
+        "description": "Odemkněte neomezené generování SEO popisů produktů a získejte přístup ke všem funkcím.",
+        "button": "UPGRADUJTE NYNÍ"
+      },
+      "instructionsCard": {
+        "title": "JAK POUŽÍVAT",
+        "step1": "Zadejte základní údaje o vašem produktu (název, vlastnosti, materiály atd.).",
+        "step2": "Klikněte na tlačítko 'Generovat popis produktu'.",
+        "step3": "Zkontrolujte vygenerovaný obsah (název, meta, popisy atd.).",
+        "step4": "Zkopírujte obsah nebo jej stáhněte jako textový soubor.",
+        "step5": "Použijte vygenerovaný SEO obsah ve svém e-shopu nebo na webových stránkách."
+      }
+    },
+    "QuickPresets": {
+      "title": "RYCHLÁ PŘEDNASTAVENÍ",
+      "productSpecialty": "SPECIALIZACE PRODUKTU",
+      "colorStyle": "STYL BARVY",
+      "presets": {
+        "white-bg": {
+          "name": "BÍLÉ POZADÍ",
+          "description": "Čistá produktová fotografie na bílém pozadí"
         },
-        "mainCard": {
-            "title": "AI PLÁTNO PRO ODSTRANĚNÍ OBJEKTŮ",
-            "info": {
-                "title": "JAK TO FUNGUJE",
-                "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí AI. Zpracování probíhá zcela ve vašem prohlížeči."
-            },
-            "upload": {
-                "title": "Nahrajte svůj obrázek",
-                "button": "VYBRAT OBRÁZEK",
-                "helpTextFree": "Vyberte obrázek, který chcete upravit.",
-                "helpTextPro": "Vyberte až 100 obrázků pro dávkové zpracování."
-            },
-            "canvas": {
-                "drawTitle": "NAKRESLETE MASKU NA OBJEKTY",
-                "brushSize": "Velikost štětce",
-                "clearMask": "VYMAZAT MASKU",
-                "outputTitle": "2. ZOBRAZIT VÝSLEDEK",
-                "outputPlaceholder": "Výsledek se zobrazí zde"
-            },
-            "actions": {
-                "reset": "RESET",
-                "remove": "ODSTRANIT OBJEKTY",
-                "removeAllObjects": "ODSTRANIT ZE VŠECH OBRÁZKŮ",
-                "processing": "ZPRACOVÁVÁNÍ...",
-                "download": "STÁHNOUT",
-                "downloadAll": "STÁHNOUT VŠE"
-            }
+        "clean": {
+          "name": "ČISTÝ PRODUKT",
+          "description": "Produktová fotografie s čistými, neutrálními barvami"
+        },
+        "jewelry": {
+          "name": "ŠPERKY/KOV",
+          "description": "Optimalizováno pro šperky a kovové výrobky"
+        },
+        "sharp": {
+          "name": "OSTRÉ DETAIly",
+          "description": "Vylepšená ostrost a detaily"
+        },
+        "textile": {
+          "name": "TEXTIL/LÁTKA",
+          "description": "Pro textilní a látkové výrobky - zlepšuje texturu a barvu"
+        },
+        "soft-product": {
+          "name": "MĚKKÉ PRODUKTY",
+          "description": "Pro měkké výrobky jako polštáře, polštářky, plyšové hračky"
+        },
+        "furniture": {
+          "name": "NÁBYTEK/DŘEVO",
+          "description": "Dřevěný nábytek a interiérové dekorace"
+        },
+        "transparent": {
+          "name": "SKLO",
+          "description": "Sklo a průhledné výrobky"
+        },
+        "food": {
+          "name": "POTRAVINY",
+          "description": "Potravinová fotografie - zlepšuje čerstvost a přitažlivost barev"
+        },
+        "dramatic": {
+          "name": "DRAMATICKÉ",
+          "description": "Produktová fotografie s vysokým kontrastem"
+        },
+        "vivid": {
+          "name": "ŽIVÉ BARVY",
+          "description": "Vylepšená saturace a jasnost barev"
+        },
+        "classic": {
+          "name": "KLASICKÉ",
+          "description": "Klasický vzhled s vyváženými barvami"
+        }
+      }
+    },
+    "BackgroundRemovalPage": {
+      "metadata": {
+        "title": "AI Odstraňovač Pozadí | Batch Shots",
+        "description": "Automaticky odstraňte pozadí z vašich obrázků pomocí AI nástroje Batch Shots. Perfektní pro produktové fotografie, portréty a kreativní projekty. Vyzkoušejte zdarma!",
+        "keywords": "odstraňovač pozadí, odstranit pozadí, ai odstranění pozadí, průhledné pozadí, produktová fotografie, dávkové zpracování obrázků"
+      },
+      "title": "NÁSTROJ PRO ODSTRANĚNÍ POZADÍ",
+      "loading": {
+        "tool": "NAČÍTÁNÍ NÁSTROJE...",
+        "proStatus": "KONTROLA PRO STATUSU...",
+        "description": "Počkejte prosím, zatímco inicializujeme možnosti zpracování obrázků.",
+        "proDescription": "Počkejte prosím, zatímco kontrolujeme stav vašeho účtu."
+      },
+      "mainCard": {
+        "title": "ODSTRANIT POZADÍ Z OBRÁZKŮ",
+        "info": {
+          "title": "ODSTRANĚNÍ POZADÍ AI",
+          "description": "Odstraňte pozadí z produktových obrázků pomocí AI technologie. Zpracování probíhá zcela ve vašem prohlížeči pro zachování soukromí."
+        },
+        "upload": {
+          "title": "Vyberte obrázky",
+          "buttonFree": "VYBRAT OBRÁZEK",
+          "buttonPro": "VYBRAT OBRÁZKY",
+          "helpTextFree": "Uživatelé zdarma mohou vybrat 1 obrázek současně.",
+          "helpTextPro": "Můžete vybrat až 100 obrázků současně."
+        },
+        "actions": {
+          "clear": "VYMAZAT",
+          "download": "STÁHNOUT",
+          "downloadZip": "STÁHNOUT JAKO ZIP",
+          "downloading": "STAHOVÁNÍ...",
+          "downloadingZip": "VYTVÁŘENÍ ZIP...",
+          "removeBackground": "ODSTRANIT POZADÍ",
+          "removeBackgrounds": "ODSTRANIT POZADÍ",
+          "processing": "ODSTRAŇOVÁNÍ POZADÍ...",
+          "processingMultiple": "ODSTRAŇOVÁNÍ POZADÍ...",
+          "tryFullEditor": "VYZKOUŠEJTE PLNÝ EDITOR"
+        },
+        "progress": {
+          "processing": "Zpracování...",
+          "percent": "{percent}%"
         },
         "upgradeCard": {
-            "title": "UPGRADUJTE NA PRO",
-            "description": "Odemkněte dávkové odstranění objektů pro až 100 obrázků a další PRO funkce jako hromadné odstranění pozadí a pokročilé úpravy.",
-            "button": "DOWIEDZ SIĚ WIĘCEJ & UPGRADE"
-        },
-        "instructionsCard": {
-            "title": "INSTRUKCE",
-            "step1": "Nahrajte svůj obrázek pomocí tlačítka 'Vybrat obrázek'.",
-            "step2": "Pečlivě vybarvěte objekty, které chcete odstranit, pomocí červeného štětce.",
-            "step3": "Upravte posuvník velikosti štětce pro přesnost.",
-            "step4": "Klikněte na tlačítko 'Odstranit objekty' a počkejte na zpracování AI.",
-            "step5": "Po zpracování stáhněte svůj čistý obrázek pomocí tlačítka 'Stáhnout'.",
-            "step6": "Pro dávkové zpracování zaškrtněte 'Aplikovat masku na všechny obrázky' pro odstranění podobných objektů ze všech vybraných obrázků.",
-            "noteTitle": "Poznámka:",
-            "noteText": "Zpracování může trvat 15-60 sekund v závislosti na velikosti obrázku a vašem zařízení. Pro nejlepší výsledky se ujistěte, že vaše maska plně pokrývá objekt."
-        },
-        "imageGallery": {
-            "selectedImages": "Vybrané obrázky",
-            "selectedImage": "Vybraný obrázek",
-            "clearAll": "Vymazat vše",
-            "applyMaskToAll": "Aplikovat masku na všechny obrázky (dávkové zpracování)",
-            "hasMask": "Má nakreslenou masku"
-        },
-        "processing": {
-            "readingFile": "Čtení souboru...",
-            "loadingImage": "Načítání obrázku...",
-            "exportingMask": "Příprava masky...",
-            "runningModel": "Spouštění AI modelu...",
-            "rendering": "Vykreslování výsledku...",
-            "preparingBatch": "Příprava dávkového zpracování...",
-            "processingImage": "Zpracování obrázku {current} z {total}...",
-            "finishingBatch": "Dokončování výsledků...",
-            "preparingDownload": "Příprava ke stažení...",
-            "batchProgress": "Průběh dávky",
-            "loadingDimensions": "Výpočet rozměrů obrázku...",
-            "generic": "Zpracování obrázku..."
-        },
-        "errors": {
-            "ortLoad": "Nepodařilo se načíst AI Engine. Zkuste prosím obnovit stránku.",
-            "sessionCreate": "Nepodařilo se inicializovat model pro odstranění objektů.",
-            "freeLimit": "Uživatelé zdarma mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování.",
-            "tooManyImages": "Povoleno maximálně 100 obrázků. Zpracovány budou pouze první 3 obrázky.",
-            "imageLoad": "Chyba při načítání vybraného obrázku.",
-            "fileRead": "Chyba při čtení vybraného souboru.",
-            "canvasError": "Chyba při přístupu k plátnu obrázku.",
-            "prerequisites": "Nelze zpracovat. Chybí požadované komponenty: {missing}",
-            "noMask": "Nejprve nakreslete masku na objekt, který chcete odstranit.",
-            "processingFailed": "Odstranění objektu selhalo",
-            "resultLoadFailed": "Nepodařilo se zobrazit výsledek zpracovaného obrázku.",
-            "noDownloadData": "Žádný zpracovaný obrázek není k dispozici ke stažení.",
-            "downloadFailed": "Nepodařilo se připravit obrázek ke stažení."
+          "title": "UPGRADUJTE NA PRO",
+          "plan": {
+            "title": "PRO PLÁN",
+            "price": "19,99 €",
+            "features": [
+              "Odstraňujte pozadí z až 100 obrázků současně",
+              "Pokročilé úpravy obrázků a přednastavení",
+              "Generování SEO názvů pro produktové obrázky",
+              "Hromadné zpracování pro všechny funkce",
+              "Jednorázová platba, doživotní přístup"
+            ],
+            "buttonText": "UPGRADUJTE NYNÍ"
+          }
         }
-    },
-    "Pricing": {
-        "title": "CENOVÉ PLÁNY",
-        "subtitle": "Vyberte si perfektní plán pro vaše potřeby optimalizace obrázků. Náš PRO plán nabízí doživotní licenci s jednorázovou platbou.",
-        "alreadyPro": {
-            "title": "Už jste PRO uživatel!",
-            "description": "Děkujeme za vaši podporu. Máte přístup ke všem PRO funkcím včetně hromadného odstranění pozadí, pokročilých úprav obrázků a generování SEO názvů souborů.",
-            "backToEditor": "ZPĚT DO EDITORU"
+      },
+      "howItWorks": {
+        "title": "JAK TO FUNGUJE",
+        "step1": {
+          "title": "1. VYBERTE SVÉ OBRÁZKY",
+          "description": "Nahrajte jeden nebo více produktových obrázků, které chcete zpracovat.",
+          "proNote": "PRO uživatelé mohou vybrat až 100 obrázků současně!"
         },
-        "checkout": {
-            "title": "DOKONČETE NÁKUP",
-            "planTitle": "PRO DOŽIVOTNÍ LICENCE",
-            "price": "$19.99",
-            "description": "Jednorázová platba, doživotní přístup ke všem PRO funkcím",
-            "email": "EMAIL",
-            "cardInfo": "INFORMACE O KARTĚ",
-            "cardNumber": "1234 5678 9012 3456",
-            "expiryDate": "MM/RR",
-            "cvc": "CVC",
-            "completePurchase": "DOKONČIT NÁKUP",
-            "goBack": "Jít zpět"
+        "step2": {
+          "title": "2. ODSTRANIT POZADÍ",
+          "description": "Naše AI technologie detekuje a odstraňuje pozadí z vašich obrázků, vytvářejíc průhledné PNG ideální pro e-commerce."
         },
-        "plans": {
-            "free": {
-                "title": "ZDARMA",
-                "price": "ZDARMA",
-                "features": [
-                    "Dávkové zpracování max 5 obrázků",
-                    "Odstranění pozadí AI jednoho obrázku (náhled)",
-                    "Odstranění objektů AI z jednoho obrázku",
-                    "Přidání vodoznaku max 5 obrázků",
-                    "Konvertor obrázků max 5 obrázků dávkově",
-                    "AI Photo Duplicate Finder max 5 obrázků",
-                    "Generování názvů obrázků SEO AI (Není k dispozici)",
-                    "Popis SEO AI a metatagy (Není k dispozici)"
-                ],
-                "buttonText": "POKRAČOVAT ZDARMA"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "$19.99",
-                "features": [
-                    "Dávkové zpracování max 100 obrázků",
-                    "Až 100 odstranění pozadí AI v jedné dávce",
-                    "Odstranění objektů AI až 100 obrázků",
-                    "Přidání vodoznaku 100 obrázků v jedné dávce",
-                    "Konvertor obrázků max 100 obrázků dávkově",
-                    "AI Photo Duplicate Finder neomezená dávková zpracování",
-                    "Generování názvů obrázků SEO AI (až 100)",
-                    "Popis SEO AI a metatagy k dispozici",
-                    "**Jednorázová platba, doživotní přístup**"
-                ],
-                "buttonText": "PŘEJÍT NA PRO"
-            }
-        },
-        "faq": {
-            "title": "ČASTO KLADENÉ DOTAZY",
-            "questions": {
-                "oneTime": {
-                    "question": "Je to opravdu jednorázová platba?",
-                    "answer": "Ano! Zaplatíte jednou a získáte doživotní přístup ke všem PRO funkcím. Žádné opakované předplatné."
-                },
-                "backgroundRemoval": {
-                    "question": "Jak funguje odstranění pozadí?",
-                    "answer": "Používáme pokročilé AI algoritmy k detekci a odstranění pozadí z vašich produktových obrázků. Celý proces probíhá ve vašem prohlížeči – vaše obrázky nikdy neukládáme na naše servery."
-                },
-                "imageLimits": {
-                    "question": "Jaké jsou limity obrázků?",
-                    "answer": "Bezplatní uživatelé mohou zpracovat až 10 obrázků najednou se základními funkcemi a odstranit pozadí z 1 obrázku najednou. PRO uživatelé mohou zpracovat až 100 obrázků současně, včetně hromadného odstranění pozadí."
-                },
-                "refund": {
-                    "question": "Mohu požádat o vrácení peněz?",
-                    "answer": "Ano, nabízíme 30denní záruku vrácení peněz, pokud nejste spokojeni s PRO funkcemi. Kontaktujte náš tým podpory pro pomoc."
-                }
-            }
+        "step3": {
+          "title": "3. STÁHNOUT & POUŽÍT",
+          "description": "Stáhněte zpracované obrázky a používejte je na svém webu, marketplace aukcích nebo marketingových materiálech."
         }
-    },
-    "ImageDuplicateDetectionPage": {
-        "metadata": {
-            "title": "AI Vyhledávač a čistič duplicitních fotografií | Batch Shots",
-            "description": "Rychle najděte a odstraňte duplicitní nebo podobné fotografie pomocí našeho nástroje s umělou inteligencí. Identifikuje obrázky nejlepší kvality v duplicitních sadách. Zdarma a v prohlížeči.",
-            "keywords": "vyhledávač duplicitních fotografií, odstranit duplicitní obrázky, vyhledávač podobných fotografií, ai čistič fotografií, detekce duplicitních obrázků, fotografie nejlepší kvality, uklidit fotografie, batchshots"
+      },
+      "proDialog": {
+        "title": "PŘEJÍT NA PRO",
+        "featureTitle": "PRO FUNKCE: Hromadné odstranění pozadí",
+        "description": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Přejděte na PRO a zpracujte až 100 obrázků hromadně, ušetříte hodiny práce!",
+        "pricing": {
+          "title": "JEDNORÁZOVÁ PLATBA",
+          "price": "19,99 €",
+          "note": "Žádné předplatné, doživotní přístup"
         },
-        "PageTitle": "AI Vyhledávač a čistič duplicitních fotografií",
-        "AppInitializing": "Inicializace Chytrého Analyzátoru Fotografií...",
-        "AISetup": "Nastavování AI enginu...",
-        "AIEngineInitializing": "Inicializace AI enginu...",
-        "AIEngineStarted": "AI engine spuštěn.",
-        "AIInitializing": "Inicializace AI...",
-        "AILoadingModel": "Načítání pokročilého AI modelu...",
-        "AIModelLoaded": "AI model načten.",
-        "AIReady": "AI připravena. Vyberte fotografie k nalezení duplikátů.",
-        "AIReadyPrompt": "AI připravena. Vyberte fotografie k nalezení duplikátů.",
-        "ProcessingImage": "Analyzuji fotografii {imageId}...",
-        "ErrorProcessingImage": "Chyba při analýze fotografie {imageId}: {data}.",
-        "AIEngineError": "Chyba AI enginu: {data}.",
-        "AIEngineErrorRefresh": "Chyba AI enginu: {data}. Obnovte stránku nebo to zkuste znovu.",
-        "AICriticalError": "AI narazila na kritickou chybu.",
-        "AICriticalErrorRefresh": "Při naší AI analýze došlo ke kritické chybě. Obnovte prosím stránku.",
-        "QualityToolsError": "Nástroje pro analýzu kvality se nepodařilo načíst. Detailní metriky kvality mohou být nedostupné.",
-        "AllImagesProcessedAnalyzing": "Všechny fotografie zpracovány. Identifikuji duplikáty...",
-        "AnalysisCompleteSummary": "Analýza dokončena. {groupSummary} Zpracováno {successfullyProcessedCount} z {totalImagesCount} fotografií.",
-        "DuplicateSetsFound": "Nalezeno {count} sad duplikátů.",
-        "NoDuplicatesFound": "Nebyly nalezeny žádné přímé duplikáty.",
-        "NoImagesProcessedSuccessfully": "Žádné fotografie nebylo možné úspěšně zpracovat. Zpracováno {successfullyProcessedCount} z {totalImagesCount} fotografií.",
-        "NoImagesForNewThreshold": "Žádné fotografie k analýze s novým nastavením podobnosti.",
-        "ReanalyzingWithThreshold": "Opětovná analýza fotografií s nastavením podobnosti: {threshold}...",
-        "AnalysisCompleteWithThreshold": "Analýza dokončena s podobností {threshold}. {groupSummary}",
-        "PleaseSelectImages": "Vyberte prosím fotografie...",
-        "AINotReadyError": "AI analytický engine není připraven. Počkejte prosím nebo obnovte stránku.",
-        "ProcessingFilesHEIC": "Příprava vybraných souborů (konverze v případě potřeby)...",
-        "HEICConversionFailedSkip": "Nepodařilo se převést obrázek: {fileName}. Bude přeskočen.",
-        "HEICConversionErrorSkip": "Chyba při konverzi obrázku: {fileName}. Bude přeskočen.",
-        "NoValidFilesAfterConversion": "Po pokusech o konverzi nejsou žádné platné soubory ke zpracování.",
-        "SendingImagesToAI": "Odesílání {count} fotografií k AI analýze...",
-        "NoValidImagesSelected": "Nebyly vybrány žádné platné fotografie ke zpracování.",
-        "QualityToolsNotReadyKPI": "Nástroje pro analýzu kvality nejsou připraveny. Nelze vypočítat detailní kvalitu.",
-        "QualityToolsNotReadyQuality": "Nástroje pro analýzu kvality nejsou připraveny. Nelze vypočítat kvalitu.",
-        "ErrorCalculatingQuality": "Chyba při výpočtu kvality pro fotografii {imageId}: {error}",
-        "QualityToolsNotReadyAnalysisWait": "Nástroje pro analýzu kvality nejsou připraveny. Počkejte prosím.",
-        "NoDuplicatesInGroup": "V této skupině nejsou žádné duplikáty k analýze.",
-        "AnalyzingGroupQuality": "Analýza kvality fotografií ve skupině {groupNumber}...",
-        "AnalyzedProgressInGroup": "Analyzováno {processedCount} z {groupTotal} ve skupině {groupNumber}. Fotografie: {imageName}",
-        "QualityAnalysisCompleteForGroup": "Analýza kvality dokončena pro skupinu {groupNumber}.",
-        "QualityAnalysisPartialForGroup": "Analýza kvality částečně dokončena pro skupinu {groupNumber}. Některé fotografie mohly selhat nebo byly přeskočeny.",
-        "QualityToolsNotReadyBestSelection": "Nástroje pro analýzu kvality nejsou připraveny. Nelze zajistit výběr nejlepší fotografie.",
-        "AnalyzingQualityForBestDownload": "Analýza kvality pro {count} fotografií k výběru té nejlepší ke stažení...",
-        "PreDownloadAnalysisComplete": "Předběžná analýza kvality pro aktuální skupinu dokončena.",
-        "NoImagesToDownload": "Žádné fotografie ke stažení.",
-        "QualityToolsNotReadyDownloadAll": "Nástroje pro analýzu kvality nejsou připraveny. Detailní analýza duplicitních sad nemůže být provedena pro 'Stáhnout vše'. Počkejte prosím nebo nejprve analyzujte skupiny jednotlivě.",
-        "PreparingDownload": "Příprava souborů ke stažení...",
-        "BestImageDeterminationFailed": "Nepodařilo se určit nejlepší fotografii pro skupinu. Tato skupina bude vynechána z ZIPu.",
-        "WarningBestImageOmitted": "Upozornění: Nejlepší fotografii pro skupinu se nepodařilo určit a byla vynechána.",
-        "ZippingImages": "Komprimace {count} fotografií do ZIPu...",
-        "DownloadComplete": "Stažení dokončeno!",
-        "ErrorCreatingZIP": "Chyba při vytváření ZIP souboru ke stažení.",
-        "NoImagesSelectedForDownload": "Nebyly vybrány žádné fotografie ke stažení (např. žádné unikátní fotografie nebo žádné nejlepší fotografie identifikované ve skupinách).",
-        "ImageDataMissingDownload": "Chybí data fotografie, nelze stáhnout.",
-        "DownloadingImage": "Stahování {imageName}...",
-        "ImageDownloadedSuccessfully": "{imageName} úspěšně staženo.",
-        "FailedToDownloadImage": "Nepodařilo se stáhnout {imageName}.",
-        "QualityToolsNotReadyAnalyzeAllGroups": "Nástroje pro analýzu kvality nejsou připraveny. Detailní analýza duplicitních sad nemůže být provedena. Počkejte prosím.",
-        "OnlyUniqueImagesReadyDownload": "Přítomny pouze unikátní fotografie. Připraveno ke stažení.",
-        "NoImagesToAnalyzeOrDownload": "Žádné fotografie k analýze nebo stažení.",
-        "AnalyzingAllGroupsForBest": "Analýza všech skupin pro výběr nejlepší fotografie...",
-        "AnalyzingGroupForBest": "Analýza skupiny {currentGroup} z {totalGroups} pro nejlepší fotografii...",
-        "AllGroupsAnalyzedReadyDownload": "Všech {count} duplicitních skupin analyzováno. Připraveno ke stažení {downloadCount} nejlepších fotografií.",
-        "AnalysisPartialReadyDownload": "Analýza pro nejlepší výběr částečně dokončena ({processedGroups}/{totalGroups} skupin). Připraveno ke stažení {downloadCount} fotografií (bude vybrána nejlepší dostupná).",
-        "NoImagesProcessedOrGroups": "Nebyly zpracovány žádné fotografie nebo zatím nebyly vytvořeny žádné skupiny. Ujistěte se, že byly fotografie vybrány a AI analýza dokončena.",
-
-        "LoaderTitleInitializing": "Inicializace Chytrých Nástrojů...",
-        "LoaderTitleLoadingModel": "Načítání AI Mozku...",
-        "LoaderTitleQualityTools": "Příprava Analyzátoru Kvality...",
-        "LoaderDescriptionInitializing": "Připravujeme vše pro chytrou detekci duplikátů. Počkejte prosím.",
-        "LoaderDescriptionLoadingModel": "Naše pokročilá AI se zahřívá. Může to chvíli trvat.",
-        "LoaderDescriptionQualityTools": "Příprava nástrojů pro detailní přehled o kvalitě fotografií...",
-        
-        "MainCardTitle": "Najít a spravovat duplicitní fotografie",
-        "UploadSectionTitle": "Nahrajte své fotografie",
-        "UploadSectionDescription": "Vyberte více fotografií. Naše AI je inteligentně analyzuje a seskupí podobné.",
-        "ButtonSelectImages": "Vybrat fotografie",
-        "ButtonSelectImagesLoading": "Načítání...",
-        "ButtonSelectImagesInitializing": "Nástroje se načítají...",
-        "ButtonAddMoreImages": "Přidat další fotografie",
-        "ButtonAddMoreImagesLoading": "Přidávání fotografií...",
-        "SupportedFormats": "Podporuje formáty JPG, PNG, WEBP, HEIC",
-        "AIStatusLabel": "Stav AI: {status}",
-        "QualityAnalyzerStatusLoading": "Analyzátor kvality: Načítání...",
-
-        "SimilarityThresholdTitle": "Nastavení podobnosti",
-        "SimilarityThresholdDescription": "Určete, jak moc se musí fotografie shodovat, aby byly označeny jako duplikáty. Vyšší hodnoty znamenají přísnější shodu.",
-        "SimilarityLessStrict": "Méně přísné",
-        "SimilarityCurrent": "Aktuální: {threshold}",
-        "SimilarityMoreStrict": "Přísnější",
-        "ButtonApplyThreshold": "Použít nastavení",
-        "ButtonApplyThresholdLoading": "Opětovná analýza...",
-
-        "ResultsTitle": "Výsledky detekce:",
-        "DuplicateSetTitle": "Sada duplikátů {number} ({count} podobných fotografií)",
-        "ButtonAnalyzeQuality": "Analyzovat kvalitu",
-        "ButtonAnalyzeQualityLoading": "Analyzuji...",
-        "ButtonReanalyzeQuality": "Znovu analyzovat kvalitu",
-        "ImageMissing": "Chybí data fotografie (index: {index})",
-        "BestLabel": "Nejlepší",
-        "KpiRes": "Rozliš:",
-        "KpiSharp": "Ostrost:",
-        "KpiNoise": "Šum:",
-        "KpiContrast": "Kontrast:",
-        "KpiExposure": "Expozice:",
-        "ButtonDownload": "Stáhnout",
-        "ButtonDownloading": "Stahování...",
-
-        "UniqueImagesTitle": "Unikátní fotografie ({count} fotografií bez přímých duplikátů)",
-
-        "ButtonAnalyzeAllGroups": "Analyzovat všechny skupiny pro nejlepší výběr",
-        "ButtonAnalyzeAllGroupsLoading": "Analýza všech skupin...",
-        "ButtonDownloadBest": "Stáhnout {count} nejlepších fotografií",
-        "ButtonDownloadBestLoading": "Příprava stahování...",
-
-        "HowItWorksTitle": "Jak naše AI nachází duplikáty",
-        "HowItWorksStep1Title": "1. Nahrajte své fotografie",
-        "HowItWorksStep1Desc": "Klikněte na \"Vybrat fotografie\" a zvolte obrázky, které chcete zkontrolovat. Můžete jich vybrat mnoho najednou.",
-        "HowItWorksStep2Title": "2. Inteligentní AI analýza",
-        "HowItWorksStep2Desc": "Naše pokročilá AI (založená na technologii Vision Transformer) inteligentně analyzuje vizuální obsah každé fotografie, rozumí jejím jedinečným vlastnostem a vzhledu.",
-        "HowItWorksStep3Title": "3. Chytré skórování podobnosti",
-        "HowItWorksStep3Desc": "AI porovnává fotografie pomocí sofistikované vizuální analýzy (kosinová podobnost), aby určila, jak moc jsou si podobné na základě jejich obsahu.",
-        "HowItWorksStep4Title": "4. Dolaďte podobnost",
-        "HowItWorksStep4Desc": "Použijte posuvník podobnosti k určení, jak přísná má být shoda. Vyšší hodnota znamená, že fotografie musí být téměř identické, aby byly označeny jako duplikáty.",
-        "HowItWorksStep5Title": "5. Zkontrolujte a uspořádejte",
-        "HowItWorksStep5Desc": "Výsledky jasně ukazují sady duplikátů a unikátní fotografie. Naše AI může také zvýraznit fotografii nejlepší kvality v každé duplicitní skupině, což vám pomůže rozhodnout se, kterou si ponechat.",
-
-        "FreeUserLimit": "Uživatelé zdarma mohou nahrát až {limit} fotografií najednou.",
-        "ButtonSelectImagesLimit": "Vybrat fotografie (až {limit})",
-        "UpgradeMessage": "Upgradujte na PRO pro analýzu neomezeného počtu fotografií najednou.",
-        "UpgradeLink": "Upgradovat nyní",
-        "HowItWorksStep1Free": "Uživatelé zdarma jsou omezeni na {limit} fotografií najednou.",
-        "HowItWorksStep1Pro": "Jako PRO uživatel můžete analyzovat neomezený počet fotografií najednou.",
-        "ProFeatureName": "Neomezená analýza fotografií",
-        
-        "FreeModeTitle": "REŽIM ZDARMA",
-        "FreeModeDescription": "Zpracujte až {limit} fotografií najednou. Upgradujte na PRO pro analýzu neomezeného počtu fotografií!",
-        "ProModeTitle": "PRO REŽIM",
-        "ProModeDescription": "Zpracujte neomezený počet fotografií se svým PRO účtem!",
-        "MaxImagesExceeded": "Maximálně 100 obrázků povoleno. Zpracováno bylo pouze prvních 100.",
-        "ProcessingErrors": "Chyby při zpracování",
-        "imagesCount": "{current}/{max} fotografií",
-        "upgradeFor": "(Upgrade pro neomezeně)",
-        
-        "UpgradeCardTitle": "UPGRADOVAT NA PRO",
-        "UpgradeCardPlanTitle": "PRO PLÁN",
-        "UpgradeCardPlanPrice": "$19.99",
-        "UpgradeCardPlanNote": "Jednorázová platba, doživotní přístup",
-        "UpgradeCardFeature1": "Analyzujte neomezený počet fotografií najednou (oproti 5 ve verzi zdarma)",
-        "UpgradeCardFeature2": "Rychle najděte duplikáty ve velkých kolekcích fotografií",
-        "UpgradeCardFeature3": "Analýza kvality pro automatické nalezení nejlepších fotografií",
-        "UpgradeCardFeature4": "Hromadné stažení nejlepších fotografií ze sad duplikátů",
-        "UpgradeCardFeature5": "Přístup ke všem dalším PRO funkcím (odstranění pozadí atd.)",
-        "UpgradeCardButton": "UPGRADOVAT NYNÍ",
-        
-        "ProUpgradeTitle": "Upgradujte na Pro pro neomezené fotky",
-
-        "SimilarityControlsTitle": "Algoritmus podobnosti a práh",
-        "SimilarityAlgorithmLabel": "Algoritmus podobnosti",
-        "SimilarityThresholdLabel": "Práh podobnosti",
-        "SimilarityThresholdDescDistance": "Nižší hodnoty znamenají podobnější obrázky (metrika vzdálenosti)",
-        "SimilarityThresholdDescSimilarity": "Vyšší hodnoty znamenají podobnější obrázky (metrika podobnosti)",
-        
-        "ProcessingChanges": "Zpracovávám změny...",
-        "ReanalyzingWithAlgorithm": "Znovu analyzuji s novým algoritmem...",
-        "AnalysisCompleteWithAlgorithm": "Analýza dokončena s novým algoritmem. {groupSummary}",
-        "DuplicateAnalysisComplete": "Analýza duplicit dokončena",
-        
-        "VisualizationTitle": "AI Vektorový Prostor",
-        "VisualizationDescription": "Vizualizujte, jak AI vidí vaše obrázky ve vícerozměrném prostoru, zredukovaném na 2D pomocí UMAP algoritmu. Podobné obrázky se shlukují dohromady.",
-        "VisualizationShowButton": "Zobrazit vizualizaci",
-        "VisualizationHideButton": "Skrýt vizualizaci",
-        "VisualizationGeneratingButton": "Generování vizualizace...",
-        "VisualizationNoData": "Nejprve nahrajte a zpracujte obrázky pro povolení vizualizace",
-        "VisualizationProcessingStatus": "Pro velké soubory dat to může chvíli trvat...",
-        "VisualizationLegendUnique": "Unikátní obrázky",
-        "VisualizationLegendDuplicates": "Skupiny duplicit (barevně odlišené podle podobnosti)",
-        "VisualizationHelpText": "Najetím myší na body uvidíte náhledy obrázků • Blíže umístěné body = podobnější obrázky",
-        "VisualizationNeedMinImages": "Pro vizualizaci je potřeba alespoň 3 obrázky",
-        "VisualizationNoDataAvailable": "Nejsou k dispozici žádná data pro vizualizaci"
+        "actions": {
+          "upgrade": "PŘEJÍT NA PRO",
+          "continue": "POKRAČUJTE VE ZDARMA REŽIMU"
+        }
+      }
     },
-    "ImageSeoGenerationPage": {
-        "metadata": {
-            "title": "AI generování SEO pro obrázky – Generujte SEO URL slugs a popisky",
-            "description": "Nahrajte své obrázky a automaticky vygenerujte SEO názvy, URL slugs a popisky pomocí AI.",
-            "keywords": "seo obrázků, generátor url slug, generátor seo popisků obrázků, tvorba obsahu ai, optimalizace obrázků"
-        },
-        "AppInitializing": "Inicializace AI SEO generátoru...",
-        "AISetup": "Nastavování AI pro SEO obsah...",
-        "AIEngineInitializing": "Inicializace AI SEO enginu...",
-        "AIEngineStarted": "AI SEO engine spuštěn.",
-        "AIInitializing": "Inicializace AI modelu pro SEO...",
-        "AILoadingModel": "Načítání AI SEO modelu...",
-        "AIModelLoaded": "AI SEO model načten.",
-        "AIReady": "AI SEO engine připraven.",
-        "AIReadyPrompt": "AI SEO je připraveno. Nahrajte své obrázky.",
-        "ProcessingImage": "AI zpracovává pro SEO: Obrázek {imageId}...",
-        "ErrorProcessingImage": "Chyba při AI SEO zpracování obrázku {imageId}: {data}",
-        "AIEngineError": "Chyba AI SEO enginu: {data}",
-        "AIEngineErrorRefresh": "Chyba AI SEO enginu: {data}. Obnovte stránku.",
-        "AICriticalError": "Kritická chyba AI SEO enginu.",
-        "AICriticalErrorRefresh": "Kritická chyba AI SEO enginu. Obnovte stránku a zkuste to znovu.",
-        "PleaseSelectImages": "Vyberte obrázky pro AI SEO generování.",
-        "AINotReadyError": "AI SEO engine není připraven. Prosím, vyčkejte.",
-        "ProcessingFiles": "Zpracovávají se obrázky pro AI SEO...",
-        "ProcessingFilesHEIC": "Zpracovávají se obrázky pro AI SEO, převod HEIC pokud je potřeba...",
-        "HEICConversionFailedSkip": "Převod HEIC na SEO formát selhal: {fileName}. Přeskakuji.",
-        "HEICConversionErrorSkip": "Chyba při převodu HEIC pro SEO: {fileName}. Přeskakuji.",
-        "NoValidFilesAfterConversion": "Po pokusu o převod nejsou žádné platné obrázky pro AI SEO.",
-        "NoValidFiles": "Nebyly vybrány žádné platné obrázky pro AI SEO zpracování.",
-        "SendingImagesToAI": "Odesílám {count} obrázků do AI pro generování SEO obsahu...",
-        "AllImagesProcessed": "AI SEO zpracování dokončeno. Zobrazte si níže optimalizovaný obsah.",
-        "PageTitle": "AI generátor SEO a ALT textů pro obrázky",
-        "PageTitlePro": "PRO AI generátor SEO a ALT textů pro obrázky",
-        "PageTitleFree": "AI generátor SEO a popisků pro obrázky",
-        "MainCardTitle": "Generujte SEO názvy a popisky pomocí AI",
-        "UploadSectionTitle": "1. Nahrajte obrázky pro AI SEO",
-        "UploadSectionDescription": "Nahrajte obrázky JPG, PNG, WEBP, GIF, HEIC. Naše AI vygeneruje SEO názvy souborů a ALT texty. Přidejte klíčová slova pro lepší výsledky.",
-        "UploadSectionDescriptionWithLimit": "Nahrajte JPG, PNG, WEBP, GIF, HEIC (max {maxImages} dle vašeho plánu). AI vygeneruje SEO názvy a ALT texty. Přidejte klíčová slova pro vlastní výsledky.",
-        "ButtonSelectImages": "Vybrat obrázky pro AI SEO",
-        "ButtonSelectImagesLoading": "Inicializace AI...",
-        "ResultsTitle": "AI generovaný SEO obsah",
-        "ImageMissing": "Chybí data obrázku pro AI SEO (index: {index})",
-        "GeneratedSeoName": "AI generovaný SEO název souboru:",
-        "GeneratedDescription": "AI generovaný ALT text/popisek:",
-        "StatusLabel": "Aktuální stav:",
-        "AIStatusLabel": "Stav AI SEO: {status}",
-        "HowItWorksTitle": "Jak funguje AI SEO pro obrázky",
-        "HowItWorksStep1Title": "Nahrajte své obrázky",
-        "HowItWorksStep1Desc": "Vyberte nebo přetáhněte obrázky. Naše AI je připraví pro SEO analýzu.",
-        "HowItWorksStep2Title": "AI analýza obsahu",
-        "HowItWorksStep2Desc": "Naše AI analyzuje každý obrázek, aby pochopila jeho obsah, kontext a SEO potenciál.",
-        "HowItWorksStep3Title": "Generování SEO názvu a ALT textu",
-        "HowItWorksStep3Desc": "AI vytvoří SEO názvy souborů a popisné ALT texty. Klíčová slova zvyšují optimalizaci.",
-        "HowItWorksStep4Title": "Zkontrolujte a zlepšete své SEO",
-        "HowItWorksStep4Desc": "Zkopírujte AI generovaný SEO obsah a vylepšete pozici svého webu, blogu nebo sociálních sítí ve vyhledávání a přístupnosti.",
-        "NoResultsYet": "Nahrajte obrázky pro zobrazení AI generovaného SEO obsahu.",
-        "KeywordsSectionTitle": "2. Vylepšete klíčovými slovy (volitelné)",
-        "KeywordsSectionDescription": "Přidejte klíčová slova oddělená čárkou. Naše AI je strategicky začlení do ALT textu pro lepší SEO.",
-        "KeywordsPlaceholder": "např. cestování, jídlo, e-commerce, kategorie produktu",
-        "ButtonRegenerateWithKeywords": "Znovu vygenerovat SEO obsah s klíčovými slovy",
-        "ButtonRegenerating": "Znovu generuji SEO obsah...",
-        "RegeneratingStatus": "AI znovu generuje ALT text s novými SEO klíčovými slovy...",
-        "RegenerationComplete": "AI SEO regenerace dokončena.",
-        "ButtonDownloadAll": "Stáhnout všechny AI SEO výsledky (ZIP)",
-        "ButtonDownloadingAll": "Stahuji AI SEO ZIP...",
-        "PreparingDownload": "Připravuji AI SEO soubory ke stažení...",
-        "ZippingFiles": "Zipravuji {count} AI optimalizovaných souborů...",
-        "NoFilesToDownload": "Žádné AI zpracované obrázky s SEO daty ke stažení.",
-        "ErrorCreatingZIP": "Chyba při vytváření AI SEO ZIP. Zkuste to znovu.",
-        "DownloadComplete": "AI SEO stažení dokončeno!",
-        "ImageUploadFeatureName": "Neomezené nahrávání obrázků pro AI SEO",
-        "FreeLimitReachedDialogTitle": "Upgradujte pro více AI SEO funkcí",
-        "FreeLimitReachedDialogMessage": "Dosáhli jste limitu zdarma pro AI SEO. Upgradujte na Pro pro zpracování více obrázků.",
-        "FreeLimitReachedSomeProcessed": "Limit {count} obrázků pro AI SEO v bezplatném plánu dosažen. Zpracovávám prvních {count}. Pro více upgradujte.",
-        "ProLimitReachedSomeProcessed": "Limit {count} obrázků pro AI SEO v Pro plánu dosažen. Zpracovávám prvních {count}.",
-        "NoValidFilesToProcessAfterLimit": "Žádné obrázky ke zpracování pro AI SEO po omezení plánu.",
-        "ProUserCardTitle": "AI SEO Pro plán aktivní",
-        "ProUserCardDescription": "Jste na Pro plánu! Využijte neomezené generování AI SEO obrázků v dávce a všechny prémiové funkce.",
-        "UpgradeToProCardTitle": "Upgradujte na Pro",
-        "UpgradeToProCardDescription": "Odemkněte plnou sílu AI SEO! Uživatelé zdarma mohou zpracovat {maxImagesFree} obrázků. Pro uživatelé mají neomezené zpracování a další výhody.",
-        "ButtonUpgradeNow": "Upgradovat na Pro nyní",
-        "ProUserPlanIndicator": "Pro plán: Neomezené generování AI SEO obrázků.",
-        "FreeUserPlanIndicator": "Bezplatný plán: AI SEO až pro 3 obrázky. Pro neomezené upgradujte!",
-        "FreePlanInfoBoxTitle": "BEZPLATNÝ PLÁN",
-        "ProFeatureUnlimitedImages": "Neomezené generování AI SEO obrázků"
+    "ImagePreview": {
+      "noImages": "Nebyly vybrány žádné obrázky",
+      "zoomInstructions": "Štípněte pro přiblížení, táhněte pro posun",
+      "zoomLevel": "{scale}%",
+      "removingBackground": "Odstraňování pozadí...",
+      "seoName": {
+        "label": "SEO-optimalizovaný název:",
+        "edit": "UPRAVIT",
+        "cancel": "ZRUŠIT",
+        "save": "ULOŽIT"
+      },
+      "originalName": "Původní název:",
+      "fileInfo": {
+        "dimensions": "Rozměry:",
+        "size": "Velikost:",
+        "output": "Výstup:",
+        "quality": "Kvalita:",
+        "background": "Pozadí:",
+        "backgroundRemoved": "Odstraněno",
+        "custom": "Vlastní",
+        "auto": "auto"
+      },
+      "actions": {
+        "download": "STÁHNOUT",
+        "reset": "RESETOVAT"
+      },
+      "allImages": "VŠECHNY OBRÁZKY ({current}/{max})"
     },
-    "PrivacyPolicy": {
-        "title": "OCHRANA SOUKROMÍ",
-        "section1Title": "1. Úvod",
-        "section1P1": "Vítejte v Batch Shots ('my', 'naše', 'nás'). Jsme odhodláni chránit vaše soukromí a zajistit bezpečnost vašich osobních údajů.",
-        "section1P2": "Tato zásada ochrany soukromí vysvětluje, jak zacházíme s vašimi daty při používání našeho nástroje pro optimalizaci obrázků v prohlížeči.",
-        "section2Title": "2. Informace, které nesbíráme",
-        "section2P1Bold": "Vaše obrázky nesbíráme ani neukládáme.",
-        "section2P1": "Naším základním principem je soukromí od samého počátku.",
-        "section2P2": "Batch Shots funguje zcela ve vašem prohlížeči. Když nahráváte obrázky k optimalizaci:",
-        "section2Li1": "Vaše obrázky jsou zpracovávány lokálně ve vašem prohlížeči pomocí klientského JavaScriptu.",
-        "section2Li2": "Vaše obrázky nikdy neopouštějí vaše zařízení a nejsou přenášeny na naše servery.",
-        "section2Li3": "Neukládáme kopie vašich původních ani zpracovaných obrázků.",
-        "section2Li4": "Nesledujeme obsah vašich obrázků.",
-        "section3Title": "3. FUNKCE S UMĚLOU INTELIGENCÍ",
-        "section3P1": "Když používáte naše funkce generování SEO názvů s umělou inteligencí:",
-        "section3Li1": "Na naše API odesíláme pouze popisný text, který poskytnete.",
-        "section3Li2": "Vaše skutečné obrázky neodesíláme ani nezpracováváme našimi systémy umělé inteligence.",
-        "section3Li3": "Vaše vygenerované SEO názvy jsou doručeny zpět do vašeho prohlížeče a nejsou trvale uloženy na našich serverech.",
-        "section4Title": "4. ANALYTIKA A COOKIES",
-        "section4P1": "Používáme minimální analytiku pro pochopení, jak je náš web používán:",
-        "section4Li1": "Sbíráme anonymní statistiky používání jako zobrazení stránek a využití funkcí.",
-        "section4Li2": "Používáme nezbytné cookies pro poskytování funkcí jako ochrana reCAPTCHA.",
-        "section4Li3": "Nepoužíváme cookies pro reklamu nebo sledování napříč jinými weby.",
-        "section5Title": "5. SLUŽBY TŘETÍCH STRAN",
-        "section5P1": "Používáme následující služby třetích stran:",
-        "section5Li1": "Google reCAPTCHA pro ochranu proti spamu na našich funkcích s umělou inteligencí.",
-        "section5Li2": "OpenCV.js pro zpracování obrázků (běží zcela ve vašem prohlížeči).",
-        "section5P2": "Každá z těchto služeb má vlastní zásady ochrany soukromí, které upravují, jak zacházejí s daty.",
-        "section6Title": "6. ZMĚNY TĚCHTO ZÁSAD",
-        "section6P1": "Tyto zásady ochrany soukromí můžeme čas od času aktualizovat. O jakýchkoli změnách vás budeme informovat zveřejněním nových zásad ochrany soukromí na této stránce a aktualizací data „Poslední aktualizace\".",
-        "section7Title": "7. Kontaktujte nás",
-        "section7P1": "Pokud máte jakékoli dotazy k těmto zásadám ochrany soukromí, kontaktujte nás na privacy@batchshots.com.",
-        "returnButton": "VRÁTIT SE NA DOMŮ"
+    "PricingCard": {
+      "oneTime": "jednorázově",
+      "currentPlan": "AKTUÁLNÍ PLÁN"
     },
-    "TermsOfUse": {
-        "title": "PODMÍNKY POUŽITÍ",
-        "lastUpdated": "Poslední aktualizace: 30. května 2025",
-        "section1Title": "1. Přijetí podmínek",
-        "section1P1": "Přístupem a používáním Batch Shots souhlasíte s těmito Podmínkami použití. Pokud nesouhlasíte s jakoukoliv částí těchto podmínek, nesmíte používat naši službu.",
-        "section2Title": "2. Popis služby",
-        "section2P1": "Batch Shots je nástroj pro optimalizaci obrázků založený na prohlížeči, který uživatelům umožňuje:",
-        "section2Li1": "Upravovat vlastnosti obrázků jako jas, kontrast a vyvážení bílé",
-        "section2Li2": "Změnit velikost a optimalizovat obrázky pro web",
-        "section2Li3": "Generovat SEO-optimalizované názvy souborů",
-        "section2Li4": "Zpracovávat více obrázků současně",
-        "section2P2": "Veškeré zpracování obrázků probíhá lokálně ve vašem prohlížeči; žádné obrázky nejsou nahrávány ani ukládány na našich serverech.",
-        "section3Title": "3. Odpovědnost uživatele",
-        "section3P1": "Uživatelé Batch Shots jsou výhradně odpovědní za zajištění, že mají potřebná práva a povolení k používání, nahrávání a zpracování jakýchkoliv obrázků s naší službou. Batch Shots není odpovědný za jakékoliv porušení autorských práv nebo duševního vlastnictví vyplývající z používání služby. Musíte používat službu v souladu se všemi platnými zákony a předpisy.",
-        "section3Li1": "Zajištění, že mají potřebná práva a povolení k úpravě a zpracování obrázků, které používají",
-        "section3Li2": "Používání služby v souladu s platnými zákony a předpisy",
-        "section3Li3": "Nepoužívání služby ke zpracování, vytváření nebo distribuci nevhodného, urážlivého nebo nezákonného obsahu",
-        "section3Li4": "Nepokoušení se o zpětnou analýzu, modifikaci nebo hackování služby",
-        "section4Title": "4. Duševní vlastnictví",
-        "section4P1": "Veškerý původní obsah, funkce a funkcionalita Batch Shots jsou naším vlastnictvím a jsou chráněny mezinárodními autorskými právy, ochrannými známkami a dalšími zákony o duševním vlastnictví.",
-        "section4P2": "Zachováváte si všechna práva ke svým původním obrázkům. Nenárokujeme si žádné vlastnictví nad obrázky, které zpracováváte pomocí naší služby.",
-        "section4aTitle": "4A. Uživatelský obsah, vlastnictví a doživotní Pro přístup",
-        "section4aP1": "Všechny obrázky a obsah nahrané nebo zpracované pomocí Batch Shots zůstávají výhradním majetkem uživatele. Batch Shots neukládá, nezobrazuje ani nepřenáší vaše obrázky na naše servery; veškeré zpracování probíhá lokálně ve vašem prohlížeči. Jste výhradně odpovědní za zajištění, že máte potřebná práva a povolení k používání a zpracování jakýchkoliv obrázků s naší službou. Batch Shots není odpovědný za jakékoliv porušení autorských práv nebo duševního vlastnictví vyplývající z používání služby.",
-        "section4aP2": "\"Doživotní\" přístup k Pro funkcím znamená, že budete mít přístup ke všem Pro funkcím po dobu, po kterou je Batch Shots provozován a udržován jako služba. Pokud bude Batch Shots ukončen, vynaložíme přiměřené úsilí na poskytnutí přístupu k softwarovému kódu Pro uživatelům nebo na open source aplikaci, což umožní pokračující používání.",
-        "section5Title": "5. Vyloučení odpovědnosti",
-        "section5Li1": "Batch Shots je poskytován \"tak jak je\" a \"podle dostupnosti\" bez jakýchkoliv záruk jakéhokoliv druhu.",
-        "section5Li2": "Nezaručujeme, že služba bude nepřerušená, bezpečná nebo bezchybná.",
-        "section5Li3": "Nejsme odpovědní za jakoukoliv ztrátu dat, která může nastat během zpracování. Uživatelé jsou odpovědní za udržování vlastních záloh.",
-        "section5Li4": "Neposkytujeme žádné záruky ohledně přesnosti nebo účinnosti funkce generování SEO názvů.",
-        "section5Li5": "Batch Shots není odpovědný za jakékoliv právní nároky, škody nebo spory vyplývající z uživatelského obsahu nebo používání služby.",
-        "section6Title": "6. Omezení odpovědnosti",
-        "section6P1": "V maximální míře povolené zákonem nebudeme odpovědní za jakékoliv nepřímé, náhodné, zvláštní, následné nebo trestní škody vyplývající z vašeho používání nebo neschopnosti používat službu, nebo z jakýchkoliv právních nároků vyplývajících z vašeho obsahu.",
-        "section7Title": "7. Úpravy služby",
-        "section7P1": "Vyhrazujeme si právo upravit, pozastavit nebo ukončit jakoukoliv část Batch Shots kdykoliv bez předchozího upozornění nebo odpovědnosti.",
-        "section8Title": "8. Rozhodné právo",
-        "section8P1": "Tyto Podmínky použití se řídí a vykládají v souladu se zákony jurisdikce, ve které působíme, bez ohledu na její ustanovení o kolizním právu.",
-        "section9Title": "9. Změny podmínek",
-        "section9P1": "Tyto Podmínky použití můžeme čas od času aktualizovat. O jakýchkoliv změnách vás budeme informovat zveřejněním nových Podmínek na této stránce a aktualizací data \"Poslední aktualizace\".",
-        "section10Title": "10. Kontaktujte nás",
-        "section10P1": "Pokud máte jakékoliv dotazy k těmto Podmínkám použití, kontaktujte nás na terms@batchshots.com.",
-        "returnButton": "VRÁTIT SE NA DOMŮ"
+    "WatermarkControl": {
+      "title": "VODOTISK",
+      "addTab": "PŘIDAT VODOTISK",
+      "removeTab": "ODSTRANIT VODOTISK (AI)",
+      "type": "TYP",
+      "text": "TEXT",
+      "logo": "LOGO",
+      "enterText": "Zadejte text vodotisku",
+      "font": "PÍSMO",
+      "size": "VELIKOST",
+      "color": "BARVA",
+      "opacity": "KRYTÍ",
+      "position": "POZICE",
+      "uploadLogo": "NAHRÁT LOGO",
+      "logoPlaceholder": "Klikněte nebo přetáhněte logo sem",
+      "reset": "RESET",
+      "presets": {
+        "bottomRight": "Vpravo dole",
+        "bottomLeft": "Vlevo dole",
+        "topLeft": "Vlevo nahoře",
+        "topRight": "Vpravo nahoře",
+        "center": "Střed",
+        "diagonal": "Diagonálně",
+        "tile": "Dlaždice (Vzor)"
+      },
+      "removeDescription": "Odstranění vodotisku pomocí AI již brzy!"
     }
+  },
+  "Dialogs": {
+    "download": {
+      "title": "Stáhnout obrázky",
+      "confirmTitle": "Potvrdit stažení",
+      "successTitle": "Stažení úspěšné",
+      "summary": "Shrnutí stažení:",
+      "images": "{count, plural, =1 {# obrázek} other {# obrázky}} budou staženy",
+      "format": "Formát:",
+      "appliedPreset": "Použitý preset:",
+      "adjustmentsApplied": "Úpravy obrázku byly aplikovány",
+      "backgroundRemoval": "Odstranění pozadí bylo aplikováno",
+      "seoFilenames": "Včetně SEO optimalizovaných názvů souborů AI",
+      "watermarkApplied": "Vodotisk použit",
+      "zipPackage": "Soubory budou zabaleny do ZIP archivu",
+      "processingNote": "Zpracování může u více nebo velkých obrázků chvíli trvat.",
+      "cancel": "ZRUŠIT",
+      "download": "STÁHNOUT",
+      "processing": "ZPRACOVÁVÁNÍ...",
+      "successMessage": "Vaše obrázky byly úspěšně staženy. Co chcete udělat dál?",
+      "startNewBundleDesc": "Začít nový balíček: Vymažte současné obrázky a začněte znovu",
+      "continueEditingDesc": "Pokračovat v úpravách: Pokračujte v práci se současnými obrázky",
+      "startNewBundle": "ZAČÍT NOVÝ BALÍČEK",
+      "continueEditing": "POKRAČOVAT V ÚPRAVÁCH",
+      "seoProductDescription": "SEO Popis produktu (TXT)"
+    },
+    "proUpgrade": {
+      "feature": "Hromadné zpracování"
+    }
+  },
+  "WatermarkPage": {
+    "metadata": {
+      "title": "Přidat vodotisk k obrázkům | Batch Shots",
+      "description": "Snadno přidejte vlastní textové nebo logové vodotisky k vašim obrázkům. Chraňte své fotografie vodotisky s kontrolou nad krytím, pozicí a velikostí.",
+      "keywords": "vodotisk, přidat vodotisk k obrázkům, vodotisk fotografií, vodotisk obrázků, vodotisk loga, textový vodotisk, značení obrázků, vodotisk fotografií"
+    },
+    "title": "PŘIDAT VODOTISK K OBRÁZKŮM",
+    "loading": {
+      "proStatus": "KONTROLA PRO STATUSU...",
+      "proDescription": "Počkejte prosím, zatímco ověřujeme stav vašeho účtu."
+    },
+    "preview": {
+      "title": "NÁHLED OBRÁZKU"
+    },
+    "alerts": {
+      "freeUserLimit": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro zpracování až 100 obrázků najednou!",
+      "maxImagesLimit": "Maximálně 100 obrázků najednou.",
+      "watermarkFailed": "Aplikace vodotisku selhala. Prosím zkuste to znovu."
+    },
+    "mainCard": {
+      "title": "VODOTISK NA OBRÁZKY",
+      "info": {
+        "title": "PŘIDAT VLASTNÍ VODOTISKY",
+        "description": "Chraňte své obrázky vlastními textovými nebo logovými vodotisky. Přizpůsobte krytí, velikost a pozici podle vašich potřeb značky."
+      },
+      "upload": {
+        "title": "Vybrat obrázky",
+        "buttonFree": "VYBRAT OBRÁZEK",
+        "buttonPro": "VYBRAT OBRÁZKY",
+        "helpTextFree": "Bezplatní uživatelé mohou vybrat 1 obrázek najednou.",
+        "helpTextPro": "Můžete vybrat až 100 obrázků najednou."
+      },
+      "actions": {
+        "clear": "VYMAZAT",
+        "download": "STÁHNOUT",
+        "downloadZip": "STÁHNOUT JAKO ZIP",
+        "applyWatermark": "POUŽÍT VODOTISK",
+        "applyWatermarks": "POUŽÍT VODOTISKY",
+        "processing": "POUŽÍVÁNÍ VODOTISKU...",
+        "processingMultiple": "POUŽÍVÁNÍ VODOTISKŮ...",
+        "tryFullEditor": "VYZKOUŠET PLNÝ EDITOR"
+      },
+      "progress": {
+        "processing": "Zpracování...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "UPGRADE NA PRO",
+        "plan": {
+          "title": "PRO PLÁN",
+          "price": "$19.99",
+          "features": [
+            "Vodotisk až 100 obrázků najednou",
+            "Pokročilé úpravy obrázků a předvolby",
+            "Odstranění pozadí pro produktové fotografie",
+            "Hromadné zpracování pro všechny funkce",
+            "Jednorázová platba, doživotní přístup"
+          ],
+          "buttonText": "UPGRADE NYNÍ"
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "JAK TO FUNGUJE",
+      "step1": {
+        "title": "1. VYBERTE OBRÁZKY",
+        "description": "Nahrajte jeden nebo více obrázků, ke kterým chcete přidat vodotisk.",
+        "proNote": "PRO uživatelé mohou vybrat až 100 obrázků najednou!"
+      },
+      "step2": {
+        "title": "2. PŘIZPŮSOBTE VODOTISK",
+        "description": "Vyberte mezi textovým nebo logovým vodotiskem. Upravte krytí, velikost a pozici podle vašich preferencí."
+      },
+      "step3": {
+        "title": "3. STÁHNOUT A POUŽÍT",
+        "description": "Použijte vodotisk a stáhněte zpracované obrázky připravené pro web, sociální sítě nebo portfolio."
+      }
+    },
+    "proDialog": {
+      "title": "UPGRADE NA PRO",
+      "featureTitle": "PRO FUNKCE: Hromadné vodotisky",
+      "description": "Bezplatní uživatelé mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro vodotisk až 100 obrázků najednou, ušetříte tak hodiny práce!",
+      "pricing": {
+        "title": "JEDNORÁZOVÁ PLATBA",
+        "price": "$19.99",
+        "note": "Bez předplatného, doživotní přístup"
+      },
+      "actions": {
+        "upgrade": "UPGRADE NA PRO",
+        "continue": "POKRAČOVAT V BEZPLATNÉM REŽIMU"
+      }
+    }
+  },
+  "ImageFormatConvertorPage": {
+    "metadata": {
+      "title": "Konvertor formátů obrázků | Batch Shots",
+      "description": "Konvertujte obrázky mezi formáty (JPG, PNG, WebP, AVIF) pomocí našeho snadno použitelného nástroje. Podporuje konverzi HEIC a dávkové zpracování.",
+      "keywords": "konvertor formátů obrázků, konvertovat jpg na png, konvertovat heic na jpg, webp konvertor, konverze formátu obrázku, dávková konverze obrázků, konvertovat heic"
+    },
+    "title": "KONVERTOR FORMÁTŮ OBRÁZKŮ",
+    "loading": {
+      "tool": "NAČÍTÁNÍ KONVERTORU...",
+      "proStatus": "KONTROLA STAVU PRO...",
+      "description": "Počkejte prosím, než inicializujeme možnosti zpracování obrázků.",
+      "proDescription": "Počkejte prosím, než ověříme stav vašeho účtu."
+    },
+    "uploadArea": {
+      "title": "KONVERTUJTE SVÉ OBRÁZKY",
+      "description": "Převeďte své obrázky do různých formátů pomocí několika kliknutí.",
+      "selectImages": "VYBRAT OBRÁZKY (AŽ {maxImages})",
+      "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Nikdy nenahráváme vaše obrázky na naše servery.</strong>",
+      "freeLimitInfo": "Bezplatní uživatelé mohou najednou převést až {maxImages} obrázků.",
+      "upgradeLink": "Upgradovat na PRO"
+    },
+    "selectedImages": {
+      "title": "VYBRANÉ OBRÁZKY ({count})"
+    },
+    "formatChanged": {
+      "title": "FORMÁT ZMĚNĚN",
+      "description": "Změnili jste cílový formát. Klikněte na Reset pro konverzi obrázků do nového formátu."
+    },
+    "mainCard": {
+      "title": "KONVERTOVAT OBRÁZKY DO LIBOVOLNÉHO FORMÁTU",
+      "info": {
+        "title": "KONVERZE FORMÁTU OBRÁZKU",
+        "description": "Převeďte své obrázky mezi formáty jako JPG, PNG, WebP a AVIF. Během konverze můžete také změnit velikost obrázků."
+      },
+      "upload": {
+        "title": "Vyberte obrázky k převodu",
+        "buttonFree": "VYBRAT OBRÁZKY",
+        "buttonPro": "VYBRAT OBRÁZKY",
+        "helpTextFree": "Bezplatní uživatelé mohou najednou vybrat až {maxImages} obrázků.",
+        "helpTextPro": "Najednou můžete vybrat až 100 obrázků."
+      },
+      "actions": {
+        "clear": "VYMAZAT",
+        "addMore": "PŘIDAT DALŠÍ",
+        "download": "STÁHNOUT PŘEVEDENÉ",
+        "downloadZip": "STÁHNOUT VŠE JAKO ZIP",
+        "convertImageTo": "KONVERTOVAT DO {format}",
+        "convertImagesTo": "KONVERTOVAT VŠE DO {format}",
+        "converting": "KONVERZE...",
+        "convertingMultiple": "KONVERZE OBRÁZKŮ...",
+        "resetConversion": "RESETOVAT"
+      },
+      "progress": {
+        "processing": "Zpracovávání...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "UPGRADOVAT NA PRO",
+        "plan": {
+          "title": "PRO PLÁN",
+          "price": "$19.99",
+          "features": [
+            "Převeďte až 100 obrázků najednou",
+            "Změňte velikost obrázků během konverze",
+            "Převeďte z HEIC/HEIF do libovolného formátu",
+            "Odstranění pozadí pro produktové fotografie",
+            "Jednorázová platba, doživotní přístup"
+          ],
+          "buttonText": "UPGRADOVAT NYNÍ"
+        }
+      }
+    },
+    "targetFormat": {
+      "title": "VYBRAT CÍLOVÝ FORMÁT"
+    },
+    "resize": {
+      "title": "ZMĚNIT VELIKOST BĚHEM KONVERZE (VOLITELNÉ)"
+    },
+    "convertedImages": {
+      "title": "PŘEVEDENÉ OBRÁZKY",
+      "description": "Vaše obrázky byly úspěšně převedeny. Klikněte na Stáhnout pro jejich uložení."
+    },
+    "howItWorks": {
+      "title": "JAK TO FUNGUJE",
+      "step1": {
+        "title": "1. VYBERTE SVÉ OBRÁZKY",
+        "description": "Nahrajte jeden nebo více obrázků, které chcete převést.",
+        "proNote": "PRO uživatelé mohou najednou vybrat až 100 obrázků!"
+      },
+      "step2": {
+        "title": "2. ZVOLTE CÍLOVÝ FORMÁT",
+        "description": "Vyberte požadovaný výstupní formát (JPG, PNG, WebP nebo AVIF)."
+      },
+      "step3": {
+        "title": "3. ZMĚNIT VELIKOST (VOLITELNÉ)",
+        "description": "Volitelně vyberte přednastavení pro změnu velikosti obrázků během konverze."
+      },
+      "step4": {
+        "title": "4. STÁHNOUT A POUŽÍT",
+        "description": "Převeďte své obrázky a stáhněte je jednotlivě nebo jako ZIP archiv."
+      }
+    },
+    "supportedFormats": {
+      "title": "PODPOROVANÉ FORMÁTY",
+      "input": {
+        "title": "VSTUPNÍ FORMÁTY",
+        "description": "Můžete nahrát obrázky v těchto formátech:"
+      },
+      "output": {
+        "title": "VÝSTUPNÍ FORMÁTY",
+        "description": "Převeďte své obrázky do libovolného z těchto formátů:"
+      }
+    },
+    "alerts": {
+      "freeUserLimit": "Bezplatní uživatelé mohou najednou převést až 5 obrázků. Upgradujte na PRO pro konverzi až 100 obrázků hromadně!",
+      "maxImagesLimit": "Najednou je povoleno maximálně 100 obrázků.",
+      "conversionFailed": "Konverze formátu selhala. Zkuste to prosím znovu."
+    },
+    "proDialog": {
+      "title": "UPGRADOVAT NA PRO",
+      "featureTitle": "PRO FUNKCE: Hromadná konverze formátu",
+      "description": "Bezplatní uživatelé mohou najednou převést pouze {maxImages} obrázků. Upgradujte na PRO pro konverzi až 100 obrázků hromadně, což vám ušetří hodiny práce!",
+      "pricing": {
+        "title": "JEDNORÁZOVÁ PLATBA",
+        "price": "$19.99",
+        "note": "Bez předplatného, doživotní přístup"
+      },
+      "actions": {
+        "upgrade": "UPGRADOVAT NA PRO",
+        "continue": "POKRAČOVAT V BEZPLATNÉM REŽIMU"
+      }
+    },
+    "allImages": "VŠECHNY OBRÁZKY ({current}/{max})",
+    "imagesCount": "{current}/{max} obrázků",
+    "upgradeFor": "(Upgrade pro až 100)",
+    "plans": {
+      "free": {
+        "title": "ZDARMA",
+        "price": "ZDARMA",
+        "features": [
+          "Dávkové zpracování max 5 obrázků",
+          "Odstranění pozadí AI jednoho obrázku (náhled)",
+          "Odstranění objektů AI z jednoho obrázku",
+          "Přidání vodoznaku max 5 obrázků",
+          "Konvertor obrázků max 5 obrázků dávkově",
+          "Generování názvů obrázků SEO AI (Není k dispozici)",
+          "Popis SEO AI a metatagy (Není k dispozici)"
+        ],
+        "buttonText": "POKRAČOVAT ZDARMA"
+      },
+      "pro": {
+        "title": "PRO",
+        "price": "$19.99",
+        "features": [
+          "Dávkové zpracování max 100 obrázků",
+          "Až 100 odstranění pozadí AI v jedné dávce",
+          "Odstranění objektů AI až 100 obrázků",
+          "Přidání vodoznaku 100 obrázků v jedné dávce",
+          "Konvertor obrázků max 100 obrázků dávkově",
+          "Generování názvů obrázků SEO AI (až 100)",
+          "Popis SEO AI a metatagy k dispozici",
+          "**Jednorázová platba, doživotní přístup**"
+        ],
+        "buttonText": "PŘEJÍT NA PRO"
+      }
+    }
+  },
+  "ObjectRemovalPage": {
+    "metadata": {
+      "title": "AI Nástroj pro odstranění objektů | Batch Shots",
+      "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí našeho AI nástroje. Funguje zcela ve vašem prohlížeči pro zachování soukromí. Vyzkoušejte zdarma!",
+      "keywords": "odstranění objektů, ai odstranění objektů, odstranit objekty z obrázku, odstranit text z obrázku, odstranit osoby z fotografie, inpainting, nástroj pro úpravu obrázků"
+    },
+    "title": "AI ODSTRANĚNÍ OBJEKTŮ",
+    "loading": {
+      "ort": "Načítání AI Engine...",
+      "opencv": "Načítání nástrojů pro obrázky...",
+      "model": "Načítání modelu pro odstranění objektů...",
+      "proStatus": "Kontrola stavu účtu...",
+      "generic": "Načítání..."
+    },
+    "mainCard": {
+      "title": "AI PLÁTNO PRO ODSTRANĚNÍ OBJEKTŮ",
+      "info": {
+        "title": "JAK TO FUNGUJE",
+        "description": "Odstraňte nežádoucí objekty, osoby nebo text z vašich obrázků pomocí AI. Zpracování probíhá zcela ve vašem prohlížeči."
+      },
+      "upload": {
+        "title": "Nahrajte svůj obrázek",
+        "button": "VYBRAT OBRÁZEK",
+        "helpTextFree": "Vyberte obrázek, který chcete upravit.",
+        "helpTextPro": "Vyberte až 100 obrázků pro dávkové zpracování."
+      },
+      "canvas": {
+        "drawTitle": "NAKRESLETE MASKU NA OBJEKTY",
+        "brushSize": "Velikost štětce",
+        "clearMask": "VYMAZAT MASKU",
+        "outputTitle": "2. ZOBRAZIT VÝSLEDEK",
+        "outputPlaceholder": "Výsledek se zobrazí zde"
+      },
+      "actions": {
+        "reset": "RESET",
+        "remove": "ODSTRANIT OBJEKTY",
+        "removeAllObjects": "ODSTRANIT ZE VŠECH OBRÁZKŮ",
+        "processing": "ZPRACOVÁVÁNÍ...",
+        "download": "STÁHNOUT",
+        "downloadAll": "STÁHNOUT VŠE"
+      }
+    },
+    "upgradeCard": {
+      "title": "UPGRADUJTE NA PRO",
+      "description": "Odemkněte dávkové odstranění objektů pro až 100 obrázků a další PRO funkce jako hromadné odstranění pozadí a pokročilé úpravy.",
+      "button": "DOWIEDZ SIĚ WIĘCEJ & UPGRADE"
+    },
+    "instructionsCard": {
+      "title": "INSTRUKCE",
+      "step1": "Nahrajte svůj obrázek pomocí tlačítka 'Vybrat obrázek'.",
+      "step2": "Pečlivě vybarvěte objekty, které chcete odstranit, pomocí červeného štětce.",
+      "step3": "Upravte posuvník velikosti štětce pro přesnost.",
+      "step4": "Klikněte na tlačítko 'Odstranit objekty' a počkejte na zpracování AI.",
+      "step5": "Po zpracování stáhněte svůj čistý obrázek pomocí tlačítka 'Stáhnout'.",
+      "step6": "Pro dávkové zpracování zaškrtněte 'Aplikovat masku na všechny obrázky' pro odstranění podobných objektů ze všech vybraných obrázků.",
+      "noteTitle": "Poznámka:",
+      "noteText": "Zpracování může trvat 15-60 sekund v závislosti na velikosti obrázku a vašem zařízení. Pro nejlepší výsledky se ujistěte, že vaše maska plně pokrývá objekt."
+    },
+    "imageGallery": {
+      "selectedImages": "Vybrané obrázky",
+      "selectedImage": "Vybraný obrázek",
+      "clearAll": "Vymazat vše",
+      "applyMaskToAll": "Aplikovat masku na všechny obrázky (dávkové zpracování)",
+      "hasMask": "Má nakreslenou masku"
+    },
+    "processing": {
+      "readingFile": "Čtení souboru...",
+      "loadingImage": "Načítání obrázku...",
+      "exportingMask": "Příprava masky...",
+      "runningModel": "Spouštění AI modelu...",
+      "rendering": "Vykreslování výsledku...",
+      "preparingBatch": "Příprava dávkového zpracování...",
+      "processingImage": "Zpracování obrázku {current} z {total}...",
+      "finishingBatch": "Dokončování výsledků...",
+      "preparingDownload": "Příprava ke stažení...",
+      "batchProgress": "Průběh dávky",
+      "loadingDimensions": "Výpočet rozměrů obrázku...",
+      "generic": "Zpracování obrázku..."
+    },
+    "errors": {
+      "ortLoad": "Nepodařilo se načíst AI Engine. Zkuste prosím obnovit stránku.",
+      "sessionCreate": "Nepodařilo se inicializovat model pro odstranění objektů.",
+      "freeLimit": "Uživatelé zdarma mohou zpracovat pouze 1 obrázek najednou. Upgradujte na PRO pro dávkové zpracování.",
+      "tooManyImages": "Povoleno maximálně 100 obrázků. Zpracovány budou pouze první 3 obrázky.",
+      "imageLoad": "Chyba při načítání vybraného obrázku.",
+      "fileRead": "Chyba při čtení vybraného souboru.",
+      "canvasError": "Chyba při přístupu k plátnu obrázku.",
+      "prerequisites": "Nelze zpracovat. Chybí požadované komponenty: {missing}",
+      "noMask": "Nejprve nakreslete masku na objekt, který chcete odstranit.",
+      "processingFailed": "Odstranění objektu selhalo",
+      "resultLoadFailed": "Nepodařilo se zobrazit výsledek zpracovaného obrázku.",
+      "noDownloadData": "Žádný zpracovaný obrázek není k dispozici ke stažení.",
+      "downloadFailed": "Nepodařilo se připravit obrázek ke stažení."
+    }
+  },
+  "Pricing": {
+    "title": "CENOVÉ PLÁNY",
+    "subtitle": "Vyberte si perfektní plán pro vaše potřeby optimalizace obrázků. Náš PRO plán nabízí doživotní licenci s jednorázovou platbou.",
+    "alreadyPro": {
+      "title": "Už jste PRO uživatel!",
+      "description": "Děkujeme za vaši podporu. Máte přístup ke všem PRO funkcím včetně hromadného odstranění pozadí, pokročilých úprav obrázků a generování SEO názvů souborů.",
+      "backToEditor": "ZPĚT DO EDITORU"
+    },
+    "checkout": {
+      "title": "DOKONČETE NÁKUP",
+      "planTitle": "PRO DOŽIVOTNÍ LICENCE",
+      "price": "$19.99",
+      "description": "Jednorázová platba, doživotní přístup ke všem PRO funkcím",
+      "email": "EMAIL",
+      "cardInfo": "INFORMACE O KARTĚ",
+      "cardNumber": "1234 5678 9012 3456",
+      "expiryDate": "MM/RR",
+      "cvc": "CVC",
+      "completePurchase": "DOKONČIT NÁKUP",
+      "goBack": "Jít zpět"
+    },
+    "plans": {
+      "free": {
+        "title": "ZDARMA",
+        "price": "ZDARMA",
+        "features": [
+          "Dávkové zpracování max 5 obrázků",
+          "Odstranění pozadí AI jednoho obrázku (náhled)",
+          "Odstranění objektů AI z jednoho obrázku",
+          "Přidání vodoznaku max 5 obrázků",
+          "Konvertor obrázků max 5 obrázků dávkově",
+          "AI Photo Duplicate Finder max 5 obrázků",
+          "Generování názvů obrázků SEO AI (Není k dispozici)",
+          "Popis SEO AI a metatagy (Není k dispozici)"
+        ],
+        "buttonText": "POKRAČOVAT ZDARMA"
+      },
+      "pro": {
+        "title": "PRO",
+        "price": "$19.99",
+        "features": [
+          "Dávkové zpracování max 100 obrázků",
+          "Až 100 odstranění pozadí AI v jedné dávce",
+          "Odstranění objektů AI až 100 obrázků",
+          "Přidání vodoznaku 100 obrázků v jedné dávce",
+          "Konvertor obrázků max 100 obrázků dávkově",
+          "AI Photo Duplicate Finder neomezená dávková zpracování",
+          "Generování názvů obrázků SEO AI (až 100)",
+          "Popis SEO AI a metatagy k dispozici",
+          "**Jednorázová platba, doživotní přístup**"
+        ],
+        "buttonText": "PŘEJÍT NA PRO"
+      }
+    },
+    "faq": {
+      "title": "ČASTO KLADENÉ DOTAZY",
+      "questions": {
+        "oneTime": {
+          "question": "Je to opravdu jednorázová platba?",
+          "answer": "Ano! Zaplatíte jednou a získáte doživotní přístup ke všem PRO funkcím. Žádné opakované předplatné."
+        },
+        "backgroundRemoval": {
+          "question": "Jak funguje odstranění pozadí?",
+          "answer": "Používáme pokročilé AI algoritmy k detekci a odstranění pozadí z vašich produktových obrázků. Celý proces probíhá ve vašem prohlížeči – vaše obrázky nikdy neukládáme na naše servery."
+        },
+        "imageLimits": {
+          "question": "Jaké jsou limity obrázků?",
+          "answer": "Bezplatní uživatelé mohou zpracovat až 10 obrázků najednou se základními funkcemi a odstranit pozadí z 1 obrázku najednou. PRO uživatelé mohou zpracovat až 100 obrázků současně, včetně hromadného odstranění pozadí."
+        },
+        "refund": {
+          "question": "Mohu požádat o vrácení peněz?",
+          "answer": "Ano, nabízíme 30denní záruku vrácení peněz, pokud nejste spokojeni s PRO funkcemi. Kontaktujte náš tým podpory pro pomoc."
+        }
+      }
+    }
+  },
+  "ImageDuplicateDetectionPage": {
+    "metadata": {
+      "title": "AI Vyhledávač a čistič duplicitních fotografií | Batch Shots",
+      "description": "Rychle najděte a odstraňte duplicitní nebo podobné fotografie pomocí našeho nástroje s umělou inteligencí. Identifikuje obrázky nejlepší kvality v duplicitních sadách. Zdarma a v prohlížeči.",
+      "keywords": "vyhledávač duplicitních fotografií, odstranit duplicitní obrázky, vyhledávač podobných fotografií, ai čistič fotografií, detekce duplicitních obrázků, fotografie nejlepší kvality, uklidit fotografie, batchshots"
+    },
+    "PageTitle": "AI Vyhledávač a čistič duplicitních fotografií",
+    "AppInitializing": "Inicializace Chytrého Analyzátoru Fotografií...",
+    "AISetup": "Nastavování AI enginu...",
+    "AIEngineInitializing": "Inicializace AI enginu...",
+    "AIEngineStarted": "AI engine spuštěn.",
+    "AIInitializing": "Inicializace AI...",
+    "AILoadingModel": "Načítání pokročilého AI modelu...",
+    "AIModelLoaded": "AI model načten.",
+    "AIReady": "AI připravena. Vyberte fotografie k nalezení duplikátů.",
+    "AIReadyPrompt": "AI připravena. Vyberte fotografie k nalezení duplikátů.",
+    "ProcessingImage": "Analyzuji fotografii {imageId}...",
+    "ErrorProcessingImage": "Chyba při analýze fotografie {imageId}: {data}.",
+    "AIEngineError": "Chyba AI enginu: {data}.",
+    "AIEngineErrorRefresh": "Chyba AI enginu: {data}. Obnovte stránku nebo to zkuste znovu.",
+    "AICriticalError": "AI narazila na kritickou chybu.",
+    "AICriticalErrorRefresh": "Při naší AI analýze došlo ke kritické chybě. Obnovte prosím stránku.",
+    "QualityToolsError": "Nástroje pro analýzu kvality se nepodařilo načíst. Detailní metriky kvality mohou být nedostupné.",
+    "AllImagesProcessedAnalyzing": "Všechny fotografie zpracovány. Identifikuji duplikáty...",
+    "AnalysisCompleteSummary": "Analýza dokončena. {groupSummary} Zpracováno {successfullyProcessedCount} z {totalImagesCount} fotografií.",
+    "DuplicateSetsFound": "Nalezeno {count} sad duplikátů.",
+    "NoDuplicatesFound": "Nebyly nalezeny žádné přímé duplikáty.",
+    "NoImagesProcessedSuccessfully": "Žádné fotografie nebylo možné úspěšně zpracovat. Zpracováno {successfullyProcessedCount} z {totalImagesCount} fotografií.",
+    "NoImagesForNewThreshold": "Žádné fotografie k analýze s novým nastavením podobnosti.",
+    "ReanalyzingWithThreshold": "Opětovná analýza fotografií s nastavením podobnosti: {threshold}...",
+    "AnalysisCompleteWithThreshold": "Analýza dokončena s podobností {threshold}. {groupSummary}",
+    "PleaseSelectImages": "Vyberte prosím fotografie...",
+    "AINotReadyError": "AI analytický engine není připraven. Počkejte prosím nebo obnovte stránku.",
+    "ProcessingFilesHEIC": "Příprava vybraných souborů (konverze v případě potřeby)...",
+    "HEICConversionFailedSkip": "Nepodařilo se převést obrázek: {fileName}. Bude přeskočen.",
+    "HEICConversionErrorSkip": "Chyba při konverzi obrázku: {fileName}. Bude přeskočen.",
+    "NoValidFilesAfterConversion": "Po pokusech o konverzi nejsou žádné platné soubory ke zpracování.",
+    "SendingImagesToAI": "Odesílání {count} fotografií k AI analýze...",
+    "NoValidImagesSelected": "Nebyly vybrány žádné platné fotografie ke zpracování.",
+    "QualityToolsNotReadyKPI": "Nástroje pro analýzu kvality nejsou připraveny. Nelze vypočítat detailní kvalitu.",
+    "QualityToolsNotReadyQuality": "Nástroje pro analýzu kvality nejsou připraveny. Nelze vypočítat kvalitu.",
+    "ErrorCalculatingQuality": "Chyba při výpočtu kvality pro fotografii {imageId}: {error}",
+    "QualityToolsNotReadyAnalysisWait": "Nástroje pro analýzu kvality nejsou připraveny. Počkejte prosím.",
+    "NoDuplicatesInGroup": "V této skupině nejsou žádné duplikáty k analýze.",
+    "AnalyzingGroupQuality": "Analýza kvality fotografií ve skupině {groupNumber}...",
+    "AnalyzedProgressInGroup": "Analyzováno {processedCount} z {groupTotal} ve skupině {groupNumber}. Fotografie: {imageName}",
+    "QualityAnalysisCompleteForGroup": "Analýza kvality dokončena pro skupinu {groupNumber}.",
+    "QualityAnalysisPartialForGroup": "Analýza kvality částečně dokončena pro skupinu {groupNumber}. Některé fotografie mohly selhat nebo byly přeskočeny.",
+    "QualityToolsNotReadyBestSelection": "Nástroje pro analýzu kvality nejsou připraveny. Nelze zajistit výběr nejlepší fotografie.",
+    "AnalyzingQualityForBestDownload": "Analýza kvality pro {count} fotografií k výběru té nejlepší ke stažení...",
+    "PreDownloadAnalysisComplete": "Předběžná analýza kvality pro aktuální skupinu dokončena.",
+    "NoImagesToDownload": "Žádné fotografie ke stažení.",
+    "QualityToolsNotReadyDownloadAll": "Nástroje pro analýzu kvality nejsou připraveny. Detailní analýza duplicitních sad nemůže být provedena pro 'Stáhnout vše'. Počkejte prosím nebo nejprve analyzujte skupiny jednotlivě.",
+    "PreparingDownload": "Příprava souborů ke stažení...",
+    "BestImageDeterminationFailed": "Nepodařilo se určit nejlepší fotografii pro skupinu. Tato skupina bude vynechána z ZIPu.",
+    "WarningBestImageOmitted": "Upozornění: Nejlepší fotografii pro skupinu se nepodařilo určit a byla vynechána.",
+    "ZippingImages": "Komprimace {count} fotografií do ZIPu...",
+    "DownloadComplete": "Stažení dokončeno!",
+    "ErrorCreatingZIP": "Chyba při vytváření ZIP souboru ke stažení.",
+    "NoImagesSelectedForDownload": "Nebyly vybrány žádné fotografie ke stažení (např. žádné unikátní fotografie nebo žádné nejlepší fotografie identifikované ve skupinách).",
+    "ImageDataMissingDownload": "Chybí data fotografie, nelze stáhnout.",
+    "DownloadingImage": "Stahování {imageName}...",
+    "ImageDownloadedSuccessfully": "{imageName} úspěšně staženo.",
+    "FailedToDownloadImage": "Nepodařilo se stáhnout {imageName}.",
+    "QualityToolsNotReadyAnalyzeAllGroups": "Nástroje pro analýzu kvality nejsou připraveny. Detailní analýza duplicitních sad nemůže být provedena. Počkejte prosím.",
+    "OnlyUniqueImagesReadyDownload": "Přítomny pouze unikátní fotografie. Připraveno ke stažení.",
+    "NoImagesToAnalyzeOrDownload": "Žádné fotografie k analýze nebo stažení.",
+    "AnalyzingAllGroupsForBest": "Analýza všech skupin pro výběr nejlepší fotografie...",
+    "AnalyzingGroupForBest": "Analýza skupiny {currentGroup} z {totalGroups} pro nejlepší fotografii...",
+    "AllGroupsAnalyzedReadyDownload": "Všech {count} duplicitních skupin analyzováno. Připraveno ke stažení {downloadCount} nejlepších fotografií.",
+    "AnalysisPartialReadyDownload": "Analýza pro nejlepší výběr částečně dokončena ({processedGroups}/{totalGroups} skupin). Připraveno ke stažení {downloadCount} fotografií (bude vybrána nejlepší dostupná).",
+    "NoImagesProcessedOrGroups": "Nebyly zpracovány žádné fotografie nebo zatím nebyly vytvořeny žádné skupiny. Ujistěte se, že byly fotografie vybrány a AI analýza dokončena.",
+
+    "LoaderTitleInitializing": "Inicializace Chytrých Nástrojů...",
+    "LoaderTitleLoadingModel": "Načítání AI Mozku...",
+    "LoaderTitleQualityTools": "Příprava Analyzátoru Kvality...",
+    "LoaderDescriptionInitializing": "Připravujeme vše pro chytrou detekci duplikátů. Počkejte prosím.",
+    "LoaderDescriptionLoadingModel": "Naše pokročilá AI se zahřívá. Může to chvíli trvat.",
+    "LoaderDescriptionQualityTools": "Příprava nástrojů pro detailní přehled o kvalitě fotografií...",
+
+    "MainCardTitle": "Najít a spravovat duplicitní fotografie",
+    "UploadSectionTitle": "Nahrajte své fotografie",
+    "UploadSectionDescription": "Vyberte více fotografií. Naše AI je inteligentně analyzuje a seskupí podobné.",
+    "ButtonSelectImages": "Vybrat fotografie",
+    "ButtonSelectImagesLoading": "Načítání...",
+    "ButtonSelectImagesInitializing": "Nástroje se načítají...",
+    "ButtonAddMoreImages": "Přidat další fotografie",
+    "ButtonAddMoreImagesLoading": "Přidávání fotografií...",
+    "SupportedFormats": "Podporuje formáty JPG, PNG, WEBP, HEIC",
+    "AIStatusLabel": "Stav AI: {status}",
+    "QualityAnalyzerStatusLoading": "Analyzátor kvality: Načítání...",
+
+    "SimilarityThresholdTitle": "Nastavení podobnosti",
+    "SimilarityThresholdDescription": "Určete, jak moc se musí fotografie shodovat, aby byly označeny jako duplikáty. Vyšší hodnoty znamenají přísnější shodu.",
+    "SimilarityLessStrict": "Méně přísné",
+    "SimilarityCurrent": "Aktuální: {threshold}",
+    "SimilarityMoreStrict": "Přísnější",
+    "ButtonApplyThreshold": "Použít nastavení",
+    "ButtonApplyThresholdLoading": "Opětovná analýza...",
+
+    "ResultsTitle": "Výsledky detekce:",
+    "DuplicateSetTitle": "Sada duplikátů {number} ({count} podobných fotografií)",
+    "ButtonAnalyzeQuality": "Analyzovat kvalitu",
+    "ButtonAnalyzeQualityLoading": "Analyzuji...",
+    "ButtonReanalyzeQuality": "Znovu analyzovat kvalitu",
+    "ImageMissing": "Chybí data fotografie (index: {index})",
+    "BestLabel": "Nejlepší",
+    "KpiRes": "Rozliš:",
+    "KpiSharp": "Ostrost:",
+    "KpiNoise": "Šum:",
+    "KpiContrast": "Kontrast:",
+    "KpiExposure": "Expozice:",
+    "ButtonDownload": "Stáhnout",
+    "ButtonDownloading": "Stahování...",
+
+    "UniqueImagesTitle": "Unikátní fotografie ({count} fotografií bez přímých duplikátů)",
+
+    "ButtonAnalyzeAllGroups": "Analyzovat všechny skupiny pro nejlepší výběr",
+    "ButtonAnalyzeAllGroupsLoading": "Analýza všech skupin...",
+    "ButtonDownloadBest": "Stáhnout {count} nejlepších fotografií",
+    "ButtonDownloadBestLoading": "Příprava stahování...",
+
+    "HowItWorksTitle": "Jak naše AI nachází duplikáty",
+    "HowItWorksStep1Title": "1. Nahrajte své fotografie",
+    "HowItWorksStep1Desc": "Klikněte na \"Vybrat fotografie\" a zvolte obrázky, které chcete zkontrolovat. Můžete jich vybrat mnoho najednou.",
+    "HowItWorksStep2Title": "2. Inteligentní AI analýza",
+    "HowItWorksStep2Desc": "Naše pokročilá AI (založená na technologii Vision Transformer) inteligentně analyzuje vizuální obsah každé fotografie, rozumí jejím jedinečným vlastnostem a vzhledu.",
+    "HowItWorksStep3Title": "3. Chytré skórování podobnosti",
+    "HowItWorksStep3Desc": "AI porovnává fotografie pomocí sofistikované vizuální analýzy (kosinová podobnost), aby určila, jak moc jsou si podobné na základě jejich obsahu.",
+    "HowItWorksStep4Title": "4. Dolaďte podobnost",
+    "HowItWorksStep4Desc": "Použijte posuvník podobnosti k určení, jak přísná má být shoda. Vyšší hodnota znamená, že fotografie musí být téměř identické, aby byly označeny jako duplikáty.",
+    "HowItWorksStep5Title": "5. Zkontrolujte a uspořádejte",
+    "HowItWorksStep5Desc": "Výsledky jasně ukazují sady duplikátů a unikátní fotografie. Naše AI může také zvýraznit fotografii nejlepší kvality v každé duplicitní skupině, což vám pomůže rozhodnout se, kterou si ponechat.",
+
+    "FreeUserLimit": "Uživatelé zdarma mohou nahrát až {limit} fotografií najednou.",
+    "ButtonSelectImagesLimit": "Vybrat fotografie (až {limit})",
+    "UpgradeMessage": "Upgradujte na PRO pro analýzu neomezeného počtu fotografií najednou.",
+    "UpgradeLink": "Upgradovat nyní",
+    "HowItWorksStep1Free": "Uživatelé zdarma jsou omezeni na {limit} fotografií najednou.",
+    "HowItWorksStep1Pro": "Jako PRO uživatel můžete analyzovat neomezený počet fotografií najednou.",
+    "ProFeatureName": "Neomezená analýza fotografií",
+
+    "FreeModeTitle": "REŽIM ZDARMA",
+    "FreeModeDescription": "Zpracujte až {limit} fotografií najednou. Upgradujte na PRO pro analýzu neomezeného počtu fotografií!",
+    "ProModeTitle": "PRO REŽIM",
+    "ProModeDescription": "Zpracujte neomezený počet fotografií se svým PRO účtem!",
+    "MaxImagesExceeded": "Maximálně 100 obrázků povoleno. Zpracováno bylo pouze prvních 100.",
+    "ProcessingErrors": "Chyby při zpracování",
+    "imagesCount": "{current}/{max} fotografií",
+    "upgradeFor": "(Upgrade pro neomezeně)",
+
+    "UpgradeCardTitle": "UPGRADOVAT NA PRO",
+    "UpgradeCardPlanTitle": "PRO PLÁN",
+    "UpgradeCardPlanPrice": "$19.99",
+    "UpgradeCardPlanNote": "Jednorázová platba, doživotní přístup",
+    "UpgradeCardFeature1": "Analyzujte neomezený počet fotografií najednou (oproti 5 ve verzi zdarma)",
+    "UpgradeCardFeature2": "Rychle najděte duplikáty ve velkých kolekcích fotografií",
+    "UpgradeCardFeature3": "Analýza kvality pro automatické nalezení nejlepších fotografií",
+    "UpgradeCardFeature4": "Hromadné stažení nejlepších fotografií ze sad duplikátů",
+    "UpgradeCardFeature5": "Přístup ke všem dalším PRO funkcím (odstranění pozadí atd.)",
+    "UpgradeCardButton": "UPGRADOVAT NYNÍ",
+
+    "ProUpgradeTitle": "Upgradujte na Pro pro neomezené fotky",
+
+    "SimilarityControlsTitle": "Algoritmus podobnosti a práh",
+    "SimilarityAlgorithmLabel": "Algoritmus podobnosti",
+    "SimilarityThresholdLabel": "Práh podobnosti",
+    "SimilarityThresholdDescDistance": "Nižší hodnoty znamenají podobnější obrázky (metrika vzdálenosti)",
+    "SimilarityThresholdDescSimilarity": "Vyšší hodnoty znamenají podobnější obrázky (metrika podobnosti)",
+
+    "ProcessingChanges": "Zpracovávám změny...",
+    "ReanalyzingWithAlgorithm": "Znovu analyzuji s novým algoritmem...",
+    "AnalysisCompleteWithAlgorithm": "Analýza dokončena s novým algoritmem. {groupSummary}",
+    "DuplicateAnalysisComplete": "Analýza duplicit dokončena",
+
+    "VisualizationTitle": "AI Vektorový Prostor",
+    "VisualizationDescription": "Vizualizujte, jak AI vidí vaše obrázky ve vícerozměrném prostoru, zredukovaném na 2D pomocí UMAP algoritmu. Podobné obrázky se shlukují dohromady.",
+    "VisualizationShowButton": "Zobrazit vizualizaci",
+    "VisualizationHideButton": "Skrýt vizualizaci",
+    "VisualizationGeneratingButton": "Generování vizualizace...",
+    "VisualizationNoData": "Nejprve nahrajte a zpracujte obrázky pro povolení vizualizace",
+    "VisualizationProcessingStatus": "Pro velké soubory dat to může chvíli trvat...",
+    "VisualizationLegendUnique": "Unikátní obrázky",
+    "VisualizationLegendDuplicates": "Skupiny duplicit (barevně odlišené podle podobnosti)",
+    "VisualizationHelpText": "Najetím myší na body uvidíte náhledy obrázků • Blíže umístěné body = podobnější obrázky",
+    "VisualizationNeedMinImages": "Pro vizualizaci je potřeba alespoň 3 obrázky",
+    "VisualizationNoDataAvailable": "Nejsou k dispozici žádná data pro vizualizaci"
+  },
+  "ImageSeoGenerationPage": {
+    "metadata": {
+      "title": "AI generování SEO pro obrázky – Generujte SEO URL slugs a popisky",
+      "description": "Nahrajte své obrázky a automaticky vygenerujte SEO názvy, URL slugs a popisky pomocí AI.",
+      "keywords": "seo obrázků, generátor url slug, generátor seo popisků obrázků, tvorba obsahu ai, optimalizace obrázků"
+    },
+    "AppInitializing": "Inicializace AI SEO generátoru...",
+    "AISetup": "Nastavování AI pro SEO obsah...",
+    "AIEngineInitializing": "Inicializace AI SEO enginu...",
+    "AIEngineStarted": "AI SEO engine spuštěn.",
+    "AIInitializing": "Inicializace AI modelu pro SEO...",
+    "AILoadingModel": "Načítání AI SEO modelu...",
+    "AIModelLoaded": "AI SEO model načten.",
+    "AIReady": "AI SEO engine připraven.",
+    "AIReadyPrompt": "AI SEO je připraveno. Nahrajte své obrázky.",
+    "ProcessingImage": "AI zpracovává pro SEO: Obrázek {imageId}...",
+    "ErrorProcessingImage": "Chyba při AI SEO zpracování obrázku {imageId}: {data}",
+    "AIEngineError": "Chyba AI SEO enginu: {data}",
+    "AIEngineErrorRefresh": "Chyba AI SEO enginu: {data}. Obnovte stránku.",
+    "AICriticalError": "Kritická chyba AI SEO enginu.",
+    "AICriticalErrorRefresh": "Kritická chyba AI SEO enginu. Obnovte stránku a zkuste to znovu.",
+    "PleaseSelectImages": "Vyberte obrázky pro AI SEO generování.",
+    "AINotReadyError": "AI SEO engine není připraven. Prosím, vyčkejte.",
+    "ProcessingFiles": "Zpracovávají se obrázky pro AI SEO...",
+    "ProcessingFilesHEIC": "Zpracovávají se obrázky pro AI SEO, převod HEIC pokud je potřeba...",
+    "HEICConversionFailedSkip": "Převod HEIC na SEO formát selhal: {fileName}. Přeskakuji.",
+    "HEICConversionErrorSkip": "Chyba při převodu HEIC pro SEO: {fileName}. Přeskakuji.",
+    "NoValidFilesAfterConversion": "Po pokusu o převod nejsou žádné platné obrázky pro AI SEO.",
+    "NoValidFiles": "Nebyly vybrány žádné platné obrázky pro AI SEO zpracování.",
+    "SendingImagesToAI": "Odesílám {count} obrázků do AI pro generování SEO obsahu...",
+    "AllImagesProcessed": "AI SEO zpracování dokončeno. Zobrazte si níže optimalizovaný obsah.",
+    "PageTitle": "AI generátor SEO a ALT textů pro obrázky",
+    "PageTitlePro": "PRO AI generátor SEO a ALT textů pro obrázky",
+    "PageTitleFree": "AI generátor SEO a popisků pro obrázky",
+    "MainCardTitle": "Generujte SEO názvy a popisky pomocí AI",
+    "UploadSectionTitle": "1. Nahrajte obrázky pro AI SEO",
+    "UploadSectionDescription": "Nahrajte obrázky JPG, PNG, WEBP, GIF, HEIC. Naše AI vygeneruje SEO názvy souborů a ALT texty. Přidejte klíčová slova pro lepší výsledky.",
+    "UploadSectionDescriptionWithLimit": "Nahrajte JPG, PNG, WEBP, GIF, HEIC (max {maxImages} dle vašeho plánu). AI vygeneruje SEO názvy a ALT texty. Přidejte klíčová slova pro vlastní výsledky.",
+    "ButtonSelectImages": "Vybrat obrázky pro AI SEO",
+    "MainCardInfoTitle": "CO JE TENTO NÁSTROJ?",
+    "MainCardInfoDescription": "Nahrajte své obrázky a naše AI automaticky vygeneruje podrobné, popisné titulky pro každý obrázek. Model FastVLM analyzuje vizuální obsah a vytváří přirozené jazykové popisy.",
+    "ButtonSelectImagesLoading": "Inicializace AI...",
+    "ResultsTitle": "AI generovaný SEO obsah",
+    "ImageMissing": "Chybí data obrázku pro AI SEO (index: {index})",
+    "GeneratedSeoName": "AI generovaný SEO název souboru:",
+    "GeneratedDescription": "AI generovaný ALT text/popisek:",
+    "StatusLabel": "Aktuální stav:",
+    "AIStatusLabel": "Stav AI SEO: {status}",
+    "HowItWorksTitle": "Jak funguje AI SEO pro obrázky",
+    "HowItWorksStep1Title": "Nahrajte své obrázky",
+    "HowItWorksStep1Desc": "Vyberte nebo přetáhněte obrázky. Naše AI je připraví pro SEO analýzu.",
+    "HowItWorksStep2Title": "AI analýza obsahu",
+    "HowItWorksStep2Desc": "Naše AI analyzuje každý obrázek, aby pochopila jeho obsah, kontext a SEO potenciál.",
+    "HowItWorksStep3Title": "Generování SEO názvu a ALT textu",
+    "HowItWorksStep3Desc": "AI vytvoří SEO názvy souborů a popisné ALT texty. Klíčová slova zvyšují optimalizaci.",
+    "HowItWorksStep4Title": "Zkontrolujte a zlepšete své SEO",
+    "HowItWorksStep4Desc": "Zkopírujte AI generovaný SEO obsah a vylepšete pozici svého webu, blogu nebo sociálních sítí ve vyhledávání a přístupnosti.",
+    "goBack": "Vymazat vše",
+    "ButtonDownload": "Kopírovat",
+    "NoResultsYet": "Nahrajte obrázky pro zobrazení AI generovaného SEO obsahu.",
+    "KeywordsSectionTitle": "2. Vylepšete klíčovými slovy (volitelné)",
+    "KeywordsSectionDescription": "Přidejte klíčová slova oddělená čárkou. Naše AI je strategicky začlení do ALT textu pro lepší SEO.",
+    "KeywordsPlaceholder": "např. cestování, jídlo, e-commerce, kategorie produktu",
+    "ButtonRegenerateWithKeywords": "Znovu vygenerovat SEO obsah s klíčovými slovy",
+    "ButtonRegenerating": "Znovu generuji SEO obsah...",
+    "RegeneratingStatus": "AI znovu generuje ALT text s novými SEO klíčovými slovy...",
+    "RegenerationComplete": "AI SEO regenerace dokončena.",
+    "ButtonDownloadAll": "Stáhnout všechny AI SEO výsledky (ZIP)",
+    "ButtonDownloadingAll": "Stahuji AI SEO ZIP...",
+    "PreparingDownload": "Připravuji AI SEO soubory ke stažení...",
+    "ZippingFiles": "Zipravuji {count} AI optimalizovaných souborů...",
+    "NoFilesToDownload": "Žádné AI zpracované obrázky s SEO daty ke stažení.",
+    "ErrorCreatingZIP": "Chyba při vytváření AI SEO ZIP. Zkuste to znovu.",
+    "DownloadComplete": "AI SEO stažení dokončeno!",
+    "ImageUploadFeatureName": "Neomezené nahrávání obrázků pro AI SEO",
+    "FreeLimitReachedDialogTitle": "Upgradujte pro více AI SEO funkcí",
+    "FreeLimitReachedDialogMessage": "Dosáhli jste limitu zdarma pro AI SEO. Upgradujte na Pro pro zpracování více obrázků.",
+    "FreeLimitReachedSomeProcessed": "Limit {count} obrázků pro AI SEO v bezplatném plánu dosažen. Zpracovávám prvních {count}. Pro více upgradujte.",
+    "ProLimitReachedSomeProcessed": "Limit {count} obrázků pro AI SEO v Pro plánu dosažen. Zpracovávám prvních {count}.",
+    "NoValidFilesToProcessAfterLimit": "Žádné obrázky ke zpracování pro AI SEO po omezení plánu.",
+    "ProUserCardTitle": "AI SEO Pro plán aktivní",
+    "ProUserCardDescription": "Jste na Pro plánu! Využijte neomezené generování AI SEO obrázků v dávce a všechny prémiové funkce.",
+    "UpgradeToProCardTitle": "Upgradujte na Pro",
+    "UpgradeToProCardDescription": "Odemkněte plnou sílu AI SEO! Uživatelé zdarma mohou zpracovat {maxImagesFree} obrázků. Pro uživatelé mají neomezené zpracování a další výhody.",
+    "ButtonUpgradeNow": "Upgradovat na Pro nyní",
+    "ProUserPlanIndicator": "Pro plán: Neomezené generování AI SEO obrázků.",
+    "FreeUserPlanIndicator": "Bezplatný plán: AI SEO až pro 3 obrázky. Pro neomezené upgradujte!",
+    "FreePlanInfoBoxTitle": "BEZPLATNÝ PLÁN",
+    "ProFeatureUnlimitedImages": "Neomezené generování AI SEO obrázků"
+  },
+  "PrivacyPolicy": {
+    "title": "OCHRANA SOUKROMÍ",
+    "section1Title": "1. Úvod",
+    "section1P1": "Vítejte v Batch Shots ('my', 'naše', 'nás'). Jsme odhodláni chránit vaše soukromí a zajistit bezpečnost vašich osobních údajů.",
+    "section1P2": "Tato zásada ochrany soukromí vysvětluje, jak zacházíme s vašimi daty při používání našeho nástroje pro optimalizaci obrázků v prohlížeči.",
+    "section2Title": "2. Informace, které nesbíráme",
+    "section2P1Bold": "Vaše obrázky nesbíráme ani neukládáme.",
+    "section2P1": "Naším základním principem je soukromí od samého počátku.",
+    "section2P2": "Batch Shots funguje zcela ve vašem prohlížeči. Když nahráváte obrázky k optimalizaci:",
+    "section2Li1": "Vaše obrázky jsou zpracovávány lokálně ve vašem prohlížeči pomocí klientského JavaScriptu.",
+    "section2Li2": "Vaše obrázky nikdy neopouštějí vaše zařízení a nejsou přenášeny na naše servery.",
+    "section2Li3": "Neukládáme kopie vašich původních ani zpracovaných obrázků.",
+    "section2Li4": "Nesledujeme obsah vašich obrázků.",
+    "section3Title": "3. FUNKCE S UMĚLOU INTELIGENCÍ",
+    "section3P1": "Když používáte naše funkce generování SEO názvů s umělou inteligencí:",
+    "section3Li1": "Na naše API odesíláme pouze popisný text, který poskytnete.",
+    "section3Li2": "Vaše skutečné obrázky neodesíláme ani nezpracováváme našimi systémy umělé inteligence.",
+    "section3Li3": "Vaše vygenerované SEO názvy jsou doručeny zpět do vašeho prohlížeče a nejsou trvale uloženy na našich serverech.",
+    "section4Title": "4. ANALYTIKA A COOKIES",
+    "section4P1": "Používáme minimální analytiku pro pochopení, jak je náš web používán:",
+    "section4Li1": "Sbíráme anonymní statistiky používání jako zobrazení stránek a využití funkcí.",
+    "section4Li2": "Používáme nezbytné cookies pro poskytování funkcí jako ochrana reCAPTCHA.",
+    "section4Li3": "Nepoužíváme cookies pro reklamu nebo sledování napříč jinými weby.",
+    "section5Title": "5. SLUŽBY TŘETÍCH STRAN",
+    "section5P1": "Používáme následující služby třetích stran:",
+    "section5Li1": "Google reCAPTCHA pro ochranu proti spamu na našich funkcích s umělou inteligencí.",
+    "section5Li2": "OpenCV.js pro zpracování obrázků (běží zcela ve vašem prohlížeči).",
+    "section5P2": "Každá z těchto služeb má vlastní zásady ochrany soukromí, které upravují, jak zacházejí s daty.",
+    "section6Title": "6. ZMĚNY TĚCHTO ZÁSAD",
+    "section6P1": "Tyto zásady ochrany soukromí můžeme čas od času aktualizovat. O jakýchkoli změnách vás budeme informovat zveřejněním nových zásad ochrany soukromí na této stránce a aktualizací data „Poslední aktualizace\".",
+    "section7Title": "7. Kontaktujte nás",
+    "section7P1": "Pokud máte jakékoli dotazy k těmto zásadám ochrany soukromí, kontaktujte nás na privacy@batchshots.com.",
+    "returnButton": "VRÁTIT SE NA DOMŮ"
+  },
+  "TermsOfUse": {
+    "title": "PODMÍNKY POUŽITÍ",
+    "lastUpdated": "Poslední aktualizace: 30. května 2025",
+    "section1Title": "1. Přijetí podmínek",
+    "section1P1": "Přístupem a používáním Batch Shots souhlasíte s těmito Podmínkami použití. Pokud nesouhlasíte s jakoukoliv částí těchto podmínek, nesmíte používat naši službu.",
+    "section2Title": "2. Popis služby",
+    "section2P1": "Batch Shots je nástroj pro optimalizaci obrázků založený na prohlížeči, který uživatelům umožňuje:",
+    "section2Li1": "Upravovat vlastnosti obrázků jako jas, kontrast a vyvážení bílé",
+    "section2Li2": "Změnit velikost a optimalizovat obrázky pro web",
+    "section2Li3": "Generovat SEO-optimalizované názvy souborů",
+    "section2Li4": "Zpracovávat více obrázků současně",
+    "section2P2": "Veškeré zpracování obrázků probíhá lokálně ve vašem prohlížeči; žádné obrázky nejsou nahrávány ani ukládány na našich serverech.",
+    "section3Title": "3. Odpovědnost uživatele",
+    "section3P1": "Uživatelé Batch Shots jsou výhradně odpovědní za zajištění, že mají potřebná práva a povolení k používání, nahrávání a zpracování jakýchkoliv obrázků s naší službou. Batch Shots není odpovědný za jakékoliv porušení autorských práv nebo duševního vlastnictví vyplývající z používání služby. Musíte používat službu v souladu se všemi platnými zákony a předpisy.",
+    "section3Li1": "Zajištění, že mají potřebná práva a povolení k úpravě a zpracování obrázků, které používají",
+    "section3Li2": "Používání služby v souladu s platnými zákony a předpisy",
+    "section3Li3": "Nepoužívání služby ke zpracování, vytváření nebo distribuci nevhodného, urážlivého nebo nezákonného obsahu",
+    "section3Li4": "Nepokoušení se o zpětnou analýzu, modifikaci nebo hackování služby",
+    "section4Title": "4. Duševní vlastnictví",
+    "section4P1": "Veškerý původní obsah, funkce a funkcionalita Batch Shots jsou naším vlastnictvím a jsou chráněny mezinárodními autorskými právy, ochrannými známkami a dalšími zákony o duševním vlastnictví.",
+    "section4P2": "Zachováváte si všechna práva ke svým původním obrázkům. Nenárokujeme si žádné vlastnictví nad obrázky, které zpracováváte pomocí naší služby.",
+    "section4aTitle": "4A. Uživatelský obsah, vlastnictví a doživotní Pro přístup",
+    "section4aP1": "Všechny obrázky a obsah nahrané nebo zpracované pomocí Batch Shots zůstávají výhradním majetkem uživatele. Batch Shots neukládá, nezobrazuje ani nepřenáší vaše obrázky na naše servery; veškeré zpracování probíhá lokálně ve vašem prohlížeči. Jste výhradně odpovědní za zajištění, že máte potřebná práva a povolení k používání a zpracování jakýchkoliv obrázků s naší službou. Batch Shots není odpovědný za jakékoliv porušení autorských práv nebo duševního vlastnictví vyplývající z používání služby.",
+    "section4aP2": "\"Doživotní\" přístup k Pro funkcím znamená, že budete mít přístup ke všem Pro funkcím po dobu, po kterou je Batch Shots provozován a udržován jako služba. Pokud bude Batch Shots ukončen, vynaložíme přiměřené úsilí na poskytnutí přístupu k softwarovému kódu Pro uživatelům nebo na open source aplikaci, což umožní pokračující používání.",
+    "section5Title": "5. Vyloučení odpovědnosti",
+    "section5Li1": "Batch Shots je poskytován \"tak jak je\" a \"podle dostupnosti\" bez jakýchkoliv záruk jakéhokoliv druhu.",
+    "section5Li2": "Nezaručujeme, že služba bude nepřerušená, bezpečná nebo bezchybná.",
+    "section5Li3": "Nejsme odpovědní za jakoukoliv ztrátu dat, která může nastat během zpracování. Uživatelé jsou odpovědní za udržování vlastních záloh.",
+    "section5Li4": "Neposkytujeme žádné záruky ohledně přesnosti nebo účinnosti funkce generování SEO názvů.",
+    "section5Li5": "Batch Shots není odpovědný za jakékoliv právní nároky, škody nebo spory vyplývající z uživatelského obsahu nebo používání služby.",
+    "section6Title": "6. Omezení odpovědnosti",
+    "section6P1": "V maximální míře povolené zákonem nebudeme odpovědní za jakékoliv nepřímé, náhodné, zvláštní, následné nebo trestní škody vyplývající z vašeho používání nebo neschopnosti používat službu, nebo z jakýchkoliv právních nároků vyplývajících z vašeho obsahu.",
+    "section7Title": "7. Úpravy služby",
+    "section7P1": "Vyhrazujeme si právo upravit, pozastavit nebo ukončit jakoukoliv část Batch Shots kdykoliv bez předchozího upozornění nebo odpovědnosti.",
+    "section8Title": "8. Rozhodné právo",
+    "section8P1": "Tyto Podmínky použití se řídí a vykládají v souladu se zákony jurisdikce, ve které působíme, bez ohledu na její ustanovení o kolizním právu.",
+    "section9Title": "9. Změny podmínek",
+    "section9P1": "Tyto Podmínky použití můžeme čas od času aktualizovat. O jakýchkoliv změnách vás budeme informovat zveřejněním nových Podmínek na této stránce a aktualizací data \"Poslední aktualizace\".",
+    "section10Title": "10. Kontaktujte nás",
+    "section10P1": "Pokud máte jakékoliv dotazy k těmto Podmínkám použití, kontaktujte nás na terms@batchshots.com.",
+    "returnButton": "VRÁTIT SE NA DOMŮ"
+  }
 }

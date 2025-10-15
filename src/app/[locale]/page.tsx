@@ -20,6 +20,8 @@ import WatermarkControl, {
 import DownloadOptions, { ImageFormat } from "../components/DownloadOptions";
 import DownloadDialog from "../components/DownloadDialog";
 import SeoNameGenerator, { SeoImageName } from "../components/SeoNameGenerator";
+import ImageUploadDropzone from "../components/ImageUploadDropzone";
+import ModelLoadingCard from "../components/ModelLoadingCard";
 // Pro removed
 // Router not used
 // Import heic-to for HEIC conversion
@@ -608,13 +610,14 @@ export default function Home() {
     <main className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="brutalist-accent-card mb-8">
         {!isOpenCVReady ? (
-          <div className="brutalist-border p-4 text-center mb-6 bg-white">
-            <div className="flex flex-col items-center justify-center py-8">
-              <Loader size="lg" />
-              <h3 className="text-lg font-bold mb-2">{t("loading")}</h3>
-              <p className="text-sm text-gray-600">{t("loadingDescription")}</p>
-            </div>
-          </div>
+          <ModelLoadingCard
+            title="Initializing Image Processing"
+            description="Loading OpenCV.js and preparing tools for image editing"
+            isLoading={true}
+            isReady={false}
+            variant="minimal"
+            className="mb-6"
+          />
         ) : (
           <>
             {images.length === 0 ? (
@@ -647,85 +650,23 @@ export default function Home() {
                       id="fileInput"
                     />
 
-                    <label
-                      htmlFor="fileInput"
-                      className="brutalist-border border-3 border-dotted border-primary flex flex-col items-center justify-center w-full aspect-video bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
-                      onDragOver={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                      }}
-                      onDrop={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const files = e.dataTransfer.files;
-                        if (files && files.length > 0) {
-                          const fileInput = document.getElementById(
-                            "fileInput"
-                          ) as HTMLInputElement;
-                          if (fileInput) {
-                            fileInput.files = files;
-                            const event = new Event("change", {
-                              bubbles: true,
-                            });
-                            fileInput.dispatchEvent(event);
-                          }
+                    <ImageUploadDropzone
+                      onFilesSelected={(files) => {
+                        const fileInput = document.getElementById(
+                          "fileInput"
+                        ) as HTMLInputElement;
+                        if (fileInput) {
+                          fileInput.files = files;
+                          const event = new Event("change", { bubbles: true });
+                          fileInput.dispatchEvent(event);
                         }
                       }}
-                    >
-                      <div className="text-center p-6">
-                        {/* Minimalist image upload icon with brand colors and black border */}
-                        <svg
-                          className="w-16 h-16 mx-auto mb-4"
-                          viewBox="0 0 64 64"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          {/* Image frame in primary color with black border */}
-                          <rect
-                            x="8"
-                            y="16"
-                            width="48"
-                            height="40"
-                            fill="#4F46E5"
-                            stroke="#000"
-                            strokeWidth="1.5"
-                          />
-                          {/* Mountains in #fdc700 with black border */}
-                          <polygon
-                            points="14,52 28,36 38,46 50,28 56,56 8,56"
-                            fill="#fdc700"
-                            stroke="#000"
-                            strokeWidth="1.5"
-                          />
-                          {/* Sun in accent color with black border */}
-                          <circle
-                            cx="48"
-                            cy="24"
-                            r="6"
-                            fill="#FF6B6B"
-                            stroke="#000"
-                            strokeWidth="1.5"
-                          />
-                          {/* Up arrow in accent color, above the frame, with black border */}
-                          <path
-                            d="M32 6L40 16H36V28H28V16H24L32 6Z"
-                            fill="#FF6B6B"
-                            stroke="#000"
-                            strokeWidth="1.5"
-                          />
-                        </svg>
-                        <p className="font-medium mb-2">
-                          {t("selectImages", {
-                            maxImages: "100",
-                          })}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          {t.rich("dragAndDropPrivacy", {
-                            strong: (chunks) => <strong>{chunks}</strong>,
-                          })}
-                        </p>
-                      </div>
-                    </label>
+                      accept="image/*,.heic,.heif"
+                      title={t("selectImages", { maxImages: "100" })}
+                      description={t.rich("dragAndDropPrivacy", {
+                        strong: (chunks) => <strong>{chunks}</strong>,
+                      })}
+                    />
                   </div>
                 </div>
 

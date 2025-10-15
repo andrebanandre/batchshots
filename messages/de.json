@@ -1,1390 +1,1399 @@
 {
-    "Manifest": {
-        "name": "Batch Shots"
+  "Manifest": {
+    "name": "Batch Shots"
+  },
+  "LocaleSwitcher": {
+    "label": "Sprache ändern",
+    "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unbekannt}}"
+  },
+  "CookieConsent": {
+    "title": "COOKIE-HINWEIS",
+    "message": "Diese Website verwendet essentielle Cookies, um ihre ordnungsgemäße Funktion zu gewährleisten. Durch die weitere Nutzung unserer Website stimmen Sie dem zu.",
+    "privacyLink": "Datenschutzrichtlinie",
+    "termsLink": "Nutzungsbedingungen",
+    "acceptButton": "AKZEPTIEREN",
+    "rejectButton": "ABLEHNEN",
+    "learnMoreButton": "MEHR ERFAHREN"
+  },
+  "Home": {
+    "title": "Batch Shots: SEO BILDOPTIMIERER",
+    "loading": "APP WIRD GELADEN...",
+    "loadingDescription": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
+    "transformTitle": "VERWANDELN SIE IHRE PRODUKTFOTOS",
+    "heroDescription": "Optimieren Sie Ihre Produktbilder schnell für Web, E-Commerce und Social Media mit unserem browserbasierten Tool.",
+    "privacyFocused": "DATENSCHUTZORIENTIERT",
+    "privacyDescription": "Batch Shots verarbeitet alle Bilder direkt in Ihrem Browser. Wir speichern Ihre Fotos oder Daten nicht auf unseren Servern.",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfUse": "Nutzungsbedingungen",
+    "preparingImagesPreview": "Bilder werden vorbereitet...",
+    "features": {
+      "presets": {
+        "title": "PROFESSIONELLE VOREINSTELLUNGEN",
+        "description": "Wende optimierte Voreinstellungen für E-Commerce, Social Media und Webanzeige mit einem Klick an."
+      },
+      "aiPowered": {
+        "title": "KI-GESTÜTZTES SEO",
+        "description": "Generiere SEO-freundliche Dateinamen mit unseren KI-Tools, um die Auffindbarkeit deiner Produkte zu verbessern."
+      },
+      "advancedControls": {
+        "title": "ERWEITERTE STEUERUNG",
+        "description": "Feinabstimmung von Helligkeit, Kontrast, Weißabgleich und mehr, um deine Produktbilder zu perfektionieren."
+      },
+      "batchProcessing": {
+        "title": "BATCH-VERARBEITUNG",
+        "description": "Verarbeite mehrere Bilder gleichzeitig, um Zeit zu sparen und konsistente Ergebnisse zu erzielen."
+      }
     },
-    "LocaleSwitcher": {
-        "label": "Sprache ändern",
-        "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unbekannt}}"
+    "upgradeProTitle": "PRO FUNKTIONEN FREISCHALTEN",
+    "upgradeProDescription": "Erhalte mehr Bilder, Hintergrundentfernung und erweiterte Funktionen mit unserem einmaligen Pro-Upgrade.",
+    "freePlan": "KOSTENLOSER PLAN",
+    "proDescription": "Verarbeite bis zu {maxImages} Bilder auf einmal mit allen freigeschalteten Premium-Funktionen.",
+    "freeDescription": "Beschränkt auf {maxImages} Bilder. Upgrade auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten.",
+    "upgradeToPro": "UPGRADE AUF PRO",
+    "learnMoreAboutPro": "MEHR ÜBER PRO ERFAHREN",
+    "selectImages": "BILDER AUSWÄHLEN (BIS ZU {maxImages})",
+    "imageEditor": "BILDBEARBEITUNG",
+    "selectMoreImages": "WEITERE BILDER AUSWÄHLEN",
+    "maxImagesReached": "MAXIMALE BILDANZAHL ERREICHT",
+    "imagesCount": "{current}/{max} Bilder",
+    "upgradeFor": "(Upgrade für bis zu 100)",
+    "imageOptimization": "BILDOPTIMIERUNG",
+    "dragAndDropPrivacy": "Bilder hierher ziehen oder klicken, um Dateien auszuwählen. <strong>Die gesamte Verarbeitung erfolgt in deinem Browser. Wir laden deine Bilder niemals auf unsere Server hoch.</strong> Deine Privatsphäre und Sicherheit sind garantiert.",
+    "heicConversionFailed": "Konvertierung der HEIC-Bilddatei fehlgeschlagen: {fileName}. Das Dateiformat wird möglicherweise nicht unterstützt oder die Datei ist beschädigt."
+  },
+  "Navbar": {
+    "imageOptimizer": "Bildoptimierer",
+    "removeBackgrounds": "Hintergründe entfernen",
+    "aiPhotoDuplicateFinder": "AI Duplikatfinder",
+    "aiImageSeoCaptionGeneration": "AI SEO Bildbeschreibung",
+    "aiBackgrounds": "KI-Hintergründe",
+    "pricing": "Preise",
+    "login": "ANMELDEN",
+    "objectRemoval": "Objektentfernung",
+    "tools": "Tools",
+    "addWatermark": "Wasserzeichen hinzufügen",
+    "seoDescription": "SEO Beschreibung",
+    "imageFormatConvertor": "Bildformat-Konverter",
+    "profile": "Profil",
+    "logout": "Abmelden"
+  },
+  "Footer": {
+    "about": "Batch Shots hilft Ihnen, Produktbilder schnell und einfach für SEO zu optimieren, direkt in Ihrem Browser.",
+    "quickLinks": "SCHNELLLINKS",
+    "stayUpdated": "BLEIBEN SIE INFORMIERT",
+    "subscribeText": "Abonnieren Sie unseren Newsletter für Updates, Tipps und Sonderangebote.",
+    "emailPlaceholder": "Ihre E-Mail",
+    "subscribe": "ABONNIEREN",
+    "copyright": "© {year} Batch Shots. Alle Rechte vorbehalten.",
+    "madeWith": "Mit ♥ erstellt vom Batch Shots-Team",
+    "contactUs": "Kontaktieren Sie uns"
+  },
+  "Layout": {
+    "title": "Batch-Bildbearbeitung & SEO-Optimierer | Batch Shots",
+    "description": "Bearbeiten, skalieren, wasserzeichen und optimieren Sie Bilder mühelos stapelweise für SEO. KI-gestützte Funktionen für Produktfotos, Hintergrundentfernung und SEO-Namensgenerierung.",
+    "keywords": "Bildbearbeitung, Stapelverarbeitung Bilder, SEO Bildoptimierung, Wasserzeichen Fotos, Hintergrund entfernen, Produktfotos, KI Bildbearbeitung, batchshots"
+  },
+  "Components": {
+    "ImageProcessingControls": {
+      "title": "BILDANPASSUNGEN",
+      "reset": "ZURÜCKSETZEN",
+      "applyToAll": "AUF ALLE BILDER ANWENDEN",
+      "basic": "EINFACH",
+      "advanced": "ERWEITERT",
+      "ai": "KI",
+      "brightness": "HELLIGKEIT",
+      "contrast": "KONTRAST",
+      "sharpen": "SCHÄRFEN",
+      "colorAdjust": "FARBANPASSUNG (HSL)",
+      "hue": "FARBTON",
+      "cooler": "KÜHLER",
+      "warmer": "WÄRMER",
+      "saturation": "SÄTTIGUNG",
+      "less": "WENIGER",
+      "more": "MEHR",
+      "lightness": "HELLIGKEIT",
+      "darker": "DUNKLER",
+      "lighter": "HELLER",
+      "colorBalance": "FARBBALANCE (RGB)",
+      "red": "ROT",
+      "green": "GRÜN",
+      "blue": "BLAU",
+      "processing": "VERARBEITUNG..."
     },
-    "CookieConsent": {
-        "title": "COOKIE-HINWEIS",
-        "message": "Diese Website verwendet essentielle Cookies, um ihre ordnungsgemäße Funktion zu gewährleisten. Durch die weitere Nutzung unserer Website stimmen Sie dem zu.",
-        "privacyLink": "Datenschutzrichtlinie",
-        "termsLink": "Nutzungsbedingungen",
-        "acceptButton": "AKZEPTIEREN",
-        "rejectButton": "ABLEHNEN",
-        "learnMoreButton": "MEHR ERFAHREN"
-    },
-    "Home": {
-        "title": "Batch Shots: SEO BILDOPTIMIERER",
-        "loading": "APP WIRD GELADEN...",
-        "loadingDescription": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
-        "transformTitle": "VERWANDELN SIE IHRE PRODUKTFOTOS",
-        "heroDescription": "Optimieren Sie Ihre Produktbilder schnell für Web, E-Commerce und Social Media mit unserem browserbasierten Tool.",
-        "privacyFocused": "DATENSCHUTZORIENTIERT",
-        "privacyDescription": "Batch Shots verarbeitet alle Bilder direkt in Ihrem Browser. Wir speichern Ihre Fotos oder Daten nicht auf unseren Servern.",
-        "privacyPolicy": "Datenschutzrichtlinie",
-        "termsOfUse": "Nutzungsbedingungen",
-        "preparingImagesPreview": "Bilder werden vorbereitet...",
-        "features": {
-            "presets": {
-                "title": "PROFESSIONELLE VOREINSTELLUNGEN",
-                "description": "Wende optimierte Voreinstellungen für E-Commerce, Social Media und Webanzeige mit einem Klick an."
-            },
-            "aiPowered": {
-                "title": "KI-GESTÜTZTES SEO",
-                "description": "Generiere SEO-freundliche Dateinamen mit unseren KI-Tools, um die Auffindbarkeit deiner Produkte zu verbessern."
-            },
-            "advancedControls": {
-                "title": "ERWEITERTE STEUERUNG",
-                "description": "Feinabstimmung von Helligkeit, Kontrast, Weißabgleich und mehr, um deine Produktbilder zu perfektionieren."
-            },
-            "batchProcessing": {
-                "title": "BATCH-VERARBEITUNG",
-                "description": "Verarbeite mehrere Bilder gleichzeitig, um Zeit zu sparen und konsistente Ergebnisse zu erzielen."
-            }
+    "BackgroundRemoval": {
+      "title": "HINTERGRUNDENTFERNUNG",
+      "selected": "Ausgewähltes Bild",
+      "removeBackground": "HINTERGRUND ENTFERNEN",
+      "allImages": "Alle Bilder",
+      "backgroundsRemoved": "{count} von {total} Hintergründen entfernt",
+      "removeAllBackgrounds": "ALLE HINTERGRÜNDE ENTFERNEN",
+      "processing": "Verarbeitung...",
+      "backgroundRemoved": "Hintergrund erfolgreich entfernt!",
+      "transparent": "Transparenter Hintergrund erkannt",
+      "description": "Entfernen Sie den Hintergrund Ihres Produktbildes mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz.",
+      "processingInfo": {
+        "process": "Prozess",
+        "processValue": "KI-Verarbeitung im Browser",
+        "result": "Ergebnis",
+        "resultValue": "Transparenter PNG-Hintergrund",
+        "mode": "Modus"
+      },
+      "proDialog": {
+        "title": "AUF PRO UPGRADEN",
+        "featureTitle": "PRO-FUNKTION: Hintergrundentfernung",
+        "description": "Upgraden Sie auf PRO, um die Hintergrundentfernung für alle Ihre Bilder freizuschalten (bis zu 100 auf einmal)! Erhalten Sie professionell aussehende Produktfotos mit transparentem Hintergrund.",
+        "pricing": {
+          "title": "EINMALZAHLUNG",
+          "price": "19,99 €",
+          "note": "Keine Abonnement, lebenslanger Zugang"
         },
-        "upgradeProTitle": "PRO FUNKTIONEN FREISCHALTEN",
-        "upgradeProDescription": "Erhalte mehr Bilder, Hintergrundentfernung und erweiterte Funktionen mit unserem einmaligen Pro-Upgrade.",
-        "freePlan": "KOSTENLOSER PLAN",
-        "proDescription": "Verarbeite bis zu {maxImages} Bilder auf einmal mit allen freigeschalteten Premium-Funktionen.",
-        "freeDescription": "Beschränkt auf {maxImages} Bilder. Upgrade auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten.",
-        "upgradeToPro": "UPGRADE AUF PRO",
-        "learnMoreAboutPro": "MEHR ÜBER PRO ERFAHREN",
-        "selectImages": "BILDER AUSWÄHLEN (BIS ZU {maxImages})",
-        "imageEditor": "BILDBEARBEITUNG",
-        "selectMoreImages": "WEITERE BILDER AUSWÄHLEN",
-        "maxImagesReached": "MAXIMALE BILDANZAHL ERREICHT",
-        "imagesCount": "{current}/{max} Bilder",
-        "upgradeFor": "(Upgrade für bis zu 100)",
-        "imageOptimization": "BILDOPTIMIERUNG",
-        "dragAndDropPrivacy": "Bilder hierher ziehen oder klicken, um Dateien auszuwählen. <strong>Die gesamte Verarbeitung erfolgt in deinem Browser. Wir laden deine Bilder niemals auf unsere Server hoch.</strong> Deine Privatsphäre und Sicherheit sind garantiert.",
-        "heicConversionFailed": "Konvertierung der HEIC-Bilddatei fehlgeschlagen: {fileName}. Das Dateiformat wird möglicherweise nicht unterstützt oder die Datei ist beschädigt."
-    },
-    "Navbar": {
-        "imageOptimizer": "Bildoptimierer",
-        "removeBackgrounds": "Hintergründe entfernen",
-        "aiPhotoDuplicateFinder": "AI Duplikatfinder",
-        "aiImageSeoCaptionGeneration": "AI SEO Bildbeschreibung",
-        "aiBackgrounds": "KI-Hintergründe",
-        "pricing": "Preise",
-        "login": "ANMELDEN",
-        "objectRemoval": "Objektentfernung",
-        "tools": "Tools",
-        "addWatermark": "Wasserzeichen hinzufügen",
-        "seoDescription": "SEO Beschreibung",
-        "imageFormatConvertor": "Bildformat-Konverter",
-        "profile": "Profil",
-        "logout": "Abmelden"
-    },
-    "Footer": {
-        "about": "Batch Shots hilft Ihnen, Produktbilder schnell und einfach für SEO zu optimieren, direkt in Ihrem Browser.",
-        "quickLinks": "SCHNELLLINKS",
-        "stayUpdated": "BLEIBEN SIE INFORMIERT",
-        "subscribeText": "Abonnieren Sie unseren Newsletter für Updates, Tipps und Sonderangebote.",
-        "emailPlaceholder": "Ihre E-Mail",
-        "subscribe": "ABONNIEREN",
-        "copyright": "© {year} Batch Shots. Alle Rechte vorbehalten.",
-        "madeWith": "Mit ♥ erstellt vom Batch Shots-Team",
-        "contactUs": "Kontaktieren Sie uns"
-    },
-    "Layout": {
-        "title": "Batch-Bildbearbeitung & SEO-Optimierer | Batch Shots",
-        "description": "Bearbeiten, skalieren, wasserzeichen und optimieren Sie Bilder mühelos stapelweise für SEO. KI-gestützte Funktionen für Produktfotos, Hintergrundentfernung und SEO-Namensgenerierung.",
-        "keywords": "Bildbearbeitung, Stapelverarbeitung Bilder, SEO Bildoptimierung, Wasserzeichen Fotos, Hintergrund entfernen, Produktfotos, KI Bildbearbeitung, batchshots"
-    },
-    "Components": {
-        "ImageProcessingControls": {
-            "title": "BILDANPASSUNGEN",
-            "reset": "ZURÜCKSETZEN",
-            "applyToAll": "AUF ALLE BILDER ANWENDEN",
-            "basic": "EINFACH",
-            "advanced": "ERWEITERT",
-            "ai": "KI",
-            "brightness": "HELLIGKEIT",
-            "contrast": "KONTRAST",
-            "sharpen": "SCHÄRFEN",
-            "colorAdjust": "FARBANPASSUNG (HSL)",
-            "hue": "FARBTON",
-            "cooler": "KÜHLER",
-            "warmer": "WÄRMER",
-            "saturation": "SÄTTIGUNG",
-            "less": "WENIGER",
-            "more": "MEHR",
-            "lightness": "HELLIGKEIT",
-            "darker": "DUNKLER",
-            "lighter": "HELLER",
-            "colorBalance": "FARBBALANCE (RGB)",
-            "red": "ROT",
-            "green": "GRÜN",
-            "blue": "BLAU",
-            "processing": "VERARBEITUNG..."
-        },
-        "BackgroundRemoval": {
-            "title": "HINTERGRUNDENTFERNUNG",
-            "selected": "Ausgewähltes Bild",
-            "removeBackground": "HINTERGRUND ENTFERNEN",
-            "allImages": "Alle Bilder",
-            "backgroundsRemoved": "{count} von {total} Hintergründen entfernt",
-            "removeAllBackgrounds": "ALLE HINTERGRÜNDE ENTFERNEN",
-            "processing": "Verarbeitung...",
-            "backgroundRemoved": "Hintergrund erfolgreich entfernt!",
-            "transparent": "Transparenter Hintergrund erkannt",
-            "description": "Entfernen Sie den Hintergrund Ihres Produktbildes mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz.",
-            "processingInfo": {
-                "process": "Prozess",
-                "processValue": "KI-Verarbeitung im Browser",
-                "result": "Ergebnis",
-                "resultValue": "Transparenter PNG-Hintergrund",
-                "mode": "Modus"
-            },
-            "proDialog": {
-                "title": "AUF PRO UPGRADEN",
-                "featureTitle": "PRO-FUNKTION: Hintergrundentfernung",
-                "description": "Upgraden Sie auf PRO, um die Hintergrundentfernung für alle Ihre Bilder freizuschalten (bis zu 100 auf einmal)! Erhalten Sie professionell aussehende Produktfotos mit transparentem Hintergrund.",
-                "pricing": {
-                    "title": "EINMALZAHLUNG",
-                    "price": "19,99 €",
-                    "note": "Keine Abonnement, lebenslanger Zugang"
-                },
-                "actions": {
-                    "upgrade": "AUF PRO UPGRADEN",
-                    "try": "TESTEN SIE DIE FUNKTION",
-                    "later": "Vielleicht später"
-                }
-            },
-            "compactDescription": "Entfernt den Hintergrund von Produktbildern mit KI. Die Verarbeitung dauert 10-30 Sekunden."
-        },
-        "PresetsSelector": {
-            "title": "VOREINSTELLUNGEN",
-            "custom": "Benutzerdefiniert",
-            "dimensions": "ABMESSUNGEN",
-            "width": "Breite",
-            "height": "Höhe",
-            "auto": "auto",
-            "quality": "QUALITÄT",
-            "apply": "ANWENDEN",
-            "presets": {
-                "web-optimized": {
-                    "name": "Web-optimiert",
-                    "description": "1080px, 75% Qualität (Kleinste Dateigröße, gut für Web)"
-                },
-                "standard": {
-                    "name": "Standard",
-                    "description": "1080px, 85% Qualität (Ausgewogenes Verhältnis von Größe und Qualität)"
-                },
-                "high-quality": {
-                    "name": "Hohe Qualität",
-                    "description": "1440px, 95% Qualität (Hohe Qualität, größere Dateigröße)"
-                },
-                "max-quality": {
-                    "name": "Maximal",
-                    "description": "2160px, 100% Qualität (Maximale Qualität, größte Dateigröße)"
-                },
-                "custom": {
-                    "name": "Benutzerdefiniert",
-                    "description": "Benutzerdefinierte Abmessungen und Qualitätseinstellungen"
-                }
-            }
-        },
-        "DownloadOptions": {
-            "title": "HERUNTERLADEN",
-            "format": "FORMAT",
-            "downloadAll": "ALLES HERUNTERLADEN",
-            "transparentNote": "Hinweis: Bilder mit entferntem Hintergrund werden als transparente PNGs gespeichert",
-            "seoProductDescription": "Eine TXT-Datei mit der SEO-Produktbeschreibung wird im ZIP-Download enthalten sein"
-        },
-        "ProUpgrade": {
-            "title": "Auf Pro upgraden",
-            "unlock": "Alle Premium-Funktionen freischalten",
-            "description": "Upgraden Sie auf Pro, um {feature} freizuschalten und bis zu {count} Bilder gleichzeitig zu verarbeiten.",
-            "pricing": {
-                "title": "EINMALZAHLUNG",
-                "price": "19,99 €",
-                "note": "Keine Abonnement, lebenslanger Zugang"
-            },
-            "learnMore": "MEHR ERFAHREN",
-            "close": "Schließen"
-        },
-        "SeoNameGenerator": {
-            "title": "KI SEO NAMENSGENERATOR",
-            "description": "Generieren Sie SEO-freundliche Dateinamen für Ihre Bilder",
-            "enterDescription": "Geben Sie eine Beschreibung Ihres Produkts ein",
-            "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder...",
-            "generate": "SEO-NAMEN GENERIEREN",
-            "generating": "GENERIERE...",
-            "proLimit": "Generieren Sie bis zu 100 Namen auf einmal mit Pro",
-            "originalName": "Originalname",
-            "seoName": "SEO-Name",
-            "appliedNames": {
-                "title": "Angewendete SEO-Namen",
-                "description": "Unsere KI hat SEO-optimierte Dateinamen für Ihre Bilder generiert. Sie können die einzelnen Namen im Bildvorschaubereich bearbeiten."
-            },
-            "tryFeature": "FUNKTION TESTEN"
-        },
-        "SeoProductDescription": {
-            "title": "KI SEO PRODUKTBESCHREIBUNG GENERATOR",
-            "description": "Generieren Sie vollständige SEO-optimierte Produktbeschreibungen",
-            "enterDescription": "Geben Sie grundlegende Produktinformationen ein",
-            "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder, mehrere Kartenfächer...",
-            "generate": "PRODUKTBESCHREIBUNG GENERIEREN",
-            "generating": "GENERIERE...",
-            "generateWithCount": "GENERIEREN ({remaining} heute übrig)",
-            "dailyLimitReached": "TÄGLICHES LIMIT ERREICHT",
-            "dailyLimitExceeded": "Tägliches Limit von 5 Beschreibungen erreicht. Upgraden Sie auf PRO für unbegrenzten Zugriff oder versuchen Sie es morgen erneut.",
-            "dailyUsageInfo": "{remaining} von {total} täglichen Generierungen übrig",
-            "proUnlimited": "PRO: Unbegrenzte Generierungen",
-            "upgradeToPro": "AUF PRO UPGRADEN",
-            "loginRequired": "ANMELDUNG ERFORDERLICH",
-            "loginToGenerate": "Bitte melden Sie sich an, um SEO-Produktbeschreibungen zu generieren. Kostenlose Benutzer erhalten 5 Beschreibungen pro Tag, PRO-Benutzer erhalten unbegrenzten Zugriff.",
-            "loginButton": "ANMELDEN",
-            "cancel": "ABBRECHEN",
-            "copyToClipboard": "IN DIE ZWISCHENABLAGE KOPIEREN",
-            "downloadAsTxt": "ALS TXT HERUNTERLADEN",
-            "copied": "Kopiert!",
-            "tryFeature": "FUNKTION TESTEN",
-            "tabs": {
-                "content": "INHALT",
-                "meta": "META",
-                "categories": "KATEGORIEN",
-                "previews": "VORSCHAUEN"
-            },
-            "previews": {
-                "googleSearch": "GOOGLE-SUCHE VORSCHAU",
-                "ecommerce": "E-COMMERCE VORSCHAU",
-                "productImage": "Produktbild",
-                "addToCart": "In den Warenkorb",
-                "wishlist": "Wunschliste"
-            },
-            "sections": {
-                "productTitle": "Produkttitel",
-                "metaTitle": "Meta-Titel",
-                "metaDescription": "Meta-Beschreibung",
-                "shortDescription": "Kurzbeschreibung",
-                "longDescription": "Lange Beschreibung",
-                "categories": "Kategorien",
-                "tags": "Tags",
-                "urlSlug": "URL-Slug"
-            },
-            "downloadAll": "ALLE DATEN HERUNTERLADEN",
-            "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator",
-            "metadata": {
-                "title": "KI SEO Produktbeschreibungsgenerator | Batch Shots",
-                "description": "Generieren Sie vollständige, SEO-optimierte Produktbeschreibungen (Titel, Meta-Titel/Beschreibung, kurze/lange Beschreibung, Kategorien, Tags, URL-Slug) aus Basisinformationen.",
-                "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator"
-            },
-            "instructionsCard": {
-                "title": "ANLEITUNG",
-                "step1": "Geben Sie grundlegende Details zu Ihrem Produkt ein (Name, Eigenschaften, Materialien usw.).",
-                "step2": "Klicken Sie auf die Schaltfläche 'Produktbeschreibung generieren'.",
-                "step3": "Überprüfen Sie den generierten Inhalt (Titel, Meta, Beschreibungen usw.).",
-                "step4": "Kopieren Sie den Inhalt oder laden Sie ihn als Textdatei herunter.",
-                "step5": "Verwenden Sie den generierten SEO-Inhalt in Ihrem E-Commerce-Shop oder auf Ihrer Website."
-            },
-            "mainCard": {
-                "title": "SEO-INHALT GENERIEREN",
-                "info": {
-                    "title": "WAS IST DIESES TOOL?",
-                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen."
-                },
-                "benefits": {
-                    "complete": "KOMPLETTES SEO-PAKET",
-                    "completeDesc": "Erhalten Sie ein vollständiges Set an SEO-Inhalten für Ihr Produkt, bereit zur Verwendung.",
-                    "aiPowered": "KI-GESTÜTZTER INHALT",
-                    "aiPoweredDesc": "Generiert einzigartige, überzeugende und keyword-reiche Beschreibungen.",
-                    "bestPractices": "BESTE SEO-PRAKTIKEN",
-                    "bestPracticesDesc": "Folgt Richtlinien für Zeichenanzahl, Keyword-Platzierung und Lesbarkeit.",
-                    "quickEasy": "SCHNELL & EINFACH",
-                    "quickEasyDesc": "Sparen Sie Stunden, indem Sie professionelle Beschreibungen in Sekunden generieren."
-                }
-            },
-            "upgradeCard": {
-                "title": "AUF PRO UPGRADEN",
-                "description": "Schalten Sie die unbegrenzte Generierung von SEO-Produktbeschreibungen frei und greifen Sie auf alle Funktionen zu.",
-                "button": "JETZT UPGRADEN"
-            }
-        },
-        "SeoDescriptionPage": {
-            "metadata": {
-                "title": "KI SEO Produktbeschreibungsgenerator | Batch Shots",
-                "description": "Generieren Sie vollständige, SEO-optimierte Produktbeschreibungen (Titel, Meta-Titel/Beschreibung, kurze/lange Beschreibung, Kategorien, Tags, URL-Slug) aus Basisinformationen.",
-                "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator"
-            },
-            "title": "KI SEO PRODUKTBESCHREIBUNG GENERATOR",
-            "mainCard": {
-                "title": "SEO-INHALT GENERIEREN",
-                "info": {
-                    "title": "WAS IST DIESES TOOL?",
-                    "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen."
-                },
-                "benefits": {
-                    "complete": "KOMPLETTES SEO-PAKET",
-                    "completeDesc": "Erhalten Sie ein vollständiges Set an SEO-Inhalten für Ihr Produkt, bereit zur Verwendung.",
-                    "aiPowered": "KI-GESTÜTZTER INHALT",
-                    "aiPoweredDesc": "Generiert einzigartige, überzeugende und keyword-reiche Beschreibungen.",
-                    "bestPractices": "BESTE SEO-PRAKTIKEN",
-                    "bestPracticesDesc": "Folgt Richtlinien für Zeichenanzahl, Keyword-Platzierung und Lesbarkeit.",
-                    "quickEasy": "SCHNELL & EINFACH",
-                    "quickEasyDesc": "Sparen Sie Stunden, indem Sie professionelle Beschreibungen in Sekunden generieren."
-                }
-            },
-            "upgradeCard": {
-                "title": "AUF PRO UPGRADEN",
-                "description": "Schalten Sie die unbegrenzte Generierung von SEO-Produktbeschreibungen frei und greifen Sie auf alle Funktionen zu.",
-                "button": "JETZT UPGRADEN"
-            },
-            "instructionsCard": {
-                "title": "ANLEITUNG",
-                "step1": "Geben Sie grundlegende Details zu Ihrem Produkt ein (Name, Eigenschaften, Materialien usw.).",
-                "step2": "Klicken Sie auf die Schaltfläche 'Produktbeschreibung generieren'.",
-                "step3": "Überprüfen Sie den generierten Inhalt (Titel, Meta, Beschreibungen usw.).",
-                "step4": "Kopieren Sie den Inhalt oder laden Sie ihn als Textdatei herunter.",
-                "step5": "Verwenden Sie den generierten SEO-Inhalt in Ihrem E-Commerce-Shop oder auf Ihrer Website."
-            }
-        },
-        "SeoProductDescriptionGenerator": {
-            "title": "KI SEO PRODUKTBESCHREIBUNG",
-            "description": "Generieren Sie vollständige SEO-optimierte Produktbeschreibungen",
-            "enterDescription": "Geben Sie grundlegende Produktinformationen ein",
-            "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder, mehrere Kartenfächer...",
-            "generate": "PRODUKTBESCHREIBUNG GENERIEREN",
-            "generating": "GENERIERE...",
-            "generateWithCount": "GENERIEREN ({remaining} heute übrig)",
-            "dailyLimitReached": "TÄGLICHES LIMIT ERREICHT",
-            "dailyLimitExceeded": "Tägliches Limit von 5 Beschreibungen erreicht. Upgraden Sie auf PRO für unbegrenzten Zugriff oder versuchen Sie es morgen erneut.",
-            "dailyUsageInfo": "{remaining} von {total} täglichen Generierungen übrig",
-            "proUnlimited": "PRO: Unbegrenzte Generierungen",
-            "upgradeToPro": "AUF PRO UPGRADEN",
-            "loginRequired": "ANMELDUNG ERFORDERLICH",
-            "loginToGenerate": "Bitte melden Sie sich an, um SEO-Produktbeschreibungen zu generieren. Kostenlose Benutzer erhalten 5 Beschreibungen pro Tag, PRO-Benutzer erhalten unbegrenzten Zugriff.",
-            "loginButton": "ANMELDEN",
-            "cancel": "ABBRECHEN",
-            "copyToClipboard": "IN DIE ZWISCHENABLAGE KOPIEREN",
-            "downloadAsTxt": "ALS TXT HERUNTERLADEN",
-            "copied": "Kopiert!",
-            "tryFeature": "FUNKTION TESTEN",
-            "tabs": {
-                "content": "INHALT",
-                "meta": "META",
-                "categories": "KATEGORIEN",
-                "previews": "VORSCHAUEN"
-            },
-            "previews": {
-                "googleSearch": "GOOGLE-SUCHE VORSCHAU",
-                "ecommerce": "E-COMMERCE VORSCHAU",
-                "productImage": "Produktbild",
-                "addToCart": "In den Warenkorb",
-                "wishlist": "Wunschliste"
-            },
-            "sections": {
-                "productTitle": "Produkttitel",
-                "metaTitle": "Meta-Titel",
-                "metaDescription": "Meta-Beschreibung",
-                "shortDescription": "Kurzbeschreibung",
-                "longDescription": "Lange Beschreibung",
-                "categories": "Kategorien",
-                "tags": "Tags",
-                "urlSlug": "URL-Slug"
-            },
-            "downloadAll": "ALLE DATEN HERUNTERLADEN"
-        },
-        "QuickPresets": {
-            "title": "SCHNELLVOREINSTELLUNGEN",
-            "productSpecialty": "PRODUKTSPEZIALITÄT",
-            "colorStyle": "FARBSTIL",
-            "presets": {
-                "white-bg": {
-                    "name": "WEISSER HINTERGRUND",
-                    "description": "Saubere Produktfotografie mit weißem Hintergrund"
-                },
-                "clean": {
-                    "name": "KLARES PRODUKT",
-                    "description": "Produktfotografie mit klaren, neutralen Farben"
-                },
-                "jewelry": {
-                    "name": "SCHMUCK/METALL",
-                    "description": "Optimiert für Schmuck und metallische Produkte"
-                },
-                "sharp": {
-                    "name": "SCHARFE DETAILS",
-                    "description": "Verbesserte Schärfe und Details"
-                },
-                "textile": {
-                    "name": "TEXTIL/STOFF",
-                    "description": "Für Stoff- und Textilprodukte - verbessert Textur und Farbe"
-                },
-                "soft-product": {
-                    "name": "WEICHE PRODUKTE",
-                    "description": "Für weiche Produkte wie Kissen, Polster, Plüschtiere"
-                },
-                "furniture": {
-                    "name": "MÖBEL/HOLZ",
-                    "description": "Holzmöbel und Wohndekoration"
-                },
-                "transparent": {
-                    "name": "GLAS",
-                    "description": "Glas und transparente Produkte"
-                },
-                "food": {
-                    "name": "LEBENSMITTEL",
-                    "description": "Lebensmittelfotografie - verbessert Frische und Farbappeal"
-                },
-                "dramatic": {
-                    "name": "DRAMATISCH",
-                    "description": "Produktfotografie mit hohem Kontrast"
-                },
-                "vivid": {
-                    "name": "LEBHAFTE FARBEN",
-                    "description": "Verbesserte Farbsättigung und Helligkeit"
-                },
-                "classic": {
-                    "name": "KLASSISCH",
-                    "description": "Klassischer Look mit ausgewogenen Farben"
-                }
-            }
-        },
-        "BackgroundRemovalPage": {
-            "title": "HINTERGRUNDENTFERNUNG",
-            "loading": {
-                "tool": "TOOL WIRD GELADEN...",
-                "proStatus": "PRO-STATUS WIRD ÜBERPRÜFT...",
-                "description": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
-                "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
-            },
-            "mainCard": {
-                "title": "BILDHINTERGRÜNDE ENTFERNEN",
-                "info": {
-                    "title": "KI-HINTERGRUNDENTFERNUNG",
-                    "description": "Entfernen Sie den Hintergrund Ihrer Produktbilder mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz."
-                },
-                "upload": {
-                    "title": "Bilder auswählen",
-                    "buttonFree": "BILD AUSWÄHLEN",
-                    "buttonPro": "BILDER AUSWÄHLEN",
-                    "helpTextFree": "Kostenlose Nutzer können 1 Bild gleichzeitig auswählen.",
-                    "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
-                },
-                "actions": {
-                    "clear": "LÖSCHEN",
-                    "download": "HERUNTERLADEN",
-                    "downloadZip": "ALS ZIP HERUNTERLADEN",
-                    "downloading": "WIRD HERUNTERGELADEN...",
-                    "downloadingZip": "ZIP WIRD ERSTELLT...",
-                    "removeBackground": "HINTERGRUND ENTFERNEN",
-                    "removeBackgrounds": "HINTERGRÜNDE ENTFERNEN",
-                    "processing": "HINTERGRUND WIRD ENTFERNT...",
-                    "processingMultiple": "HINTERGRÜNDE WERDEN ENTFERNT...",
-                    "tryFullEditor": "VOLLSTÄNDIGEN EDITOR TESTEN"
-                },
-                "progress": {
-                    "processing": "Verarbeitung...",
-                    "percent": "{percent}%"
-                },
-                "upgradeCard": {
-                    "title": "AUF PRO UPGRADEN",
-                    "plan": {
-                        "title": "PRO-PLAN",
-                        "price": "19,99 €",
-                        "features": [
-                            "Entfernen Sie Hintergründe von bis zu 100 Bildern gleichzeitig",
-                            "Erweiterte Bildanpassungen und Voreinstellungen",
-                            "SEO-NAMENSGENERIERUNG FÜR PRODUKTBIlder",
-                            "Stapelverarbeitung für alle Funktionen",
-                            "Einmalzahlung, lebenslanger Zugang"
-                        ],
-                        "buttonText": "JETZT UPGRADEN"
-                    }
-                }
-            },
-            "howItWorks": {
-                "title": "SO FUNKTIONIERT'S",
-                "step1": {
-                    "title": "1. BILDER AUSWÄHLEN",
-                    "description": "Laden Sie ein oder mehrere Produktbilder hoch, die Sie verarbeiten möchten.",
-                    "proNote": "PRO-Nutzer können bis zu 100 Bilder gleichzeitig auswählen!"
-                },
-                "step2": {
-                    "title": "2. HINTERGRÜNDE ENTFERNEN",
-                    "description": "Unsere KI-Technologie erkennt und entfernt den Hintergrund Ihrer Bilder und erstellt transparente PNGs, perfekt für E-Commerce."
-                },
-                "step3": {
-                    "title": "3. HERUNTERLADEN & VERWENDEN",
-                    "description": "Laden Sie Ihre verarbeiteten Bilder herunter und verwenden Sie sie auf Ihrer Website, in Marktplatz-Angeboten oder Marketingmaterialien."
-                }
-            },
-            "proDialog": {
-                "title": "AUF PRO UPGRADEN",
-                "featureTitle": "PRO-FUNKTION: Massen-Hintergrundentfernung",
-                "description": "Kostenlose Benutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder stapelweise zu verarbeiten und Stunden an Arbeit zu sparen!",
-                "pricing": {
-                    "title": "EINMALZAHLUNG",
-                    "price": "19,99 €",
-                    "note": "Kein Abonnement, lebenslanger Zugriff"
-                },
-                "actions": {
-                    "upgrade": "AUF PRO UPGRADEN",
-                    "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
-                }
-            }
-        },
-        "ImagePreview": {
-            "noImages": "Keine Bilder ausgewählt",
-            "zoomInstructions": "Zum Zoomen zusammenkneifen, zum Bewegen ziehen",
-            "zoomLevel": "{scale}%",
-            "removingBackground": "Hintergrund wird entfernt...",
-            "seoName": {
-                "label": "SEO-freundlicher Name:",
-                "edit": "BEARBEITEN",
-                "cancel": "ABBRECHEN",
-                "save": "SPEICHERN"
-            },
-            "originalName": "Originalname:",
-            "fileInfo": {
-                "dimensions": "Abmessungen:",
-                "size": "Größe:",
-                "output": "Ausgabe:",
-                "quality": "Qualität:",
-                "background": "Hintergrund:",
-                "backgroundRemoved": "Entfernt",
-                "custom": "Benutzerdefiniert",
-                "auto": "auto"
-            },
-            "actions": {
-                "download": "HERUNTERLADEN",
-                "reset": "ZURÜCKSETZEN"
-            },
-            "allImages": "ALLE BILDER ({current}/{max})"
-        },
-        "PricingCard": {
-            "oneTime": "einmalig",
-            "currentPlan": "AKTUELLER PLAN"
-        },
-        "WatermarkControl": {
-            "title": "WASSERZEICHEN",
-            "addTab": "WASSERZEICHEN HINZUFÜGEN",
-            "removeTab": "WASSERZEICHEN ENTFERNEN (KI)",
-            "type": "TYP",
-            "text": "TEXT",
-            "logo": "LOGO",
-            "enterText": "Wasserzeichentext eingeben",
-            "font": "SCHRIFTART",
-            "size": "GRÖSSE",
-            "color": "FARBE",
-            "opacity": "DECKKRAFT",
-            "position": "POSITION",
-            "uploadLogo": "LOGO HOCHLADEN",
-            "logoPlaceholder": "Klicken oder ziehen Sie das Logo hierher",
-            "reset": "ZURÜCKSETZEN",
-            "presets": {
-                "bottomRight": "Unten Rechts",
-                "bottomLeft": "Unten Links",
-                "topLeft": "Oben Links",
-                "topRight": "Oben Rechts",
-                "center": "Mitte",
-                "diagonal": "Diagonal",
-                "tile": "Kachel (Muster)"
-            },
-            "removeDescription": "KI-gestützte Wasserzeichenentfernung kommt bald!"
+        "actions": {
+          "upgrade": "AUF PRO UPGRADEN",
+          "try": "TESTEN SIE DIE FUNKTION",
+          "later": "Vielleicht später"
         }
+      },
+      "compactDescription": "Entfernt den Hintergrund von Produktbildern mit KI. Die Verarbeitung dauert 10-30 Sekunden."
     },
-    "Dialogs": {
-        "download": {
-            "title": "Bilder herunterladen",
-            "confirmTitle": "Download bestätigen",
-            "successTitle": "Download erfolgreich",
-            "summary": "Download-Zusammenfassung:",
-            "images": "{count, plural, =1 {# Bild} other {# Bilder}} werden heruntergeladen",
-            "format": "Format:",
-            "appliedPreset": "Angewendete Voreinstellung:",
-            "adjustmentsApplied": "Bildanpassungen wurden angewendet",
-            "backgroundRemoval": "Hintergrundentfernung wurde angewendet",
-            "seoFilenames": "KI-optimierte SEO-Dateinamen enthalten",
-            "watermarkApplied": "Wasserzeichen angewendet",
-            "zipPackage": "Dateien werden als ZIP-Archiv verpackt",
-            "processingNote": "Die Verarbeitung kann bei mehreren oder großen Bildern einen Moment dauern.",
-            "cancel": "ABBRECHEN",
-            "download": "HERUNTERLADEN",
-            "processing": "VERARBEITUNG...",
-            "successMessage": "Ihre Bilder wurden erfolgreich heruntergeladen. Was möchten Sie als Nächstes tun?",
-            "startNewBundleDesc": "Neues Paket starten: Aktuelle Bilder löschen und neu beginnen",
-            "continueEditingDesc": "Weiter bearbeiten: Mit aktuellen Bildern weiterarbeiten",
-            "startNewBundle": "NEUES PAKET STARTEN",
-            "continueEditing": "WEITER BEARBEITEN",
-            "seoProductDescription": "SEO-Produktbeschreibung (TXT)"
+    "PresetsSelector": {
+      "title": "VOREINSTELLUNGEN",
+      "custom": "Benutzerdefiniert",
+      "dimensions": "ABMESSUNGEN",
+      "width": "Breite",
+      "height": "Höhe",
+      "auto": "auto",
+      "quality": "QUALITÄT",
+      "apply": "ANWENDEN",
+      "presets": {
+        "web-optimized": {
+          "name": "Web-optimiert",
+          "description": "1080px, 75% Qualität (Kleinste Dateigröße, gut für Web)"
         },
-        "proUpgrade": {
-            "feature": "Stapelverarbeitung"
+        "standard": {
+          "name": "Standard",
+          "description": "1080px, 85% Qualität (Ausgewogenes Verhältnis von Größe und Qualität)"
+        },
+        "high-quality": {
+          "name": "Hohe Qualität",
+          "description": "1440px, 95% Qualität (Hohe Qualität, größere Dateigröße)"
+        },
+        "max-quality": {
+          "name": "Maximal",
+          "description": "2160px, 100% Qualität (Maximale Qualität, größte Dateigröße)"
+        },
+        "custom": {
+          "name": "Benutzerdefiniert",
+          "description": "Benutzerdefinierte Abmessungen und Qualitätseinstellungen"
         }
+      }
     },
-    "Pricing": {
-        "title": "PREISPLÄNE",
-        "subtitle": "Wählen Sie den perfekten Plan für Ihre Bildoptimierungsbedürfnisse. Unser PRO-Plan bietet eine lebenslange Lizenz mit einmaliger Zahlung.",
-        "alreadyPro": {
-            "title": "Sie sind bereits PRO-Nutzer!",
-            "description": "Vielen Dank für Ihre Unterstützung. Sie haben Zugriff auf alle PRO-Funktionen einschließlich Massen-Hintergrundentfernung, erweiterte Bildanpassungen und SEO-Dateinamensgenerierung.",
-            "backToEditor": "ZURÜCK ZUM EDITOR"
+    "DownloadOptions": {
+      "title": "HERUNTERLADEN",
+      "format": "FORMAT",
+      "downloadAll": "ALLES HERUNTERLADEN",
+      "transparentNote": "Hinweis: Bilder mit entferntem Hintergrund werden als transparente PNGs gespeichert",
+      "seoProductDescription": "Eine TXT-Datei mit der SEO-Produktbeschreibung wird im ZIP-Download enthalten sein"
+    },
+    "ProUpgrade": {
+      "title": "Auf Pro upgraden",
+      "unlock": "Alle Premium-Funktionen freischalten",
+      "description": "Upgraden Sie auf Pro, um {feature} freizuschalten und bis zu {count} Bilder gleichzeitig zu verarbeiten.",
+      "pricing": {
+        "title": "EINMALZAHLUNG",
+        "price": "19,99 €",
+        "note": "Keine Abonnement, lebenslanger Zugang"
+      },
+      "learnMore": "MEHR ERFAHREN",
+      "close": "Schließen"
+    },
+    "SeoNameGenerator": {
+      "title": "KI SEO NAMENSGENERATOR",
+      "description": "Generieren Sie SEO-freundliche Dateinamen für Ihre Bilder",
+      "enterDescription": "Geben Sie eine Beschreibung Ihres Produkts ein",
+      "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder...",
+      "generate": "SEO-NAMEN GENERIEREN",
+      "generating": "GENERIERE...",
+      "proLimit": "Generieren Sie bis zu 100 Namen auf einmal mit Pro",
+      "originalName": "Originalname",
+      "seoName": "SEO-Name",
+      "appliedNames": {
+        "title": "Angewendete SEO-Namen",
+        "description": "Unsere KI hat SEO-optimierte Dateinamen für Ihre Bilder generiert. Sie können die einzelnen Namen im Bildvorschaubereich bearbeiten."
+      },
+      "tryFeature": "FUNKTION TESTEN"
+    },
+    "SeoProductDescription": {
+      "title": "KI SEO PRODUKTBESCHREIBUNG GENERATOR",
+      "description": "Generieren Sie vollständige SEO-optimierte Produktbeschreibungen",
+      "enterDescription": "Geben Sie grundlegende Produktinformationen ein",
+      "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder, mehrere Kartenfächer...",
+      "generate": "PRODUKTBESCHREIBUNG GENERIEREN",
+      "generating": "GENERIERE...",
+      "generateWithCount": "GENERIEREN ({remaining} heute übrig)",
+      "dailyLimitReached": "TÄGLICHES LIMIT ERREICHT",
+      "dailyLimitExceeded": "Tägliches Limit von 5 Beschreibungen erreicht. Upgraden Sie auf PRO für unbegrenzten Zugriff oder versuchen Sie es morgen erneut.",
+      "dailyUsageInfo": "{remaining} von {total} täglichen Generierungen übrig",
+      "proUnlimited": "PRO: Unbegrenzte Generierungen",
+      "upgradeToPro": "AUF PRO UPGRADEN",
+      "loginRequired": "ANMELDUNG ERFORDERLICH",
+      "loginToGenerate": "Bitte melden Sie sich an, um SEO-Produktbeschreibungen zu generieren. Kostenlose Benutzer erhalten 5 Beschreibungen pro Tag, PRO-Benutzer erhalten unbegrenzten Zugriff.",
+      "loginButton": "ANMELDEN",
+      "cancel": "ABBRECHEN",
+      "copyToClipboard": "IN DIE ZWISCHENABLAGE KOPIEREN",
+      "downloadAsTxt": "ALS TXT HERUNTERLADEN",
+      "copied": "Kopiert!",
+      "tryFeature": "FUNKTION TESTEN",
+      "tabs": {
+        "content": "INHALT",
+        "meta": "META",
+        "categories": "KATEGORIEN",
+        "previews": "VORSCHAUEN"
+      },
+      "previews": {
+        "googleSearch": "GOOGLE-SUCHE VORSCHAU",
+        "ecommerce": "E-COMMERCE VORSCHAU",
+        "productImage": "Produktbild",
+        "addToCart": "In den Warenkorb",
+        "wishlist": "Wunschliste"
+      },
+      "sections": {
+        "productTitle": "Produkttitel",
+        "metaTitle": "Meta-Titel",
+        "metaDescription": "Meta-Beschreibung",
+        "shortDescription": "Kurzbeschreibung",
+        "longDescription": "Lange Beschreibung",
+        "categories": "Kategorien",
+        "tags": "Tags",
+        "urlSlug": "URL-Slug"
+      },
+      "downloadAll": "ALLE DATEN HERUNTERLADEN",
+      "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator",
+      "metadata": {
+        "title": "KI SEO Produktbeschreibungsgenerator | Batch Shots",
+        "description": "Generieren Sie vollständige, SEO-optimierte Produktbeschreibungen (Titel, Meta-Titel/Beschreibung, kurze/lange Beschreibung, Kategorien, Tags, URL-Slug) aus Basisinformationen.",
+        "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator"
+      },
+      "instructionsCard": {
+        "title": "ANLEITUNG",
+        "step1": "Geben Sie grundlegende Details zu Ihrem Produkt ein (Name, Eigenschaften, Materialien usw.).",
+        "step2": "Klicken Sie auf die Schaltfläche 'Produktbeschreibung generieren'.",
+        "step3": "Überprüfen Sie den generierten Inhalt (Titel, Meta, Beschreibungen usw.).",
+        "step4": "Kopieren Sie den Inhalt oder laden Sie ihn als Textdatei herunter.",
+        "step5": "Verwenden Sie den generierten SEO-Inhalt in Ihrem E-Commerce-Shop oder auf Ihrer Website."
+      },
+      "mainCard": {
+        "title": "SEO-INHALT GENERIEREN",
+        "info": {
+          "title": "WAS IST DIESES TOOL?",
+          "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen."
         },
-        "checkout": {
-            "title": "KAUF ABSCHLIESSEN",
-            "planTitle": "PRO LEBENSLANGE LIZENZ",
-            "price": "19,99 €",
-            "description": "Einmalzahlung, lebenslanger Zugang zu allen PRO-Funktionen",
-            "email": "E-MAIL",
-            "cardInfo": "KARTENDATEN",
-            "cardNumber": "1234 5678 9012 3456",
-            "expiryDate": "MM/JJ",
-            "cvc": "CVC",
-            "completePurchase": "KAUF ABSCHLIESSEN",
-            "goBack": "Zurück"
-        },
-        "plans": {
-            "free": {
-                "title": "KOSTENLOS",
-                "price": "KOSTENLOS",
-                "features": [
-                    "Batch-Verarbeitung max. 5 Bilder",
-                    "Einzelbild KI-Hintergrundentfernung (Vorschau)",
-                    "KI-Objektentfernung aus Einzelbild",
-                    "Wasserzeichen hinzufügen max. 5 Bilder",
-                    "Bildkonverter max. 5 Bilder im Stapel",
-                    "KI Foto-Duplikat-Finder max. 5 Bilder",
-                    "KI SEO Bildnamensgenerierung (Nicht verfügbar)",
-                    "KI SEO Beschreibung und Metatags (Nicht verfügbar)"
-                ],
-                "buttonText": "MIT KOSTENLOS FORTFAHREN"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "$19.99",
-                "features": [
-                    "Batch-Verarbeitung max. 100 Bilder",
-                    "Bis zu 100 KI-Hintergrundentfernungen in einem Stapel",
-                    "KI-Objektentfernung bis zu 100 Bilder",
-                    "Wasserzeichen hinzufügen 100 Bilder in einem Stapel",
-                    "Bildkonverter max. 100 Bilder im Stapel",
-                    "KI Foto-Duplikat-Finder unbegrenzte Stapelverarbeitung",
-                    "KI SEO Bildnamensgenerierung (bis zu 100)",
-                    "KI SEO Beschreibung und Metatags verfügbar",
-                    "**Einmalzahlung, lebenslanger Zugriff**"
-                ],
-                "buttonText": "AUF PRO UPGRADEN"
-            }
-        },
-        "faq": {
-            "title": "HÄUFIG GESTELLTE FRAGEN",
-            "questions": {
-                "oneTime": {
-                    "question": "Ist dies wirklich eine einmalige Zahlung?",
-                    "answer": "Ja! Zahlen Sie einmal und erhalten Sie lebenslangen Zugang zu allen PRO-Funktionen. Keine wiederkehrenden Abonnements."
-                },
-                "backgroundRemoval": {
-                    "question": "Wie funktioniert die Hintergrundentfernung?",
-                    "answer": "Wir verwenden fortschrittliche KI-Algorithmen, um Hintergründe von Ihren Produktbildern zu erkennen und zu entfernen. Der gesamte Prozess findet in Ihrem Browser statt - wir speichern Ihre Bilder nie auf unseren Servern."
-                },
-                "imageLimits": {
-                    "question": "Was sind die Bildlimits?",
-                    "answer": "Kostenlose Nutzer können bis zu 10 Bilder gleichzeitig mit grundlegenden Funktionen verarbeiten und den Hintergrund von 1 Bild gleichzeitig entfernen. PRO-Nutzer können bis zu 100 Bilder gleichzeitig verarbeiten, einschließlich Massen-Hintergrundentfernung."
-                },
-                "refund": {
-                    "question": "Kann ich eine Rückerstattung beantragen?",
-                    "answer": "Ja, wir bieten eine 30-tägige Geld-zurück-Garantie, wenn Sie mit den PRO-Funktionen nicht zufrieden sind. Kontaktieren Sie unseren Support für Unterstützung."
-                }
-            }
+        "benefits": {
+          "complete": "KOMPLETTES SEO-PAKET",
+          "completeDesc": "Erhalten Sie ein vollständiges Set an SEO-Inhalten für Ihr Produkt, bereit zur Verwendung.",
+          "aiPowered": "KI-GESTÜTZTER INHALT",
+          "aiPoweredDesc": "Generiert einzigartige, überzeugende und keyword-reiche Beschreibungen.",
+          "bestPractices": "BESTE SEO-PRAKTIKEN",
+          "bestPracticesDesc": "Folgt Richtlinien für Zeichenanzahl, Keyword-Platzierung und Lesbarkeit.",
+          "quickEasy": "SCHNELL & EINFACH",
+          "quickEasyDesc": "Sparen Sie Stunden, indem Sie professionelle Beschreibungen in Sekunden generieren."
         }
+      },
+      "upgradeCard": {
+        "title": "AUF PRO UPGRADEN",
+        "description": "Schalten Sie die unbegrenzte Generierung von SEO-Produktbeschreibungen frei und greifen Sie auf alle Funktionen zu.",
+        "button": "JETZT UPGRADEN"
+      }
     },
-    "PrivacyPolicy": {
-        "title": "DATENSCHUTZRICHTLINIE",
-        "section1Title": "1. EINLEITUNG",
-        "section1P1": "Willkommen bei Batch Shots („wir“, „unser“, „uns“). Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Daten zu gewährleisten.",
-        "section1P2": "Diese Datenschutzrichtlinie erläutert, wie wir Ihre Daten behandeln, wenn Sie unser browserbasiertes Bildoptimierungstool verwenden.",
-        "section2Title": "2. INFORMATIONEN, DIE WIR NICHT SAMMELN",
-        "section2P1Bold": "Wir sammeln oder speichern Ihre Bilder nicht.",
-        "section2P1": "Unser Grundprinzip ist Datenschutz durch Technikgestaltung.",
-        "section2P2": "Batch Shots funktioniert vollständig in Ihrem Browser. Wenn Sie Bilder zur Optimierung hochladen:",
-        "section2Li1": "Ihre Bilder werden lokal in Ihrem Browser mit clientseitigem JavaScript verarbeitet.",
-        "section2Li2": "Ihre Bilder verlassen Ihr Gerät nie und werden nicht an unsere Server übertragen.",
-        "section2Li3": "Wir speichern keine Kopien Ihrer Original- oder verarbeiteten Bilder.",
-        "section2Li4": "Wir verfolgen den Inhalt Ihrer Bilder nicht.",
-        "section3Title": "3. KI-GESTÜTZTE FUNKTIONEN",
-        "section3P1": "Wenn Sie unsere KI-gestützten Funktionen zur Generierung von SEO-Namen verwenden:",
-        "section3Li1": "Wir senden nur den von Ihnen bereitgestellten Beschreibungstext an unsere API.",
-        "section3Li2": "Wir senden oder verarbeiten Ihre tatsächlichen Bilder nicht über unsere KI-Systeme.",
-        "section3Li3": "Ihre generierten SEO-Namen werden an Ihren Browser zurückgesendet und nicht dauerhaft auf unseren Servern gespeichert.",
-        "section4Title": "4. ANALYTIK & COOKIES",
-        "section4P1": "Wir verwenden minimale Analysen, um zu verstehen, wie unsere Website genutzt wird:",
-        "section4Li1": "Wir sammeln anonyme Nutzungsstatistiken wie Seitenaufrufe und Funktionsnutzung.",
-        "section4Li2": "Wir verwenden notwendige Cookies, um Funktionen wie den reCAPTCHA-Schutz bereitzustellen.",
-        "section4Li3": "Wir verwenden keine Cookies für Werbung oder Tracking auf anderen Websites.",
-        "section5Title": "5. DIENSTE VON DRITTANBIETERN",
-        "section5P1": "Wir nutzen folgende Dienste von Drittanbietern:",
-        "section5Li1": "Google reCAPTCHA zum Spamschutz bei unseren KI-Funktionen.",
-        "section5Li2": "OpenCV.js zur Bildverarbeitung (läuft vollständig in Ihrem Browser).",
-        "section5P2": "Jeder dieser Dienste hat seine eigenen Datenschutzrichtlinien, die regeln, wie sie Daten behandeln.",
-        "section6Title": "6. ÄNDERUNGEN DIESER RICHTLINIE",
-        "section6P1": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren.",
-        "section7Title": "7. KONTAKTIEREN SIE UNS",
-        "section7P1": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns bitte unter privacy@batchshots.com.",
-        "returnButton": "ZURÜCK ZUR STARTSEITE"
+    "SeoDescriptionPage": {
+      "metadata": {
+        "title": "KI SEO Produktbeschreibungsgenerator | Batch Shots",
+        "description": "Generieren Sie vollständige, SEO-optimierte Produktbeschreibungen (Titel, Meta-Titel/Beschreibung, kurze/lange Beschreibung, Kategorien, Tags, URL-Slug) aus Basisinformationen.",
+        "keywords": "SEO-Produktbeschreibung, KI-Produktbeschreibung, E-Commerce-SEO, Produktbeschreibungsgenerator, Meta-Beschreibungsgenerator, Produkttitelgenerator"
+      },
+      "title": "KI SEO PRODUKTBESCHREIBUNG GENERATOR",
+      "mainCard": {
+        "title": "SEO-INHALT GENERIEREN",
+        "info": {
+          "title": "WAS IST DIESES TOOL?",
+          "description": "Dieses KI-gestützte Tool generiert ein komplettes SEO-Paket für Ihre Produkte aus Basisinformationen. Sie erhalten einen Produkttitel, Meta-Titel, Meta-Beschreibung, kurze und lange Beschreibungen, Kategorien, Tags und einen URL-Slug, alles optimiert für Suchmaschinen."
+        },
+        "benefits": {
+          "complete": "KOMPLETTES SEO-PAKET",
+          "completeDesc": "Erhalten Sie ein vollständiges Set an SEO-Inhalten für Ihr Produkt, bereit zur Verwendung.",
+          "aiPowered": "KI-GESTÜTZTER INHALT",
+          "aiPoweredDesc": "Generiert einzigartige, überzeugende und keyword-reiche Beschreibungen.",
+          "bestPractices": "BESTE SEO-PRAKTIKEN",
+          "bestPracticesDesc": "Folgt Richtlinien für Zeichenanzahl, Keyword-Platzierung und Lesbarkeit.",
+          "quickEasy": "SCHNELL & EINFACH",
+          "quickEasyDesc": "Sparen Sie Stunden, indem Sie professionelle Beschreibungen in Sekunden generieren."
+        }
+      },
+      "upgradeCard": {
+        "title": "AUF PRO UPGRADEN",
+        "description": "Schalten Sie die unbegrenzte Generierung von SEO-Produktbeschreibungen frei und greifen Sie auf alle Funktionen zu.",
+        "button": "JETZT UPGRADEN"
+      },
+      "instructionsCard": {
+        "title": "ANLEITUNG",
+        "step1": "Geben Sie grundlegende Details zu Ihrem Produkt ein (Name, Eigenschaften, Materialien usw.).",
+        "step2": "Klicken Sie auf die Schaltfläche 'Produktbeschreibung generieren'.",
+        "step3": "Überprüfen Sie den generierten Inhalt (Titel, Meta, Beschreibungen usw.).",
+        "step4": "Kopieren Sie den Inhalt oder laden Sie ihn als Textdatei herunter.",
+        "step5": "Verwenden Sie den generierten SEO-Inhalt in Ihrem E-Commerce-Shop oder auf Ihrer Website."
+      }
     },
-    "TermsOfUse": {
-        "title": "NUTZUNGSBEDINGUNGEN",
-        "lastUpdated": "Zuletzt aktualisiert: 30. Mai 2025",
-        "section1Title": "1. Annahme der Bedingungen",
-        "section1P1": "Durch die Nutzung von Batch Shots erklären Sie sich mit diesen Nutzungsbedingungen einverstanden. Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, dürfen Sie unseren Service nicht nutzen.",
-        "section2Title": "2. Beschreibung des Services",
-        "section2P1": "Batch Shots ist ein browserbasiertes Bildoptimierungstool, das Benutzern ermöglicht:",
-        "section2Li1": "Bildeigenschaften wie Helligkeit, Kontrast und Weißabgleich anzupassen",
-        "section2Li2": "Bilder für die Webnutzung zu ändern und zu optimieren",
-        "section2Li3": "SEO-freundliche Dateinamen zu generieren",
-        "section2Li4": "Mehrere Bilder gleichzeitig zu verarbeiten",
-        "section2P2": "Die gesamte Bildverarbeitung erfolgt lokal in Ihrem Browser; keine Bilder werden auf unsere Server hochgeladen oder dort gespeichert.",
-        "section3Title": "3. Benutzerverantwortlichkeiten",
-        "section3P1": "Benutzer von Batch Shots sind allein dafür verantwortlich, sicherzustellen, dass sie die erforderlichen Rechte und Genehmigungen zur Nutzung, zum Hochladen und zur Verarbeitung von Bildern mit unserem Service haben. Batch Shots ist nicht verantwortlich für Urheberrechts- oder geistige Eigentumsverletzungen, die sich aus Ihrer Nutzung des Services ergeben. Sie müssen den Service in Übereinstimmung mit allen geltenden Gesetzen und Vorschriften nutzen.",
-        "section3Li1": "Sicherstellen, dass sie die erforderlichen Rechte und Genehmigungen zur Änderung und Verarbeitung der verwendeten Bilder haben",
-        "section3Li2": "Nutzung des Services in Übereinstimmung mit geltenden Gesetzen und Vorschriften",
-        "section3Li3": "Den Service nicht zur Verarbeitung, Erstellung oder Verbreitung unangemessener, anstößiger oder illegaler Inhalte zu nutzen",
-        "section3Li4": "Nicht zu versuchen, den Service zu reverse engineer, zu modifizieren oder zu hacken",
-        "section4Title": "4. Geistiges Eigentum",
-        "section4P1": "Alle Originalinhalte, Funktionen und Funktionalitäten von Batch Shots gehören uns und sind durch internationale Urheberrechts-, Marken- und andere Gesetze zum geistigen Eigentum geschützt.",
-        "section4P2": "Sie behalten alle Rechte an Ihren Originalbildern. Wir erheben keinen Anspruch auf Eigentum an den Bildern, die Sie mit unserem Service verarbeiten.",
-        "section4aTitle": "4A. Benutzerinhalte, Eigentum und lebenslanger Pro-Zugang",
-        "section4aP1": "Alle mit Batch Shots hochgeladenen oder verarbeiteten Bilder und Inhalte bleiben das alleinige Eigentum des Benutzers. Batch Shots speichert, betrachtet oder überträgt Ihre Bilder nicht auf unsere Server; die gesamte Verarbeitung erfolgt lokal in Ihrem Browser. Sie sind allein dafür verantwortlich, sicherzustellen, dass Sie die erforderlichen Rechte und Genehmigungen zur Nutzung und Verarbeitung von Bildern mit unserem Service haben. Batch Shots ist nicht verantwortlich für Urheberrechts- oder geistige Eigentumsverletzungen, die sich aus Ihrer Nutzung des Services ergeben.",
-        "section4aP2": "\"Lebenslanger\" Zugang zu Pro-Funktionen bedeutet, dass Sie so lange Zugang zu allen Pro-Funktionen haben, wie Batch Shots als Service betrieben und gewartet wird. Falls Batch Shots eingestellt wird, werden wir angemessene Anstrengungen unternehmen, um Pro-Benutzern Zugang zum Softwarecode zu gewähren oder die Anwendung zu Open Source zu machen, um die weitere Nutzung zu ermöglichen.",
-        "section5Title": "5. Haftungsausschlüsse",
-        "section5Li1": "Batch Shots wird \"wie besehen\" und \"wie verfügbar\" ohne jegliche Garantien angeboten.",
-        "section5Li2": "Wir garantieren nicht, dass der Service ununterbrochen, sicher oder fehlerfrei sein wird.",
-        "section5Li3": "Wir sind nicht verantwortlich für Datenverluste, die während der Verarbeitung auftreten können. Benutzer sind für ihre eigenen Backups verantwortlich.",
-        "section5Li4": "Wir geben keine Garantien bezüglich der Genauigkeit oder Wirksamkeit der SEO-Namensgenerierungsfunktion.",
-        "section5Li5": "Batch Shots ist nicht verantwortlich für rechtliche Ansprüche, Schäden oder Streitigkeiten, die sich aus Benutzerinhalten oder der Nutzung des Services ergeben.",
-        "section6Title": "6. Haftungsbeschränkung",
-        "section6P1": "Im gesetzlich zulässigen Umfang haften wir nicht für indirekte, zufällige, besondere, Folgeschäden oder Strafschäden, die sich aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Services oder aus rechtlichen Ansprüchen ergeben, die sich aus Ihren Inhalten ergeben.",
-        "section7Title": "7. Änderungen am Service",
-        "section7P1": "Wir behalten uns das Recht vor, jeden Teil von Batch Shots jederzeit ohne vorherige Ankündigung oder Haftung zu ändern, auszusetzen oder einzustellen.",
-        "section8Title": "8. Geltendes Recht",
-        "section8P1": "Diese Nutzungsbedingungen unterliegen den Gesetzen der Gerichtsbarkeit, in der wir tätig sind, und werden in Übereinstimmung mit diesen ausgelegt, ohne Berücksichtigung von Kollisionsnormen.",
-        "section9Title": "9. Änderungen der Bedingungen",
-        "section9P1": "Wir können diese Nutzungsbedingungen von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neuen Bedingungen auf dieser Seite veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren.",
-        "section10Title": "10. Kontakt",
-        "section10P1": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter terms@batchshots.com.",
-        "returnButton": "ZURÜCK ZUR STARTSEITE"
+    "SeoProductDescriptionGenerator": {
+      "title": "KI SEO PRODUKTBESCHREIBUNG",
+      "description": "Generieren Sie vollständige SEO-optimierte Produktbeschreibungen",
+      "enterDescription": "Geben Sie grundlegende Produktinformationen ein",
+      "placeholder": "Z.B. Vintage Ledergeldbörse, handgefertigt, braun, Vollnarbenleder, mehrere Kartenfächer...",
+      "generate": "PRODUKTBESCHREIBUNG GENERIEREN",
+      "generating": "GENERIERE...",
+      "generateWithCount": "GENERIEREN ({remaining} heute übrig)",
+      "dailyLimitReached": "TÄGLICHES LIMIT ERREICHT",
+      "dailyLimitExceeded": "Tägliches Limit von 5 Beschreibungen erreicht. Upgraden Sie auf PRO für unbegrenzten Zugriff oder versuchen Sie es morgen erneut.",
+      "dailyUsageInfo": "{remaining} von {total} täglichen Generierungen übrig",
+      "proUnlimited": "PRO: Unbegrenzte Generierungen",
+      "upgradeToPro": "AUF PRO UPGRADEN",
+      "loginRequired": "ANMELDUNG ERFORDERLICH",
+      "loginToGenerate": "Bitte melden Sie sich an, um SEO-Produktbeschreibungen zu generieren. Kostenlose Benutzer erhalten 5 Beschreibungen pro Tag, PRO-Benutzer erhalten unbegrenzten Zugriff.",
+      "loginButton": "ANMELDEN",
+      "cancel": "ABBRECHEN",
+      "copyToClipboard": "IN DIE ZWISCHENABLAGE KOPIEREN",
+      "downloadAsTxt": "ALS TXT HERUNTERLADEN",
+      "copied": "Kopiert!",
+      "tryFeature": "FUNKTION TESTEN",
+      "tabs": {
+        "content": "INHALT",
+        "meta": "META",
+        "categories": "KATEGORIEN",
+        "previews": "VORSCHAUEN"
+      },
+      "previews": {
+        "googleSearch": "GOOGLE-SUCHE VORSCHAU",
+        "ecommerce": "E-COMMERCE VORSCHAU",
+        "productImage": "Produktbild",
+        "addToCart": "In den Warenkorb",
+        "wishlist": "Wunschliste"
+      },
+      "sections": {
+        "productTitle": "Produkttitel",
+        "metaTitle": "Meta-Titel",
+        "metaDescription": "Meta-Beschreibung",
+        "shortDescription": "Kurzbeschreibung",
+        "longDescription": "Lange Beschreibung",
+        "categories": "Kategorien",
+        "tags": "Tags",
+        "urlSlug": "URL-Slug"
+      },
+      "downloadAll": "ALLE DATEN HERUNTERLADEN"
     },
-    "PrivacyPage": {
-        "title": "Datenschutzerklärung | Batch Shots",
-        "description": "Verstehen Sie, wie Batch Shots Ihre Daten verarbeitet. Unsere Datenschutzrichtlinie erläutert die Praktiken zur Datenerfassung, -nutzung und -sicherung.",
-        "keywords": "Datenschutzrichtlinie, Datenschutz, Nutzerdaten, DSGVO, batchshots"
-    },
-    "TermsPage": {
-        "title": "Nutzungsbedingungen | Batch Shots",
-        "description": "Lesen Sie die Nutzungsbedingungen für Batch Shots. Erfahren Sie mehr über Benutzerpflichten, Serviceeinschränkungen und geistiges Eigentum.",
-        "keywords": "Nutzungsbedingungen, AGB, Benutzervereinbarung, batchshots"
-    },
-    "PricingPage": {
-        "title": "Preispläne | Batch Shots Pro",
-        "description": "Entdecken Sie die Preispläne von Batch Shots. Wählen Sie den besten Plan für Ihre Bildbearbeitungsanforderungen, vom kostenlosen Tarif bis zu Pro-Funktionen wie Hintergrundentfernung und erhöhten Limits.",
-        "keywords": "Preise, Batch Shots Pro, Abonnements, Kosten Bildbearbeitung, Preise Hintergrundentfernung"
+    "QuickPresets": {
+      "title": "SCHNELLVOREINSTELLUNGEN",
+      "productSpecialty": "PRODUKTSPEZIALITÄT",
+      "colorStyle": "FARBSTIL",
+      "presets": {
+        "white-bg": {
+          "name": "WEISSER HINTERGRUND",
+          "description": "Saubere Produktfotografie mit weißem Hintergrund"
+        },
+        "clean": {
+          "name": "KLARES PRODUKT",
+          "description": "Produktfotografie mit klaren, neutralen Farben"
+        },
+        "jewelry": {
+          "name": "SCHMUCK/METALL",
+          "description": "Optimiert für Schmuck und metallische Produkte"
+        },
+        "sharp": {
+          "name": "SCHARFE DETAILS",
+          "description": "Verbesserte Schärfe und Details"
+        },
+        "textile": {
+          "name": "TEXTIL/STOFF",
+          "description": "Für Stoff- und Textilprodukte - verbessert Textur und Farbe"
+        },
+        "soft-product": {
+          "name": "WEICHE PRODUKTE",
+          "description": "Für weiche Produkte wie Kissen, Polster, Plüschtiere"
+        },
+        "furniture": {
+          "name": "MÖBEL/HOLZ",
+          "description": "Holzmöbel und Wohndekoration"
+        },
+        "transparent": {
+          "name": "GLAS",
+          "description": "Glas und transparente Produkte"
+        },
+        "food": {
+          "name": "LEBENSMITTEL",
+          "description": "Lebensmittelfotografie - verbessert Frische und Farbappeal"
+        },
+        "dramatic": {
+          "name": "DRAMATISCH",
+          "description": "Produktfotografie mit hohem Kontrast"
+        },
+        "vivid": {
+          "name": "LEBHAFTE FARBEN",
+          "description": "Verbesserte Farbsättigung und Helligkeit"
+        },
+        "classic": {
+          "name": "KLASSISCH",
+          "description": "Klassischer Look mit ausgewogenen Farben"
+        }
+      }
     },
     "BackgroundRemovalPage": {
-        "metadata": {
-            "title": "KI-Hintergrundentferner | Batch Shots",
-            "description": "Entfernen Sie Hintergründe automatisch aus Ihren Bildern mit dem KI-Tool von Batch Shots. Perfekt für Produktfotos, Porträts und kreative Projekte. Kostenlos testen!",
-            "keywords": "Hintergrundentferner, Hintergrund entfernen, KI Hintergrundentfernung, transparenter Hintergrund, Produktfotografie, Stapelbildbearbeitung"
-        }
-    },
-    "ObjectRemovalPage": {
-        "metadata": {
-            "title": "KI-Objektentfernungstool | Batch Shots",
-            "description": "Entfernen Sie unerwünschte Objekte, Personen oder Texte aus Ihren Bildern mit unserem KI-gestützten Tool. Arbeitet komplett in Ihrem Browser für maximale Privatsphäre. Probieren Sie es kostenlos aus!",
-            "keywords": "objektentfernung, ki-objektentfernung, objekte aus bild entfernen, text aus bild entfernen, personen aus foto entfernen, inpainting, bildbearbeitungstool"
+      "metadata": {
+        "title": "KI-Hintergrundentferner | Batch Shots",
+        "description": "Entfernen Sie Hintergründe automatisch aus Ihren Bildern mit dem KI-Tool von Batch Shots. Perfekt für Produktfotos, Porträts und kreative Projekte. Kostenlos testen!",
+        "keywords": "Hintergrundentferner, Hintergrund entfernen, KI Hintergrundentfernung, transparenter Hintergrund, Produktfotografie, Stapelbildbearbeitung"
+      },
+      "title": "HINTERGRUNDENTFERNUNG",
+      "loading": {
+        "tool": "TOOL WIRD GELADEN...",
+        "proStatus": "PRO-STATUS WIRD ÜBERPRÜFT...",
+        "description": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
+        "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
+      },
+      "mainCard": {
+        "title": "BILDHINTERGRÜNDE ENTFERNEN",
+        "info": {
+          "title": "KI-HINTERGRUNDENTFERNUNG",
+          "description": "Entfernen Sie den Hintergrund Ihrer Produktbilder mit KI-Technologie. Die Verarbeitung erfolgt vollständig in Ihrem Browser für Datenschutz."
         },
-        "title": "KI-OBJEKTENTFERNUNG",
-        "loading": {
-            "ort": "KI-Engine wird geladen...",
-            "opencv": "Bildverarbeitungswerkzeuge werden geladen...",
-            "model": "Objektentfernungsmodell wird geladen...",
-            "proStatus": "Kontostatus wird überprüft...",
-            "generic": "Wird geladen..."
+        "upload": {
+          "title": "Bilder auswählen",
+          "buttonFree": "BILD AUSWÄHLEN",
+          "buttonPro": "BILDER AUSWÄHLEN",
+          "helpTextFree": "Kostenlose Nutzer können 1 Bild gleichzeitig auswählen.",
+          "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
         },
-        "mainCard": {
-            "title": "KI-OBJEKTENTFERNUNG",
-            "info": {
-                "title": "SO FUNKTIONIERT ES",
-                "description": "Entfernen Sie unerwünschte Objekte, Personen oder Text aus Ihren Bildern mit KI. Die Verarbeitung erfolgt vollständig in Ihrem Browser."
-            },
-            "upload": {
-                "title": "Bild hochladen",
-                "button": "BILD AUSWÄHLEN",
-                "helpTextFree": "Wählen Sie das Bild aus, das Sie bearbeiten möchten.",
-                "helpTextPro": "Wählen Sie bis zu 100 Bilder für die Batch-Verarbeitung aus."
-            },
-            "canvas": {
-                "drawTitle": "MASKE AUF OBJEKTE ZEICHNEN",
-                "brushSize": "Pinselgröße",
-                "clearMask": "MASKE LÖSCHEN",
-                "outputTitle": "2. ERGEBNIS SEHEN",
-                "outputPlaceholder": "Das Ergebnis wird hier angezeigt"
-            },
-            "actions": {
-                "reset": "ZURÜCKSETZEN",
-                "remove": "OBJEKTE ENTFERNEN",
-                "removeAllObjects": "AUS ALLEN BILDERN ENTFERNEN",
-                "processing": "WIRD VERARBEITET...",
-                "download": "HERUNTERLADEN",
-                "downloadAll": "ALLE HERUNTERLADEN"
-            }
+        "actions": {
+          "clear": "LÖSCHEN",
+          "download": "HERUNTERLADEN",
+          "downloadZip": "ALS ZIP HERUNTERLADEN",
+          "downloading": "WIRD HERUNTERGELADEN...",
+          "downloadingZip": "ZIP WIRD ERSTELLT...",
+          "removeBackground": "HINTERGRUND ENTFERNEN",
+          "removeBackgrounds": "HINTERGRÜNDE ENTFERNEN",
+          "processing": "HINTERGRUND WIRD ENTFERNT...",
+          "processingMultiple": "HINTERGRÜNDE WERDEN ENTFERNT...",
+          "tryFullEditor": "VOLLSTÄNDIGEN EDITOR TESTEN"
+        },
+        "progress": {
+          "processing": "Verarbeitung...",
+          "percent": "{percent}%"
         },
         "upgradeCard": {
-            "title": "AUF PRO UPGRADEN",
-            "description": "Schalten Sie Batch-Objektentfernung für bis zu 100 Bilder und andere PRO-Funktionen wie Massen-Hintergrundentfernung und erweiterte Bearbeitung frei.",
-            "button": "MEHR ERFAHREN UND AUF PRO UPGRADEN"
-        },
-        "instructionsCard": {
-            "title": "ANLEITUNG",
-            "step1": "Laden Sie ein Bild mit der Schaltfläche 'Bild auswählen' hoch.",
-            "step2": "Zeichnen Sie sorgfältig über die Objekte, die Sie entfernen möchten, mit dem roten Pinsel.",
-            "step3": "Passen Sie den Pinselgrößenregler für mehr Präzision an.",
-            "step4": "Klicken Sie auf die Schaltfläche 'Objekte entfernen' und warten Sie, bis die KI-Verarbeitung abgeschlossen ist.",
-            "step5": "Sobald die Verarbeitung abgeschlossen ist, können Sie Ihr bereinigtes Bild mit der Schaltfläche 'Herunterladen' herunterladen.",
-            "step6": "Für die Batch-Verarbeitung aktivieren Sie 'Maske auf alle Bilder anwenden', um ähnliche Objekte aus allen ausgewählten Bildern zu entfernen.",
-            "noteTitle": "Hinweis:",
-            "noteText": "Die Verarbeitung kann je nach Bildgröße und Ihrem Gerät 15-60 Sekunden dauern. Stellen Sie sicher, dass Ihre Maske das Objekt vollständig abdeckt, um die besten Ergebnisse zu erzielen."
-        },
-        "imageGallery": {
-            "selectedImages": "Ausgewählte Bilder",
-            "selectedImage": "Ausgewähltes Bild",
-            "clearAll": "Alle löschen",
-            "applyMaskToAll": "Maske auf alle Bilder anwenden (Batch-Verarbeitung)",
-            "hasMask": "Maske gezeichnet"
-        },
-        "processing": {
-            "readingFile": "Datei wird gelesen...",
-            "loadingImage": "Bild wird geladen...",
-            "exportingMask": "Maske wird vorbereitet...",
-            "runningModel": "KI-Modell wird ausgeführt...",
-            "rendering": "Ergebnis wird gerendert...",
-            "preparingBatch": "Batch-Verarbeitung wird vorbereitet...",
-            "processingImage": "Verarbeite Bild {current} von {total}...",
-            "finishingBatch": "Ergebnisse werden finalisiert...",
-            "preparingDownload": "Download wird vorbereitet...",
-            "batchProgress": "Batch-Fortschritt",
-            "loadingDimensions": "Bildabmessungen werden berechnet...",
-            "generic": "Bild wird verarbeitet..."
-        },
-        "errors": {
-            "ortLoad": "KI-Engine konnte nicht geladen werden. Bitte aktualisieren Sie die Seite.",
-            "sessionCreate": "Objektentfernungsmodell konnte nicht initialisiert werden.",
-            "freeLimit": "Kostenlose Nutzer können nur ein Bild gleichzeitig verarbeiten. Bitte upgraden Sie auf PRO für Batch-Verarbeitung.",
-            "tooManyImages": "Maximal 100 Bilder erlaubt. Nur die ersten 100 Bilder werden verarbeitet.",
-            "imageLoad": "Fehler beim Laden des ausgewählten Bildes.",
-            "fileRead": "Fehler beim Lesen der ausgewählten Datei.",
-            "canvasError": "Fehler beim Zugriff auf die Bildleinwand.",
-            "prerequisites": "Verarbeitung nicht möglich. Fehlende erforderliche Komponenten: {missing}",
-            "noMask": "Bitte zeichnen Sie zuerst eine Maske über das Objekt, das Sie entfernen möchten.",
-            "processingFailed": "Objektentfernung fehlgeschlagen",
-            "resultLoadFailed": "Fehler beim Anzeigen des verarbeiteten Bildergebnisses.",
-            "noDownloadData": "Keine verarbeiteten Bilder zum Herunterladen verfügbar.",
-            "downloadFailed": "Fehler bei der Vorbereitung des Bildes zum Herunterladen."
+          "title": "AUF PRO UPGRADEN",
+          "plan": {
+            "title": "PRO-PLAN",
+            "price": "19,99 €",
+            "features": [
+              "Entfernen Sie Hintergründe von bis zu 100 Bildern gleichzeitig",
+              "Erweiterte Bildanpassungen und Voreinstellungen",
+              "SEO-NAMENSGENERIERUNG FÜR PRODUKTBIlder",
+              "Stapelverarbeitung für alle Funktionen",
+              "Einmalzahlung, lebenslanger Zugang"
+            ],
+            "buttonText": "JETZT UPGRADEN"
+          }
         }
-    },
-    "WatermarkPage": {
-        "metadata": {
-            "title": "Wasserzeichen zu Bildern hinzufügen | Batch Shots",
-            "description": "Fügen Sie Ihren Bildern einfach benutzerdefinierte Text- oder Logo-Wasserzeichen hinzu. Schützen Sie Ihre Fotos mit Wasserzeichen mit Kontrolle über Deckkraft, Position und Größe.",
-            "keywords": "Wasserzeichen, Wasserzeichen zu Bildern hinzufügen, Foto-Wasserzeichen, Bildwasserzeichen, Logo-Wasserzeichen, Textwasserzeichen, Bild-Branding, Wasserzeichen Fotos"
+      },
+      "howItWorks": {
+        "title": "SO FUNKTIONIERT'S",
+        "step1": {
+          "title": "1. BILDER AUSWÄHLEN",
+          "description": "Laden Sie ein oder mehrere Produktbilder hoch, die Sie verarbeiten möchten.",
+          "proNote": "PRO-Nutzer können bis zu 100 Bilder gleichzeitig auswählen!"
         },
-        "title": "WASSERZEICHEN ZU BILDERN HINZUFÜGEN",
-        "loading": {
-            "proStatus": "PRO-STATUS WIRD ÜBERPRÜFT...",
-            "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
+        "step2": {
+          "title": "2. HINTERGRÜNDE ENTFERNEN",
+          "description": "Unsere KI-Technologie erkennt und entfernt den Hintergrund Ihrer Bilder und erstellt transparente PNGs, perfekt für E-Commerce."
         },
-        "preview": {
-            "title": "BILDVORSCHAU"
-        },
-        "alerts": {
-            "freeUserLimit": "Kostenlose Nutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten!",
-            "maxImagesLimit": "Maximal 100 Bilder gleichzeitig erlaubt.",
-            "watermarkFailed": "Anwendung des Wasserzeichens fehlgeschlagen. Bitte versuchen Sie es erneut."
-        },
-        "mainCard": {
-            "title": "WASSERZEICHEN SIE IHRE BILDER",
-            "info": {
-                "title": "BENUTZERDEFINIERTE WASSERZEICHEN HINZUFÜGEN",
-                "description": "Schützen Sie Ihre Bilder mit benutzerdefinierten Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position an Ihre Markenbedürfnisse an."
-            },
-            "upload": {
-                "title": "Bilder auswählen",
-                "buttonFree": "BILD AUSWÄHLEN",
-                "buttonPro": "BILDER AUSWÄHLEN",
-                "helpTextFree": "Kostenlose Nutzer können 1 Bild gleichzeitig auswählen.",
-                "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
-            },
-            "actions": {
-                "clear": "LÖSCHEN",
-                "download": "HERUNTERLADEN",
-                "downloadZip": "ALS ZIP HERUNTERLADEN",
-                "applyWatermark": "WASSERZEICHEN ANWENDEN",
-                "applyWatermarks": "WASSERZEICHEN ANWENDEN",
-                "processing": "WASSERZEICHEN WIRD ANGEWENDET...",
-                "processingMultiple": "WASSERZEICHEN WERDEN ANGEWENDET...",
-                "tryFullEditor": "VOLLSTÄNDIGEN EDITOR TESTEN"
-            },
-            "progress": {
-                "processing": "Verarbeitung...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "AUF PRO UPGRADEN",
-                "plan": {
-                    "title": "PRO-PLAN",
-                    "price": "19,99 €",
-                    "features": [
-                        "Bis zu 100 Bilder gleichzeitig mit Wasserzeichen versehen",
-                        "Erweiterte Bildanpassungen und Voreinstellungen",
-                        "Hintergrundentfernung für Produktbilder",
-                        "Stapelverarbeitung für alle Funktionen",
-                        "Einmalzahlung, lebenslanger Zugang"
-                    ],
-                    "buttonText": "JETZT UPGRADEN"
-                }
-            }
-        },
-        "howItWorks": {
-            "title": "SO FUNKTIONIERT'S",
-            "step1": {
-                "title": "1. BILDER AUSWÄHLEN",
-                "description": "Laden Sie ein oder mehrere Bilder hoch, die Sie mit Wasserzeichen versehen möchten.",
-                "proNote": "PRO-Nutzer können bis zu 100 Bilder gleichzeitig auswählen!"
-            },
-            "step2": {
-                "title": "2. WASSERZEICHEN ANPASSEN",
-                "description": "Wählen Sie zwischen Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position nach Ihren Wünschen an."
-            },
-            "step3": {
-                "title": "3. HERUNTERLADEN & VERWENDEN",
-                "description": "Wenden Sie Ihr Wasserzeichen an und laden Sie die verarbeiteten Bilder herunter, bereit für Web, soziale Medien oder Portfolio-Nutzung."
-            }
-        },
-        "proDialog": {
-            "title": "AUF PRO UPGRADEN",
-            "featureTitle": "PRO-FUNKTION: Massen-Wasserzeichen",
-            "description": "Kostenlose Benutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder stapelweise mit Wasserzeichen zu versehen und Stunden an Arbeit zu sparen!",
-            "pricing": {
-                "title": "EINMALZAHLUNG",
-                "price": "19,99 €",
-                "note": "Kein Abonnement, lebenslanger Zugriff"
-            },
-            "actions": {
-                "upgrade": "AUF PRO UPGRADEN",
-                "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
-            }
+        "step3": {
+          "title": "3. HERUNTERLADEN & VERWENDEN",
+          "description": "Laden Sie Ihre verarbeiteten Bilder herunter und verwenden Sie sie auf Ihrer Website, in Marktplatz-Angeboten oder Marketingmaterialien."
         }
+      },
+      "proDialog": {
+        "title": "AUF PRO UPGRADEN",
+        "featureTitle": "PRO-FUNKTION: Massen-Hintergrundentfernung",
+        "description": "Kostenlose Benutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder stapelweise zu verarbeiten und Stunden an Arbeit zu sparen!",
+        "pricing": {
+          "title": "EINMALZAHLUNG",
+          "price": "19,99 €",
+          "note": "Kein Abonnement, lebenslanger Zugriff"
+        },
+        "actions": {
+          "upgrade": "AUF PRO UPGRADEN",
+          "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
+        }
+      }
     },
-    "ImageFormatConvertorPage": {
-        "metadata": {
-            "title": "Bildformat-Konverter | Batch Shots",
-            "description": "Konvertieren Sie Bilder zwischen Formaten (JPG, PNG, WebP, AVIF) mit unserem benutzerfreundlichen Werkzeug. Unterstützt HEIC-Konvertierung und Stapelverarbeitung.",
-            "keywords": "Bildformat-Konverter, jpg in png konvertieren, heic in jpg konvertieren, webp konverter, bildformatkonvertierung, stapelbildkonvertierung, heic konvertieren"
-        },
-        "title": "BILDFORMATKONVERTER",
-        "loading": {
-            "tool": "KONVERTER WIRD GELADEN...",
-            "proStatus": "PRO-STATUS WIRD GEPRÜFT...",
-            "description": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
-            "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
-        },
-        "uploadArea": {
-            "title": "KONVERTIEREN SIE IHRE BILDER",
-            "description": "Konvertieren Sie Ihre Bilder mit nur wenigen Klicks in verschiedene Formate.",
-            "selectImages": "BILDER AUSWÄHLEN (BIS ZU {maxImages})",
-            "dragAndDropPrivacy": "Ziehen Sie Bilder hierher oder klicken Sie, um Dateien auszuwählen. <strong>Die gesamte Verarbeitung erfolgt in Ihrem Browser. Wir laden Ihre Bilder niemals auf unsere Server hoch.</strong>",
-            "freeLimitInfo": "Kostenlose Benutzer können bis zu {maxImages} Bilder gleichzeitig konvertieren.",
-            "upgradeLink": "Auf PRO upgraden"
-        },
-        "selectedImages": {
-            "title": "AUSGEWÄHLTE BILDER ({count})"
-        },
-        "formatChanged": {
-            "title": "FORMAT GEÄNDERT",
-            "description": "Sie haben das Zielformat geändert. Klicken Sie auf Zurücksetzen, um Ihre Bilder in das neue Format zu konvertieren."
-        },
-        "mainCard": {
-            "title": "BILDER IN JEDES FORMAT KONVERTIEREN",
-            "info": {
-                "title": "BILDFORMATKONVERTIERUNG",
-                "description": "Konvertieren Sie Ihre Bilder zwischen Formaten wie JPG, PNG, WebP und AVIF. Sie können Ihre Bilder auch während der Konvertierung in der Größe ändern."
-            },
-            "upload": {
-                "title": "Zu konvertierende Bilder auswählen",
-                "buttonFree": "BILDER AUSWÄHLEN",
-                "buttonPro": "BILDER AUSWÄHLEN",
-                "helpTextFree": "Kostenlose Benutzer können bis zu {maxImages} Bilder gleichzeitig auswählen.",
-                "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
-            },
-            "actions": {
-                "clear": "LÖSCHEN",
-                "addMore": "MEHR HINZUFÜGEN",
-                "download": "KONVERTIERTE HERUNTERLADEN",
-                "downloadZip": "ALLES ALS ZIP HERUNTERLADEN",
-                "convertImageTo": "IN {format} KONVERTIEREN",
-                "convertImagesTo": "ALLE IN {format} KONVERTIEREN",
-                "converting": "KONVERTIERUNG...",
-                "convertingMultiple": "BILDER WERDEN KONVERTIERT...",
-                "resetConversion": "ZURÜCKSETZEN"
-            },
-            "progress": {
-                "processing": "Verarbeitung...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "AUF PRO UPGRADEN",
-                "plan": {
-                    "title": "PRO-PLAN",
-                    "price": "$19.99",
-                    "features": [
-                        "Konvertieren Sie bis zu 100 Bilder gleichzeitig",
-                        "Ändern Sie die Größe von Bildern während der Konvertierung",
-                        "Konvertieren Sie von HEIC/HEIF in jedes Format",
-                        "Hintergrundentfernung für Produktfotos",
-                        "Einmalige Zahlung, lebenslanger Zugriff"
-                    ],
-                    "buttonText": "JETZT UPGRADEN"
-                }
-            }
-        },
-        "targetFormat": {
-            "title": "ZIELFORMAT AUSWÄHLEN"
-        },
-        "resize": {
-            "title": "GRÖSSE WÄHREND DER KONVERTIERUNG ÄNDERN (OPTIONAL)"
-        },
-        "convertedImages": {
-            "title": "KONVERTIERTE BILDER",
-            "description": "Ihre Bilder wurden erfolgreich konvertiert. Klicken Sie auf Herunterladen, um sie zu speichern."
-        },
-        "howItWorks": {
-            "title": "SO FUNKTIONIERT'S",
-            "step1": {
-                "title": "1. WÄHLEN SIE IHRE BILDER AUS",
-                "description": "Laden Sie ein oder mehrere Bilder hoch, die Sie konvertieren möchten.",
-                "proNote": "PRO-Benutzer können bis zu 100 Bilder gleichzeitig auswählen!"
-            },
-            "step2": {
-                "title": "2. ZIELFORMAT WÄHLEN",
-                "description": "Wählen Sie das gewünschte Ausgabeformat (JPG, PNG, WebP oder AVIF)."
-            },
-            "step3": {
-                "title": "3. GRÖSSE ÄNDERN (OPTIONAL)",
-                "description": "Wählen Sie optional eine Voreinstellung aus, um die Größe Ihrer Bilder während der Konvertierung zu ändern."
-            },
-            "step4": {
-                "title": "4. HERUNTERLADEN & VERWENDEN",
-                "description": "Konvertieren Sie Ihre Bilder und laden Sie sie einzeln oder als ZIP-Archiv herunter."
-            }
-        },
-        "supportedFormats": {
-            "title": "UNTERSTÜTZTE FORMATE",
-            "input": {
-                "title": "EINGABEFORMATE",
-                "description": "Sie können Bilder in diesen Formaten hochladen:"
-            },
-            "output": {
-                "title": "AUSGABEFORMATE",
-                "description": "Konvertieren Sie Ihre Bilder in eines dieser Formate:"
-            }
-        },
-        "alerts": {
-            "freeUserLimit": "Kostenlose Benutzer können bis zu 5 Bilder gleichzeitig konvertieren. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren!",
-            "maxImagesLimit": "Maximal 100 Bilder gleichzeitig erlaubt.",
-            "conversionFailed": "Formatkonvertierung fehlgeschlagen. Bitte versuchen Sie es erneut."
-        },
-        "proDialog": {
-            "title": "AUF PRO UPGRADEN",
-            "featureTitle": "PRO-FUNKTION: Stapel-Formatkonvertierung",
-            "description": "Kostenlose Benutzer können nur bis zu {maxImages} Bilder gleichzeitig konvertieren. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren und Stunden an Arbeit zu sparen!",
-            "pricing": {
-                "title": "EINMALIGE ZAHLUNG",
-                "price": "$19.99",
-                "note": "Kein Abonnement, lebenslanger Zugriff"
-            },
-            "actions": {
-                "upgrade": "AUF PRO UPGRADEN",
-                "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
-            }
-        },
-        "allImages": "ALLE BILDER ({current}/{max})",
-        "imagesCount": "{current}/{max} Bilder",
-        "upgradeFor": "(Upgrade für bis zu 100)"
+    "ImagePreview": {
+      "noImages": "Keine Bilder ausgewählt",
+      "zoomInstructions": "Zum Zoomen zusammenkneifen, zum Bewegen ziehen",
+      "zoomLevel": "{scale}%",
+      "removingBackground": "Hintergrund wird entfernt...",
+      "seoName": {
+        "label": "SEO-freundlicher Name:",
+        "edit": "BEARBEITEN",
+        "cancel": "ABBRECHEN",
+        "save": "SPEICHERN"
+      },
+      "originalName": "Originalname:",
+      "fileInfo": {
+        "dimensions": "Abmessungen:",
+        "size": "Größe:",
+        "output": "Ausgabe:",
+        "quality": "Qualität:",
+        "background": "Hintergrund:",
+        "backgroundRemoved": "Entfernt",
+        "custom": "Benutzerdefiniert",
+        "auto": "auto"
+      },
+      "actions": {
+        "download": "HERUNTERLADEN",
+        "reset": "ZURÜCKSETZEN"
+      },
+      "allImages": "ALLE BILDER ({current}/{max})"
     },
-    "ImageDuplicateDetectionPage": {
-        "metadata": {
-            "title": "KI Duplikat-Foto-Finder & -Bereiniger | Batch Shots",
-            "description": "Finden und entfernen Sie schnell doppelte oder ähnliche Fotos mit unserem KI-gestützten Tool. Identifiziert Bilder bester Qualität in Duplikat-Sätzen. Kostenlos & im Browser.",
-            "keywords": "Duplikat Foto Finder, doppelte Bilder entfernen, ähnliche Foto Finder, KI Foto Bereiniger, Bildduplikaterkennung, beste Fotoqualität, Fotos aufräumen, batchshots"
-        },
-        "PageTitle": "KI Duplikat-Foto-Finder & -Bereiniger",
-        "AppInitializing": "Intelligenter Foto-Analysator wird initialisiert...",
-        "AISetup": "KI-Engine wird eingerichtet...",
-        "AIEngineInitializing": "KI-Engine wird initialisiert...",
-        "AIEngineStarted": "KI-Engine gestartet.",
-        "AIInitializing": "KI wird initialisiert...",
-        "AILoadingModel": "Fortschrittliches KI-Modell wird geladen...",
-        "AIModelLoaded": "KI-Modell geladen.",
-        "AIReady": "KI bereit. Wählen Sie Fotos aus, um Duplikate zu finden.",
-        "AIReadyPrompt": "KI bereit. Wählen Sie Fotos aus, um Duplikate zu finden.",
-        "ProcessingImage": "Analysiere Foto {imageId}...",
-        "ErrorProcessingImage": "Fehler beim Analysieren von Foto {imageId}: {data}.",
-        "AIEngineError": "Fehler der KI-Engine: {data}.",
-        "AIEngineErrorRefresh": "Fehler der KI-Engine: {data}. Bitte aktualisieren Sie die Seite oder versuchen Sie es erneut.",
-        "AICriticalError": "Bei der KI ist ein kritischer Fehler aufgetreten.",
-        "AICriticalErrorRefresh": "Bei unserer KI-Analyse ist ein kritischer Fehler aufgetreten. Bitte aktualisieren Sie die Seite.",
-        "QualityToolsError": "Qualitätsanalyse-Tools konnten nicht geladen werden. Detaillierte Qualitätsmetriken sind möglicherweise nicht verfügbar.",
-        "AllImagesProcessedAnalyzing": "Alle Fotos verarbeitet. Duplikate werden identifiziert...",
-        "AnalysisCompleteSummary": "Analyse abgeschlossen. {groupSummary} {successfullyProcessedCount} von {totalImagesCount} Fotos verarbeitet.",
-        "DuplicateSetsFound": "{count} Duplikatsätze gefunden.",
-        "NoDuplicatesFound": "Keine direkten Duplikate gefunden.",
-        "NoImagesProcessedSuccessfully": "Es konnten keine Fotos erfolgreich verarbeitet werden. {successfullyProcessedCount} von {totalImagesCount} Fotos verarbeitet.",
-        "NoImagesForNewThreshold": "Keine Fotos zur Analyse mit der neuen Ähnlichkeitseinstellung vorhanden.",
-        "ReanalyzingWithThreshold": "Fotos werden mit Ähnlichkeitseinstellung {threshold} neu analysiert...",
-        "AnalysisCompleteWithThreshold": "Analyse mit Ähnlichkeit {threshold} abgeschlossen. {groupSummary}",
-        "PleaseSelectImages": "Bitte wählen Sie Fotos aus...",
-        "AINotReadyError": "Die KI-Analyse-Engine ist nicht bereit. Bitte warten oder aktualisieren Sie die Seite.",
-        "ProcessingFilesHEIC": "Ausgewählte Dateien werden vorbereitet (ggf. konvertiert)...",
-        "HEICConversionFailedSkip": "Fehler beim Konvertieren des Bildes: {fileName}. Es wird übersprungen.",
-        "HEICConversionErrorSkip": "Fehler beim Konvertieren des Bildes: {fileName}. Es wird übersprungen.",
-        "NoValidFilesAfterConversion": "Keine gültigen Dateien zur Verarbeitung nach Konvertierungsversuchen.",
-        "SendingImagesToAI": "{count} Fotos werden zur KI-Analyse gesendet...",
-        "NoValidImagesSelected": "Keine gültigen Fotos zur Verarbeitung ausgewählt.",
-        "QualityToolsNotReadyKPI": "Qualitätsanalyse-Tools nicht bereit. Detaillierte Qualität kann nicht berechnet werden.",
-        "QualityToolsNotReadyQuality": "Qualitätsanalyse-Tools nicht bereit. Qualität kann nicht berechnet werden.",
-        "ErrorCalculatingQuality": "Fehler bei der Qualitätsberechnung für Foto {imageId}: {error}",
-        "QualityToolsNotReadyAnalysisWait": "Qualitätsanalyse-Tools sind nicht bereit. Bitte warten.",
-        "NoDuplicatesInGroup": "Keine Duplikate in dieser Gruppe zur Analyse.",
-        "AnalyzingGroupQuality": "Qualität für Fotos in Gruppe {groupNumber} wird analysiert...",
-        "AnalyzedProgressInGroup": "{processedCount} von {groupTotal} in Gruppe {groupNumber} analysiert. Foto: {imageName}",
-        "QualityAnalysisCompleteForGroup": "Qualitätsanalyse für Gruppe {groupNumber} abgeschlossen.",
-        "QualityAnalysisPartialForGroup": "Qualitätsanalyse für Gruppe {groupNumber} teilweise abgeschlossen. Einige Fotos sind möglicherweise fehlgeschlagen oder wurden übersprungen.",
-        "QualityToolsNotReadyBestSelection": "Qualitätsanalyse-Tools nicht bereit. Auswahl des besten Fotos kann nicht sichergestellt werden.",
-        "AnalyzingQualityForBestDownload": "Qualität für {count} Foto(s) wird analysiert, um das Beste für den Download auszuwählen...",
-        "PreDownloadAnalysisComplete": "Vorab-Qualitätsanalyse für die aktuelle Gruppe abgeschlossen.",
-        "NoImagesToDownload": "Keine Fotos zum Herunterladen.",
-        "QualityToolsNotReadyDownloadAll": "Qualitätsanalyse-Tools nicht bereit. Detaillierte Analyse für Duplikat-Sätze kann für 'Alle herunterladen' nicht durchgeführt werden. Bitte warten Sie oder analysieren Sie Gruppen zuerst einzeln.",
-        "PreparingDownload": "Dateien werden für den Download vorbereitet...",
-        "BestImageDeterminationFailed": "Das beste Foto für eine Gruppe konnte nicht ermittelt werden. Diese Gruppe wird im ZIP-Archiv ausgelassen.",
-        "WarningBestImageOmitted": "Warnung: Das beste Foto für eine Gruppe konnte nicht ermittelt und wurde ausgelassen.",
-        "ZippingImages": "{count} Foto(s) werden gezippt...",
-        "DownloadComplete": "Download abgeschlossen!",
-        "ErrorCreatingZIP": "Fehler beim Erstellen der ZIP-Datei für den Download.",
-        "NoImagesSelectedForDownload": "Keine Fotos zum Herunterladen ausgewählt (z.B. keine einzigartigen Fotos oder keine besten Fotos in Gruppen identifiziert).",
-        "ImageDataMissingDownload": "Fotodaten fehlen, Download nicht möglich.",
-        "DownloadingImage": "{imageName} wird heruntergeladen...",
-        "ImageDownloadedSuccessfully": "{imageName} erfolgreich heruntergeladen.",
-        "FailedToDownloadImage": "Fehler beim Herunterladen von {imageName}.",
-        "QualityToolsNotReadyAnalyzeAllGroups": "Qualitätsanalyse-Tools nicht bereit. Detaillierte Analyse für Duplikat-Sätze kann nicht durchgeführt werden. Bitte warten.",
-        "OnlyUniqueImagesReadyDownload": "Nur einzigartige Fotos vorhanden. Bereit zum Herunterladen.",
-        "NoImagesToAnalyzeOrDownload": "Keine Fotos zum Analysieren oder Herunterladen.",
-        "AnalyzingAllGroupsForBest": "Alle Gruppen werden zur Auswahl des besten Fotos analysiert...",
-        "AnalyzingGroupForBest": "Gruppe {currentGroup} von {totalGroups} wird auf das beste Foto analysiert...",
-        "AllGroupsAnalyzedReadyDownload": "Alle {count} Duplikat-Gruppen analysiert. Bereit zum Herunterladen von {downloadCount} besten Fotos.",
-        "AnalysisPartialReadyDownload": "Analyse zur besten Auswahl teilweise abgeschlossen ({processedGroups}/{totalGroups} Gruppen). Bereit zum Herunterladen von {downloadCount} Fotos (das beste verfügbare wird ausgewählt).",
-        "NoImagesProcessedOrGroups": "Keine Fotos verarbeitet oder noch keine Gruppen gebildet. Stellen Sie sicher, dass Fotos ausgewählt und die KI-Analyse abgeschlossen wurde.",
-
-        "LoaderTitleInitializing": "Intelligente Werkzeuge werden initialisiert...",
-        "LoaderTitleLoadingModel": "KI-Gehirn wird geladen...",
-        "LoaderTitleQualityTools": "Qualitätsanalysator wird vorbereitet...",
-        "LoaderDescriptionInitializing": "Vorbereitungen für die intelligente Duplikaterkennung laufen. Bitte warten.",
-        "LoaderDescriptionLoadingModel": "Unsere fortschrittliche KI wärmt sich auf. Dies kann einen Moment dauern.",
-        "LoaderDescriptionQualityTools": "Werkzeuge für detaillierte Einblicke in die Fotoqualität werden vorbereitet...",
-        
-        "MainCardTitle": "Doppelte Fotos finden & verwalten",
-        "UploadSectionTitle": "Laden Sie Ihre Fotos hoch",
-        "UploadSectionDescription": "Wählen Sie mehrere Fotos aus. Unsere KI analysiert sie intelligent und gruppiert ähnliche Fotos.",
-        "ButtonSelectImages": "Fotos auswählen",
-        "ButtonSelectImagesLoading": "Lädt...",
-        "ButtonSelectImagesInitializing": "Werkzeuge laden...",
-        "ButtonAddMoreImages": "Weitere Fotos hinzufügen",
-        "ButtonAddMoreImagesLoading": "Fotos werden hinzugefügt...",
-        "SupportedFormats": "Unterstützt JPG, PNG, WEBP, HEIC Formate",
-        "AIStatusLabel": "KI-Status: {status}",
-        "QualityAnalyzerStatusLoading": "Qualitätsanalysator: Lädt...",
-
-        "SimilarityThresholdTitle": "Ähnlichkeitseinstellung",
-        "SimilarityThresholdDescription": "Steuern Sie, wie genau Fotos übereinstimmen müssen, um als Duplikate markiert zu werden. Höhere Werte bedeuten eine strengere Übereinstimmung.",
-        "SimilarityLessStrict": "Weniger streng",
-        "SimilarityCurrent": "Aktuell: {threshold}",
-        "SimilarityMoreStrict": "Strenger",
-        "ButtonApplyThreshold": "Einstellung anwenden",
-        "ButtonApplyThresholdLoading": "Neu analysieren...",
-
-        "ResultsTitle": "Erkennungsergebnisse:",
-        "DuplicateSetTitle": "Duplikat-Satz {number} ({count} ähnliche Fotos)",
-        "ButtonAnalyzeQuality": "Qualität analysieren",
-        "ButtonAnalyzeQualityLoading": "Analysiere...",
-        "ButtonReanalyzeQuality": "Qualität neu analysieren",
-        "ImageMissing": "Fotodaten fehlen (Index: {index})",
-        "BestLabel": "Beste",
-        "KpiRes": "Aufl:",
-        "KpiSharp": "Schärfe:",
-        "KpiNoise": "Rausch:",
-        "KpiContrast": "Kontrast:",
-        "KpiExposure": "Belicht:",
-        "ButtonDownload": "Herunterladen",
-        "ButtonDownloading": "Wird heruntergeladen...",
-
-        "UniqueImagesTitle": "Einzigartige Fotos ({count} Foto(s) ohne direkte Duplikate)",
-
-        "ButtonAnalyzeAllGroups": "Alle Gruppen für beste Auswahl analysieren",
-        "ButtonAnalyzeAllGroupsLoading": "Alle Gruppen werden analysiert...",
-        "ButtonDownloadBest": "{count} beste Fotos herunterladen",
-        "ButtonDownloadBestLoading": "Download wird vorbereitet...",
-
-        "HowItWorksTitle": "So findet unsere KI Duplikate",
-        "HowItWorksStep1Title": "1. Laden Sie Ihre Fotos hoch",
-        "HowItWorksStep1Desc": "Klicken Sie auf \"Fotos auswählen\" und wählen Sie die Bilder aus, die Sie überprüfen möchten. Sie können viele auf einmal auswählen.",
-        "HowItWorksStep2Title": "2. Intelligente KI-Analyse",
-        "HowItWorksStep2Desc": "Unsere fortschrittliche KI (basierend auf Vision Transformer-Technologie) analysiert intelligent den visuellen Inhalt jedes Fotos und versteht dessen einzigartige Merkmale und Erscheinungsbild.",
-        "HowItWorksStep3Title": "3. Intelligente Ähnlichkeitsbewertung",
-        "HowItWorksStep3Desc": "Die KI vergleicht Fotos mithilfe einer ausgefeilten visuellen Analyse (Kosinus-Ähnlichkeit), um zu bestimmen, wie ähnlich sie sich basierend auf ihrem Inhalt sind.",
-        "HowItWorksStep4Title": "4. Ähnlichkeit feinabstimmen",
-        "HowItWorksStep4Desc": "Verwenden Sie den Ähnlichkeitsregler, um zu steuern, wie streng die Übereinstimmung ist. Ein höherer Wert bedeutet, dass Fotos nahezu identisch sein müssen, um als Duplikate gekennzeichnet zu werden.",
-        "HowItWorksStep5Title": "5. Überprüfen & Organisieren",
-        "HowItWorksStep5Desc": "Die Ergebnisse zeigen deutlich Duplikat-Sätze und einzigartige Fotos. Unsere KI kann auch das qualitativ beste Foto in jeder Duplikatgruppe hervorheben und Ihnen so bei der Entscheidung helfen, welches Sie behalten möchten.",
-        "FreeUserLimit": "Kostenlose Benutzer können bis zu {limit} Fotos gleichzeitig hochladen.",
-        "ButtonSelectImagesLimit": "Fotos auswählen (Bis zu {limit})",
-        "UpgradeMessage": "Upgrade auf PRO, um unbegrenzt viele Fotos gleichzeitig zu analysieren.",
-        "UpgradeLink": "Jetzt upgraden",
-        "HowItWorksStep1Free": "Kostenlose Benutzer sind auf {limit} Fotos gleichzeitig beschränkt.",
-        "HowItWorksStep1Pro": "Als PRO-Benutzer können Sie unbegrenzt viele Fotos gleichzeitig analysieren.",
-        "ProFeatureName": "Unbegrenzte Fotoanalyse",
-        
-        "FreeModeTitle": "KOSTENLOSER MODUS",
-        "FreeModeDescription": "Verarbeiten Sie bis zu {limit} Fotos gleichzeitig. Upgrade auf PRO für unbegrenzte Fotoanalyse!",
-        "ProModeTitle": "PRO MODUS",
-        "ProModeDescription": "Verarbeiten Sie unbegrenzt viele Fotos mit Ihrem PRO-Konto!",
-        "MaxImagesExceeded": "Maximal 100 Bilder erlaubt. Nur die ersten 100 wurden verarbeitet.",
-        "ProcessingErrors": "Verarbeitungsfehler",
-        "imagesCount": "{current}/{max} Fotos",
-        "upgradeFor": "(Upgrade für unbegrenzt)",
-        
-        "UpgradeCardTitle": "UPGRADE AUF PRO",
-        "UpgradeCardPlanTitle": "PRO PLAN",
-        "UpgradeCardPlanPrice": "$19.99",
-        "UpgradeCardPlanNote": "Einmalzahlung, lebenslanger Zugang",
-        "UpgradeCardFeature1": "Analysieren Sie unbegrenzt viele Fotos gleichzeitig (vs. 5 im kostenlosen Modus)",
-        "UpgradeCardFeature2": "Finden Sie schnell Duplikate in großen Fotosammlungen",
-        "UpgradeCardFeature3": "Qualitätsanalyse zur automatischen Ermittlung der besten Fotos",
-        "UpgradeCardFeature4": "Stapel-Download der besten Fotos aus Duplikat-Sätzen",
-        "UpgradeCardFeature5": "Zugang zu allen anderen PRO-Funktionen (Hintergrundentfernung, etc.)",
-        "UpgradeCardButton": "JETZT UPGRADEN",
-        
-        "ProUpgradeTitle": "Upgrade auf Pro für unbegrenzte Fotos",
-
-        "SimilarityControlsTitle": "Ähnlichkeitsalgorithmus & Schwellenwert",
-        "SimilarityAlgorithmLabel": "Ähnlichkeitsalgorithmus",
-        "SimilarityThresholdLabel": "Ähnlichkeitsschwellenwert",
-        "SimilarityThresholdDescDistance": "Niedrigere Werte bedeuten ähnlichere Bilder (Distanzmetrik)",
-        "SimilarityThresholdDescSimilarity": "Höhere Werte bedeuten ähnlichere Bilder (Ähnlichkeitsmetrik)",
-        
-        "ProcessingChanges": "Änderungen werden verarbeitet...",
-        "ReanalyzingWithAlgorithm": "Neuanalyse mit neuem Algorithmus...",
-        "AnalysisCompleteWithAlgorithm": "Analyse mit neuem Algorithmus abgeschlossen. {groupSummary}",
-        "DuplicateAnalysisComplete": "Duplikatanalyse abgeschlossen",
-        
-        "VisualizationTitle": "KI-Vektorraum",
-        "VisualizationDescription": "Visualisieren Sie, wie die KI Ihre Bilder im hochdimensionalen Raum sieht, reduziert auf 2D mit dem UMAP-Algorithmus. Ähnliche Bilder gruppieren sich zusammen.",
-        "VisualizationShowButton": "Visualisierung anzeigen",
-        "VisualizationHideButton": "Visualisierung ausblenden",
-        "VisualizationGeneratingButton": "Visualisierung wird generiert...",
-        "VisualizationNoData": "Laden Sie zuerst Bilder hoch und verarbeiten Sie diese, um die Visualisierung zu aktivieren",
-        "VisualizationProcessingStatus": "Dies kann bei großen Datensätzen einen Moment dauern...",
-        "VisualizationLegendUnique": "Einzigartige Bilder",
-        "VisualizationLegendDuplicates": "Duplikatgruppen (nach Ähnlichkeit eingefärbt)",
-        "VisualizationHelpText": "Bewegen Sie den Mauszeiger über die Punkte, um Bildvorschauen zu sehen • Nähere Punkte = ähnlichere Bilder",
-        "VisualizationNeedMinImages": "Mindestens 3 Bilder für die Visualisierung erforderlich",
-        "VisualizationNoDataAvailable": "Keine Visualisierungsdaten verfügbar"
+    "PricingCard": {
+      "oneTime": "einmalig",
+      "currentPlan": "AKTUELLER PLAN"
     },
-    "ImageSeoGenerationPage": {
-        "metadata": {
-            "title": "KI-Bild-SEO-Generierung – SEO-URL-Slugs & Bildbeschreibungen generieren",
-            "description": "Laden Sie Ihre Bilder hoch, um automatisch SEO-freundliche Dateinamen, URL-Slugs und Bildbeschreibungen mit KI zu erstellen.",
-            "keywords": "bild seo, url slug generator, bild seo beschreibung generator, ki inhaltserstellung, bildoptimierung"
-        },
-        "AppInitializing": "KI-SEO-Generator wird initialisiert...",
-        "AISetup": "KI für SEO-Inhalte wird eingerichtet...",
-        "AIEngineInitializing": "KI-SEO-Engine wird initialisiert...",
-        "AIEngineStarted": "KI-SEO-Engine gestartet.",
-        "AIInitializing": "KI-Modell für SEO wird initialisiert...",
-        "AILoadingModel": "KI-SEO-Modell wird geladen...",
-        "AIModelLoaded": "KI-SEO-Modell geladen.",
-        "AIReady": "KI-SEO-Engine bereit.",
-        "AIReadyPrompt": "Bereit für KI-SEO. Bitte laden Sie Ihre Bilder hoch.",
-        "ProcessingImage": "KI verarbeitet für SEO: Bild {imageId}...",
-        "ErrorProcessingImage": "Fehler bei der KI-SEO-Verarbeitung für Bild {imageId}: {data}",
-        "AIEngineError": "Fehler in der KI-SEO-Engine: {data}",
-        "AIEngineErrorRefresh": "Fehler in der KI-SEO-Engine: {data}. Bitte aktualisieren.",
-        "AICriticalError": "Kritischer Fehler in der KI-SEO-Engine.",
-        "AICriticalErrorRefresh": "Kritischer Fehler in der KI-SEO-Engine. Bitte aktualisieren und erneut versuchen.",
-        "PleaseSelectImages": "Bitte wählen Sie Bilder für die KI-SEO-Generierung aus.",
-        "AINotReadyError": "KI-SEO-Engine ist nicht bereit. Bitte warten.",
-        "ProcessingFiles": "Bilder werden für KI-SEO verarbeitet...",
-        "ProcessingFilesHEIC": "Bilder werden für KI-SEO verarbeitet, HEIC wird bei Bedarf konvertiert...",
-        "HEICConversionFailedSkip": "HEIC-Konvertierung in SEO-freundliches Format fehlgeschlagen für: {fileName}. Überspringen.",
-        "HEICConversionErrorSkip": "Fehler bei der HEIC-Konvertierung für SEO: {fileName}. Überspringen.",
-        "NoValidFilesAfterConversion": "Keine gültigen Bilder für KI-SEO nach Konvertierungsversuchen.",
-        "NoValidFiles": "Keine gültigen Bilder für die KI-SEO-Verarbeitung ausgewählt.",
-        "SendingImagesToAI": "{count} Bilder werden an die KI zur SEO-Inhaltserstellung gesendet...",
-        "AllImagesProcessed": "KI-SEO-Verarbeitung abgeschlossen. Sehen Sie unten Ihre optimierten Inhalte.",
-        "PageTitle": "KI-Bild-SEO & Alt-Text Generator",
-        "PageTitlePro": "PRO KI-Bild-SEO & Alt-Text Generator",
-        "PageTitleFree": "KI-Bild-SEO & Beschriftungsgenerator",
-        "MainCardTitle": "SEO-Namen & Bildbeschreibungen mit KI generieren",
-        "UploadSectionTitle": "1. Bilder für KI-SEO hochladen",
-        "UploadSectionDescription": "Laden Sie JPG, PNG, WEBP, GIF, HEIC hoch. Unsere KI erstellt SEO-freundliche Dateinamen und Alt-Texte. Fügen Sie Schlüsselwörter hinzu, um die Ergebnisse zu verfeinern.",
-        "UploadSectionDescriptionWithLimit": "Laden Sie JPG, PNG, WEBP, GIF, HEIC hoch (max. {maxImages} für Ihren Plan). Die KI erstellt SEO-Dateinamen & Alt-Texte. Fügen Sie Schlüsselwörter für individuelle Ergebnisse hinzu.",
-        "ButtonSelectImages": "Bilder für KI-SEO auswählen",
-        "ButtonSelectImagesLoading": "KI wird initialisiert...",
-        "ResultsTitle": "KI-generierte SEO-Inhalte",
-        "ImageMissing": "Bilddaten für KI-SEO fehlen (Index: {index})",
-        "GeneratedSeoName": "KI-generierter SEO-Dateiname:",
-        "GeneratedDescription": "KI-generierter Alt-Text/Beschreibung:",
-        "StatusLabel": "Aktueller Status:",
-        "AIStatusLabel": "KI-SEO-Status: {status}",
-        "HowItWorksTitle": "So funktioniert KI-Bild-SEO",
-        "HowItWorksStep1Title": "Bilder hochladen",
-        "HowItWorksStep1Desc": "Wählen Sie Bilder aus oder ziehen Sie sie per Drag & Drop. Unsere KI bereitet sie für die SEO-Analyse vor.",
-        "HowItWorksStep2Title": "KI-Inhaltsanalyse",
-        "HowItWorksStep2Desc": "Unsere KI analysiert jedes Bild, um Inhalt, Kontext und SEO-Potenzial zu verstehen.",
-        "HowItWorksStep3Title": "SEO-Name & Alt-Text-Generierung",
-        "HowItWorksStep3Desc": "Die KI erstellt SEO-freundliche Dateinamen und beschreibende Alt-Texte. Schlüsselwörter verbessern die Optimierung.",
-        "HowItWorksStep4Title": "Überprüfen & SEO verbessern",
-        "HowItWorksStep4Desc": "Kopieren Sie die KI-generierten SEO-Inhalte, um das Suchranking und die Zugänglichkeit Ihrer Website, Ihres Blogs oder Ihrer sozialen Medien zu verbessern.",
-        "NoResultsYet": "Laden Sie Bilder hoch, um KI-generierte SEO-Inhalte zu sehen.",
-        "KeywordsSectionTitle": "2. Mit Schlüsselwörtern verbessern (optional)",
-        "KeywordsSectionDescription": "Fügen Sie durch Kommas getrennte Schlüsselwörter hinzu. Unsere KI integriert sie gezielt in den Alt-Text für besseres SEO.",
-        "KeywordsPlaceholder": "z.B. Reisen, Essen, E-Commerce, Produktkategorie",
-        "ButtonRegenerateWithKeywords": "SEO-Inhalte mit Schlüsselwörtern neu generieren",
-        "ButtonRegenerating": "SEO-Inhalte werden neu generiert...",
-        "RegeneratingStatus": "KI generiert Alt-Text mit neuen SEO-Schlüsselwörtern...",
-        "RegenerationComplete": "KI-gestützte SEO-Neugenerierung abgeschlossen.",
-        "ButtonDownloadAll": "Alle KI-SEO-Ergebnisse herunterladen (ZIP)",
-        "ButtonDownloadingAll": "KI-SEO-ZIP wird heruntergeladen...",
-        "PreparingDownload": "KI-SEO-Dateien werden für den Download vorbereitet...",
-        "ZippingFiles": "{count} KI-optimierte Dateien werden gezippt...",
-        "NoFilesToDownload": "Keine KI-verarbeiteten Bilder mit SEO-Daten zum Herunterladen.",
-        "ErrorCreatingZIP": "Fehler beim Erstellen des KI-SEO-ZIPs. Bitte versuchen Sie es erneut.",
-        "DownloadComplete": "KI-SEO-Download abgeschlossen!",
-        "ImageUploadFeatureName": "Unbegrenzte KI-SEO-Bild-Uploads",
-        "FreeLimitReachedDialogTitle": "Upgrade für mehr KI-SEO-Power",
-        "FreeLimitReachedDialogMessage": "Sie haben das kostenlose Limit für KI-SEO erreicht. Upgraden Sie auf Pro, um mehr Bilder zu verarbeiten.",
-        "FreeLimitReachedSomeProcessed": "Kostenloses Plan-Limit von {count} Bildern für KI-SEO erreicht. Die ersten {count} werden verarbeitet. Für mehr upgraden.",
-        "ProLimitReachedSomeProcessed": "Pro-Plan-Limit von {count} Bildern für KI-SEO erreicht. Die ersten {count} werden verarbeitet.",
-        "NoValidFilesToProcessAfterLimit": "Keine Bilder zur Verarbeitung für KI-SEO nach Planlimits.",
-        "ProUserCardTitle": "KI-SEO-Pro-Plan aktiv",
-        "ProUserCardDescription": "Sie sind im Pro-Plan! Genießen Sie unbegrenzte KI-SEO-Bilderzeugung pro Stapel und alle Premium-Funktionen.",
-        "UpgradeToProCardTitle": "Auf Pro upgraden",
-        "UpgradeToProCardDescription": "Schalten Sie die volle KI-SEO-Power frei! Kostenlose Nutzer können {maxImagesFree} Bilder verarbeiten. Pro-Nutzer genießen unbegrenzte Bildverarbeitung & weitere Vorteile.",
-        "ButtonUpgradeNow": "Jetzt auf Pro upgraden",
-        "ProUserPlanIndicator": "Pro-Plan: Unbegrenzte KI-SEO-Bilderzeugung.",
-        "FreeUserPlanIndicator": "Kostenloser Plan: KI-SEO für bis zu 3 Bilder. Für unbegrenzt upgraden!",
-        "FreePlanInfoBoxTitle": "KOSTENLOSER PLAN",
-        "ProFeatureUnlimitedImages": "Unbegrenzte KI-SEO-Bilderzeugung"
+    "WatermarkControl": {
+      "title": "WASSERZEICHEN",
+      "addTab": "WASSERZEICHEN HINZUFÜGEN",
+      "removeTab": "WASSERZEICHEN ENTFERNEN (KI)",
+      "type": "TYP",
+      "text": "TEXT",
+      "logo": "LOGO",
+      "enterText": "Wasserzeichentext eingeben",
+      "font": "SCHRIFTART",
+      "size": "GRÖSSE",
+      "color": "FARBE",
+      "opacity": "DECKKRAFT",
+      "position": "POSITION",
+      "uploadLogo": "LOGO HOCHLADEN",
+      "logoPlaceholder": "Klicken oder ziehen Sie das Logo hierher",
+      "reset": "ZURÜCKSETZEN",
+      "presets": {
+        "bottomRight": "Unten Rechts",
+        "bottomLeft": "Unten Links",
+        "topLeft": "Oben Links",
+        "topRight": "Oben Rechts",
+        "center": "Mitte",
+        "diagonal": "Diagonal",
+        "tile": "Kachel (Muster)"
+      },
+      "removeDescription": "KI-gestützte Wasserzeichenentfernung kommt bald!"
     }
+  },
+  "Dialogs": {
+    "download": {
+      "title": "Bilder herunterladen",
+      "confirmTitle": "Download bestätigen",
+      "successTitle": "Download erfolgreich",
+      "summary": "Download-Zusammenfassung:",
+      "images": "{count, plural, =1 {# Bild} other {# Bilder}} werden heruntergeladen",
+      "format": "Format:",
+      "appliedPreset": "Angewendete Voreinstellung:",
+      "adjustmentsApplied": "Bildanpassungen wurden angewendet",
+      "backgroundRemoval": "Hintergrundentfernung wurde angewendet",
+      "seoFilenames": "KI-optimierte SEO-Dateinamen enthalten",
+      "watermarkApplied": "Wasserzeichen angewendet",
+      "zipPackage": "Dateien werden als ZIP-Archiv verpackt",
+      "processingNote": "Die Verarbeitung kann bei mehreren oder großen Bildern einen Moment dauern.",
+      "cancel": "ABBRECHEN",
+      "download": "HERUNTERLADEN",
+      "processing": "VERARBEITUNG...",
+      "successMessage": "Ihre Bilder wurden erfolgreich heruntergeladen. Was möchten Sie als Nächstes tun?",
+      "startNewBundleDesc": "Neues Paket starten: Aktuelle Bilder löschen und neu beginnen",
+      "continueEditingDesc": "Weiter bearbeiten: Mit aktuellen Bildern weiterarbeiten",
+      "startNewBundle": "NEUES PAKET STARTEN",
+      "continueEditing": "WEITER BEARBEITEN",
+      "seoProductDescription": "SEO-Produktbeschreibung (TXT)"
+    },
+    "proUpgrade": {
+      "feature": "Stapelverarbeitung"
+    }
+  },
+  "Pricing": {
+    "title": "PREISPLÄNE",
+    "subtitle": "Wählen Sie den perfekten Plan für Ihre Bildoptimierungsbedürfnisse. Unser PRO-Plan bietet eine lebenslange Lizenz mit einmaliger Zahlung.",
+    "alreadyPro": {
+      "title": "Sie sind bereits PRO-Nutzer!",
+      "description": "Vielen Dank für Ihre Unterstützung. Sie haben Zugriff auf alle PRO-Funktionen einschließlich Massen-Hintergrundentfernung, erweiterte Bildanpassungen und SEO-Dateinamensgenerierung.",
+      "backToEditor": "ZURÜCK ZUM EDITOR"
+    },
+    "checkout": {
+      "title": "KAUF ABSCHLIESSEN",
+      "planTitle": "PRO LEBENSLANGE LIZENZ",
+      "price": "19,99 €",
+      "description": "Einmalzahlung, lebenslanger Zugang zu allen PRO-Funktionen",
+      "email": "E-MAIL",
+      "cardInfo": "KARTENDATEN",
+      "cardNumber": "1234 5678 9012 3456",
+      "expiryDate": "MM/JJ",
+      "cvc": "CVC",
+      "completePurchase": "KAUF ABSCHLIESSEN",
+      "goBack": "Zurück"
+    },
+    "plans": {
+      "free": {
+        "title": "KOSTENLOS",
+        "price": "KOSTENLOS",
+        "features": [
+          "Batch-Verarbeitung max. 5 Bilder",
+          "Einzelbild KI-Hintergrundentfernung (Vorschau)",
+          "KI-Objektentfernung aus Einzelbild",
+          "Wasserzeichen hinzufügen max. 5 Bilder",
+          "Bildkonverter max. 5 Bilder im Stapel",
+          "KI Foto-Duplikat-Finder max. 5 Bilder",
+          "KI SEO Bildnamensgenerierung (Nicht verfügbar)",
+          "KI SEO Beschreibung und Metatags (Nicht verfügbar)"
+        ],
+        "buttonText": "MIT KOSTENLOS FORTFAHREN"
+      },
+      "pro": {
+        "title": "PRO",
+        "price": "$19.99",
+        "features": [
+          "Batch-Verarbeitung max. 100 Bilder",
+          "Bis zu 100 KI-Hintergrundentfernungen in einem Stapel",
+          "KI-Objektentfernung bis zu 100 Bilder",
+          "Wasserzeichen hinzufügen 100 Bilder in einem Stapel",
+          "Bildkonverter max. 100 Bilder im Stapel",
+          "KI Foto-Duplikat-Finder unbegrenzte Stapelverarbeitung",
+          "KI SEO Bildnamensgenerierung (bis zu 100)",
+          "KI SEO Beschreibung und Metatags verfügbar",
+          "**Einmalzahlung, lebenslanger Zugriff**"
+        ],
+        "buttonText": "AUF PRO UPGRADEN"
+      }
+    },
+    "faq": {
+      "title": "HÄUFIG GESTELLTE FRAGEN",
+      "questions": {
+        "oneTime": {
+          "question": "Ist dies wirklich eine einmalige Zahlung?",
+          "answer": "Ja! Zahlen Sie einmal und erhalten Sie lebenslangen Zugang zu allen PRO-Funktionen. Keine wiederkehrenden Abonnements."
+        },
+        "backgroundRemoval": {
+          "question": "Wie funktioniert die Hintergrundentfernung?",
+          "answer": "Wir verwenden fortschrittliche KI-Algorithmen, um Hintergründe von Ihren Produktbildern zu erkennen und zu entfernen. Der gesamte Prozess findet in Ihrem Browser statt - wir speichern Ihre Bilder nie auf unseren Servern."
+        },
+        "imageLimits": {
+          "question": "Was sind die Bildlimits?",
+          "answer": "Kostenlose Nutzer können bis zu 10 Bilder gleichzeitig mit grundlegenden Funktionen verarbeiten und den Hintergrund von 1 Bild gleichzeitig entfernen. PRO-Nutzer können bis zu 100 Bilder gleichzeitig verarbeiten, einschließlich Massen-Hintergrundentfernung."
+        },
+        "refund": {
+          "question": "Kann ich eine Rückerstattung beantragen?",
+          "answer": "Ja, wir bieten eine 30-tägige Geld-zurück-Garantie, wenn Sie mit den PRO-Funktionen nicht zufrieden sind. Kontaktieren Sie unseren Support für Unterstützung."
+        }
+      }
+    }
+  },
+  "PrivacyPolicy": {
+    "title": "DATENSCHUTZRICHTLINIE",
+    "section1Title": "1. EINLEITUNG",
+    "section1P1": "Willkommen bei Batch Shots („wir“, „unser“, „uns“). Wir verpflichten uns, Ihre Privatsphäre zu schützen und die Sicherheit Ihrer persönlichen Daten zu gewährleisten.",
+    "section1P2": "Diese Datenschutzrichtlinie erläutert, wie wir Ihre Daten behandeln, wenn Sie unser browserbasiertes Bildoptimierungstool verwenden.",
+    "section2Title": "2. INFORMATIONEN, DIE WIR NICHT SAMMELN",
+    "section2P1Bold": "Wir sammeln oder speichern Ihre Bilder nicht.",
+    "section2P1": "Unser Grundprinzip ist Datenschutz durch Technikgestaltung.",
+    "section2P2": "Batch Shots funktioniert vollständig in Ihrem Browser. Wenn Sie Bilder zur Optimierung hochladen:",
+    "section2Li1": "Ihre Bilder werden lokal in Ihrem Browser mit clientseitigem JavaScript verarbeitet.",
+    "section2Li2": "Ihre Bilder verlassen Ihr Gerät nie und werden nicht an unsere Server übertragen.",
+    "section2Li3": "Wir speichern keine Kopien Ihrer Original- oder verarbeiteten Bilder.",
+    "section2Li4": "Wir verfolgen den Inhalt Ihrer Bilder nicht.",
+    "section3Title": "3. KI-GESTÜTZTE FUNKTIONEN",
+    "section3P1": "Wenn Sie unsere KI-gestützten Funktionen zur Generierung von SEO-Namen verwenden:",
+    "section3Li1": "Wir senden nur den von Ihnen bereitgestellten Beschreibungstext an unsere API.",
+    "section3Li2": "Wir senden oder verarbeiten Ihre tatsächlichen Bilder nicht über unsere KI-Systeme.",
+    "section3Li3": "Ihre generierten SEO-Namen werden an Ihren Browser zurückgesendet und nicht dauerhaft auf unseren Servern gespeichert.",
+    "section4Title": "4. ANALYTIK & COOKIES",
+    "section4P1": "Wir verwenden minimale Analysen, um zu verstehen, wie unsere Website genutzt wird:",
+    "section4Li1": "Wir sammeln anonyme Nutzungsstatistiken wie Seitenaufrufe und Funktionsnutzung.",
+    "section4Li2": "Wir verwenden notwendige Cookies, um Funktionen wie den reCAPTCHA-Schutz bereitzustellen.",
+    "section4Li3": "Wir verwenden keine Cookies für Werbung oder Tracking auf anderen Websites.",
+    "section5Title": "5. DIENSTE VON DRITTANBIETERN",
+    "section5P1": "Wir nutzen folgende Dienste von Drittanbietern:",
+    "section5Li1": "Google reCAPTCHA zum Spamschutz bei unseren KI-Funktionen.",
+    "section5Li2": "OpenCV.js zur Bildverarbeitung (läuft vollständig in Ihrem Browser).",
+    "section5P2": "Jeder dieser Dienste hat seine eigenen Datenschutzrichtlinien, die regeln, wie sie Daten behandeln.",
+    "section6Title": "6. ÄNDERUNGEN DIESER RICHTLINIE",
+    "section6P1": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neue Datenschutzrichtlinie auf dieser Seite veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren.",
+    "section7Title": "7. KONTAKTIEREN SIE UNS",
+    "section7P1": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns bitte unter privacy@batchshots.com.",
+    "returnButton": "ZURÜCK ZUR STARTSEITE"
+  },
+  "TermsOfUse": {
+    "title": "NUTZUNGSBEDINGUNGEN",
+    "lastUpdated": "Zuletzt aktualisiert: 30. Mai 2025",
+    "section1Title": "1. Annahme der Bedingungen",
+    "section1P1": "Durch die Nutzung von Batch Shots erklären Sie sich mit diesen Nutzungsbedingungen einverstanden. Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, dürfen Sie unseren Service nicht nutzen.",
+    "section2Title": "2. Beschreibung des Services",
+    "section2P1": "Batch Shots ist ein browserbasiertes Bildoptimierungstool, das Benutzern ermöglicht:",
+    "section2Li1": "Bildeigenschaften wie Helligkeit, Kontrast und Weißabgleich anzupassen",
+    "section2Li2": "Bilder für die Webnutzung zu ändern und zu optimieren",
+    "section2Li3": "SEO-freundliche Dateinamen zu generieren",
+    "section2Li4": "Mehrere Bilder gleichzeitig zu verarbeiten",
+    "section2P2": "Die gesamte Bildverarbeitung erfolgt lokal in Ihrem Browser; keine Bilder werden auf unsere Server hochgeladen oder dort gespeichert.",
+    "section3Title": "3. Benutzerverantwortlichkeiten",
+    "section3P1": "Benutzer von Batch Shots sind allein dafür verantwortlich, sicherzustellen, dass sie die erforderlichen Rechte und Genehmigungen zur Nutzung, zum Hochladen und zur Verarbeitung von Bildern mit unserem Service haben. Batch Shots ist nicht verantwortlich für Urheberrechts- oder geistige Eigentumsverletzungen, die sich aus Ihrer Nutzung des Services ergeben. Sie müssen den Service in Übereinstimmung mit allen geltenden Gesetzen und Vorschriften nutzen.",
+    "section3Li1": "Sicherstellen, dass sie die erforderlichen Rechte und Genehmigungen zur Änderung und Verarbeitung der verwendeten Bilder haben",
+    "section3Li2": "Nutzung des Services in Übereinstimmung mit geltenden Gesetzen und Vorschriften",
+    "section3Li3": "Den Service nicht zur Verarbeitung, Erstellung oder Verbreitung unangemessener, anstößiger oder illegaler Inhalte zu nutzen",
+    "section3Li4": "Nicht zu versuchen, den Service zu reverse engineer, zu modifizieren oder zu hacken",
+    "section4Title": "4. Geistiges Eigentum",
+    "section4P1": "Alle Originalinhalte, Funktionen und Funktionalitäten von Batch Shots gehören uns und sind durch internationale Urheberrechts-, Marken- und andere Gesetze zum geistigen Eigentum geschützt.",
+    "section4P2": "Sie behalten alle Rechte an Ihren Originalbildern. Wir erheben keinen Anspruch auf Eigentum an den Bildern, die Sie mit unserem Service verarbeiten.",
+    "section4aTitle": "4A. Benutzerinhalte, Eigentum und lebenslanger Pro-Zugang",
+    "section4aP1": "Alle mit Batch Shots hochgeladenen oder verarbeiteten Bilder und Inhalte bleiben das alleinige Eigentum des Benutzers. Batch Shots speichert, betrachtet oder überträgt Ihre Bilder nicht auf unsere Server; die gesamte Verarbeitung erfolgt lokal in Ihrem Browser. Sie sind allein dafür verantwortlich, sicherzustellen, dass Sie die erforderlichen Rechte und Genehmigungen zur Nutzung und Verarbeitung von Bildern mit unserem Service haben. Batch Shots ist nicht verantwortlich für Urheberrechts- oder geistige Eigentumsverletzungen, die sich aus Ihrer Nutzung des Services ergeben.",
+    "section4aP2": "\"Lebenslanger\" Zugang zu Pro-Funktionen bedeutet, dass Sie so lange Zugang zu allen Pro-Funktionen haben, wie Batch Shots als Service betrieben und gewartet wird. Falls Batch Shots eingestellt wird, werden wir angemessene Anstrengungen unternehmen, um Pro-Benutzern Zugang zum Softwarecode zu gewähren oder die Anwendung zu Open Source zu machen, um die weitere Nutzung zu ermöglichen.",
+    "section5Title": "5. Haftungsausschlüsse",
+    "section5Li1": "Batch Shots wird \"wie besehen\" und \"wie verfügbar\" ohne jegliche Garantien angeboten.",
+    "section5Li2": "Wir garantieren nicht, dass der Service ununterbrochen, sicher oder fehlerfrei sein wird.",
+    "section5Li3": "Wir sind nicht verantwortlich für Datenverluste, die während der Verarbeitung auftreten können. Benutzer sind für ihre eigenen Backups verantwortlich.",
+    "section5Li4": "Wir geben keine Garantien bezüglich der Genauigkeit oder Wirksamkeit der SEO-Namensgenerierungsfunktion.",
+    "section5Li5": "Batch Shots ist nicht verantwortlich für rechtliche Ansprüche, Schäden oder Streitigkeiten, die sich aus Benutzerinhalten oder der Nutzung des Services ergeben.",
+    "section6Title": "6. Haftungsbeschränkung",
+    "section6P1": "Im gesetzlich zulässigen Umfang haften wir nicht für indirekte, zufällige, besondere, Folgeschäden oder Strafschäden, die sich aus Ihrer Nutzung oder Unfähigkeit zur Nutzung des Services oder aus rechtlichen Ansprüchen ergeben, die sich aus Ihren Inhalten ergeben.",
+    "section7Title": "7. Änderungen am Service",
+    "section7P1": "Wir behalten uns das Recht vor, jeden Teil von Batch Shots jederzeit ohne vorherige Ankündigung oder Haftung zu ändern, auszusetzen oder einzustellen.",
+    "section8Title": "8. Geltendes Recht",
+    "section8P1": "Diese Nutzungsbedingungen unterliegen den Gesetzen der Gerichtsbarkeit, in der wir tätig sind, und werden in Übereinstimmung mit diesen ausgelegt, ohne Berücksichtigung von Kollisionsnormen.",
+    "section9Title": "9. Änderungen der Bedingungen",
+    "section9P1": "Wir können diese Nutzungsbedingungen von Zeit zu Zeit aktualisieren. Wir werden Sie über Änderungen informieren, indem wir die neuen Bedingungen auf dieser Seite veröffentlichen und das Datum \"Zuletzt aktualisiert\" aktualisieren.",
+    "section10Title": "10. Kontakt",
+    "section10P1": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter terms@batchshots.com.",
+    "returnButton": "ZURÜCK ZUR STARTSEITE"
+  },
+  "PrivacyPage": {
+    "title": "Datenschutzerklärung | Batch Shots",
+    "description": "Verstehen Sie, wie Batch Shots Ihre Daten verarbeitet. Unsere Datenschutzrichtlinie erläutert die Praktiken zur Datenerfassung, -nutzung und -sicherung.",
+    "keywords": "Datenschutzrichtlinie, Datenschutz, Nutzerdaten, DSGVO, batchshots"
+  },
+  "TermsPage": {
+    "title": "Nutzungsbedingungen | Batch Shots",
+    "description": "Lesen Sie die Nutzungsbedingungen für Batch Shots. Erfahren Sie mehr über Benutzerpflichten, Serviceeinschränkungen und geistiges Eigentum.",
+    "keywords": "Nutzungsbedingungen, AGB, Benutzervereinbarung, batchshots"
+  },
+  "PricingPage": {
+    "title": "Preispläne | Batch Shots Pro",
+    "description": "Entdecken Sie die Preispläne von Batch Shots. Wählen Sie den besten Plan für Ihre Bildbearbeitungsanforderungen, vom kostenlosen Tarif bis zu Pro-Funktionen wie Hintergrundentfernung und erhöhten Limits.",
+    "keywords": "Preise, Batch Shots Pro, Abonnements, Kosten Bildbearbeitung, Preise Hintergrundentfernung"
+  },
+  "BackgroundRemovalPage": {
+    "metadata": {
+      "title": "KI-Hintergrundentferner | Batch Shots",
+      "description": "Entfernen Sie Hintergründe automatisch aus Ihren Bildern mit dem KI-Tool von Batch Shots. Perfekt für Produktfotos, Porträts und kreative Projekte. Kostenlos testen!",
+      "keywords": "Hintergrundentferner, Hintergrund entfernen, KI Hintergrundentfernung, transparenter Hintergrund, Produktfotografie, Stapelbildbearbeitung"
+    }
+  },
+  "ObjectRemovalPage": {
+    "metadata": {
+      "title": "KI-Objektentfernungstool | Batch Shots",
+      "description": "Entfernen Sie unerwünschte Objekte, Personen oder Texte aus Ihren Bildern mit unserem KI-gestützten Tool. Arbeitet komplett in Ihrem Browser für maximale Privatsphäre. Probieren Sie es kostenlos aus!",
+      "keywords": "objektentfernung, ki-objektentfernung, objekte aus bild entfernen, text aus bild entfernen, personen aus foto entfernen, inpainting, bildbearbeitungstool"
+    },
+    "title": "KI-OBJEKTENTFERNUNG",
+    "loading": {
+      "ort": "KI-Engine wird geladen...",
+      "opencv": "Bildverarbeitungswerkzeuge werden geladen...",
+      "model": "Objektentfernungsmodell wird geladen...",
+      "proStatus": "Kontostatus wird überprüft...",
+      "generic": "Wird geladen..."
+    },
+    "mainCard": {
+      "title": "KI-OBJEKTENTFERNUNG",
+      "info": {
+        "title": "SO FUNKTIONIERT ES",
+        "description": "Entfernen Sie unerwünschte Objekte, Personen oder Text aus Ihren Bildern mit KI. Die Verarbeitung erfolgt vollständig in Ihrem Browser."
+      },
+      "upload": {
+        "title": "Bild hochladen",
+        "button": "BILD AUSWÄHLEN",
+        "helpTextFree": "Wählen Sie das Bild aus, das Sie bearbeiten möchten.",
+        "helpTextPro": "Wählen Sie bis zu 100 Bilder für die Batch-Verarbeitung aus."
+      },
+      "canvas": {
+        "drawTitle": "MASKE AUF OBJEKTE ZEICHNEN",
+        "brushSize": "Pinselgröße",
+        "clearMask": "MASKE LÖSCHEN",
+        "outputTitle": "2. ERGEBNIS SEHEN",
+        "outputPlaceholder": "Das Ergebnis wird hier angezeigt"
+      },
+      "actions": {
+        "reset": "ZURÜCKSETZEN",
+        "remove": "OBJEKTE ENTFERNEN",
+        "removeAllObjects": "AUS ALLEN BILDERN ENTFERNEN",
+        "processing": "WIRD VERARBEITET...",
+        "download": "HERUNTERLADEN",
+        "downloadAll": "ALLE HERUNTERLADEN"
+      }
+    },
+    "upgradeCard": {
+      "title": "AUF PRO UPGRADEN",
+      "description": "Schalten Sie Batch-Objektentfernung für bis zu 100 Bilder und andere PRO-Funktionen wie Massen-Hintergrundentfernung und erweiterte Bearbeitung frei.",
+      "button": "MEHR ERFAHREN UND AUF PRO UPGRADEN"
+    },
+    "instructionsCard": {
+      "title": "ANLEITUNG",
+      "step1": "Laden Sie ein Bild mit der Schaltfläche 'Bild auswählen' hoch.",
+      "step2": "Zeichnen Sie sorgfältig über die Objekte, die Sie entfernen möchten, mit dem roten Pinsel.",
+      "step3": "Passen Sie den Pinselgrößenregler für mehr Präzision an.",
+      "step4": "Klicken Sie auf die Schaltfläche 'Objekte entfernen' und warten Sie, bis die KI-Verarbeitung abgeschlossen ist.",
+      "step5": "Sobald die Verarbeitung abgeschlossen ist, können Sie Ihr bereinigtes Bild mit der Schaltfläche 'Herunterladen' herunterladen.",
+      "step6": "Für die Batch-Verarbeitung aktivieren Sie 'Maske auf alle Bilder anwenden', um ähnliche Objekte aus allen ausgewählten Bildern zu entfernen.",
+      "noteTitle": "Hinweis:",
+      "noteText": "Die Verarbeitung kann je nach Bildgröße und Ihrem Gerät 15-60 Sekunden dauern. Stellen Sie sicher, dass Ihre Maske das Objekt vollständig abdeckt, um die besten Ergebnisse zu erzielen."
+    },
+    "imageGallery": {
+      "selectedImages": "Ausgewählte Bilder",
+      "selectedImage": "Ausgewähltes Bild",
+      "clearAll": "Alle löschen",
+      "applyMaskToAll": "Maske auf alle Bilder anwenden (Batch-Verarbeitung)",
+      "hasMask": "Maske gezeichnet"
+    },
+    "processing": {
+      "readingFile": "Datei wird gelesen...",
+      "loadingImage": "Bild wird geladen...",
+      "exportingMask": "Maske wird vorbereitet...",
+      "runningModel": "KI-Modell wird ausgeführt...",
+      "rendering": "Ergebnis wird gerendert...",
+      "preparingBatch": "Batch-Verarbeitung wird vorbereitet...",
+      "processingImage": "Verarbeite Bild {current} von {total}...",
+      "finishingBatch": "Ergebnisse werden finalisiert...",
+      "preparingDownload": "Download wird vorbereitet...",
+      "batchProgress": "Batch-Fortschritt",
+      "loadingDimensions": "Bildabmessungen werden berechnet...",
+      "generic": "Bild wird verarbeitet..."
+    },
+    "errors": {
+      "ortLoad": "KI-Engine konnte nicht geladen werden. Bitte aktualisieren Sie die Seite.",
+      "sessionCreate": "Objektentfernungsmodell konnte nicht initialisiert werden.",
+      "freeLimit": "Kostenlose Nutzer können nur ein Bild gleichzeitig verarbeiten. Bitte upgraden Sie auf PRO für Batch-Verarbeitung.",
+      "tooManyImages": "Maximal 100 Bilder erlaubt. Nur die ersten 100 Bilder werden verarbeitet.",
+      "imageLoad": "Fehler beim Laden des ausgewählten Bildes.",
+      "fileRead": "Fehler beim Lesen der ausgewählten Datei.",
+      "canvasError": "Fehler beim Zugriff auf die Bildleinwand.",
+      "prerequisites": "Verarbeitung nicht möglich. Fehlende erforderliche Komponenten: {missing}",
+      "noMask": "Bitte zeichnen Sie zuerst eine Maske über das Objekt, das Sie entfernen möchten.",
+      "processingFailed": "Objektentfernung fehlgeschlagen",
+      "resultLoadFailed": "Fehler beim Anzeigen des verarbeiteten Bildergebnisses.",
+      "noDownloadData": "Keine verarbeiteten Bilder zum Herunterladen verfügbar.",
+      "downloadFailed": "Fehler bei der Vorbereitung des Bildes zum Herunterladen."
+    }
+  },
+  "WatermarkPage": {
+    "metadata": {
+      "title": "Wasserzeichen zu Bildern hinzufügen | Batch Shots",
+      "description": "Fügen Sie Ihren Bildern einfach benutzerdefinierte Text- oder Logo-Wasserzeichen hinzu. Schützen Sie Ihre Fotos mit Wasserzeichen mit Kontrolle über Deckkraft, Position und Größe.",
+      "keywords": "Wasserzeichen, Wasserzeichen zu Bildern hinzufügen, Foto-Wasserzeichen, Bildwasserzeichen, Logo-Wasserzeichen, Textwasserzeichen, Bild-Branding, Wasserzeichen Fotos"
+    },
+    "title": "WASSERZEICHEN ZU BILDERN HINZUFÜGEN",
+    "loading": {
+      "proStatus": "PRO-STATUS WIRD ÜBERPRÜFT...",
+      "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
+    },
+    "preview": {
+      "title": "BILDVORSCHAU"
+    },
+    "alerts": {
+      "freeUserLimit": "Kostenlose Nutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder auf einmal zu verarbeiten!",
+      "maxImagesLimit": "Maximal 100 Bilder gleichzeitig erlaubt.",
+      "watermarkFailed": "Anwendung des Wasserzeichens fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "mainCard": {
+      "title": "WASSERZEICHEN SIE IHRE BILDER",
+      "info": {
+        "title": "BENUTZERDEFINIERTE WASSERZEICHEN HINZUFÜGEN",
+        "description": "Schützen Sie Ihre Bilder mit benutzerdefinierten Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position an Ihre Markenbedürfnisse an."
+      },
+      "upload": {
+        "title": "Bilder auswählen",
+        "buttonFree": "BILD AUSWÄHLEN",
+        "buttonPro": "BILDER AUSWÄHLEN",
+        "helpTextFree": "Kostenlose Nutzer können 1 Bild gleichzeitig auswählen.",
+        "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
+      },
+      "actions": {
+        "clear": "LÖSCHEN",
+        "download": "HERUNTERLADEN",
+        "downloadZip": "ALS ZIP HERUNTERLADEN",
+        "applyWatermark": "WASSERZEICHEN ANWENDEN",
+        "applyWatermarks": "WASSERZEICHEN ANWENDEN",
+        "processing": "WASSERZEICHEN WIRD ANGEWENDET...",
+        "processingMultiple": "WASSERZEICHEN WERDEN ANGEWENDET...",
+        "tryFullEditor": "VOLLSTÄNDIGEN EDITOR TESTEN"
+      },
+      "progress": {
+        "processing": "Verarbeitung...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "AUF PRO UPGRADEN",
+        "plan": {
+          "title": "PRO-PLAN",
+          "price": "19,99 €",
+          "features": [
+            "Bis zu 100 Bilder gleichzeitig mit Wasserzeichen versehen",
+            "Erweiterte Bildanpassungen und Voreinstellungen",
+            "Hintergrundentfernung für Produktbilder",
+            "Stapelverarbeitung für alle Funktionen",
+            "Einmalzahlung, lebenslanger Zugang"
+          ],
+          "buttonText": "JETZT UPGRADEN"
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "SO FUNKTIONIERT'S",
+      "step1": {
+        "title": "1. BILDER AUSWÄHLEN",
+        "description": "Laden Sie ein oder mehrere Bilder hoch, die Sie mit Wasserzeichen versehen möchten.",
+        "proNote": "PRO-Nutzer können bis zu 100 Bilder gleichzeitig auswählen!"
+      },
+      "step2": {
+        "title": "2. WASSERZEICHEN ANPASSEN",
+        "description": "Wählen Sie zwischen Text- oder Logo-Wasserzeichen. Passen Sie Deckkraft, Größe und Position nach Ihren Wünschen an."
+      },
+      "step3": {
+        "title": "3. HERUNTERLADEN & VERWENDEN",
+        "description": "Wenden Sie Ihr Wasserzeichen an und laden Sie die verarbeiteten Bilder herunter, bereit für Web, soziale Medien oder Portfolio-Nutzung."
+      }
+    },
+    "proDialog": {
+      "title": "AUF PRO UPGRADEN",
+      "featureTitle": "PRO-FUNKTION: Massen-Wasserzeichen",
+      "description": "Kostenlose Benutzer können nur 1 Bild gleichzeitig verarbeiten. Upgraden Sie auf PRO, um bis zu 100 Bilder stapelweise mit Wasserzeichen zu versehen und Stunden an Arbeit zu sparen!",
+      "pricing": {
+        "title": "EINMALZAHLUNG",
+        "price": "19,99 €",
+        "note": "Kein Abonnement, lebenslanger Zugriff"
+      },
+      "actions": {
+        "upgrade": "AUF PRO UPGRADEN",
+        "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
+      }
+    }
+  },
+  "ImageFormatConvertorPage": {
+    "metadata": {
+      "title": "Bildformat-Konverter | Batch Shots",
+      "description": "Konvertieren Sie Bilder zwischen Formaten (JPG, PNG, WebP, AVIF) mit unserem benutzerfreundlichen Werkzeug. Unterstützt HEIC-Konvertierung und Stapelverarbeitung.",
+      "keywords": "Bildformat-Konverter, jpg in png konvertieren, heic in jpg konvertieren, webp konverter, bildformatkonvertierung, stapelbildkonvertierung, heic konvertieren"
+    },
+    "title": "BILDFORMATKONVERTER",
+    "loading": {
+      "tool": "KONVERTER WIRD GELADEN...",
+      "proStatus": "PRO-STATUS WIRD GEPRÜFT...",
+      "description": "Bitte warten Sie, während wir die Bildverarbeitungsfunktionen initialisieren.",
+      "proDescription": "Bitte warten Sie, während wir Ihren Kontostatus überprüfen."
+    },
+    "uploadArea": {
+      "title": "KONVERTIEREN SIE IHRE BILDER",
+      "description": "Konvertieren Sie Ihre Bilder mit nur wenigen Klicks in verschiedene Formate.",
+      "selectImages": "BILDER AUSWÄHLEN (BIS ZU {maxImages})",
+      "dragAndDropPrivacy": "Ziehen Sie Bilder hierher oder klicken Sie, um Dateien auszuwählen. <strong>Die gesamte Verarbeitung erfolgt in Ihrem Browser. Wir laden Ihre Bilder niemals auf unsere Server hoch.</strong>",
+      "freeLimitInfo": "Kostenlose Benutzer können bis zu {maxImages} Bilder gleichzeitig konvertieren.",
+      "upgradeLink": "Auf PRO upgraden"
+    },
+    "selectedImages": {
+      "title": "AUSGEWÄHLTE BILDER ({count})"
+    },
+    "formatChanged": {
+      "title": "FORMAT GEÄNDERT",
+      "description": "Sie haben das Zielformat geändert. Klicken Sie auf Zurücksetzen, um Ihre Bilder in das neue Format zu konvertieren."
+    },
+    "mainCard": {
+      "title": "BILDER IN JEDES FORMAT KONVERTIEREN",
+      "info": {
+        "title": "BILDFORMATKONVERTIERUNG",
+        "description": "Konvertieren Sie Ihre Bilder zwischen Formaten wie JPG, PNG, WebP und AVIF. Sie können Ihre Bilder auch während der Konvertierung in der Größe ändern."
+      },
+      "upload": {
+        "title": "Zu konvertierende Bilder auswählen",
+        "buttonFree": "BILDER AUSWÄHLEN",
+        "buttonPro": "BILDER AUSWÄHLEN",
+        "helpTextFree": "Kostenlose Benutzer können bis zu {maxImages} Bilder gleichzeitig auswählen.",
+        "helpTextPro": "Sie können bis zu 100 Bilder gleichzeitig auswählen."
+      },
+      "actions": {
+        "clear": "LÖSCHEN",
+        "addMore": "MEHR HINZUFÜGEN",
+        "download": "KONVERTIERTE HERUNTERLADEN",
+        "downloadZip": "ALLES ALS ZIP HERUNTERLADEN",
+        "convertImageTo": "IN {format} KONVERTIEREN",
+        "convertImagesTo": "ALLE IN {format} KONVERTIEREN",
+        "converting": "KONVERTIERUNG...",
+        "convertingMultiple": "BILDER WERDEN KONVERTIERT...",
+        "resetConversion": "ZURÜCKSETZEN"
+      },
+      "progress": {
+        "processing": "Verarbeitung...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "AUF PRO UPGRADEN",
+        "plan": {
+          "title": "PRO-PLAN",
+          "price": "$19.99",
+          "features": [
+            "Konvertieren Sie bis zu 100 Bilder gleichzeitig",
+            "Ändern Sie die Größe von Bildern während der Konvertierung",
+            "Konvertieren Sie von HEIC/HEIF in jedes Format",
+            "Hintergrundentfernung für Produktfotos",
+            "Einmalige Zahlung, lebenslanger Zugriff"
+          ],
+          "buttonText": "JETZT UPGRADEN"
+        }
+      }
+    },
+    "targetFormat": {
+      "title": "ZIELFORMAT AUSWÄHLEN"
+    },
+    "resize": {
+      "title": "GRÖSSE WÄHREND DER KONVERTIERUNG ÄNDERN (OPTIONAL)"
+    },
+    "convertedImages": {
+      "title": "KONVERTIERTE BILDER",
+      "description": "Ihre Bilder wurden erfolgreich konvertiert. Klicken Sie auf Herunterladen, um sie zu speichern."
+    },
+    "howItWorks": {
+      "title": "SO FUNKTIONIERT'S",
+      "step1": {
+        "title": "1. WÄHLEN SIE IHRE BILDER AUS",
+        "description": "Laden Sie ein oder mehrere Bilder hoch, die Sie konvertieren möchten.",
+        "proNote": "PRO-Benutzer können bis zu 100 Bilder gleichzeitig auswählen!"
+      },
+      "step2": {
+        "title": "2. ZIELFORMAT WÄHLEN",
+        "description": "Wählen Sie das gewünschte Ausgabeformat (JPG, PNG, WebP oder AVIF)."
+      },
+      "step3": {
+        "title": "3. GRÖSSE ÄNDERN (OPTIONAL)",
+        "description": "Wählen Sie optional eine Voreinstellung aus, um die Größe Ihrer Bilder während der Konvertierung zu ändern."
+      },
+      "step4": {
+        "title": "4. HERUNTERLADEN & VERWENDEN",
+        "description": "Konvertieren Sie Ihre Bilder und laden Sie sie einzeln oder als ZIP-Archiv herunter."
+      }
+    },
+    "supportedFormats": {
+      "title": "UNTERSTÜTZTE FORMATE",
+      "input": {
+        "title": "EINGABEFORMATE",
+        "description": "Sie können Bilder in diesen Formaten hochladen:"
+      },
+      "output": {
+        "title": "AUSGABEFORMATE",
+        "description": "Konvertieren Sie Ihre Bilder in eines dieser Formate:"
+      }
+    },
+    "alerts": {
+      "freeUserLimit": "Kostenlose Benutzer können bis zu 5 Bilder gleichzeitig konvertieren. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren!",
+      "maxImagesLimit": "Maximal 100 Bilder gleichzeitig erlaubt.",
+      "conversionFailed": "Formatkonvertierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "proDialog": {
+      "title": "AUF PRO UPGRADEN",
+      "featureTitle": "PRO-FUNKTION: Stapel-Formatkonvertierung",
+      "description": "Kostenlose Benutzer können nur bis zu {maxImages} Bilder gleichzeitig konvertieren. Upgraden Sie auf PRO, um bis zu 100 Bilder im Stapel zu konvertieren und Stunden an Arbeit zu sparen!",
+      "pricing": {
+        "title": "EINMALIGE ZAHLUNG",
+        "price": "$19.99",
+        "note": "Kein Abonnement, lebenslanger Zugriff"
+      },
+      "actions": {
+        "upgrade": "AUF PRO UPGRADEN",
+        "continue": "MIT KOSTENLOSEM MODUS FORTFAHREN"
+      }
+    },
+    "allImages": "ALLE BILDER ({current}/{max})",
+    "imagesCount": "{current}/{max} Bilder",
+    "upgradeFor": "(Upgrade für bis zu 100)"
+  },
+  "ImageDuplicateDetectionPage": {
+    "metadata": {
+      "title": "KI Duplikat-Foto-Finder & -Bereiniger | Batch Shots",
+      "description": "Finden und entfernen Sie schnell doppelte oder ähnliche Fotos mit unserem KI-gestützten Tool. Identifiziert Bilder bester Qualität in Duplikat-Sätzen. Kostenlos & im Browser.",
+      "keywords": "Duplikat Foto Finder, doppelte Bilder entfernen, ähnliche Foto Finder, KI Foto Bereiniger, Bildduplikaterkennung, beste Fotoqualität, Fotos aufräumen, batchshots"
+    },
+    "PageTitle": "KI Duplikat-Foto-Finder & -Bereiniger",
+    "AppInitializing": "Intelligenter Foto-Analysator wird initialisiert...",
+    "AISetup": "KI-Engine wird eingerichtet...",
+    "AIEngineInitializing": "KI-Engine wird initialisiert...",
+    "AIEngineStarted": "KI-Engine gestartet.",
+    "AIInitializing": "KI wird initialisiert...",
+    "AILoadingModel": "Fortschrittliches KI-Modell wird geladen...",
+    "AIModelLoaded": "KI-Modell geladen.",
+    "AIReady": "KI bereit. Wählen Sie Fotos aus, um Duplikate zu finden.",
+    "AIReadyPrompt": "KI bereit. Wählen Sie Fotos aus, um Duplikate zu finden.",
+    "ProcessingImage": "Analysiere Foto {imageId}...",
+    "ErrorProcessingImage": "Fehler beim Analysieren von Foto {imageId}: {data}.",
+    "AIEngineError": "Fehler der KI-Engine: {data}.",
+    "AIEngineErrorRefresh": "Fehler der KI-Engine: {data}. Bitte aktualisieren Sie die Seite oder versuchen Sie es erneut.",
+    "AICriticalError": "Bei der KI ist ein kritischer Fehler aufgetreten.",
+    "AICriticalErrorRefresh": "Bei unserer KI-Analyse ist ein kritischer Fehler aufgetreten. Bitte aktualisieren Sie die Seite.",
+    "QualityToolsError": "Qualitätsanalyse-Tools konnten nicht geladen werden. Detaillierte Qualitätsmetriken sind möglicherweise nicht verfügbar.",
+    "AllImagesProcessedAnalyzing": "Alle Fotos verarbeitet. Duplikate werden identifiziert...",
+    "AnalysisCompleteSummary": "Analyse abgeschlossen. {groupSummary} {successfullyProcessedCount} von {totalImagesCount} Fotos verarbeitet.",
+    "DuplicateSetsFound": "{count} Duplikatsätze gefunden.",
+    "NoDuplicatesFound": "Keine direkten Duplikate gefunden.",
+    "NoImagesProcessedSuccessfully": "Es konnten keine Fotos erfolgreich verarbeitet werden. {successfullyProcessedCount} von {totalImagesCount} Fotos verarbeitet.",
+    "NoImagesForNewThreshold": "Keine Fotos zur Analyse mit der neuen Ähnlichkeitseinstellung vorhanden.",
+    "ReanalyzingWithThreshold": "Fotos werden mit Ähnlichkeitseinstellung {threshold} neu analysiert...",
+    "AnalysisCompleteWithThreshold": "Analyse mit Ähnlichkeit {threshold} abgeschlossen. {groupSummary}",
+    "PleaseSelectImages": "Bitte wählen Sie Fotos aus...",
+    "AINotReadyError": "Die KI-Analyse-Engine ist nicht bereit. Bitte warten oder aktualisieren Sie die Seite.",
+    "ProcessingFilesHEIC": "Ausgewählte Dateien werden vorbereitet (ggf. konvertiert)...",
+    "HEICConversionFailedSkip": "Fehler beim Konvertieren des Bildes: {fileName}. Es wird übersprungen.",
+    "HEICConversionErrorSkip": "Fehler beim Konvertieren des Bildes: {fileName}. Es wird übersprungen.",
+    "NoValidFilesAfterConversion": "Keine gültigen Dateien zur Verarbeitung nach Konvertierungsversuchen.",
+    "SendingImagesToAI": "{count} Fotos werden zur KI-Analyse gesendet...",
+    "NoValidImagesSelected": "Keine gültigen Fotos zur Verarbeitung ausgewählt.",
+    "QualityToolsNotReadyKPI": "Qualitätsanalyse-Tools nicht bereit. Detaillierte Qualität kann nicht berechnet werden.",
+    "QualityToolsNotReadyQuality": "Qualitätsanalyse-Tools nicht bereit. Qualität kann nicht berechnet werden.",
+    "ErrorCalculatingQuality": "Fehler bei der Qualitätsberechnung für Foto {imageId}: {error}",
+    "QualityToolsNotReadyAnalysisWait": "Qualitätsanalyse-Tools sind nicht bereit. Bitte warten.",
+    "NoDuplicatesInGroup": "Keine Duplikate in dieser Gruppe zur Analyse.",
+    "AnalyzingGroupQuality": "Qualität für Fotos in Gruppe {groupNumber} wird analysiert...",
+    "AnalyzedProgressInGroup": "{processedCount} von {groupTotal} in Gruppe {groupNumber} analysiert. Foto: {imageName}",
+    "QualityAnalysisCompleteForGroup": "Qualitätsanalyse für Gruppe {groupNumber} abgeschlossen.",
+    "QualityAnalysisPartialForGroup": "Qualitätsanalyse für Gruppe {groupNumber} teilweise abgeschlossen. Einige Fotos sind möglicherweise fehlgeschlagen oder wurden übersprungen.",
+    "QualityToolsNotReadyBestSelection": "Qualitätsanalyse-Tools nicht bereit. Auswahl des besten Fotos kann nicht sichergestellt werden.",
+    "AnalyzingQualityForBestDownload": "Qualität für {count} Foto(s) wird analysiert, um das Beste für den Download auszuwählen...",
+    "PreDownloadAnalysisComplete": "Vorab-Qualitätsanalyse für die aktuelle Gruppe abgeschlossen.",
+    "NoImagesToDownload": "Keine Fotos zum Herunterladen.",
+    "QualityToolsNotReadyDownloadAll": "Qualitätsanalyse-Tools nicht bereit. Detaillierte Analyse für Duplikat-Sätze kann für 'Alle herunterladen' nicht durchgeführt werden. Bitte warten Sie oder analysieren Sie Gruppen zuerst einzeln.",
+    "PreparingDownload": "Dateien werden für den Download vorbereitet...",
+    "BestImageDeterminationFailed": "Das beste Foto für eine Gruppe konnte nicht ermittelt werden. Diese Gruppe wird im ZIP-Archiv ausgelassen.",
+    "WarningBestImageOmitted": "Warnung: Das beste Foto für eine Gruppe konnte nicht ermittelt und wurde ausgelassen.",
+    "ZippingImages": "{count} Foto(s) werden gezippt...",
+    "DownloadComplete": "Download abgeschlossen!",
+    "ErrorCreatingZIP": "Fehler beim Erstellen der ZIP-Datei für den Download.",
+    "NoImagesSelectedForDownload": "Keine Fotos zum Herunterladen ausgewählt (z.B. keine einzigartigen Fotos oder keine besten Fotos in Gruppen identifiziert).",
+    "ImageDataMissingDownload": "Fotodaten fehlen, Download nicht möglich.",
+    "DownloadingImage": "{imageName} wird heruntergeladen...",
+    "ImageDownloadedSuccessfully": "{imageName} erfolgreich heruntergeladen.",
+    "FailedToDownloadImage": "Fehler beim Herunterladen von {imageName}.",
+    "QualityToolsNotReadyAnalyzeAllGroups": "Qualitätsanalyse-Tools nicht bereit. Detaillierte Analyse für Duplikat-Sätze kann nicht durchgeführt werden. Bitte warten.",
+    "OnlyUniqueImagesReadyDownload": "Nur einzigartige Fotos vorhanden. Bereit zum Herunterladen.",
+    "NoImagesToAnalyzeOrDownload": "Keine Fotos zum Analysieren oder Herunterladen.",
+    "AnalyzingAllGroupsForBest": "Alle Gruppen werden zur Auswahl des besten Fotos analysiert...",
+    "AnalyzingGroupForBest": "Gruppe {currentGroup} von {totalGroups} wird auf das beste Foto analysiert...",
+    "AllGroupsAnalyzedReadyDownload": "Alle {count} Duplikat-Gruppen analysiert. Bereit zum Herunterladen von {downloadCount} besten Fotos.",
+    "AnalysisPartialReadyDownload": "Analyse zur besten Auswahl teilweise abgeschlossen ({processedGroups}/{totalGroups} Gruppen). Bereit zum Herunterladen von {downloadCount} Fotos (das beste verfügbare wird ausgewählt).",
+    "NoImagesProcessedOrGroups": "Keine Fotos verarbeitet oder noch keine Gruppen gebildet. Stellen Sie sicher, dass Fotos ausgewählt und die KI-Analyse abgeschlossen wurde.",
+
+    "LoaderTitleInitializing": "Intelligente Werkzeuge werden initialisiert...",
+    "LoaderTitleLoadingModel": "KI-Gehirn wird geladen...",
+    "LoaderTitleQualityTools": "Qualitätsanalysator wird vorbereitet...",
+    "LoaderDescriptionInitializing": "Vorbereitungen für die intelligente Duplikaterkennung laufen. Bitte warten.",
+    "LoaderDescriptionLoadingModel": "Unsere fortschrittliche KI wärmt sich auf. Dies kann einen Moment dauern.",
+    "LoaderDescriptionQualityTools": "Werkzeuge für detaillierte Einblicke in die Fotoqualität werden vorbereitet...",
+
+    "MainCardTitle": "Doppelte Fotos finden & verwalten",
+    "UploadSectionTitle": "Laden Sie Ihre Fotos hoch",
+    "UploadSectionDescription": "Wählen Sie mehrere Fotos aus. Unsere KI analysiert sie intelligent und gruppiert ähnliche Fotos.",
+    "ButtonSelectImages": "Fotos auswählen",
+    "ButtonSelectImagesLoading": "Lädt...",
+    "ButtonSelectImagesInitializing": "Werkzeuge laden...",
+    "ButtonAddMoreImages": "Weitere Fotos hinzufügen",
+    "ButtonAddMoreImagesLoading": "Fotos werden hinzugefügt...",
+    "SupportedFormats": "Unterstützt JPG, PNG, WEBP, HEIC Formate",
+    "AIStatusLabel": "KI-Status: {status}",
+    "QualityAnalyzerStatusLoading": "Qualitätsanalysator: Lädt...",
+
+    "SimilarityThresholdTitle": "Ähnlichkeitseinstellung",
+    "SimilarityThresholdDescription": "Steuern Sie, wie genau Fotos übereinstimmen müssen, um als Duplikate markiert zu werden. Höhere Werte bedeuten eine strengere Übereinstimmung.",
+    "SimilarityLessStrict": "Weniger streng",
+    "SimilarityCurrent": "Aktuell: {threshold}",
+    "SimilarityMoreStrict": "Strenger",
+    "ButtonApplyThreshold": "Einstellung anwenden",
+    "ButtonApplyThresholdLoading": "Neu analysieren...",
+
+    "ResultsTitle": "Erkennungsergebnisse:",
+    "DuplicateSetTitle": "Duplikat-Satz {number} ({count} ähnliche Fotos)",
+    "ButtonAnalyzeQuality": "Qualität analysieren",
+    "ButtonAnalyzeQualityLoading": "Analysiere...",
+    "ButtonReanalyzeQuality": "Qualität neu analysieren",
+    "ImageMissing": "Fotodaten fehlen (Index: {index})",
+    "BestLabel": "Beste",
+    "KpiRes": "Aufl:",
+    "KpiSharp": "Schärfe:",
+    "KpiNoise": "Rausch:",
+    "KpiContrast": "Kontrast:",
+    "KpiExposure": "Belicht:",
+    "ButtonDownload": "Herunterladen",
+    "ButtonDownloading": "Wird heruntergeladen...",
+
+    "UniqueImagesTitle": "Einzigartige Fotos ({count} Foto(s) ohne direkte Duplikate)",
+
+    "ButtonAnalyzeAllGroups": "Alle Gruppen für beste Auswahl analysieren",
+    "ButtonAnalyzeAllGroupsLoading": "Alle Gruppen werden analysiert...",
+    "ButtonDownloadBest": "{count} beste Fotos herunterladen",
+    "ButtonDownloadBestLoading": "Download wird vorbereitet...",
+
+    "HowItWorksTitle": "So findet unsere KI Duplikate",
+    "HowItWorksStep1Title": "1. Laden Sie Ihre Fotos hoch",
+    "HowItWorksStep1Desc": "Klicken Sie auf \"Fotos auswählen\" und wählen Sie die Bilder aus, die Sie überprüfen möchten. Sie können viele auf einmal auswählen.",
+    "HowItWorksStep2Title": "2. Intelligente KI-Analyse",
+    "HowItWorksStep2Desc": "Unsere fortschrittliche KI (basierend auf Vision Transformer-Technologie) analysiert intelligent den visuellen Inhalt jedes Fotos und versteht dessen einzigartige Merkmale und Erscheinungsbild.",
+    "HowItWorksStep3Title": "3. Intelligente Ähnlichkeitsbewertung",
+    "HowItWorksStep3Desc": "Die KI vergleicht Fotos mithilfe einer ausgefeilten visuellen Analyse (Kosinus-Ähnlichkeit), um zu bestimmen, wie ähnlich sie sich basierend auf ihrem Inhalt sind.",
+    "HowItWorksStep4Title": "4. Ähnlichkeit feinabstimmen",
+    "HowItWorksStep4Desc": "Verwenden Sie den Ähnlichkeitsregler, um zu steuern, wie streng die Übereinstimmung ist. Ein höherer Wert bedeutet, dass Fotos nahezu identisch sein müssen, um als Duplikate gekennzeichnet zu werden.",
+    "HowItWorksStep5Title": "5. Überprüfen & Organisieren",
+    "HowItWorksStep5Desc": "Die Ergebnisse zeigen deutlich Duplikat-Sätze und einzigartige Fotos. Unsere KI kann auch das qualitativ beste Foto in jeder Duplikatgruppe hervorheben und Ihnen so bei der Entscheidung helfen, welches Sie behalten möchten.",
+    "FreeUserLimit": "Kostenlose Benutzer können bis zu {limit} Fotos gleichzeitig hochladen.",
+    "ButtonSelectImagesLimit": "Fotos auswählen (Bis zu {limit})",
+    "UpgradeMessage": "Upgrade auf PRO, um unbegrenzt viele Fotos gleichzeitig zu analysieren.",
+    "UpgradeLink": "Jetzt upgraden",
+    "HowItWorksStep1Free": "Kostenlose Benutzer sind auf {limit} Fotos gleichzeitig beschränkt.",
+    "HowItWorksStep1Pro": "Als PRO-Benutzer können Sie unbegrenzt viele Fotos gleichzeitig analysieren.",
+    "ProFeatureName": "Unbegrenzte Fotoanalyse",
+
+    "FreeModeTitle": "KOSTENLOSER MODUS",
+    "FreeModeDescription": "Verarbeiten Sie bis zu {limit} Fotos gleichzeitig. Upgrade auf PRO für unbegrenzte Fotoanalyse!",
+    "ProModeTitle": "PRO MODUS",
+    "ProModeDescription": "Verarbeiten Sie unbegrenzt viele Fotos mit Ihrem PRO-Konto!",
+    "MaxImagesExceeded": "Maximal 100 Bilder erlaubt. Nur die ersten 100 wurden verarbeitet.",
+    "ProcessingErrors": "Verarbeitungsfehler",
+    "imagesCount": "{current}/{max} Fotos",
+    "upgradeFor": "(Upgrade für unbegrenzt)",
+
+    "UpgradeCardTitle": "UPGRADE AUF PRO",
+    "UpgradeCardPlanTitle": "PRO PLAN",
+    "UpgradeCardPlanPrice": "$19.99",
+    "UpgradeCardPlanNote": "Einmalzahlung, lebenslanger Zugang",
+    "UpgradeCardFeature1": "Analysieren Sie unbegrenzt viele Fotos gleichzeitig (vs. 5 im kostenlosen Modus)",
+    "UpgradeCardFeature2": "Finden Sie schnell Duplikate in großen Fotosammlungen",
+    "UpgradeCardFeature3": "Qualitätsanalyse zur automatischen Ermittlung der besten Fotos",
+    "UpgradeCardFeature4": "Stapel-Download der besten Fotos aus Duplikat-Sätzen",
+    "UpgradeCardFeature5": "Zugang zu allen anderen PRO-Funktionen (Hintergrundentfernung, etc.)",
+    "UpgradeCardButton": "JETZT UPGRADEN",
+
+    "ProUpgradeTitle": "Upgrade auf Pro für unbegrenzte Fotos",
+
+    "SimilarityControlsTitle": "Ähnlichkeitsalgorithmus & Schwellenwert",
+    "SimilarityAlgorithmLabel": "Ähnlichkeitsalgorithmus",
+    "SimilarityThresholdLabel": "Ähnlichkeitsschwellenwert",
+    "SimilarityThresholdDescDistance": "Niedrigere Werte bedeuten ähnlichere Bilder (Distanzmetrik)",
+    "SimilarityThresholdDescSimilarity": "Höhere Werte bedeuten ähnlichere Bilder (Ähnlichkeitsmetrik)",
+
+    "ProcessingChanges": "Änderungen werden verarbeitet...",
+    "ReanalyzingWithAlgorithm": "Neuanalyse mit neuem Algorithmus...",
+    "AnalysisCompleteWithAlgorithm": "Analyse mit neuem Algorithmus abgeschlossen. {groupSummary}",
+    "DuplicateAnalysisComplete": "Duplikatanalyse abgeschlossen",
+
+    "VisualizationTitle": "KI-Vektorraum",
+    "VisualizationDescription": "Visualisieren Sie, wie die KI Ihre Bilder im hochdimensionalen Raum sieht, reduziert auf 2D mit dem UMAP-Algorithmus. Ähnliche Bilder gruppieren sich zusammen.",
+    "VisualizationShowButton": "Visualisierung anzeigen",
+    "VisualizationHideButton": "Visualisierung ausblenden",
+    "VisualizationGeneratingButton": "Visualisierung wird generiert...",
+    "VisualizationNoData": "Laden Sie zuerst Bilder hoch und verarbeiten Sie diese, um die Visualisierung zu aktivieren",
+    "VisualizationProcessingStatus": "Dies kann bei großen Datensätzen einen Moment dauern...",
+    "VisualizationLegendUnique": "Einzigartige Bilder",
+    "VisualizationLegendDuplicates": "Duplikatgruppen (nach Ähnlichkeit eingefärbt)",
+    "VisualizationHelpText": "Bewegen Sie den Mauszeiger über die Punkte, um Bildvorschauen zu sehen • Nähere Punkte = ähnlichere Bilder",
+    "VisualizationNeedMinImages": "Mindestens 3 Bilder für die Visualisierung erforderlich",
+    "VisualizationNoDataAvailable": "Keine Visualisierungsdaten verfügbar"
+  },
+  "ImageSeoGenerationPage": {
+    "metadata": {
+      "title": "KI-Bild-SEO-Generierung – SEO-URL-Slugs & Bildbeschreibungen generieren",
+      "description": "Laden Sie Ihre Bilder hoch, um automatisch SEO-freundliche Dateinamen, URL-Slugs und Bildbeschreibungen mit KI zu erstellen.",
+      "keywords": "bild seo, url slug generator, bild seo beschreibung generator, ki inhaltserstellung, bildoptimierung"
+    },
+    "AppInitializing": "KI-SEO-Generator wird initialisiert...",
+    "AISetup": "KI für SEO-Inhalte wird eingerichtet...",
+    "AIEngineInitializing": "KI-SEO-Engine wird initialisiert...",
+    "AIEngineStarted": "KI-SEO-Engine gestartet.",
+    "AIInitializing": "KI-Modell für SEO wird initialisiert...",
+    "AILoadingModel": "KI-SEO-Modell wird geladen...",
+    "AIModelLoaded": "KI-SEO-Modell geladen.",
+    "AIReady": "KI-SEO-Engine bereit.",
+    "AIReadyPrompt": "Bereit für KI-SEO. Bitte laden Sie Ihre Bilder hoch.",
+    "ProcessingImage": "KI verarbeitet für SEO: Bild {imageId}...",
+    "ErrorProcessingImage": "Fehler bei der KI-SEO-Verarbeitung für Bild {imageId}: {data}",
+    "AIEngineError": "Fehler in der KI-SEO-Engine: {data}",
+    "AIEngineErrorRefresh": "Fehler in der KI-SEO-Engine: {data}. Bitte aktualisieren.",
+    "AICriticalError": "Kritischer Fehler in der KI-SEO-Engine.",
+    "AICriticalErrorRefresh": "Kritischer Fehler in der KI-SEO-Engine. Bitte aktualisieren und erneut versuchen.",
+    "PleaseSelectImages": "Bitte wählen Sie Bilder für die KI-SEO-Generierung aus.",
+    "AINotReadyError": "KI-SEO-Engine ist nicht bereit. Bitte warten.",
+    "ProcessingFiles": "Bilder werden für KI-SEO verarbeitet...",
+    "ProcessingFilesHEIC": "Bilder werden für KI-SEO verarbeitet, HEIC wird bei Bedarf konvertiert...",
+    "HEICConversionFailedSkip": "HEIC-Konvertierung in SEO-freundliches Format fehlgeschlagen für: {fileName}. Überspringen.",
+    "HEICConversionErrorSkip": "Fehler bei der HEIC-Konvertierung für SEO: {fileName}. Überspringen.",
+    "NoValidFilesAfterConversion": "Keine gültigen Bilder für KI-SEO nach Konvertierungsversuchen.",
+    "NoValidFiles": "Keine gültigen Bilder für die KI-SEO-Verarbeitung ausgewählt.",
+    "SendingImagesToAI": "{count} Bilder werden an die KI zur SEO-Inhaltserstellung gesendet...",
+    "AllImagesProcessed": "KI-SEO-Verarbeitung abgeschlossen. Sehen Sie unten Ihre optimierten Inhalte.",
+    "PageTitle": "KI-Bild-SEO & Alt-Text Generator",
+    "PageTitlePro": "PRO KI-Bild-SEO & Alt-Text Generator",
+    "PageTitleFree": "KI-Bild-SEO & Beschriftungsgenerator",
+    "MainCardTitle": "SEO-Namen & Bildbeschreibungen mit KI generieren",
+    "UploadSectionTitle": "1. Bilder für KI-SEO hochladen",
+    "UploadSectionDescription": "Laden Sie JPG, PNG, WEBP, GIF, HEIC hoch. Unsere KI erstellt SEO-freundliche Dateinamen und Alt-Texte. Fügen Sie Schlüsselwörter hinzu, um die Ergebnisse zu verfeinern.",
+    "UploadSectionDescriptionWithLimit": "Laden Sie JPG, PNG, WEBP, GIF, HEIC hoch (max. {maxImages} für Ihren Plan). Die KI erstellt SEO-Dateinamen & Alt-Texte. Fügen Sie Schlüsselwörter für individuelle Ergebnisse hinzu.",
+    "ButtonSelectImages": "Bilder für KI-SEO auswählen",
+    "MainCardInfoTitle": "WAS IST DIESES TOOL?",
+    "MainCardInfoDescription": "Laden Sie Ihre Bilder hoch und unsere KI generiert automatisch detaillierte, beschreibende Bildunterschriften für jedes Bild. Das FastVLM-Modell analysiert visuellen Inhalt und erstellt natürliche Sprachbeschreibungen.",
+    "ButtonSelectImagesLoading": "KI wird initialisiert...",
+    "ResultsTitle": "KI-generierte SEO-Inhalte",
+    "ImageMissing": "Bilddaten für KI-SEO fehlen (Index: {index})",
+    "GeneratedSeoName": "KI-generierter SEO-Dateiname:",
+    "GeneratedDescription": "KI-generierter Alt-Text/Beschreibung:",
+    "StatusLabel": "Aktueller Status:",
+    "AIStatusLabel": "KI-SEO-Status: {status}",
+    "HowItWorksTitle": "So funktioniert KI-Bild-SEO",
+    "HowItWorksStep1Title": "Bilder hochladen",
+    "HowItWorksStep1Desc": "Wählen Sie Bilder aus oder ziehen Sie sie per Drag & Drop. Unsere KI bereitet sie für die SEO-Analyse vor.",
+    "HowItWorksStep2Title": "KI-Inhaltsanalyse",
+    "HowItWorksStep2Desc": "Unsere KI analysiert jedes Bild, um Inhalt, Kontext und SEO-Potenzial zu verstehen.",
+    "HowItWorksStep3Title": "SEO-Name & Alt-Text-Generierung",
+    "HowItWorksStep3Desc": "Die KI erstellt SEO-freundliche Dateinamen und beschreibende Alt-Texte. Schlüsselwörter verbessern die Optimierung.",
+    "HowItWorksStep4Title": "Überprüfen & SEO verbessern",
+    "HowItWorksStep4Desc": "Kopieren Sie die KI-generierten SEO-Inhalte, um das Suchranking und die Zugänglichkeit Ihrer Website, Ihres Blogs oder Ihrer sozialen Medien zu verbessern.",
+    "goBack": "Alles löschen",
+    "ButtonDownload": "Kopieren",
+    "NoResultsYet": "Laden Sie Bilder hoch, um KI-generierte SEO-Inhalte zu sehen.",
+    "KeywordsSectionTitle": "2. Mit Schlüsselwörtern verbessern (optional)",
+    "KeywordsSectionDescription": "Fügen Sie durch Kommas getrennte Schlüsselwörter hinzu. Unsere KI integriert sie gezielt in den Alt-Text für besseres SEO.",
+    "KeywordsPlaceholder": "z.B. Reisen, Essen, E-Commerce, Produktkategorie",
+    "ButtonRegenerateWithKeywords": "SEO-Inhalte mit Schlüsselwörtern neu generieren",
+    "ButtonRegenerating": "SEO-Inhalte werden neu generiert...",
+    "RegeneratingStatus": "KI generiert Alt-Text mit neuen SEO-Schlüsselwörtern...",
+    "RegenerationComplete": "KI-gestützte SEO-Neugenerierung abgeschlossen.",
+    "ButtonDownloadAll": "Alle KI-SEO-Ergebnisse herunterladen (ZIP)",
+    "ButtonDownloadingAll": "KI-SEO-ZIP wird heruntergeladen...",
+    "PreparingDownload": "KI-SEO-Dateien werden für den Download vorbereitet...",
+    "ZippingFiles": "{count} KI-optimierte Dateien werden gezippt...",
+    "NoFilesToDownload": "Keine KI-verarbeiteten Bilder mit SEO-Daten zum Herunterladen.",
+    "ErrorCreatingZIP": "Fehler beim Erstellen des KI-SEO-ZIPs. Bitte versuchen Sie es erneut.",
+    "DownloadComplete": "KI-SEO-Download abgeschlossen!",
+    "ImageUploadFeatureName": "Unbegrenzte KI-SEO-Bild-Uploads",
+    "FreeLimitReachedDialogTitle": "Upgrade für mehr KI-SEO-Power",
+    "FreeLimitReachedDialogMessage": "Sie haben das kostenlose Limit für KI-SEO erreicht. Upgraden Sie auf Pro, um mehr Bilder zu verarbeiten.",
+    "FreeLimitReachedSomeProcessed": "Kostenloses Plan-Limit von {count} Bildern für KI-SEO erreicht. Die ersten {count} werden verarbeitet. Für mehr upgraden.",
+    "ProLimitReachedSomeProcessed": "Pro-Plan-Limit von {count} Bildern für KI-SEO erreicht. Die ersten {count} werden verarbeitet.",
+    "NoValidFilesToProcessAfterLimit": "Keine Bilder zur Verarbeitung für KI-SEO nach Planlimits.",
+    "ProUserCardTitle": "KI-SEO-Pro-Plan aktiv",
+    "ProUserCardDescription": "Sie sind im Pro-Plan! Genießen Sie unbegrenzte KI-SEO-Bilderzeugung pro Stapel und alle Premium-Funktionen.",
+    "UpgradeToProCardTitle": "Auf Pro upgraden",
+    "UpgradeToProCardDescription": "Schalten Sie die volle KI-SEO-Power frei! Kostenlose Nutzer können {maxImagesFree} Bilder verarbeiten. Pro-Nutzer genießen unbegrenzte Bildverarbeitung & weitere Vorteile.",
+    "ButtonUpgradeNow": "Jetzt auf Pro upgraden",
+    "ProUserPlanIndicator": "Pro-Plan: Unbegrenzte KI-SEO-Bilderzeugung.",
+    "FreeUserPlanIndicator": "Kostenloser Plan: KI-SEO für bis zu 3 Bilder. Für unbegrenzt upgraden!",
+    "FreePlanInfoBoxTitle": "KOSTENLOSER PLAN",
+    "ProFeatureUnlimitedImages": "Unbegrenzte KI-SEO-Bilderzeugung"
+  }
 }

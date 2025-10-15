@@ -1,1383 +1,1391 @@
 {
-    "Manifest": {
-        "name": "Batch Shots"
+  "Manifest": {
+    "name": "Batch Shots"
+  },
+  "LocaleSwitcher": {
+    "label": "Changer de langue",
+    "locale": "{locale, select, fr {🇫🇷 Français} en {🇺🇸 English} other {Inconnu}}"
+  },
+  "CookieConsent": {
+    "title": "AVIS SUR LES COOKIES",
+    "message": "Ce site utilise des cookies essentiels pour assurer son bon fonctionnement. En continuant à utiliser notre site, vous acceptez cela.",
+    "privacyLink": "Politique de confidentialité",
+    "termsLink": "Conditions d'utilisation",
+    "acceptButton": "ACCEPTER",
+    "rejectButton": "REFUSER",
+    "learnMoreButton": "EN SAVOIR PLUS"
+  },
+  "Home": {
+    "title": "Batch Shots : OPTIMISEUR D'IMAGE SEO",
+    "loading": "CHARGEMENT DE L'APPLICATION...",
+    "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'image.",
+    "transformTitle": "TRANSFORMEZ VOS PHOTOS DE PRODUITS",
+    "heroDescription": "Optimisez rapidement vos images de produits pour le web, le commerce électronique et les médias sociaux grâce à notre outil basé sur navigateur.",
+    "privacyFocused": "AXÉ SUR LA CONFIDENTIALITÉ",
+    "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou données sur nos serveurs.",
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfUse": "Conditions d'utilisation",
+    "dragAndDropPrivacy": "Glissez-déposez des images ici ou cliquez pour sélectionner des fichiers. <strong>Tous les traitements s'effectuent dans votre navigateur. Nous ne téléversons jamais vos images sur nos serveurs.</strong> Votre confidentialité et votre sécurité sont garanties.",
+    "preparingImagesPreview": "Préparation des images...",
+    "features": {
+      "presets": {
+        "title": "PRÉRÉGLAGES PROFESSIONNELS",
+        "description": "Appliquez des préréglages optimisés pour l'e-commerce, les réseaux sociaux et l'affichage web en un seul clic."
+      },
+      "aiPowered": {
+        "title": "SEO ALIMENTÉ PAR L'IA",
+        "description": "Générez des noms de fichiers optimisés pour le SEO avec nos outils IA pour améliorer la découvrabilité de vos produits."
+      },
+      "advancedControls": {
+        "title": "CONTRÔLES AVANCÉS",
+        "description": "Ajustez la luminosité, le contraste, la balance des blancs et plus encore pour perfectionner vos images de produits."
+      },
+      "batchProcessing": {
+        "title": "TRAITEMENT PAR LOTS",
+        "description": "Traitez plusieurs images à la fois pour gagner du temps et garantir des résultats cohérents."
+      }
     },
-    "LocaleSwitcher": {
-        "label": "Changer de langue",
-        "locale": "{locale, select, fr {🇫🇷 Français} en {🇺🇸 English} other {Inconnu}}"
+    "upgradeProTitle": "DÉBLOQUER LES FONCTIONNALITÉS PRO",
+    "upgradeProDescription": "Obtenez plus d'images, la suppression de l'arrière-plan et des fonctionnalités avancées avec notre mise à niveau Pro unique.",
+    "freePlan": "PLAN GRATUIT",
+    "proDescription": "Traitez jusqu'à {maxImages} images à la fois avec toutes les fonctionnalités premium débloquées.",
+    "freeDescription": "Limité à {maxImages} images. Passez à PRO pour traiter jusqu'à 100 images à la fois.",
+    "upgradeToPro": "PASSER À PRO",
+    "learnMoreAboutPro": "EN SAVOIR PLUS SUR PRO",
+    "selectImages": "SÉLECTIONNER DES IMAGES (JUSQU'À {maxImages})",
+    "imageEditor": "ÉDITEUR D'IMAGES",
+    "selectMoreImages": "SÉLECTIONNER PLUS D'IMAGES",
+    "maxImagesReached": "NOMBRE MAXIMUM D'IMAGES ATTEINT",
+    "imagesCount": "{current}/{max} images",
+    "upgradeFor": "(Passez à PRO pour jusqu'à 100)",
+    "imageOptimization": "OPTIMISATION D'IMAGE",
+    "heicConversionFailed": "Échec de la conversion de l'image HEIC : {fileName}. Le format de fichier peut ne pas être pris en charge ou le fichier peut être corrompu."
+  },
+  "Navbar": {
+    "imageOptimizer": "Optimiseur d'images",
+    "aiPhotoDuplicateFinder": "Détecteur de doublons photo IA",
+    "aiImageSeoCaptionGeneration": "Générateur de description SEO IA",
+    "removeBackgrounds": "Supprimer les arrière-plans",
+    "aiBackgrounds": "Arrière-plans IA",
+    "pricing": "Tarifs",
+    "login": "SE CONNECTER",
+    "objectRemoval": "Suppression d'objets",
+    "tools": "Outils",
+    "addWatermark": "Ajouter un filigrane",
+    "seoDescription": "Description SEO",
+    "imageFormatConvertor": "Convertisseur de format d'image",
+    "profile": "Profil",
+    "logout": "Se déconnecter"
+  },
+  "Footer": {
+    "about": "Batch Shots vous aide à optimiser rapidement et facilement les images de produits pour le SEO, directement dans votre navigateur.",
+    "quickLinks": "LIENS RAPIDES",
+    "stayUpdated": "RESTEZ INFORMÉ",
+    "subscribeText": "Abonnez-vous à notre newsletter pour les mises à jour, conseils et offres spéciales.",
+    "emailPlaceholder": "Votre email",
+    "subscribe": "S'ABONNER",
+    "copyright": "© {year} Batch Shots. Tous droits réservés.",
+    "madeWith": "Fait avec ♥ par l'équipe Batch Shots",
+    "contactUs": "Contactez-nous"
+  },
+  "Layout": {
+    "title": "Éditeur d'Images par Lots & Optimiseur SEO | Batch Shots",
+    "description": "Modifiez, redimensionnez, ajoutez des filigranes et optimisez facilement les images en masse pour le SEO. Fonctionnalités IA pour les photos de produits, la suppression d'arrière-plan et la génération de noms SEO.",
+    "keywords": "éditeur d'images, traitement d'images par lots, optimisation d'images seo, filigrane photos, suppression d'arrière-plan, photos de produits, édition d'images ia, batchshots"
+  },
+  "Components": {
+    "ImageProcessingControls": {
+      "title": "AJUSTEMENTS D'IMAGE",
+      "reset": "RÉINITIALISER",
+      "applyToAll": "APPLIQUER À TOUTES LES IMAGES",
+      "basic": "BASIQUE",
+      "advanced": "AVANCÉ",
+      "ai": "IA",
+      "brightness": "LUMINOSITÉ",
+      "contrast": "CONTRASTE",
+      "sharpen": "NETTETÉ",
+      "colorAdjust": "AJUSTEMENT DES COULEURS (HSL)",
+      "hue": "TEINTE",
+      "cooler": "PLUS FROID",
+      "warmer": "PLUS CHAUD",
+      "saturation": "SATURATION",
+      "less": "MOINS",
+      "more": "PLUS",
+      "lightness": "LUMINOSITÉ",
+      "darker": "PLUS SOMBRE",
+      "lighter": "PLUS CLAIR",
+      "colorBalance": "BALANCE DES COULEURS (RGB)",
+      "red": "ROUGE",
+      "green": "VERT",
+      "blue": "BLEU",
+      "processing": "TRAITEMENT DES IMAGES..."
     },
-    "CookieConsent": {
-        "title": "AVIS SUR LES COOKIES",
-        "message": "Ce site utilise des cookies essentiels pour assurer son bon fonctionnement. En continuant à utiliser notre site, vous acceptez cela.",
-        "privacyLink": "Politique de confidentialité",
-        "termsLink": "Conditions d'utilisation",
-        "acceptButton": "ACCEPTER",
-        "rejectButton": "REFUSER",
-        "learnMoreButton": "EN SAVOIR PLUS"
-    },
-    "Home": {
-        "title": "Batch Shots : OPTIMISEUR D'IMAGE SEO",
-        "loading": "CHARGEMENT DE L'APPLICATION...",
-        "loadingDescription": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'image.",
-        "transformTitle": "TRANSFORMEZ VOS PHOTOS DE PRODUITS",
-        "heroDescription": "Optimisez rapidement vos images de produits pour le web, le commerce électronique et les médias sociaux grâce à notre outil basé sur navigateur.",
-        "privacyFocused": "AXÉ SUR LA CONFIDENTIALITÉ",
-        "privacyDescription": "Batch Shots traite toutes les images directement dans votre navigateur. Nous ne stockons pas vos photos ou données sur nos serveurs.",
-        "privacyPolicy": "Politique de confidentialité",
-        "termsOfUse": "Conditions d'utilisation",
-        "dragAndDropPrivacy": "Glissez-déposez des images ici ou cliquez pour sélectionner des fichiers. <strong>Tous les traitements s'effectuent dans votre navigateur. Nous ne téléversons jamais vos images sur nos serveurs.</strong> Votre confidentialité et votre sécurité sont garanties.",
-        "preparingImagesPreview": "Préparation des images...",
-        "features": {
-            "presets": {
-                "title": "PRÉRÉGLAGES PROFESSIONNELS",
-                "description": "Appliquez des préréglages optimisés pour l'e-commerce, les réseaux sociaux et l'affichage web en un seul clic."
-            },
-            "aiPowered": {
-                "title": "SEO ALIMENTÉ PAR L'IA",
-                "description": "Générez des noms de fichiers optimisés pour le SEO avec nos outils IA pour améliorer la découvrabilité de vos produits."
-            },
-            "advancedControls": {
-                "title": "CONTRÔLES AVANCÉS",
-                "description": "Ajustez la luminosité, le contraste, la balance des blancs et plus encore pour perfectionner vos images de produits."
-            },
-            "batchProcessing": {
-                "title": "TRAITEMENT PAR LOTS",
-                "description": "Traitez plusieurs images à la fois pour gagner du temps et garantir des résultats cohérents."
-            }
+    "BackgroundRemoval": {
+      "title": "SUPPRESSION D'ARRIÈRE-PLAN",
+      "selected": "Image sélectionnée",
+      "removeBackground": "SUPPRIMER L'ARRIÈRE-PLAN",
+      "allImages": "Toutes les images",
+      "backgroundsRemoved": "{count} sur {total} arrière-plans supprimés",
+      "removeAllBackgrounds": "SUPPRIMER TOUS LES ARRIÈRE-PLANS",
+      "processing": "Traitement...",
+      "backgroundRemoved": "Arrière-plan supprimé avec succès !",
+      "transparent": "Arrière-plan transparent détecté",
+      "description": "Supprimez l'arrière-plan de votre image de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité.",
+      "processingInfo": {
+        "process": "Processus",
+        "processValue": "Traitement IA dans le navigateur",
+        "result": "Résultat",
+        "resultValue": "Arrière-plan PNG transparent",
+        "mode": "Mode"
+      },
+      "proDialog": {
+        "title": "PASSER À PRO",
+        "featureTitle": "FONCTION PRO : Suppression d'arrière-plan",
+        "description": "Passez à PRO pour débloquer la suppression d'arrière-plan pour toutes vos images (jusqu'à 100 à la fois) ! Obtenez des photos de produits d'aspect professionnel avec des arrière-plans transparents.",
+        "pricing": {
+          "title": "PAIEMENT UNIQUE",
+          "price": "19,99 €",
+          "note": "Pas d'abonnement, accès à vie"
         },
-        "upgradeProTitle": "DÉBLOQUER LES FONCTIONNALITÉS PRO",
-        "upgradeProDescription": "Obtenez plus d'images, la suppression de l'arrière-plan et des fonctionnalités avancées avec notre mise à niveau Pro unique.",
-        "freePlan": "PLAN GRATUIT",
-        "proDescription": "Traitez jusqu'à {maxImages} images à la fois avec toutes les fonctionnalités premium débloquées.",
-        "freeDescription": "Limité à {maxImages} images. Passez à PRO pour traiter jusqu'à 100 images à la fois.",
-        "upgradeToPro": "PASSER À PRO",
-        "learnMoreAboutPro": "EN SAVOIR PLUS SUR PRO",
-        "selectImages": "SÉLECTIONNER DES IMAGES (JUSQU'À {maxImages})",
-        "imageEditor": "ÉDITEUR D'IMAGES",
-        "selectMoreImages": "SÉLECTIONNER PLUS D'IMAGES",
-        "maxImagesReached": "NOMBRE MAXIMUM D'IMAGES ATTEINT",
-        "imagesCount": "{current}/{max} images",
-        "upgradeFor": "(Passez à PRO pour jusqu'à 100)",
-        "imageOptimization": "OPTIMISATION D'IMAGE",
-        "heicConversionFailed": "Échec de la conversion de l'image HEIC : {fileName}. Le format de fichier peut ne pas être pris en charge ou le fichier peut être corrompu."
-    },
-    "Navbar": {
-        "imageOptimizer": "Optimiseur d'images",
-        "aiPhotoDuplicateFinder": "Détecteur de doublons photo IA",
-        "aiImageSeoCaptionGeneration": "Générateur de description SEO IA",
-        "removeBackgrounds": "Supprimer les arrière-plans",
-        "aiBackgrounds": "Arrière-plans IA",
-        "pricing": "Tarifs",
-        "login": "SE CONNECTER",
-        "objectRemoval": "Suppression d'objets",
-        "tools": "Outils",
-        "addWatermark": "Ajouter un filigrane",
-        "seoDescription": "Description SEO",
-        "imageFormatConvertor": "Convertisseur de format d'image",
-        "profile": "Profil",
-        "logout": "Se déconnecter"
-    },
-    "Footer": {
-        "about": "Batch Shots vous aide à optimiser rapidement et facilement les images de produits pour le SEO, directement dans votre navigateur.",
-        "quickLinks": "LIENS RAPIDES",
-        "stayUpdated": "RESTEZ INFORMÉ",
-        "subscribeText": "Abonnez-vous à notre newsletter pour les mises à jour, conseils et offres spéciales.",
-        "emailPlaceholder": "Votre email",
-        "subscribe": "S'ABONNER",
-        "copyright": "© {year} Batch Shots. Tous droits réservés.",
-        "madeWith": "Fait avec ♥ par l'équipe Batch Shots",
-        "contactUs": "Contactez-nous"
-    },
-    "Layout": {
-        "title": "Éditeur d'Images par Lots & Optimiseur SEO | Batch Shots",
-        "description": "Modifiez, redimensionnez, ajoutez des filigranes et optimisez facilement les images en masse pour le SEO. Fonctionnalités IA pour les photos de produits, la suppression d'arrière-plan et la génération de noms SEO.",
-        "keywords": "éditeur d'images, traitement d'images par lots, optimisation d'images seo, filigrane photos, suppression d'arrière-plan, photos de produits, édition d'images ia, batchshots"
-    },
-    "Components": {
-        "ImageProcessingControls": {
-            "title": "AJUSTEMENTS D'IMAGE",
-            "reset": "RÉINITIALISER",
-            "applyToAll": "APPLIQUER À TOUTES LES IMAGES",
-            "basic": "BASIQUE",
-            "advanced": "AVANCÉ",
-            "ai": "IA",
-            "brightness": "LUMINOSITÉ",
-            "contrast": "CONTRASTE",
-            "sharpen": "NETTETÉ",
-            "colorAdjust": "AJUSTEMENT DES COULEURS (HSL)",
-            "hue": "TEINTE",
-            "cooler": "PLUS FROID",
-            "warmer": "PLUS CHAUD",
-            "saturation": "SATURATION",
-            "less": "MOINS",
-            "more": "PLUS",
-            "lightness": "LUMINOSITÉ",
-            "darker": "PLUS SOMBRE",
-            "lighter": "PLUS CLAIR",
-            "colorBalance": "BALANCE DES COULEURS (RGB)",
-            "red": "ROUGE",
-            "green": "VERT",
-            "blue": "BLEU",
-            "processing": "TRAITEMENT DES IMAGES..."
-        },
-        "BackgroundRemoval": {
-            "title": "SUPPRESSION D'ARRIÈRE-PLAN",
-            "selected": "Image sélectionnée",
-            "removeBackground": "SUPPRIMER L'ARRIÈRE-PLAN",
-            "allImages": "Toutes les images",
-            "backgroundsRemoved": "{count} sur {total} arrière-plans supprimés",
-            "removeAllBackgrounds": "SUPPRIMER TOUS LES ARRIÈRE-PLANS",
-            "processing": "Traitement...",
-            "backgroundRemoved": "Arrière-plan supprimé avec succès !",
-            "transparent": "Arrière-plan transparent détecté",
-            "description": "Supprimez l'arrière-plan de votre image de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité.",
-            "processingInfo": {
-                "process": "Processus",
-                "processValue": "Traitement IA dans le navigateur",
-                "result": "Résultat",
-                "resultValue": "Arrière-plan PNG transparent",
-                "mode": "Mode"
-            },
-            "proDialog": {
-                "title": "PASSER À PRO",
-                "featureTitle": "FONCTION PRO : Suppression d'arrière-plan",
-                "description": "Passez à PRO pour débloquer la suppression d'arrière-plan pour toutes vos images (jusqu'à 100 à la fois) ! Obtenez des photos de produits d'aspect professionnel avec des arrière-plans transparents.",
-                "pricing": {
-                    "title": "PAIEMENT UNIQUE",
-                    "price": "19,99 €",
-                    "note": "Pas d'abonnement, accès à vie"
-                },
-                "actions": {
-                    "upgrade": "PASSER À PRO",
-                    "try": "ESSAYER COMMENT ÇA MARCHE",
-                    "later": "Peut-être plus tard"
-                }
-            },
-            "compactDescription": "Supprime l'arrière-plan des images de produits avec l'IA. Le traitement prend 10-30 secondes."
-        },
-        "PresetsSelector": {
-            "title": "PRÉRÉGLAGES",
-            "custom": "Personnalisé",
-            "dimensions": "DIMENSIONS",
-            "width": "Largeur",
-            "height": "Hauteur",
-            "auto": "auto",
-            "quality": "QUALITÉ",
-            "apply": "APPLIQUER",
-            "presets": {
-                "web-optimized": {
-                    "name": "Optimisé pour le web",
-                    "description": "1080px, 75% qualité (Taille de fichier minimale, bon pour le web)"
-                },
-                "standard": {
-                    "name": "Standard",
-                    "description": "1080px, 85% qualité (Taille et qualité équilibrées)"
-                },
-                "high-quality": {
-                    "name": "Haute qualité",
-                    "description": "1440px, 95% qualité (Haute qualité, taille de fichier plus grande)"
-                },
-                "max-quality": {
-                    "name": "Maximum",
-                    "description": "2160px, 100% qualité (Qualité maximale, taille de fichier la plus grande)"
-                },
-                "custom": {
-                    "name": "Personnalisé",
-                    "description": "Dimensions et paramètres de qualité personnalisés"
-                }
-            }
-        },
-        "DownloadOptions": {
-            "title": "TÉLÉCHARGER",
-            "format": "FORMAT",
-            "downloadAll": "TOUT TÉLÉCHARGER",
-            "transparentNote": "Note : Les images avec arrière-plan supprimé seront enregistrées en PNG transparent",
-            "seoProductDescription": "Un fichier TXT avec la description de produit SEO sera inclus dans le téléchargement ZIP"
-        },
-        "ProUpgrade": {
-            "title": "Passer à Pro",
-            "unlock": "Débloquez toutes les fonctionnalités premium",
-            "description": "Passez à Pro pour débloquer {feature} et traiter jusqu'à {count} images à la fois.",
-            "pricing": {
-                "title": "PAIEMENT UNIQUE",
-                "price": "19,99 €",
-                "note": "Pas d'abonnement, accès à vie"
-            },
-            "learnMore": "EN SAVOIR PLUS",
-            "close": "Fermer"
-        },
-        "SeoNameGenerator": {
-            "title": "GÉNÉRATEUR DE NOMS SEO IA",
-            "description": "Générez des noms de fichiers optimisés pour le SEO pour vos images",
-            "enterDescription": "Entrez une description de votre produit",
-            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur...",
-            "generate": "GÉNÉRER DES NOMS SEO",
-            "generating": "GÉNÉRATION EN COURS...",
-            "proLimit": "Générez jusqu'à 100 noms à la fois avec Pro",
-            "originalName": "Nom original",
-            "seoName": "Nom SEO",
-            "appliedNames": {
-                "title": "Noms SEO appliqués",
-                "description": "Notre IA a généré des noms de fichiers optimisés pour le SEO pour vos images. Vous pouvez modifier les noms individuels dans la zone d'aperçu des images."
-            },
-            "tryFeature": "ESSAYER LA FONCTIONNALITÉ"
-        },
-        "SeoProductDescription": {
-            "title": "DESCRIPTION DE PRODUIT SEO IA",
-            "description": "Générez une description de produit complète optimisée pour le SEO",
-            "enterDescription": "Entrez les informations de base du produit",
-            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur, plusieurs emplacements pour cartes...",
-            "generate": "GÉNÉRER LA DESCRIPTION DU PRODUIT",
-            "generating": "GÉNÉRATION EN COURS...",
-            "generateWithCount": "GÉNÉRER ({remaining} restants aujourd'hui)",
-            "dailyLimitReached": "LIMITE QUOTIDIENNE ATTEINTE",
-            "dailyLimitExceeded": "Limite quotidienne de 5 descriptions atteinte. Passez à PRO pour un accès illimité ou réessayez demain.",
-            "dailyUsageInfo": "{remaining} sur {total} générations quotidiennes restantes",
-            "proUnlimited": "PRO : Générations illimitées",
-            "upgradeToPro": "PASSER À PRO",
-            "loginRequired": "CONNEXION REQUISE",
-            "loginToGenerate": "Veuillez vous connecter pour générer des descriptions de produits SEO. Les utilisateurs gratuits bénéficient de 5 descriptions par jour, les utilisateurs PRO d'un accès illimité.",
-            "loginButton": "SE CONNECTER",
-            "cancel": "ANNULER",
-            "copyToClipboard": "COPIER DANS LE PRESSE-PAPIERS",
-            "downloadAsTxt": "TÉLÉCHARGER AU FORMAT TXT",
-            "copied": "Copié !",
-            "tryFeature": "ESSAYER LA FONCTIONNALITÉ",
-            "tabs": {
-                "content": "CONTENU",
-                "meta": "META",
-                "categories": "CATÉGORIES",
-                "previews": "APERÇUS"
-            },
-            "previews": {
-                "googleSearch": "APERÇU DE RECHERCHE GOOGLE",
-                "ecommerce": "APERÇU E-COMMERCE",
-                "productImage": "Image du produit",
-                "addToCart": "Ajouter au panier",
-                "wishlist": "Liste de souhaits"
-            },
-            "sections": {
-                "productTitle": "Titre du produit",
-                "metaTitle": "Méta-titre",
-                "metaDescription": "Méta-description",
-                "shortDescription": "Description courte",
-                "longDescription": "Description longue",
-                "categories": "Catégories",
-                "tags": "Tags",
-                "urlSlug": "Slug d'URL"
-            },
-            "downloadAll": "TÉLÉCHARGER TOUTES LES DONNÉES",
-            "keywords": "description de produit SEO, générateur de contenu IA, SEO e-commerce, optimiser les listes de produits, méta descriptions",
-            "instructionsCard": {
-                "title": "COMMENT UTILISER",
-                "step1": "Saisissez les détails de base de votre produit (nom, caractéristiques, matériaux, etc.).",
-                "step2": "Cliquez sur le bouton 'Générer la description du produit'.",
-                "step3": "Examinez le contenu généré (titre, méta, descriptions, etc.).",
-                "step4": "Copiez le contenu ou téléchargez-le sous forme de fichier texte.",
-                "step5": "Utilisez le contenu SEO généré sur votre boutique en ligne ou votre site web."
-            },
-            "mainCard": {
-                "title": "GÉNÉRER DU CONTENU SEO",
-                "info": {
-                    "title": "QU'EST-CE QUE CET OUTIL ?",
-                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche."
-                },
-                "benefits": {
-                    "complete": "PACKAGE SEO COMPLET",
-                    "completeDesc": "Obtenez un ensemble complet de contenu SEO pour votre produit, prêt à l'emploi.",
-                    "aiPowered": "CONTENU GÉNÉRÉ PAR IA",
-                    "aiPoweredDesc": "Génère des descriptions uniques, convaincantes et riches en mots-clés.",
-                    "bestPractices": "MEILLEURES PRATIQUES SEO",
-                    "bestPracticesDesc": "Suit les directives concernant le nombre de caractères, le placement des mots-clés et la lisibilité.",
-                    "quickEasy": "RAPIDE & FACILE",
-                    "quickEasyDesc": "Gagnez des heures en générant des descriptions professionnelles en quelques secondes."
-                }
-            }
-        },
-        "SeoDescriptionPage": {
-            "metadata": {
-                "title": "Générateur de description de produit SEO IA | Batch Shots",
-                "description": "Générez des descriptions de produits complètes et optimisées pour le SEO (titre, méta-titre/description, description courte/longue, catégories, tags, slug d'URL) à partir d'informations de base.",
-                "keywords": "description de produit seo, description de produit ia, seo ecommerce, générateur de description de produit, générateur de méta description, générateur de titre de produit"
-            },
-            "title": "GÉNÉRATEUR DE DESCRIPTION DE PRODUIT SEO IA",
-            "mainCard": {
-                "title": "GÉNÉRER DU CONTENU SEO",
-                "info": {
-                    "title": "QU'EST-CE QUE CET OUTIL ?",
-                    "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche."
-                },
-                "benefits": {
-                    "complete": "PACKAGE SEO COMPLET",
-                    "completeDesc": "Obtenez un ensemble complet de contenu SEO pour votre produit, prêt à l'emploi.",
-                    "aiPowered": "CONTENU GÉNÉRÉ PAR IA",
-                    "aiPoweredDesc": "Génère des descriptions uniques, convaincantes et riches en mots-clés.",
-                    "bestPractices": "MEILLEURES PRATIQUES SEO",
-                    "bestPracticesDesc": "Suit les directives concernant le nombre de caractères, le placement des mots-clés et la lisibilité.",
-                    "quickEasy": "RAPIDE & FACILE",
-                    "quickEasyDesc": "Gagnez des heures en générant des descriptions professionnelles en quelques secondes."
-                }
-            },
-            "upgradeCard": {
-                "title": "PASSER À PRO",
-                "description": "Débloquez la génération illimitée de descriptions de produits SEO et accédez à toutes les fonctionnalités.",
-                "button": "PASSER À PRO MAINTENANT"
-            },
-            "instructionsCard": {
-                "title": "COMMENT UTILISER",
-                "step1": "Saisissez les détails de base de votre produit (nom, caractéristiques, matériaux, etc.).",
-                "step2": "Cliquez sur le bouton 'Générer la description du produit'.",
-                "step3": "Examinez le contenu généré (titre, méta, descriptions, etc.).",
-                "step4": "Copiez le contenu ou téléchargez-le sous forme de fichier texte.",
-                "step5": "Utilisez le contenu SEO généré sur votre boutique en ligne ou votre site web."
-            }
-        },
-        "SeoProductDescriptionGenerator": {
-            "title": "DESCRIPTION DE PRODUIT SEO IA",
-            "description": "Générez une description de produit complète optimisée pour le SEO",
-            "enterDescription": "Entrez les informations de base du produit",
-            "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur, plusieurs emplacements pour cartes...",
-            "generate": "GÉNÉRER LA DESCRIPTION DU PRODUIT",
-            "generating": "GÉNÉRATION EN COURS...",
-            "generateWithCount": "GÉNÉRER ({remaining} restants aujourd'hui)",
-            "dailyLimitReached": "LIMITE QUOTIDIENNE ATTEINTE",
-            "dailyLimitExceeded": "Limite quotidienne de 5 descriptions atteinte. Passez à PRO pour un accès illimité ou réessayez demain.",
-            "dailyUsageInfo": "{remaining} sur {total} générations quotidiennes restantes",
-            "proUnlimited": "PRO : Générations illimitées",
-            "upgradeToPro": "PASSER À PRO",
-            "loginRequired": "CONNEXION REQUISE",
-            "loginToGenerate": "Veuillez vous connecter pour générer des descriptions de produits SEO. Les utilisateurs gratuits bénéficient de 5 descriptions par jour, les utilisateurs PRO d'un accès illimité.",
-            "loginButton": "SE CONNECTER",
-            "cancel": "ANNULER",
-            "copyToClipboard": "COPIER DANS LE PRESSE-PAPIERS",
-            "downloadAsTxt": "TÉLÉCHARGER AU FORMAT TXT",
-            "copied": "Copié !",
-            "tryFeature": "ESSAYER LA FONCTIONNALITÉ",
-            "tabs": {
-                "content": "CONTENU",
-                "meta": "META",
-                "categories": "CATÉGORIES",
-                "previews": "APERÇUS"
-            },
-            "previews": {
-                "googleSearch": "APERÇU DE RECHERCHE GOOGLE",
-                "ecommerce": "APERÇU E-COMMERCE",
-                "productImage": "Image du produit",
-                "addToCart": "Ajouter au panier",
-                "wishlist": "Liste de souhaits"
-            },
-            "sections": {
-                "productTitle": "Titre du produit",
-                "metaTitle": "Méta-titre",
-                "metaDescription": "Méta-description",
-                "shortDescription": "Description courte",
-                "longDescription": "Description longue",
-                "categories": "Catégories",
-                "tags": "Tags",
-                "urlSlug": "Slug d'URL"
-            },
-            "downloadAll": "TÉLÉCHARGER TOUTES LES DONNÉES"
-        },
-        "QuickPresets": {
-            "title": "PRÉRÉGLAGES RAPIDES",
-            "productSpecialty": "SPÉCIALITÉ PRODUIT",
-            "colorStyle": "STYLE DE COULEUR",
-            "presets": {
-                "white-bg": {
-                    "name": "ARRIÈRE-PLAN BLANC",
-                    "description": "Photographie de produit sur fond blanc propre"
-                },
-                "clean": {
-                    "name": "PRODUIT PROPRE",
-                    "description": "Photographie de produit avec des couleurs propres et neutres"
-                },
-                "jewelry": {
-                    "name": "BIJOUX/MÉTAL",
-                    "description": "Optimisé pour les bijoux et produits métalliques"
-                },
-                "sharp": {
-                    "name": "DÉTAILS NETS",
-                    "description": "Netteté et détails améliorés"
-                },
-                "textile": {
-                    "name": "TEXTILE/TISSU",
-                    "description": "Pour les produits en tissu et textile - améliore la texture et la couleur"
-                },
-                "soft-product": {
-                    "name": "PRODUITS DOUX",
-                    "description": "Pour les produits doux comme les coussins, oreillers, peluches"
-                },
-                "furniture": {
-                    "name": "MEUBLES/BOIS",
-                    "description": "Meubles en bois et décoration d'intérieur"
-                },
-                "transparent": {
-                    "name": "VERRE",
-                    "description": "Verre et produits transparents"
-                },
-                "food": {
-                    "name": "PRODUITS ALIMENTAIRES",
-                    "description": "Photographie culinaire - améliore la fraîcheur et l'attrait des couleurs"
-                },
-                "dramatic": {
-                    "name": "DRAMATIQUE",
-                    "description": "Photographie de produit à contraste élevé"
-                },
-                "vivid": {
-                    "name": "COULEURS VIVES",
-                    "description": "Saturation et luminosité des couleurs améliorées"
-                },
-                "classic": {
-                    "name": "CLASSIQUE",
-                    "description": "Look classique avec des couleurs équilibrées"
-                }
-            }
-        },
-        "BackgroundRemovalPage": {
-            "title": "OUTIL DE SUPPRESSION D'ARRIÈRE-PLAN",
-            "loading": {
-                "tool": "CHARGEMENT DE L'OUTIL...",
-                "proStatus": "VÉRIFICATION DU STATUT PRO...",
-                "description": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'images.",
-                "proDescription": "Veuillez patienter pendant que nous vérifions le statut de votre compte."
-            },
-            "mainCard": {
-                "title": "SUPPRIMER LES ARRIÈRE-PLANS D'IMAGES",
-                "info": {
-                    "title": "SUPPRESSION D'ARRIÈRE-PLAN IA",
-                    "description": "Supprimez l'arrière-plan de vos images de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité."
-                },
-                "upload": {
-                    "title": "Sélectionner des images",
-                    "buttonFree": "SÉLECTIONNER UNE IMAGE",
-                    "buttonPro": "SÉLECTIONNER DES IMAGES",
-                    "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner 1 image à la fois.",
-                    "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
-                },
-                "actions": {
-                    "clear": "EFFACER",
-                    "download": "TÉLÉCHARGER",
-                    "downloadZip": "TÉLÉCHARGER EN ZIP",
-                    "downloading": "TÉLÉCHARGEMENT...",
-                    "downloadingZip": "CRÉATION DU ZIP...",
-                    "removeBackground": "SUPPRIMER L'ARRIÈRE-PLAN",
-                    "removeBackgrounds": "SUPPRIMER LES ARRIÈRE-PLANS",
-                    "processing": "SUPPRESSION DE L'ARRIÈRE-PLAN...",
-                    "processingMultiple": "SUPPRESSION DES ARRIÈRE-PLANS...",
-                    "tryFullEditor": "ESSAYER L'ÉDITEUR COMPLET"
-                },
-                "progress": {
-                    "processing": "Traitement...",
-                    "percent": "{percent}%"
-                },
-                "upgradeCard": {
-                    "title": "PASSER À PRO",
-                    "plan": {
-                        "title": "PLAN PRO",
-                        "price": "19,99 €",
-                        "features": [
-                            "Supprimez les arrière-plans de jusqu'à 100 images à la fois",
-                            "Ajustements d'image avancés et préréglages",
-                            "Génération de noms SEO pour les images de produits",
-                            "Traitement par lots pour toutes les fonctionnalités",
-                            "Paiement unique, accès à vie"
-                        ],
-                        "buttonText": "PASSER À PRO MAINTENANT"
-                    }
-                }
-            },
-            "howItWorks": {
-                "title": "COMMENT ÇA MARCHE",
-                "step1": {
-                    "title": "1. SÉLECTIONNEZ VOS IMAGES",
-                    "description": "Téléchargez une ou plusieurs images de produit que vous souhaitez traiter.",
-                    "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
-                },
-                "step2": {
-                    "title": "2. SUPPRIMEZ LES ARRIÈRE-PLANS",
-                    "description": "Notre technologie IA détecte et supprime l'arrière-plan de vos images, créant des PNG transparents parfaits pour le commerce électronique."
-                },
-                "step3": {
-                    "title": "3. TÉLÉCHARGEZ & UTILISEZ",
-                    "description": "Téléchargez vos images traitées et utilisez-les sur votre site web, vos annonces de marketplace ou vos supports marketing."
-                }
-            },
-            "proDialog": {
-                "title": "PASSER À PRO",
-                "featureTitle": "FONCTIONNALITÉ PRO : Suppression d'arrière-plan en masse",
-                "description": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse, économisant des heures de travail !",
-                "pricing": {
-                    "title": "PAIEMENT UNIQUE",
-                    "price": "19,99 €",
-                    "note": "Pas d'abonnement, accès à vie"
-                },
-                "actions": {
-                    "upgrade": "PASSER À PRO",
-                    "continue": "CONTINUER EN MODE GRATUIT"
-                }
-            }
-        },
-        "ImagePreview": {
-            "noImages": "Aucune image sélectionnée",
-            "zoomInstructions": "Pincez pour zoomer, faites glisser pour déplacer",
-            "zoomLevel": "{scale}%",
-            "removingBackground": "Suppression de l'arrière-plan...",
-            "seoName": {
-                "label": "Nom SEO :",
-                "edit": "MODIFIER",
-                "cancel": "ANNULER",
-                "save": "ENREGISTRER"
-            },
-            "originalName": "Nom original :",
-            "fileInfo": {
-                "dimensions": "Dimensions :",
-                "size": "Taille :",
-                "output": "Sortie :",
-                "quality": "Qualité :",
-                "background": "Arrière-plan :",
-                "backgroundRemoved": "Supprimé",
-                "custom": "Personnalisé",
-                "auto": "auto"
-            },
-            "actions": {
-                "download": "TÉLÉCHARGER",
-                "reset": "RÉINITIALISER"
-            },
-            "allImages": "TOUTES LES IMAGES ({current}/{max})"
-        },
-        "PricingCard": {
-            "oneTime": "une fois",
-            "currentPlan": "PLAN ACTUEL"
-        },
-        "WatermarkControl": {
-            "title": "FILIGRANE",
-            "addTab": "AJOUTER UN FILIGRANE",
-            "removeTab": "SUPPRIMER LE FILIGRANE (IA)",
-            "type": "TYPE",
-            "text": "TEXTE",
-            "logo": "LOGO",
-            "enterText": "Saisir le texte du filigrane",
-            "font": "POLICE",
-            "size": "TAILLE",
-            "color": "COULEUR",
-            "opacity": "OPACITÉ",
-            "position": "POSITION",
-            "uploadLogo": "TÉLÉVERSER LE LOGO",
-            "logoPlaceholder": "Cliquez ou glissez le logo ici",
-            "reset": "RÉINITIALISER",
-            "presets": {
-                "bottomRight": "En bas à droite",
-                "bottomLeft": "En bas à gauche",
-                "topLeft": "En haut à gauche",
-                "topRight": "En haut à droite",
-                "center": "Centre",
-                "diagonal": "Diagonale",
-                "tile": "Mosaïque (Motif)"
-            },
-            "removeDescription": "Suppression de filigrane par IA bientôt disponible !"
+        "actions": {
+          "upgrade": "PASSER À PRO",
+          "try": "ESSAYER COMMENT ÇA MARCHE",
+          "later": "Peut-être plus tard"
         }
+      },
+      "compactDescription": "Supprime l'arrière-plan des images de produits avec l'IA. Le traitement prend 10-30 secondes."
     },
-    "Dialogs": {
-        "download": {
-            "title": "Télécharger les images",
-            "confirmTitle": "Confirmer le téléchargement",
-            "successTitle": "Téléchargement réussi",
-            "summary": "Résumé du téléchargement :",
-            "images": "{count, plural, =1 {# image} other {# images}} seront téléchargées",
-            "format": "Format :",
-            "appliedPreset": "Préréglage appliqué :",
-            "adjustmentsApplied": "Ajustements d'image appliqués",
-            "backgroundRemoval": "Suppression de l'arrière-plan appliquée",
-            "seoFilenames": "Noms de fichiers SEO optimisés par l'IA inclus",
-            "watermarkApplied": "Filigrane appliqué",
-            "zipPackage": "Les fichiers seront regroupés dans une archive ZIP",
-            "processingNote": "Le traitement peut prendre un moment pour plusieurs images ou des images volumineuses.",
-            "cancel": "ANNULER",
-            "download": "TÉLÉCHARGER",
-            "processing": "TRAITEMENT...",
-            "successMessage": "Vos images ont été téléchargées avec succès. Que souhaitez-vous faire ensuite ?",
-            "startNewBundleDesc": "Démarrer un nouveau lot : Effacer les images actuelles et recommencer",
-            "continueEditingDesc": "Continuer l'édition : Continuer à travailler avec les images actuelles",
-            "startNewBundle": "DÉMARRER UN NOUVEAU LOT",
-            "continueEditing": "CONTINUER L'ÉDITION",
-            "seoProductDescription": "Description de produit SEO (TXT)"
+    "PresetsSelector": {
+      "title": "PRÉRÉGLAGES",
+      "custom": "Personnalisé",
+      "dimensions": "DIMENSIONS",
+      "width": "Largeur",
+      "height": "Hauteur",
+      "auto": "auto",
+      "quality": "QUALITÉ",
+      "apply": "APPLIQUER",
+      "presets": {
+        "web-optimized": {
+          "name": "Optimisé pour le web",
+          "description": "1080px, 75% qualité (Taille de fichier minimale, bon pour le web)"
         },
-        "proUpgrade": {
-            "feature": "Traitement par lots"
+        "standard": {
+          "name": "Standard",
+          "description": "1080px, 85% qualité (Taille et qualité équilibrées)"
+        },
+        "high-quality": {
+          "name": "Haute qualité",
+          "description": "1440px, 95% qualité (Haute qualité, taille de fichier plus grande)"
+        },
+        "max-quality": {
+          "name": "Maximum",
+          "description": "2160px, 100% qualité (Qualité maximale, taille de fichier la plus grande)"
+        },
+        "custom": {
+          "name": "Personnalisé",
+          "description": "Dimensions et paramètres de qualité personnalisés"
         }
+      }
     },
-    "Pricing": {
-        "title": "PLANS TARIFAIRES",
-        "subtitle": "Choisissez le plan parfait pour vos besoins d'optimisation d'images. Notre plan PRO offre une licence à vie avec un paiement unique.",
-        "alreadyPro": {
-            "title": "Vous êtes déjà un utilisateur PRO !",
-            "description": "Merci pour votre soutien. Vous avez accès à toutes les fonctionnalités PRO, y compris la suppression d'arrière-plan en masse, les ajustements d'image avancés et la génération de noms de fichiers SEO.",
-            "backToEditor": "RETOUR À L'ÉDITEUR"
+    "DownloadOptions": {
+      "title": "TÉLÉCHARGER",
+      "format": "FORMAT",
+      "downloadAll": "TOUT TÉLÉCHARGER",
+      "transparentNote": "Note : Les images avec arrière-plan supprimé seront enregistrées en PNG transparent",
+      "seoProductDescription": "Un fichier TXT avec la description de produit SEO sera inclus dans le téléchargement ZIP"
+    },
+    "ProUpgrade": {
+      "title": "Passer à Pro",
+      "unlock": "Débloquez toutes les fonctionnalités premium",
+      "description": "Passez à Pro pour débloquer {feature} et traiter jusqu'à {count} images à la fois.",
+      "pricing": {
+        "title": "PAIEMENT UNIQUE",
+        "price": "19,99 €",
+        "note": "Pas d'abonnement, accès à vie"
+      },
+      "learnMore": "EN SAVOIR PLUS",
+      "close": "Fermer"
+    },
+    "SeoNameGenerator": {
+      "title": "GÉNÉRATEUR DE NOMS SEO IA",
+      "description": "Générez des noms de fichiers optimisés pour le SEO pour vos images",
+      "enterDescription": "Entrez une description de votre produit",
+      "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur...",
+      "generate": "GÉNÉRER DES NOMS SEO",
+      "generating": "GÉNÉRATION EN COURS...",
+      "proLimit": "Générez jusqu'à 100 noms à la fois avec Pro",
+      "originalName": "Nom original",
+      "seoName": "Nom SEO",
+      "appliedNames": {
+        "title": "Noms SEO appliqués",
+        "description": "Notre IA a généré des noms de fichiers optimisés pour le SEO pour vos images. Vous pouvez modifier les noms individuels dans la zone d'aperçu des images."
+      },
+      "tryFeature": "ESSAYER LA FONCTIONNALITÉ"
+    },
+    "SeoProductDescription": {
+      "title": "DESCRIPTION DE PRODUIT SEO IA",
+      "description": "Générez une description de produit complète optimisée pour le SEO",
+      "enterDescription": "Entrez les informations de base du produit",
+      "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur, plusieurs emplacements pour cartes...",
+      "generate": "GÉNÉRER LA DESCRIPTION DU PRODUIT",
+      "generating": "GÉNÉRATION EN COURS...",
+      "generateWithCount": "GÉNÉRER ({remaining} restants aujourd'hui)",
+      "dailyLimitReached": "LIMITE QUOTIDIENNE ATTEINTE",
+      "dailyLimitExceeded": "Limite quotidienne de 5 descriptions atteinte. Passez à PRO pour un accès illimité ou réessayez demain.",
+      "dailyUsageInfo": "{remaining} sur {total} générations quotidiennes restantes",
+      "proUnlimited": "PRO : Générations illimitées",
+      "upgradeToPro": "PASSER À PRO",
+      "loginRequired": "CONNEXION REQUISE",
+      "loginToGenerate": "Veuillez vous connecter pour générer des descriptions de produits SEO. Les utilisateurs gratuits bénéficient de 5 descriptions par jour, les utilisateurs PRO d'un accès illimité.",
+      "loginButton": "SE CONNECTER",
+      "cancel": "ANNULER",
+      "copyToClipboard": "COPIER DANS LE PRESSE-PAPIERS",
+      "downloadAsTxt": "TÉLÉCHARGER AU FORMAT TXT",
+      "copied": "Copié !",
+      "tryFeature": "ESSAYER LA FONCTIONNALITÉ",
+      "tabs": {
+        "content": "CONTENU",
+        "meta": "META",
+        "categories": "CATÉGORIES",
+        "previews": "APERÇUS"
+      },
+      "previews": {
+        "googleSearch": "APERÇU DE RECHERCHE GOOGLE",
+        "ecommerce": "APERÇU E-COMMERCE",
+        "productImage": "Image du produit",
+        "addToCart": "Ajouter au panier",
+        "wishlist": "Liste de souhaits"
+      },
+      "sections": {
+        "productTitle": "Titre du produit",
+        "metaTitle": "Méta-titre",
+        "metaDescription": "Méta-description",
+        "shortDescription": "Description courte",
+        "longDescription": "Description longue",
+        "categories": "Catégories",
+        "tags": "Tags",
+        "urlSlug": "Slug d'URL"
+      },
+      "downloadAll": "TÉLÉCHARGER TOUTES LES DONNÉES",
+      "keywords": "description de produit SEO, générateur de contenu IA, SEO e-commerce, optimiser les listes de produits, méta descriptions",
+      "instructionsCard": {
+        "title": "COMMENT UTILISER",
+        "step1": "Saisissez les détails de base de votre produit (nom, caractéristiques, matériaux, etc.).",
+        "step2": "Cliquez sur le bouton 'Générer la description du produit'.",
+        "step3": "Examinez le contenu généré (titre, méta, descriptions, etc.).",
+        "step4": "Copiez le contenu ou téléchargez-le sous forme de fichier texte.",
+        "step5": "Utilisez le contenu SEO généré sur votre boutique en ligne ou votre site web."
+      },
+      "mainCard": {
+        "title": "GÉNÉRER DU CONTENU SEO",
+        "info": {
+          "title": "QU'EST-CE QUE CET OUTIL ?",
+          "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche."
         },
-        "checkout": {
-            "title": "FINALISER VOTRE ACHAT",
-            "planTitle": "LICENCE PRO À VIE",
-            "price": "19,99 €",
-            "description": "Paiement unique, accès à vie à toutes les fonctionnalités PRO",
-            "email": "EMAIL",
-            "cardInfo": "INFORMATIONS DE CARTE",
-            "cardNumber": "1234 5678 9012 3456",
-            "expiryDate": "MM/AA",
-            "cvc": "CVC",
-            "completePurchase": "FINALISER L'ACHAT",
-            "goBack": "Retour"
-        },
-        "plans": {
-            "free": {
-                "title": "GRATUIT",
-                "price": "GRATUIT",
-                "features": [
-                    "Traitement par lots max 5 images",
-                    "Suppression de l'arrière-plan IA image unique (aperçu)",
-                    "Suppression d'objets IA image unique",
-                    "Ajout de filigrane max 5 images",
-                    "Convertisseur d'images max 5 images en lot",
-                    "Détecteur de doublons photo IA max 5 images",
-                    "Génération de noms d'images SEO IA (Non disponible)",
-                    "Description et métatags SEO IA (Non disponible)"
-                ],
-                "buttonText": "CONTINUER EN GRATUIT"
-            },
-            "pro": {
-                "title": "PRO",
-                "price": "$19.99",
-                "features": [
-                    "Traitement par lots max 100 images",
-                    "Jusqu'à 100 suppressions d'arrière-plan IA en un lot",
-                    "Suppression d'objets IA jusqu'à 100 images",
-                    "Ajout de filigrane 100 images en un lot",
-                    "Convertisseur d'images max 100 images en lot",
-                    "Détecteur de doublons photo IA traitement par lots illimité",
-                    "Génération de noms d'images SEO IA (jusqu'à 100)",
-                    "Description et métatags SEO IA disponibles",
-                    "**Paiement unique, accès à vie**"
-                ],
-                "buttonText": "PASSER À PRO"
-            }
-        },
-        "faq": {
-            "title": "QUESTIONS FRÉQUEMMENT POSÉES",
-            "questions": {
-                "oneTime": {
-                    "question": "Est-ce vraiment un paiement unique ?",
-                    "answer": "Oui ! Payez une fois et obtenez un accès à vie à toutes les fonctionnalités PRO. Pas d'abonnements récurrents."
-                },
-                "backgroundRemoval": {
-                    "question": "Comment fonctionne la suppression d'arrière-plan ?",
-                    "answer": "Nous utilisons des algorithmes IA avancés pour détecter et supprimer les arrière-plans de vos images de produit. Le processus entier se déroule dans votre navigateur - nous ne stockons jamais vos images sur nos serveurs."
-                },
-                "imageLimits": {
-                    "question": "Quelles sont les limites d'images ?",
-                    "answer": "Les utilisateurs gratuits peuvent traiter jusqu'à 10 images à la fois avec les fonctionnalités de base et supprimer l'arrière-plan d'1 image à la fois. Les utilisateurs PRO peuvent traiter jusqu'à 100 images à la fois, y compris la suppression d'arrière-plan en masse."
-                },
-                "refund": {
-                    "question": "Puis-je demander un remboursement ?",
-                    "answer": "Oui, nous offrons une garantie de remboursement de 30 jours si vous n'êtes pas satisfait des fonctionnalités PRO. Contactez notre équipe de support pour assistance."
-                }
-            }
+        "benefits": {
+          "complete": "PACKAGE SEO COMPLET",
+          "completeDesc": "Obtenez un ensemble complet de contenu SEO pour votre produit, prêt à l'emploi.",
+          "aiPowered": "CONTENU GÉNÉRÉ PAR IA",
+          "aiPoweredDesc": "Génère des descriptions uniques, convaincantes et riches en mots-clés.",
+          "bestPractices": "MEILLEURES PRATIQUES SEO",
+          "bestPracticesDesc": "Suit les directives concernant le nombre de caractères, le placement des mots-clés et la lisibilité.",
+          "quickEasy": "RAPIDE & FACILE",
+          "quickEasyDesc": "Gagnez des heures en générant des descriptions professionnelles en quelques secondes."
         }
+      }
     },
-    "PrivacyPolicy": {
-        "title": "POLITIQUE DE CONFIDENTIALITÉ",
-        "section1Title": "1. INTRODUCTION",
-        "section1P1": "Bienvenue chez Batch Shots (« nous », « notre », « nos »). Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
-        "section1P2": "Cette Politique de confidentialité explique comment nous traitons vos données lorsque vous utilisez notre outil d'optimisation d'images basé sur navigateur.",
-        "section2Title": "2. INFORMATIONS QUE NOUS NE COLLECTONS PAS",
-        "section2P1Bold": "Nous ne collectons ni ne stockons vos images.",
-        "section2P1": "Notre principe fondamental est la confidentialité dès la conception.",
-        "section2P2": "Batch Shots fonctionne entièrement dans votre navigateur. Lorsque vous téléchargez des images à optimiser :",
-        "section2Li1": "Vos images sont traitées localement dans votre navigateur à l'aide de JavaScript côté client.",
-        "section2Li2": "Vos images ne quittent jamais votre appareil et ne sont pas transmises à nos serveurs.",
-        "section2Li3": "Nous ne stockons pas de copies de vos images originales ou traitées.",
-        "section2Li4": "Nous ne suivons pas le contenu de vos images.",
-        "section3Title": "3. FONCTIONNALITÉS ALIMENTÉES PAR L'IA",
-        "section3P1": "Lorsque vous utilisez nos fonctionnalités de génération de noms SEO alimentées par l'IA :",
-        "section3Li1": "Nous envoyons uniquement le texte descriptif que vous fournissez à notre API.",
-        "section3Li2": "Nous n'envoyons ni ne traitons vos images réelles via nos systèmes d'IA.",
-        "section3Li3": "Vos noms SEO générés sont renvoyés à votre navigateur et ne sont pas stockés en permanence sur nos serveurs.",
-        "section4Title": "4. ANALYSES ET COOKIES",
-        "section4P1": "Nous utilisons des analyses minimales pour comprendre comment notre site est utilisé :",
-        "section4Li1": "Nous collectons des statistiques d'utilisation anonymes telles que les pages vues et l'utilisation des fonctionnalités.",
-        "section4Li2": "Nous utilisons des cookies essentiels pour fournir des fonctionnalités telles que la protection reCAPTCHA.",
-        "section4Li3": "Nous n'utilisons pas de cookies pour la publicité ou le suivi sur d'autres sites Web.",
-        "section5Title": "5. SERVICES TIERS",
-        "section5P1": "Nous utilisons les services tiers suivants :",
-        "section5Li1": "Google reCAPTCHA pour la protection contre le spam sur nos fonctionnalités d'IA.",
-        "section5Li2": "OpenCV.js pour le traitement d'images (s'exécute entièrement dans votre navigateur).",
-        "section5P2": "Chacun de ces services a sa propre politique de confidentialité régissant la manière dont ils traitent les données.",
-        "section6Title": "6. MODIFICATIONS DE CETTE POLITIQUE",
-        "section6P1": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique de confidentialité sur cette page et en mettant à jour la date de « Dernière mise à jour ».",
-        "section7Title": "7. CONTACTEZ-NOUS",
-        "section7P1": "Si vous avez des questions sur cette politique de confidentialité, veuillez nous contacter à privacy@batchshots.com.",
-        "returnButton": "RETOUR À L'ACCUEIL"
+    "SeoDescriptionPage": {
+      "metadata": {
+        "title": "Générateur de description de produit SEO IA | Batch Shots",
+        "description": "Générez des descriptions de produits complètes et optimisées pour le SEO (titre, méta-titre/description, description courte/longue, catégories, tags, slug d'URL) à partir d'informations de base.",
+        "keywords": "description de produit seo, description de produit ia, seo ecommerce, générateur de description de produit, générateur de méta description, générateur de titre de produit"
+      },
+      "title": "GÉNÉRATEUR DE DESCRIPTION DE PRODUIT SEO IA",
+      "mainCard": {
+        "title": "GÉNÉRER DU CONTENU SEO",
+        "info": {
+          "title": "QU'EST-CE QUE CET OUTIL ?",
+          "description": "Cet outil alimenté par l'IA génère un package SEO complet pour vos produits à partir d'informations de base. Vous recevrez un titre de produit, un méta-titre, une méta-description, des descriptions courtes et longues, des catégories, des tags et un slug d'URL, tous optimisés pour les moteurs de recherche."
+        },
+        "benefits": {
+          "complete": "PACKAGE SEO COMPLET",
+          "completeDesc": "Obtenez un ensemble complet de contenu SEO pour votre produit, prêt à l'emploi.",
+          "aiPowered": "CONTENU GÉNÉRÉ PAR IA",
+          "aiPoweredDesc": "Génère des descriptions uniques, convaincantes et riches en mots-clés.",
+          "bestPractices": "MEILLEURES PRATIQUES SEO",
+          "bestPracticesDesc": "Suit les directives concernant le nombre de caractères, le placement des mots-clés et la lisibilité.",
+          "quickEasy": "RAPIDE & FACILE",
+          "quickEasyDesc": "Gagnez des heures en générant des descriptions professionnelles en quelques secondes."
+        }
+      },
+      "upgradeCard": {
+        "title": "PASSER À PRO",
+        "description": "Débloquez la génération illimitée de descriptions de produits SEO et accédez à toutes les fonctionnalités.",
+        "button": "PASSER À PRO MAINTENANT"
+      },
+      "instructionsCard": {
+        "title": "COMMENT UTILISER",
+        "step1": "Saisissez les détails de base de votre produit (nom, caractéristiques, matériaux, etc.).",
+        "step2": "Cliquez sur le bouton 'Générer la description du produit'.",
+        "step3": "Examinez le contenu généré (titre, méta, descriptions, etc.).",
+        "step4": "Copiez le contenu ou téléchargez-le sous forme de fichier texte.",
+        "step5": "Utilisez le contenu SEO généré sur votre boutique en ligne ou votre site web."
+      }
     },
-    "TermsOfUse": {
-        "title": "CONDITIONS D'UTILISATION",
-        "lastUpdated": "Dernière mise à jour : 30 mai 2025",
-        "section1Title": "1. Acceptation des Conditions",
-        "section1P1": "En accédant et en utilisant Batch Shots, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas une partie de ces conditions, vous ne pouvez pas utiliser notre service.",
-        "section2Title": "2. Description du Service",
-        "section2P1": "Batch Shots est un outil d'optimisation d'images basé sur navigateur qui permet aux utilisateurs de :",
-        "section2Li1": "Ajuster les propriétés des images telles que la luminosité, le contraste et la balance des blancs",
-        "section2Li2": "Redimensionner et optimiser les images pour le web",
-        "section2Li3": "Générer des noms de fichiers optimisés pour le SEO",
-        "section2Li4": "Traiter plusieurs images simultanément",
-        "section2P2": "Tout le traitement d'images s'effectue localement dans votre navigateur ; aucune image n'est téléchargée ou stockée sur nos serveurs.",
-        "section3Title": "3. Responsabilités de l'Utilisateur",
-        "section3P1": "Les utilisateurs de Batch Shots sont seuls responsables de s'assurer qu'ils ont les droits et autorisations nécessaires pour utiliser, télécharger et traiter toute image avec notre service. Batch Shots n'est pas responsable des violations de droits d'auteur ou de propriété intellectuelle découlant de votre utilisation du service. Vous devez utiliser le service en conformité avec toutes les lois et réglementations applicables.",
-        "section3Li1": "S'assurer qu'ils ont les droits et autorisations nécessaires pour modifier et traiter les images qu'ils utilisent",
-        "section3Li2": "Utiliser le service en conformité avec les lois et réglementations applicables",
-        "section3Li3": "Ne pas utiliser le service pour traiter, créer ou distribuer du contenu inapproprié, offensant ou illégal",
-        "section3Li4": "Ne pas tenter de rétroconcevoir, modifier ou pirater le service",
-        "section4Title": "4. Propriété Intellectuelle",
-        "section4P1": "Tout le contenu original, les fonctionnalités et les fonctionnalités de Batch Shots nous appartiennent et sont protégés par les lois internationales sur le droit d'auteur, les marques déposées et autres lois sur la propriété intellectuelle.",
-        "section4P2": "Vous conservez tous les droits sur vos images originales. Nous ne revendiquons aucune propriété sur les images que vous traitez en utilisant notre service.",
-        "section4aTitle": "4A. Contenu Utilisateur, Propriété et Accès Pro à Vie",
-        "section4aP1": "Toutes les images et le contenu téléchargés ou traités en utilisant Batch Shots restent la propriété exclusive de l'utilisateur. Batch Shots ne stocke, ne visualise ni ne transmet vos images vers nos serveurs ; tout le traitement s'effectue localement dans votre navigateur. Vous êtes seul responsable de vous assurer que vous avez les droits et autorisations nécessaires pour utiliser et traiter toute image avec notre service. Batch Shots n'est pas responsable des violations de droits d'auteur ou de propriété intellectuelle découlant de votre utilisation du service.",
-        "section4aP2": "L'accès \"à vie\" aux fonctionnalités Pro signifie que vous aurez accès à toutes les fonctionnalités Pro tant que Batch Shots sera exploité et maintenu comme un service. Si Batch Shots est interrompu, nous ferons des efforts raisonnables pour fournir aux utilisateurs Pro l'accès au code logiciel ou pour rendre l'application open source, permettant une utilisation continue.",
-        "section5Title": "5. Avis de Non-Responsabilité",
-        "section5Li1": "Batch Shots est fourni \"tel quel\" et \"selon disponibilité\" sans aucune garantie d'aucune sorte.",
-        "section5Li2": "Nous ne garantissons pas que le service sera ininterrompu, sécurisé ou sans erreur.",
-        "section5Li3": "Nous ne sommes pas responsables de toute perte de données qui pourrait survenir pendant le traitement. Les utilisateurs sont responsables de conserver leurs propres sauvegardes.",
-        "section5Li4": "Nous ne donnons aucune garantie concernant l'exactitude ou l'efficacité de la fonctionnalité de génération de noms SEO.",
-        "section5Li5": "Batch Shots n'est pas responsable des réclamations légales, des dommages ou des litiges découlant du contenu utilisateur ou de l'utilisation du service.",
-        "section6Title": "6. Limitation de Responsabilité",
-        "section6P1": "Dans toute la mesure permise par la loi, nous ne serons pas responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs résultant de votre utilisation ou de votre incapacité à utiliser le service, ou de toute réclamation légale découlant de votre contenu.",
-        "section7Title": "7. Modifications du Service",
-        "section7P1": "Nous nous réservons le droit de modifier, suspendre ou interrompre toute partie de Batch Shots à tout moment sans préavis ni responsabilité.",
-        "section8Title": "8. Loi Applicable",
-        "section8P1": "Ces Conditions d'Utilisation seront régies et interprétées conformément aux lois de la juridiction dans laquelle nous opérons, sans tenir compte de ses dispositions relatives aux conflits de lois.",
-        "section9Title": "9. Modifications des Conditions",
-        "section9P1": "Nous pouvons mettre à jour ces Conditions d'Utilisation de temps à autre. Nous vous informerons de tout changement en publiant les nouvelles Conditions sur cette page et en mettant à jour la date de \"Dernière mise à jour\".",
-        "section10Title": "10. Nous Contacter",
-        "section10P1": "Si vous avez des questions sur ces Conditions d'Utilisation, veuillez nous contacter à terms@batchshots.com.",
-        "returnButton": "RETOUR À L'ACCUEIL"
+    "SeoProductDescriptionGenerator": {
+      "title": "DESCRIPTION DE PRODUIT SEO IA",
+      "description": "Générez une description de produit complète optimisée pour le SEO",
+      "enterDescription": "Entrez les informations de base du produit",
+      "placeholder": "Ex. portefeuille en cuir vintage, fait main, marron, cuir pleine fleur, plusieurs emplacements pour cartes...",
+      "generate": "GÉNÉRER LA DESCRIPTION DU PRODUIT",
+      "generating": "GÉNÉRATION EN COURS...",
+      "generateWithCount": "GÉNÉRER ({remaining} restants aujourd'hui)",
+      "dailyLimitReached": "LIMITE QUOTIDIENNE ATTEINTE",
+      "dailyLimitExceeded": "Limite quotidienne de 5 descriptions atteinte. Passez à PRO pour un accès illimité ou réessayez demain.",
+      "dailyUsageInfo": "{remaining} sur {total} générations quotidiennes restantes",
+      "proUnlimited": "PRO : Générations illimitées",
+      "upgradeToPro": "PASSER À PRO",
+      "loginRequired": "CONNEXION REQUISE",
+      "loginToGenerate": "Veuillez vous connecter pour générer des descriptions de produits SEO. Les utilisateurs gratuits bénéficient de 5 descriptions par jour, les utilisateurs PRO d'un accès illimité.",
+      "loginButton": "SE CONNECTER",
+      "cancel": "ANNULER",
+      "copyToClipboard": "COPIER DANS LE PRESSE-PAPIERS",
+      "downloadAsTxt": "TÉLÉCHARGER AU FORMAT TXT",
+      "copied": "Copié !",
+      "tryFeature": "ESSAYER LA FONCTIONNALITÉ",
+      "tabs": {
+        "content": "CONTENU",
+        "meta": "META",
+        "categories": "CATÉGORIES",
+        "previews": "APERÇUS"
+      },
+      "previews": {
+        "googleSearch": "APERÇU DE RECHERCHE GOOGLE",
+        "ecommerce": "APERÇU E-COMMERCE",
+        "productImage": "Image du produit",
+        "addToCart": "Ajouter au panier",
+        "wishlist": "Liste de souhaits"
+      },
+      "sections": {
+        "productTitle": "Titre du produit",
+        "metaTitle": "Méta-titre",
+        "metaDescription": "Méta-description",
+        "shortDescription": "Description courte",
+        "longDescription": "Description longue",
+        "categories": "Catégories",
+        "tags": "Tags",
+        "urlSlug": "Slug d'URL"
+      },
+      "downloadAll": "TÉLÉCHARGER TOUTES LES DONNÉES"
     },
-    "PrivacyPage": {
-        "title": "Politique de Confidentialité | Batch Shots",
-        "description": "Comprenez comment Batch Shots traite vos données. Notre politique de confidentialité détaille les pratiques de collecte, d'utilisation et de protection des données.",
-        "keywords": "politique de confidentialité, protection des données, données utilisateur, RGPD, batchshots"
-    },
-    "TermsPage": {
-        "title": "Conditions d'Utilisation | Batch Shots",
-        "description": "Consultez les termes et conditions d'utilisation de Batch Shots. Apprenez-en davantage sur les responsabilités des utilisateurs, les limitations de service et la propriété intellectuelle.",
-        "keywords": "conditions d'utilisation, termes et conditions, accord utilisateur, batchshots"
-    },
-    "PricingPage": {
-        "title": "Plans Tarifaires | Batch Shots Pro",
-        "description": "Découvrez les plans tarifaires de Batch Shots. Choisissez le meilleur plan pour vos besoins d'édition d'images, du niveau gratuit aux fonctionnalités Pro comme la suppression d'arrière-plan et les limites augmentées.",
-        "keywords": "tarification, batch shots pro, plans d'abonnement, coût d'édition d'image, tarification suppression d'arrière-plan"
+    "QuickPresets": {
+      "title": "PRÉRÉGLAGES RAPIDES",
+      "productSpecialty": "SPÉCIALITÉ PRODUIT",
+      "colorStyle": "STYLE DE COULEUR",
+      "presets": {
+        "white-bg": {
+          "name": "ARRIÈRE-PLAN BLANC",
+          "description": "Photographie de produit sur fond blanc propre"
+        },
+        "clean": {
+          "name": "PRODUIT PROPRE",
+          "description": "Photographie de produit avec des couleurs propres et neutres"
+        },
+        "jewelry": {
+          "name": "BIJOUX/MÉTAL",
+          "description": "Optimisé pour les bijoux et produits métalliques"
+        },
+        "sharp": {
+          "name": "DÉTAILS NETS",
+          "description": "Netteté et détails améliorés"
+        },
+        "textile": {
+          "name": "TEXTILE/TISSU",
+          "description": "Pour les produits en tissu et textile - améliore la texture et la couleur"
+        },
+        "soft-product": {
+          "name": "PRODUITS DOUX",
+          "description": "Pour les produits doux comme les coussins, oreillers, peluches"
+        },
+        "furniture": {
+          "name": "MEUBLES/BOIS",
+          "description": "Meubles en bois et décoration d'intérieur"
+        },
+        "transparent": {
+          "name": "VERRE",
+          "description": "Verre et produits transparents"
+        },
+        "food": {
+          "name": "PRODUITS ALIMENTAIRES",
+          "description": "Photographie culinaire - améliore la fraîcheur et l'attrait des couleurs"
+        },
+        "dramatic": {
+          "name": "DRAMATIQUE",
+          "description": "Photographie de produit à contraste élevé"
+        },
+        "vivid": {
+          "name": "COULEURS VIVES",
+          "description": "Saturation et luminosité des couleurs améliorées"
+        },
+        "classic": {
+          "name": "CLASSIQUE",
+          "description": "Look classique avec des couleurs équilibrées"
+        }
+      }
     },
     "BackgroundRemovalPage": {
-        "metadata": {
-            "title": "Suppresseur d'Arrière-plan IA | Batch Shots",
-            "description": "Supprimez automatiquement les arrière-plans de vos images avec l'outil IA de Batch Shots. Parfait pour les photos de produits, les portraits et les projets créatifs. Essayez gratuitement !",
-            "keywords": "suppresseur d'arrière-plan, supprimer arrière-plan, suppression d'arrière-plan ia, arrière-plan transparent, photographie de produit, édition d'images par lots"
-        }
-    },
-    "ObjectRemovalPage": {
-        "metadata": {
-            "title": "Outil de Suppression d'Objets IA | Batch Shots",
-            "description": "Supprimez les objets, personnes ou textes indésirables de vos images grâce à notre outil alimenté par l'IA. Fonctionne entièrement dans votre navigateur pour préserver votre confidentialité. Essayez gratuitement !",
-            "keywords": "suppression d'objets, suppression d'objets ia, enlever objets d'image, enlever texte d'image, enlever personnes de photo, inpainting, outil d'édition d'image"
+      "metadata": {
+        "title": "Suppresseur d'Arrière-plan IA | Batch Shots",
+        "description": "Supprimez automatiquement les arrière-plans de vos images avec l'outil IA de Batch Shots. Parfait pour les photos de produits, les portraits et les projets créatifs. Essayez gratuitement !",
+        "keywords": "suppresseur d'arrière-plan, supprimer arrière-plan, suppression d'arrière-plan ia, arrière-plan transparent, photographie de produit, édition d'images par lots"
+      },
+      "title": "OUTIL DE SUPPRESSION D'ARRIÈRE-PLAN",
+      "loading": {
+        "tool": "CHARGEMENT DE L'OUTIL...",
+        "proStatus": "VÉRIFICATION DU STATUT PRO...",
+        "description": "Veuillez patienter pendant que nous initialisons les capacités de traitement d'images.",
+        "proDescription": "Veuillez patienter pendant que nous vérifions le statut de votre compte."
+      },
+      "mainCard": {
+        "title": "SUPPRIMER LES ARRIÈRE-PLANS D'IMAGES",
+        "info": {
+          "title": "SUPPRESSION D'ARRIÈRE-PLAN IA",
+          "description": "Supprimez l'arrière-plan de vos images de produit avec la technologie IA. Le traitement se fait entièrement dans votre navigateur pour la confidentialité."
         },
-        "title": "SUPPRESSION D'OBJETS IA",
-        "loading": {
-            "ort": "Chargement du moteur d'IA...",
-            "opencv": "Chargement des outils de traitement d'image...",
-            "model": "Chargement du modèle de suppression d'objets...",
-            "proStatus": "Vérification du statut du compte...",
-            "generic": "Chargement en cours..."
+        "upload": {
+          "title": "Sélectionner des images",
+          "buttonFree": "SÉLECTIONNER UNE IMAGE",
+          "buttonPro": "SÉLECTIONNER DES IMAGES",
+          "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner 1 image à la fois.",
+          "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
         },
-        "mainCard": {
-            "title": "SUPPRESSION D'OBJETS IA",
-            "info": {
-                "title": "COMMENT ÇA FONCTIONNE",
-                "description": "Supprimez les objets indésirables, les personnes ou le texte de vos images grâce à l'IA. Le traitement se fait entièrement dans votre navigateur."
-            },
-            "upload": {
-                "title": "Télécharger une image",
-                "button": "SÉLECTIONNER UNE IMAGE",
-                "helpTextFree": "Sélectionnez l'image que vous souhaitez modifier.",
-                "helpTextPro": "Sélectionnez jusqu'à 100 images pour le traitement par lots."
-            },
-            "canvas": {
-                "drawTitle": "DESSINEZ UN MASQUE SUR LES OBJETS",
-                "brushSize": "Taille du pinceau",
-                "clearMask": "EFFACER LE MASQUE",
-                "outputTitle": "2. VOIR LE RÉSULTAT",
-                "outputPlaceholder": "Le résultat apparaîtra ici"
-            },
-            "actions": {
-                "reset": "RÉINITIALISER",
-                "remove": "SUPPRIMER LES OBJETS",
-                "removeAllObjects": "SUPPRIMER DE TOUTES LES IMAGES",
-                "processing": "TRAITEMENT EN COURS...",
-                "download": "TÉLÉCHARGER",
-                "downloadAll": "TOUT TÉLÉCHARGER"
-            }
+        "actions": {
+          "clear": "EFFACER",
+          "download": "TÉLÉCHARGER",
+          "downloadZip": "TÉLÉCHARGER EN ZIP",
+          "downloading": "TÉLÉCHARGEMENT...",
+          "downloadingZip": "CRÉATION DU ZIP...",
+          "removeBackground": "SUPPRIMER L'ARRIÈRE-PLAN",
+          "removeBackgrounds": "SUPPRIMER LES ARRIÈRE-PLANS",
+          "processing": "SUPPRESSION DE L'ARRIÈRE-PLAN...",
+          "processingMultiple": "SUPPRESSION DES ARRIÈRE-PLANS...",
+          "tryFullEditor": "ESSAYER L'ÉDITEUR COMPLET"
+        },
+        "progress": {
+          "processing": "Traitement...",
+          "percent": "{percent}%"
         },
         "upgradeCard": {
-            "title": "PASSER AU PRO",
-            "description": "Débloquez la suppression d'objets par lots pour jusqu'à 100 images et d'autres fonctionnalités PRO comme la suppression d'arrière-plan en masse et l'édition avancée.",
-            "button": "EN SAVOIR PLUS ET PASSER AU PRO"
-        },
-        "instructionsCard": {
-            "title": "INSTRUCTIONS",
-            "step1": "Téléchargez une image en utilisant le bouton 'Sélectionner une image'.",
-            "step2": "Dessinez soigneusement sur les objets que vous souhaitez supprimer en utilisant le pinceau rouge.",
-            "step3": "Ajustez le curseur de taille du pinceau pour plus de précision.",
-            "step4": "Cliquez sur le bouton 'Supprimer les objets' et attendez que le traitement par IA se termine.",
-            "step5": "Une fois le traitement terminé, vous pouvez télécharger votre image nettoyée en utilisant le bouton 'Télécharger'.",
-            "step6": "Pour le traitement par lots, activez 'Appliquer le masque à toutes les images' pour supprimer des objets similaires de toutes les images sélectionnées.",
-            "noteTitle": "Remarque:",
-            "noteText": "Le traitement peut prendre de 15 à 60 secondes selon la taille de l'image et votre appareil. Assurez-vous que votre masque couvre complètement l'objet pour obtenir les meilleurs résultats."
-        },
-        "imageGallery": {
-            "selectedImages": "Images sélectionnées",
-            "selectedImage": "Image sélectionnée",
-            "clearAll": "Tout effacer",
-            "applyMaskToAll": "Appliquer le masque à toutes les images (traitement par lots)",
-            "hasMask": "Masque dessiné"
-        },
-        "processing": {
-            "readingFile": "Lecture du fichier...",
-            "loadingImage": "Chargement de l'image...",
-            "exportingMask": "Préparation du masque...",
-            "runningModel": "Exécution du modèle d'IA...",
-            "rendering": "Rendu du résultat...",
-            "preparingBatch": "Préparation du traitement par lots...",
-            "processingImage": "Traitement de l'image {current} sur {total}...",
-            "finishingBatch": "Finalisation des résultats...",
-            "preparingDownload": "Préparation du téléchargement...",
-            "batchProgress": "Progression du lot",
-            "loadingDimensions": "Calcul des dimensions de l'image...",
-            "generic": "Traitement de l'image..."
-        },
-        "errors": {
-            "ortLoad": "Impossible de charger le moteur d'IA. Veuillez rafraîchir la page.",
-            "sessionCreate": "Impossible d'initialiser le modèle de suppression d'objets.",
-            "freeLimit": "Les utilisateurs gratuits ne peuvent traiter qu'une seule image à la fois. Veuillez passer au PRO pour le traitement par lots.",
-            "tooManyImages": "Maximum de 100 images autorisées. Seules les 100 premières images seront traitées.",
-            "imageLoad": "Erreur lors du chargement de l'image sélectionnée.",
-            "fileRead": "Erreur lors de la lecture du fichier sélectionné.",
-            "canvasError": "Erreur lors de l'accès au canevas de l'image.",
-            "prerequisites": "Traitement impossible. Composants requis manquants: {missing}",
-            "noMask": "Veuillez d'abord dessiner un masque sur l'objet que vous souhaitez supprimer.",
-            "processingFailed": "Échec de la suppression de l'objet",
-            "resultLoadFailed": "Erreur lors de l'affichage du résultat de l'image traitée.",
-            "noDownloadData": "Aucune image traitée disponible pour le téléchargement.",
-            "downloadFailed": "Erreur lors de la préparation de l'image pour le téléchargement."
+          "title": "PASSER À PRO",
+          "plan": {
+            "title": "PLAN PRO",
+            "price": "19,99 €",
+            "features": [
+              "Supprimez les arrière-plans de jusqu'à 100 images à la fois",
+              "Ajustements d'image avancés et préréglages",
+              "Génération de noms SEO pour les images de produits",
+              "Traitement par lots pour toutes les fonctionnalités",
+              "Paiement unique, accès à vie"
+            ],
+            "buttonText": "PASSER À PRO MAINTENANT"
+          }
         }
-    },
-    "WatermarkPage": {
-        "metadata": {
-            "title": "Ajouter un filigrane aux images | Batch Shots",
-            "description": "Ajoutez facilement des filigranes texte ou logo personnalisés à vos images. Protégez vos photos avec des filigranes avec contrôle de l'opacité, de la position et de la taille.",
-            "keywords": "filigrane, ajouter filigrane aux images, filigrane photo, filigrane image, filigrane logo, filigrane texte, image de marque, filigraner photos"
+      },
+      "howItWorks": {
+        "title": "COMMENT ÇA MARCHE",
+        "step1": {
+          "title": "1. SÉLECTIONNEZ VOS IMAGES",
+          "description": "Téléchargez une ou plusieurs images de produit que vous souhaitez traiter.",
+          "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
         },
-        "title": "AJOUTER UN FILIGRANE AUX IMAGES",
-        "loading": {
-            "proStatus": "VÉRIFICATION DU STATUT PRO...",
-            "proDescription": "Veuillez patienter pendant que nous vérifions le statut de votre compte."
+        "step2": {
+          "title": "2. SUPPRIMEZ LES ARRIÈRE-PLANS",
+          "description": "Notre technologie IA détecte et supprime l'arrière-plan de vos images, créant des PNG transparents parfaits pour le commerce électronique."
         },
-        "preview": {
-            "title": "APERÇU DE L'IMAGE"
-        },
-        "alerts": {
-            "freeUserLimit": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse !",
-            "maxImagesLimit": "Maximum 100 images autorisées à la fois.",
-            "watermarkFailed": "Échec de l'application du filigrane. Veuillez réessayer."
-        },
-        "mainCard": {
-            "title": "FILIGRANEZ VOS IMAGES",
-            "info": {
-                "title": "AJOUTER DES FILIGRANES PERSONNALISÉS",
-                "description": "Protégez vos images avec des filigranes texte ou logo personnalisés. Personnalisez l'opacité, la taille et la position pour répondre à vos besoins de marque."
-            },
-            "upload": {
-                "title": "Sélectionner des images",
-                "buttonFree": "SÉLECTIONNER UNE IMAGE",
-                "buttonPro": "SÉLECTIONNER DES IMAGES",
-                "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner 1 image à la fois.",
-                "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
-            },
-            "actions": {
-                "clear": "EFFACER",
-                "download": "TÉLÉCHARGER",
-                "downloadZip": "TÉLÉCHARGER EN ZIP",
-                "applyWatermark": "APPLIQUER LE FILIGRANE",
-                "applyWatermarks": "APPLIQUER LES FILIGRANES",
-                "processing": "APPLICATION DU FILIGRANE...",
-                "processingMultiple": "APPLICATION DES FILIGRANES...",
-                "tryFullEditor": "ESSAYER L'ÉDITEUR COMPLET"
-            },
-            "progress": {
-                "processing": "Traitement...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "PASSER À PRO",
-                "plan": {
-                    "title": "PLAN PRO",
-                    "price": "19,99 €",
-                    "features": [
-                        "Filigranez jusqu'à 100 images à la fois",
-                        "Ajustements d'image avancés et préréglages",
-                        "Suppression de l'arrière-plan pour les images de produits",
-                        "Traitement par lots pour toutes les fonctionnalités",
-                        "Paiement unique, accès à vie"
-                    ],
-                    "buttonText": "PASSER À PRO MAINTENANT"
-                }
-            }
-        },
-        "howItWorks": {
-            "title": "COMMENT ÇA MARCHE",
-            "step1": {
-                "title": "1. SÉLECTIONNEZ VOS IMAGES",
-                "description": "Téléchargez une ou plusieurs images que vous souhaitez filigraner.",
-                "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
-            },
-            "step2": {
-                "title": "2. PERSONNALISEZ LE FILIGRANE",
-                "description": "Choisissez entre des filigranes texte ou logo. Ajustez l'opacité, la taille et la position selon vos préférences."
-            },
-            "step3": {
-                "title": "3. TÉLÉCHARGEZ & UTILISEZ",
-                "description": "Appliquez votre filigrane et téléchargez les images traitées prêtes pour le web, les réseaux sociaux ou l'utilisation en portfolio."
-            }
-        },
-        "proDialog": {
-            "title": "PASSER À PRO",
-            "featureTitle": "FONCTIONNALITÉ PRO : Filigrane en masse",
-            "description": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour filigraner jusqu'à 100 images en masse, économisant des heures de travail !",
-            "pricing": {
-                "title": "PAIEMENT UNIQUE",
-                "price": "19,99 €",
-                "note": "Pas d'abonnement, accès à vie"
-            },
-            "actions": {
-                "upgrade": "PASSER À PRO",
-                "continue": "CONTINUER EN MODE GRATUIT"
-            }
+        "step3": {
+          "title": "3. TÉLÉCHARGEZ & UTILISEZ",
+          "description": "Téléchargez vos images traitées et utilisez-les sur votre site web, vos annonces de marketplace ou vos supports marketing."
         }
+      },
+      "proDialog": {
+        "title": "PASSER À PRO",
+        "featureTitle": "FONCTIONNALITÉ PRO : Suppression d'arrière-plan en masse",
+        "description": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse, économisant des heures de travail !",
+        "pricing": {
+          "title": "PAIEMENT UNIQUE",
+          "price": "19,99 €",
+          "note": "Pas d'abonnement, accès à vie"
+        },
+        "actions": {
+          "upgrade": "PASSER À PRO",
+          "continue": "CONTINUER EN MODE GRATUIT"
+        }
+      }
     },
-    "ImageFormatConvertorPage": {
-        "metadata": {
-            "title": "Convertisseur de formats d'image | Batch Shots",
-            "description": "Convertissez des images entre les formats (JPG, PNG, WebP, AVIF) avec notre outil facile à utiliser. Prend en charge la conversion HEIC et le traitement par lots.",
-            "keywords": "convertisseur de formats d'image, convertir jpg en png, convertir heic en jpg, convertisseur webp, conversion de format d'image, conversion d'images par lots, convertir heic"
-        },
-        "title": "CONVERTISSEUR DE FORMATS D'IMAGE",
-        "loading": {
-            "tool": "CHARGEMENT DU CONVERTISSEUR...",
-            "proStatus": "VÉRIFICATION DU STATUT PRO...",
-            "description": "Veuillez patienter pendant l'initialisation des capacités de traitement d'image.",
-            "proDescription": "Veuillez patienter pendant la vérification du statut de votre compte."
-        },
-        "uploadArea": {
-            "title": "CONVERTISSEZ VOS IMAGES",
-            "description": "Convertissez vos images dans différents formats en quelques clics.",
-            "selectImages": "SÉLECTIONNER DES IMAGES (JUSQU'À {maxImages})",
-            "dragAndDropPrivacy": "Faites glisser et déposez des images ici, ou cliquez pour sélectionner des fichiers. <strong>Tout le traitement se fait dans votre navigateur. Nous ne téléchargeons jamais vos images sur nos serveurs.</strong>",
-            "freeLimitInfo": "Les utilisateurs gratuits peuvent convertir jusqu'à {maxImages} images à la fois.",
-            "upgradeLink": "Passer à PRO"
-        },
-        "selectedImages": {
-            "title": "IMAGES SÉLECTIONNÉES ({count})"
-        },
-        "formatChanged": {
-            "title": "FORMAT MODIFIÉ",
-            "description": "Vous avez modifié le format cible. Cliquez sur Réinitialiser pour convertir vos images au nouveau format."
-        },
-        "mainCard": {
-            "title": "CONVERTIR DES IMAGES DANS N'IMPORTE QUEL FORMAT",
-            "info": {
-                "title": "CONVERSION DE FORMAT D'IMAGE",
-                "description": "Convertissez vos images entre des formats comme JPG, PNG, WebP et AVIF. Vous pouvez également redimensionner vos images pendant la conversion."
-            },
-            "upload": {
-                "title": "Sélectionner les images à convertir",
-                "buttonFree": "SÉLECTIONNER DES IMAGES",
-                "buttonPro": "SÉLECTIONNER DES IMAGES",
-                "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner jusqu'à {maxImages} images à la fois.",
-                "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
-            },
-            "actions": {
-                "clear": "EFFACER",
-                "addMore": "AJOUTER PLUS",
-                "download": "TÉLÉCHARGER CONVERTIES",
-                "downloadZip": "TÉLÉCHARGER TOUT EN ZIP",
-                "convertImageTo": "CONVERTIR EN {format}",
-                "convertImagesTo": "CONVERTIR TOUT EN {format}",
-                "converting": "CONVERSION...",
-                "convertingMultiple": "CONVERSION DES IMAGES...",
-                "resetConversion": "RÉINITIALISER"
-            },
-            "progress": {
-                "processing": "Traitement...",
-                "percent": "{percent}%"
-            },
-            "upgradeCard": {
-                "title": "PASSER À PRO",
-                "plan": {
-                    "title": "PLAN PRO",
-                    "price": "$19.99",
-                    "features": [
-                        "Convertissez jusqu'à 100 images à la fois",
-                        "Redimensionnez les images pendant la conversion",
-                        "Convertissez depuis HEIC/HEIF vers n'importe quel format",
-                        "Suppression de l'arrière-plan pour les photos de produits",
-                        "Paiement unique, accès à vie"
-                    ],
-                    "buttonText": "METTRE À NIVEAU MAINTENANT"
-                }
-            }
-        },
-        "targetFormat": {
-            "title": "SÉLECTIONNER LE FORMAT CIBLE"
-        },
-        "resize": {
-            "title": "REDIMENSIONNER PENDANT LA CONVERSION (FACULTATIF)"
-        },
-        "convertedImages": {
-            "title": "IMAGES CONVERTIES",
-            "description": "Vos images ont été converties avec succès. Cliquez sur Télécharger pour les enregistrer."
-        },
-        "howItWorks": {
-            "title": "COMMENT ÇA MARCHE",
-            "step1": {
-                "title": "1. SÉLECTIONNEZ VOS IMAGES",
-                "description": "Téléchargez une ou plusieurs images que vous souhaitez convertir.",
-                "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
-            },
-            "step2": {
-                "title": "2. CHOISISSEZ LE FORMAT CIBLE",
-                "description": "Sélectionnez le format de sortie souhaité (JPG, PNG, WebP ou AVIF)."
-            },
-            "step3": {
-                "title": "3. REDIMENSIONNER (FACULTATIF)",
-                "description": "Sélectionnez éventuellement un préréglage pour redimensionner vos images pendant la conversion."
-            },
-            "step4": {
-                "title": "4. TÉLÉCHARGER ET UTILISER",
-                "description": "Convertissez vos images et téléchargez-les individuellement ou sous forme d'archive ZIP."
-            }
-        },
-        "supportedFormats": {
-            "title": "FORMATS PRIS EN CHARGE",
-            "input": {
-                "title": "FORMATS D'ENTRÉE",
-                "description": "Vous pouvez télécharger des images dans ces formats :"
-            },
-            "output": {
-                "title": "FORMATS DE SORTIE",
-                "description": "Convertissez vos images dans l'un de ces formats :"
-            }
-        },
-        "alerts": {
-            "freeUserLimit": "Les utilisateurs gratuits peuvent convertir jusqu'à 5 images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse !",
-            "maxImagesLimit": "Maximum de 100 images autorisées à la fois.",
-            "conversionFailed": "La conversion du format a échoué. Veuillez réessayer."
-        },
-        "proDialog": {
-            "title": "PASSER À PRO",
-            "featureTitle": "FONCTIONNALITÉ PRO : Conversion de format en masse",
-            "description": "Les utilisateurs gratuits ne peuvent convertir que {maxImages} images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse, ce qui vous fera gagner des heures de travail !",
-            "pricing": {
-                "title": "PAIEMENT UNIQUE",
-                "price": "$19.99",
-                "note": "Pas d'abonnement, accès à vie"
-            },
-            "actions": {
-                "upgrade": "PASSER À PRO",
-                "continue": "CONTINUER AVEC LE MODE GRATUIT"
-            }
-        },
-        "allImages": "TOUTES LES IMAGES ({current}/{max})",
-        "imagesCount": "{current}/{max} images",
-        "upgradeFor": "(Mettre à niveau pour jusqu'à 100)"
+    "ImagePreview": {
+      "noImages": "Aucune image sélectionnée",
+      "zoomInstructions": "Pincez pour zoomer, faites glisser pour déplacer",
+      "zoomLevel": "{scale}%",
+      "removingBackground": "Suppression de l'arrière-plan...",
+      "seoName": {
+        "label": "Nom SEO :",
+        "edit": "MODIFIER",
+        "cancel": "ANNULER",
+        "save": "ENREGISTRER"
+      },
+      "originalName": "Nom original :",
+      "fileInfo": {
+        "dimensions": "Dimensions :",
+        "size": "Taille :",
+        "output": "Sortie :",
+        "quality": "Qualité :",
+        "background": "Arrière-plan :",
+        "backgroundRemoved": "Supprimé",
+        "custom": "Personnalisé",
+        "auto": "auto"
+      },
+      "actions": {
+        "download": "TÉLÉCHARGER",
+        "reset": "RÉINITIALISER"
+      },
+      "allImages": "TOUTES LES IMAGES ({current}/{max})"
     },
-    "ImageDuplicateDetectionPage": {
-        "metadata": {
-            "title": "Détecteur et Nettoyeur de Photos en Double IA | Batch Shots",
-            "description": "Trouvez et supprimez rapidement les photos en double ou similaires avec notre outil alimenté par l'IA. Identifie les images de meilleure qualité dans les ensembles de doublons. Gratuit et dans le navigateur.",
-            "keywords": "détecteur de photos en double, supprimer les images en double, détecteur de photos similaires, nettoyeur de photos ia, détection de doublons d'images, photo de meilleure qualité, désencombrer les photos, batchshots"
-        },
-        "PageTitle": "Détecteur et Nettoyeur de Photos en Double IA",
-        "AppInitializing": "Initialisation de l'Analyseur de Photos Intelligent...",
-        "AISetup": "Configuration du Moteur IA...",
-        "AIEngineInitializing": "Initialisation du Moteur IA...",
-        "AIEngineStarted": "Moteur IA Démarré.",
-        "AIInitializing": "Initialisation de l'IA...",
-        "AILoadingModel": "Chargement du Modèle IA Avancé...",
-        "AIModelLoaded": "Modèle IA Chargé.",
-        "AIReady": "IA Prête. Sélectionnez des photos pour trouver les doublons.",
-        "AIReadyPrompt": "IA Prête. Sélectionnez des photos pour trouver les doublons.",
-        "ProcessingImage": "Analyse de la photo {imageId}...",
-        "ErrorProcessingImage": "Erreur lors de l'analyse de la photo {imageId}: {data}.",
-        "AIEngineError": "Erreur du Moteur IA: {data}.",
-        "AIEngineErrorRefresh": "Erreur du Moteur IA: {data}. Veuillez actualiser ou réessayer.",
-        "AICriticalError": "L'IA a rencontré une erreur critique.",
-        "AICriticalErrorRefresh": "Une erreur critique s'est produite avec notre analyse IA. Veuillez actualiser la page.",
-        "QualityToolsError": "Échec du chargement des outils d'analyse de qualité. Les métriques de qualité détaillées peuvent ne pas être disponibles.",
-        "AllImagesProcessedAnalyzing": "Toutes les photos traitées. Identification des doublons...",
-        "AnalysisCompleteSummary": "Analyse terminée. {groupSummary} Traitement de {successfullyProcessedCount} sur {totalImagesCount} photos.",
-        "DuplicateSetsFound": "{count} ensemble(s) de doublons trouvé(s).",
-        "NoDuplicatesFound": "Aucun doublon direct trouvé.",
-        "NoImagesProcessedSuccessfully": "Aucune photo n'a pu être traitée avec succès. Traitement de {successfullyProcessedCount} sur {totalImagesCount} photos.",
-        "NoImagesForNewThreshold": "Aucune photo à analyser avec le nouveau paramètre de similarité.",
-        "ReanalyzingWithThreshold": "Réanalyse des photos avec le paramètre de similarité : {threshold}...",
-        "AnalysisCompleteWithThreshold": "Analyse terminée avec une similarité de {threshold}. {groupSummary}",
-        "PleaseSelectImages": "Veuillez sélectionner des photos...",
-        "AINotReadyError": "Le moteur d'analyse IA n'est pas prêt. Veuillez patienter ou actualiser.",
-        "ProcessingFilesHEIC": "Préparation des fichiers sélectionnés (conversion si nécessaire)...",
-        "HEICConversionFailedSkip": "Échec de la conversion de l'image : {fileName}. Elle sera ignorée.",
-        "HEICConversionErrorSkip": "Erreur lors de la conversion de l'image : {fileName}. Elle sera ignorée.",
-        "NoValidFilesAfterConversion": "Aucun fichier valide à traiter après les tentatives de conversion.",
-        "SendingImagesToAI": "Envoi de {count} photos pour analyse IA...",
-        "NoValidImagesSelected": "Aucune photo valide sélectionnée pour le traitement.",
-        "QualityToolsNotReadyKPI": "Outils d'analyse de qualité non prêts. Impossible de calculer la qualité détaillée.",
-        "QualityToolsNotReadyQuality": "Outils d'analyse de qualité non prêts. Impossible de calculer la qualité.",
-        "ErrorCalculatingQuality": "Erreur lors du calcul de la qualité pour la photo {imageId}: {error}",
-        "QualityToolsNotReadyAnalysisWait": "Les outils d'analyse de qualité ne sont pas prêts. Veuillez patienter.",
-        "NoDuplicatesInGroup": "Aucun doublon dans ce groupe à analyser.",
-        "AnalyzingGroupQuality": "Analyse de la qualité des photos dans le groupe {groupNumber}...",
-        "AnalyzedProgressInGroup": "Analyse de {processedCount} sur {groupTotal} dans le groupe {groupNumber}. Photo : {imageName}",
-        "QualityAnalysisCompleteForGroup": "Analyse de qualité terminée pour le groupe {groupNumber}.",
-        "QualityAnalysisPartialForGroup": "Analyse de qualité partiellement terminée pour le groupe {groupNumber}. Certaines photos ont pu échouer ou être ignorées.",
-        "QualityToolsNotReadyBestSelection": "Outils d'analyse de qualité non prêts. Impossible de garantir la sélection de la meilleure photo.",
-        "AnalyzingQualityForBestDownload": "Analyse de la qualité de {count} photo(s) pour sélectionner la meilleure à télécharger...",
-        "PreDownloadAnalysisComplete": "Analyse de qualité préalable au téléchargement terminée pour le groupe actuel.",
-        "NoImagesToDownload": "Aucune photo à télécharger.",
-        "QualityToolsNotReadyDownloadAll": "Les outils d'analyse de qualité ne sont pas prêts. L'analyse détaillée des ensembles de doublons ne peut pas être effectuée pour 'Tout télécharger'. Veuillez patienter ou analyser les groupes individuellement d'abord.",
-        "PreparingDownload": "Préparation des fichiers pour le téléchargement...",
-        "BestImageDeterminationFailed": "Impossible de déterminer la meilleure photo pour un groupe. Ce groupe sera omis du ZIP.",
-        "WarningBestImageOmitted": "Avertissement : La meilleure photo d'un groupe n'a pas pu être déterminée et a été omise.",
-        "ZippingImages": "Compression de {count} photo(s)...",
-        "DownloadComplete": "Téléchargement terminé !",
-        "ErrorCreatingZIP": "Erreur lors de la création du fichier ZIP pour le téléchargement.",
-        "NoImagesSelectedForDownload": "Aucune photo n'a été sélectionnée pour le téléchargement (par ex., aucune photo unique ou aucune meilleure photo identifiée dans les groupes).",
-        "ImageDataMissingDownload": "Données de la photo manquantes, impossible de télécharger.",
-        "DownloadingImage": "Téléchargement de {imageName}...",
-        "ImageDownloadedSuccessfully": "{imageName} téléchargée avec succès.",
-        "FailedToDownloadImage": "Échec du téléchargement de {imageName}.",
-        "QualityToolsNotReadyAnalyzeAllGroups": "Les outils d'analyse de qualité ne sont pas prêts. L'analyse détaillée des ensembles de doublons ne peut pas être effectuée. Veuillez patienter.",
-        "OnlyUniqueImagesReadyDownload": "Seules les photos uniques sont présentes. Prêt à télécharger.",
-        "NoImagesToAnalyzeOrDownload": "Aucune photo à analyser ou à télécharger.",
-        "AnalyzingAllGroupsForBest": "Analyse de tous les groupes pour la sélection de la meilleure photo...",
-        "AnalyzingGroupForBest": "Analyse du groupe {currentGroup} sur {totalGroups} pour la meilleure photo...",
-        "AllGroupsAnalyzedReadyDownload": "Tous les {count} groupes de doublons analysés. Prêt à télécharger les {downloadCount} meilleures photos.",
-        "AnalysisPartialReadyDownload": "Analyse pour la meilleure sélection partiellement terminée ({processedGroups}/{totalGroups} groupes). Prêt à télécharger {downloadCount} photos (la meilleure disponible sera choisie).",
-        "NoImagesProcessedOrGroups": "Aucune photo traitée ou aucun groupe formé pour le moment. Assurez-vous que les photos ont été sélectionnées et que l'analyse IA est terminée.",
-
-        "LoaderTitleInitializing": "Initialisation des Outils Intelligents...",
-        "LoaderTitleLoadingModel": "Chargement du Cerveau IA...",
-        "LoaderTitleQualityTools": "Préparation de l'Analyseur de Qualité...",
-        "LoaderDescriptionInitializing": "Préparation pour la détection intelligente des doublons. Veuillez patienter.",
-        "LoaderDescriptionLoadingModel": "Notre IA avancée est en train de chauffer. Cela peut prendre un moment.",
-        "LoaderDescriptionQualityTools": "Préparation des outils pour des informations détaillées sur la qualité des photos...",
-        
-        "MainCardTitle": "Trouver & Gérer les Photos en Double",
-        "UploadSectionTitle": "Téléchargez Vos Photos",
-        "UploadSectionDescription": "Sélectionnez plusieurs photos. Notre IA les analysera intelligemment et regroupera celles qui sont similaires.",
-        "ButtonSelectImages": "Sélectionner des Photos",
-        "ButtonSelectImagesLoading": "Chargement...",
-        "ButtonSelectImagesInitializing": "Chargement des outils...",
-        "ButtonAddMoreImages": "Ajouter plus de Photos",
-        "ButtonAddMoreImagesLoading": "Ajout de photos...",
-        "SupportedFormats": "Supporte les formats JPG, PNG, WEBP, HEIC",
-        "AIStatusLabel": "Statut IA : {status}",
-        "QualityAnalyzerStatusLoading": "Analyseur de Qualité : Chargement...",
-
-        "SimilarityThresholdTitle": "Paramètre de Similarité",
-        "SimilarityThresholdDescription": "Contrôlez à quel point les photos doivent correspondre pour être signalées comme doublons. Des valeurs plus élevées signifient une correspondance plus stricte.",
-        "SimilarityLessStrict": "Moins Strict",
-        "SimilarityCurrent": "Actuel : {threshold}",
-        "SimilarityMoreStrict": "Plus Strict",
-        "ButtonApplyThreshold": "Appliquer le Paramètre",
-        "ButtonApplyThresholdLoading": "Réanalyse en cours...",
-
-        "ResultsTitle": "Résultats de la Détection :",
-        "DuplicateSetTitle": "Ensemble de Doublons {number} ({count} photos similaires)",
-        "ButtonAnalyzeQuality": "Analyser la Qualité",
-        "ButtonAnalyzeQualityLoading": "Analyse en cours...",
-        "ButtonReanalyzeQuality": "Réanalyser la Qualité",
-        "ImageMissing": "Données de la photo manquantes (index : {index})",
-        "BestLabel": "Meilleure",
-        "KpiRes": "Rés:",
-        "KpiSharp": "Nett.:",
-        "KpiNoise": "Bruit:",
-        "KpiContrast": "Contr.:",
-        "KpiExposure": "Expo.:",
-        "ButtonDownload": "Télécharger",
-        "ButtonDownloading": "Téléchargement...",
-
-        "UniqueImagesTitle": "Photos Uniques ({count} photo(s) sans doublons directs)",
-
-        "ButtonAnalyzeAllGroups": "Analyser Tous les Groupes pour la Meilleure Sélection",
-        "ButtonAnalyzeAllGroupsLoading": "Analyse de Tous les Groupes...",
-        "ButtonDownloadBest": "Télécharger les {count} Meilleures Photos",
-        "ButtonDownloadBestLoading": "Préparation du Téléchargement...",
-
-        "HowItWorksTitle": "Comment Notre IA Trouve les Doublons",
-        "HowItWorksStep1Title": "1. Téléchargez Vos Photos",
-        "HowItWorksStep1Desc": "Cliquez sur \"Sélectionner des Photos\" et choisissez les images que vous voulez vérifier. Vous pouvez en sélectionner plusieurs à la fois.",
-        "HowItWorksStep2Title": "2. Analyse IA Intelligente",
-        "HowItWorksStep2Desc": "Notre IA avancée (basée sur la technologie Vision Transformer) analyse intelligemment le contenu visuel de chaque photo, comprenant ses caractéristiques uniques et son apparence.",
-        "HowItWorksStep3Title": "3. Notation de Similarité Intelligente",
-        "HowItWorksStep3Desc": "L'IA compare les photos en utilisant une analyse visuelle sophistiquée (similarité cosinus) pour déterminer à quel point elles se ressemblent en fonction de leur contenu.",
-        "HowItWorksStep4Title": "4. Affiner la Similarité",
-        "HowItWorksStep4Desc": "Utilisez le curseur de similarité pour contrôler la rigueur de la correspondance. Une valeur plus élevée signifie que les photos doivent être presque identiques pour être signalées comme des doublons.",
-        "HowItWorksStep5Title": "5. Examiner & Organiser",
-        "HowItWorksStep5Desc": "Les résultats montrent clairement les ensembles de doublons et les photos uniques. Notre IA peut également mettre en évidence la photo de meilleure qualité dans chaque groupe de doublons, vous aidant à décider laquelle conserver.",
-
-
-        "FreeUserLimit": "Les utilisateurs gratuits peuvent téléverser jusqu'à {limit} photos à la fois.",
-        "ButtonSelectImagesLimit": "Sélectionner des photos (jusqu'à {limit})",
-        "UpgradeMessage": "Passez à PRO pour analyser un nombre illimité de photos en une seule fois.",
-        "UpgradeLink": "Passer à PRO",
-        "HowItWorksStep1Free": "Les utilisateurs gratuits sont limités à {limit} photos à la fois.",
-        "HowItWorksStep1Pro": "En tant qu'utilisateur PRO, vous pouvez analyser un nombre illimité de photos à la fois.",
-        "ProFeatureName": "Analyse de photos illimitée",
-        
-        "FreeModeTitle": "MODE GRATUIT",
-        "FreeModeDescription": "Traitez jusqu'à {limit} photos à la fois. Passez à PRO pour analyser un nombre illimité de photos !",
-        "ProModeTitle": "MODE PRO",
-        "ProModeDescription": "Traitez un nombre illimité de photos avec votre compte PRO !",
-        "MaxImagesExceeded": "Maximum 100 images autorisées. Seules les 100 premières ont été traitées.",
-        "ProcessingErrors": "Erreurs de traitement",
-        "imagesCount": "{current}/{max} images",
-        "upgradeFor": "(Passez à PRO pour illimité)",
-        
-        "UpgradeCardTitle": "PASSER À PRO",
-        "UpgradeCardPlanTitle": "FORFAIT PRO",
-        "UpgradeCardPlanPrice": "$19.99",
-        "UpgradeCardPlanNote": "Paiement unique, accès à vie",
-        "UpgradeCardFeature1": "Analysez un nombre illimité de photos à la fois (contre 5 en mode gratuit)",
-        "UpgradeCardFeature2": "Trouvez rapidement les doublons dans de grandes collections de photos",
-        "UpgradeCardFeature3": "Analyse de qualité pour trouver automatiquement les meilleures photos",
-        "UpgradeCardFeature4": "Téléchargement en lot des meilleures photos des ensembles de doublons",
-        "UpgradeCardFeature5": "Accès à toutes les autres fonctionnalités PRO (suppression d'arrière-plan, etc.)",
-        "UpgradeCardButton": "PASSER À PRO MAINTENANT",
-        
-        "ProUpgradeTitle": "Passer à Pro pour des photos illimitées",
-
-        "SimilarityControlsTitle": "Algorithme de similarité et seuil",
-        "SimilarityAlgorithmLabel": "Algorithme de similarité",
-        "SimilarityThresholdLabel": "Seuil de similarité",
-        "SimilarityThresholdDescDistance": "Des valeurs plus faibles signifient des images plus similaires (métrique de distance)",
-        "SimilarityThresholdDescSimilarity": "Des valeurs plus élevées signifient des images plus similaires (métrique de similarité)",
-        
-        "ProcessingChanges": "Traitement des modifications...",
-        "ReanalyzingWithAlgorithm": "Réanalyse avec le nouvel algorithme...",
-        "AnalysisCompleteWithAlgorithm": "Analyse terminée avec le nouvel algorithme. {groupSummary}",
-
-        "DuplicateAnalysisComplete": "Analyse des doublons terminée",
-        
-        "VisualizationTitle": "Espace Vectoriel IA",
-        "VisualizationDescription": "Visualisez comment l'IA perçoit vos images dans un espace à haute dimension, réduit en 2D grâce à l'algorithme UMAP. Les images similaires se regroupent ensemble.",
-        "VisualizationShowButton": "Afficher la Visualisation",
-        "VisualizationHideButton": "Masquer la Visualisation",
-        "VisualizationGeneratingButton": "Génération de la Visualisation...",
-        "VisualizationNoData": "Téléversez et traitez d'abord les images pour activer la visualisation",
-        "VisualizationProcessingStatus": "Cela peut prendre un moment pour les grands ensembles de données...",
-        "VisualizationLegendUnique": "Images Uniques",
-        "VisualizationLegendDuplicates": "Groupes de Doublons (colorés par similarité)",
-        "VisualizationHelpText": "Survolez les points pour voir les miniatures • Points plus proches = images plus similaires",
-        "VisualizationNeedMinImages": "Minimum 3 images requises pour la visualisation",
-        "VisualizationNoDataAvailable": "Aucune donnée de visualisation disponible"
+    "PricingCard": {
+      "oneTime": "une fois",
+      "currentPlan": "PLAN ACTUEL"
     },
-    "ImageSeoGenerationPage": {
-        "metadata": {
-            "title": "Génération SEO d'Images par IA - Générer des Slugs d'URL & Légendes SEO",
-            "description": "Téléversez vos images pour générer automatiquement des noms, slugs d'URL et légendes optimisés SEO grâce à l'IA.",
-            "keywords": "seo image, générateur de slug url, générateur de légende seo image, création de contenu ia, optimisation d'image"
-        },
-        "AppInitializing": "Initialisation du Générateur SEO IA...",
-        "AISetup": "Mise en place de l'IA pour le contenu SEO...",
-        "AIEngineInitializing": "Initialisation du moteur SEO IA...",
-        "AIEngineStarted": "Moteur SEO IA démarré.",
-        "AIInitializing": "Initialisation du modèle IA pour le SEO...",
-        "AILoadingModel": "Chargement du modèle SEO IA...",
-        "AIModelLoaded": "Modèle SEO IA chargé.",
-        "AIReady": "Moteur SEO IA prêt.",
-        "AIReadyPrompt": "Prêt pour le SEO IA. Veuillez téléverser vos images.",
-        "ProcessingImage": "Traitement IA pour le SEO : Image {imageId}...",
-        "ErrorProcessingImage": "Erreur lors du traitement SEO IA pour l'image {imageId} : {data}",
-        "AIEngineError": "Erreur du moteur SEO IA : {data}",
-        "AIEngineErrorRefresh": "Erreur du moteur SEO IA : {data}. Veuillez rafraîchir.",
-        "AICriticalError": "Erreur critique du moteur SEO IA.",
-        "AICriticalErrorRefresh": "Erreur critique du moteur SEO IA. Veuillez rafraîchir et réessayer.",
-        "PleaseSelectImages": "Veuillez sélectionner des images pour la génération SEO IA.",
-        "AINotReadyError": "Le moteur SEO IA n'est pas prêt. Veuillez patienter.",
-        "ProcessingFiles": "Traitement des images pour le SEO IA...",
-        "ProcessingFilesHEIC": "Traitement des images pour le SEO IA, conversion HEIC si nécessaire...",
-        "HEICConversionFailedSkip": "Échec de la conversion HEIC en format compatible SEO pour : {fileName}. Ignoré.",
-        "HEICConversionErrorSkip": "Erreur lors de la conversion HEIC pour le SEO : {fileName}. Ignoré.",
-        "NoValidFilesAfterConversion": "Aucune image valide pour le SEO IA après les tentatives de conversion.",
-        "NoValidFiles": "Aucune image valide sélectionnée pour le traitement SEO IA.",
-        "SendingImagesToAI": "Envoi de {count} images à l'IA pour la génération de contenu SEO...",
-        "AllImagesProcessed": "Traitement SEO IA terminé. Consultez votre contenu optimisé ci-dessous.",
-        "PageTitle": "Générateur SEO d'Images & Texte Alternatif IA",
-        "PageTitlePro": "Générateur PRO SEO d'Images & Texte Alternatif IA",
-        "PageTitleFree": "Générateur SEO d'Images & Légendes IA",
-        "MainCardTitle": "Générez des noms SEO & légendes avec l'IA",
-        "UploadSectionTitle": "1. Téléversez des images pour le SEO IA",
-        "UploadSectionDescription": "Téléversez des images JPG, PNG, WEBP, GIF, HEIC. Notre IA génère des noms de fichiers et textes alternatifs optimisés SEO. Ajoutez des mots-clés pour affiner les résultats.",
-        "UploadSectionDescriptionWithLimit": "Téléversez des images JPG, PNG, WEBP, GIF, HEIC (max {maxImages} selon votre forfait). L'IA génère des noms de fichiers SEO & textes alternatifs. Ajoutez des mots-clés pour des résultats personnalisés.",
-        "ButtonSelectImages": "Sélectionner des images pour le SEO IA",
-        "ButtonSelectImagesLoading": "Initialisation de l'IA...",
-        "ResultsTitle": "Contenu SEO généré par IA",
-        "ImageMissing": "Données d'image manquantes pour le SEO IA (index : {index})",
-        "GeneratedSeoName": "Nom de fichier SEO généré par IA :",
-        "GeneratedDescription": "Texte alternatif/légende généré(e) par IA :",
-        "StatusLabel": "Statut actuel :",
-        "AIStatusLabel": "Statut SEO IA : {status}",
-        "HowItWorksTitle": "Comment fonctionne le SEO d'image par IA",
-        "HowItWorksStep1Title": "Téléversez vos images",
-        "HowItWorksStep1Desc": "Sélectionnez ou glissez-déposez des images. Notre IA les prépare pour l'analyse SEO.",
-        "HowItWorksStep2Title": "Analyse de contenu par IA",
-        "HowItWorksStep2Desc": "Notre IA analyse chaque image pour comprendre son contenu, son contexte et son potentiel SEO.",
-        "HowItWorksStep3Title": "Génération de nom SEO & texte alternatif",
-        "HowItWorksStep3Desc": "L'IA crée des noms de fichiers optimisés SEO et des textes alternatifs descriptifs. Les mots-clés améliorent l'optimisation.",
-        "HowItWorksStep4Title": "Vérifiez & boostez votre SEO",
-        "HowItWorksStep4Desc": "Copiez le contenu SEO généré par IA pour améliorer le référencement et l'accessibilité de votre site, blog ou réseaux sociaux.",
-        "NoResultsYet": "Téléversez des images pour voir le contenu SEO généré par IA.",
-        "KeywordsSectionTitle": "2. Améliorez avec des mots-clés (optionnel)",
-        "KeywordsSectionDescription": "Ajoutez des mots-clés séparés par des virgules. Notre IA les intégrera stratégiquement dans le texte alternatif pour un meilleur SEO.",
-        "KeywordsPlaceholder": "ex : voyage, nourriture, e-commerce, catégorie de produit",
-        "ButtonRegenerateWithKeywords": "Régénérer le contenu SEO avec mots-clés",
-        "ButtonRegenerating": "Régénération du contenu SEO...",
-        "RegeneratingStatus": "L'IA régénère le texte alternatif avec les nouveaux mots-clés SEO...",
-        "RegenerationComplete": "Régénération SEO par IA terminée.",
-        "ButtonDownloadAll": "Télécharger tous les résultats SEO IA (ZIP)",
-        "ButtonDownloadingAll": "Téléchargement du ZIP SEO IA...",
-        "PreparingDownload": "Préparation des fichiers SEO IA pour le téléchargement...",
-        "ZippingFiles": "Compression de {count} fichiers optimisés IA...",
-        "NoFilesToDownload": "Aucune image traitée par IA avec données SEO à télécharger.",
-        "ErrorCreatingZIP": "Erreur lors de la création du ZIP SEO IA. Veuillez réessayer.",
-        "DownloadComplete": "Téléchargement SEO IA terminé !",
-        "ImageUploadFeatureName": "Téléversement illimité d'images SEO IA",
-        "FreeLimitReachedDialogTitle": "Passez à Pro pour plus de puissance SEO IA",
-        "FreeLimitReachedDialogMessage": "Vous avez atteint la limite gratuite pour le SEO IA. Passez à Pro pour traiter plus d'images.",
-        "FreeLimitReachedSomeProcessed": "Limite du forfait gratuit de {count} images atteinte pour le SEO IA. Traitement des {count} premières. Passez à Pro pour plus.",
-        "ProLimitReachedSomeProcessed": "Limite du forfait Pro de {count} images atteinte pour le SEO IA. Traitement des {count} premières.",
-        "NoValidFilesToProcessAfterLimit": "Aucune image à traiter pour le SEO IA après les limites du forfait.",
-        "ProUserCardTitle": "Forfait Pro SEO IA actif",
-        "ProUserCardDescription": "Vous êtes sur le forfait Pro ! Profitez du traitement illimité d'images SEO IA par lot et de toutes les fonctionnalités premium.",
-        "UpgradeToProCardTitle": "Passez à Pro",
-        "UpgradeToProCardDescription": "Débloquez toute la puissance SEO IA ! Les utilisateurs gratuits peuvent traiter {maxImagesFree} images. Les utilisateurs Pro bénéficient du traitement illimité & d'autres avantages.",
-        "ButtonUpgradeNow": "Passer à Pro maintenant",
-        "ProUserPlanIndicator": "Forfait Pro : génération illimitée d'images SEO IA.",
-        "FreeUserPlanIndicator": "Forfait gratuit : SEO IA jusqu'à 3 images. Passez à Pro pour l'illimité !",
-        "FreePlanInfoBoxTitle": "FORFAIT GRATUIT",
-        "ProFeatureUnlimitedImages": "Génération illimitée d'images SEO IA"
+    "WatermarkControl": {
+      "title": "FILIGRANE",
+      "addTab": "AJOUTER UN FILIGRANE",
+      "removeTab": "SUPPRIMER LE FILIGRANE (IA)",
+      "type": "TYPE",
+      "text": "TEXTE",
+      "logo": "LOGO",
+      "enterText": "Saisir le texte du filigrane",
+      "font": "POLICE",
+      "size": "TAILLE",
+      "color": "COULEUR",
+      "opacity": "OPACITÉ",
+      "position": "POSITION",
+      "uploadLogo": "TÉLÉVERSER LE LOGO",
+      "logoPlaceholder": "Cliquez ou glissez le logo ici",
+      "reset": "RÉINITIALISER",
+      "presets": {
+        "bottomRight": "En bas à droite",
+        "bottomLeft": "En bas à gauche",
+        "topLeft": "En haut à gauche",
+        "topRight": "En haut à droite",
+        "center": "Centre",
+        "diagonal": "Diagonale",
+        "tile": "Mosaïque (Motif)"
+      },
+      "removeDescription": "Suppression de filigrane par IA bientôt disponible !"
     }
-} 
+  },
+  "Dialogs": {
+    "download": {
+      "title": "Télécharger les images",
+      "confirmTitle": "Confirmer le téléchargement",
+      "successTitle": "Téléchargement réussi",
+      "summary": "Résumé du téléchargement :",
+      "images": "{count, plural, =1 {# image} other {# images}} seront téléchargées",
+      "format": "Format :",
+      "appliedPreset": "Préréglage appliqué :",
+      "adjustmentsApplied": "Ajustements d'image appliqués",
+      "backgroundRemoval": "Suppression de l'arrière-plan appliquée",
+      "seoFilenames": "Noms de fichiers SEO optimisés par l'IA inclus",
+      "watermarkApplied": "Filigrane appliqué",
+      "zipPackage": "Les fichiers seront regroupés dans une archive ZIP",
+      "processingNote": "Le traitement peut prendre un moment pour plusieurs images ou des images volumineuses.",
+      "cancel": "ANNULER",
+      "download": "TÉLÉCHARGER",
+      "processing": "TRAITEMENT...",
+      "successMessage": "Vos images ont été téléchargées avec succès. Que souhaitez-vous faire ensuite ?",
+      "startNewBundleDesc": "Démarrer un nouveau lot : Effacer les images actuelles et recommencer",
+      "continueEditingDesc": "Continuer l'édition : Continuer à travailler avec les images actuelles",
+      "startNewBundle": "DÉMARRER UN NOUVEAU LOT",
+      "continueEditing": "CONTINUER L'ÉDITION",
+      "seoProductDescription": "Description de produit SEO (TXT)"
+    },
+    "proUpgrade": {
+      "feature": "Traitement par lots"
+    }
+  },
+  "Pricing": {
+    "title": "PLANS TARIFAIRES",
+    "subtitle": "Choisissez le plan parfait pour vos besoins d'optimisation d'images. Notre plan PRO offre une licence à vie avec un paiement unique.",
+    "alreadyPro": {
+      "title": "Vous êtes déjà un utilisateur PRO !",
+      "description": "Merci pour votre soutien. Vous avez accès à toutes les fonctionnalités PRO, y compris la suppression d'arrière-plan en masse, les ajustements d'image avancés et la génération de noms de fichiers SEO.",
+      "backToEditor": "RETOUR À L'ÉDITEUR"
+    },
+    "checkout": {
+      "title": "FINALISER VOTRE ACHAT",
+      "planTitle": "LICENCE PRO À VIE",
+      "price": "19,99 €",
+      "description": "Paiement unique, accès à vie à toutes les fonctionnalités PRO",
+      "email": "EMAIL",
+      "cardInfo": "INFORMATIONS DE CARTE",
+      "cardNumber": "1234 5678 9012 3456",
+      "expiryDate": "MM/AA",
+      "cvc": "CVC",
+      "completePurchase": "FINALISER L'ACHAT",
+      "goBack": "Retour"
+    },
+    "plans": {
+      "free": {
+        "title": "GRATUIT",
+        "price": "GRATUIT",
+        "features": [
+          "Traitement par lots max 5 images",
+          "Suppression de l'arrière-plan IA image unique (aperçu)",
+          "Suppression d'objets IA image unique",
+          "Ajout de filigrane max 5 images",
+          "Convertisseur d'images max 5 images en lot",
+          "Détecteur de doublons photo IA max 5 images",
+          "Génération de noms d'images SEO IA (Non disponible)",
+          "Description et métatags SEO IA (Non disponible)"
+        ],
+        "buttonText": "CONTINUER EN GRATUIT"
+      },
+      "pro": {
+        "title": "PRO",
+        "price": "$19.99",
+        "features": [
+          "Traitement par lots max 100 images",
+          "Jusqu'à 100 suppressions d'arrière-plan IA en un lot",
+          "Suppression d'objets IA jusqu'à 100 images",
+          "Ajout de filigrane 100 images en un lot",
+          "Convertisseur d'images max 100 images en lot",
+          "Détecteur de doublons photo IA traitement par lots illimité",
+          "Génération de noms d'images SEO IA (jusqu'à 100)",
+          "Description et métatags SEO IA disponibles",
+          "**Paiement unique, accès à vie**"
+        ],
+        "buttonText": "PASSER À PRO"
+      }
+    },
+    "faq": {
+      "title": "QUESTIONS FRÉQUEMMENT POSÉES",
+      "questions": {
+        "oneTime": {
+          "question": "Est-ce vraiment un paiement unique ?",
+          "answer": "Oui ! Payez une fois et obtenez un accès à vie à toutes les fonctionnalités PRO. Pas d'abonnements récurrents."
+        },
+        "backgroundRemoval": {
+          "question": "Comment fonctionne la suppression d'arrière-plan ?",
+          "answer": "Nous utilisons des algorithmes IA avancés pour détecter et supprimer les arrière-plans de vos images de produit. Le processus entier se déroule dans votre navigateur - nous ne stockons jamais vos images sur nos serveurs."
+        },
+        "imageLimits": {
+          "question": "Quelles sont les limites d'images ?",
+          "answer": "Les utilisateurs gratuits peuvent traiter jusqu'à 10 images à la fois avec les fonctionnalités de base et supprimer l'arrière-plan d'1 image à la fois. Les utilisateurs PRO peuvent traiter jusqu'à 100 images à la fois, y compris la suppression d'arrière-plan en masse."
+        },
+        "refund": {
+          "question": "Puis-je demander un remboursement ?",
+          "answer": "Oui, nous offrons une garantie de remboursement de 30 jours si vous n'êtes pas satisfait des fonctionnalités PRO. Contactez notre équipe de support pour assistance."
+        }
+      }
+    }
+  },
+  "PrivacyPolicy": {
+    "title": "POLITIQUE DE CONFIDENTIALITÉ",
+    "section1Title": "1. INTRODUCTION",
+    "section1P1": "Bienvenue chez Batch Shots (« nous », « notre », « nos »). Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
+    "section1P2": "Cette Politique de confidentialité explique comment nous traitons vos données lorsque vous utilisez notre outil d'optimisation d'images basé sur navigateur.",
+    "section2Title": "2. INFORMATIONS QUE NOUS NE COLLECTONS PAS",
+    "section2P1Bold": "Nous ne collectons ni ne stockons vos images.",
+    "section2P1": "Notre principe fondamental est la confidentialité dès la conception.",
+    "section2P2": "Batch Shots fonctionne entièrement dans votre navigateur. Lorsque vous téléchargez des images à optimiser :",
+    "section2Li1": "Vos images sont traitées localement dans votre navigateur à l'aide de JavaScript côté client.",
+    "section2Li2": "Vos images ne quittent jamais votre appareil et ne sont pas transmises à nos serveurs.",
+    "section2Li3": "Nous ne stockons pas de copies de vos images originales ou traitées.",
+    "section2Li4": "Nous ne suivons pas le contenu de vos images.",
+    "section3Title": "3. FONCTIONNALITÉS ALIMENTÉES PAR L'IA",
+    "section3P1": "Lorsque vous utilisez nos fonctionnalités de génération de noms SEO alimentées par l'IA :",
+    "section3Li1": "Nous envoyons uniquement le texte descriptif que vous fournissez à notre API.",
+    "section3Li2": "Nous n'envoyons ni ne traitons vos images réelles via nos systèmes d'IA.",
+    "section3Li3": "Vos noms SEO générés sont renvoyés à votre navigateur et ne sont pas stockés en permanence sur nos serveurs.",
+    "section4Title": "4. ANALYSES ET COOKIES",
+    "section4P1": "Nous utilisons des analyses minimales pour comprendre comment notre site est utilisé :",
+    "section4Li1": "Nous collectons des statistiques d'utilisation anonymes telles que les pages vues et l'utilisation des fonctionnalités.",
+    "section4Li2": "Nous utilisons des cookies essentiels pour fournir des fonctionnalités telles que la protection reCAPTCHA.",
+    "section4Li3": "Nous n'utilisons pas de cookies pour la publicité ou le suivi sur d'autres sites Web.",
+    "section5Title": "5. SERVICES TIERS",
+    "section5P1": "Nous utilisons les services tiers suivants :",
+    "section5Li1": "Google reCAPTCHA pour la protection contre le spam sur nos fonctionnalités d'IA.",
+    "section5Li2": "OpenCV.js pour le traitement d'images (s'exécute entièrement dans votre navigateur).",
+    "section5P2": "Chacun de ces services a sa propre politique de confidentialité régissant la manière dont ils traitent les données.",
+    "section6Title": "6. MODIFICATIONS DE CETTE POLITIQUE",
+    "section6P1": "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Nous vous informerons de tout changement en publiant la nouvelle politique de confidentialité sur cette page et en mettant à jour la date de « Dernière mise à jour ».",
+    "section7Title": "7. CONTACTEZ-NOUS",
+    "section7P1": "Si vous avez des questions sur cette politique de confidentialité, veuillez nous contacter à privacy@batchshots.com.",
+    "returnButton": "RETOUR À L'ACCUEIL"
+  },
+  "TermsOfUse": {
+    "title": "CONDITIONS D'UTILISATION",
+    "lastUpdated": "Dernière mise à jour : 30 mai 2025",
+    "section1Title": "1. Acceptation des Conditions",
+    "section1P1": "En accédant et en utilisant Batch Shots, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas une partie de ces conditions, vous ne pouvez pas utiliser notre service.",
+    "section2Title": "2. Description du Service",
+    "section2P1": "Batch Shots est un outil d'optimisation d'images basé sur navigateur qui permet aux utilisateurs de :",
+    "section2Li1": "Ajuster les propriétés des images telles que la luminosité, le contraste et la balance des blancs",
+    "section2Li2": "Redimensionner et optimiser les images pour le web",
+    "section2Li3": "Générer des noms de fichiers optimisés pour le SEO",
+    "section2Li4": "Traiter plusieurs images simultanément",
+    "section2P2": "Tout le traitement d'images s'effectue localement dans votre navigateur ; aucune image n'est téléchargée ou stockée sur nos serveurs.",
+    "section3Title": "3. Responsabilités de l'Utilisateur",
+    "section3P1": "Les utilisateurs de Batch Shots sont seuls responsables de s'assurer qu'ils ont les droits et autorisations nécessaires pour utiliser, télécharger et traiter toute image avec notre service. Batch Shots n'est pas responsable des violations de droits d'auteur ou de propriété intellectuelle découlant de votre utilisation du service. Vous devez utiliser le service en conformité avec toutes les lois et réglementations applicables.",
+    "section3Li1": "S'assurer qu'ils ont les droits et autorisations nécessaires pour modifier et traiter les images qu'ils utilisent",
+    "section3Li2": "Utiliser le service en conformité avec les lois et réglementations applicables",
+    "section3Li3": "Ne pas utiliser le service pour traiter, créer ou distribuer du contenu inapproprié, offensant ou illégal",
+    "section3Li4": "Ne pas tenter de rétroconcevoir, modifier ou pirater le service",
+    "section4Title": "4. Propriété Intellectuelle",
+    "section4P1": "Tout le contenu original, les fonctionnalités et les fonctionnalités de Batch Shots nous appartiennent et sont protégés par les lois internationales sur le droit d'auteur, les marques déposées et autres lois sur la propriété intellectuelle.",
+    "section4P2": "Vous conservez tous les droits sur vos images originales. Nous ne revendiquons aucune propriété sur les images que vous traitez en utilisant notre service.",
+    "section4aTitle": "4A. Contenu Utilisateur, Propriété et Accès Pro à Vie",
+    "section4aP1": "Toutes les images et le contenu téléchargés ou traités en utilisant Batch Shots restent la propriété exclusive de l'utilisateur. Batch Shots ne stocke, ne visualise ni ne transmet vos images vers nos serveurs ; tout le traitement s'effectue localement dans votre navigateur. Vous êtes seul responsable de vous assurer que vous avez les droits et autorisations nécessaires pour utiliser et traiter toute image avec notre service. Batch Shots n'est pas responsable des violations de droits d'auteur ou de propriété intellectuelle découlant de votre utilisation du service.",
+    "section4aP2": "L'accès \"à vie\" aux fonctionnalités Pro signifie que vous aurez accès à toutes les fonctionnalités Pro tant que Batch Shots sera exploité et maintenu comme un service. Si Batch Shots est interrompu, nous ferons des efforts raisonnables pour fournir aux utilisateurs Pro l'accès au code logiciel ou pour rendre l'application open source, permettant une utilisation continue.",
+    "section5Title": "5. Avis de Non-Responsabilité",
+    "section5Li1": "Batch Shots est fourni \"tel quel\" et \"selon disponibilité\" sans aucune garantie d'aucune sorte.",
+    "section5Li2": "Nous ne garantissons pas que le service sera ininterrompu, sécurisé ou sans erreur.",
+    "section5Li3": "Nous ne sommes pas responsables de toute perte de données qui pourrait survenir pendant le traitement. Les utilisateurs sont responsables de conserver leurs propres sauvegardes.",
+    "section5Li4": "Nous ne donnons aucune garantie concernant l'exactitude ou l'efficacité de la fonctionnalité de génération de noms SEO.",
+    "section5Li5": "Batch Shots n'est pas responsable des réclamations légales, des dommages ou des litiges découlant du contenu utilisateur ou de l'utilisation du service.",
+    "section6Title": "6. Limitation de Responsabilité",
+    "section6P1": "Dans toute la mesure permise par la loi, nous ne serons pas responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs résultant de votre utilisation ou de votre incapacité à utiliser le service, ou de toute réclamation légale découlant de votre contenu.",
+    "section7Title": "7. Modifications du Service",
+    "section7P1": "Nous nous réservons le droit de modifier, suspendre ou interrompre toute partie de Batch Shots à tout moment sans préavis ni responsabilité.",
+    "section8Title": "8. Loi Applicable",
+    "section8P1": "Ces Conditions d'Utilisation seront régies et interprétées conformément aux lois de la juridiction dans laquelle nous opérons, sans tenir compte de ses dispositions relatives aux conflits de lois.",
+    "section9Title": "9. Modifications des Conditions",
+    "section9P1": "Nous pouvons mettre à jour ces Conditions d'Utilisation de temps à autre. Nous vous informerons de tout changement en publiant les nouvelles Conditions sur cette page et en mettant à jour la date de \"Dernière mise à jour\".",
+    "section10Title": "10. Nous Contacter",
+    "section10P1": "Si vous avez des questions sur ces Conditions d'Utilisation, veuillez nous contacter à terms@batchshots.com.",
+    "returnButton": "RETOUR À L'ACCUEIL"
+  },
+  "PrivacyPage": {
+    "title": "Politique de Confidentialité | Batch Shots",
+    "description": "Comprenez comment Batch Shots traite vos données. Notre politique de confidentialité détaille les pratiques de collecte, d'utilisation et de protection des données.",
+    "keywords": "politique de confidentialité, protection des données, données utilisateur, RGPD, batchshots"
+  },
+  "TermsPage": {
+    "title": "Conditions d'Utilisation | Batch Shots",
+    "description": "Consultez les termes et conditions d'utilisation de Batch Shots. Apprenez-en davantage sur les responsabilités des utilisateurs, les limitations de service et la propriété intellectuelle.",
+    "keywords": "conditions d'utilisation, termes et conditions, accord utilisateur, batchshots"
+  },
+  "PricingPage": {
+    "title": "Plans Tarifaires | Batch Shots Pro",
+    "description": "Découvrez les plans tarifaires de Batch Shots. Choisissez le meilleur plan pour vos besoins d'édition d'images, du niveau gratuit aux fonctionnalités Pro comme la suppression d'arrière-plan et les limites augmentées.",
+    "keywords": "tarification, batch shots pro, plans d'abonnement, coût d'édition d'image, tarification suppression d'arrière-plan"
+  },
+  "BackgroundRemovalPage": {
+    "metadata": {
+      "title": "Suppresseur d'Arrière-plan IA | Batch Shots",
+      "description": "Supprimez automatiquement les arrière-plans de vos images avec l'outil IA de Batch Shots. Parfait pour les photos de produits, les portraits et les projets créatifs. Essayez gratuitement !",
+      "keywords": "suppresseur d'arrière-plan, supprimer arrière-plan, suppression d'arrière-plan ia, arrière-plan transparent, photographie de produit, édition d'images par lots"
+    }
+  },
+  "ObjectRemovalPage": {
+    "metadata": {
+      "title": "Outil de Suppression d'Objets IA | Batch Shots",
+      "description": "Supprimez les objets, personnes ou textes indésirables de vos images grâce à notre outil alimenté par l'IA. Fonctionne entièrement dans votre navigateur pour préserver votre confidentialité. Essayez gratuitement !",
+      "keywords": "suppression d'objets, suppression d'objets ia, enlever objets d'image, enlever texte d'image, enlever personnes de photo, inpainting, outil d'édition d'image"
+    },
+    "title": "SUPPRESSION D'OBJETS IA",
+    "loading": {
+      "ort": "Chargement du moteur d'IA...",
+      "opencv": "Chargement des outils de traitement d'image...",
+      "model": "Chargement du modèle de suppression d'objets...",
+      "proStatus": "Vérification du statut du compte...",
+      "generic": "Chargement en cours..."
+    },
+    "mainCard": {
+      "title": "SUPPRESSION D'OBJETS IA",
+      "info": {
+        "title": "COMMENT ÇA FONCTIONNE",
+        "description": "Supprimez les objets indésirables, les personnes ou le texte de vos images grâce à l'IA. Le traitement se fait entièrement dans votre navigateur."
+      },
+      "upload": {
+        "title": "Télécharger une image",
+        "button": "SÉLECTIONNER UNE IMAGE",
+        "helpTextFree": "Sélectionnez l'image que vous souhaitez modifier.",
+        "helpTextPro": "Sélectionnez jusqu'à 100 images pour le traitement par lots."
+      },
+      "canvas": {
+        "drawTitle": "DESSINEZ UN MASQUE SUR LES OBJETS",
+        "brushSize": "Taille du pinceau",
+        "clearMask": "EFFACER LE MASQUE",
+        "outputTitle": "2. VOIR LE RÉSULTAT",
+        "outputPlaceholder": "Le résultat apparaîtra ici"
+      },
+      "actions": {
+        "reset": "RÉINITIALISER",
+        "remove": "SUPPRIMER LES OBJETS",
+        "removeAllObjects": "SUPPRIMER DE TOUTES LES IMAGES",
+        "processing": "TRAITEMENT EN COURS...",
+        "download": "TÉLÉCHARGER",
+        "downloadAll": "TOUT TÉLÉCHARGER"
+      }
+    },
+    "upgradeCard": {
+      "title": "PASSER AU PRO",
+      "description": "Débloquez la suppression d'objets par lots pour jusqu'à 100 images et d'autres fonctionnalités PRO comme la suppression d'arrière-plan en masse et l'édition avancée.",
+      "button": "EN SAVOIR PLUS ET PASSER AU PRO"
+    },
+    "instructionsCard": {
+      "title": "INSTRUCTIONS",
+      "step1": "Téléchargez une image en utilisant le bouton 'Sélectionner une image'.",
+      "step2": "Dessinez soigneusement sur les objets que vous souhaitez supprimer en utilisant le pinceau rouge.",
+      "step3": "Ajustez le curseur de taille du pinceau pour plus de précision.",
+      "step4": "Cliquez sur le bouton 'Supprimer les objets' et attendez que le traitement par IA se termine.",
+      "step5": "Une fois le traitement terminé, vous pouvez télécharger votre image nettoyée en utilisant le bouton 'Télécharger'.",
+      "step6": "Pour le traitement par lots, activez 'Appliquer le masque à toutes les images' pour supprimer des objets similaires de toutes les images sélectionnées.",
+      "noteTitle": "Remarque:",
+      "noteText": "Le traitement peut prendre de 15 à 60 secondes selon la taille de l'image et votre appareil. Assurez-vous que votre masque couvre complètement l'objet pour obtenir les meilleurs résultats."
+    },
+    "imageGallery": {
+      "selectedImages": "Images sélectionnées",
+      "selectedImage": "Image sélectionnée",
+      "clearAll": "Tout effacer",
+      "applyMaskToAll": "Appliquer le masque à toutes les images (traitement par lots)",
+      "hasMask": "Masque dessiné"
+    },
+    "processing": {
+      "readingFile": "Lecture du fichier...",
+      "loadingImage": "Chargement de l'image...",
+      "exportingMask": "Préparation du masque...",
+      "runningModel": "Exécution du modèle d'IA...",
+      "rendering": "Rendu du résultat...",
+      "preparingBatch": "Préparation du traitement par lots...",
+      "processingImage": "Traitement de l'image {current} sur {total}...",
+      "finishingBatch": "Finalisation des résultats...",
+      "preparingDownload": "Préparation du téléchargement...",
+      "batchProgress": "Progression du lot",
+      "loadingDimensions": "Calcul des dimensions de l'image...",
+      "generic": "Traitement de l'image..."
+    },
+    "errors": {
+      "ortLoad": "Impossible de charger le moteur d'IA. Veuillez rafraîchir la page.",
+      "sessionCreate": "Impossible d'initialiser le modèle de suppression d'objets.",
+      "freeLimit": "Les utilisateurs gratuits ne peuvent traiter qu'une seule image à la fois. Veuillez passer au PRO pour le traitement par lots.",
+      "tooManyImages": "Maximum de 100 images autorisées. Seules les 100 premières images seront traitées.",
+      "imageLoad": "Erreur lors du chargement de l'image sélectionnée.",
+      "fileRead": "Erreur lors de la lecture du fichier sélectionné.",
+      "canvasError": "Erreur lors de l'accès au canevas de l'image.",
+      "prerequisites": "Traitement impossible. Composants requis manquants: {missing}",
+      "noMask": "Veuillez d'abord dessiner un masque sur l'objet que vous souhaitez supprimer.",
+      "processingFailed": "Échec de la suppression de l'objet",
+      "resultLoadFailed": "Erreur lors de l'affichage du résultat de l'image traitée.",
+      "noDownloadData": "Aucune image traitée disponible pour le téléchargement.",
+      "downloadFailed": "Erreur lors de la préparation de l'image pour le téléchargement."
+    }
+  },
+  "WatermarkPage": {
+    "metadata": {
+      "title": "Ajouter un filigrane aux images | Batch Shots",
+      "description": "Ajoutez facilement des filigranes texte ou logo personnalisés à vos images. Protégez vos photos avec des filigranes avec contrôle de l'opacité, de la position et de la taille.",
+      "keywords": "filigrane, ajouter filigrane aux images, filigrane photo, filigrane image, filigrane logo, filigrane texte, image de marque, filigraner photos"
+    },
+    "title": "AJOUTER UN FILIGRANE AUX IMAGES",
+    "loading": {
+      "proStatus": "VÉRIFICATION DU STATUT PRO...",
+      "proDescription": "Veuillez patienter pendant que nous vérifions le statut de votre compte."
+    },
+    "preview": {
+      "title": "APERÇU DE L'IMAGE"
+    },
+    "alerts": {
+      "freeUserLimit": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour traiter jusqu'à 100 images en masse !",
+      "maxImagesLimit": "Maximum 100 images autorisées à la fois.",
+      "watermarkFailed": "Échec de l'application du filigrane. Veuillez réessayer."
+    },
+    "mainCard": {
+      "title": "FILIGRANEZ VOS IMAGES",
+      "info": {
+        "title": "AJOUTER DES FILIGRANES PERSONNALISÉS",
+        "description": "Protégez vos images avec des filigranes texte ou logo personnalisés. Personnalisez l'opacité, la taille et la position pour répondre à vos besoins de marque."
+      },
+      "upload": {
+        "title": "Sélectionner des images",
+        "buttonFree": "SÉLECTIONNER UNE IMAGE",
+        "buttonPro": "SÉLECTIONNER DES IMAGES",
+        "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner 1 image à la fois.",
+        "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
+      },
+      "actions": {
+        "clear": "EFFACER",
+        "download": "TÉLÉCHARGER",
+        "downloadZip": "TÉLÉCHARGER EN ZIP",
+        "applyWatermark": "APPLIQUER LE FILIGRANE",
+        "applyWatermarks": "APPLIQUER LES FILIGRANES",
+        "processing": "APPLICATION DU FILIGRANE...",
+        "processingMultiple": "APPLICATION DES FILIGRANES...",
+        "tryFullEditor": "ESSAYER L'ÉDITEUR COMPLET"
+      },
+      "progress": {
+        "processing": "Traitement...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "PASSER À PRO",
+        "plan": {
+          "title": "PLAN PRO",
+          "price": "19,99 €",
+          "features": [
+            "Filigranez jusqu'à 100 images à la fois",
+            "Ajustements d'image avancés et préréglages",
+            "Suppression de l'arrière-plan pour les images de produits",
+            "Traitement par lots pour toutes les fonctionnalités",
+            "Paiement unique, accès à vie"
+          ],
+          "buttonText": "PASSER À PRO MAINTENANT"
+        }
+      }
+    },
+    "howItWorks": {
+      "title": "COMMENT ÇA MARCHE",
+      "step1": {
+        "title": "1. SÉLECTIONNEZ VOS IMAGES",
+        "description": "Téléchargez une ou plusieurs images que vous souhaitez filigraner.",
+        "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
+      },
+      "step2": {
+        "title": "2. PERSONNALISEZ LE FILIGRANE",
+        "description": "Choisissez entre des filigranes texte ou logo. Ajustez l'opacité, la taille et la position selon vos préférences."
+      },
+      "step3": {
+        "title": "3. TÉLÉCHARGEZ & UTILISEZ",
+        "description": "Appliquez votre filigrane et téléchargez les images traitées prêtes pour le web, les réseaux sociaux ou l'utilisation en portfolio."
+      }
+    },
+    "proDialog": {
+      "title": "PASSER À PRO",
+      "featureTitle": "FONCTIONNALITÉ PRO : Filigrane en masse",
+      "description": "Les utilisateurs gratuits ne peuvent traiter qu'une image à la fois. Passez à PRO pour filigraner jusqu'à 100 images en masse, économisant des heures de travail !",
+      "pricing": {
+        "title": "PAIEMENT UNIQUE",
+        "price": "19,99 €",
+        "note": "Pas d'abonnement, accès à vie"
+      },
+      "actions": {
+        "upgrade": "PASSER À PRO",
+        "continue": "CONTINUER EN MODE GRATUIT"
+      }
+    }
+  },
+  "ImageFormatConvertorPage": {
+    "metadata": {
+      "title": "Convertisseur de formats d'image | Batch Shots",
+      "description": "Convertissez des images entre les formats (JPG, PNG, WebP, AVIF) avec notre outil facile à utiliser. Prend en charge la conversion HEIC et le traitement par lots.",
+      "keywords": "convertisseur de formats d'image, convertir jpg en png, convertir heic en jpg, convertisseur webp, conversion de format d'image, conversion d'images par lots, convertir heic"
+    },
+    "title": "CONVERTISSEUR DE FORMATS D'IMAGE",
+    "loading": {
+      "tool": "CHARGEMENT DU CONVERTISSEUR...",
+      "proStatus": "VÉRIFICATION DU STATUT PRO...",
+      "description": "Veuillez patienter pendant l'initialisation des capacités de traitement d'image.",
+      "proDescription": "Veuillez patienter pendant la vérification du statut de votre compte."
+    },
+    "uploadArea": {
+      "title": "CONVERTISSEZ VOS IMAGES",
+      "description": "Convertissez vos images dans différents formats en quelques clics.",
+      "selectImages": "SÉLECTIONNER DES IMAGES (JUSQU'À {maxImages})",
+      "dragAndDropPrivacy": "Faites glisser et déposez des images ici, ou cliquez pour sélectionner des fichiers. <strong>Tout le traitement se fait dans votre navigateur. Nous ne téléchargeons jamais vos images sur nos serveurs.</strong>",
+      "freeLimitInfo": "Les utilisateurs gratuits peuvent convertir jusqu'à {maxImages} images à la fois.",
+      "upgradeLink": "Passer à PRO"
+    },
+    "selectedImages": {
+      "title": "IMAGES SÉLECTIONNÉES ({count})"
+    },
+    "formatChanged": {
+      "title": "FORMAT MODIFIÉ",
+      "description": "Vous avez modifié le format cible. Cliquez sur Réinitialiser pour convertir vos images au nouveau format."
+    },
+    "mainCard": {
+      "title": "CONVERTIR DES IMAGES DANS N'IMPORTE QUEL FORMAT",
+      "info": {
+        "title": "CONVERSION DE FORMAT D'IMAGE",
+        "description": "Convertissez vos images entre des formats comme JPG, PNG, WebP et AVIF. Vous pouvez également redimensionner vos images pendant la conversion."
+      },
+      "upload": {
+        "title": "Sélectionner les images à convertir",
+        "buttonFree": "SÉLECTIONNER DES IMAGES",
+        "buttonPro": "SÉLECTIONNER DES IMAGES",
+        "helpTextFree": "Les utilisateurs gratuits peuvent sélectionner jusqu'à {maxImages} images à la fois.",
+        "helpTextPro": "Vous pouvez sélectionner jusqu'à 100 images à la fois."
+      },
+      "actions": {
+        "clear": "EFFACER",
+        "addMore": "AJOUTER PLUS",
+        "download": "TÉLÉCHARGER CONVERTIES",
+        "downloadZip": "TÉLÉCHARGER TOUT EN ZIP",
+        "convertImageTo": "CONVERTIR EN {format}",
+        "convertImagesTo": "CONVERTIR TOUT EN {format}",
+        "converting": "CONVERSION...",
+        "convertingMultiple": "CONVERSION DES IMAGES...",
+        "resetConversion": "RÉINITIALISER"
+      },
+      "progress": {
+        "processing": "Traitement...",
+        "percent": "{percent}%"
+      },
+      "upgradeCard": {
+        "title": "PASSER À PRO",
+        "plan": {
+          "title": "PLAN PRO",
+          "price": "$19.99",
+          "features": [
+            "Convertissez jusqu'à 100 images à la fois",
+            "Redimensionnez les images pendant la conversion",
+            "Convertissez depuis HEIC/HEIF vers n'importe quel format",
+            "Suppression de l'arrière-plan pour les photos de produits",
+            "Paiement unique, accès à vie"
+          ],
+          "buttonText": "METTRE À NIVEAU MAINTENANT"
+        }
+      }
+    },
+    "targetFormat": {
+      "title": "SÉLECTIONNER LE FORMAT CIBLE"
+    },
+    "resize": {
+      "title": "REDIMENSIONNER PENDANT LA CONVERSION (FACULTATIF)"
+    },
+    "convertedImages": {
+      "title": "IMAGES CONVERTIES",
+      "description": "Vos images ont été converties avec succès. Cliquez sur Télécharger pour les enregistrer."
+    },
+    "howItWorks": {
+      "title": "COMMENT ÇA MARCHE",
+      "step1": {
+        "title": "1. SÉLECTIONNEZ VOS IMAGES",
+        "description": "Téléchargez une ou plusieurs images que vous souhaitez convertir.",
+        "proNote": "Les utilisateurs PRO peuvent sélectionner jusqu'à 100 images à la fois !"
+      },
+      "step2": {
+        "title": "2. CHOISISSEZ LE FORMAT CIBLE",
+        "description": "Sélectionnez le format de sortie souhaité (JPG, PNG, WebP ou AVIF)."
+      },
+      "step3": {
+        "title": "3. REDIMENSIONNER (FACULTATIF)",
+        "description": "Sélectionnez éventuellement un préréglage pour redimensionner vos images pendant la conversion."
+      },
+      "step4": {
+        "title": "4. TÉLÉCHARGER ET UTILISER",
+        "description": "Convertissez vos images et téléchargez-les individuellement ou sous forme d'archive ZIP."
+      }
+    },
+    "supportedFormats": {
+      "title": "FORMATS PRIS EN CHARGE",
+      "input": {
+        "title": "FORMATS D'ENTRÉE",
+        "description": "Vous pouvez télécharger des images dans ces formats :"
+      },
+      "output": {
+        "title": "FORMATS DE SORTIE",
+        "description": "Convertissez vos images dans l'un de ces formats :"
+      }
+    },
+    "alerts": {
+      "freeUserLimit": "Les utilisateurs gratuits peuvent convertir jusqu'à 5 images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse !",
+      "maxImagesLimit": "Maximum de 100 images autorisées à la fois.",
+      "conversionFailed": "La conversion du format a échoué. Veuillez réessayer."
+    },
+    "proDialog": {
+      "title": "PASSER À PRO",
+      "featureTitle": "FONCTIONNALITÉ PRO : Conversion de format en masse",
+      "description": "Les utilisateurs gratuits ne peuvent convertir que {maxImages} images à la fois. Passez à PRO pour convertir jusqu'à 100 images en masse, ce qui vous fera gagner des heures de travail !",
+      "pricing": {
+        "title": "PAIEMENT UNIQUE",
+        "price": "$19.99",
+        "note": "Pas d'abonnement, accès à vie"
+      },
+      "actions": {
+        "upgrade": "PASSER À PRO",
+        "continue": "CONTINUER AVEC LE MODE GRATUIT"
+      }
+    },
+    "allImages": "TOUTES LES IMAGES ({current}/{max})",
+    "imagesCount": "{current}/{max} images",
+    "upgradeFor": "(Mettre à niveau pour jusqu'à 100)"
+  },
+  "ImageDuplicateDetectionPage": {
+    "metadata": {
+      "title": "Détecteur et Nettoyeur de Photos en Double IA | Batch Shots",
+      "description": "Trouvez et supprimez rapidement les photos en double ou similaires avec notre outil alimenté par l'IA. Identifie les images de meilleure qualité dans les ensembles de doublons. Gratuit et dans le navigateur.",
+      "keywords": "détecteur de photos en double, supprimer les images en double, détecteur de photos similaires, nettoyeur de photos ia, détection de doublons d'images, photo de meilleure qualité, désencombrer les photos, batchshots"
+    },
+    "PageTitle": "Détecteur et Nettoyeur de Photos en Double IA",
+    "AppInitializing": "Initialisation de l'Analyseur de Photos Intelligent...",
+    "AISetup": "Configuration du Moteur IA...",
+    "AIEngineInitializing": "Initialisation du Moteur IA...",
+    "AIEngineStarted": "Moteur IA Démarré.",
+    "AIInitializing": "Initialisation de l'IA...",
+    "AILoadingModel": "Chargement du Modèle IA Avancé...",
+    "AIModelLoaded": "Modèle IA Chargé.",
+    "AIReady": "IA Prête. Sélectionnez des photos pour trouver les doublons.",
+    "AIReadyPrompt": "IA Prête. Sélectionnez des photos pour trouver les doublons.",
+    "ProcessingImage": "Analyse de la photo {imageId}...",
+    "ErrorProcessingImage": "Erreur lors de l'analyse de la photo {imageId}: {data}.",
+    "AIEngineError": "Erreur du Moteur IA: {data}.",
+    "AIEngineErrorRefresh": "Erreur du Moteur IA: {data}. Veuillez actualiser ou réessayer.",
+    "AICriticalError": "L'IA a rencontré une erreur critique.",
+    "AICriticalErrorRefresh": "Une erreur critique s'est produite avec notre analyse IA. Veuillez actualiser la page.",
+    "QualityToolsError": "Échec du chargement des outils d'analyse de qualité. Les métriques de qualité détaillées peuvent ne pas être disponibles.",
+    "AllImagesProcessedAnalyzing": "Toutes les photos traitées. Identification des doublons...",
+    "AnalysisCompleteSummary": "Analyse terminée. {groupSummary} Traitement de {successfullyProcessedCount} sur {totalImagesCount} photos.",
+    "DuplicateSetsFound": "{count} ensemble(s) de doublons trouvé(s).",
+    "NoDuplicatesFound": "Aucun doublon direct trouvé.",
+    "NoImagesProcessedSuccessfully": "Aucune photo n'a pu être traitée avec succès. Traitement de {successfullyProcessedCount} sur {totalImagesCount} photos.",
+    "NoImagesForNewThreshold": "Aucune photo à analyser avec le nouveau paramètre de similarité.",
+    "ReanalyzingWithThreshold": "Réanalyse des photos avec le paramètre de similarité : {threshold}...",
+    "AnalysisCompleteWithThreshold": "Analyse terminée avec une similarité de {threshold}. {groupSummary}",
+    "PleaseSelectImages": "Veuillez sélectionner des photos...",
+    "AINotReadyError": "Le moteur d'analyse IA n'est pas prêt. Veuillez patienter ou actualiser.",
+    "ProcessingFilesHEIC": "Préparation des fichiers sélectionnés (conversion si nécessaire)...",
+    "HEICConversionFailedSkip": "Échec de la conversion de l'image : {fileName}. Elle sera ignorée.",
+    "HEICConversionErrorSkip": "Erreur lors de la conversion de l'image : {fileName}. Elle sera ignorée.",
+    "NoValidFilesAfterConversion": "Aucun fichier valide à traiter après les tentatives de conversion.",
+    "SendingImagesToAI": "Envoi de {count} photos pour analyse IA...",
+    "NoValidImagesSelected": "Aucune photo valide sélectionnée pour le traitement.",
+    "QualityToolsNotReadyKPI": "Outils d'analyse de qualité non prêts. Impossible de calculer la qualité détaillée.",
+    "QualityToolsNotReadyQuality": "Outils d'analyse de qualité non prêts. Impossible de calculer la qualité.",
+    "ErrorCalculatingQuality": "Erreur lors du calcul de la qualité pour la photo {imageId}: {error}",
+    "QualityToolsNotReadyAnalysisWait": "Les outils d'analyse de qualité ne sont pas prêts. Veuillez patienter.",
+    "NoDuplicatesInGroup": "Aucun doublon dans ce groupe à analyser.",
+    "AnalyzingGroupQuality": "Analyse de la qualité des photos dans le groupe {groupNumber}...",
+    "AnalyzedProgressInGroup": "Analyse de {processedCount} sur {groupTotal} dans le groupe {groupNumber}. Photo : {imageName}",
+    "QualityAnalysisCompleteForGroup": "Analyse de qualité terminée pour le groupe {groupNumber}.",
+    "QualityAnalysisPartialForGroup": "Analyse de qualité partiellement terminée pour le groupe {groupNumber}. Certaines photos ont pu échouer ou être ignorées.",
+    "QualityToolsNotReadyBestSelection": "Outils d'analyse de qualité non prêts. Impossible de garantir la sélection de la meilleure photo.",
+    "AnalyzingQualityForBestDownload": "Analyse de la qualité de {count} photo(s) pour sélectionner la meilleure à télécharger...",
+    "PreDownloadAnalysisComplete": "Analyse de qualité préalable au téléchargement terminée pour le groupe actuel.",
+    "NoImagesToDownload": "Aucune photo à télécharger.",
+    "QualityToolsNotReadyDownloadAll": "Les outils d'analyse de qualité ne sont pas prêts. L'analyse détaillée des ensembles de doublons ne peut pas être effectuée pour 'Tout télécharger'. Veuillez patienter ou analyser les groupes individuellement d'abord.",
+    "PreparingDownload": "Préparation des fichiers pour le téléchargement...",
+    "BestImageDeterminationFailed": "Impossible de déterminer la meilleure photo pour un groupe. Ce groupe sera omis du ZIP.",
+    "WarningBestImageOmitted": "Avertissement : La meilleure photo d'un groupe n'a pas pu être déterminée et a été omise.",
+    "ZippingImages": "Compression de {count} photo(s)...",
+    "DownloadComplete": "Téléchargement terminé !",
+    "ErrorCreatingZIP": "Erreur lors de la création du fichier ZIP pour le téléchargement.",
+    "NoImagesSelectedForDownload": "Aucune photo n'a été sélectionnée pour le téléchargement (par ex., aucune photo unique ou aucune meilleure photo identifiée dans les groupes).",
+    "ImageDataMissingDownload": "Données de la photo manquantes, impossible de télécharger.",
+    "DownloadingImage": "Téléchargement de {imageName}...",
+    "ImageDownloadedSuccessfully": "{imageName} téléchargée avec succès.",
+    "FailedToDownloadImage": "Échec du téléchargement de {imageName}.",
+    "QualityToolsNotReadyAnalyzeAllGroups": "Les outils d'analyse de qualité ne sont pas prêts. L'analyse détaillée des ensembles de doublons ne peut pas être effectuée. Veuillez patienter.",
+    "OnlyUniqueImagesReadyDownload": "Seules les photos uniques sont présentes. Prêt à télécharger.",
+    "NoImagesToAnalyzeOrDownload": "Aucune photo à analyser ou à télécharger.",
+    "AnalyzingAllGroupsForBest": "Analyse de tous les groupes pour la sélection de la meilleure photo...",
+    "AnalyzingGroupForBest": "Analyse du groupe {currentGroup} sur {totalGroups} pour la meilleure photo...",
+    "AllGroupsAnalyzedReadyDownload": "Tous les {count} groupes de doublons analysés. Prêt à télécharger les {downloadCount} meilleures photos.",
+    "AnalysisPartialReadyDownload": "Analyse pour la meilleure sélection partiellement terminée ({processedGroups}/{totalGroups} groupes). Prêt à télécharger {downloadCount} photos (la meilleure disponible sera choisie).",
+    "NoImagesProcessedOrGroups": "Aucune photo traitée ou aucun groupe formé pour le moment. Assurez-vous que les photos ont été sélectionnées et que l'analyse IA est terminée.",
+
+    "LoaderTitleInitializing": "Initialisation des Outils Intelligents...",
+    "LoaderTitleLoadingModel": "Chargement du Cerveau IA...",
+    "LoaderTitleQualityTools": "Préparation de l'Analyseur de Qualité...",
+    "LoaderDescriptionInitializing": "Préparation pour la détection intelligente des doublons. Veuillez patienter.",
+    "LoaderDescriptionLoadingModel": "Notre IA avancée est en train de chauffer. Cela peut prendre un moment.",
+    "LoaderDescriptionQualityTools": "Préparation des outils pour des informations détaillées sur la qualité des photos...",
+
+    "MainCardTitle": "Trouver & Gérer les Photos en Double",
+    "UploadSectionTitle": "Téléchargez Vos Photos",
+    "UploadSectionDescription": "Sélectionnez plusieurs photos. Notre IA les analysera intelligemment et regroupera celles qui sont similaires.",
+    "ButtonSelectImages": "Sélectionner des Photos",
+    "ButtonSelectImagesLoading": "Chargement...",
+    "ButtonSelectImagesInitializing": "Chargement des outils...",
+    "ButtonAddMoreImages": "Ajouter plus de Photos",
+    "ButtonAddMoreImagesLoading": "Ajout de photos...",
+    "SupportedFormats": "Supporte les formats JPG, PNG, WEBP, HEIC",
+    "AIStatusLabel": "Statut IA : {status}",
+    "QualityAnalyzerStatusLoading": "Analyseur de Qualité : Chargement...",
+
+    "SimilarityThresholdTitle": "Paramètre de Similarité",
+    "SimilarityThresholdDescription": "Contrôlez à quel point les photos doivent correspondre pour être signalées comme doublons. Des valeurs plus élevées signifient une correspondance plus stricte.",
+    "SimilarityLessStrict": "Moins Strict",
+    "SimilarityCurrent": "Actuel : {threshold}",
+    "SimilarityMoreStrict": "Plus Strict",
+    "ButtonApplyThreshold": "Appliquer le Paramètre",
+    "ButtonApplyThresholdLoading": "Réanalyse en cours...",
+
+    "ResultsTitle": "Résultats de la Détection :",
+    "DuplicateSetTitle": "Ensemble de Doublons {number} ({count} photos similaires)",
+    "ButtonAnalyzeQuality": "Analyser la Qualité",
+    "ButtonAnalyzeQualityLoading": "Analyse en cours...",
+    "ButtonReanalyzeQuality": "Réanalyser la Qualité",
+    "ImageMissing": "Données de la photo manquantes (index : {index})",
+    "BestLabel": "Meilleure",
+    "KpiRes": "Rés:",
+    "KpiSharp": "Nett.:",
+    "KpiNoise": "Bruit:",
+    "KpiContrast": "Contr.:",
+    "KpiExposure": "Expo.:",
+    "ButtonDownload": "Télécharger",
+    "ButtonDownloading": "Téléchargement...",
+
+    "UniqueImagesTitle": "Photos Uniques ({count} photo(s) sans doublons directs)",
+
+    "ButtonAnalyzeAllGroups": "Analyser Tous les Groupes pour la Meilleure Sélection",
+    "ButtonAnalyzeAllGroupsLoading": "Analyse de Tous les Groupes...",
+    "ButtonDownloadBest": "Télécharger les {count} Meilleures Photos",
+    "ButtonDownloadBestLoading": "Préparation du Téléchargement...",
+
+    "HowItWorksTitle": "Comment Notre IA Trouve les Doublons",
+    "HowItWorksStep1Title": "1. Téléchargez Vos Photos",
+    "HowItWorksStep1Desc": "Cliquez sur \"Sélectionner des Photos\" et choisissez les images que vous voulez vérifier. Vous pouvez en sélectionner plusieurs à la fois.",
+    "HowItWorksStep2Title": "2. Analyse IA Intelligente",
+    "HowItWorksStep2Desc": "Notre IA avancée (basée sur la technologie Vision Transformer) analyse intelligemment le contenu visuel de chaque photo, comprenant ses caractéristiques uniques et son apparence.",
+    "HowItWorksStep3Title": "3. Notation de Similarité Intelligente",
+    "HowItWorksStep3Desc": "L'IA compare les photos en utilisant une analyse visuelle sophistiquée (similarité cosinus) pour déterminer à quel point elles se ressemblent en fonction de leur contenu.",
+    "HowItWorksStep4Title": "4. Affiner la Similarité",
+    "HowItWorksStep4Desc": "Utilisez le curseur de similarité pour contrôler la rigueur de la correspondance. Une valeur plus élevée signifie que les photos doivent être presque identiques pour être signalées comme des doublons.",
+    "HowItWorksStep5Title": "5. Examiner & Organiser",
+    "HowItWorksStep5Desc": "Les résultats montrent clairement les ensembles de doublons et les photos uniques. Notre IA peut également mettre en évidence la photo de meilleure qualité dans chaque groupe de doublons, vous aidant à décider laquelle conserver.",
+
+    "FreeUserLimit": "Les utilisateurs gratuits peuvent téléverser jusqu'à {limit} photos à la fois.",
+    "ButtonSelectImagesLimit": "Sélectionner des photos (jusqu'à {limit})",
+    "UpgradeMessage": "Passez à PRO pour analyser un nombre illimité de photos en une seule fois.",
+    "UpgradeLink": "Passer à PRO",
+    "HowItWorksStep1Free": "Les utilisateurs gratuits sont limités à {limit} photos à la fois.",
+    "HowItWorksStep1Pro": "En tant qu'utilisateur PRO, vous pouvez analyser un nombre illimité de photos à la fois.",
+    "ProFeatureName": "Analyse de photos illimitée",
+
+    "FreeModeTitle": "MODE GRATUIT",
+    "FreeModeDescription": "Traitez jusqu'à {limit} photos à la fois. Passez à PRO pour analyser un nombre illimité de photos !",
+    "ProModeTitle": "MODE PRO",
+    "ProModeDescription": "Traitez un nombre illimité de photos avec votre compte PRO !",
+    "MaxImagesExceeded": "Maximum 100 images autorisées. Seules les 100 premières ont été traitées.",
+    "ProcessingErrors": "Erreurs de traitement",
+    "imagesCount": "{current}/{max} images",
+    "upgradeFor": "(Passez à PRO pour illimité)",
+
+    "UpgradeCardTitle": "PASSER À PRO",
+    "UpgradeCardPlanTitle": "FORFAIT PRO",
+    "UpgradeCardPlanPrice": "$19.99",
+    "UpgradeCardPlanNote": "Paiement unique, accès à vie",
+    "UpgradeCardFeature1": "Analysez un nombre illimité de photos à la fois (contre 5 en mode gratuit)",
+    "UpgradeCardFeature2": "Trouvez rapidement les doublons dans de grandes collections de photos",
+    "UpgradeCardFeature3": "Analyse de qualité pour trouver automatiquement les meilleures photos",
+    "UpgradeCardFeature4": "Téléchargement en lot des meilleures photos des ensembles de doublons",
+    "UpgradeCardFeature5": "Accès à toutes les autres fonctionnalités PRO (suppression d'arrière-plan, etc.)",
+    "UpgradeCardButton": "PASSER À PRO MAINTENANT",
+
+    "ProUpgradeTitle": "Passer à Pro pour des photos illimitées",
+
+    "SimilarityControlsTitle": "Algorithme de similarité et seuil",
+    "SimilarityAlgorithmLabel": "Algorithme de similarité",
+    "SimilarityThresholdLabel": "Seuil de similarité",
+    "SimilarityThresholdDescDistance": "Des valeurs plus faibles signifient des images plus similaires (métrique de distance)",
+    "SimilarityThresholdDescSimilarity": "Des valeurs plus élevées signifient des images plus similaires (métrique de similarité)",
+
+    "ProcessingChanges": "Traitement des modifications...",
+    "ReanalyzingWithAlgorithm": "Réanalyse avec le nouvel algorithme...",
+    "AnalysisCompleteWithAlgorithm": "Analyse terminée avec le nouvel algorithme. {groupSummary}",
+
+    "DuplicateAnalysisComplete": "Analyse des doublons terminée",
+
+    "VisualizationTitle": "Espace Vectoriel IA",
+    "VisualizationDescription": "Visualisez comment l'IA perçoit vos images dans un espace à haute dimension, réduit en 2D grâce à l'algorithme UMAP. Les images similaires se regroupent ensemble.",
+    "VisualizationShowButton": "Afficher la Visualisation",
+    "VisualizationHideButton": "Masquer la Visualisation",
+    "VisualizationGeneratingButton": "Génération de la Visualisation...",
+    "VisualizationNoData": "Téléversez et traitez d'abord les images pour activer la visualisation",
+    "VisualizationProcessingStatus": "Cela peut prendre un moment pour les grands ensembles de données...",
+    "VisualizationLegendUnique": "Images Uniques",
+    "VisualizationLegendDuplicates": "Groupes de Doublons (colorés par similarité)",
+    "VisualizationHelpText": "Survolez les points pour voir les miniatures • Points plus proches = images plus similaires",
+    "VisualizationNeedMinImages": "Minimum 3 images requises pour la visualisation",
+    "VisualizationNoDataAvailable": "Aucune donnée de visualisation disponible"
+  },
+  "ImageSeoGenerationPage": {
+    "metadata": {
+      "title": "Génération SEO d'Images par IA - Générer des Slugs d'URL & Légendes SEO",
+      "description": "Téléversez vos images pour générer automatiquement des noms, slugs d'URL et légendes optimisés SEO grâce à l'IA.",
+      "keywords": "seo image, générateur de slug url, générateur de légende seo image, création de contenu ia, optimisation d'image"
+    },
+    "AppInitializing": "Initialisation du Générateur SEO IA...",
+    "AISetup": "Mise en place de l'IA pour le contenu SEO...",
+    "AIEngineInitializing": "Initialisation du moteur SEO IA...",
+    "AIEngineStarted": "Moteur SEO IA démarré.",
+    "AIInitializing": "Initialisation du modèle IA pour le SEO...",
+    "AILoadingModel": "Chargement du modèle SEO IA...",
+    "AIModelLoaded": "Modèle SEO IA chargé.",
+    "AIReady": "Moteur SEO IA prêt.",
+    "AIReadyPrompt": "Prêt pour le SEO IA. Veuillez téléverser vos images.",
+    "ProcessingImage": "Traitement IA pour le SEO : Image {imageId}...",
+    "ErrorProcessingImage": "Erreur lors du traitement SEO IA pour l'image {imageId} : {data}",
+    "AIEngineError": "Erreur du moteur SEO IA : {data}",
+    "AIEngineErrorRefresh": "Erreur du moteur SEO IA : {data}. Veuillez rafraîchir.",
+    "AICriticalError": "Erreur critique du moteur SEO IA.",
+    "AICriticalErrorRefresh": "Erreur critique du moteur SEO IA. Veuillez rafraîchir et réessayer.",
+    "PleaseSelectImages": "Veuillez sélectionner des images pour la génération SEO IA.",
+    "AINotReadyError": "Le moteur SEO IA n'est pas prêt. Veuillez patienter.",
+    "ProcessingFiles": "Traitement des images pour le SEO IA...",
+    "ProcessingFilesHEIC": "Traitement des images pour le SEO IA, conversion HEIC si nécessaire...",
+    "HEICConversionFailedSkip": "Échec de la conversion HEIC en format compatible SEO pour : {fileName}. Ignoré.",
+    "HEICConversionErrorSkip": "Erreur lors de la conversion HEIC pour le SEO : {fileName}. Ignoré.",
+    "NoValidFilesAfterConversion": "Aucune image valide pour le SEO IA après les tentatives de conversion.",
+    "NoValidFiles": "Aucune image valide sélectionnée pour le traitement SEO IA.",
+    "SendingImagesToAI": "Envoi de {count} images à l'IA pour la génération de contenu SEO...",
+    "AllImagesProcessed": "Traitement SEO IA terminé. Consultez votre contenu optimisé ci-dessous.",
+    "PageTitle": "Générateur SEO d'Images & Texte Alternatif IA",
+    "PageTitlePro": "Générateur PRO SEO d'Images & Texte Alternatif IA",
+    "PageTitleFree": "Générateur SEO d'Images & Légendes IA",
+    "MainCardTitle": "Générez des noms SEO & légendes avec l'IA",
+    "UploadSectionTitle": "1. Téléversez des images pour le SEO IA",
+    "UploadSectionDescription": "Téléversez des images JPG, PNG, WEBP, GIF, HEIC. Notre IA génère des noms de fichiers et textes alternatifs optimisés SEO. Ajoutez des mots-clés pour affiner les résultats.",
+    "UploadSectionDescriptionWithLimit": "Téléversez des images JPG, PNG, WEBP, GIF, HEIC (max {maxImages} selon votre forfait). L'IA génère des noms de fichiers SEO & textes alternatifs. Ajoutez des mots-clés pour des résultats personnalisés.",
+    "ButtonSelectImages": "Sélectionner des images pour le SEO IA",
+    "MainCardInfoTitle": "QU'EST-CE QUE CET OUTIL ?",
+    "MainCardInfoDescription": "Téléversez vos images et notre IA générera automatiquement des légendes détaillées et descriptives pour chacune d'elles. Le modèle FastVLM analyse le contenu visuel et crée des descriptions en langage naturel.",
+    "ButtonSelectImagesLoading": "Initialisation de l'IA...",
+    "ResultsTitle": "Contenu SEO généré par IA",
+    "ImageMissing": "Données d'image manquantes pour le SEO IA (index : {index})",
+    "GeneratedSeoName": "Nom de fichier SEO généré par IA :",
+    "GeneratedDescription": "Texte alternatif/légende généré(e) par IA :",
+    "StatusLabel": "Statut actuel :",
+    "AIStatusLabel": "Statut SEO IA : {status}",
+    "HowItWorksTitle": "Comment fonctionne le SEO d'image par IA",
+    "HowItWorksStep1Title": "Téléversez vos images",
+    "HowItWorksStep1Desc": "Sélectionnez ou glissez-déposez des images. Notre IA les prépare pour l'analyse SEO.",
+    "HowItWorksStep2Title": "Analyse de contenu par IA",
+    "HowItWorksStep2Desc": "Notre IA analyse chaque image pour comprendre son contenu, son contexte et son potentiel SEO.",
+    "HowItWorksStep3Title": "Génération de nom SEO & texte alternatif",
+    "HowItWorksStep3Desc": "L'IA crée des noms de fichiers optimisés SEO et des textes alternatifs descriptifs. Les mots-clés améliorent l'optimisation.",
+    "HowItWorksStep4Title": "Vérifiez & boostez votre SEO",
+    "HowItWorksStep4Desc": "Copiez le contenu SEO généré par IA pour améliorer le référencement et l'accessibilité de votre site, blog ou réseaux sociaux.",
+    "goBack": "Tout effacer",
+    "ButtonDownload": "Copier",
+    "NoResultsYet": "Téléversez des images pour voir le contenu SEO généré par IA.",
+    "KeywordsSectionTitle": "2. Améliorez avec des mots-clés (optionnel)",
+    "KeywordsSectionDescription": "Ajoutez des mots-clés séparés par des virgules. Notre IA les intégrera stratégiquement dans le texte alternatif pour un meilleur SEO.",
+    "KeywordsPlaceholder": "ex : voyage, nourriture, e-commerce, catégorie de produit",
+    "ButtonRegenerateWithKeywords": "Régénérer le contenu SEO avec mots-clés",
+    "ButtonRegenerating": "Régénération du contenu SEO...",
+    "RegeneratingStatus": "L'IA régénère le texte alternatif avec les nouveaux mots-clés SEO...",
+    "RegenerationComplete": "Régénération SEO par IA terminée.",
+    "ButtonDownloadAll": "Télécharger tous les résultats SEO IA (ZIP)",
+    "ButtonDownloadingAll": "Téléchargement du ZIP SEO IA...",
+    "PreparingDownload": "Préparation des fichiers SEO IA pour le téléchargement...",
+    "ZippingFiles": "Compression de {count} fichiers optimisés IA...",
+    "NoFilesToDownload": "Aucune image traitée par IA avec données SEO à télécharger.",
+    "ErrorCreatingZIP": "Erreur lors de la création du ZIP SEO IA. Veuillez réessayer.",
+    "DownloadComplete": "Téléchargement SEO IA terminé !",
+    "ImageUploadFeatureName": "Téléversement illimité d'images SEO IA",
+    "FreeLimitReachedDialogTitle": "Passez à Pro pour plus de puissance SEO IA",
+    "FreeLimitReachedDialogMessage": "Vous avez atteint la limite gratuite pour le SEO IA. Passez à Pro pour traiter plus d'images.",
+    "FreeLimitReachedSomeProcessed": "Limite du forfait gratuit de {count} images atteinte pour le SEO IA. Traitement des {count} premières. Passez à Pro pour plus.",
+    "ProLimitReachedSomeProcessed": "Limite du forfait Pro de {count} images atteinte pour le SEO IA. Traitement des {count} premières.",
+    "NoValidFilesToProcessAfterLimit": "Aucune image à traiter pour le SEO IA après les limites du forfait.",
+    "ProUserCardTitle": "Forfait Pro SEO IA actif",
+    "ProUserCardDescription": "Vous êtes sur le forfait Pro ! Profitez du traitement illimité d'images SEO IA par lot et de toutes les fonctionnalités premium.",
+    "UpgradeToProCardTitle": "Passez à Pro",
+    "UpgradeToProCardDescription": "Débloquez toute la puissance SEO IA ! Les utilisateurs gratuits peuvent traiter {maxImagesFree} images. Les utilisateurs Pro bénéficient du traitement illimité & d'autres avantages.",
+    "ButtonUpgradeNow": "Passer à Pro maintenant",
+    "ProUserPlanIndicator": "Forfait Pro : génération illimitée d'images SEO IA.",
+    "FreeUserPlanIndicator": "Forfait gratuit : SEO IA jusqu'à 3 images. Passez à Pro pour l'illimité !",
+    "FreePlanInfoBoxTitle": "FORFAIT GRATUIT",
+    "ProFeatureUnlimitedImages": "Génération illimitée d'images SEO IA"
+  }
+}
