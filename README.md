@@ -2,17 +2,13 @@
 
 <div align="center">
   <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer">
-    <img src="https://www.batchshots.com/logo.svg" alt="Batch Shots Logo" width="250" height="auto">
-    <h1 style="font-size: 4em; margin: 0.5em 0; font-weight: bold;">www.batchshots.com</h1>
+    <img src="https://www.batchshots.com/logo.svg" alt="Batch Shots Logo" width="250" height="auto" style="display: block; margin: 0 auto;">
   </a>
+  <br>
+  [**www.batchshots.com**](https://www.batchshots.com)
 </div>
 
 [![CI](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml/badge.svg)](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 A comprehensive suite of AI-powered image processing tools designed for photographers, content creators, and businesses. Process, optimize, and enhance images with advanced AI capabilities including duplicate detection, background removal, SEO optimization, and more.
 
