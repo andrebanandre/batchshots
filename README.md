@@ -1,5 +1,12 @@
 # Batch Shots: AI-Powered Image Processing Toolkit
 
+<div align="center">
+  <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer">
+    <img src="https://www.batchshots.com/logo.svg" alt="Batch Shots Logo" width="250" height="auto">
+    <h1 style="font-size: 4em; margin: 0.5em 0; font-weight: bold;">www.batchshots.com</h1>
+  </a>
+</div>
+
 [![CI](https://github.com/banandre/batchshots/actions/workflows/ci.yml/badge.svg)](https://github.com/banandre/batchshots/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
