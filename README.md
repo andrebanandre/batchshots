@@ -1,11 +1,10 @@
 # Batch Shots: AI-Powered Image Processing Toolkit
 
 <div align="center">
-  <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer">
-    <img src="https://www.batchshots.com/logo.svg" alt="Batch Shots Logo" width="250" height="auto" style="display: block; margin: 0 auto;">
+  <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; text-decoration: none;">
+    <img src="https://www.batchshots.com/logo.svg" alt="Batch Shots Logo" width="160" height="auto" style="margin-right: -100px;">
+    <h1 style="font-size: 2.5em; margin: 0; font-weight: bold; text-transform: uppercase; color: #000;">batchshots.com</h1>
   </a>
-  <br>
-  [**www.batchshots.com**](https://www.batchshots.com)
 </div>
 
 [![CI](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml/badge.svg)](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml)
