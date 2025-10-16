@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "serve -s out -l 3000",
     "lint": "next lint",
     "test": "jest",
@@ -22,6 +23,7 @@
     "jszip": "^3.10.1",
     "next": "^15.5.5",
     "next-intl": "^4.3.12",
+    "next-sitemap": "^4.2.3",
     "onnxruntime-web": "^1.23.0",
     "posthog-js": "^1.275.3",
     "react": "^19.2.0",
