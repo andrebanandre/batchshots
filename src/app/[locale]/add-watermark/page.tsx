@@ -7,6 +7,7 @@ import Image from "next/image";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import ToolPageWrapper from "../../components/ToolPageWrapper";
+import ImageUploadDropzone from "../../components/ImageUploadDropzone";
 // Pro badge removed
 // Pricing card removed
 import { ImageFile } from "../../components/ImagePreview";
@@ -171,6 +172,38 @@ export default function AddWatermarkPage() {
     }
   };
 
+  const handleFilesSelected = async (files: FileList) => {
+    if (!files || files.length === 0) return;
+
+    let fileArray = Array.from(files);
+
+    // Limit to 100 images total (existing + new)
+    const currentCount = images.length;
+    const maxNewImages = 100 - currentCount;
+    if (fileArray.length > maxNewImages) {
+      fileArray = fileArray.slice(0, maxNewImages);
+      if (maxNewImages === 0) {
+        alert("Maximum of 100 images reached. Please clear some images first.");
+        return;
+      }
+      alert(
+        `Maximum of 100 images allowed. Only the first ${maxNewImages} images will be processed.`
+      );
+    }
+
+    try {
+      setIsProcessing(true);
+      // Reset selected image ID when uploading new images
+      setSelectedImageId(null);
+      const newImages = await Promise.all(fileArray.map(createImageFile));
+      setImages((prev) => [...prev, ...newImages]);
+    } catch (error) {
+      console.error("Error processing uploaded files", error);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   const handleDownload = () => {
     if (images.length === 0) return;
 
@@ -217,218 +250,211 @@ export default function AddWatermarkPage() {
     },
   ];
 
+  // Prepare sidebar content
+  const sidebarContent =
+    images.length > 0 ? (
+      <div className="brutalist-border p-4 bg-white">
+        <ImageUploadDropzone
+          onFilesSelected={handleFilesSelected}
+          disabled={isProcessing}
+          multiple={true}
+          accept="image/*"
+          title="Add More Images"
+          description="Add up to 100 images total for watermarking"
+          className="w-full max-w-none"
+        />
+      </div>
+    ) : undefined;
+
   return (
     <ToolPageWrapper
       title={t("title")}
       howItWorksSteps={howItWorksSteps}
       howItWorksTitle={t("howItWorks.title")}
+      sidebarContent={sidebarContent}
     >
-              <Card
-                collapsible={false}
-                title={t("mainCard.title")}
-                variant="accent"
-                headerRight={null}
-              >
-                <div className="space-y-6 relative">
-                  {/* Main loading overlay for the entire card */}
-                  {isProcessing && (
-                    <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
-                      <Loader size="lg" />
-                      <p className="mt-4 text-lg font-bold text-gray-700">
-                        {tHome("preparingImagesPreview")}
+      <Card
+        collapsible={false}
+        title={t("mainCard.title")}
+        variant="accent"
+        headerRight={null}
+      >
+        <div className="space-y-6 relative">
+          {/* Main loading overlay for the entire card */}
+          {isProcessing && (
+            <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+              <Loader size="lg" />
+              <p className="mt-4 text-lg font-bold text-gray-700">
+                {tHome("preparingImagesPreview")}
+              </p>
+            </div>
+          )}
+
+          {/* Info Section */}
+          <div className="brutalist-border p-4 bg-white">
+            <h3 className="font-bold mb-2">{t("mainCard.info.title")}</h3>
+            <p className="text-sm mb-2">{t("mainCard.info.description")}</p>
+
+            {/* Pro/Free banners removed */}
+          </div>
+
+          {/* Upload and Process Area */}
+          <div className="brutalist-border p-6 bg-white">
+            <div className="space-y-4">
+              {images.length === 0 ? (
+                <ImageUploadDropzone
+                  onFilesSelected={handleFilesSelected}
+                  disabled={isProcessing}
+                  multiple={true}
+                  accept="image/*"
+                  title={t("mainCard.upload.title")}
+                  description={
+                    <span className="text-xs text-gray-600">
+                      {t("mainCard.upload.helpTextFree")}
+                    </span>
+                  }
+                  className="w-full max-w-none"
+                />
+              ) : (
+                <div className="space-y-4">
+                  {/* Image Preview - New Section */}
+                  {selectedImage && (
+                    <div className="brutalist-border p-4 bg-white mb-4">
+                      <h3 className="font-bold mb-3">{t("preview.title")}</h3>
+                      <div
+                        className="relative w-full"
+                        style={{ height: "400px" }}
+                      >
+                        <Image
+                          src={
+                            selectedImage.processedThumbnailUrl ||
+                            selectedImage.thumbnailDataUrl ||
+                            selectedImage.dataUrl ||
+                            ""
+                          }
+                          alt={selectedImage.file.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <p className="text-xs text-center mt-2 text-gray-600">
+                        {selectedImage.file.name}
                       </p>
                     </div>
                   )}
 
-                  {/* Info Section */}
-                  <div className="brutalist-border p-4 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("mainCard.info.title")}
-                    </h3>
-                    <p className="text-sm mb-2">
-                      {t("mainCard.info.description")}
-                    </p>
-
-                    {/* Pro/Free banners removed */}
-                  </div>
-
-                  {/* Upload and Process Area */}
-                  <div className="brutalist-border p-6 bg-white">
-                    <div className="space-y-4">
-                      {images.length === 0 ? (
-                        <div className="text-center">
-                          <p className="text-lg font-bold mb-4">
-                            {t("mainCard.upload.title")}
-                          </p>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            onChange={handleFileChange}
-                            className="hidden"
-                            id="fileInput"
-                            disabled={isProcessing}
+                  {/* Image Thumbnails */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {images.map((image) => (
+                      <div
+                        key={image.id}
+                        className={`brutalist-border p-1 bg-white ${
+                          selectedImageId === image.id
+                            ? "ring-2 ring-blue-500"
+                            : ""
+                        }`}
+                        onClick={() => setSelectedImageId(image.id)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <div
+                          className="relative"
+                          style={{ aspectRatio: "1 / 1" }}
+                        >
+                          <Image
+                            src={
+                              image.processedThumbnailUrl ||
+                              image.thumbnailDataUrl ||
+                              image.dataUrl ||
+                              ""
+                            }
+                            alt={image.file.name}
+                            className="object-contain"
+                            fill
                           />
-                          <div className="flex flex-col items-center gap-2 space-y-6">
-                            <label htmlFor="fileInput" className="inline-block">
-                              <Button
-                                as="span"
-                                variant="primary"
-                                size="lg"
-                                disabled={isProcessing}
-                              >
-                                {t("mainCard.upload.buttonFree")}
-                              </Button>
-                            </label>
-
-                            <span className="text-xs text-gray-600">
-                              {t("mainCard.upload.helpTextFree")}
-                            </span>
-                          </div>
                         </div>
-                      ) : (
-                        <div className="space-y-4">
-                          {/* Image Preview - New Section */}
-                          {selectedImage && (
-                            <div className="brutalist-border p-4 bg-white mb-4">
-                              <h3 className="font-bold mb-3">
-                                {t("preview.title")}
-                              </h3>
-                              <div
-                                className="relative w-full"
-                                style={{ height: "400px" }}
-                              >
-                                <Image
-                                  src={
-                                    selectedImage.processedThumbnailUrl ||
-                                    selectedImage.thumbnailDataUrl ||
-                                    selectedImage.dataUrl ||
-                                    ""
-                                  }
-                                  alt={selectedImage.file.name}
-                                  fill
-                                  className="object-contain"
-                                />
-                              </div>
-                              <p className="text-xs text-center mt-2 text-gray-600">
-                                {selectedImage.file.name}
-                              </p>
-                            </div>
-                          )}
-
-                          {/* Image Thumbnails */}
-                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                            {images.map((image) => (
-                              <div
-                                key={image.id}
-                                className={`brutalist-border p-1 bg-white ${
-                                  selectedImageId === image.id
-                                    ? "ring-2 ring-blue-500"
-                                    : ""
-                                }`}
-                                onClick={() => setSelectedImageId(image.id)}
-                                style={{ cursor: "pointer" }}
-                              >
-                                <div
-                                  className="relative"
-                                  style={{ aspectRatio: "1 / 1" }}
-                                >
-                                  <Image
-                                    src={
-                                      image.processedThumbnailUrl ||
-                                      image.thumbnailDataUrl ||
-                                      image.dataUrl ||
-                                      ""
-                                    }
-                                    alt={image.file.name}
-                                    className="object-contain"
-                                    fill
-                                  />
-                                </div>
-                                <p className="text-xs truncate mt-1 px-1">
-                                  {image.file.name}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-
-                          <div className="flex justify-between">
-                            <Button
-                              variant="secondary"
-                              onClick={() => setImages([])}
-                              disabled={isProcessing}
-                            >
-                              {t("mainCard.actions.clear")}
-                            </Button>
-
-                            <Button
-                              variant="accent"
-                              onClick={handleDownload}
-                              disabled={
-                                isProcessing ||
-                                !images.some((img) => img.hasWatermark)
-                              }
-                            >
-                              {t(
-                                images.length > 1
-                                  ? "mainCard.actions.downloadZip"
-                                  : "mainCard.actions.download"
-                              )}
-                            </Button>
-                          </div>
-
-                          {isProcessing && (
-                            <div className="space-y-2">
-                              <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
-                                <div
-                                  className="h-full bg-[#4F46E5]"
-                                  style={{ width: `${progressPercent}%` }}
-                                ></div>
-                              </div>
-                              <div className="flex justify-between text-xs">
-                                <span>{t("mainCard.progress.processing")}</span>
-                                <span>
-                                  {t("mainCard.progress.percent", {
-                                    percent: progressPercent,
-                                  })}
-                                </span>
-                              </div>
-                            </div>
-                          )}
-
-                          {images.some((img) => img.hasWatermark) && (
-                            <div className="mt-6">
-                              <Button
-                                variant="default"
-                                onClick={handleTryMain}
-                                fullWidth
-                              >
-                                {t("mainCard.actions.tryFullEditor")}
-                              </Button>
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
+                        <p className="text-xs truncate mt-1 px-1">
+                          {image.file.name}
+                        </p>
+                      </div>
+                    ))}
                   </div>
 
-                  {/* Watermark Control Section */}
-                  {images.length > 0 && (
-                    <ImageProcessingProvider
-                      adjustments={defaultAdjustments}
-                      onAdjustmentsChange={() => {}}
-                      watermarkSettings={watermarkSettings}
-                      onWatermarkSettingsChange={setWatermarkSettings}
-                      applyToAll={applyToAll}
-                      setApplyToAll={setApplyToAll}
-                      onReset={handleReset}
-                      isProcessing={isProcessing}
+                  <div className="flex justify-between">
+                    <Button
+                      variant="secondary"
+                      onClick={() => setImages([])}
+                      disabled={isProcessing}
                     >
-                      <WatermarkControl className="w-full" />
-                    </ImageProcessingProvider>
+                      {t("mainCard.actions.clear")}
+                    </Button>
+
+                    <Button
+                      variant="accent"
+                      onClick={handleDownload}
+                      disabled={
+                        isProcessing || !images.some((img) => img.hasWatermark)
+                      }
+                    >
+                      {t(
+                        images.length > 1
+                          ? "mainCard.actions.downloadZip"
+                          : "mainCard.actions.download"
+                      )}
+                    </Button>
+                  </div>
+
+                  {isProcessing && (
+                    <div className="space-y-2">
+                      <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
+                        <div
+                          className="h-full bg-[#4F46E5]"
+                          style={{ width: `${progressPercent}%` }}
+                        ></div>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span>{t("mainCard.progress.processing")}</span>
+                        <span>
+                          {t("mainCard.progress.percent", {
+                            percent: progressPercent,
+                          })}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {images.some((img) => img.hasWatermark) && (
+                    <div className="mt-6">
+                      <Button
+                        variant="default"
+                        onClick={handleTryMain}
+                        fullWidth
+                      >
+                        {t("mainCard.actions.tryFullEditor")}
+                      </Button>
+                    </div>
                   )}
                 </div>
-              </Card>
+              )}
+            </div>
+          </div>
+
+          {/* Watermark Control Section */}
+          {images.length > 0 && (
+            <ImageProcessingProvider
+              adjustments={defaultAdjustments}
+              onAdjustmentsChange={() => {}}
+              watermarkSettings={watermarkSettings}
+              onWatermarkSettingsChange={setWatermarkSettings}
+              applyToAll={applyToAll}
+              setApplyToAll={setApplyToAll}
+              onReset={handleReset}
+              isProcessing={isProcessing}
+            >
+              <WatermarkControl className="w-full" />
+            </ImageProcessingProvider>
+          )}
+        </div>
+      </Card>
     </ToolPageWrapper>
   );
 }

@@ -65,7 +65,23 @@ export default function ImageCaptionGenerationPage() {
 
   const handleSelectFiles = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
-    const selected = Array.from(files);
+
+    let selected = Array.from(files);
+
+    // Limit to 100 images total (existing + new)
+    const currentCount = images.length;
+    const maxNewImages = 100 - currentCount;
+    if (selected.length > maxNewImages) {
+      selected = selected.slice(0, maxNewImages);
+      if (maxNewImages === 0) {
+        alert("Maximum of 100 images reached. Please clear some images first.");
+        return;
+      }
+      alert(
+        `Maximum of 100 images allowed. Only the first ${maxNewImages} images will be processed.`
+      );
+    }
+
     const created = await Promise.all(selected.map((f) => createImageFile(f)));
     setImages((prev) => [...prev, ...created]);
     const initialStatus: Record<string, ImageCaptionStatus> = {};
@@ -196,7 +212,8 @@ export default function ImageCaptionGenerationPage() {
           <ImageUploadDropzone
             onFilesSelected={handleSelectFiles}
             title="Add More Images"
-            description="Drag & drop or click to add additional images"
+            description="Add up to 100 images total for SEO caption generation"
+            className="w-full max-w-none"
           />
         </div>
       )}
@@ -258,7 +275,8 @@ export default function ImageCaptionGenerationPage() {
                   <ImageUploadDropzone
                     onFilesSelected={handleSelectFiles}
                     title={t("ButtonSelectImages")}
-                    description="Select images to auto-caption"
+                    description="Select up to 100 images to auto-generate SEO captions"
+                    className="w-full max-w-none"
                   />
                 </div>
               </div>

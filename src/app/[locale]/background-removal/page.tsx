@@ -6,6 +6,7 @@ import { useIsMobile } from "../../hooks/useIsMobile";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import ToolPageWrapper from "../../components/ToolPageWrapper";
+import ImageUploadDropzone from "../../components/ImageUploadDropzone";
 import { ImageFile } from "../../components/ImagePreview";
 import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
 import {
@@ -187,26 +188,40 @@ export default function BackgroundRemovalPage() {
     }
   }, [images]);
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0) return;
+  const handleFilesSelected = async (files: FileList) => {
+    if (!files || files.length === 0) return;
 
-    let fileArray = Array.from(e.target.files);
+    let fileArray = Array.from(files);
 
-    // Limit to 100 images
-    if (fileArray.length > 100) {
-      alert("Maximum 100 images allowed at once.");
-      fileArray = fileArray.slice(0, 100);
+    // Limit to 100 images total (existing + new)
+    const currentCount = images.length;
+    const maxNewImages = 100 - currentCount;
+    if (fileArray.length > maxNewImages) {
+      fileArray = fileArray.slice(0, maxNewImages);
+      if (maxNewImages === 0) {
+        alert("Maximum of 100 images reached. Please clear some images first.");
+        return;
+      }
+      alert(
+        `Maximum of 100 images allowed. Only the first ${maxNewImages} images will be processed.`
+      );
     }
 
     try {
       setIsProcessing(true);
       const newImages = await Promise.all(fileArray.map(createImageFile));
-      setImages(newImages);
+      setImages((prev) => [...prev, ...newImages]);
     } catch (error) {
       console.error("Error processing uploaded files", error);
     } finally {
       setIsProcessing(false);
     }
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+
+    await handleFilesSelected(e.target.files);
   };
 
   // Process a single image and update its status
@@ -431,6 +446,23 @@ export default function BackgroundRemovalPage() {
     },
   ];
 
+  // Prepare sidebar content
+  const sidebarContent =
+    images.length > 1 ? (
+      <div className="brutalist-border p-4 bg-white">
+        <ImageUploadDropzone
+          onFilesSelected={handleFilesSelected}
+          disabled={
+            isProcessing || isRemovingBackground || images.length >= 100
+          }
+          multiple={true}
+          accept="image/*"
+          title="Add More Images"
+          description="Add up to 100 images total for background removal"
+        />
+      </div>
+    ) : undefined;
+
   // Show loading state while model is initializing
   if (isLoadingModel || !isModelReady) {
     return (
@@ -461,258 +493,225 @@ export default function BackgroundRemovalPage() {
       title={t("title")}
       howItWorksSteps={howItWorksSteps}
       howItWorksTitle={t("howItWorks.title")}
+      sidebarContent={sidebarContent}
     >
-                <Card
-                  collapsible={false}
-                  title={t("mainCard.title")}
-                  variant="accent"
-                  headerRight={null}
-                >
-                  <div className="space-y-6 relative">
-                    {/* Main loading overlay for the entire card */}
-                    {isProcessing && (
-                      <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
-                        <Loader size="lg" />
-                        <p className="mt-4 text-lg font-bold text-gray-700">
-                          {tHome("preparingImagesPreview")}
-                        </p>
+      <Card
+        collapsible={false}
+        title={t("mainCard.title")}
+        variant="accent"
+        headerRight={null}
+      >
+        <div className="space-y-6 relative">
+          {/* Main loading overlay for the entire card */}
+          {isProcessing && (
+            <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+              <Loader size="lg" />
+              <p className="mt-4 text-lg font-bold text-gray-700">
+                {tHome("preparingImagesPreview")}
+              </p>
+            </div>
+          )}
+
+          {/* Info Section */}
+          <div className="brutalist-border p-4 bg-white">
+            <h3 className="font-bold mb-2">{t("mainCard.info.title")}</h3>
+            <p className="text-sm mb-2">{t("mainCard.info.description")}</p>
+          </div>
+
+          {/* Upload and Process Area */}
+          <div className="brutalist-border p-6 bg-white">
+            <div className="space-y-4">
+              {images.length === 0 ? (
+                <ImageUploadDropzone
+                  onFilesSelected={handleFilesSelected}
+                  disabled={isProcessing || isRemovingBackground}
+                  multiple={true}
+                  accept="image/*"
+                  title={t("mainCard.upload.title")}
+                  description={
+                    <span className="text-xs text-gray-600">
+                      {t("mainCard.upload.helpTextPro")}
+                    </span>
+                  }
+                  className="w-full max-w-none"
+                />
+              ) : (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    {images.map((image) => {
+                      const status = getImageStatus(image.id);
+                      return (
+                        <div
+                          key={image.id}
+                          className="brutalist-border p-1 bg-white relative"
+                        >
+                          {image.backgroundRemoved ? (
+                            <div
+                              className="bg-[url('/checkered-bg.png')] bg-repeat relative"
+                              style={{ aspectRatio: "1 / 1" }}
+                            >
+                              <Image
+                                src={
+                                  image.thumbnailDataUrl || image.dataUrl || ""
+                                }
+                                alt={image.file.name}
+                                className="object-contain"
+                                fill
+                              />
+                              {/* Download button for processed images */}
+                              <button
+                                onClick={() =>
+                                  handleDownloadSingleImage(image.id)
+                                }
+                                className="absolute bottom-1 right-1 brutalist-border border-2 bg-white text-black text-xs px-2 py-1 hover:translate-y-[-2px] transition-transform"
+                                title="Download this image"
+                              >
+                                ↓
+                              </button>
+                            </div>
+                          ) : (
+                            <div
+                              className="relative"
+                              style={{ aspectRatio: "1 / 1" }}
+                            >
+                              <Image
+                                src={
+                                  image.thumbnailDataUrl || image.dataUrl || ""
+                                }
+                                alt={image.file.name}
+                                className="object-contain"
+                                fill
+                              />
+
+                              {/* Show processing status */}
+                              {status?.isProcessing && (
+                                <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white">
+                                  <Loader size="sm" />
+                                  <span className="text-xs mt-2">
+                                    {Math.round(status.progress)}%
+                                  </span>
+                                </div>
+                              )}
+
+                              {/* Show error indicator if processing failed */}
+                              {status?.error && (
+                                <div
+                                  className="absolute bottom-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded-sm"
+                                  title={status.error}
+                                >
+                                  !
+                                </div>
+                              )}
+                            </div>
+                          )}
+                          <p className="text-xs truncate mt-1 px-1">
+                            {image.file.name}
+                            {image.backgroundRemoved && (
+                              <span
+                                className="ml-1 inline-block w-2 h-2 bg-green-500 rounded-full"
+                                title="Background removed"
+                              ></span>
+                            )}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="flex justify-between">
+                    <Button
+                      variant="secondary"
+                      onClick={() => setImages([])}
+                      disabled={isProcessing || isRemovingBackground}
+                    >
+                      {t("mainCard.actions.clear")}
+                    </Button>
+                  </div>
+
+                  {isRemovingBackground && (
+                    <div className="space-y-2">
+                      <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
+                        <div
+                          className="h-full bg-[#4F46E5]"
+                          style={{ width: `${progressPercent}%` }}
+                        ></div>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span>{t("mainCard.progress.processing")}</span>
+                        <span>
+                          {t("mainCard.progress.percent", {
+                            percent: progressPercent,
+                          })}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Sticky download button at bottom of container */}
+                  {images.some((img) => img.backgroundRemoved) &&
+                    images.length > 1 && (
+                      <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+                          <Button
+                            variant="accent"
+                            onClick={handleDownloadAll}
+                            disabled={
+                              isProcessing ||
+                              isRemovingBackground ||
+                              isDownloading
+                            }
+                            className="w-full max-w-md"
+                          >
+                            {isDownloading ? (
+                              <span className="flex items-center justify-center">
+                                <Loader size="sm" className="mr-2" />
+                                {t("mainCard.actions.downloadingZip")}
+                              </span>
+                            ) : (
+                              t("mainCard.actions.downloadZip")
+                            )}
+                          </Button>
+                        </div>
                       </div>
                     )}
 
-                    {/* Info Section */}
-                    <div className="brutalist-border p-4 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("mainCard.info.title")}
-                      </h3>
-                      <p className="text-sm mb-2">
-                        {t("mainCard.info.description")}
-                      </p>
-                    </div>
-
-                    {/* Upload and Process Area */}
-                    <div className="brutalist-border p-6 bg-white">
-                      <div className="space-y-4">
-                        {images.length === 0 ? (
-                          <div className="text-center">
-                            <p className="text-lg font-bold mb-4">
-                              {t("mainCard.upload.title")}
-                            </p>
-                            <input
-                              type="file"
-                              accept="image/*"
-                              multiple
-                              onChange={handleFileChange}
-                              className="hidden"
-                              id="fileInput"
-                              disabled={isProcessing || isRemovingBackground}
-                            />
-                            <div className="flex flex-col items-center gap-2 space-y-6">
-                              <label
-                                htmlFor="fileInput"
-                                className="inline-block"
-                              >
-                                <Button
-                                  as="span"
-                                  variant="primary"
-                                  size="lg"
-                                  disabled={
-                                    isProcessing || isRemovingBackground
-                                  }
-                                >
-                                  {t("mainCard.upload.buttonPro")}
-                                </Button>
-                              </label>
-
-                              <span className="text-xs text-gray-600">
-                                {t("mainCard.upload.helpTextPro")}
+                  {/* Sticky remove background button at bottom of container */}
+                  {images.length > 0 &&
+                    !images.some((img) => img.backgroundRemoved) && (
+                      <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+                          <Button
+                            variant="accent"
+                            onClick={handleRemoveBackground}
+                            disabled={isProcessing || isRemovingBackground}
+                            className="w-full max-w-md"
+                          >
+                            {isRemovingBackground ? (
+                              <span className="flex items-center justify-center">
+                                <Loader size="sm" className="mr-2" />
+                                {t(
+                                  images.length > 1
+                                    ? "mainCard.actions.processingMultiple"
+                                    : "mainCard.actions.processing"
+                                )}
                               </span>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="space-y-4">
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                              {images.map((image) => {
-                                const status = getImageStatus(image.id);
-                                return (
-                                  <div
-                                    key={image.id}
-                                    className="brutalist-border p-1 bg-white relative"
-                                  >
-                                    {image.backgroundRemoved ? (
-                                      <div
-                                        className="bg-[url('/checkered-bg.png')] bg-repeat relative"
-                                        style={{ aspectRatio: "1 / 1" }}
-                                      >
-                                        <Image
-                                          src={
-                                            image.thumbnailDataUrl ||
-                                            image.dataUrl ||
-                                            ""
-                                          }
-                                          alt={image.file.name}
-                                          className="object-contain"
-                                          fill
-                                        />
-                                        {/* Download button for processed images */}
-                                        <button
-                                          onClick={() =>
-                                            handleDownloadSingleImage(image.id)
-                                          }
-                                          className="absolute bottom-1 right-1 brutalist-border border-2 bg-white text-black text-xs px-2 py-1 hover:translate-y-[-2px] transition-transform"
-                                          title="Download this image"
-                                        >
-                                          ↓
-                                        </button>
-                                      </div>
-                                    ) : (
-                                      <div
-                                        className="relative"
-                                        style={{ aspectRatio: "1 / 1" }}
-                                      >
-                                        <Image
-                                          src={
-                                            image.thumbnailDataUrl ||
-                                            image.dataUrl ||
-                                            ""
-                                          }
-                                          alt={image.file.name}
-                                          className="object-contain"
-                                          fill
-                                        />
-
-                                        {/* Show processing status */}
-                                        {status?.isProcessing && (
-                                          <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white">
-                                            <Loader size="sm" />
-                                            <span className="text-xs mt-2">
-                                              {Math.round(status.progress)}%
-                                            </span>
-                                          </div>
-                                        )}
-
-                                        {/* Show error indicator if processing failed */}
-                                        {status?.error && (
-                                          <div
-                                            className="absolute bottom-1 right-1 bg-red-500 text-white text-xs px-2 py-1 rounded-sm"
-                                            title={status.error}
-                                          >
-                                            !
-                                          </div>
-                                        )}
-                                      </div>
-                                    )}
-                                    <p className="text-xs truncate mt-1 px-1">
-                                      {image.file.name}
-                                      {image.backgroundRemoved && (
-                                        <span
-                                          className="ml-1 inline-block w-2 h-2 bg-green-500 rounded-full"
-                                          title="Background removed"
-                                        ></span>
-                                      )}
-                                    </p>
-                                  </div>
-                                );
-                              })}
-                            </div>
-
-                            <div className="flex justify-between">
-                              <Button
-                                variant="secondary"
-                                onClick={() => setImages([])}
-                                disabled={isProcessing || isRemovingBackground}
-                              >
-                                {t("mainCard.actions.clear")}
-                              </Button>
-                            </div>
-
-                            {isRemovingBackground && (
-                              <div className="space-y-2">
-                                <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
-                                  <div
-                                    className="h-full bg-[#4F46E5]"
-                                    style={{ width: `${progressPercent}%` }}
-                                  ></div>
-                                </div>
-                                <div className="flex justify-between text-xs">
-                                  <span>
-                                    {t("mainCard.progress.processing")}
-                                  </span>
-                                  <span>
-                                    {t("mainCard.progress.percent", {
-                                      percent: progressPercent,
-                                    })}
-                                  </span>
-                                </div>
-                              </div>
+                            ) : (
+                              t(
+                                images.length > 1
+                                  ? "mainCard.actions.removeBackgrounds"
+                                  : "mainCard.actions.removeBackground"
+                              )
                             )}
-
-                            {/* Sticky download button at bottom of container */}
-                            {images.some((img) => img.backgroundRemoved) &&
-                              images.length > 1 && (
-                                <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
-                                  <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                                    <Button
-                                      variant="accent"
-                                      onClick={handleDownloadAll}
-                                      disabled={
-                                        isProcessing ||
-                                        isRemovingBackground ||
-                                        isDownloading
-                                      }
-                                      className="w-full max-w-md"
-                                    >
-                                      {isDownloading ? (
-                                        <span className="flex items-center justify-center">
-                                          <Loader size="sm" className="mr-2" />
-                                          {t("mainCard.actions.downloadingZip")}
-                                        </span>
-                                      ) : (
-                                        t("mainCard.actions.downloadZip")
-                                      )}
-                                    </Button>
-                                  </div>
-                                </div>
-                              )}
-
-                            {/* Sticky remove background button at bottom of container */}
-                            {images.length > 0 &&
-                              !images.some((img) => img.backgroundRemoved) && (
-                                <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
-                                  <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                                    <Button
-                                      variant="accent"
-                                      onClick={handleRemoveBackground}
-                                      disabled={
-                                        isProcessing || isRemovingBackground
-                                      }
-                                      className="w-full max-w-md"
-                                    >
-                                      {isRemovingBackground ? (
-                                        <span className="flex items-center justify-center">
-                                          <Loader size="sm" className="mr-2" />
-                                          {t(
-                                            images.length > 1
-                                              ? "mainCard.actions.processingMultiple"
-                                              : "mainCard.actions.processing"
-                                          )}
-                                        </span>
-                                      ) : (
-                                        t(
-                                          images.length > 1
-                                            ? "mainCard.actions.removeBackgrounds"
-                                            : "mainCard.actions.removeBackground"
-                                        )
-                                      )}
-                                    </Button>
-                                  </div>
-                                </div>
-                              )}
-                          </div>
-                        )}
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </Card>
+                    )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </Card>
     </ToolPageWrapper>
   );
 }

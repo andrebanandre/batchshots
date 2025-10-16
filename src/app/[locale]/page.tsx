@@ -666,6 +666,7 @@ export default function Home() {
                       description={t.rich("dragAndDropPrivacy", {
                         strong: (chunks) => <strong>{chunks}</strong>,
                       })}
+                      className="w-full max-w-none"
                     />
                   </div>
                 </div>

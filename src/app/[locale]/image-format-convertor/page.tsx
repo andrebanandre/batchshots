@@ -7,6 +7,7 @@ import Image from "next/image";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import ToolPageWrapper from "../../components/ToolPageWrapper";
+import ImageUploadDropzone from "../../components/ImageUploadDropzone";
 // Pro removed
 import { ImageFile } from "../../components/ImagePreview";
 import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
@@ -121,14 +122,14 @@ export default function ImageFormatConvertorPage() {
     return preset?.name;
   };
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0) return;
+  const handleFilesSelected = async (files: FileList) => {
+    if (!files || files.length === 0) return;
 
     // Set processing state immediately
     setIsProcessing(true);
 
     // Get the original file array
-    const originalFileArray = Array.from(e.target.files);
+    const originalFileArray = Array.from(files);
 
     // Reset errors
     setProcessingErrors([]);
@@ -138,6 +139,14 @@ export default function ImageFormatConvertorPage() {
     // No gating beyond hard cap of 100
     if (images.length + fileArray.length > 100) {
       fileArray = fileArray.slice(0, 100 - images.length);
+      if (fileArray.length === 0) {
+        alert("Maximum of 100 images reached. Please clear some images first.");
+        setIsProcessing(false);
+        return;
+      }
+      alert(
+        `Maximum of 100 images allowed. Only the first ${fileArray.length} images will be processed.`
+      );
     }
 
     try {
@@ -419,17 +428,30 @@ export default function ImageFormatConvertorPage() {
     },
   ];
 
-  // Prepare sidebar content (supported formats card)
+  // Prepare sidebar content (supported formats card and add more images)
   const sidebarContent = (
     <>
+      {/* Add More Images section - only show when more than 1 image */}
+      {images.length > 1 && (
+        <div className="brutalist-border p-4 bg-white mb-4">
+          <ImageUploadDropzone
+            onFilesSelected={handleFilesSelected}
+            disabled={isProcessing || isConverting || images.length >= 100}
+            multiple={true}
+            accept="image/*"
+            title="Add More Images"
+            description="Add up to 100 images total for format conversion"
+            className="w-full max-w-none"
+          />
+        </div>
+      )}
+
       <Card title={t("supportedFormats.title")} variant="accent">
         <div className="brutalist-border p-3 bg-white">
           <h3 className="font-bold mb-2">
             {t("supportedFormats.input.title")}
           </h3>
-          <p className="text-sm">
-            {t("supportedFormats.input.description")}
-          </p>
+          <p className="text-sm">{t("supportedFormats.input.description")}</p>
           <div className="grid grid-cols-2 gap-2 mt-2">
             <div className="brutalist-border p-2 bg-gray-50">
               <p className="text-xs font-bold">JPG/JPEG</p>
@@ -456,15 +478,10 @@ export default function ImageFormatConvertorPage() {
           <h3 className="font-bold mb-2">
             {t("supportedFormats.output.title")}
           </h3>
-          <p className="text-sm">
-            {t("supportedFormats.output.description")}
-          </p>
+          <p className="text-sm">{t("supportedFormats.output.description")}</p>
           <div className="grid grid-cols-2 gap-2 mt-2">
             {supportedOutputFormats.map((format) => (
-              <div
-                key={format.id}
-                className="brutalist-border p-2 bg-gray-50"
-              >
+              <div key={format.id} className="brutalist-border p-2 bg-gray-50">
                 <p className="text-xs font-bold">{format.name}</p>
               </div>
             ))}
@@ -491,9 +508,7 @@ export default function ImageFormatConvertorPage() {
           <div className="flex flex-col items-center justify-center py-8">
             <Loader size="lg" />
             <h3 className="text-lg font-bold mb-2">{t("loading.tool")}</h3>
-            <p className="text-sm text-gray-600">
-              {t("loading.description")}
-            </p>
+            <p className="text-sm text-gray-600">{t("loading.description")}</p>
           </div>
         </div>
       </ToolPageWrapper>
@@ -508,292 +523,227 @@ export default function ImageFormatConvertorPage() {
         howItWorksTitle={t("howItWorks.title")}
         sidebarContent={sidebarContent}
       >
-              {/* Main card with image selection */}
-              <Card
-                collapsible={false}
-                title={t("mainCard.title")}
-                variant="accent"
-                headerRight={null}
-              >
-                <div className="space-y-6 relative">
-                  {/* Main loading overlay for the entire card */}
-                  {isProcessing && (
-                    <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
-                      <Loader size="lg" />
-                      <p className="mt-4 text-lg font-bold text-gray-700">
-                        {tHome("preparingImagesPreview")}
-                      </p>
-                    </div>
-                  )}
+        {/* Main card with image selection */}
+        <Card
+          collapsible={false}
+          title={t("mainCard.title")}
+          variant="accent"
+          headerRight={null}
+        >
+          <div className="space-y-6 relative">
+            {/* Main loading overlay for the entire card */}
+            {isProcessing && (
+              <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                <Loader size="lg" />
+                <p className="mt-4 text-lg font-bold text-gray-700">
+                  {tHome("preparingImagesPreview")}
+                </p>
+              </div>
+            )}
 
-                  {/* Info Section */}
-                  <div className="brutalist-border p-4 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("mainCard.info.title")}
+            {/* Info Section */}
+            <div className="brutalist-border p-4 bg-white">
+              <h3 className="font-bold mb-2">{t("mainCard.info.title")}</h3>
+              <p className="text-sm mb-2">{t("mainCard.info.description")}</p>
+
+              {/* Pro/Free banners removed */}
+            </div>
+
+            {/* Upload Area - Use same logic as background-removal/page.tsx */}
+            {images.length === 0 ? (
+              <ImageUploadDropzone
+                onFilesSelected={handleFilesSelected}
+                disabled={isProcessing || isConverting}
+                multiple={true}
+                accept="image/*"
+                title={t("mainCard.upload.title")}
+                description={
+                  <span className="text-xs text-gray-600">
+                    {t("mainCard.upload.helpTextFree", {
+                      maxImages: MAX_IMAGES,
+                    })}
+                  </span>
+                }
+                className="w-full max-w-none"
+              />
+            ) : (
+              <>
+                {/* Format Selection */}
+                <div className="brutalist-border p-4 bg-white">
+                  <h3 className="font-bold mb-3">{t("targetFormat.title")}</h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+                    {supportedOutputFormats.map((format) => (
+                      <Button
+                        key={format.id}
+                        variant={
+                          selectedFormat === format.id ? "accent" : "primary"
+                        }
+                        onClick={() => setSelectedFormat(format.id)}
+                      >
+                        {format.name}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Resize Options */}
+                <div className="brutalist-border p-4 bg-white">
+                  <h3 className="font-bold mb-3">{t("resize.title")}</h3>
+                  <PresetsSelector
+                    presets={getAllPresets()}
+                    selectedPreset={selectedPreset}
+                    onSelectPreset={setSelectedPreset}
+                    onCustomSettingsChange={handleCustomSettingsChange}
+                  />
+                </div>
+
+                {/* Image preview and controls */}
+                <div className="brutalist-border p-4 bg-white">
+                  <div className="mb-4 flex justify-between items-center">
+                    <h3 className="font-bold">
+                      {t("selectedImages.title", {
+                        count: images.length,
+                      })}
                     </h3>
-                    <p className="text-sm mb-2">
-                      {t("mainCard.info.description")}
-                    </p>
 
-                    {/* Pro/Free banners removed */}
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => {
+                        setImages([]);
+                        setConvertedImages([]);
+                      }}
+                      disabled={isProcessing || isConverting}
+                    >
+                      {t("mainCard.actions.clear")}
+                    </Button>
                   </div>
 
-                  {/* Upload Area - Use same logic as background-removal/page.tsx */}
-                  {images.length === 0 ? (
-                    <div className="brutalist-border p-6 bg-white">
-                      <div className="space-y-4">
-                        <div className="text-center">
-                          <p className="text-lg font-bold mb-4">
-                            {t("mainCard.upload.title")}
-                          </p>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            onChange={handleFileChange}
-                            className="hidden"
-                            id="fileInput"
-                            disabled={isProcessing || isConverting}
+                  {/* Image count - styled like ImagePreview.tsx */}
+                  <div className="mb-3 flex justify-between items-center">
+                    <h3 className="font-bold text-lg uppercase">
+                      {t("allImages", {
+                        current: images.length,
+                        max: MAX_IMAGES,
+                      })}
+                    </h3>
+
+                    <div className="text-sm">
+                      {t("imagesCount", {
+                        current: images.length,
+                        max: MAX_IMAGES,
+                      })}
+                      {/* Upgrade hint removed */}
+                    </div>
+                  </div>
+
+                  {/* Image grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 relative">
+                    {images.map((image, index) => (
+                      <div
+                        key={image.id}
+                        className="brutalist-border p-2 cursor-pointer transition-transform hover:translate-y-[-2px]"
+                      >
+                        <div className="relative aspect-square w-full overflow-hidden">
+                          <Image
+                            src={image.thumbnailDataUrl || image.dataUrl || ""}
+                            alt={image.file.name}
+                            className="object-contain"
+                            fill
+                            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                            onError={() => {
+                              console.error(
+                                `Error loading image: ${image.file.name}`
+                              );
+                              setProcessingErrors((prev) => [
+                                ...prev,
+                                `Failed to display ${image.file.name}`,
+                              ]);
+                            }}
                           />
-                          <div className="flex flex-col items-center gap-2 space-y-6 relative">
-                            <label htmlFor="fileInput" className="inline-block">
-                              <Button
-                                as="span"
-                                variant="primary"
-                                size="lg"
-                                disabled={isProcessing || isConverting}
-                              >
-                                {t("mainCard.upload.buttonFree")}
-                              </Button>
-                            </label>
-                            <span className="text-xs text-gray-600">
-                              {t("mainCard.upload.helpTextFree", {
-                                maxImages: MAX_IMAGES,
-                              })}
-                            </span>
+                          {/* Image number indicator - like in ImagePreview.tsx */}
+                          <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
+                            {index + 1}/{images.length}
                           </div>
+                          {/* Delete button - like in ImagePreview.tsx */}
+                          <button
+                            onClick={() => {
+                              setImages((prev) =>
+                                prev.filter((img) => img.id !== image.id)
+                              );
+                            }}
+                            className="absolute top-1 right-1 brutalist-border border-2 border-black bg-accent text-black text-xs px-2 py-1 shadow-brutalist hover:translate-y-[-2px] transition-transform z-10"
+                            disabled={isProcessing || isConverting}
+                          >
+                            ×
+                          </button>
                         </div>
+                        <div className="mt-2 text-xs truncate">
+                          {image.file.name}
+                        </div>
+                        {/* Display format type for better user feedback */}
+                        {image.originalFormat && (
+                          <div className="text-[10px] text-gray-500">
+                            Format: {image.originalFormat.toUpperCase()}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Error messages */}
+                  {processingErrors.length > 0 && (
+                    <div className="brutalist-border p-3 bg-red-50 mt-4 mb-4">
+                      <p className="text-sm font-bold text-red-600 mb-1">
+                        Processing Errors:
+                      </p>
+                      <ul className="text-xs text-red-600 list-disc pl-5">
+                        {processingErrors.map((error, index) => (
+                          <li key={index}>{error}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Convert button - centered and larger */}
+                  <div className="flex justify-center mt-6">
+                    <Button
+                      variant="accent"
+                      size="lg"
+                      onClick={handleConvertImages}
+                      disabled={
+                        isProcessing || isConverting || images.length === 0
+                      }
+                      className="w-full md:w-auto"
+                    >
+                      {getConvertButtonText()}
+                    </Button>
+                  </div>
+
+                  {/* Conversion progress */}
+                  {isConverting && (
+                    <div className="space-y-2 mt-4">
+                      <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
+                        <div
+                          className="h-full bg-[#4F46E5]"
+                          style={{ width: `${progressPercent}%` }}
+                        ></div>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span>{t("mainCard.progress.processing")}</span>
+                        <span>
+                          {t("mainCard.progress.percent", {
+                            percent: progressPercent,
+                          })}
+                        </span>
                       </div>
                     </div>
-                  ) : (
-                    <>
-                      {/* Format Selection */}
-                      <div className="brutalist-border p-4 bg-white">
-                        <h3 className="font-bold mb-3">
-                          {t("targetFormat.title")}
-                        </h3>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
-                          {supportedOutputFormats.map((format) => (
-                            <Button
-                              key={format.id}
-                              variant={
-                                selectedFormat === format.id
-                                  ? "accent"
-                                  : "primary"
-                              }
-                              onClick={() => setSelectedFormat(format.id)}
-                            >
-                              {format.name}
-                            </Button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Resize Options */}
-                      <div className="brutalist-border p-4 bg-white">
-                        <h3 className="font-bold mb-3">{t("resize.title")}</h3>
-                        <PresetsSelector
-                          presets={getAllPresets()}
-                          selectedPreset={selectedPreset}
-                          onSelectPreset={setSelectedPreset}
-                          onCustomSettingsChange={handleCustomSettingsChange}
-                        />
-                      </div>
-
-                      {/* Image preview and controls */}
-                      <div className="brutalist-border p-4 bg-white">
-                        <div className="mb-4 flex justify-between items-center">
-                          <h3 className="font-bold">
-                            {t("selectedImages.title", {
-                              count: images.length,
-                            })}
-                          </h3>
-
-                          <div className="flex gap-2 items-center">
-                            <Button
-                              variant="secondary"
-                              size="sm"
-                              onClick={() => {
-                                setImages([]);
-                                setConvertedImages([]);
-                              }}
-                              disabled={isProcessing || isConverting}
-                            >
-                              {t("mainCard.actions.clear")}
-                            </Button>
-
-                            <input
-                              type="file"
-                              accept="image/*"
-                              multiple={true}
-                              onChange={handleFileChange}
-                              className="hidden"
-                              id="fileInputMore"
-                              disabled={
-                                isProcessing ||
-                                isConverting ||
-                                images.length >= 100
-                              }
-                            />
-                            <label htmlFor="fileInputMore">
-                              <Button
-                                as="span"
-                                variant="secondary"
-                                size="sm"
-                                disabled={
-                                  isProcessing ||
-                                  isConverting ||
-                                  images.length >= MAX_IMAGES ||
-                                  images.length >= 100
-                                }
-                              >
-                                {t("mainCard.actions.addMore")}
-                              </Button>
-                            </label>
-                          </div>
-                        </div>
-
-                        {/* Image count - styled like ImagePreview.tsx */}
-                        <div className="mb-3 flex justify-between items-center">
-                          <h3 className="font-bold text-lg uppercase">
-                            {t("allImages", {
-                              current: images.length,
-                              max: MAX_IMAGES,
-                            })}
-                          </h3>
-
-                          <div className="text-sm">
-                            {t("imagesCount", {
-                              current: images.length,
-                              max: MAX_IMAGES,
-                            })}
-                            {/* Upgrade hint removed */}
-                          </div>
-                        </div>
-
-                        {/* Image grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 relative">
-                          {images.map((image, index) => (
-                            <div
-                              key={image.id}
-                              className="brutalist-border p-2 cursor-pointer transition-transform hover:translate-y-[-2px]"
-                            >
-                              <div className="relative aspect-square w-full overflow-hidden">
-                                <Image
-                                  src={
-                                    image.thumbnailDataUrl ||
-                                    image.dataUrl ||
-                                    ""
-                                  }
-                                  alt={image.file.name}
-                                  className="object-contain"
-                                  fill
-                                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                                  onError={() => {
-                                    console.error(
-                                      `Error loading image: ${image.file.name}`
-                                    );
-                                    setProcessingErrors((prev) => [
-                                      ...prev,
-                                      `Failed to display ${image.file.name}`,
-                                    ]);
-                                  }}
-                                />
-                                {/* Image number indicator - like in ImagePreview.tsx */}
-                                <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
-                                  {index + 1}/{images.length}
-                                </div>
-                                {/* Delete button - like in ImagePreview.tsx */}
-                                <button
-                                  onClick={() => {
-                                    setImages((prev) =>
-                                      prev.filter((img) => img.id !== image.id)
-                                    );
-                                  }}
-                                  className="absolute top-1 right-1 brutalist-border border-2 border-black bg-accent text-black text-xs px-2 py-1 shadow-brutalist hover:translate-y-[-2px] transition-transform z-10"
-                                  disabled={isProcessing || isConverting}
-                                >
-                                  ×
-                                </button>
-                              </div>
-                              <div className="mt-2 text-xs truncate">
-                                {image.file.name}
-                              </div>
-                              {/* Display format type for better user feedback */}
-                              {image.originalFormat && (
-                                <div className="text-[10px] text-gray-500">
-                                  Format: {image.originalFormat.toUpperCase()}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Error messages */}
-                        {processingErrors.length > 0 && (
-                          <div className="brutalist-border p-3 bg-red-50 mt-4 mb-4">
-                            <p className="text-sm font-bold text-red-600 mb-1">
-                              Processing Errors:
-                            </p>
-                            <ul className="text-xs text-red-600 list-disc pl-5">
-                              {processingErrors.map((error, index) => (
-                                <li key={index}>{error}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {/* Convert button - centered and larger */}
-                        <div className="flex justify-center mt-6">
-                          <Button
-                            variant="accent"
-                            size="lg"
-                            onClick={handleConvertImages}
-                            disabled={
-                              isProcessing ||
-                              isConverting ||
-                              images.length === 0
-                            }
-                            className="w-full md:w-auto"
-                          >
-                            {getConvertButtonText()}
-                          </Button>
-                        </div>
-
-                        {/* Conversion progress */}
-                        {isConverting && (
-                          <div className="space-y-2 mt-4">
-                            <div className="w-full h-3 brutalist-border bg-white overflow-hidden">
-                              <div
-                                className="h-full bg-[#4F46E5]"
-                                style={{ width: `${progressPercent}%` }}
-                              ></div>
-                            </div>
-                            <div className="flex justify-between text-xs">
-                              <span>{t("mainCard.progress.processing")}</span>
-                              <span>
-                                {t("mainCard.progress.percent", {
-                                  percent: progressPercent,
-                                })}
-                              </span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </>
                   )}
                 </div>
-              </Card>
+              </>
+            )}
+          </div>
+        </Card>
       </ToolPageWrapper>
 
       {/* Download Dialog - Similar to DownloadDialog.tsx */}

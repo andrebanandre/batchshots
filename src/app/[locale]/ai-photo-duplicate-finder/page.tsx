@@ -19,6 +19,7 @@ import { downloadAllImages, downloadImage } from "../../lib/imageProcessing"; //
 import { useTranslations } from "next-intl";
 import BrutalistSelect from "../../components/BrutalistSelect";
 import ToolPageWrapper from "../../components/ToolPageWrapper";
+import ImageUploadDropzone from "../../components/ImageUploadDropzone";
 import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
 
 // Declare cv type for global window scope
@@ -966,6 +967,21 @@ export default function ImageDuplicateDetectionPage() {
     }
   };
 
+  // Handle files selected from ImageUploadDropzone
+  const handleFilesSelected = async (
+    files: FileList,
+    addingMore: boolean = false
+  ) => {
+    if (!files || files.length === 0) return;
+
+    // Create a synthetic event to reuse existing handleFileChange logic
+    const syntheticEvent = {
+      target: { files },
+    } as ChangeEvent<HTMLInputElement>;
+
+    await handleFileChange(syntheticEvent, addingMore);
+  };
+
   // Add handler for the "Add More Images" button
   const handleAddMoreImages = (event: ChangeEvent<HTMLInputElement>) => {
     handleFileChange(event, true);
@@ -1128,6 +1144,22 @@ export default function ImageDuplicateDetectionPage() {
       description: t("HowItWorksStep5Desc"),
     },
   ];
+
+  // Prepare sidebar content
+  const sidebarContent =
+    imageInfoRef.current.length > 1 ? (
+      <div className="brutalist-border p-4 bg-white">
+        <ImageUploadDropzone
+          onFilesSelected={(files) => handleFilesSelected(files, true)}
+          disabled={isLoading || !isCvReady}
+          multiple={true}
+          accept="image/*,.heic,.heif"
+          title="Add More Images"
+          description="Add more images for duplicate analysis"
+          className="w-full max-w-none"
+        />
+      </div>
+    ) : undefined;
 
   const handleAnalyzeQuality = async (groupIndex: number) => {
     if (!isCvReady) {
@@ -1601,6 +1633,7 @@ export default function ImageDuplicateDetectionPage() {
       }
       howItWorksSteps={howItWorksSteps}
       howItWorksTitle={t("HowItWorksTitle")}
+      sidebarContent={sidebarContent}
     >
       {/* Show loading state */}
       {(workerStatus === t("AISetup") ||
@@ -1680,28 +1713,27 @@ export default function ImageDuplicateDetectionPage() {
               {/* Pro/Free banners removed */}
 
               <div className="flex flex-col items-center space-y-8 w-full py-4">
-                {/* Upload buttons container */}
-                <div className="flex flex-col items-center justify-center w-full space-y-4 max-w-sm">
-                  <label
-                    htmlFor="fileInput"
-                    className="w-full flex justify-center"
-                  >
-                    <Button
-                      as="span"
-                      variant="primary"
-                      size="lg"
-                      className="w-full max-w-xs text-center"
-                      disabled={isLoading || !isCvReady}
-                    >
-                      {isLoading
+                {/* Upload container */}
+                {imageInfoRef.current.length === 0 ? (
+                  <ImageUploadDropzone
+                    onFilesSelected={(files) =>
+                      handleFilesSelected(files, false)
+                    }
+                    disabled={isLoading || !isCvReady}
+                    multiple={true}
+                    accept="image/*,.heic,.heif"
+                    title={
+                      isLoading
                         ? t("ButtonSelectImagesLoading")
                         : !isCvReady
                         ? t("ButtonSelectImagesInitializing")
-                        : t("ButtonSelectImages")}
-                    </Button>
-                  </label>
-
-                  {imageInfoRef.current.length > 0 && !isLoading && (
+                        : t("ButtonSelectImages")
+                    }
+                    description="Upload images to find duplicates"
+                    className="w-full max-w-none"
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center w-full space-y-4 max-w-sm">
                     <label
                       htmlFor="addMoreInput"
                       className="w-full flex justify-center"
@@ -1718,28 +1750,19 @@ export default function ImageDuplicateDetectionPage() {
                           : t("ButtonAddMoreImages")}
                       </Button>
                     </label>
-                  )}
-                </div>
 
-                {/* Hidden file inputs */}
-                <input
-                  type="file"
-                  multiple
-                  onChange={handleFileChange}
-                  accept="image/*,.heic,.heif"
-                  className="hidden"
-                  id="fileInput"
-                  disabled={isLoading}
-                />
-                <input
-                  type="file"
-                  multiple
-                  onChange={handleAddMoreImages}
-                  accept="image/*,.heic,.heif"
-                  className="hidden"
-                  id="addMoreInput"
-                  disabled={isLoading}
-                />
+                    {/* Hidden file input for add more */}
+                    <input
+                      type="file"
+                      multiple
+                      onChange={handleAddMoreImages}
+                      accept="image/*,.heic,.heif"
+                      className="hidden"
+                      id="addMoreInput"
+                      disabled={isLoading}
+                    />
+                  </div>
+                )}
 
                 {/* Status and information section */}
                 <div className="flex flex-col items-center space-y-3 w-full">
