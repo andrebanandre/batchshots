@@ -1,16 +1,17 @@
 # Batch Shots: AI-Powered Image Processing Toolkit
 
-<div style="text-align: center;">
+<div align="center">
   <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer">
     <img src="https://www.batchshots.com/logo.svg" alt="Batch Shots Logo" width="160" height="auto" style="margin-right: -100px;">
   </a>
-  <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer">
-    <h1 style="font-size: 2.5em; margin: 0; font-weight: bold; text-transform: uppercase;">batchshots.com</h1>
-</a>
 </div>
 
 
+
+# [www.batchshots.com](https://www.batchshots.com)
+
 [![CI](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml/badge.svg)](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml)
+
 
 A comprehensive suite of AI-powered image processing tools designed for photographers, content creators, and businesses.
 Process, optimize, and enhance images with advanced AI capabilities including duplicate detection, background removal,
