@@ -1,15 +1,20 @@
 # Batch Shots: AI-Powered Image Processing Toolkit
 
-<div align="center">
-  <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; text-decoration: none;">
+<div style="text-align: center;">
+  <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer">
     <img src="https://www.batchshots.com/logo.svg" alt="Batch Shots Logo" width="160" height="auto" style="margin-right: -100px;">
-    <h1 style="font-size: 2.5em; margin: 0; font-weight: bold; text-transform: uppercase; color: #000;">batchshots.com</h1>
   </a>
+  <a href="https://www.batchshots.com" target="_blank" rel="noopener noreferrer">
+    <h1 style="font-size: 2.5em; margin: 0; font-weight: bold; text-transform: uppercase;">batchshots.com</h1>
+</a>
 </div>
+
 
 [![CI](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml/badge.svg)](https://github.com/andrebanandre/batchshots/actions/workflows/ci.yml)
 
-A comprehensive suite of AI-powered image processing tools designed for photographers, content creators, and businesses. Process, optimize, and enhance images with advanced AI capabilities including duplicate detection, background removal, SEO optimization, and more.
+A comprehensive suite of AI-powered image processing tools designed for photographers, content creators, and businesses.
+Process, optimize, and enhance images with advanced AI capabilities including duplicate detection, background removal,
+SEO optimization, and more.
 
 ## 🛠️ Tools & Features
 
@@ -110,7 +115,8 @@ npm run build
 npm start
 ```
 
-The application is configured for static export, making it easy to deploy to any static hosting service like Vercel, Netlify, or GitHub Pages.
+The application is configured for static export, making it easy to deploy to any static hosting service like Vercel,
+Netlify, or GitHub Pages.
 
 ## 🛠️ Technologies & AI Models
 
