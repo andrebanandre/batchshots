@@ -6,8 +6,10 @@ import Button from "../../components/Button";
 import Loader from "../../components/Loader";
 import ModelLoadingCard from "../../components/ModelLoadingCard";
 import ImageUploadDropzone from "../../components/ImageUploadDropzone";
+import ToolPageWrapper from "../../components/ToolPageWrapper";
 import { createImageFile } from "../../lib/imageProcessing";
 import type { ImageFile } from "../../components/ImagePreview";
+import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
 import {
   captionImage,
   initializeCaptionWorker,
@@ -152,243 +154,173 @@ export default function ImageCaptionGenerationPage() {
 
   const hasImages = images.length > 0;
 
-  return (
+  // Prepare How It Works steps
+  const howItWorksSteps: HowItWorksStep[] = [
+    {
+      title: t("HowItWorksStep1Title"),
+      description: t("HowItWorksStep1Desc"),
+    },
+    {
+      title: t("HowItWorksStep2Title"),
+      description: t("HowItWorksStep2Desc"),
+    },
+    {
+      title: t("HowItWorksStep3Title"),
+      description: t("HowItWorksStep3Desc"),
+    },
+  ];
+
+  // Prepare sidebar content (additional actions)
+  const sidebarContent = (
     <>
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="brutalist-accent-card mb-8">
-          <h1 className="text-3xl font-bold text-center uppercase mb-6">
-            {t("PageTitle")}
-          </h1>
+      {/* Clear All Button - Only shown when images are selected */}
+      {hasImages && isModelReady && (
+        <div className="brutalist-border p-4 bg-white">
+          <div className="flex justify-center">
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setImages([]);
+                setStatusById({});
+              }}
+            >
+              {t("goBack", { default: "Clear All" })}
+            </Button>
+          </div>
+        </div>
+      )}
 
-          {(!isModelReady && !modelError) || isLoadingModel ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
-                <ModelLoadingCard
-                  title="AI Caption Model"
-                  description="FastVLM-0.5B-ONNX model for image captioning"
-                  isLoading={isLoadingModel}
-                  isReady={isModelReady}
-                  loadingStatus={modelLoadingStatus}
-                />
-              </div>
+      {/* Upload Section in Sidebar - Only show when more than 1 image selected */}
+      {images.length > 1 && isModelReady && (
+        <div className="brutalist-border p-4 bg-white">
+          <ImageUploadDropzone
+            onFilesSelected={handleSelectFiles}
+            title="Add More Images"
+            description="Drag & drop or click to add additional images"
+          />
+        </div>
+      )}
+    </>
+  );
 
-              <div className="space-y-6">
-                <Card title={t("HowItWorksTitle")} variant="accent">
-                  <div className="space-y-4">
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep1Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep1Desc")}</p>
-                    </div>
+  return (
+    <ToolPageWrapper
+      title={t("PageTitle")}
+      isLoading={(!isModelReady && !modelError) || isLoadingModel}
+      loadingStatus={modelLoadingStatus}
+      loaderTitle="Loading AI Caption Model"
+      loaderDescription="FastVLM-0.5B-ONNX model for image captioning"
+      howItWorksSteps={howItWorksSteps}
+      howItWorksTitle={t("HowItWorksTitle")}
+      sidebarContent={isModelReady ? sidebarContent : undefined}
+    >
+      {/* Show model loading state */}
+      {((!isModelReady && !modelError) || isLoadingModel) && (
+        <ModelLoadingCard
+          title="AI Caption Model"
+          description="FastVLM-0.5B-ONNX model for image captioning"
+          isLoading={isLoadingModel}
+          isReady={isModelReady}
+          loadingStatus={modelLoadingStatus}
+        />
+      )}
 
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep2Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep2Desc")}</p>
-                    </div>
+      {/* Show model error state */}
+      {modelError && !isLoadingModel && (
+        <ModelLoadingCard
+          title="AI Caption Model"
+          isLoading={false}
+          isReady={false}
+          error={modelError}
+          onRetry={() => window.location.reload()}
+        />
+      )}
 
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep3Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep3Desc")}</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
+      {/* Main content when model is ready and no error */}
+      {isModelReady && !modelError && (
+        <Card
+          collapsible={false}
+          title={t("MainCardTitle")}
+          variant="accent"
+          headerRight={null}
+        >
+          <div className="space-y-6 relative">
+            {/* Info Section */}
+            <div className="brutalist-border p-4 bg-white">
+              <h3 className="font-bold mb-2">{t("MainCardInfoTitle")}</h3>
+              <p className="text-sm mb-2">{t("MainCardInfoDescription")}</p>
             </div>
-          ) : modelError ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
-                <ModelLoadingCard
-                  title="AI Caption Model"
-                  isLoading={false}
-                  isReady={false}
-                  error={modelError}
-                  onRetry={() => window.location.reload()}
-                />
+
+            {/* Upload Area - Hidden when images are selected */}
+            {!hasImages && (
+              <div className="brutalist-border p-6 bg-white">
+                <div className="space-y-4">
+                  <ImageUploadDropzone
+                    onFilesSelected={handleSelectFiles}
+                    title={t("ButtonSelectImages")}
+                    description="Select images to auto-caption"
+                  />
+                </div>
               </div>
+            )}
 
-              <div className="space-y-6">
-                <Card title={t("HowItWorksTitle")} variant="accent">
-                  <div className="space-y-4">
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep1Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep1Desc")}</p>
-                    </div>
-
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep2Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep2Desc")}</p>
-                    </div>
-
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep3Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep3Desc")}</p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
-                <Card
-                  collapsible={false}
-                  title={t("MainCardTitle")}
-                  variant="accent"
-                  headerRight={null}
-                >
-                  <div className="space-y-6 relative">
-                    {/* Info Section */}
-                    <div className="brutalist-border p-4 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("MainCardInfoTitle")}
-                      </h3>
-                      <p className="text-sm mb-2">
-                        {t("MainCardInfoDescription")}
-                      </p>
-                    </div>
-
-                    {/* Upload Area - Hidden when images are selected */}
-                    {!hasImages && (
-                      <div className="brutalist-border p-6 bg-white">
-                        <div className="space-y-4">
-                          <ImageUploadDropzone
-                            onFilesSelected={handleSelectFiles}
-                            title={t("ButtonSelectImages")}
-                            description="Select images to auto-caption"
-                          />
+            {/* Results Grid */}
+            {hasImages && (
+              <Card title={t("ResultsTitle")}>
+                <div className="space-y-3">
+                  {images.map((img) => {
+                    const status = statusById[img.id];
+                    return (
+                      <div
+                        key={img.id}
+                        className="grid grid-cols-1 md:grid-cols-2 gap-3 brutalist-border p-3 bg-white"
+                      >
+                        <div>
+                          {img.thumbnailDataUrl && (
+                            <img
+                              src={img.thumbnailDataUrl}
+                              alt={img.file.name}
+                              className="max-h-64 object-contain brutalist-border"
+                            />
+                          )}
+                          <div className="text-xs mt-1 text-gray-600 truncate">
+                            {img.file.name}
+                          </div>
+                        </div>
+                        <div className="flex flex-col h-full">
+                          <div className="flex-1 brutalist-border bg-slate-50 p-2 overflow-auto whitespace-pre-wrap text-sm">
+                            {status?.isProcessing ? (
+                              <div className="flex flex-col items-center justify-center h-full space-y-2">
+                                <Loader size="sm" />
+                                <span className="text-xs text-gray-500">
+                                  {t("ProcessingImage", {
+                                    imageId: img.file.name,
+                                  })}
+                                </span>
+                              </div>
+                            ) : (
+                              status?.caption || ""
+                            )}
+                          </div>
+                          <div className="flex gap-2 mt-2">
+                            <Button
+                              size="sm"
+                              onClick={() => handleCopy(status?.caption || "")}
+                              disabled={!status?.caption}
+                            >
+                              {t("ButtonDownload", { default: "Copy" })}
+                            </Button>
+                          </div>
                         </div>
                       </div>
-                    )}
-
-                    {/* Results Grid */}
-                    {hasImages && (
-                      <Card title={t("ResultsTitle")}>
-                        <div className="space-y-3">
-                          {images.map((img) => {
-                            const status = statusById[img.id];
-                            return (
-                              <div
-                                key={img.id}
-                                className="grid grid-cols-1 md:grid-cols-2 gap-3 brutalist-border p-3 bg-white"
-                              >
-                                <div>
-                                  {img.thumbnailDataUrl && (
-                                    <img
-                                      src={img.thumbnailDataUrl}
-                                      alt={img.file.name}
-                                      className="max-h-64 object-contain brutalist-border"
-                                    />
-                                  )}
-                                  <div className="text-xs mt-1 text-gray-600 truncate">
-                                    {img.file.name}
-                                  </div>
-                                </div>
-                                <div className="flex flex-col h-full">
-                                  <div className="flex-1 brutalist-border bg-slate-50 p-2 overflow-auto whitespace-pre-wrap text-sm">
-                                    {status?.isProcessing ? (
-                                      <div className="flex flex-col items-center justify-center h-full space-y-2">
-                                        <Loader size="sm" />
-                                        <span className="text-xs text-gray-500">
-                                          {t("ProcessingImage", {
-                                            imageId: img.file.name,
-                                          })}
-                                        </span>
-                                      </div>
-                                    ) : (
-                                      status?.caption || ""
-                                    )}
-                                  </div>
-                                  <div className="flex gap-2 mt-2">
-                                    <Button
-                                      size="sm"
-                                      onClick={() =>
-                                        handleCopy(status?.caption || "")
-                                      }
-                                      disabled={!status?.caption}
-                                    >
-                                      {t("ButtonDownload", { default: "Copy" })}
-                                    </Button>
-                                  </div>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </Card>
-                    )}
-                  </div>
-                </Card>
-              </div>
-
-              <div className="space-y-6">
-                <Card title={t("HowItWorksTitle")} variant="accent">
-                  <div className="space-y-4">
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep1Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep1Desc")}</p>
-                    </div>
-
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep2Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep2Desc")}</p>
-                    </div>
-
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("HowItWorksStep3Title")}
-                      </h3>
-                      <p className="text-sm">{t("HowItWorksStep3Desc")}</p>
-                    </div>
-                  </div>
-                </Card>
-
-                {/* Clear All Button - Only shown when images are selected */}
-                {hasImages && (
-                  <div className="brutalist-border p-4 bg-white">
-                    <div className="flex justify-center">
-                      <Button
-                        variant="secondary"
-                        onClick={() => {
-                          setImages([]);
-                          setStatusById({});
-                        }}
-                      >
-                        {t("goBack", { default: "Clear All" })}
-                      </Button>
-                    </div>
-                  </div>
-                )}
-
-                {/* Upload Section in Sidebar - Only show when more than 1 image selected */}
-                {images.length > 1 && (
-                  <div className="brutalist-border p-4 bg-white">
-                    <ImageUploadDropzone
-                      onFilesSelected={handleSelectFiles}
-                      title="Add More Images"
-                      description="Drag & drop or click to add additional images"
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-      </main>
-    </>
+                    );
+                  })}
+                </div>
+              </Card>
+            )}
+          </div>
+        </Card>
+      )}
+    </ToolPageWrapper>
   );
 }

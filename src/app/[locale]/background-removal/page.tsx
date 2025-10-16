@@ -5,7 +5,9 @@ import Image from "next/image";
 import { useIsMobile } from "../../hooks/useIsMobile";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
+import ToolPageWrapper from "../../components/ToolPageWrapper";
 import { ImageFile } from "../../components/ImagePreview";
+import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
 import {
   createImageFile,
   processImage,
@@ -412,27 +414,54 @@ export default function BackgroundRemovalPage() {
     return processingStatus.find((status) => status.id === imageId);
   };
 
-  return (
-    <>
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="brutalist-accent-card mb-8">
-          <h1 className="text-3xl font-bold text-center uppercase mb-6">
-            {t("title")}
-          </h1>
+  // Prepare How It Works steps
+  const howItWorksSteps: HowItWorksStep[] = [
+    {
+      title: t("howItWorks.step1.title"),
+      description: t("howItWorks.step1.description"),
+      proNote: t("howItWorks.step1.proNote"),
+    },
+    {
+      title: t("howItWorks.step2.title"),
+      description: t("howItWorks.step2.description"),
+    },
+    {
+      title: t("howItWorks.step3.title"),
+      description: t("howItWorks.step3.description"),
+    },
+  ];
 
-          {isLoadingModel || !isModelReady ? (
-            <div className="brutalist-border p-4 text-center mb-6 bg-white">
-              <div className="flex flex-col items-center justify-center py-8">
-                <Loader size="lg" />
-                <h3 className="text-lg font-bold mb-2">{t("loading.tool")}</h3>
-                <p className="text-sm text-gray-600">
-                  {modelLoadingStatus || t("loading.description")}
-                </p>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2">
+  // Show loading state while model is initializing
+  if (isLoadingModel || !isModelReady) {
+    return (
+      <ToolPageWrapper
+        title={t("title")}
+        isLoading={true}
+        loadingStatus={modelLoadingStatus || t("loading.description")}
+        loaderTitle={t("loading.tool")}
+        loaderDescription={t("loading.description")}
+        howItWorksSteps={howItWorksSteps}
+        howItWorksTitle={t("howItWorks.title")}
+      >
+        <div className="brutalist-border p-4 text-center bg-white">
+          <div className="flex flex-col items-center justify-center py-8">
+            <Loader size="lg" />
+            <h3 className="text-lg font-bold mb-2">{t("loading.tool")}</h3>
+            <p className="text-sm text-gray-600">
+              {modelLoadingStatus || t("loading.description")}
+            </p>
+          </div>
+        </div>
+      </ToolPageWrapper>
+    );
+  }
+
+  return (
+    <ToolPageWrapper
+      title={t("title")}
+      howItWorksSteps={howItWorksSteps}
+      howItWorksTitle={t("howItWorks.title")}
+    >
                 <Card
                   collapsible={false}
                   title={t("mainCard.title")}
@@ -684,45 +713,6 @@ export default function BackgroundRemovalPage() {
                     </div>
                   </div>
                 </Card>
-              </div>
-
-              <div className="space-y-6">
-                <Card title={t("howItWorks.title")} variant="accent">
-                  <div className="space-y-4">
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("howItWorks.step1.title")}
-                      </h3>
-                      <p className="text-sm">
-                        {t("howItWorks.step1.description")}
-                        {` ${t("howItWorks.step1.proNote")}`}
-                      </p>
-                    </div>
-
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("howItWorks.step2.title")}
-                      </h3>
-                      <p className="text-sm">
-                        {t("howItWorks.step2.description")}
-                      </p>
-                    </div>
-
-                    <div className="brutalist-border p-3 bg-white">
-                      <h3 className="font-bold mb-2">
-                        {t("howItWorks.step3.title")}
-                      </h3>
-                      <p className="text-sm">
-                        {t("howItWorks.step3.description")}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            </div>
-          )}
-        </div>
-      </main>
-    </>
+    </ToolPageWrapper>
   );
 }

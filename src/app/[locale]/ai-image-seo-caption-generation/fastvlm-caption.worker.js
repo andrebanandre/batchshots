@@ -1,6 +1,5 @@
 import { AutoProcessor, AutoModelForImageTextToText, load_image, TextStreamer, env } from '@huggingface/transformers';
 import { checkWebGPU, getOptimalWasmThreads, getDeviceResourceTier } from '../../utils/workerDeviceDetector.js';
-import { getFastVLMConfig, estimateModelSize } from '../../utils/workerModelConfig.js';
 
 let processor = null;
 let model = null;

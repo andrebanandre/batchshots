@@ -6,8 +6,10 @@ import Image from "next/image";
 // Pro removed
 import Button from "../../components/Button";
 import Card from "../../components/Card";
+import ToolPageWrapper from "../../components/ToolPageWrapper";
 // Pro removed
 import { ImageFile } from "../../components/ImagePreview";
+import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
 import {
   createImageFile,
   downloadAllImages,
@@ -396,26 +398,116 @@ export default function ImageFormatConvertorPage() {
     }
   };
 
-  return (
-    <main className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="brutalist-accent-card mb-8">
-        <h1 className="text-3xl font-bold text-center uppercase mb-6">
-          {t("title")}
-        </h1>
+  // Prepare How It Works steps
+  const howItWorksSteps: HowItWorksStep[] = [
+    {
+      title: t("howItWorks.step1.title"),
+      description: t("howItWorks.step1.description"),
+      proNote: t("howItWorks.step1.proNote"),
+    },
+    {
+      title: t("howItWorks.step2.title"),
+      description: t("howItWorks.step2.description"),
+    },
+    {
+      title: t("howItWorks.step3.title"),
+      description: t("howItWorks.step3.description"),
+    },
+    {
+      title: t("howItWorks.step4.title"),
+      description: t("howItWorks.step4.description"),
+    },
+  ];
 
-        {!isOpenCVReady ? (
-          <div className="brutalist-border p-4 text-center mb-6 bg-white">
-            <div className="flex flex-col items-center justify-center py-8">
-              <Loader size="lg" />
-              <h3 className="text-lg font-bold mb-2">{t("loading.tool")}</h3>
-              <p className="text-sm text-gray-600">
-                {t("loading.description")}
-              </p>
+  // Prepare sidebar content (supported formats card)
+  const sidebarContent = (
+    <>
+      <Card title={t("supportedFormats.title")} variant="accent">
+        <div className="brutalist-border p-3 bg-white">
+          <h3 className="font-bold mb-2">
+            {t("supportedFormats.input.title")}
+          </h3>
+          <p className="text-sm">
+            {t("supportedFormats.input.description")}
+          </p>
+          <div className="grid grid-cols-2 gap-2 mt-2">
+            <div className="brutalist-border p-2 bg-gray-50">
+              <p className="text-xs font-bold">JPG/JPEG</p>
+            </div>
+            <div className="brutalist-border p-2 bg-gray-50">
+              <p className="text-xs font-bold">PNG</p>
+            </div>
+            <div className="brutalist-border p-2 bg-gray-50">
+              <p className="text-xs font-bold">WebP</p>
+            </div>
+            <div className="brutalist-border p-2 bg-gray-50">
+              <p className="text-xs font-bold">HEIC/HEIF</p>
+            </div>
+            <div className="brutalist-border p-2 bg-gray-50">
+              <p className="text-xs font-bold">BMP</p>
+            </div>
+            <div className="brutalist-border p-2 bg-gray-50">
+              <p className="text-xs font-bold">GIF (static)</p>
             </div>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2 space-y-6">
+        </div>
+
+        <div className="brutalist-border p-3 bg-white mt-3">
+          <h3 className="font-bold mb-2">
+            {t("supportedFormats.output.title")}
+          </h3>
+          <p className="text-sm">
+            {t("supportedFormats.output.description")}
+          </p>
+          <div className="grid grid-cols-2 gap-2 mt-2">
+            {supportedOutputFormats.map((format) => (
+              <div
+                key={format.id}
+                className="brutalist-border p-2 bg-gray-50"
+              >
+                <p className="text-xs font-bold">{format.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Card>
+    </>
+  );
+
+  // Show loading state while OpenCV initializes
+  if (!isOpenCVReady) {
+    return (
+      <ToolPageWrapper
+        title={t("title")}
+        isLoading={true}
+        loadingStatus={t("loading.description")}
+        loaderTitle={t("loading.tool")}
+        loaderDescription={t("loading.description")}
+        howItWorksSteps={howItWorksSteps}
+        howItWorksTitle={t("howItWorks.title")}
+        sidebarContent={sidebarContent}
+      >
+        <div className="brutalist-border p-4 text-center bg-white">
+          <div className="flex flex-col items-center justify-center py-8">
+            <Loader size="lg" />
+            <h3 className="text-lg font-bold mb-2">{t("loading.tool")}</h3>
+            <p className="text-sm text-gray-600">
+              {t("loading.description")}
+            </p>
+          </div>
+        </div>
+      </ToolPageWrapper>
+    );
+  }
+
+  return (
+    <>
+      <ToolPageWrapper
+        title={t("title")}
+        howItWorksSteps={howItWorksSteps}
+        howItWorksTitle={t("howItWorks.title")}
+        sidebarContent={sidebarContent}
+      >
               {/* Main card with image selection */}
               <Card
                 collapsible={false}
@@ -702,107 +794,7 @@ export default function ImageFormatConvertorPage() {
                   )}
                 </div>
               </Card>
-            </div>
-
-            <div className="space-y-6">
-              {/* Upgrade card removed */}
-
-              <Card title={t("howItWorks.title")} variant="accent">
-                <div className="space-y-4">
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("howItWorks.step1.title")}
-                    </h3>
-                    <p className="text-sm">
-                      {t("howItWorks.step1.description")}
-                      {` ${t("howItWorks.step1.proNote")}`}
-                    </p>
-                  </div>
-
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("howItWorks.step2.title")}
-                    </h3>
-                    <p className="text-sm">
-                      {t("howItWorks.step2.description")}
-                    </p>
-                  </div>
-
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("howItWorks.step3.title")}
-                    </h3>
-                    <p className="text-sm">
-                      {t("howItWorks.step3.description")}
-                    </p>
-                  </div>
-
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("howItWorks.step4.title")}
-                    </h3>
-                    <p className="text-sm">
-                      {t("howItWorks.step4.description")}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card title={t("supportedFormats.title")} variant="accent">
-                <div className="brutalist-border p-3 bg-white">
-                  <h3 className="font-bold mb-2">
-                    {t("supportedFormats.input.title")}
-                  </h3>
-                  <p className="text-sm">
-                    {t("supportedFormats.input.description")}
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <div className="brutalist-border p-2 bg-gray-50">
-                      <p className="text-xs font-bold">JPG/JPEG</p>
-                    </div>
-                    <div className="brutalist-border p-2 bg-gray-50">
-                      <p className="text-xs font-bold">PNG</p>
-                    </div>
-                    <div className="brutalist-border p-2 bg-gray-50">
-                      <p className="text-xs font-bold">WebP</p>
-                    </div>
-                    <div className="brutalist-border p-2 bg-gray-50">
-                      <p className="text-xs font-bold">HEIC/HEIF</p>
-                    </div>
-                    <div className="brutalist-border p-2 bg-gray-50">
-                      <p className="text-xs font-bold">BMP</p>
-                    </div>
-                    <div className="brutalist-border p-2 bg-gray-50">
-                      <p className="text-xs font-bold">GIF (static)</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="brutalist-border p-3 bg-white mt-3">
-                  <h3 className="font-bold mb-2">
-                    {t("supportedFormats.output.title")}
-                  </h3>
-                  <p className="text-sm">
-                    {t("supportedFormats.output.description")}
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    {supportedOutputFormats.map((format) => (
-                      <div
-                        key={format.id}
-                        className="brutalist-border p-2 bg-gray-50"
-                      >
-                        <p className="text-xs font-bold">{format.name}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Upgrade dialog removed */}
+      </ToolPageWrapper>
 
       {/* Download Dialog - Similar to DownloadDialog.tsx */}
       <DownloadDialog
@@ -821,6 +813,6 @@ export default function ImageFormatConvertorPage() {
         hasSeoNames={false}
         hasWatermark={false}
       />
-    </main>
+    </>
   );
 }

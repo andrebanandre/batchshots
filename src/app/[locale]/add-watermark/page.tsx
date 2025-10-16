@@ -6,9 +6,11 @@ import Image from "next/image";
 // Pro removed
 import Button from "../../components/Button";
 import Card from "../../components/Card";
+import ToolPageWrapper from "../../components/ToolPageWrapper";
 // Pro badge removed
 // Pricing card removed
 import { ImageFile } from "../../components/ImagePreview";
+import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
 import {
   createImageFile,
   processImage,
@@ -199,16 +201,28 @@ export default function AddWatermarkPage() {
     ? images[0]
     : null;
 
-  return (
-    <>
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="brutalist-accent-card mb-8">
-          <h1 className="text-3xl font-bold text-center uppercase mb-6">
-            {t("title")}
-          </h1>
+  // Prepare How It Works steps
+  const howItWorksSteps: HowItWorksStep[] = [
+    {
+      title: t("howItWorks.step1.title"),
+      description: t("howItWorks.step1.description"),
+    },
+    {
+      title: t("howItWorks.step2.title"),
+      description: t("howItWorks.step2.description"),
+    },
+    {
+      title: t("howItWorks.step3.title"),
+      description: t("howItWorks.step3.description"),
+    },
+  ];
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
+  return (
+    <ToolPageWrapper
+      title={t("title")}
+      howItWorksSteps={howItWorksSteps}
+      howItWorksTitle={t("howItWorks.title")}
+    >
               <Card
                 collapsible={false}
                 title={t("mainCard.title")}
@@ -415,47 +429,6 @@ export default function AddWatermarkPage() {
                   )}
                 </div>
               </Card>
-            </div>
-
-            <div className="space-y-6">
-              {/* Upgrade card removed */}
-
-              <Card title={t("howItWorks.title")} variant="accent">
-                <div className="space-y-4">
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("howItWorks.step1.title")}
-                    </h3>
-                    <p className="text-sm">
-                      {t("howItWorks.step1.description")}
-                    </p>
-                  </div>
-
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("howItWorks.step2.title")}
-                    </h3>
-                    <p className="text-sm">
-                      {t("howItWorks.step2.description")}
-                    </p>
-                  </div>
-
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("howItWorks.step3.title")}
-                    </h3>
-                    <p className="text-sm">
-                      {t("howItWorks.step3.description")}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </div>
-
-        {/* Upgrade dialog removed */}
-      </main>
-    </>
+    </ToolPageWrapper>
   );
 }

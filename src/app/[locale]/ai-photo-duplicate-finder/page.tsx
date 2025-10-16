@@ -18,6 +18,8 @@ import {
 import { downloadAllImages, downloadImage } from "../../lib/imageProcessing"; // Added for zip download
 import { useTranslations } from "next-intl";
 import BrutalistSelect from "../../components/BrutalistSelect";
+import ToolPageWrapper from "../../components/ToolPageWrapper";
+import type { HowItWorksStep } from "../../components/HowItWorksSidebar";
 
 // Declare cv type for global window scope
 declare global {
@@ -1102,6 +1104,31 @@ export default function ImageDuplicateDetectionPage() {
     .filter((group) => group.length === 1)
     .flat();
 
+  // Prepare How It Works steps
+  const howItWorksSteps: HowItWorksStep[] = [
+    {
+      title: t("HowItWorksStep1Title"),
+      description: t("HowItWorksStep1Desc"),
+      proNote: t("HowItWorksStep1Pro"),
+    },
+    {
+      title: t("HowItWorksStep2Title"),
+      description: t("HowItWorksStep2Desc"),
+    },
+    {
+      title: t("HowItWorksStep3Title"),
+      description: t("HowItWorksStep3Desc"),
+    },
+    {
+      title: t("HowItWorksStep4Title"),
+      description: t("HowItWorksStep4Desc"),
+    },
+    {
+      title: t("HowItWorksStep5Title"),
+      description: t("HowItWorksStep5Desc"),
+    },
+  ];
+
   const handleAnalyzeQuality = async (groupIndex: number) => {
     if (!isCvReady) {
       setStatus(t("QualityToolsNotReadyAnalysisWait"));
@@ -1544,712 +1571,646 @@ export default function ImageDuplicateDetectionPage() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-7xl">
-      <div className="brutalist-accent-card mb-8">
-        <h1 className="text-3xl font-bold text-center uppercase mb-6">
-          {t("PageTitle")}
-        </h1>
-
-        {workerStatus === t("AISetup") ||
+    <ToolPageWrapper
+      title={t("PageTitle")}
+      isLoading={
+        workerStatus === t("AISetup") ||
         workerStatus === t("AIEngineInitializing") ||
-        !isCvReady ? (
-          <div className="brutalist-border p-4 text-center mb-6 bg-white">
-            <div className="flex flex-col items-center justify-center py-8">
-              <Loader size="lg" />
-              <h3 className="text-lg font-bold mb-2">
-                {workerStatus.includes(t("AILoadingModel").substring(0, 10))
-                  ? t("LoaderTitleLoadingModel")
-                  : !isCvReady
-                  ? t("LoaderTitleQualityTools")
-                  : t("LoaderTitleInitializing")}
-              </h3>
-              <p className="text-sm text-gray-600">
-                {workerStatus.includes(t("AILoadingModel").substring(0, 10))
-                  ? t("LoaderDescriptionLoadingModel")
-                  : !isCvReady
-                  ? t("LoaderDescriptionQualityTools")
-                  : t("LoaderDescriptionInitializing")}
-              </p>
-            </div>
+        !isCvReady
+      }
+      loadingStatus={
+        workerStatus.includes(t("AILoadingModel").substring(0, 10))
+          ? t("LoaderDescriptionLoadingModel")
+          : !isCvReady
+          ? t("LoaderDescriptionQualityTools")
+          : t("LoaderDescriptionInitializing")
+      }
+      loaderTitle={
+        workerStatus.includes(t("AILoadingModel").substring(0, 10))
+          ? t("LoaderTitleLoadingModel")
+          : !isCvReady
+          ? t("LoaderTitleQualityTools")
+          : t("LoaderTitleInitializing")
+      }
+      loaderDescription={
+        workerStatus.includes(t("AILoadingModel").substring(0, 10))
+          ? t("LoaderDescriptionLoadingModel")
+          : !isCvReady
+          ? t("LoaderDescriptionQualityTools")
+          : t("LoaderDescriptionInitializing")
+      }
+      howItWorksSteps={howItWorksSteps}
+      howItWorksTitle={t("HowItWorksTitle")}
+    >
+      {/* Show loading state */}
+      {(workerStatus === t("AISetup") ||
+        workerStatus === t("AIEngineInitializing") ||
+        !isCvReady) && (
+        <div className="brutalist-border p-4 text-center bg-white">
+          <div className="flex flex-col items-center justify-center py-8">
+            <Loader size="lg" />
+            <h3 className="text-lg font-bold mb-2">
+              {workerStatus.includes(t("AILoadingModel").substring(0, 10))
+                ? t("LoaderTitleLoadingModel")
+                : !isCvReady
+                ? t("LoaderTitleQualityTools")
+                : t("LoaderTitleInitializing")}
+            </h3>
+            <p className="text-sm text-gray-600">
+              {workerStatus.includes(t("AILoadingModel").substring(0, 10))
+                ? t("LoaderDescriptionLoadingModel")
+                : !isCvReady
+                ? t("LoaderDescriptionQualityTools")
+                : t("LoaderDescriptionInitializing")}
+            </p>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <Card
-                collapsible={false}
-                title={t("MainCardTitle")}
-                variant="accent"
-                headerRight={null}
-              >
-                <div className="space-y-6 relative">
-                  {(pendingFilesCount > 0 ||
-                    processingThresholdChange ||
-                    isAnalyzingDuplicates) && (
-                    <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
-                      <Loader size="lg" />
-                      {pendingFilesCount > 0 ? (
-                        <p className="mt-4 text-lg font-bold text-gray-700">
-                          {status}
-                        </p>
-                      ) : isAnalyzingDuplicates ? (
-                        <div className="mt-4 text-center">
-                          <p className="text-lg font-bold text-gray-700">
-                            {analysisProgress > 0
-                              ? `Analyzing duplicates... ${analysisProgress}%`
-                              : "Analyzing duplicates..."}
-                          </p>
-                          {analysisProgress > 0 && (
-                            <div className="w-64 bg-gray-200 rounded-full h-2 mt-2">
-                              <div
-                                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                                style={{ width: `${analysisProgress}%` }}
-                              ></div>
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <p className="mt-4 text-lg font-bold text-gray-700">
-                          {t("ProcessingChanges") || "Processing changes..."}
-                        </p>
-                      )}
+        </div>
+      )}
+
+      {/* Main content when ready */}
+      {!(
+        workerStatus === t("AISetup") ||
+        workerStatus === t("AIEngineInitializing") ||
+        !isCvReady
+      ) && (
+        <Card
+          collapsible={false}
+          title={t("MainCardTitle")}
+          variant="accent"
+          headerRight={null}
+        >
+          <div className="space-y-6 relative">
+            {(pendingFilesCount > 0 ||
+              processingThresholdChange ||
+              isAnalyzingDuplicates) && (
+              <div className="absolute inset-0 bg-white/80 flex flex-col items-center justify-center z-30 rounded-md backdrop-blur-sm">
+                <Loader size="lg" />
+                {pendingFilesCount > 0 ? (
+                  <p className="mt-4 text-lg font-bold text-gray-700">
+                    {status}
+                  </p>
+                ) : isAnalyzingDuplicates ? (
+                  <div className="mt-4 text-center">
+                    <p className="text-lg font-bold text-gray-700">
+                      {analysisProgress > 0
+                        ? `Analyzing duplicates... ${analysisProgress}%`
+                        : "Analyzing duplicates..."}
+                    </p>
+                    {analysisProgress > 0 && (
+                      <div className="w-64 bg-gray-200 rounded-full h-2 mt-2">
+                        <div
+                          className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                          style={{ width: `${analysisProgress}%` }}
+                        ></div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <p className="mt-4 text-lg font-bold text-gray-700">
+                    {t("ProcessingChanges") || "Processing changes..."}
+                  </p>
+                )}
+              </div>
+            )}
+
+            <div className="brutalist-border p-4 bg-white">
+              <h3 className="font-bold mb-2">{t("UploadSectionTitle")}</h3>
+              <p className="text-sm mb-3">{t("UploadSectionDescription")}</p>
+
+              {/* Pro/Free banners removed */}
+
+              <div className="flex flex-col items-center space-y-8 w-full py-4">
+                {/* Upload buttons container */}
+                <div className="flex flex-col items-center justify-center w-full space-y-4 max-w-sm">
+                  <label
+                    htmlFor="fileInput"
+                    className="w-full flex justify-center"
+                  >
+                    <Button
+                      as="span"
+                      variant="primary"
+                      size="lg"
+                      className="w-full max-w-xs text-center"
+                      disabled={isLoading || !isCvReady}
+                    >
+                      {isLoading
+                        ? t("ButtonSelectImagesLoading")
+                        : !isCvReady
+                        ? t("ButtonSelectImagesInitializing")
+                        : t("ButtonSelectImages")}
+                    </Button>
+                  </label>
+
+                  {imageInfoRef.current.length > 0 && !isLoading && (
+                    <label
+                      htmlFor="addMoreInput"
+                      className="w-full flex justify-center"
+                    >
+                      <Button
+                        as="span"
+                        variant="default"
+                        size="lg"
+                        className="w-full max-w-xs text-center"
+                        disabled={isLoading || !isCvReady}
+                      >
+                        {isLoading && isAddingMoreImages
+                          ? t("ButtonAddMoreImagesLoading")
+                          : t("ButtonAddMoreImages")}
+                      </Button>
+                    </label>
+                  )}
+                </div>
+
+                {/* Hidden file inputs */}
+                <input
+                  type="file"
+                  multiple
+                  onChange={handleFileChange}
+                  accept="image/*,.heic,.heif"
+                  className="hidden"
+                  id="fileInput"
+                  disabled={isLoading}
+                />
+                <input
+                  type="file"
+                  multiple
+                  onChange={handleAddMoreImages}
+                  accept="image/*,.heic,.heif"
+                  className="hidden"
+                  id="addMoreInput"
+                  disabled={isLoading}
+                />
+
+                {/* Status and information section */}
+                <div className="flex flex-col items-center space-y-3 w-full">
+                  <span className="text-xs text-gray-600">
+                    {t("SupportedFormats")}
+                  </span>
+
+                  {imageInfoRef.current.length > 0 && (
+                    <div className="flex justify-between items-center w-full max-w-xs">
+                      <span className="text-sm font-medium">
+                        {t("imagesCount", {
+                          current: imageInfoRef.current.length,
+                          max: "∞",
+                        })}
+                      </span>
                     </div>
                   )}
 
-                  <div className="brutalist-border p-4 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("UploadSectionTitle")}
-                    </h3>
-                    <p className="text-sm mb-3">
-                      {t("UploadSectionDescription")}
+                  <p className="text-sm font-semibold">{status}</p>
+                  <p className="text-xs text-gray-500">
+                    {t("AIStatusLabel", { status: workerStatus })}
+                  </p>
+                  {!isCvReady && (
+                    <p className="text-xs text-yellow-600">
+                      {t("QualityAnalyzerStatusLoading")}
                     </p>
+                  )}
+                </div>
+              </div>
+            </div>
 
-                    {/* Pro/Free banners removed */}
+            {/* Updated similarity threshold and algorithm control */}
+            {imageInfoRef.current.length > 0 && pendingFilesCount === 0 && (
+              <div className="brutalist-border p-4 bg-white">
+                <h3 className="font-bold mb-2">
+                  {t("SimilarityControlsTitle") ||
+                    "Similarity Algorithm & Threshold"}
+                </h3>
 
-                    <div className="flex flex-col items-center space-y-8 w-full py-4">
-                      {/* Upload buttons container */}
-                      <div className="flex flex-col items-center justify-center w-full space-y-4 max-w-sm">
-                        <label
-                          htmlFor="fileInput"
-                          className="w-full flex justify-center"
-                        >
-                          <Button
-                            as="span"
-                            variant="primary"
-                            size="lg"
-                            className="w-full max-w-xs text-center"
-                            disabled={isLoading || !isCvReady}
-                          >
-                            {isLoading
-                              ? t("ButtonSelectImagesLoading")
-                              : !isCvReady
-                              ? t("ButtonSelectImagesInitializing")
-                              : t("ButtonSelectImages")}
-                          </Button>
-                        </label>
+                {/* Algorithm Selection */}
+                <div className="mb-4">
+                  <label className="block text-sm font-medium mb-2">
+                    {t("SimilarityAlgorithmLabel") || "Similarity Algorithm"}
+                  </label>
+                  <BrutalistSelect
+                    options={Object.entries(SIMILARITY_ALGORITHMS).map(
+                      ([key, config]) => ({
+                        value: key,
+                        label: config.name,
+                      })
+                    )}
+                    value={selectedAlgorithm}
+                    onChange={handleAlgorithmChange}
+                    disabled={isActionDisabled}
+                    className="w-full max-w-md"
+                  />
+                  <p className="text-xs text-gray-600 mt-1">
+                    {SIMILARITY_ALGORITHMS[selectedAlgorithm].description}
+                  </p>
+                </div>
 
-                        {imageInfoRef.current.length > 0 && !isLoading && (
-                          <label
-                            htmlFor="addMoreInput"
-                            className="w-full flex justify-center"
-                          >
-                            <Button
-                              as="span"
-                              variant="default"
-                              size="lg"
-                              className="w-full max-w-xs text-center"
-                              disabled={isLoading || !isCvReady}
-                            >
-                              {isLoading && isAddingMoreImages
-                                ? t("ButtonAddMoreImagesLoading")
-                                : t("ButtonAddMoreImages")}
-                            </Button>
-                          </label>
-                        )}
-                      </div>
-
-                      {/* Hidden file inputs */}
+                {/* Threshold Control */}
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    {t("SimilarityThresholdLabel") || "Similarity Threshold"}
+                  </label>
+                  <p className="text-sm mb-3">
+                    {SIMILARITY_ALGORITHMS[selectedAlgorithm].lowerIsBetter
+                      ? t("SimilarityThresholdDescDistance") ||
+                        "Lower values mean more similar images (distance metric)"
+                      : t("SimilarityThresholdDescSimilarity") ||
+                        "Higher values mean more similar images (similarity metric)"}
+                  </p>
+                  <div className="flex flex-col md:flex-row items-center gap-4">
+                    <div className="flex-1 w-full">
                       <input
-                        type="file"
-                        multiple
-                        onChange={handleFileChange}
-                        accept="image/*,.heic,.heif"
-                        className="hidden"
-                        id="fileInput"
-                        disabled={isLoading}
+                        type="range"
+                        min={
+                          SIMILARITY_ALGORITHMS[selectedAlgorithm].minThreshold
+                        }
+                        max={
+                          SIMILARITY_ALGORITHMS[selectedAlgorithm].maxThreshold
+                        }
+                        step={SIMILARITY_ALGORITHMS[selectedAlgorithm].step}
+                        value={similarityThreshold}
+                        onChange={handleThresholdChange}
+                        className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
+                        disabled={isActionDisabled}
                       />
-                      <input
-                        type="file"
-                        multiple
-                        onChange={handleAddMoreImages}
-                        accept="image/*,.heic,.heif"
-                        className="hidden"
-                        id="addMoreInput"
-                        disabled={isLoading}
-                      />
-
-                      {/* Status and information section */}
-                      <div className="flex flex-col items-center space-y-3 w-full">
-                        <span className="text-xs text-gray-600">
-                          {t("SupportedFormats")}
+                      <div className="flex justify-between text-xs mt-1">
+                        <span>
+                          {SIMILARITY_ALGORITHMS[selectedAlgorithm]
+                            .lowerIsBetter
+                            ? t("SimilarityMoreStrict") || "More Strict"
+                            : t("SimilarityLessStrict") || "Less Strict"}
                         </span>
-
-                        {imageInfoRef.current.length > 0 && (
-                          <div className="flex justify-between items-center w-full max-w-xs">
-                            <span className="text-sm font-medium">
-                              {t("imagesCount", {
-                                current: imageInfoRef.current.length,
-                                max: "∞",
-                              })}
-                            </span>
-                          </div>
-                        )}
-
-                        <p className="text-sm font-semibold">{status}</p>
-                        <p className="text-xs text-gray-500">
-                          {t("AIStatusLabel", { status: workerStatus })}
-                        </p>
-                        {!isCvReady && (
-                          <p className="text-xs text-yellow-600">
-                            {t("QualityAnalyzerStatusLoading")}
-                          </p>
-                        )}
+                        <span>
+                          {t("SimilarityCurrent", {
+                            threshold: similarityThreshold.toFixed(
+                              SIMILARITY_ALGORITHMS[selectedAlgorithm].step >= 1
+                                ? 0
+                                : 2
+                            ),
+                          }) ||
+                            `Current: ${similarityThreshold.toFixed(
+                              SIMILARITY_ALGORITHMS[selectedAlgorithm].step >= 1
+                                ? 0
+                                : 2
+                            )}`}
+                        </span>
+                        <span>
+                          {SIMILARITY_ALGORITHMS[selectedAlgorithm]
+                            .lowerIsBetter
+                            ? t("SimilarityLessStrict") || "Less Strict"
+                            : t("SimilarityMoreStrict") || "More Strict"}
+                        </span>
                       </div>
                     </div>
+                    <Button
+                      variant="accent"
+                      size="sm"
+                      disabled={isActionDisabled}
+                      onClick={reanalyzeWithNewThreshold}
+                    >
+                      {processingThresholdChange
+                        ? t("ButtonApplyThresholdLoading")
+                        : t("ButtonApplyThreshold")}
+                    </Button>
                   </div>
+                </div>
+              </div>
+            )}
 
-                  {/* Updated similarity threshold and algorithm control */}
-                  {imageInfoRef.current.length > 0 &&
-                    pendingFilesCount === 0 && (
-                      <div className="brutalist-border p-4 bg-white">
-                        <h3 className="font-bold mb-2">
-                          {t("SimilarityControlsTitle") ||
-                            "Similarity Algorithm & Threshold"}
+            {(duplicateSets.length > 0 || uniqueImageIndices.length > 0) && (
+              <div className="brutalist-border p-6 bg-white mt-6 relative">
+                <h2 className="text-xl font-bold mb-4">{t("ResultsTitle")}</h2>
+
+                {duplicateSets.map((group, groupIndex) => {
+                  const bestSharpnessMap = getBestInGroup(group, "sharpness");
+                  const bestNoiseMap = getBestInGroup(
+                    group,
+                    "noiseLevel",
+                    true
+                  );
+                  const bestContrastMap = getBestInGroup(group, "contrast");
+                  const bestExposureMap = getBestInGroup(group, "exposure");
+                  const bestResolutionMap = getBestInGroup(group, "resolution");
+
+                  // Determine overall best image for this group if KPIs are available
+                  let overallBestImageIdInGroup: string | null = null;
+                  const groupHasKpis = group.every(
+                    (idx) => !!imageKpis[imageInfoRef.current[idx]?.id]
+                  );
+                  if (groupHasKpis) {
+                    const bestImageInfo = determineBestImageInGroup(
+                      group,
+                      imageKpis,
+                      imageInfoRef.current
+                    );
+                    if (bestImageInfo) {
+                      overallBestImageIdInGroup = bestImageInfo.id;
+                    }
+                  }
+
+                  return (
+                    <div
+                      key={`duplicate-set-${groupIndex}`}
+                      className="mb-8 brutalist-border p-4 bg-gray-50"
+                    >
+                      <div className="flex flex-wrap justify-between items-center mb-3">
+                        <h3 className="text-lg font-semibold">
+                          {t("DuplicateSetTitle", {
+                            number: groupIndex + 1,
+                            count: group.length,
+                          })}
                         </h3>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          onClick={() => handleAnalyzeQuality(groupIndex)}
+                          disabled={
+                            !isCvReady ||
+                            analyzingQualityDirectly !== null ||
+                            group.length <= 1
+                          }
+                        >
+                          {analyzingQualityDirectly === groupIndex
+                            ? t("ButtonAnalyzeQualityLoading")
+                            : group.every(
+                                (idx) =>
+                                  !!imageKpis[imageInfoRef.current[idx]?.id]
+                              )
+                            ? t("ButtonReanalyzeQuality")
+                            : t("ButtonAnalyzeQuality")}
+                        </Button>
+                      </div>
+                      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                        {group.map((imageOriginalIndex) => {
+                          const image =
+                            imageInfoRef.current[imageOriginalIndex];
+                          if (!image) {
+                            return (
+                              <p
+                                key={`missing-dup-${groupIndex}-${imageOriginalIndex}`}
+                              >
+                                {t("ImageMissing", {
+                                  index: imageOriginalIndex,
+                                })}
+                              </p>
+                            );
+                          }
+                          const kpis = imageKpis[image.id];
+                          const imageWithKpis: ImageWithKPIs = {
+                            ...image,
+                            kpis,
+                            isBestSharpness: !!bestSharpnessMap[image.id],
+                            isBestNoise: !!bestNoiseMap[image.id],
+                            isBestContrast: !!bestContrastMap[image.id],
+                            isBestExposure: !!bestExposureMap[image.id],
+                            isBestResolution: !!bestResolutionMap[image.id],
+                            isOverallBest:
+                              image.id === overallBestImageIdInGroup, // Set overall best flag
+                          };
 
-                        {/* Algorithm Selection */}
-                        <div className="mb-4">
-                          <label className="block text-sm font-medium mb-2">
-                            {t("SimilarityAlgorithmLabel") ||
-                              "Similarity Algorithm"}
-                          </label>
-                          <BrutalistSelect
-                            options={Object.entries(SIMILARITY_ALGORITHMS).map(
-                              ([key, config]) => ({
-                                value: key,
-                                label: config.name,
-                              })
-                            )}
-                            value={selectedAlgorithm}
-                            onChange={handleAlgorithmChange}
-                            disabled={isActionDisabled}
-                            className="w-full max-w-md"
-                          />
-                          <p className="text-xs text-gray-600 mt-1">
-                            {
-                              SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                                .description
-                            }
-                          </p>
-                        </div>
-
-                        {/* Threshold Control */}
-                        <div>
-                          <label className="block text-sm font-medium mb-2">
-                            {t("SimilarityThresholdLabel") ||
-                              "Similarity Threshold"}
-                          </label>
-                          <p className="text-sm mb-3">
-                            {SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                              .lowerIsBetter
-                              ? t("SimilarityThresholdDescDistance") ||
-                                "Lower values mean more similar images (distance metric)"
-                              : t("SimilarityThresholdDescSimilarity") ||
-                                "Higher values mean more similar images (similarity metric)"}
-                          </p>
-                          <div className="flex flex-col md:flex-row items-center gap-4">
-                            <div className="flex-1 w-full">
-                              <input
-                                type="range"
-                                min={
-                                  SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                                    .minThreshold
-                                }
-                                max={
-                                  SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                                    .maxThreshold
-                                }
-                                step={
-                                  SIMILARITY_ALGORITHMS[selectedAlgorithm].step
-                                }
-                                value={similarityThreshold}
-                                onChange={handleThresholdChange}
-                                className="w-full brutalist-border bg-white h-4 appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:bg-black [&::-webkit-slider-thumb]:rounded-none [&::-webkit-slider-thumb]:cursor-pointer"
-                                disabled={isActionDisabled}
-                              />
-                              <div className="flex justify-between text-xs mt-1">
-                                <span>
-                                  {SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                                    .lowerIsBetter
-                                    ? t("SimilarityMoreStrict") || "More Strict"
-                                    : t("SimilarityLessStrict") ||
-                                      "Less Strict"}
-                                </span>
-                                <span>
-                                  {t("SimilarityCurrent", {
-                                    threshold: similarityThreshold.toFixed(
-                                      SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                                        .step >= 1
-                                        ? 0
-                                        : 2
-                                    ),
-                                  }) ||
-                                    `Current: ${similarityThreshold.toFixed(
-                                      SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                                        .step >= 1
-                                        ? 0
-                                        : 2
-                                    )}`}
-                                </span>
-                                <span>
-                                  {SIMILARITY_ALGORITHMS[selectedAlgorithm]
-                                    .lowerIsBetter
-                                    ? t("SimilarityLessStrict") || "Less Strict"
-                                    : t("SimilarityMoreStrict") ||
-                                      "More Strict"}
-                                </span>
+                          return (
+                            <div
+                              key={`${imageWithKpis.id}-dup-${imageWithKpis.url}`}
+                              className={`text-center brutalist-border p-1 bg-white flex flex-col relative group ${
+                                imageWithKpis.isOverallBest
+                                  ? "border-4 border-accent shadow-brutalist"
+                                  : ""
+                              }`}
+                            >
+                              {imageWithKpis.isOverallBest && (
+                                <div className="absolute top-0 right-0 m-1 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase z-10">
+                                  {t("BestLabel")}
+                                </div>
+                              )}
+                              <div
+                                className="relative w-full"
+                                style={{ paddingBottom: "100%" }}
+                              >
+                                <NextImage
+                                  src={imageWithKpis.url}
+                                  alt={imageWithKpis.name}
+                                  fill
+                                  className="rounded object-contain"
+                                />
+                              </div>
+                              <p
+                                className="text-xs truncate mt-1 px-1"
+                                title={imageWithKpis.name}
+                              >
+                                {imageWithKpis.name}
+                              </p>
+                              {kpis && (
+                                <div className="text-xs mt-1 p-1 bg-gray-100 brutalist-border-small text-left">
+                                  <p
+                                    className={
+                                      imageWithKpis.isBestResolution
+                                        ? "font-bold text-primary"
+                                        : ""
+                                    }
+                                  >
+                                    {t("KpiRes")} {kpis.resolution.width}x
+                                    {kpis.resolution.height}
+                                  </p>
+                                  <p
+                                    className={
+                                      imageWithKpis.isBestSharpness
+                                        ? "font-bold text-primary"
+                                        : ""
+                                    }
+                                  >
+                                    {t("KpiSharp")} {kpis.sharpness.toFixed(2)}
+                                  </p>
+                                  <p
+                                    className={
+                                      imageWithKpis.isBestNoise
+                                        ? "font-bold text-primary"
+                                        : ""
+                                    }
+                                  >
+                                    {t("KpiNoise")} {kpis.noiseLevel.toFixed(2)}
+                                  </p>
+                                  <p
+                                    className={
+                                      imageWithKpis.isBestContrast
+                                        ? "font-bold text-primary"
+                                        : ""
+                                    }
+                                  >
+                                    {t("KpiContrast")}{" "}
+                                    {kpis.contrast.toFixed(2)}
+                                  </p>
+                                  <p
+                                    className={
+                                      imageWithKpis.isBestExposure
+                                        ? "font-bold text-primary"
+                                        : ""
+                                    }
+                                  >
+                                    {t("KpiExposure")}{" "}
+                                    {kpis.exposure.toFixed(2)}
+                                  </p>
+                                </div>
+                              )}
+                              {/* Download button for individual image */}
+                              <div className="mt-auto pt-1">
+                                <Button
+                                  variant="secondary"
+                                  size="sm"
+                                  className="w-full text-xs py-1 mt-1"
+                                  onClick={() =>
+                                    handleDownloadSingleFromGroup(imageWithKpis)
+                                  }
+                                  disabled={
+                                    isActionDisabled ||
+                                    isDownloadingSingleId === imageWithKpis.id
+                                  }
+                                >
+                                  {isDownloadingSingleId === imageWithKpis.id
+                                    ? t("ButtonDownloading")
+                                    : t("ButtonDownload")}
+                                </Button>
                               </div>
                             </div>
-                            <Button
-                              variant="accent"
-                              size="sm"
-                              disabled={isActionDisabled}
-                              onClick={reanalyzeWithNewThreshold}
-                            >
-                              {processingThresholdChange
-                                ? t("ButtonApplyThresholdLoading")
-                                : t("ButtonApplyThreshold")}
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                  {(duplicateSets.length > 0 ||
-                    uniqueImageIndices.length > 0) && (
-                    <div className="brutalist-border p-6 bg-white mt-6 relative">
-                      <h2 className="text-xl font-bold mb-4">
-                        {t("ResultsTitle")}
-                      </h2>
-
-                      {duplicateSets.map((group, groupIndex) => {
-                        const bestSharpnessMap = getBestInGroup(
-                          group,
-                          "sharpness"
-                        );
-                        const bestNoiseMap = getBestInGroup(
-                          group,
-                          "noiseLevel",
-                          true
-                        );
-                        const bestContrastMap = getBestInGroup(
-                          group,
-                          "contrast"
-                        );
-                        const bestExposureMap = getBestInGroup(
-                          group,
-                          "exposure"
-                        );
-                        const bestResolutionMap = getBestInGroup(
-                          group,
-                          "resolution"
-                        );
-
-                        // Determine overall best image for this group if KPIs are available
-                        let overallBestImageIdInGroup: string | null = null;
-                        const groupHasKpis = group.every(
-                          (idx) => !!imageKpis[imageInfoRef.current[idx]?.id]
-                        );
-                        if (groupHasKpis) {
-                          const bestImageInfo = determineBestImageInGroup(
-                            group,
-                            imageKpis,
-                            imageInfoRef.current
                           );
-                          if (bestImageInfo) {
-                            overallBestImageIdInGroup = bestImageInfo.id;
-                          }
-                        }
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
 
+                {uniqueImageIndices.length > 0 && (
+                  <div className="mb-8 brutalist-border p-4 bg-gray-50">
+                    <h3 className="text-lg font-semibold mb-3">
+                      {t("UniqueImagesTitle", {
+                        count: uniqueImageIndices.length,
+                      })}
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+                      {uniqueImageIndices.map((imageOriginalIndex, index) => {
+                        const image = imageInfoRef.current[imageOriginalIndex];
+                        if (!image) {
+                          return (
+                            <p
+                              key={`missing-unique-${index}-${imageOriginalIndex}`}
+                            >
+                              {t("ImageMissing", {
+                                index: imageOriginalIndex,
+                              })}
+                            </p>
+                          );
+                        }
                         return (
                           <div
-                            key={`duplicate-set-${groupIndex}`}
-                            className="mb-8 brutalist-border p-4 bg-gray-50"
+                            key={`${image.id}-unique-${image.url}`}
+                            className="text-center brutalist-border p-1 bg-white"
                           >
-                            <div className="flex flex-wrap justify-between items-center mb-3">
-                              <h3 className="text-lg font-semibold">
-                                {t("DuplicateSetTitle", {
-                                  number: groupIndex + 1,
-                                  count: group.length,
-                                })}
-                              </h3>
+                            <div
+                              className="relative w-full"
+                              style={{ paddingBottom: "100%" }}
+                            >
+                              <NextImage
+                                src={image.url}
+                                alt={image.name}
+                                fill
+                                className="rounded object-contain"
+                              />
+                            </div>
+                            <p
+                              className="text-xs truncate mt-1 px-1"
+                              title={image.name}
+                            >
+                              {image.name}
+                            </p>
+                            {/* Add download button for unique images */}
+                            <div className="mt-auto pt-1">
                               <Button
                                 variant="secondary"
                                 size="sm"
-                                onClick={() => handleAnalyzeQuality(groupIndex)}
+                                className="w-full text-xs py-1 mt-1"
+                                onClick={() =>
+                                  handleDownloadSingleFromGroup(image)
+                                }
                                 disabled={
-                                  !isCvReady ||
-                                  analyzingQualityDirectly !== null ||
-                                  group.length <= 1
+                                  isActionDisabled ||
+                                  isDownloadingSingleId === image.id
                                 }
                               >
-                                {analyzingQualityDirectly === groupIndex
-                                  ? t("ButtonAnalyzeQualityLoading")
-                                  : group.every(
-                                      (idx) =>
-                                        !!imageKpis[
-                                          imageInfoRef.current[idx]?.id
-                                        ]
-                                    )
-                                  ? t("ButtonReanalyzeQuality")
-                                  : t("ButtonAnalyzeQuality")}
+                                {isDownloadingSingleId === image.id
+                                  ? t("ButtonDownloading")
+                                  : t("ButtonDownload")}
                               </Button>
-                            </div>
-                            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-                              {group.map((imageOriginalIndex) => {
-                                const image =
-                                  imageInfoRef.current[imageOriginalIndex];
-                                if (!image) {
-                                  return (
-                                    <p
-                                      key={`missing-dup-${groupIndex}-${imageOriginalIndex}`}
-                                    >
-                                      {t("ImageMissing", {
-                                        index: imageOriginalIndex,
-                                      })}
-                                    </p>
-                                  );
-                                }
-                                const kpis = imageKpis[image.id];
-                                const imageWithKpis: ImageWithKPIs = {
-                                  ...image,
-                                  kpis,
-                                  isBestSharpness: !!bestSharpnessMap[image.id],
-                                  isBestNoise: !!bestNoiseMap[image.id],
-                                  isBestContrast: !!bestContrastMap[image.id],
-                                  isBestExposure: !!bestExposureMap[image.id],
-                                  isBestResolution:
-                                    !!bestResolutionMap[image.id],
-                                  isOverallBest:
-                                    image.id === overallBestImageIdInGroup, // Set overall best flag
-                                };
-
-                                return (
-                                  <div
-                                    key={`${imageWithKpis.id}-dup-${imageWithKpis.url}`}
-                                    className={`text-center brutalist-border p-1 bg-white flex flex-col relative group ${
-                                      imageWithKpis.isOverallBest
-                                        ? "border-4 border-accent shadow-brutalist"
-                                        : ""
-                                    }`}
-                                  >
-                                    {imageWithKpis.isOverallBest && (
-                                      <div className="absolute top-0 right-0 m-1 px-2 py-0.5 text-xs font-bold brutalist-border border-2 border-black bg-yellow-300 text-black uppercase z-10">
-                                        {t("BestLabel")}
-                                      </div>
-                                    )}
-                                    <div
-                                      className="relative w-full"
-                                      style={{ paddingBottom: "100%" }}
-                                    >
-                                      <NextImage
-                                        src={imageWithKpis.url}
-                                        alt={imageWithKpis.name}
-                                        fill
-                                        className="rounded object-contain"
-                                      />
-                                    </div>
-                                    <p
-                                      className="text-xs truncate mt-1 px-1"
-                                      title={imageWithKpis.name}
-                                    >
-                                      {imageWithKpis.name}
-                                    </p>
-                                    {kpis && (
-                                      <div className="text-xs mt-1 p-1 bg-gray-100 brutalist-border-small text-left">
-                                        <p
-                                          className={
-                                            imageWithKpis.isBestResolution
-                                              ? "font-bold text-primary"
-                                              : ""
-                                          }
-                                        >
-                                          {t("KpiRes")} {kpis.resolution.width}x
-                                          {kpis.resolution.height}
-                                        </p>
-                                        <p
-                                          className={
-                                            imageWithKpis.isBestSharpness
-                                              ? "font-bold text-primary"
-                                              : ""
-                                          }
-                                        >
-                                          {t("KpiSharp")}{" "}
-                                          {kpis.sharpness.toFixed(2)}
-                                        </p>
-                                        <p
-                                          className={
-                                            imageWithKpis.isBestNoise
-                                              ? "font-bold text-primary"
-                                              : ""
-                                          }
-                                        >
-                                          {t("KpiNoise")}{" "}
-                                          {kpis.noiseLevel.toFixed(2)}
-                                        </p>
-                                        <p
-                                          className={
-                                            imageWithKpis.isBestContrast
-                                              ? "font-bold text-primary"
-                                              : ""
-                                          }
-                                        >
-                                          {t("KpiContrast")}{" "}
-                                          {kpis.contrast.toFixed(2)}
-                                        </p>
-                                        <p
-                                          className={
-                                            imageWithKpis.isBestExposure
-                                              ? "font-bold text-primary"
-                                              : ""
-                                          }
-                                        >
-                                          {t("KpiExposure")}{" "}
-                                          {kpis.exposure.toFixed(2)}
-                                        </p>
-                                      </div>
-                                    )}
-                                    {/* Download button for individual image */}
-                                    <div className="mt-auto pt-1">
-                                      <Button
-                                        variant="secondary"
-                                        size="sm"
-                                        className="w-full text-xs py-1 mt-1"
-                                        onClick={() =>
-                                          handleDownloadSingleFromGroup(
-                                            imageWithKpis
-                                          )
-                                        }
-                                        disabled={
-                                          isActionDisabled ||
-                                          isDownloadingSingleId ===
-                                            imageWithKpis.id
-                                        }
-                                      >
-                                        {isDownloadingSingleId ===
-                                        imageWithKpis.id
-                                          ? t("ButtonDownloading")
-                                          : t("ButtonDownload")}
-                                      </Button>
-                                    </div>
-                                  </div>
-                                );
-                              })}
                             </div>
                           </div>
                         );
                       })}
+                    </div>
+                  </div>
+                )}
 
-                      {uniqueImageIndices.length > 0 && (
-                        <div className="mb-8 brutalist-border p-4 bg-gray-50">
-                          <h3 className="text-lg font-semibold mb-3">
-                            {t("UniqueImagesTitle", {
-                              count: uniqueImageIndices.length,
-                            })}
-                          </h3>
-                          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-                            {uniqueImageIndices.map(
-                              (imageOriginalIndex, index) => {
-                                const image =
-                                  imageInfoRef.current[imageOriginalIndex];
-                                if (!image) {
-                                  return (
-                                    <p
-                                      key={`missing-unique-${index}-${imageOriginalIndex}`}
-                                    >
-                                      {t("ImageMissing", {
-                                        index: imageOriginalIndex,
-                                      })}
-                                    </p>
-                                  );
-                                }
-                                return (
-                                  <div
-                                    key={`${image.id}-unique-${image.url}`}
-                                    className="text-center brutalist-border p-1 bg-white"
-                                  >
-                                    <div
-                                      className="relative w-full"
-                                      style={{ paddingBottom: "100%" }}
-                                    >
-                                      <NextImage
-                                        src={image.url}
-                                        alt={image.name}
-                                        fill
-                                        className="rounded object-contain"
-                                      />
-                                    </div>
-                                    <p
-                                      className="text-xs truncate mt-1 px-1"
-                                      title={image.name}
-                                    >
-                                      {image.name}
-                                    </p>
-                                    {/* Add download button for unique images */}
-                                    <div className="mt-auto pt-1">
-                                      <Button
-                                        variant="secondary"
-                                        size="sm"
-                                        className="w-full text-xs py-1 mt-1"
-                                        onClick={() =>
-                                          handleDownloadSingleFromGroup(image)
-                                        }
-                                        disabled={
-                                          isActionDisabled ||
-                                          isDownloadingSingleId === image.id
-                                        }
-                                      >
-                                        {isDownloadingSingleId === image.id
-                                          ? t("ButtonDownloading")
-                                          : t("ButtonDownload")}
-                                      </Button>
-                                    </div>
-                                  </div>
-                                );
-                              }
-                            )}
-                          </div>
-                        </div>
-                      )}
-
-                      {(duplicateSets.length > 0 ||
-                        uniqueImageIndices.length > 0) && (
-                        <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
-                          <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                            {!allGroupsAnalyzedForBest ? (
-                              <Button
-                                variant="accent"
-                                onClick={handleAnalyzeAllGroupsForBest}
-                                disabled={
-                                  isActionDisabled ||
-                                  (!isCvReady && duplicateSets.length > 0) ||
-                                  pendingFilesCount > 0
-                                }
-                                className="w-full max-w-md"
-                              >
-                                {isDownloadingAll
-                                  ? t("ButtonAnalyzeAllGroupsLoading")
-                                  : t("ButtonAnalyzeAllGroups")}
-                              </Button>
-                            ) : (
-                              <Button
-                                variant="accent"
-                                onClick={handleDownloadAll}
-                                disabled={
-                                  isActionDisabled ||
-                                  imagesToDownloadCount === 0
-                                }
-                                className="w-full max-w-md"
-                              >
-                                {isDownloadingAll
-                                  ? t("ButtonDownloadBestLoading")
-                                  : t("ButtonDownloadBest", {
-                                      count: imagesToDownloadCount,
-                                    })}
-                              </Button>
-                            )}
-                          </div>
-                        </div>
+                {(duplicateSets.length > 0 ||
+                  uniqueImageIndices.length > 0) && (
+                  <div className="sticky bottom-0 left-0 right-0 z-10 bg-white py-4 border-t border-2 border-t-black mt-6">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+                      {!allGroupsAnalyzedForBest ? (
+                        <Button
+                          variant="accent"
+                          onClick={handleAnalyzeAllGroupsForBest}
+                          disabled={
+                            isActionDisabled ||
+                            (!isCvReady && duplicateSets.length > 0) ||
+                            pendingFilesCount > 0
+                          }
+                          className="w-full max-w-md"
+                        >
+                          {isDownloadingAll
+                            ? t("ButtonAnalyzeAllGroupsLoading")
+                            : t("ButtonAnalyzeAllGroups")}
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="accent"
+                          onClick={handleDownloadAll}
+                          disabled={
+                            isActionDisabled || imagesToDownloadCount === 0
+                          }
+                          className="w-full max-w-md"
+                        >
+                          {isDownloadingAll
+                            ? t("ButtonDownloadBestLoading")
+                            : t("ButtonDownloadBest", {
+                                count: imagesToDownloadCount,
+                              })}
+                        </Button>
                       )}
                     </div>
-                  )}
-                  {imageInfoRef.current.length > 0 &&
-                    duplicateSets.length === 0 &&
-                    uniqueImageIndices.length === 0 &&
-                    !isLoading && (
-                      <div className="brutalist-border p-6 bg-white mt-6">
-                        <p className="text-center text-gray-600">
-                          {t("NoImagesProcessedOrGroups")}
-                        </p>
-                      </div>
-                    )}
-
-                  {/* Embedding Visualization */}
-                  {(duplicateSets.length > 0 ||
-                    uniqueImageIndices.length > 0) && (
-                    <EmbeddingVisualization
-                      embeddings={imageEmbeddingsRef.current}
-                      imageInfos={imageInfoRef.current}
-                      imageGroups={imageGroups}
-                      title={t("VisualizationTitle")}
-                    />
-                  )}
-
-                  {/* Show global status or errors related to download all if any */}
-                  {(isDownloadingAll || isDownloadingSingleId) && (
-                    <p className="text-center text-sm font-bold mt-4">
-                      {status}
-                    </p>
-                  )}
+                  </div>
+                )}
+              </div>
+            )}
+            {imageInfoRef.current.length > 0 &&
+              duplicateSets.length === 0 &&
+              uniqueImageIndices.length === 0 &&
+              !isLoading && (
+                <div className="brutalist-border p-6 bg-white mt-6">
+                  <p className="text-center text-gray-600">
+                    {t("NoImagesProcessedOrGroups")}
+                  </p>
                 </div>
-              </Card>
-            </div>
+              )}
 
-            <div className="space-y-6">
-              {/* Upgrade card removed */}
+            {/* Embedding Visualization */}
+            {(duplicateSets.length > 0 || uniqueImageIndices.length > 0) && (
+              <EmbeddingVisualization
+                embeddings={imageEmbeddingsRef.current}
+                imageInfos={imageInfoRef.current}
+                imageGroups={imageGroups}
+                title={t("VisualizationTitle")}
+              />
+            )}
 
-              <Card title={t("HowItWorksTitle")} variant="accent">
-                <div className="space-y-4">
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("HowItWorksStep1Title")}
-                    </h3>
-                    <p className="text-sm">{t("HowItWorksStep1Desc")}</p>
-                    <p className="text-xs mt-1 text-green-600 font-medium">
-                      {t("HowItWorksStep1Pro")}
-                    </p>
-                  </div>
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("HowItWorksStep2Title")}
-                    </h3>
-                    <p className="text-sm">{t("HowItWorksStep2Desc")}</p>
-                  </div>
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("HowItWorksStep3Title")}
-                    </h3>
-                    <p className="text-sm">{t("HowItWorksStep3Desc")}</p>
-                  </div>
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("HowItWorksStep4Title")}
-                    </h3>
-                    <p className="text-sm">{t("HowItWorksStep4Desc")}</p>
-                  </div>
-                  <div className="brutalist-border p-3 bg-white">
-                    <h3 className="font-bold mb-2">
-                      {t("HowItWorksStep5Title")}
-                    </h3>
-                    <p className="text-sm">{t("HowItWorksStep5Desc")}</p>
-                  </div>
-                </div>
-              </Card>
-            </div>
+            {/* Show global status or errors related to download all if any */}
+            {(isDownloadingAll || isDownloadingSingleId) && (
+              <p className="text-center text-sm font-bold mt-4">{status}</p>
+            )}
           </div>
-        )}
-      </div>
-
-      {/* Pro dialog removed */}
-    </main>
+        </Card>
+      )}
+    </ToolPageWrapper>
   );
 }
