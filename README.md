@@ -1,142 +1,160 @@
-# Batch Shots: SEO Image Optimizer
+# Batch Shots: AI-Powered Image Processing Toolkit
 
 [![CI](https://github.com/username/picme/actions/workflows/ci.yml/badge.svg)](https://github.com/username/picme/actions/workflows/ci.yml)
 [![Tests](https://github.com/username/picme/actions/workflows/test.yml/badge.svg)](https://github.com/username/picme/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-A powerful tool to optimize product images for SEO, with AI-powered image naming and visual optimization.
+A comprehensive suite of AI-powered image processing tools designed for photographers, content creators, and businesses. Process, optimize, and enhance images with advanced AI capabilities including duplicate detection, background removal, SEO optimization, and more.
 
-## Features
+## 🛠️ Tools & Features
 
-- **Image Processing**: Adjust brightness, contrast, sharpness, and colors
-- **Image Optimization**: Resize and compress images with presets
-- **AI SEO Image Naming**: Generate SEO-friendly filenames using Google's Gemini 2.0 Flash AI
-- **Google Trends Integration**: Incorporate trending keywords into filenames
-- **Batch Processing**: Process up to 10 images at once
-- **Download Options**: Download optimized images in various formats
+### 🎨 Image Optimizer (Main Tool)
 
-## AI-Powered SEO Image Naming with Gemini
+- **Advanced Image Processing**: Adjust brightness, contrast, sharpness, saturation, and colors
+- **Smart Presets**: Pre-configured optimization settings for different use cases
+- **Watermark Support**: Add custom watermarks to protect your images
+- **Batch Processing**: Process up to 100 images simultaneously
+- **Multiple Formats**: Export in JPG, PNG, WEBP, and other formats
+- **SEO-Friendly Naming**: Generate optimized filenames for better search visibility
 
-This application leverages Google's Gemini 2.0 Flash model to generate SEO-friendly image names for your product images. The AI analyzes your product descriptions and uses Google Trends data to create filenames optimized for search engines.
+### 🔍 AI Photo Duplicate Finder
 
-### How it works:
+- **Smart Similarity Detection**: Multiple algorithms (Cosine, Euclidean, Manhattan Distance)
+- **Vision Transformer Technology**: Uses advanced ViT embeddings for accurate detection
+- **Quality Analysis**: Automatically identifies the best image in duplicate groups
+- **Real-time Threshold Adjustment**: Fine-tune similarity settings without re-uploading
+- **Batch Download**: Download only the highest quality images from each group
+- **Mobile Optimized**: Efficient processing on all devices
 
-1. Enter a detailed product description
-2. The app analyzes your description to identify relevant categories
-3. Google Trends data is used to find trending keywords related to your product
-4. Gemini AI generates SEO-optimized filenames incorporating your description and trending keywords
-5. You can edit individual filenames as needed
-6. Download images with the new AI-generated SEO-friendly names
+### 🎭 Background Removal
 
-## Structured JSON Output
+- **AI-Powered Removal**: Advanced segmentation using deep learning models
+- **Precise Cutouts**: Clean removal of backgrounds with fine detail preservation
+- **Batch Processing**: Remove backgrounds from multiple images at once
+- **Quality Control**: Maintain image quality and resolution
+- **Multiple Formats**: Support for JPG, PNG, WEBP, HEIC, and more
 
-The application uses Gemini AI's responseSchema capability to ensure properly structured output. This implementation:
+### 📝 AI Image SEO Caption Generation
 
-1. Uses the SchemaType enum from the official Google Generative AI SDK
-2. Defines a precise schema with an array of strings for consistent output
-3. Generates structured JSON responses with proper validation
-4. Ensures reliable and consistent SEO filename generation
+- **Automated Captioning**: Generate descriptive captions for images using AI
+- **SEO Optimization**: Create search-friendly image descriptions
+- **Batch Processing**: Generate captions for multiple images simultaneously
+- **Customizable Output**: Adjust caption style and length
+- **Multi-language Support**: Generate captions in multiple languages
 
-Code example of the structured output implementation:
+### 🖼️ Add Watermark
 
-```typescript
-// Request with responseSchema for structured output
-const request: GenerateContentRequest = {
-  contents: [{ role: 'user', parts: [{ text: prompt }] }],
-  generationConfig: {
-    temperature: 0.2,
-    topP: 0.8,
-    topK: 40,
-    responseMimeType: 'application/json',
-    responseSchema: {
-      type: SchemaType.ARRAY,
-      items: {
-        type: SchemaType.STRING,
-        description: 'SEO-friendly image filename',
-      },
-      description: 'Array of 10 SEO-friendly image filenames',
-    },
-  },
-  // Safety settings and other configurations...
-};
+- **Custom Watermarking**: Add text or image watermarks to protect your content
+- **Flexible Positioning**: Place watermarks anywhere on the image
+- **Opacity Control**: Adjust watermark transparency
+- **Batch Application**: Apply watermarks to multiple images at once
+- **Text & Image Support**: Use text or upload custom watermark images
+
+### 🔄 Image Format Converter
+
+- **Universal Conversion**: Convert between all major image formats
+- **Quality Preservation**: Maintain image quality during conversion
+- **Batch Conversion**: Convert multiple images simultaneously
+- **HEIC Support**: Convert Apple's HEIC format to standard formats
+- **Compression Options**: Optimize file sizes during conversion
+
+### 🌍 Multi-Language Support
+
+- **8 Languages**: English, German, Dutch, French, Polish, Czech, Russian, Ukrainian
+- **Localized Interface**: Complete UI translation for all supported languages
+- **SEO Localization**: Multi-language SEO optimization
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 24.3.0 or later
+- npm 11.4.2 or later
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/batchshots.git
+   cd batchshots
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Production Build
+
+```bash
+# Build for production
+npm run build
+
+# Serve the static build
+npm start
 ```
 
-This approach leverages Gemini's advanced structured output capabilities to create consistent, reliable SEO-friendly image names.
+The application is configured for static export, making it easy to deploy to any static hosting service like Vercel, Netlify, or GitHub Pages.
 
-## Setup
+## 🛠️ Technologies & AI Models
 
-1. Clone this repository
-2. Run `npm install` to install dependencies
-3. Create a `.env.local` file based on `.env.local.example` and add your Google AI API key
-4. Run `npm run dev` to start the development server
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+### Core Technologies
 
-## Environment Variables
+- **Next.js 15** - React framework with static export for optimal performance
+- **React 19** - Modern React with latest features and optimizations
+- **TypeScript** - Type-safe development across the entire codebase
+- **Tailwind CSS 4** - Utility-first CSS framework for responsive design
+- **OpenCV.js** - Computer vision library for advanced image processing
 
-Create a `.env.local` file with the following variables:
+### AI & Machine Learning
 
-```
-GOOGLE_AI_API_KEY=your_google_ai_api_key_here
-```
+- **Hugging Face Transformers** - State-of-the-art NLP and vision models
+- **ONNX Runtime** - High-performance inference engine for AI models
+- **Vision Transformers (ViT)** - Advanced computer vision for image analysis
+- **UMAP** - Dimensionality reduction for embedding visualization
 
-You can obtain a Google AI API key from the [Google AI Studio](https://makersuite.google.com/).
+### Image Processing & Optimization
 
-## Technologies Used
+- **Sharp** - High-performance image processing (server-side)
+- **HEIC-to** - Apple HEIC/HEIF format conversion
+- **JSZip** - Client-side ZIP file creation for batch downloads
+- **Three.js** - 3D graphics for advanced visualizations
 
-- Next.js and React for the frontend
-- Tailwind CSS for styling
-- OpenCV.js for image processing
-- Google Gemini 2.0 Flash AI for SEO name generation
-- Google Trends data for keyword optimization
-- Structured JSON output for consistent naming
+### Internationalization & SEO
 
-## License
+- **Next-intl** - Complete internationalization solution
+- **Next-sitemap** - Automated sitemap generation with multi-language support
+- **PostHog** - Privacy-focused analytics and user tracking
+
+### Development & Testing
+
+- **Jest** - Comprehensive testing framework
+- **ESLint** - Code linting and quality assurance
+- **Webpack** - Advanced bundling with custom configurations
+
+## 🔗 Connect
+
+- **Twitter/X:** [@andre_banandre](https://x.com/andre_banandre)
+- **GitHub:** [@andrebanandre](https://github.com/andrebanandre)
+- **LinkedIn:** [Andrii Fedorenko](https://www.linkedin.com/in/andrii-fedorenko-65905863/)
+
+---
+
+## 📄 License
 
 MIT
-
-## AI Photo Duplicate Finder
-
-Our AI-powered duplicate photo finder now supports multiple similarity algorithms for more accurate detection:
-
-### Similarity Algorithms
-
-#### 1. Cosine Similarity (Default)
-- **Description**: Measures the angle between feature vectors (0-1 scale)
-- **Best for**: General-purpose duplicate detection
-- **Threshold Range**: 0.1 - 0.99 (higher = more similar)
-- **Use Case**: Recommended for most users as it's robust and effective
-
-#### 2. Euclidean Distance
-- **Description**: Calculates straight-line distance between feature vectors
-- **Best for**: When you want exact mathematical similarity
-- **Threshold Range**: 0.1 - 50.0 (lower = more similar)
-- **Use Case**: More sensitive to small differences in image features
-
-#### 3. Manhattan Distance (L1 Norm)
-- **Description**: Sum of absolute differences between coordinates
-- **Best for**: High-dimensional spaces, more robust to outliers
-- **Threshold Range**: 1.0 - 500.0 (lower = more similar)
-- **Use Case**: Alternative distance metric that can be more robust in certain scenarios
-
-### How to Use
-
-1. **Upload Photos**: Select multiple images using the file picker
-2. **Choose Algorithm**: Use the dropdown to select your preferred similarity algorithm
-3. **Adjust Threshold**: Use the slider to fine-tune how strict the matching should be
-4. **Analyze**: Click "Apply Setting" to reanalyze with new parameters
-5. **Review Results**: View duplicate groups and download the best quality images
-
-### Technical Implementation
-
-The similarity algorithms are based on Vision Transformer (ViT) embeddings:
-- Images are processed through a pre-trained ViT model
-- Feature embeddings are extracted from the CLS token
-- Similarity/distance is calculated between embedding vectors
-- Groups are formed based on the selected algorithm and threshold
-
-### Features
-
-- **Real-time threshold adjustment**: Change similarity settings without re-uploading
-- **Quality analysis**: Automatically identify the best image in each duplicate set
-- **Batch download**: Download only the best images from each group
-- **Mobile optimization**: Efficient processing on mobile devices
-- **Multiple formats**: Support for JPG, PNG, WEBP, HEIC
