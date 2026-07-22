@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { PRIMARY_NAV, TOOL_NAV } from "../lib/navigation";
 // Auth removed
 
 interface MobileMenuProps {
@@ -25,53 +26,16 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </button>
         </div>
         <nav className="flex flex-col space-y-4">
-          <Link
-            href="/"
-            onClick={handleLinkClick}
-            className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100"
-          >
-            {t("imageOptimizer")}
-          </Link>
-          <Link
-            href="/ai-photo-duplicate-finder"
-            onClick={handleLinkClick}
-            className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100"
-          >
-            {t("aiPhotoDuplicateFinder")}
-          </Link>
-          <Link
-            href="/background-removal"
-            onClick={handleLinkClick}
-            className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100"
-          >
-            {t("removeBackgrounds")}
-          </Link>
-          <Link
-            href="/ai-image-seo-caption-generation"
-            onClick={handleLinkClick}
-            className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100"
-          >
-            {t("aiImageSeoCaptionGeneration")}
-          </Link>
-          {/* Removed Gemini feature link */}
-          <Link
-            href="/add-watermark"
-            onClick={handleLinkClick}
-            className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100"
-          >
-            {t("addWatermark")}
-          </Link>
-          <Link
-            href="/image-format-convertor"
-            onClick={handleLinkClick}
-            className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100"
-          >
-            {t("imageFormatConvertor")}
-          </Link>
-          {/* Removed SEO description link */}
-          {/* Removed object removal */}
-          {/* Pricing removed */}
-          {/* Auth removed */}
+          {[...PRIMARY_NAV, ...TOOL_NAV].map((entry) => (
+            <Link
+              key={entry.href}
+              href={entry.href}
+              onClick={handleLinkClick}
+              className="font-bold text-lg py-2 px-4 brutalist-border hover:bg-slate-100"
+            >
+              {t(entry.labelKey)}
+            </Link>
+          ))}
         </nav>
       </div>
     </div>

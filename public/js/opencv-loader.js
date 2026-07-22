@@ -1,6 +1,7 @@
 /**
  * OpenCV.js Loader Script
- * This script loads OpenCV.js locally and sets up a status indicator.
+ * Loads the OpenCV 5 build (with DNN module) from R2 and dispatches
+ * an 'opencv-ready' event once the runtime is fully initialized.
  */
 
 // Create a status element to show loading progress
@@ -37,28 +38,41 @@ function hideStatus() {
 function onOpenCvReady() {
   updateStatus('Ready to process your images!');
   hideStatus();
-  
+
   // Dispatch an event when OpenCV is ready
   window.dispatchEvent(new Event('opencv-ready'));
 }
 
 function loadOpenCV() {
-  if (window.cv) {
+  if (window.cv && typeof window.cv.imread === 'function') {
     onOpenCvReady();
     return;
   }
-  
+
   updateStatus('Loading image processing...');
-  
+
   const script = document.createElement('script');
   script.setAttribute('async', '');
   script.setAttribute('type', 'text/javascript');
-  
-  // Use the local OpenCV.js file instead of loading from CDN
-  script.setAttribute('src', '/js/opencv/opencv.js');
-  
+
+  // Public R2-hosted OpenCV 5 build (includes the DNN module)
+  script.setAttribute('src', 'https://s3.batchshots.com/js/opencv/opencv-5.0.0.js');
+
   script.onload = () => {
-    // Check if cv object exists and has imread method
+    // The UMD factory may set window.cv to either the module itself
+    // (ready after onRuntimeInitialized) or a thenable resolving to it.
+    const cvGlobal = window.cv;
+    if (cvGlobal && typeof cvGlobal.then === 'function') {
+      cvGlobal.then((resolved) => {
+        // Remove the Emscripten module's self-referential `then` so that
+        // `await window.cv` elsewhere can't unwrap recursively and hang.
+        try { delete resolved.then; } catch (e) { /* sealed — fine */ }
+        window.cv = resolved;
+        onOpenCvReady();
+      });
+      return;
+    }
+    // Otherwise poll until the runtime has registered its API
     const checkCv = () => {
       if (window.cv && typeof window.cv.imread === 'function') {
         onOpenCvReady();
@@ -71,7 +85,7 @@ function loadOpenCV() {
   script.onerror = () => {
     updateStatus('Failed to load OpenCV.js. Please refresh the page.');
   };
-  
+
   document.body.appendChild(script);
 }
 
@@ -80,4 +94,4 @@ if (document.readyState === 'complete') {
   loadOpenCV();
 } else {
   window.addEventListener('load', loadOpenCV);
-} 
+}

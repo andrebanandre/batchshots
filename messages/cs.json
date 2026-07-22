@@ -59,7 +59,8 @@
     "imageOptimization": "OPTIMALIZACE OBRÁZKŮ",
     "dragAndDropPrivacy": "Přetáhněte obrázky sem nebo klikněte pro výběr souborů. <strong>Veškeré zpracování probíhá ve vašem prohlížeči. Vaše obrázky nikdy nenahráváme na naše servery.</strong> Vaše soukromí a bezpečnost jsou zaručeny.",
     "heicConversionFailed": "Nepodařilo se převést HEIC obrázek: {fileName}. Formát souboru nemusí být podporován nebo je soubor poškozený.",
-    "preparingImagesPreview": "Připravuji náhledy obrázků..."
+    "preparingImagesPreview": "Připravuji náhledy obrázků...",
+    "pipelineCta": "Vyzkoušejte nový dávkový pipeline →"
   },
   "Navbar": {
     "imageOptimizer": "Optimalizátor obrázků",
@@ -75,7 +76,12 @@
     "seoDescription": "SEO popis",
     "imageFormatConvertor": "Konvertor formátů obrázků",
     "profile": "Profil",
-    "logout": "Odhlásit se"
+    "logout": "Odhlásit se",
+    "pipeline": "Pipeline",
+    "productPhotoCropper": "Ořez produktových fotek",
+    "photoQualityChecker": "Kontrola kvality fotek",
+    "imageTextExtraction": "Text z obrázku (OCR)",
+    "photoColorizer": "Kolorování fotek"
   },
   "Footer": {
     "about": "Batch Shots vám pomůže rychle a snadno optimalizovat obrázky produktů pro SEO přímo ve vašem prohlížeči.",
@@ -512,7 +518,15 @@
         "download": "STÁHNOUT",
         "reset": "RESETOVAT"
       },
-      "allImages": "VŠECHNY OBRÁZKY ({current}/{max})"
+      "allImages": "VŠECHNY OBRÁZKY ({current}/{max})",
+      "duplicateBadge": "Duplikát",
+      "keepDuplicate": "Ponechat",
+      "removeDuplicate": "Odstranit",
+      "cropMode": "Oříznout",
+      "cropApply": "Použít oříznutí",
+      "cropApplyAll": "Použít na všechny",
+      "cropCancel": "Zrušit",
+      "cropAspectFree": "Volný"
     },
     "PricingCard": {
       "oneTime": "jednorázově",
@@ -1078,14 +1092,12 @@
     "AllGroupsAnalyzedReadyDownload": "Všech {count} duplicitních skupin analyzováno. Připraveno ke stažení {downloadCount} nejlepších fotografií.",
     "AnalysisPartialReadyDownload": "Analýza pro nejlepší výběr částečně dokončena ({processedGroups}/{totalGroups} skupin). Připraveno ke stažení {downloadCount} fotografií (bude vybrána nejlepší dostupná).",
     "NoImagesProcessedOrGroups": "Nebyly zpracovány žádné fotografie nebo zatím nebyly vytvořeny žádné skupiny. Ujistěte se, že byly fotografie vybrány a AI analýza dokončena.",
-
     "LoaderTitleInitializing": "Inicializace Chytrých Nástrojů...",
     "LoaderTitleLoadingModel": "Načítání AI Mozku...",
     "LoaderTitleQualityTools": "Příprava Analyzátoru Kvality...",
     "LoaderDescriptionInitializing": "Připravujeme vše pro chytrou detekci duplikátů. Počkejte prosím.",
     "LoaderDescriptionLoadingModel": "Naše pokročilá AI se zahřívá. Může to chvíli trvat.",
     "LoaderDescriptionQualityTools": "Příprava nástrojů pro detailní přehled o kvalitě fotografií...",
-
     "MainCardTitle": "Najít a spravovat duplicitní fotografie",
     "UploadSectionTitle": "Nahrajte své fotografie",
     "UploadSectionDescription": "Vyberte více fotografií. Naše AI je inteligentně analyzuje a seskupí podobné.",
@@ -1097,7 +1109,6 @@
     "SupportedFormats": "Podporuje formáty JPG, PNG, WEBP, HEIC",
     "AIStatusLabel": "Stav AI: {status}",
     "QualityAnalyzerStatusLoading": "Analyzátor kvality: Načítání...",
-
     "SimilarityThresholdTitle": "Nastavení podobnosti",
     "SimilarityThresholdDescription": "Určete, jak moc se musí fotografie shodovat, aby byly označeny jako duplikáty. Vyšší hodnoty znamenají přísnější shodu.",
     "SimilarityLessStrict": "Méně přísné",
@@ -1105,7 +1116,6 @@
     "SimilarityMoreStrict": "Přísnější",
     "ButtonApplyThreshold": "Použít nastavení",
     "ButtonApplyThresholdLoading": "Opětovná analýza...",
-
     "ResultsTitle": "Výsledky detekce:",
     "DuplicateSetTitle": "Sada duplikátů {number} ({count} podobných fotografií)",
     "ButtonAnalyzeQuality": "Analyzovat kvalitu",
@@ -1120,14 +1130,11 @@
     "KpiExposure": "Expozice:",
     "ButtonDownload": "Stáhnout",
     "ButtonDownloading": "Stahování...",
-
     "UniqueImagesTitle": "Unikátní fotografie ({count} fotografií bez přímých duplikátů)",
-
     "ButtonAnalyzeAllGroups": "Analyzovat všechny skupiny pro nejlepší výběr",
     "ButtonAnalyzeAllGroupsLoading": "Analýza všech skupin...",
     "ButtonDownloadBest": "Stáhnout {count} nejlepších fotografií",
     "ButtonDownloadBestLoading": "Příprava stahování...",
-
     "HowItWorksTitle": "Jak naše AI nachází duplikáty",
     "HowItWorksStep1Title": "1. Nahrajte své fotografie",
     "HowItWorksStep1Desc": "Klikněte na \"Vybrat fotografie\" a zvolte obrázky, které chcete zkontrolovat. Můžete jich vybrat mnoho najednou.",
@@ -1139,7 +1146,6 @@
     "HowItWorksStep4Desc": "Použijte posuvník podobnosti k určení, jak přísná má být shoda. Vyšší hodnota znamená, že fotografie musí být téměř identické, aby byly označeny jako duplikáty.",
     "HowItWorksStep5Title": "5. Zkontrolujte a uspořádejte",
     "HowItWorksStep5Desc": "Výsledky jasně ukazují sady duplikátů a unikátní fotografie. Naše AI může také zvýraznit fotografii nejlepší kvality v každé duplicitní skupině, což vám pomůže rozhodnout se, kterou si ponechat.",
-
     "FreeUserLimit": "Uživatelé zdarma mohou nahrát až {limit} fotografií najednou.",
     "ButtonSelectImagesLimit": "Vybrat fotografie (až {limit})",
     "UpgradeMessage": "Upgradujte na PRO pro analýzu neomezeného počtu fotografií najednou.",
@@ -1147,7 +1153,6 @@
     "HowItWorksStep1Free": "Uživatelé zdarma jsou omezeni na {limit} fotografií najednou.",
     "HowItWorksStep1Pro": "Jako PRO uživatel můžete analyzovat neomezený počet fotografií najednou.",
     "ProFeatureName": "Neomezená analýza fotografií",
-
     "FreeModeTitle": "REŽIM ZDARMA",
     "FreeModeDescription": "Zpracujte až {limit} fotografií najednou. Upgradujte na PRO pro analýzu neomezeného počtu fotografií!",
     "ProModeTitle": "PRO REŽIM",
@@ -1156,7 +1161,6 @@
     "ProcessingErrors": "Chyby při zpracování",
     "imagesCount": "{current}/{max} fotografií",
     "upgradeFor": "(Upgrade pro neomezeně)",
-
     "UpgradeCardTitle": "UPGRADOVAT NA PRO",
     "UpgradeCardPlanTitle": "PRO PLÁN",
     "UpgradeCardPlanPrice": "$19.99",
@@ -1167,20 +1171,16 @@
     "UpgradeCardFeature4": "Hromadné stažení nejlepších fotografií ze sad duplikátů",
     "UpgradeCardFeature5": "Přístup ke všem dalším PRO funkcím (odstranění pozadí atd.)",
     "UpgradeCardButton": "UPGRADOVAT NYNÍ",
-
     "ProUpgradeTitle": "Upgradujte na Pro pro neomezené fotky",
-
     "SimilarityControlsTitle": "Algoritmus podobnosti a práh",
     "SimilarityAlgorithmLabel": "Algoritmus podobnosti",
     "SimilarityThresholdLabel": "Práh podobnosti",
     "SimilarityThresholdDescDistance": "Nižší hodnoty znamenají podobnější obrázky (metrika vzdálenosti)",
     "SimilarityThresholdDescSimilarity": "Vyšší hodnoty znamenají podobnější obrázky (metrika podobnosti)",
-
     "ProcessingChanges": "Zpracovávám změny...",
     "ReanalyzingWithAlgorithm": "Znovu analyzuji s novým algoritmem...",
     "AnalysisCompleteWithAlgorithm": "Analýza dokončena s novým algoritmem. {groupSummary}",
     "DuplicateAnalysisComplete": "Analýza duplicit dokončena",
-
     "VisualizationTitle": "AI Vektorový Prostor",
     "VisualizationDescription": "Vizualizujte, jak AI vidí vaše obrázky ve vícerozměrném prostoru, zredukovaném na 2D pomocí UMAP algoritmu. Podobné obrázky se shlukují dohromady.",
     "VisualizationShowButton": "Zobrazit vizualizaci",
@@ -1359,5 +1359,212 @@
     "section10Title": "10. Kontaktujte nás",
     "section10P1": "Pokud máte jakékoliv dotazy k těmto Podmínkám použití, kontaktujte nás na terms@batchshots.com.",
     "returnButton": "VRÁTIT SE NA DOMŮ"
+  },
+  "Pipeline": {
+    "metadata": {
+      "title": "Dávkový foto pipeline — Zpracujte 500 marketplace fotek najednou",
+      "description": "Nahrajte jednou a poté odstraňte duplikáty, pozadí, automaticky ořízněte, zkontrolujte kvalitu, OCR, popisky, změňte velikost a exportujte fotky připravené pro marketplace — vše v prohlížeči, bez nahrávání na server.",
+      "keywords": "dávková úprava fotek, marketplace fotky, pipeline produktových fotek, hromadné zpracování obrázků, editor fotek v prohlížeči"
+    },
+    "title": "Dávkový foto pipeline",
+    "steps": {
+      "upload": "Nahrát",
+      "dedupe": "Duplikáty",
+      "bg": "Pozadí",
+      "crop": "Ořez",
+      "quality": "Kvalita",
+      "ocr": "OCR",
+      "caption": "Popisek",
+      "resize": "Velikost",
+      "export": "Export"
+    },
+    "stepStatus": {
+      "pending": "Čeká",
+      "running": "Probíhá…",
+      "done": "Hotovo",
+      "skipped": "Přeskočeno",
+      "error": "Chyba"
+    },
+    "back": "Zpět",
+    "next": "Další",
+    "skip": "Přeskočit",
+    "rerun": "Spustit znovu",
+    "rerunConfirm": "Opětovné spuštění tohoto kroku smaže výsledky všech pozdějších kroků. Pokračovat?",
+    "uploadTitle": "Přetáhněte sem produktové fotky",
+    "uploadDescription": "Až {max} obrázků — JPG, PNG, WEBP, HEIC. Vše zůstává ve vašem prohlížeči.",
+    "addMoreImages": "Přidat další obrázky",
+    "maxImagesReached": "Dosaženo maxima {max} obrázků",
+    "preparingImages": "Příprava obrázků… {done}/{total}",
+    "imageCount": "{count} obrázků",
+    "removeImage": "Odebrat obrázek",
+    "uploadStandaloneHint": "Obrázky se zpracovávají lokálně a nikdy neopustí vaše zařízení.",
+    "standaloneUploadFirst": "Nahrajte obrázky, abyste mohli nástroj používat.",
+    "processAll": "Zpracovat vše",
+    "processSelected": "Zpracovat jen vybrané",
+    "cancel": "Zrušit",
+    "modelLoading": "Načítání AI modelu… {pct}%",
+    "processingError": "Některé obrázky selhaly: {count}",
+    "howItWorks": {
+      "title": "Jak to funguje",
+      "step1Title": "Nahrajte fotky",
+      "step1Text": "Vložte jednu fotku nebo celou dávku — vše zůstává ve vašem zařízení.",
+      "step2Title": "Nastavte a spusťte",
+      "step2Text": "Zvolte nastavení a použijte je na jednu fotku nebo na všechny najednou.",
+      "step3Title": "Stáhněte výsledky",
+      "step3Text": "Hotové fotky uložíte jedním kliknutím."
+    }
+  },
+  "DedupeStep": {
+    "title": "Najít duplicitní fotky",
+    "run": "Najít duplikáty",
+    "phashPass": "Hledání kopií…",
+    "embedPass": "Porovnávání fotek…",
+    "threshold": "Podobnost",
+    "groupsFound": "Nalezeno {count} skupin duplikátů",
+    "noDuplicates": "Žádné duplikáty — všechny obrázky jsou jedinečné.",
+    "best": "Nejlepší",
+    "duplicate": "Duplikát",
+    "keep": "Ponechat",
+    "exclude": "Vyloučit",
+    "excludedCount": "{count} duplikátů vyloučeno z dávky",
+    "autoRemove": "Automaticky odstranit duplikáty",
+    "intro": "Najděte a odstraňte duplicitní fotky během sekund — přesné kopie, zmenšené verze i téměř totožné snímky."
+  },
+  "BgStep": {
+    "title": "Odstranit pozadí",
+    "run": "Odstranit pozadí",
+    "quality": "Kvalita",
+    "fast": "Rychlé (doporučeno)",
+    "hq": "Vysoká kvalita (pomalejší)",
+    "output": "Výstup",
+    "transparent": "Průhledné PNG",
+    "whiteBg": "Bílé pozadí",
+    "before": "Před",
+    "after": "Po",
+    "redoOne": "Zopakovat tento obrázek",
+    "intro": "Dodejte produktovým fotkám čistý, profesionální vzhled. Odstraňte pozadí z jedné nebo sta fotek — nic neopustí vaše zařízení."
+  },
+  "CropStep": {
+    "title": "Automatický ořez produktů",
+    "run": "Detekovat a oříznout",
+    "margin": "Okraj",
+    "square": "Čtvercové plátno",
+    "whiteBackground": "Bílé pozadí",
+    "outputSize": "Výstupní velikost",
+    "noDetection": "Produkt nenalezen — ponechán originál",
+    "detected": "{label} ({pct}%)",
+    "metadata": {
+      "title": "Ořez produktových fotek — Automatický ořez produktových obrázků",
+      "description": "Automaticky detekujte a ořízněte produkty na fotkách. Čtvercové plátno, bílé pozadí, velikosti připravené pro marketplace — zdarma, v prohlížeči.",
+      "keywords": "ořez produktových fotek, automatický ořez obrázků, čtvercové produktové fotky, online nástroj na ořez"
+    },
+    "intro": "Ořízněte produktové fotky do dokonalého rámu — po jedné nebo celou dávku stejným ořezem."
+  },
+  "ColorizeStep": {
+    "title": "Obarvit černobílé fotky",
+    "run": "Obarvit",
+    "blend": "Síla barvy",
+    "hint": "Přidá přirozenou barvu k černobílým fotkám — vše zůstává ve vašem zařízení.",
+    "metadata": {
+      "title": "Kolorování fotek — Obarvěte černobílé fotky online",
+      "description": "Automaticky obarvěte černobílé fotky pomocí AI přímo v prohlížeči. Zdarma, soukromě — žádné nahrávání, nic neopouští váš počítač.",
+      "keywords": "kolorování fotek, obarvení černobílých fotek, AI kolorování fotek, obarvit staré fotky online, zdarma kolorování fotek"
+    },
+    "intro": "Oživte staré černobílé fotky přirozenými barvami — přímo v prohlížeči."
+  },
+  "QualityStep": {
+    "title": "Kontrola kvality",
+    "run": "Zkontrolovat kvalitu",
+    "flaggedCount": "Označeno {count} obrázků",
+    "noFlags": "Všechny obrázky prošly kontrolou kvality.",
+    "excludeFlagged": "Vyloučit všechny označené",
+    "flagBlurry": "Rozmazané",
+    "flagDark": "Příliš tmavé",
+    "flagOverexposed": "Přeexponované",
+    "flagLowRes": "Nízké rozlišení",
+    "metadata": {
+      "title": "Kontrola kvality fotek — Odhalte rozmazané a špatné produktové fotky",
+      "description": "Automaticky označte rozmazané, tmavé, přeexponované a nízko-rozlišené produktové fotky, než je nahrajete na marketplace. Bezplatný nástroj v prohlížeči.",
+      "keywords": "kontrola kvality fotek, detektor rozmazaných fotek, analýza kvality obrazu, kontrola produktových fotek"
+    }
+  },
+  "OcrStep": {
+    "title": "Extrahovat text z obrázků",
+    "run": "Extrahovat text",
+    "downloadZip": "Stáhnout text (ZIP)",
+    "noText": "Žádný text nenalezen",
+    "editHint": "Zkontrolujte a upravte extrahovaný text před stažením.",
+    "textFor": "Text pro {name}",
+    "addDocuments": "Přidat soubory PDF, Word nebo PowerPoint",
+    "pages": "{count} stran",
+    "metadata": {
+      "title": "Extrakce textu z obrázku — Bezplatná extrakce textu pro produktové fotky",
+      "description": "Extrahujte text z etiket, obalů a produktových fotek přímo v prohlížeči. Bez nahrávání — rychlá, soukromá extrakce textu.",
+      "keywords": "extrakce textu z obrázku, OCR online zdarma, text z fotky, čtečka etiket"
+    },
+    "intro": "Vytáhněte text z etiket, obalů, souborů PDF, dokumentů Word a PowerPoint — a stáhněte vše jako přehledné textové soubory."
+  },
+  "CaptionStep": {
+    "title": "SEO popisky a názvy souborů",
+    "run": "Generovat popisky",
+    "caption": "Popisek",
+    "seoName": "SEO název souboru",
+    "editHint": "Popisky vznikají z detekovaného objektu, barvy a textu etikety.",
+    "regenerate": "Vygenerovat znovu",
+    "intro": "Získejte popisky a názvy souborů přívětivé pro vyhledávače, vytvořené z toho, co na fotce skutečně je."
+  },
+  "ResizeStep": {
+    "title": "Změnit velikost a komprimovat",
+    "run": "Použít na vše",
+    "preset": "Marketplace předvolba",
+    "format": "Formát",
+    "quality": "Kvalita",
+    "maxFileSize": "Max. velikost souboru (KB, volitelné)",
+    "sharpen": "Mírné doostření",
+    "padToExact": "Doplnit na přesnou velikost",
+    "custom": "Vlastní",
+    "presetApplied": "Zpracováno {count} obrázků"
+  },
+  "ExportStep": {
+    "title": "Export",
+    "download": "Stáhnout ZIP",
+    "downloading": "Vytváření ZIP…",
+    "downloadComplete": "Stahování připraveno!",
+    "useSeoNames": "Použít SEO názvy",
+    "renamePattern": "Vzor přejmenování (např. produkt-{n})",
+    "includeManifest": "Přiložit manifest.csv",
+    "addWatermark": "Přidat vodoznak",
+    "watermarkText": "Text vodoznaku",
+    "imagesReady": "{count} obrázků připraveno k exportu",
+    "keepOriginals": "Exportovat originály (bez úprav)",
+    "intro": "Převeďte fotky do JPG, PNG nebo WEBP, změňte velikost pro jakýkoli marketplace a stáhněte vše jako jeden ZIP."
+  },
+  "DownloadZip": {
+    "title": "Stáhnout",
+    "download": "Stáhnout ZIP",
+    "building": "Příprava ZIP…",
+    "done": "Stahování připraveno!"
+  },
+  "EditorTools": {
+    "applyToAll": "Použít na všechny obrázky",
+    "presetsTab": "Předvolby",
+    "advancedTab": "Pokročilé",
+    "noImageSelected": "Nejprve vyberte obrázek nebo zapněte „použít na vše“.",
+    "done": "Hotovo",
+    "failed": "{count} selhalo"
+  },
+  "ObjectRemoveStep": {
+    "title": "Odstranit objekty z fotek",
+    "run": "Odstranit vymalované oblasti",
+    "brush": "Velikost štětce",
+    "clear": "Vymazat tahy",
+    "applyAllAreas": "Použít vymalované oblasti na všechny obrázky",
+    "hint": "Přemalujte vše, co chcete odstranit — vše zůstává ve vašem zařízení.",
+    "metadata": {
+      "title": "Odstranění objektů — Odstraňte nežádoucí objekty z fotek online",
+      "description": "Přemalujte nežádoucí objekty a odstraňte je z fotek pomocí AI inpaintingu přímo v prohlížeči. Zdarma, soukromě — nic neopouští váš počítač.",
+      "keywords": "odstranění objektů, odstranit objekt z fotky, guma na objekty ve fotce, odstranit nežádoucí objekty online, zdarma nástroj na odstranění objektů"
+    },
+    "intro": "Přemalujte cokoli, co na fotce nechcete — cenovky, stíny, nepořádek — a zmizí to."
   }
 }

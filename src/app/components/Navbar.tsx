@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import LanguageSelector from "./LanguageSelector";
 import MobileMenu from "./MobileMenu";
+import { PRIMARY_NAV, TOOL_NAV } from "../lib/navigation";
 
 // Simple SVG logo component
 const Logo = () => (
@@ -75,12 +76,15 @@ export default function Navbar() {
         </div>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link
-            href="/"
-            className="font-bold text-lg uppercase hover:text-primary transition-colors"
-          >
-            {t("imageOptimizer")}
-          </Link>
+          {PRIMARY_NAV.map((entry) => (
+            <Link
+              key={entry.href}
+              href={entry.href}
+              className="font-bold text-lg uppercase hover:text-primary transition-colors"
+            >
+              {t(entry.labelKey)}
+            </Link>
+          ))}
           {/* Tools Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
@@ -108,37 +112,15 @@ export default function Navbar() {
             </button>
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-56 bg-white brutalist-border border-3 border-black shadow-lg z-50">
-                <Link
-                  href="/ai-photo-duplicate-finder"
-                  className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black"
-                >
-                  {t("aiPhotoDuplicateFinder")}
-                </Link>
-                <Link
-                  href="/background-removal"
-                  className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black"
-                >
-                  {t("removeBackgrounds")}
-                </Link>
-                {/* Removed Gemini feature link */}
-                <Link
-                  href="/ai-image-seo-caption-generation"
-                  className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black"
-                >
-                  {t("aiImageSeoCaptionGeneration")}
-                </Link>
-                <Link
-                  href="/add-watermark"
-                  className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black"
-                >
-                  {t("addWatermark")}
-                </Link>
-                <Link
-                  href="/image-format-convertor"
-                  className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black"
-                >
-                  {t("imageFormatConvertor")}
-                </Link>
+                {TOOL_NAV.map((entry) => (
+                  <Link
+                    key={entry.href}
+                    href={entry.href}
+                    className="block px-4 py-2 text-sm hover:bg-slate-100 brutalist-border-b border-black"
+                  >
+                    {t(entry.labelKey)}
+                  </Link>
+                ))}
               </div>
             )}
           </div>

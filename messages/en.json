@@ -59,7 +59,8 @@
     "imagesCount": "{current}/{max} images",
     "upgradeFor": "",
     "imageOptimization": "IMAGE OPTIMIZATION",
-    "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong> Your privacy and security are guaranteed."
+    "dragAndDropPrivacy": "Drag and drop images here, or click to select files. <strong>All processing happens in your browser. We never upload your images to our servers.</strong> Your privacy and security are guaranteed.",
+    "pipelineCta": "Try the new Batch Pipeline →"
   },
   "Navbar": {
     "imageOptimizer": "Image Optimizer",
@@ -75,7 +76,12 @@
     "seoDescription": "SEO Description",
     "imageFormatConvertor": "Image Format Convertor",
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+    "pipeline": "Pipeline",
+    "productPhotoCropper": "Product Photo Cropper",
+    "photoQualityChecker": "Photo Quality Checker",
+    "imageTextExtraction": "Image Text Extraction (OCR)",
+    "photoColorizer": "Photo Colorizer"
   },
   "Footer": {
     "about": "Batch Shots helps you optimize product images for SEO quickly and easily, right in your browser.",
@@ -457,7 +463,15 @@
         "download": "DOWNLOAD",
         "reset": "RESET"
       },
-      "allImages": "ALL IMAGES ({current}/{max})"
+      "allImages": "ALL IMAGES ({current}/{max})",
+      "duplicateBadge": "Duplicate",
+      "keepDuplicate": "Keep",
+      "removeDuplicate": "Remove",
+      "cropMode": "Crop",
+      "cropApply": "Apply crop",
+      "cropApplyAll": "Apply to all",
+      "cropCancel": "Cancel",
+      "cropAspectFree": "Free"
     },
     "PricingCard": {
       "oneTime": "one-time",
@@ -1229,7 +1243,6 @@
     "AllGroupsAnalyzedReadyDownload": "All {count} duplicate groups analyzed. Ready to download {downloadCount} best photos.",
     "AnalysisPartialReadyDownload": "Analysis for best selection partially complete ({processedGroups}/{totalGroups} groups). Ready to download {downloadCount} photos (best available will be chosen).",
     "NoImagesProcessedOrGroups": "No photos processed or no groups formed yet. Ensure photos were selected and AI analysis completed.",
-
     "LoaderTitleInitializing": "Initializing Smart Tools...",
     "LoaderTitleLoadingModel": "Loading AI Brain...",
     "LoaderTitleQualityTools": "Preparing Quality Analyzer...",
@@ -1238,7 +1251,6 @@
     "LoaderDescriptionLoadingModel": "Our advanced AI is warming up. This might take a moment.",
     "LoaderDescriptionQualityTools": "Preparing tools for detailed photo quality insights...",
     "LoaderProDescription": "Verifying your account status to enable all available features...",
-
     "MainCardTitle": "Find & Manage Duplicate Photos",
     "UploadSectionTitle": "Upload Your Photos",
     "UploadSectionDescription": "Select multiple photos. Our AI will intelligently analyze them and group similar ones together.",
@@ -1250,7 +1262,6 @@
     "SupportedFormats": "Supports JPG, PNG, WEBP, HEIC formats",
     "AIStatusLabel": "AI Status: {status}",
     "QualityAnalyzerStatusLoading": "Quality Analyzer: Loading...",
-
     "SimilarityThresholdTitle": "Similarity Setting",
     "SimilarityThresholdDescription": "Control how closely photos must match to be flagged as duplicates. Higher values mean stricter matching.",
     "SimilarityLessStrict": "Less Strict",
@@ -1258,7 +1269,6 @@
     "SimilarityMoreStrict": "More Strict",
     "ButtonApplyThreshold": "Apply Setting",
     "ButtonApplyThresholdLoading": "Re-analyzing...",
-
     "ResultsTitle": "Detection Results:",
     "DuplicateSetTitle": "Duplicate Set {number} ({count} similar photos)",
     "ButtonAnalyzeQuality": "Analyze Quality",
@@ -1273,14 +1283,11 @@
     "KpiExposure": "Exposure:",
     "ButtonDownload": "Download",
     "ButtonDownloading": "Downloading...",
-
     "UniqueImagesTitle": "Unique Photos ({count} photo(s) with no direct duplicates)",
-
     "ButtonAnalyzeAllGroups": "Analyze All Groups for Best Selection",
     "ButtonAnalyzeAllGroupsLoading": "Analyzing All Groups...",
     "ButtonDownloadBest": "Download {count} Best Photos",
     "ButtonDownloadBestLoading": "Preparing Download...",
-
     "HowItWorksTitle": "How Our AI Finds Duplicates",
     "HowItWorksStep1Title": "1. Upload Your Photos",
     "HowItWorksStep1Desc": "Click \"Select Photos\" and choose the images you want to check. You can select many at once.",
@@ -1292,7 +1299,6 @@
     "HowItWorksStep4Desc": "Use the similarity slider to control how strict the matching is. A higher value means photos must be almost identical to be flagged as duplicates.",
     "HowItWorksStep5Title": "5. Review & Organize",
     "HowItWorksStep5Desc": "Results clearly show duplicate sets and unique photos. Our AI can also highlight the best quality photo in each duplicate group, helping you decide which to keep.",
-
     "FreeUserLimit": "Free users can upload up to {limit} photos at a time.",
     "ButtonSelectImagesLimit": "Select Photos (Up to {limit})",
     "UpgradeMessage": "Upgrade to PRO to analyze unlimited photos at once.",
@@ -1300,7 +1306,6 @@
     "HowItWorksStep1Free": "Free users are limited to {limit} photos at a time.",
     "HowItWorksStep1Pro": "As a PRO user, you can analyze unlimited photos at once.",
     "ProFeatureName": "Unlimited Photo Analysis",
-
     "FreeModeTitle": "FREE MODE",
     "FreeModeDescription": "Process up to {limit} photos at a time. Upgrade to PRO to analyze unlimited photos!",
     "ProModeTitle": "PRO MODE",
@@ -1309,7 +1314,6 @@
     "ProcessingErrors": "Processing Errors",
     "imagesCount": "{current}/{max} photos",
     "upgradeFor": "(Upgrade for unlimited)",
-
     "UpgradeCardTitle": "UPGRADE TO PRO",
     "UpgradeCardPlanTitle": "PRO PLAN",
     "UpgradeCardPlanPrice": "$19.99",
@@ -1320,23 +1324,18 @@
     "UpgradeCardFeature4": "Batch download of best photos from duplicate sets",
     "UpgradeCardFeature5": "Access to all other PRO features (background removal, etc.)",
     "UpgradeCardButton": "UPGRADE NOW",
-
     "ProUpgradeTitle": "Upgrade to Pro for Unlimited Photos",
-
     "SimilarityControlsTitle": "Similarity Algorithm & Threshold",
     "SimilarityAlgorithmLabel": "Similarity Algorithm",
     "SimilarityThresholdLabel": "Similarity Threshold",
     "SimilarityThresholdDescDistance": "Lower values mean more similar images (distance metric)",
     "SimilarityThresholdDescSimilarity": "Higher values mean more similar images (similarity metric)",
-
     "ProcessingChanges": "Processing changes...",
     "ReanalyzingWithAlgorithm": "Reanalyzing with new algorithm...",
     "AnalysisCompleteWithAlgorithm": "Analysis complete with new algorithm. {groupSummary}",
-
     "AnalyzingDuplicates": "Analyzing duplicates...",
     "AnalyzingDuplicatesProgress": "Analyzing duplicates... {progress}%",
     "DuplicateAnalysisComplete": "Duplicate analysis complete",
-
     "VisualizationTitle": "AI Vector Space",
     "VisualizationDescription": "Visualize how AI sees your images in high-dimensional space, reduced to 2D using UMAP algorithm. Similar images cluster together.",
     "VisualizationShowButton": "Show Visualization",
@@ -1437,5 +1436,212 @@
     "FreeUserPlanIndicator": "Free Plan: AI SEO for up to 3 images. Upgrade for unlimited!",
     "FreePlanInfoBoxTitle": "FREE PLAN",
     "ProFeatureUnlimitedImages": "Unlimited AI SEO image generation"
+  },
+  "Pipeline": {
+    "metadata": {
+      "title": "Batch Photo Pipeline — Process 500 Marketplace Photos at Once",
+      "description": "Upload once, then dedupe, remove backgrounds, auto-crop, quality-check, OCR, caption, resize and export marketplace-ready photos — all in your browser, no upload to any server.",
+      "keywords": "batch photo editor, marketplace photos, product photo pipeline, bulk image processing, browser photo editor"
+    },
+    "title": "Batch Photo Pipeline",
+    "steps": {
+      "upload": "Upload",
+      "dedupe": "Duplicates",
+      "bg": "Background",
+      "crop": "Auto-Crop",
+      "quality": "Quality",
+      "ocr": "OCR",
+      "caption": "Caption",
+      "resize": "Resize",
+      "export": "Export"
+    },
+    "stepStatus": {
+      "pending": "Pending",
+      "running": "Running…",
+      "done": "Done",
+      "skipped": "Skipped",
+      "error": "Error"
+    },
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip",
+    "rerun": "Re-run",
+    "rerunConfirm": "Re-running this step will clear the results of all later steps. Continue?",
+    "uploadTitle": "Drop your product photos here",
+    "uploadDescription": "Up to {max} images — JPG, PNG, WEBP, HEIC. Everything stays in your browser.",
+    "addMoreImages": "Add more images",
+    "maxImagesReached": "Maximum of {max} images reached",
+    "preparingImages": "Preparing images… {done}/{total}",
+    "imageCount": "{count} images",
+    "removeImage": "Remove image",
+    "uploadStandaloneHint": "Images are processed locally and never leave your device.",
+    "standaloneUploadFirst": "Upload images to start using this tool.",
+    "processAll": "Process all",
+    "processSelected": "Process selected only",
+    "cancel": "Cancel",
+    "modelLoading": "Loading AI model… {pct}%",
+    "processingError": "Some images failed: {count}",
+    "howItWorks": {
+      "title": "How it works",
+      "step1Title": "Upload your photos",
+      "step1Text": "Drop in one photo or a whole batch — everything stays on your device.",
+      "step2Title": "Adjust and run",
+      "step2Text": "Pick your settings and apply them to one photo or all at once.",
+      "step3Title": "Download the results",
+      "step3Text": "Save your finished photos in one click."
+    }
+  },
+  "DedupeStep": {
+    "title": "Find duplicate photos",
+    "run": "Find duplicates",
+    "phashPass": "Scanning for copies…",
+    "embedPass": "Comparing photos…",
+    "threshold": "Similarity",
+    "groupsFound": "{count} duplicate groups found",
+    "noDuplicates": "No duplicates found — all images are unique.",
+    "best": "Best",
+    "duplicate": "Duplicate",
+    "keep": "Keep",
+    "exclude": "Exclude",
+    "excludedCount": "{count} duplicates excluded from the batch",
+    "autoRemove": "Automatically remove duplicates",
+    "intro": "Find and remove duplicate photos in seconds — exact copies, resized versions and near-identical shots."
+  },
+  "BgStep": {
+    "title": "Remove backgrounds",
+    "run": "Remove backgrounds",
+    "quality": "Quality",
+    "fast": "Fast (recommended)",
+    "hq": "High quality (slower)",
+    "output": "Output",
+    "transparent": "Transparent PNG",
+    "whiteBg": "White background",
+    "before": "Before",
+    "after": "After",
+    "redoOne": "Redo this image",
+    "intro": "Give your product photos a clean, professional look. Remove the background from one photo or a hundred — nothing leaves your device."
+  },
+  "CropStep": {
+    "title": "Auto-crop products",
+    "run": "Detect & crop",
+    "margin": "Margin",
+    "square": "Square canvas",
+    "whiteBackground": "White background",
+    "outputSize": "Output size",
+    "noDetection": "No product detected — original kept",
+    "detected": "{label} ({pct}%)",
+    "metadata": {
+      "title": "Product Photo Cropper — Auto-Crop Product Images Online",
+      "description": "Automatically detect and crop products in your photos. Square canvas, white background, marketplace-ready sizes — free, in your browser.",
+      "keywords": "product photo cropper, auto crop product images, square product photos, crop tool online"
+    },
+    "intro": "Crop your product photos to the perfect frame — one at a time or the whole batch with the same crop."
+  },
+  "ColorizeStep": {
+    "title": "Colorize Black & White Photos",
+    "run": "Colorize",
+    "blend": "Color strength",
+    "hint": "Adds natural color to black-and-white photos — everything stays on your device.",
+    "metadata": {
+      "title": "Photo Colorizer — Add Color to Black & White Photos Online",
+      "description": "Automatically colorize black-and-white photos using on-device AI. Free, private, browser-based — no uploads, nothing leaves your computer.",
+      "keywords": "photo colorizer, colorize black and white photos, AI photo colorization, add color to old photos online, free photo colorizer"
+    },
+    "intro": "Bring old black-and-white photos to life with natural color — right in your browser."
+  },
+  "QualityStep": {
+    "title": "Quality check",
+    "run": "Check quality",
+    "flaggedCount": "{count} images flagged",
+    "noFlags": "All images passed the quality check.",
+    "excludeFlagged": "Exclude all flagged",
+    "flagBlurry": "Blurry",
+    "flagDark": "Too dark",
+    "flagOverexposed": "Overexposed",
+    "flagLowRes": "Low resolution",
+    "metadata": {
+      "title": "Photo Quality Checker — Detect Blurry & Bad Product Photos",
+      "description": "Automatically flag blurry, dark, overexposed and low-resolution product photos before you upload them to marketplaces. Free browser tool.",
+      "keywords": "photo quality checker, blurry photo detector, image quality analysis, product photo check"
+    }
+  },
+  "OcrStep": {
+    "title": "Extract Text from Images",
+    "run": "Extract text",
+    "downloadZip": "Download text (ZIP)",
+    "noText": "No text found",
+    "editHint": "Review and edit the extracted text before downloading.",
+    "textFor": "Text for {name}",
+    "addDocuments": "Add PDF, Word or PowerPoint files",
+    "pages": "{count} pages",
+    "metadata": {
+      "title": "Image Text Extraction — Free Text Extraction for Product Photos",
+      "description": "Extract text from labels, packaging and product photos directly in your browser. No upload — fast, private text extraction.",
+      "keywords": "image text extraction, OCR online free, extract text from image, label reader"
+    },
+    "intro": "Pull the text out of labels, packaging, PDFs, Word and PowerPoint documents — then download it all as neat text files."
+  },
+  "CaptionStep": {
+    "title": "SEO captions & filenames",
+    "run": "Generate captions",
+    "caption": "Caption",
+    "seoName": "SEO filename",
+    "editHint": "Captions are built from detected object, color and label text.",
+    "regenerate": "Regenerate",
+    "intro": "Get search-friendly captions and file names for your product photos, built from what's actually in the picture."
+  },
+  "ResizeStep": {
+    "title": "Resize & compress",
+    "run": "Apply to all",
+    "preset": "Marketplace preset",
+    "format": "Format",
+    "quality": "Quality",
+    "maxFileSize": "Max file size (KB, optional)",
+    "sharpen": "Slight sharpen",
+    "padToExact": "Pad to exact size",
+    "custom": "Custom",
+    "presetApplied": "{count} images processed"
+  },
+  "ExportStep": {
+    "title": "Export",
+    "download": "Download ZIP",
+    "downloading": "Building ZIP…",
+    "downloadComplete": "Download ready!",
+    "useSeoNames": "Use SEO filenames",
+    "renamePattern": "Rename pattern (e.g. product-{n})",
+    "includeManifest": "Include manifest.csv",
+    "addWatermark": "Add watermark",
+    "watermarkText": "Watermark text",
+    "imagesReady": "{count} images ready for export",
+    "keepOriginals": "Export originals (no processing)",
+    "intro": "Convert your photos to JPG, PNG or WEBP, resize them for any marketplace and download everything as one ZIP."
+  },
+  "DownloadZip": {
+    "title": "Download",
+    "download": "Download ZIP",
+    "building": "Preparing ZIP…",
+    "done": "Download ready!"
+  },
+  "EditorTools": {
+    "applyToAll": "Apply to all images",
+    "presetsTab": "Presets",
+    "advancedTab": "Advanced",
+    "noImageSelected": "Select an image first, or enable apply-to-all.",
+    "done": "Done",
+    "failed": "{count} failed"
+  },
+  "ObjectRemoveStep": {
+    "title": "Remove Objects from Photos",
+    "run": "Remove painted areas",
+    "brush": "Brush size",
+    "clear": "Clear strokes",
+    "applyAllAreas": "Apply painted areas to all images",
+    "hint": "Paint over anything you want to remove — it stays on your device.",
+    "metadata": {
+      "title": "Object Removal — Remove Unwanted Objects from Photos Online",
+      "description": "Paint over unwanted objects and remove them from your photos using on-device AI inpainting. Free, private, browser-based — nothing leaves your computer.",
+      "keywords": "object removal, remove object from photo, photo object eraser, remove unwanted objects online, free object removal tool"
+    },
+    "intro": "Paint over anything you don't want in the picture — price tags, shadows, clutter — and it disappears."
   }
 }

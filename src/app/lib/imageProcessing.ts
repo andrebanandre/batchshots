@@ -6,14 +6,7 @@ import { WatermarkSettings, WatermarkPosition, defaultWatermarkSettings } from '
 import JSZip from 'jszip';
 // Gemini removed
 
-// Import the OpenCV type from our declaration file
-declare global {
-  interface Window {
-   // Use the specific type from the declaration file
-    // @ts-expect-error - Suppress conflict with potential global 'opencv' type
-    cv: typeof cv;
-  }
-}
+// Window.cv is declared globally in ./opencv.d.ts
 
 export const initOpenCV = (): Promise<void> => {
   return new Promise((resolve) => {
@@ -722,7 +715,6 @@ function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments
 
     for (let i = 0; i < hls.rows; i++) {
       for (let j = 0; j < hls.cols; j++) {
-         // @ts-expect-error // ucharPtr might not be in basic types
          const pixel = hls.ucharPtr(i, j);
          if (isTransparent && srcMat.channels() === 4 && srcMat.ucharPtr(i, j)[3] === 0) {
            continue;
@@ -763,16 +755,12 @@ function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments
            if (isTransparent && srcMat.channels() === 4 && srcMat.ucharPtr(i, j)[3] === 0) {
               continue;
            }
-           // @ts-expect-error // ucharPtr might not be in basic types
            b.ucharPtr(i, j)[0] = Math.min(255, Math.max(0, b.ucharPtr(i, j)[0] * adjustments.blueScale));
-           // @ts-expect-error // ucharPtr might not be in basic types
            g.ucharPtr(i, j)[0] = Math.min(255, Math.max(0, g.ucharPtr(i, j)[0] * adjustments.greenScale));
-           // @ts-expect-error // ucharPtr might not be in basic types
            r.ucharPtr(i, j)[0] = Math.min(255, Math.max(0, r.ucharPtr(i, j)[0] * adjustments.redScale));
          }
        }
        
-       // @ts-expect-error // merge signature discrepancy (MatVector type)
        window.cv.merge(channels, dst);
        
        channels.delete();
@@ -784,9 +772,7 @@ function processWithOpenCVAdjustments(srcMat: any, adjustments: ImageAdjustments
   if (adjustments.sharpen > 0) {
       const blurred = new window.cv.Mat();
       const sharpened = new window.cv.Mat();
-      // @ts-expect-error // GaussianBlur might not be in basic types
       window.cv.GaussianBlur(dst, blurred, new window.cv.Size(0, 0), 3);
-      // @ts-expect-error // addWeighted might not be in basic types
       window.cv.addWeighted(dst, 1.0 + adjustments.sharpen, blurred, -adjustments.sharpen, 0, sharpened);
       dst.delete();
       dst = sharpened;

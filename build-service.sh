@@ -14,4 +14,3 @@ docker build --progress=plain --platform linux/amd64 -f docker/$SERVICE_NAME/Doc
 docker push $BG_HOST:5000/$SERVICE_NAME:$TAG
 
 docker -H=$BG_HOST service update --force --image $BG_HOST:5000/$SERVICE_NAME:$TAG batchshots_batchshots
-

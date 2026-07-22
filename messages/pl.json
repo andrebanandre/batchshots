@@ -59,7 +59,8 @@
     "upgradeFor": "(Zaktualizuj, aby uzyskać do 100)",
     "imageOptimization": "OPTYMALIZACJA OBRAZÓW",
     "dragAndDropPrivacy": "Przeciągnij i upuść obrazy tutaj lub kliknij, aby wybrać pliki. <strong>Całe przetwarzanie odbywa się w Twojej przeglądarce. Nigdy nie przesyłamy Twoich obrazów na nasze serwery.</strong> Twoja prywatność i bezpieczeństwo są gwarantowane.",
-    "heicConversionFailed": "Nie udało się przekonwertować obrazu HEIC: {fileName}. Format pliku może nie być obsługiwany lub plik może być uszkodzony."
+    "heicConversionFailed": "Nie udało się przekonwertować obrazu HEIC: {fileName}. Format pliku może nie być obsługiwany lub plik może być uszkodzony.",
+    "pipelineCta": "Wypróbuj nowy pipeline wsadowy →"
   },
   "Navbar": {
     "imageOptimizer": "Optymalizator obrazów",
@@ -75,7 +76,12 @@
     "seoDescription": "Opis SEO",
     "imageFormatConvertor": "Konwerter formatu obrazu",
     "profile": "Profil",
-    "logout": "Wyloguj się"
+    "logout": "Wyloguj się",
+    "pipeline": "Pipeline",
+    "productPhotoCropper": "Kadrowanie zdjęć produktów",
+    "photoQualityChecker": "Kontrola jakości zdjęć",
+    "imageTextExtraction": "Tekst z obrazu (OCR)",
+    "photoColorizer": "Koloryzacja zdjęć"
   },
   "Footer": {
     "about": "Batch Shots pomaga szybko i łatwo zoptymalizować obrazy produktów pod kątem SEO, bezpośrednio w przeglądarce.",
@@ -500,7 +506,15 @@
         "download": "POBIERZ",
         "reset": "RESETUJ"
       },
-      "allImages": "WSZYSTKIE OBRAZY ({current}/{max})"
+      "allImages": "WSZYSTKIE OBRAZY ({current}/{max})",
+      "duplicateBadge": "Duplikat",
+      "keepDuplicate": "Zachowaj",
+      "removeDuplicate": "Usuń",
+      "cropMode": "Przytnij",
+      "cropApply": "Zastosuj przycięcie",
+      "cropApplyAll": "Zastosuj do wszystkich",
+      "cropCancel": "Anuluj",
+      "cropAspectFree": "Dowolny"
     },
     "PricingCard": {
       "oneTime": "jednorazowo",
@@ -1107,7 +1121,6 @@
   "allImages": "WSZYSTKIE OBRAZY ({current}/{max})",
   "imagesCount": "{current}/{max} obrazów",
   "upgradeFor": "(Uaktualnij do 100)",
-
   "ImageDuplicateDetectionPage": {
     "metadata": {
       "title": "Wyszukiwarka i Czyszczenie Duplikatów Zdjęć AI | Batch Shots",
@@ -1180,14 +1193,12 @@
     "AllGroupsAnalyzedReadyDownload": "Wszystkie {count} grupy duplikatów przeanalizowane. Gotowe do pobrania {downloadCount} najlepszych zdjęć.",
     "AnalysisPartialReadyDownload": "Analiza wyboru najlepszych zdjęć częściowo zakończona (przetworzono {processedGroups}/{totalGroups} grup). Gotowe do pobrania {downloadCount} zdjęć (zostaną wybrane najlepsze dostępne).",
     "NoImagesProcessedOrGroups": "Nie przetworzono żadnych zdjęć lub nie utworzono jeszcze grup. Upewnij się, że zdjęcia zostały wybrane, a analiza AI zakończona.",
-
     "LoaderTitleInitializing": "Inicjalizowanie Inteligentnych Narzędzi...",
     "LoaderTitleLoadingModel": "Ładowanie Mózgu AI...",
     "LoaderTitleQualityTools": "Przygotowywanie Analizatora Jakości...",
     "LoaderDescriptionInitializing": "Przygotowywanie do inteligentnego wykrywania duplikatów. Proszę czekać.",
     "LoaderDescriptionLoadingModel": "Nasza zaawansowana AI się rozgrzewa. Może to chwilę potrwać.",
     "LoaderDescriptionQualityTools": "Przygotowywanie narzędzi do szczegółowych informacji o jakości zdjęć...",
-
     "MainCardTitle": "Znajdź i Zarządzaj Zduplikowanymi Zdjęciami",
     "UploadSectionTitle": "Prześlij Swoje Zdjęcia",
     "UploadSectionDescription": "Wybierz wiele zdjęć. Nasza AI inteligentnie je przeanalizuje i zgrupowuje podobne.",
@@ -1199,7 +1210,6 @@
     "SupportedFormats": "Obsługuje formaty JPG, PNG, WEBP, HEIC",
     "AIStatusLabel": "Status AI: {status}",
     "QualityAnalyzerStatusLoading": "Analizator Jakości: Ładowanie...",
-
     "SimilarityThresholdTitle": "Ustawienie Podobieństwa",
     "SimilarityThresholdDescription": "Określ, jak dokładnie zdjęcia muszą pasować, aby zostały oznaczone jako duplikaty. Wyższe wartości oznaczają bardziej rygorystyczne dopasowanie.",
     "SimilarityLessStrict": "Mniej Rygorystyczne",
@@ -1207,7 +1217,6 @@
     "SimilarityMoreStrict": "Bardziej Rygorystyczne",
     "ButtonApplyThreshold": "Zastosuj Ustawienie",
     "ButtonApplyThresholdLoading": "Ponowne Analizowanie...",
-
     "ResultsTitle": "Wyniki Wykrywania:",
     "DuplicateSetTitle": "Zestaw Duplikatów {number} ({count} podobnych zdjęć)",
     "ButtonAnalyzeQuality": "Analizuj Jakość",
@@ -1222,14 +1231,11 @@
     "KpiExposure": "Eksp.:",
     "ButtonDownload": "Pobierz",
     "ButtonDownloading": "Pobieranie...",
-
     "UniqueImagesTitle": "Unikalne Zdjęcia ({count} zdjęć bez bezpośrednich duplikatów)",
-
     "ButtonAnalyzeAllGroups": "Analizuj Wszystkie Grupy dla Najlepszego Wyboru",
     "ButtonAnalyzeAllGroupsLoading": "Analizowanie Wszystkich Grup...",
     "ButtonDownloadBest": "Pobierz {count} Najlepszych Zdjęć",
     "ButtonDownloadBestLoading": "Przygotowywanie Pobierania...",
-
     "HowItWorksTitle": "Jak Nasza AI Znajduje Duplikaty",
     "HowItWorksStep1Title": "1. Prześlij Swoje Zdjęcia",
     "HowItWorksStep1Desc": "Kliknij \"Wybierz Zdjęcia\" i wybierz obrazy, które chcesz sprawdzić. Możesz wybrać wiele naraz.",
@@ -1241,7 +1247,6 @@
     "HowItWorksStep4Desc": "Użyj suwaka podobieństwa, aby kontrolować, jak rygorystyczne jest dopasowanie. Wyższa wartość oznacza, że zdjęcia muszą być prawie identyczne, aby zostały oznaczone jako duplikaty.",
     "HowItWorksStep5Title": "5. Przeglądaj i Organizuj",
     "HowItWorksStep5Desc": "Wyniki wyraźnie pokazują zestawy duplikatów i unikalne zdjęcia. Nasza AI może również wyróżnić zdjęcie najlepszej jakości w każdej grupie duplikatów, pomagając Ci zdecydować, które zachować.",
-
     "FreeUserLimit": "Użytkownicy darmowi mogą przesłać do {limit} zdjęć jednocześnie.",
     "ButtonSelectImagesLimit": "Wybierz zdjęcia (do {limit})",
     "UpgradeMessage": "Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć naraz.",
@@ -1249,7 +1254,6 @@
     "HowItWorksStep1Free": "Użytkownicy darmowi są ograniczeni do {limit} zdjęć jednocześnie.",
     "HowItWorksStep1Pro": "Jako użytkownik PRO możesz analizować nieograniczoną liczbę zdjęć naraz.",
     "ProFeatureName": "Nieograniczona analiza zdjęć",
-
     "FreeModeTitle": "TRYB DARMOWY",
     "FreeModeDescription": "Przetwarzaj do {limit} zdjęć jednocześnie. Zaktualizuj do PRO, aby analizować nieograniczoną liczbę zdjęć!",
     "ProModeTitle": "TRYB PRO",
@@ -1258,7 +1262,6 @@
     "ProcessingErrors": "Błędy przetwarzania",
     "imagesCount": "{current}/{max} zdjęć",
     "upgradeFor": "(Zaktualizuj, aby uzyskać nielimitowane)",
-
     "UpgradeCardTitle": "ZAKTUALIZUJ DO PRO",
     "UpgradeCardPlanTitle": "PLAN PRO",
     "UpgradeCardPlanPrice": "$19.99",
@@ -1269,21 +1272,16 @@
     "UpgradeCardFeature4": "Pobieranie najlepszych zdjęć z zestawów duplikatów w partii",
     "UpgradeCardFeature5": "Dostęp do wszystkich innych funkcji PRO (usuwanie tła itp.)",
     "UpgradeCardButton": "ZAKTUALIZUJ TERAZ",
-
     "ProUpgradeTitle": "Przejdź na Pro dla nieograniczonych zdjęć",
-
     "SimilarityControlsTitle": "Algorytm podobieństwa i próg",
     "SimilarityAlgorithmLabel": "Algorytm podobieństwa",
     "SimilarityThresholdLabel": "Próg podobieństwa",
     "SimilarityThresholdDescDistance": "Niższe wartości oznaczają bardziej podobne obrazy (metryka odległości)",
     "SimilarityThresholdDescSimilarity": "Wyższe wartości oznaczają bardziej podobne obrazy (metryka podobieństwa)",
-
     "ProcessingChanges": "Przetwarzanie zmian...",
     "ReanalyzingWithAlgorithm": "Ponowna analiza z nowym algorytmem...",
     "AnalysisCompleteWithAlgorithm": "Analiza zakończona z nowym algorytmem. {groupSummary}",
-
     "DuplicateAnalysisComplete": "Analiza duplikatów zakończona",
-
     "VisualizationTitle": "Przestrzeń Wektorowa AI",
     "VisualizationDescription": "Wizualizuj jak AI postrzega Twoje obrazy w przestrzeni wielowymiarowej, zredukowanej do 2D za pomocą algorytmu UMAP. Podobne obrazy grupują się razem.",
     "VisualizationShowButton": "Pokaż Wizualizację",
@@ -1386,5 +1384,212 @@
     "FreeUserPlanIndicator": "Plan darmowy: AI SEO dla maksymalnie 3 obrazów. Zaktualizuj, aby mieć nielimitowane!",
     "FreePlanInfoBoxTitle": "PLAN DARMOWY",
     "ProFeatureUnlimitedImages": "Nielimitowane generowanie SEO obrazów AI"
+  },
+  "Pipeline": {
+    "metadata": {
+      "title": "Wsadowy pipeline zdjęć — Przetwarzaj 500 zdjęć marketplace naraz",
+      "description": "Prześlij raz, a następnie usuń duplikaty, wytnij tła, przytnij automatycznie, sprawdź jakość, OCR, podpisy, zmień rozmiar i wyeksportuj zdjęcia gotowe na marketplace — wszystko w przeglądarce, bez wysyłania na serwer.",
+      "keywords": "wsadowa edycja zdjęć, zdjęcia marketplace, pipeline zdjęć produktowych, masowe przetwarzanie obrazów, edytor zdjęć w przeglądarce"
+    },
+    "title": "Wsadowy pipeline zdjęć",
+    "steps": {
+      "upload": "Prześlij",
+      "dedupe": "Duplikaty",
+      "bg": "Tło",
+      "crop": "Kadrowanie",
+      "quality": "Jakość",
+      "ocr": "OCR",
+      "caption": "Podpis",
+      "resize": "Rozmiar",
+      "export": "Eksport"
+    },
+    "stepStatus": {
+      "pending": "Oczekuje",
+      "running": "W toku…",
+      "done": "Gotowe",
+      "skipped": "Pominięto",
+      "error": "Błąd"
+    },
+    "back": "Wstecz",
+    "next": "Dalej",
+    "skip": "Pomiń",
+    "rerun": "Uruchom ponownie",
+    "rerunConfirm": "Ponowne uruchomienie tego kroku usunie wyniki wszystkich późniejszych kroków. Kontynuować?",
+    "uploadTitle": "Upuść tutaj zdjęcia produktów",
+    "uploadDescription": "Do {max} obrazów — JPG, PNG, WEBP, HEIC. Wszystko zostaje w Twojej przeglądarce.",
+    "addMoreImages": "Dodaj więcej obrazów",
+    "maxImagesReached": "Osiągnięto maksimum {max} obrazów",
+    "preparingImages": "Przygotowywanie obrazów… {done}/{total}",
+    "imageCount": "{count} obrazów",
+    "removeImage": "Usuń obraz",
+    "uploadStandaloneHint": "Obrazy są przetwarzane lokalnie i nigdy nie opuszczają Twojego urządzenia.",
+    "standaloneUploadFirst": "Prześlij obrazy, aby korzystać z tego narzędzia.",
+    "processAll": "Przetwórz wszystkie",
+    "processSelected": "Przetwórz tylko wybrane",
+    "cancel": "Anuluj",
+    "modelLoading": "Ładowanie modelu AI… {pct}%",
+    "processingError": "Niektóre obrazy się nie powiodły: {count}",
+    "howItWorks": {
+      "title": "Jak to działa",
+      "step1Title": "Prześlij zdjęcia",
+      "step1Text": "Upuść jedno zdjęcie lub całą partię — wszystko zostaje na Twoim urządzeniu.",
+      "step2Title": "Ustaw i uruchom",
+      "step2Text": "Wybierz ustawienia i zastosuj je do jednego zdjęcia lub wszystkich naraz.",
+      "step3Title": "Pobierz wyniki",
+      "step3Text": "Zapisz gotowe zdjęcia jednym kliknięciem."
+    }
+  },
+  "DedupeStep": {
+    "title": "Znajdź zduplikowane zdjęcia",
+    "run": "Znajdź duplikaty",
+    "phashPass": "Szukanie kopii…",
+    "embedPass": "Porównywanie zdjęć…",
+    "threshold": "Podobieństwo",
+    "groupsFound": "Znaleziono {count} grup duplikatów",
+    "noDuplicates": "Nie znaleziono duplikatów — wszystkie obrazy są unikalne.",
+    "best": "Najlepsze",
+    "duplicate": "Duplikat",
+    "keep": "Zachowaj",
+    "exclude": "Wyklucz",
+    "excludedCount": "{count} duplikatów wykluczono z partii",
+    "autoRemove": "Automatycznie usuwaj duplikaty",
+    "intro": "Znajdź i usuń zduplikowane zdjęcia w kilka sekund — dokładne kopie, przeskalowane wersje i niemal identyczne ujęcia."
+  },
+  "BgStep": {
+    "title": "Usuń tła",
+    "run": "Usuń tła",
+    "quality": "Jakość",
+    "fast": "Szybko (zalecane)",
+    "hq": "Wysoka jakość (wolniej)",
+    "output": "Wyjście",
+    "transparent": "Przezroczysty PNG",
+    "whiteBg": "Białe tło",
+    "before": "Przed",
+    "after": "Po",
+    "redoOne": "Powtórz ten obraz",
+    "intro": "Nadaj zdjęciom produktów czysty, profesjonalny wygląd. Usuń tło z jednego lub stu zdjęć — nic nie opuszcza Twojego urządzenia."
+  },
+  "CropStep": {
+    "title": "Automatyczne kadrowanie produktów",
+    "run": "Wykryj i przytnij",
+    "margin": "Margines",
+    "square": "Kwadratowe płótno",
+    "whiteBackground": "Białe tło",
+    "outputSize": "Rozmiar wyjściowy",
+    "noDetection": "Nie wykryto produktu — zachowano oryginał",
+    "detected": "{label} ({pct}%)",
+    "metadata": {
+      "title": "Kadrowanie zdjęć produktów — Automatyczne przycinanie obrazów produktów",
+      "description": "Automatycznie wykrywaj i przycinaj produkty na zdjęciach. Kwadratowe płótno, białe tło, rozmiary gotowe na marketplace — za darmo, w przeglądarce.",
+      "keywords": "kadrowanie zdjęć produktów, automatyczne przycinanie, kwadratowe zdjęcia produktów, narzędzie do kadrowania online"
+    },
+    "intro": "Przytnij zdjęcia produktów do idealnego kadru — pojedynczo lub całą partię tym samym kadrem."
+  },
+  "ColorizeStep": {
+    "title": "Koloryzuj czarno-białe zdjęcia",
+    "run": "Koloryzuj",
+    "blend": "Intensywność koloru",
+    "hint": "Dodaje naturalny kolor do czarno-białych zdjęć — wszystko pozostaje na Twoim urządzeniu.",
+    "metadata": {
+      "title": "Koloryzacja zdjęć — Dodaj kolor do czarno-białych zdjęć online",
+      "description": "Automatycznie koloryzuj czarno-białe zdjęcia dzięki AI działającej lokalnie. Za darmo, prywatnie, w przeglądarce — bez przesyłania plików.",
+      "keywords": "koloryzacja zdjęć, koloryzowanie czarno-białych zdjęć, AI koloryzacja zdjęć, dodaj kolor do starych zdjęć online, darmowa koloryzacja zdjęć"
+    },
+    "intro": "Ożyw stare czarno-białe zdjęcia naturalnymi kolorami — bezpośrednio w przeglądarce."
+  },
+  "QualityStep": {
+    "title": "Kontrola jakości",
+    "run": "Sprawdź jakość",
+    "flaggedCount": "Oznaczono {count} obrazów",
+    "noFlags": "Wszystkie obrazy przeszły kontrolę jakości.",
+    "excludeFlagged": "Wyklucz wszystkie oznaczone",
+    "flagBlurry": "Rozmyte",
+    "flagDark": "Zbyt ciemne",
+    "flagOverexposed": "Prześwietlone",
+    "flagLowRes": "Niska rozdzielczość",
+    "metadata": {
+      "title": "Kontrola jakości zdjęć — Wykrywaj rozmyte i słabe zdjęcia produktów",
+      "description": "Automatycznie oznaczaj rozmyte, ciemne, prześwietlone i niskiej rozdzielczości zdjęcia produktów, zanim trafią na marketplace. Darmowe narzędzie w przeglądarce.",
+      "keywords": "kontrola jakości zdjęć, wykrywanie rozmytych zdjęć, analiza jakości obrazu, sprawdzanie zdjęć produktów"
+    }
+  },
+  "OcrStep": {
+    "title": "Wyodrębnij tekst ze zdjęć",
+    "run": "Wyodrębnij tekst",
+    "downloadZip": "Pobierz tekst (ZIP)",
+    "noText": "Nie znaleziono tekstu",
+    "editHint": "Sprawdź i edytuj wyodrębniony tekst przed pobraniem.",
+    "textFor": "Tekst dla {name}",
+    "addDocuments": "Dodaj pliki PDF, Word lub PowerPoint",
+    "pages": "{count} stron",
+    "metadata": {
+      "title": "Wyodrębnianie tekstu z obrazu — Darmowa ekstrakcja tekstu dla zdjęć produktów",
+      "description": "Wyodrębniaj tekst z etykiet, opakowań i zdjęć produktów bezpośrednio w przeglądarce. Bez przesyłania — szybka, prywatna ekstrakcja tekstu.",
+      "keywords": "wyodrębnianie tekstu z obrazu, OCR online za darmo, tekst ze zdjęcia, czytnik etykiet"
+    },
+    "intro": "Wyciągnij tekst z etykiet, opakowań, plików PDF, dokumentów Word i PowerPoint — i pobierz wszystko jako czytelne pliki tekstowe."
+  },
+  "CaptionStep": {
+    "title": "Podpisy SEO i nazwy plików",
+    "run": "Generuj podpisy",
+    "caption": "Podpis",
+    "seoName": "Nazwa pliku SEO",
+    "editHint": "Podpisy powstają z wykrytego obiektu, koloru i tekstu etykiety.",
+    "regenerate": "Wygeneruj ponownie",
+    "intro": "Uzyskaj przyjazne wyszukiwarkom podpisy i nazwy plików dla zdjęć produktów, tworzone na podstawie tego, co naprawdę jest na zdjęciu."
+  },
+  "ResizeStep": {
+    "title": "Zmień rozmiar i skompresuj",
+    "run": "Zastosuj do wszystkich",
+    "preset": "Preset marketplace",
+    "format": "Format",
+    "quality": "Jakość",
+    "maxFileSize": "Maks. rozmiar pliku (KB, opcjonalnie)",
+    "sharpen": "Lekkie wyostrzenie",
+    "padToExact": "Dopełnij do dokładnego rozmiaru",
+    "custom": "Niestandardowy",
+    "presetApplied": "Przetworzono {count} obrazów"
+  },
+  "ExportStep": {
+    "title": "Eksport",
+    "download": "Pobierz ZIP",
+    "downloading": "Tworzenie ZIP…",
+    "downloadComplete": "Pobieranie gotowe!",
+    "useSeoNames": "Użyj nazw SEO",
+    "renamePattern": "Wzorzec zmiany nazw (np. produkt-{n})",
+    "includeManifest": "Dołącz manifest.csv",
+    "addWatermark": "Dodaj znak wodny",
+    "watermarkText": "Tekst znaku wodnego",
+    "imagesReady": "{count} obrazów gotowych do eksportu",
+    "keepOriginals": "Eksportuj oryginały (bez przetwarzania)",
+    "intro": "Konwertuj zdjęcia do JPG, PNG lub WEBP, zmieniaj rozmiar pod dowolny marketplace i pobierz wszystko jako jeden ZIP."
+  },
+  "DownloadZip": {
+    "title": "Pobierz",
+    "download": "Pobierz ZIP",
+    "building": "Przygotowywanie ZIP…",
+    "done": "Pobieranie gotowe!"
+  },
+  "EditorTools": {
+    "applyToAll": "Zastosuj do wszystkich obrazów",
+    "presetsTab": "Presety",
+    "advancedTab": "Zaawansowane",
+    "noImageSelected": "Najpierw wybierz obraz lub włącz „zastosuj do wszystkich”.",
+    "done": "Gotowe",
+    "failed": "{count} nieudanych"
+  },
+  "ObjectRemoveStep": {
+    "title": "Usuwaj obiekty ze zdjęć",
+    "run": "Usuń zamalowane obszary",
+    "brush": "Rozmiar pędzla",
+    "clear": "Wyczyść zaznaczenia",
+    "applyAllAreas": "Zastosuj zamalowane obszary do wszystkich zdjęć",
+    "hint": "Zamaluj wszystko, co chcesz usunąć — wszystko pozostaje na Twoim urządzeniu.",
+    "metadata": {
+      "title": "Usuwanie obiektów — Usuń niechciane obiekty ze zdjęć online",
+      "description": "Zamaluj niechciane obiekty i usuń je ze zdjęć dzięki lokalnemu AI inpaintingowi. Za darmo, prywatnie, w przeglądarce — nic nie opuszcza Twojego komputera.",
+      "keywords": "usuwanie obiektów, usuń obiekt ze zdjęcia, gumka do obiektów na zdjęciu, usuwanie niechcianych obiektów online, darmowe narzędzie do usuwania obiektów"
+    },
+    "intro": "Zamaluj wszystko, czego nie chcesz na zdjęciu — metki, cienie, bałagan — i to zniknie."
   }
 }
