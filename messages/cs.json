@@ -1398,6 +1398,7 @@
     "imageCount": "{count} obrázků",
     "removeImage": "Odebrat obrázek",
     "uploadStandaloneHint": "Obrázky se zpracovávají lokálně a nikdy neopustí vaše zařízení.",
+    "uploadMoreHint": "Přetáhněte nebo vyberte až {count} dalších obrázků.",
     "standaloneUploadFirst": "Nahrajte obrázky, abyste mohli nástroj používat.",
     "processAll": "Zpracovat vše",
     "processSelected": "Zpracovat jen vybrané",
@@ -1428,7 +1429,8 @@
     "exclude": "Vyloučit",
     "excludedCount": "{count} duplikátů vyloučeno z dávky",
     "autoRemove": "Automaticky odstranit duplikáty",
-    "intro": "Najděte a odstraňte duplicitní fotky během sekund — přesné kopie, zmenšené verze i téměř totožné snímky."
+    "intro": "Najděte a odstraňte duplicitní fotky během sekund — přesné kopie, zmenšené verze i téměř totožné snímky.",
+    "howItWorks": { "title": "Jak funguje hledání duplikátů", "step1": { "title": "Přidejte fotky k porovnání", "description": "Nahrajte sbírku, kterou chcete uklidit. Nástroj porovná všechny fotky v dávce." }, "step2": { "title": "Nastavte míru shody", "description": "Pomocí podobnosti zahrňte přesné kopie, zmenšené verze nebo téměř stejné snímky." }, "step3": { "title": "Ponechte nejlepší a stáhněte", "description": "Projděte skupiny duplikátů, odstraňte nepotřebné kopie a stáhněte vyčištěnou sbírku." } }
   },
   "BgStep": {
     "title": "Odstranit pozadí",
@@ -1442,7 +1444,8 @@
     "before": "Před",
     "after": "Po",
     "redoOne": "Zopakovat tento obrázek",
-    "intro": "Dodejte produktovým fotkám čistý, profesionální vzhled. Odstraňte pozadí z jedné nebo sta fotek — nic neopustí vaše zařízení."
+    "intro": "Dodejte produktovým fotkám čistý, profesionální vzhled. Odstraňte pozadí z jedné nebo sta fotek — nic neopustí vaše zařízení.",
+    "howItWorks": { "title": "Jak funguje odstranění pozadí", "step1": { "title": "Nahrajte fotografie", "description": "Přidejte jeden obrázek nebo celou dávku s pozadím, které chcete odstranit." }, "step2": { "title": "Vyberte výsledný vzhled", "description": "Zvolte průhledné nebo čistě bílé pozadí a spusťte odstranění." }, "step3": { "title": "Zkontrolujte a stáhněte", "description": "Prohlédněte si fotografie bez pozadí a stáhněte jeden obrázek nebo celou dávku." } }
   },
   "CropStep": {
     "title": "Automatický ořez produktů",
@@ -1458,7 +1461,8 @@
       "description": "Automaticky detekujte a ořízněte produkty na fotkách. Čtvercové plátno, bílé pozadí, velikosti připravené pro marketplace — zdarma, v prohlížeči.",
       "keywords": "ořez produktových fotek, automatický ořez obrázků, čtvercové produktové fotky, online nástroj na ořez"
     },
-    "intro": "Ořízněte produktové fotky do dokonalého rámu — po jedné nebo celou dávku stejným ořezem."
+    "intro": "Ořízněte produktové fotky do dokonalého rámu — po jedné nebo celou dávku stejným ořezem.",
+    "howItWorks": { "title": "Jak funguje ořez produktů", "step1": { "title": "Přidejte produktové fotky", "description": "Nahrajte jednu fotku nebo dávku. Produkt v každém obrázku se najde automaticky." }, "step2": { "title": "Nastavte rám", "description": "Vyberte okraj, čtvercový formát, pozadí a požadovanou výstupní velikost." }, "step3": { "title": "Ořízněte a stáhněte", "description": "Spusťte ořez, zkontrolujte nový rám a stáhněte fotky připravené pro marketplace." } }
   },
   "ColorizeStep": {
     "title": "Obarvit černobílé fotky",
@@ -1470,7 +1474,8 @@
       "description": "Automaticky obarvěte černobílé fotky pomocí AI přímo v prohlížeči. Zdarma, soukromě — žádné nahrávání, nic neopouští váš počítač.",
       "keywords": "kolorování fotek, obarvení černobílých fotek, AI kolorování fotek, obarvit staré fotky online, zdarma kolorování fotek"
     },
-    "intro": "Oživte staré černobílé fotky přirozenými barvami — přímo v prohlížeči."
+    "intro": "Oživte staré černobílé fotky přirozenými barvami — přímo v prohlížeči.",
+    "howItWorks": { "title": "Jak funguje kolorování fotek", "step1": { "title": "Nahrajte černobílou fotku", "description": "Vyberte starý portrét, rodinnou fotku nebo jiný černobílý obrázek." }, "step2": { "title": "Zvolte sílu barev", "description": "Nastavte sytost výsledku a nechte nástroj přidat přirozené barvy." }, "step3": { "title": "Prohlédněte a stáhněte", "description": "Zkontrolujte obarvený výsledek, případně upravte sílu a hotovou fotku uložte." } }
   },
   "QualityStep": {
     "title": "Kontrola kvality",
@@ -1489,20 +1494,34 @@
     }
   },
   "OcrStep": {
-    "title": "Extrahovat text z obrázků",
+    "title": "Extrahovat text z obrázků a dokumentů",
     "run": "Extrahovat text",
     "downloadZip": "Stáhnout text (ZIP)",
     "noText": "Žádný text nenalezen",
-    "editHint": "Zkontrolujte a upravte extrahovaný text před stažením.",
+    "editHint": "Před stažením zkontrolujte formátovaný extrahovaný text.",
     "textFor": "Text pro {name}",
     "addDocuments": "Přidat soubory PDF, Word nebo PowerPoint",
     "pages": "{count} stran",
+    "uploadTitle": "Přetáhněte sem obrázky nebo dokumenty",
+    "uploadDescription": "JPG, PNG, WEBP, HEIC, PDF, DOCX nebo PPTX — vše se zpracuje ve vašem zařízení.",
+    "addMoreFiles": "Přidat další soubory",
+    "uploadMoreDescription": "Přetáhněte další obrázky či dokumenty nebo je vyberte kliknutím.",
+    "allFiles": "VŠECHNY SOUBORY ({current}/{max})",
+    "fileCount": "{count} souborů",
+    "maxFilesReached": "Bylo dosaženo maxima {max} souborů",
+    "preparingFiles": "Připravujeme soubory…",
+    "noFilesSelected": "Nahrajte obrázek nebo dokument, ze kterého chcete získat text.",
+    "pageHeading": "Strana {page}",
+    "pageProgress": "strana {page} z {total}",
+    "slideHeading": "Snímek {slide}",
+    "markdownPreview": "Formátovaný náhled",
     "metadata": {
       "title": "Extrakce textu z obrázku — Bezplatná extrakce textu pro produktové fotky",
       "description": "Extrahujte text z etiket, obalů a produktových fotek přímo v prohlížeči. Bez nahrávání — rychlá, soukromá extrakce textu.",
       "keywords": "extrakce textu z obrázku, OCR online zdarma, text z fotky, čtečka etiket"
     },
-    "intro": "Vytáhněte text z etiket, obalů, souborů PDF, dokumentů Word a PowerPoint — a stáhněte vše jako přehledné textové soubory."
+    "intro": "Vytáhněte text z etiket, obalů, souborů PDF, dokumentů Word a PowerPoint — a stáhněte vše jako přehledné textové soubory.",
+    "howItWorks": { "title": "Jak funguje extrakce textu", "step1": { "title": "Přidejte obrázky nebo dokumenty", "description": "Nahrajte fotky, PDF, soubory Word nebo prezentace PowerPoint s textem." }, "step2": { "title": "Extrahujte a zkontrolujte text", "description": "Spusťte extrakci a potom nalezený text v každém souboru přečtěte a opravte." }, "step3": { "title": "Stáhněte svůj text", "description": "Uložte zkontrolované výsledky jako přehledné textové soubory v jednom ZIPu." } }
   },
   "CaptionStep": {
     "title": "SEO popisky a názvy souborů",
@@ -1511,7 +1530,8 @@
     "seoName": "SEO název souboru",
     "editHint": "Popisky vznikají z detekovaného objektu, barvy a textu etikety.",
     "regenerate": "Vygenerovat znovu",
-    "intro": "Získejte popisky a názvy souborů přívětivé pro vyhledávače, vytvořené z toho, co na fotce skutečně je."
+    "intro": "Získejte popisky a názvy souborů přívětivé pro vyhledávače, vytvořené z toho, co na fotce skutečně je.",
+    "howItWorks": { "title": "Jak fungují SEO popisky", "step1": { "title": "Nahrajte produktové fotky", "description": "Přidejte obrázky, které potřebují jasnější popisy a názvy souborů pro vyhledávání." }, "step2": { "title": "Vytvořte popisky a názvy", "description": "Nástroj prohlédne každou fotku a vytvoří užitečný popisek a SEO název souboru." }, "step3": { "title": "Upravte a stáhněte", "description": "Upravte požadovaný text a stáhněte přejmenované fotky a popisky." } }
   },
   "ResizeStep": {
     "title": "Změnit velikost a komprimovat",
@@ -1565,6 +1585,7 @@
       "description": "Přemalujte nežádoucí objekty a odstraňte je z fotek pomocí AI inpaintingu přímo v prohlížeči. Zdarma, soukromě — nic neopouští váš počítač.",
       "keywords": "odstranění objektů, odstranit objekt z fotky, guma na objekty ve fotce, odstranit nežádoucí objekty online, zdarma nástroj na odstranění objektů"
     },
-    "intro": "Přemalujte cokoli, co na fotce nechcete — cenovky, stíny, nepořádek — a zmizí to."
+    "intro": "Přemalujte cokoli, co na fotce nechcete — cenovky, stíny, nepořádek — a zmizí to.",
+    "howItWorks": { "title": "Jak funguje odstranění objektů", "step1": { "title": "Nahrajte fotografii", "description": "Vyberte fotku s nechtěným objektem, osobou, skvrnou nebo rušivým prvkem." }, "step2": { "title": "Přetřete, co má zmizet", "description": "Upravte štětec a zakryjte nechtěnou oblast. Tahy můžete smazat a zkusit znovu." }, "step3": { "title": "Odstraňte a stáhněte", "description": "Spusťte odstranění, zkontrolujte opravené místo a stáhněte vyčištěnou fotku." } }
   }
 }

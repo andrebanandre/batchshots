@@ -1425,6 +1425,7 @@
     "imageCount": "{count} images",
     "removeImage": "Supprimer l'image",
     "uploadStandaloneHint": "Les images sont traitées localement et ne quittent jamais votre appareil.",
+    "uploadMoreHint": "Déposez ou choisissez jusqu’à {count} images supplémentaires.",
     "standaloneUploadFirst": "Téléversez des images pour utiliser cet outil.",
     "processAll": "Tout traiter",
     "processSelected": "Traiter la sélection uniquement",
@@ -1455,7 +1456,8 @@
     "exclude": "Exclure",
     "excludedCount": "{count} doublons exclus du lot",
     "autoRemove": "Supprimer automatiquement les doublons",
-    "intro": "Trouvez et supprimez les photos en double en quelques secondes — copies exactes, versions redimensionnées et clichés quasi identiques."
+    "intro": "Trouvez et supprimez les photos en double en quelques secondes — copies exactes, versions redimensionnées et clichés quasi identiques.",
+    "howItWorks": { "title": "Comment fonctionne la recherche de doublons", "step1": { "title": "Ajoutez les photos à comparer", "description": "Importez la collection à nettoyer. L’outil compare toutes les photos du lot." }, "step2": { "title": "Choisissez le niveau de ressemblance", "description": "Réglez la similarité pour inclure les copies exactes, redimensionnées ou presque identiques." }, "step3": { "title": "Gardez les meilleures et téléchargez", "description": "Vérifiez chaque groupe, retirez les copies inutiles puis téléchargez la collection nettoyée." } }
   },
   "BgStep": {
     "title": "Supprimer les arrière-plans",
@@ -1469,7 +1471,8 @@
     "before": "Avant",
     "after": "Après",
     "redoOne": "Refaire cette image",
-    "intro": "Donnez à vos photos produit un rendu net et professionnel. Supprimez l'arrière-plan d'une photo ou de cent — rien ne quitte votre appareil."
+    "intro": "Donnez à vos photos produit un rendu net et professionnel. Supprimez l'arrière-plan d'une photo ou de cent — rien ne quitte votre appareil.",
+    "howItWorks": { "title": "Comment fonctionne la suppression d’arrière-plan", "step1": { "title": "Importez vos photos", "description": "Ajoutez une image ou tout un lot dont vous souhaitez retirer l’arrière-plan." }, "step2": { "title": "Choisissez le rendu final", "description": "Sélectionnez un arrière-plan transparent ou blanc, puis lancez la suppression." }, "step3": { "title": "Vérifiez et téléchargez", "description": "Prévisualisez les photos détourées et téléchargez une image ou le lot complet." } }
   },
   "CropStep": {
     "title": "Recadrage automatique des produits",
@@ -1485,7 +1488,8 @@
       "description": "Détectez et recadrez automatiquement les produits sur vos photos. Canevas carré, fond blanc, tailles prêtes pour les marketplaces — gratuit, dans votre navigateur.",
       "keywords": "recadrage photo produit, recadrage automatique d'images, photos produit carrées, outil de recadrage en ligne"
     },
-    "intro": "Recadrez vos photos produit au cadre parfait — une par une ou tout le lot avec le même recadrage."
+    "intro": "Recadrez vos photos produit au cadre parfait — une par une ou tout le lot avec le même recadrage.",
+    "howItWorks": { "title": "Comment fonctionne le recadrage produit", "step1": { "title": "Ajoutez vos photos produit", "description": "Importez une photo ou un lot. Le produit est repéré automatiquement dans chaque image." }, "step2": { "title": "Réglez le cadre", "description": "Choisissez la marge, le format carré, l’arrière-plan et la taille de sortie." }, "step3": { "title": "Recadrez et téléchargez", "description": "Lancez le recadrage, vérifiez le nouveau cadre puis téléchargez vos photos prêtes à publier." } }
   },
   "ColorizeStep": {
     "title": "Coloriser les photos noir et blanc",
@@ -1497,7 +1501,8 @@
       "description": "Colorisez automatiquement vos photos noir et blanc grâce à l'IA embarquée. Gratuit, privé, dans le navigateur — aucun envoi, rien ne quitte votre ordinateur.",
       "keywords": "colorisation photo, coloriser photo noir et blanc, colorisation IA, ajouter de la couleur à une vieille photo en ligne, colorisation photo gratuite"
     },
-    "intro": "Redonnez vie à vos vieilles photos noir et blanc avec des couleurs naturelles — directement dans votre navigateur."
+    "intro": "Redonnez vie à vos vieilles photos noir et blanc avec des couleurs naturelles — directement dans votre navigateur.",
+    "howItWorks": { "title": "Comment fonctionne la colorisation", "step1": { "title": "Importez une photo noir et blanc", "description": "Choisissez un ancien portrait, une photo de famille ou toute image monochrome." }, "step2": { "title": "Choisissez l’intensité des couleurs", "description": "Réglez la vivacité souhaitée puis laissez l’outil ajouter des couleurs naturelles." }, "step3": { "title": "Prévisualisez et téléchargez", "description": "Vérifiez le résultat, ajustez l’intensité si besoin et enregistrez la photo." } }
   },
   "QualityStep": {
     "title": "Contrôle qualité",
@@ -1516,20 +1521,34 @@
     }
   },
   "OcrStep": {
-    "title": "Extraire le texte des images",
+    "title": "Extraire le texte des images et documents",
     "run": "Extraire le texte",
     "downloadZip": "Télécharger le texte (ZIP)",
     "noText": "Aucun texte trouvé",
-    "editHint": "Vérifiez et modifiez le texte extrait avant de le télécharger.",
+    "editHint": "Vérifiez le texte extrait et formaté avant de le télécharger.",
     "textFor": "Texte pour {name}",
     "addDocuments": "Ajouter des fichiers PDF, Word ou PowerPoint",
     "pages": "{count} pages",
+    "uploadTitle": "Déposez des images ou documents ici",
+    "uploadDescription": "JPG, PNG, WEBP, HEIC, PDF, DOCX ou PPTX — tout est traité sur votre appareil.",
+    "addMoreFiles": "Ajouter des fichiers",
+    "uploadMoreDescription": "Déposez d’autres images ou documents, ou cliquez pour les choisir.",
+    "allFiles": "TOUS LES FICHIERS ({current}/{max})",
+    "fileCount": "{count} fichiers",
+    "maxFilesReached": "Maximum de {max} fichiers atteint",
+    "preparingFiles": "Préparation de vos fichiers…",
+    "noFilesSelected": "Importez une image ou un document pour en extraire le texte.",
+    "pageHeading": "Page {page}",
+    "pageProgress": "page {page} sur {total}",
+    "slideHeading": "Diapositive {slide}",
+    "markdownPreview": "Aperçu formaté",
     "metadata": {
       "title": "Extraction de texte d'image — Extraction de texte gratuite pour photos produit",
       "description": "Extrayez le texte des étiquettes, emballages et photos produit directement dans votre navigateur. Sans téléversement — extraction de texte rapide et privée.",
       "keywords": "extraction de texte d'image, OCR en ligne gratuit, extraire texte d'une image, lecteur d'étiquettes"
     },
-    "intro": "Extrayez le texte des étiquettes, emballages, PDF, documents Word et PowerPoint — puis téléchargez le tout en fichiers texte propres."
+    "intro": "Extrayez le texte des étiquettes, emballages, PDF, documents Word et PowerPoint — puis téléchargez le tout en fichiers texte propres.",
+    "howItWorks": { "title": "Comment fonctionne l’extraction de texte", "step1": { "title": "Ajoutez des images ou documents", "description": "Importez des photos, PDF, fichiers Word ou présentations PowerPoint contenant du texte." }, "step2": { "title": "Extrayez et vérifiez le texte", "description": "Lancez l’extraction, puis relisez et corrigez le texte trouvé dans chaque fichier." }, "step3": { "title": "Téléchargez votre texte", "description": "Enregistrez les résultats vérifiés sous forme de fichiers texte dans un seul ZIP." } }
   },
   "CaptionStep": {
     "title": "Légendes SEO et noms de fichiers",
@@ -1538,7 +1557,8 @@
     "seoName": "Nom de fichier SEO",
     "editHint": "Les légendes sont construites à partir de l'objet détecté, de la couleur et du texte d'étiquette.",
     "regenerate": "Régénérer",
-    "intro": "Obtenez des légendes et noms de fichiers optimisés pour la recherche, créés à partir du contenu réel de la photo."
+    "intro": "Obtenez des légendes et noms de fichiers optimisés pour la recherche, créés à partir du contenu réel de la photo.",
+    "howItWorks": { "title": "Comment fonctionnent les légendes SEO", "step1": { "title": "Importez vos photos produit", "description": "Ajoutez les images qui ont besoin de descriptions et de noms de fichiers plus clairs." }, "step2": { "title": "Générez légendes et noms", "description": "L’outil examine chaque photo et crée une légende utile et un nom de fichier adapté au SEO." }, "step3": { "title": "Vérifiez et téléchargez", "description": "Modifiez le texte souhaité, puis téléchargez les photos renommées et leurs légendes." } }
   },
   "ResizeStep": {
     "title": "Redimensionner et compresser",
@@ -1592,6 +1612,7 @@
       "description": "Peignez sur les objets indésirables et supprimez-les de vos photos grâce à l'inpainting IA embarqué. Gratuit, privé, dans le navigateur — rien ne quitte votre ordinateur.",
       "keywords": "suppression d'objets, supprimer un objet d'une photo, gomme à objets photo, supprimer des objets indésirables en ligne, outil gratuit de suppression d'objets"
     },
-    "intro": "Peignez sur tout ce que vous ne voulez pas dans l'image — étiquettes de prix, ombres, désordre — et cela disparaît."
+    "intro": "Peignez sur tout ce que vous ne voulez pas dans l'image — étiquettes de prix, ombres, désordre — et cela disparaît.",
+    "howItWorks": { "title": "Comment fonctionne la suppression d’objets", "step1": { "title": "Importez votre photo", "description": "Choisissez une photo avec un objet, une personne, une marque ou un détail indésirable." }, "step2": { "title": "Peignez ce qui doit disparaître", "description": "Réglez le pinceau et recouvrez la zone. Vous pouvez effacer les traits et recommencer." }, "step3": { "title": "Supprimez et téléchargez", "description": "Lancez la suppression, vérifiez la zone réparée puis téléchargez la photo nettoyée." } }
   }
 }

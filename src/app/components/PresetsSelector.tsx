@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import { useTranslations } from 'next-intl';
 
@@ -16,6 +16,8 @@ interface PresetsSelectorProps {
   selectedPreset: string | null;
   onSelectPreset: (presetId: string) => void;
   onCustomSettingsChange?: (settings: { width: number; height: number | null; quality: number }) => void;
+  showCustomSettings?: boolean;
+  liveCustomSettings?: boolean;
 }
 
 // Combined size and quality presets
@@ -52,7 +54,7 @@ export const defaultPresets: Preset[] = [
     quality: 100,
     description: 'presets.max-quality.description'
   },
-  // Custom preset (will be filled by Advanced tab)
+  // Custom preset (filled by the custom controls when they are shown)
   {
     id: 'custom',
     name: 'presets.custom.name',
@@ -67,106 +69,74 @@ export default function PresetsSelector({
   presets, 
   selectedPreset, 
   onSelectPreset,
-  onCustomSettingsChange
+  onCustomSettingsChange,
+  showCustomSettings = true,
+  liveCustomSettings = false,
 }: PresetsSelectorProps) {
   const t = useTranslations('Components.PresetsSelector');
-  const tc = useTranslations('Components.ImageProcessingControls');
   
-  const [activeTab, setActiveTab] = useState<'basic' | 'advanced'>('basic'); // Default to basic tab
-  
-  // Get the selected preset details
-  const selectedPresetDetails = selectedPreset 
-    ? presets.find(p => p.id === selectedPreset) 
-    : null;
-  
-  // State for advanced tab custom settings
+  // State for custom settings
   const [customWidth, setCustomWidth] = useState('1080');
   const [customHeight, setCustomHeight] = useState('');
   const [customQuality, setCustomQuality] = useState('85');
   const [maintainAspectRatio, setMaintainAspectRatio] = useState(true);
 
-  // Update custom settings when a preset is selected
-  useEffect(() => {
-    if (selectedPresetDetails) {
-      setCustomWidth(selectedPresetDetails.width.toString());
-      setCustomHeight(selectedPresetDetails.height?.toString() || '');
-      setCustomQuality(selectedPresetDetails.quality.toString());
-      setMaintainAspectRatio(selectedPresetDetails.height === null);
-    }
-  }, [selectedPresetDetails]);
+  const handleSelectPreset = (preset: Preset) => {
+    setCustomWidth(preset.width.toString());
+    setCustomHeight(preset.height?.toString() || '');
+    setCustomQuality(preset.quality.toString());
+    setMaintainAspectRatio(preset.height === null);
+    onSelectPreset(preset.id);
+  };
 
-  // Apply custom settings
-  const handleApplyCustomSettings = () => {
-    // Find and update the custom preset
+  const applyCustomSettings = (
+    width = customWidth,
+    height = customHeight,
+    quality = customQuality,
+    keepAspectRatio = maintainAspectRatio
+  ) => {
     const customPreset = presets.find(p => p.id === 'custom');
     if (customPreset && onCustomSettingsChange) {
       const settings = {
-        width: parseInt(customWidth) || 1080,
-        height: maintainAspectRatio ? null : (parseInt(customHeight) || null),
-        quality: parseInt(customQuality) || 85
+        width: parseInt(width) || 1080,
+        height: keepAspectRatio ? null : (parseInt(height) || null),
+        quality: parseInt(quality) || 85
       };
       
       onCustomSettingsChange(settings);
       
       // Select the custom preset
       onSelectPreset('custom');
-      // Switch to advanced tab to show custom settings were applied
-      setActiveTab('advanced'); 
     }
   };
-  
-  // Filter presets based on the active tab
-  const filteredPresets = presets.filter(preset => {
-    if (activeTab === 'basic') return !preset.id.startsWith('custom'); // Show all non-custom presets
-    // Advanced tab doesn't show presets list, it shows controls
-    return false; 
-  });
+
+  const simplePresets = presets.filter((preset) => preset.id !== 'custom');
 
   return (
     <div className="space-y-4">
-      {/* Tab navigation */}
-      <div className="flex border-b border-black">
-        <button 
-          className={`px-4 py-2 font-bold text-sm ${activeTab === 'basic' ? 'bg-primary text-white' : 'bg-white'}`}
-          onClick={() => setActiveTab('basic')}
-        >
-          {tc('basic')}
-        </button>
-        {/* Removed Quality Tab Button */}
-        <button 
-          className={`px-4 py-2 font-bold text-sm ${activeTab === 'advanced' ? 'bg-primary text-white' : 'bg-white'}`}
-          onClick={() => setActiveTab('advanced')}
-        >
-          {tc('advanced')}
-        </button>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {simplePresets.map((preset) => (
+          <Button
+            key={preset.id}
+            variant={selectedPreset === preset.id ? 'accent' : 'primary'}
+            className="text-left"
+            onClick={() => handleSelectPreset(preset)}
+            aria-pressed={selectedPreset === preset.id}
+          >
+            <div>
+              <div className="font-bold">{t(`presets.${preset.id}.name`)}</div>
+              <div className="text-xs">
+                {t(`presets.${preset.id}.description`)}
+              </div>
+            </div>
+          </Button>
+        ))}
       </div>
       
-      {/* Basic Presets */}
-      {activeTab === 'basic' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {filteredPresets.map((preset) => (
-            <Button
-              key={preset.id}
-              variant={selectedPreset === preset.id ? 'accent' : 'primary'}
-              className="text-left"
-              onClick={() => onSelectPreset(preset.id)}
-            >
-              <div>
-                <div className="font-bold">{t(`presets.${preset.id}.name`)}</div>
-                <div className="text-xs">
-                  {t(`presets.${preset.id}.description`)}
-                </div>
-              </div>
-            </Button>
-          ))}
-        </div>
-      )}
-      
-      {/* Advanced Tab Content */}
-      {activeTab === 'advanced' && (
-        <div className="space-y-4">
-          <div className="brutalist-border p-3">
-            <div className="mb-3">
+      {showCustomSettings && onCustomSettingsChange && (
+        <div className="brutalist-border p-3 space-y-4">
+          <h3 className="font-bold uppercase">{t('custom')}</h3>
+          <div className="mb-3">
               <label className="block font-bold text-sm mb-1">{t('dimensions')}</label>
               <div className="flex items-center mb-2">
                 <div className="flex-1 mr-2">
@@ -176,7 +146,11 @@ export default function PresetsSelector({
                     min="1"
                     max="10000"
                     value={customWidth}
-                    onChange={(e) => setCustomWidth(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCustomWidth(value);
+                      if (liveCustomSettings) applyCustomSettings(value);
+                    }}
                     className="w-full border-2 border-black p-2"
                   />
                 </div>
@@ -188,7 +162,13 @@ export default function PresetsSelector({
                     max="10000"
                     value={customHeight}
                     disabled={maintainAspectRatio}
-                    onChange={(e) => setCustomHeight(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setCustomHeight(value);
+                      if (liveCustomSettings) {
+                        applyCustomSettings(customWidth, value);
+                      }
+                    }}
                     className={`w-full border-2 border-black p-2 ${maintainAspectRatio ? 'bg-gray-100' : ''}`}
                     placeholder={maintainAspectRatio ? t('auto') : ''}
                   />
@@ -199,7 +179,18 @@ export default function PresetsSelector({
                   type="checkbox"
                   id="aspect-ratio"
                   checked={maintainAspectRatio}
-                  onChange={() => setMaintainAspectRatio(!maintainAspectRatio)}
+                  onChange={() => {
+                    const value = !maintainAspectRatio;
+                    setMaintainAspectRatio(value);
+                    if (liveCustomSettings) {
+                      applyCustomSettings(
+                        customWidth,
+                        customHeight,
+                        customQuality,
+                        value
+                      );
+                    }
+                  }}
                   className="mr-2 h-4 w-4 appearance-none checked:bg-[#4f46e5] checked:border-[#4f46e5] relative border-2 border-black brutalist-border"
                   style={{
                     backgroundImage: maintainAspectRatio ? "url(\"data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e\")" : "",
@@ -210,31 +201,37 @@ export default function PresetsSelector({
                 />
                 <label htmlFor="aspect-ratio" className="text-xs">Keep aspect ratio</label>
               </div>
-            </div>
-            
-            <div className="mb-3">
-              <label className="block font-bold text-sm mb-1">{t('quality')}</label>
-              <input
-                type="range"
-                min="10"
-                max="100"
-                value={customQuality}
-                onChange={(e) => setCustomQuality(e.target.value)}
-                className="w-full"
-              />
-              <div className="text-right text-sm">{customQuality}%</div>
-            </div>
-            
+          </div>
+
+          <div className="mb-3">
+            <label className="block font-bold text-sm mb-1">{t('quality')}</label>
+            <input
+              type="range"
+              min="10"
+              max="100"
+              value={customQuality}
+              onChange={(e) => {
+                const value = e.target.value;
+                setCustomQuality(value);
+                if (liveCustomSettings) {
+                  applyCustomSettings(customWidth, customHeight, value);
+                }
+              }}
+              className="w-full"
+            />
+            <div className="text-right text-sm">{customQuality}%</div>
+          </div>
+          {!liveCustomSettings && (
             <Button
-              onClick={handleApplyCustomSettings}
-              variant="accent"
+              onClick={() => applyCustomSettings()}
+              variant={selectedPreset === 'custom' ? 'accent' : 'primary'}
               fullWidth
             >
               {t('apply')}
             </Button>
-          </div>
+          )}
         </div>
       )}
     </div>
   );
-} 
+}

@@ -56,6 +56,8 @@ export interface QualityResult {
 export interface OcrResult {
   texts: string[];
   joined: string;
+  /** Reading-order text with lightweight Markdown structure. */
+  markdown: string;
 }
 
 export interface ColorizeResult {

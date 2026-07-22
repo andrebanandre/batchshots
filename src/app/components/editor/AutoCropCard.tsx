@@ -6,10 +6,14 @@
  */
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import SectionCard from './SectionCard';
-import { useEditorTools, targetImages, toolSourceUrl } from '../../contexts/EditorToolsContext';
+import {
+  type AutoCropPreviewOptions,
+  useEditorTools,
+  targetImages,
+  toolSourceUrl,
+} from '../../contexts/EditorToolsContext';
 import { inference, bitmapFromUrl } from '../../lib/inferenceClient';
 import { cropAndPad } from '../../lib/imageOps';
 
@@ -31,18 +35,36 @@ const COCO_LABELS = [
 export default function AutoCropCard() {
   const t = useTranslations('CropStep');
   const tTools = useTranslations('EditorTools');
-  const { images, selectedImageId, updateImage, setToolBusy } = useEditorTools();
+  const {
+    images,
+    selectedImageId,
+    updateImage,
+    setToolBusy,
+    autoCropPreviewOptions,
+    setAutoCropPreviewOptions,
+  } = useEditorTools();
 
   const [applyToAll, setApplyToAll] = useState(true);
-  const [square, setSquare] = useState(true);
-  const [whiteBackground, setWhiteBackground] = useState(true);
-  const [marginPct, setMarginPct] = useState(0.05);
-  const [outputSize, setOutputSize] = useState<number | null>(null);
+  const [localOptions, setLocalOptions] = useState<AutoCropPreviewOptions>({
+    marginPct: 0.05,
+    square: true,
+    whiteBackground: true,
+    outputSize: null,
+  });
   const [isBusy, setIsBusy] = useState(false);
   const [progress, setProgress] = useState('');
   const [failedCount, setFailedCount] = useState(0);
 
   const targets = targetImages(images, selectedImageId, applyToAll);
+  const options = autoCropPreviewOptions ?? localOptions;
+  const updateOptions = (patch: Partial<AutoCropPreviewOptions>) => {
+    const next = { ...options, ...patch };
+    if (setAutoCropPreviewOptions && autoCropPreviewOptions) {
+      setAutoCropPreviewOptions(next);
+    } else {
+      setLocalOptions(next);
+    }
+  };
 
   const run = async () => {
     if (targets.length === 0) return;
@@ -54,7 +76,7 @@ export default function AutoCropCard() {
         const image = targets[i];
         setProgress(`${i + 1}/${targets.length}`);
         try {
-          const source = toolSourceUrl(image);
+          const source = image.cropSourceDataUrl ?? toolSourceUrl(image);
           const bmp = await bitmapFromUrl(source);
           const imgArea = bmp.width * bmp.height;
           const { boxes } = await inference.detect(image.id, bmp);
@@ -73,12 +95,16 @@ export default function AutoCropCard() {
             score: best.score,
           };
           const blob = await cropAndPad(source, bbox, {
-            marginPct,
-            square,
-            background: whiteBackground ? '#ffffff' : null,
-            outputSize: outputSize ?? undefined,
+            marginPct: options.marginPct,
+            square: options.square,
+            background: options.whiteBackground ? '#ffffff' : null,
+            outputSize: options.outputSize ?? undefined,
           });
-          if (image.processedDataUrl && image.processedDataUrl.startsWith('blob:')) {
+          if (
+            image.processedDataUrl &&
+            image.processedDataUrl !== source &&
+            image.processedDataUrl.startsWith('blob:')
+          ) {
             try {
               URL.revokeObjectURL(image.processedDataUrl);
             } catch {
@@ -90,6 +116,7 @@ export default function AutoCropCard() {
             processedDataUrl: url,
             processedThumbnailUrl: url,
             bbox,
+            cropSourceDataUrl: source,
           });
         } catch {
           failed++;
@@ -103,12 +130,10 @@ export default function AutoCropCard() {
     }
   };
 
-  const processed = images.filter((i) => i.bbox !== undefined || i.processedDataUrl);
-
+  const processed = images.filter((i) => i.bbox !== undefined);
   return (
     <SectionCard
       title={t('title')}
-      hasAdvanced
       runLabel={t('run')}
       onRun={run}
       runDisabled={targets.length === 0}
@@ -117,92 +142,108 @@ export default function AutoCropCard() {
       applyToAll={applyToAll}
       onApplyToAllChange={setApplyToAll}
     >
-      {(tab) => (
+      {() => (
         <div className="space-y-4">
           {targets.length === 0 && (
             <p className="text-sm text-gray-600">{tTools('noImageSelected')}</p>
           )}
 
-          {tab === 'presets' && (
-            <div className="flex flex-wrap items-center gap-4 text-sm font-bold">
-              <label className="flex items-center gap-1">
-                <input
-                  type="checkbox"
-                  checked={square}
-                  onChange={(e) => setSquare(e.target.checked)}
-                />
-                {t('square')}
-              </label>
-              <label className="flex items-center gap-1">
-                <input
-                  type="checkbox"
-                  checked={whiteBackground}
-                  onChange={(e) => setWhiteBackground(e.target.checked)}
-                />
-                {t('whiteBackground')}
-              </label>
-            </div>
-          )}
-
-          {tab === 'advanced' && (
-            <div className="space-y-3 text-sm font-bold">
-              <label className="flex items-center gap-2">
-                {t('margin')}
+          <div className="space-y-4">
+              <label className="block space-y-2 text-sm font-bold">
+                <span className="flex items-center justify-between gap-3">
+                  {t('margin')}
+                  <output className="brutalist-border bg-white px-2 py-1 font-mono">
+                    {Math.round(options.marginPct * 100)}%
+                  </output>
+                </span>
                 <input
                   type="range"
                   min={0}
                   max={0.25}
                   step={0.01}
-                  value={marginPct}
-                  onChange={(e) => setMarginPct(Number(e.target.value))}
-                />
-                <span className="font-mono">{Math.round(marginPct * 100)}%</span>
-              </label>
-              <label className="flex items-center gap-1">
-                {t('outputSize')}
-                <select
-                  value={outputSize ?? ''}
+                  value={options.marginPct}
                   onChange={(e) =>
-                    setOutputSize(e.target.value ? Number(e.target.value) : null)
+                    updateOptions({ marginPct: Number(e.target.value) })
                   }
-                  className="brutalist-border px-1 py-0.5 bg-white"
-                >
-                  <option value="">—</option>
-                  <option value="1200">1200</option>
-                  <option value="1600">1600</option>
-                  <option value="2000">2000</option>
-                </select>
+                  className="w-full accent-primary"
+                />
               </label>
-            </div>
-          )}
+
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => updateOptions({ square: !options.square })}
+                  aria-pressed={options.square}
+                  className={`brutalist-border px-3 py-3 text-sm font-bold ${
+                    options.square ? 'bg-primary text-white' : 'bg-white text-black'
+                  }`}
+                >
+                  {t('square')}
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    updateOptions({
+                      whiteBackground: !options.whiteBackground,
+                    })
+                  }
+                  aria-pressed={options.whiteBackground}
+                  className={`brutalist-border px-3 py-3 text-sm font-bold ${
+                    options.whiteBackground
+                      ? 'bg-primary text-white'
+                      : 'bg-white text-black'
+                  }`}
+                >
+                  {t('whiteBackground')}
+                </button>
+              </div>
+
+              <div className="space-y-2 text-sm font-bold">
+                <label htmlFor="crop-output-size">{t('outputSize')}</label>
+                <div className="grid grid-cols-4 gap-2">
+                  {[null, 1200, 1600, 2000].map((size) => (
+                    <button
+                      key={size ?? 'original'}
+                      type="button"
+                      onClick={() => updateOptions({ outputSize: size })}
+                      aria-pressed={options.outputSize === size}
+                      className={`brutalist-border px-2 py-2 font-mono text-xs ${
+                        options.outputSize === size
+                          ? 'bg-primary text-white'
+                          : 'bg-white text-black'
+                      }`}
+                    >
+                      {size ?? '—'}
+                    </button>
+                  ))}
+                </div>
+                <input
+                  id="crop-output-size"
+                  type="number"
+                  min={1}
+                  max={10000}
+                  value={options.outputSize ?? ''}
+                  onChange={(e) =>
+                    updateOptions({
+                      outputSize: e.target.value
+                        ? Number(e.target.value)
+                        : null,
+                    })
+                  }
+                  placeholder="px"
+                  className="brutalist-border w-full bg-white px-3 py-2 font-mono font-normal"
+                />
+              </div>
+          </div>
 
           {failedCount > 0 && (
             <p className="text-sm font-bold text-red-600">{tTools('failed', { count: failedCount })}</p>
           )}
 
           {processed.length > 0 && (
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-[360px] overflow-y-auto">
-              {processed.map((image) => (
-                <div key={image.id} className="brutalist-border p-1 bg-white">
-                  <Image
-                    src={image.processedThumbnailUrl ?? image.thumbnailDataUrl ?? toolSourceUrl(image)}
-                    alt={image.file.name}
-                    width={128}
-                    height={128}
-                    unoptimized
-                    className="w-full aspect-square object-contain"
-                  />
-                  <p className="text-[10px] font-mono truncate">
-                    {image.bbox
-                      ? t('detected', {
-                          label: image.bbox.label,
-                          pct: Math.round(image.bbox.score * 100),
-                        })
-                      : t('noDetection')}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <p className="brutalist-border bg-green-100 p-3 text-sm font-bold">
+              {processed.length}/{images.length} · {t('howItWorks.step3.description')}
+            </p>
           )}
         </div>
       )}

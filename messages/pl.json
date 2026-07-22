@@ -1423,6 +1423,7 @@
     "imageCount": "{count} obrazów",
     "removeImage": "Usuń obraz",
     "uploadStandaloneHint": "Obrazy są przetwarzane lokalnie i nigdy nie opuszczają Twojego urządzenia.",
+    "uploadMoreHint": "Przeciągnij lub wybierz maksymalnie {count} dodatkowych obrazów.",
     "standaloneUploadFirst": "Prześlij obrazy, aby korzystać z tego narzędzia.",
     "processAll": "Przetwórz wszystkie",
     "processSelected": "Przetwórz tylko wybrane",
@@ -1453,7 +1454,8 @@
     "exclude": "Wyklucz",
     "excludedCount": "{count} duplikatów wykluczono z partii",
     "autoRemove": "Automatycznie usuwaj duplikaty",
-    "intro": "Znajdź i usuń zduplikowane zdjęcia w kilka sekund — dokładne kopie, przeskalowane wersje i niemal identyczne ujęcia."
+    "intro": "Znajdź i usuń zduplikowane zdjęcia w kilka sekund — dokładne kopie, przeskalowane wersje i niemal identyczne ujęcia.",
+    "howItWorks": { "title": "Jak działa wyszukiwanie duplikatów", "step1": { "title": "Dodaj zdjęcia do porównania", "description": "Prześlij kolekcję, którą chcesz uporządkować. Narzędzie porówna wszystkie zdjęcia w partii." }, "step2": { "title": "Ustaw stopień podobieństwa", "description": "Określ, czy mają być wykrywane dokładne kopie, przeskalowane wersje czy niemal identyczne ujęcia." }, "step3": { "title": "Zachowaj najlepsze i pobierz", "description": "Sprawdź grupy duplikatów, usuń zbędne kopie i pobierz uporządkowaną kolekcję." } }
   },
   "BgStep": {
     "title": "Usuń tła",
@@ -1467,7 +1469,8 @@
     "before": "Przed",
     "after": "Po",
     "redoOne": "Powtórz ten obraz",
-    "intro": "Nadaj zdjęciom produktów czysty, profesjonalny wygląd. Usuń tło z jednego lub stu zdjęć — nic nie opuszcza Twojego urządzenia."
+    "intro": "Nadaj zdjęciom produktów czysty, profesjonalny wygląd. Usuń tło z jednego lub stu zdjęć — nic nie opuszcza Twojego urządzenia.",
+    "howItWorks": { "title": "Jak działa usuwanie tła", "step1": { "title": "Prześlij zdjęcia", "description": "Dodaj jeden obraz lub całą partię z tłami, które chcesz usunąć." }, "step2": { "title": "Wybierz wygląd wyniku", "description": "Wybierz przezroczyste albo białe tło, a następnie uruchom usuwanie." }, "step3": { "title": "Sprawdź i pobierz", "description": "Obejrzyj zdjęcia bez tła i pobierz jeden obraz lub całą partię." } }
   },
   "CropStep": {
     "title": "Automatyczne kadrowanie produktów",
@@ -1483,7 +1486,8 @@
       "description": "Automatycznie wykrywaj i przycinaj produkty na zdjęciach. Kwadratowe płótno, białe tło, rozmiary gotowe na marketplace — za darmo, w przeglądarce.",
       "keywords": "kadrowanie zdjęć produktów, automatyczne przycinanie, kwadratowe zdjęcia produktów, narzędzie do kadrowania online"
     },
-    "intro": "Przytnij zdjęcia produktów do idealnego kadru — pojedynczo lub całą partię tym samym kadrem."
+    "intro": "Przytnij zdjęcia produktów do idealnego kadru — pojedynczo lub całą partię tym samym kadrem.",
+    "howItWorks": { "title": "Jak działa kadrowanie produktów", "step1": { "title": "Dodaj zdjęcia produktów", "description": "Prześlij jedno zdjęcie lub partię. Produkt na każdym obrazie zostanie znaleziony automatycznie." }, "step2": { "title": "Ustaw kadr", "description": "Wybierz margines, format kwadratowy, tło i potrzebny rozmiar wyjściowy." }, "step3": { "title": "Przytnij i pobierz", "description": "Uruchom kadrowanie, sprawdź nowy kadr i pobierz zdjęcia gotowe do publikacji." } }
   },
   "ColorizeStep": {
     "title": "Koloryzuj czarno-białe zdjęcia",
@@ -1495,7 +1499,8 @@
       "description": "Automatycznie koloryzuj czarno-białe zdjęcia dzięki AI działającej lokalnie. Za darmo, prywatnie, w przeglądarce — bez przesyłania plików.",
       "keywords": "koloryzacja zdjęć, koloryzowanie czarno-białych zdjęć, AI koloryzacja zdjęć, dodaj kolor do starych zdjęć online, darmowa koloryzacja zdjęć"
     },
-    "intro": "Ożyw stare czarno-białe zdjęcia naturalnymi kolorami — bezpośrednio w przeglądarce."
+    "intro": "Ożyw stare czarno-białe zdjęcia naturalnymi kolorami — bezpośrednio w przeglądarce.",
+    "howItWorks": { "title": "Jak działa kolorowanie zdjęć", "step1": { "title": "Prześlij czarno-białe zdjęcie", "description": "Wybierz stary portret, zdjęcie rodzinne lub inny monochromatyczny obraz." }, "step2": { "title": "Wybierz intensywność kolorów", "description": "Ustaw żywość wyniku i pozwól narzędziu dodać naturalnie wyglądające kolory." }, "step3": { "title": "Obejrzyj i pobierz", "description": "Sprawdź pokolorowany wynik, w razie potrzeby popraw intensywność i zapisz zdjęcie." } }
   },
   "QualityStep": {
     "title": "Kontrola jakości",
@@ -1514,20 +1519,34 @@
     }
   },
   "OcrStep": {
-    "title": "Wyodrębnij tekst ze zdjęć",
+    "title": "Wyodrębnij tekst z obrazów i dokumentów",
     "run": "Wyodrębnij tekst",
     "downloadZip": "Pobierz tekst (ZIP)",
     "noText": "Nie znaleziono tekstu",
-    "editHint": "Sprawdź i edytuj wyodrębniony tekst przed pobraniem.",
+    "editHint": "Sprawdź sformatowany wyodrębniony tekst przed pobraniem.",
     "textFor": "Tekst dla {name}",
     "addDocuments": "Dodaj pliki PDF, Word lub PowerPoint",
     "pages": "{count} stron",
+    "uploadTitle": "Przeciągnij tutaj obrazy lub dokumenty",
+    "uploadDescription": "JPG, PNG, WEBP, HEIC, PDF, DOCX lub PPTX — wszystko jest przetwarzane na Twoim urządzeniu.",
+    "addMoreFiles": "Dodaj więcej plików",
+    "uploadMoreDescription": "Przeciągnij więcej obrazów lub dokumentów albo kliknij, aby wybrać pliki.",
+    "allFiles": "WSZYSTKIE PLIKI ({current}/{max})",
+    "fileCount": "Pliki: {count}",
+    "maxFilesReached": "Osiągnięto limit {max} plików",
+    "preparingFiles": "Przygotowywanie plików…",
+    "noFilesSelected": "Prześlij obraz lub dokument, aby wyodrębnić z niego tekst.",
+    "pageHeading": "Strona {page}",
+    "pageProgress": "strona {page} z {total}",
+    "slideHeading": "Slajd {slide}",
+    "markdownPreview": "Sformatowany podgląd",
     "metadata": {
       "title": "Wyodrębnianie tekstu z obrazu — Darmowa ekstrakcja tekstu dla zdjęć produktów",
       "description": "Wyodrębniaj tekst z etykiet, opakowań i zdjęć produktów bezpośrednio w przeglądarce. Bez przesyłania — szybka, prywatna ekstrakcja tekstu.",
       "keywords": "wyodrębnianie tekstu z obrazu, OCR online za darmo, tekst ze zdjęcia, czytnik etykiet"
     },
-    "intro": "Wyciągnij tekst z etykiet, opakowań, plików PDF, dokumentów Word i PowerPoint — i pobierz wszystko jako czytelne pliki tekstowe."
+    "intro": "Wyciągnij tekst z etykiet, opakowań, plików PDF, dokumentów Word i PowerPoint — i pobierz wszystko jako czytelne pliki tekstowe.",
+    "howItWorks": { "title": "Jak działa wyodrębnianie tekstu", "step1": { "title": "Dodaj obrazy lub dokumenty", "description": "Prześlij zdjęcia, pliki PDF, Word lub prezentacje PowerPoint zawierające tekst." }, "step2": { "title": "Wyodrębnij i sprawdź tekst", "description": "Uruchom wyodrębnianie, a potem przeczytaj i popraw tekst znaleziony w każdym pliku." }, "step3": { "title": "Pobierz tekst", "description": "Zapisz sprawdzone wyniki jako czytelne pliki tekstowe w jednym archiwum ZIP." } }
   },
   "CaptionStep": {
     "title": "Podpisy SEO i nazwy plików",
@@ -1536,7 +1555,8 @@
     "seoName": "Nazwa pliku SEO",
     "editHint": "Podpisy powstają z wykrytego obiektu, koloru i tekstu etykiety.",
     "regenerate": "Wygeneruj ponownie",
-    "intro": "Uzyskaj przyjazne wyszukiwarkom podpisy i nazwy plików dla zdjęć produktów, tworzone na podstawie tego, co naprawdę jest na zdjęciu."
+    "intro": "Uzyskaj przyjazne wyszukiwarkom podpisy i nazwy plików dla zdjęć produktów, tworzone na podstawie tego, co naprawdę jest na zdjęciu.",
+    "howItWorks": { "title": "Jak działają podpisy SEO", "step1": { "title": "Prześlij zdjęcia produktów", "description": "Dodaj obrazy, które potrzebują jasnych opisów i nazw plików przyjaznych wyszukiwarkom." }, "step2": { "title": "Wygeneruj podpisy i nazwy", "description": "Narzędzie analizuje każde zdjęcie i tworzy użyteczny podpis oraz nazwę pliku SEO." }, "step3": { "title": "Sprawdź i pobierz", "description": "Edytuj wybrane sformułowania, a następnie pobierz zdjęcia ze zmienionymi nazwami i podpisami." } }
   },
   "ResizeStep": {
     "title": "Zmień rozmiar i skompresuj",
@@ -1590,6 +1610,7 @@
       "description": "Zamaluj niechciane obiekty i usuń je ze zdjęć dzięki lokalnemu AI inpaintingowi. Za darmo, prywatnie, w przeglądarce — nic nie opuszcza Twojego komputera.",
       "keywords": "usuwanie obiektów, usuń obiekt ze zdjęcia, gumka do obiektów na zdjęciu, usuwanie niechcianych obiektów online, darmowe narzędzie do usuwania obiektów"
     },
-    "intro": "Zamaluj wszystko, czego nie chcesz na zdjęciu — metki, cienie, bałagan — i to zniknie."
+    "intro": "Zamaluj wszystko, czego nie chcesz na zdjęciu — metki, cienie, bałagan — i to zniknie.",
+    "howItWorks": { "title": "Jak działa usuwanie obiektów", "step1": { "title": "Prześlij zdjęcie", "description": "Wybierz zdjęcie z niechcianym obiektem, osobą, plamą lub rozpraszającym elementem." }, "step2": { "title": "Zamaluj to, co ma zniknąć", "description": "Dostosuj pędzel i zakryj niechciany obszar. Możesz wyczyścić zaznaczenia i spróbować ponownie." }, "step3": { "title": "Usuń i pobierz", "description": "Uruchom usuwanie, sprawdź naprawiony obszar i pobierz oczyszczone zdjęcie." } }
   }
 }

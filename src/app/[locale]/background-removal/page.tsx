@@ -6,10 +6,18 @@ import ToolStandalone from '../../components/editor/ToolStandalone';
 import BackgroundCard from '../../components/editor/BackgroundCard';
 
 export default function BackgroundRemovalPage() {
-  const t = useTranslations('BackgroundRemovalPage');
-  const tIntro = useTranslations('BgStep');
+  const t = useTranslations('BgStep');
   return (
-    <ToolStandalone description={tIntro('intro')} title={t('title')}>
+    <ToolStandalone
+      description={t('intro')}
+      title={t('title')}
+      howItWorksTitle={t('howItWorks.title')}
+      howItWorksSteps={[
+        { title: t('howItWorks.step1.title'), description: t('howItWorks.step1.description') },
+        { title: t('howItWorks.step2.title'), description: t('howItWorks.step2.description') },
+        { title: t('howItWorks.step3.title'), description: t('howItWorks.step3.description') },
+      ]}
+    >
       <BackgroundCard />
     </ToolStandalone>
   );

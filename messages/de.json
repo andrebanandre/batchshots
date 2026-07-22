@@ -1435,6 +1435,7 @@
     "imageCount": "{count} Bilder",
     "removeImage": "Bild entfernen",
     "uploadStandaloneHint": "Bilder werden lokal verarbeitet und verlassen nie Ihr Gerät.",
+    "uploadMoreHint": "Ziehen Sie bis zu {count} weitere Bilder hierher oder wählen Sie sie aus.",
     "standaloneUploadFirst": "Laden Sie Bilder hoch, um dieses Tool zu nutzen.",
     "processAll": "Alle verarbeiten",
     "processSelected": "Nur ausgewählte verarbeiten",
@@ -1465,7 +1466,8 @@
     "exclude": "Ausschließen",
     "excludedCount": "{count} Duplikate vom Stapel ausgeschlossen",
     "autoRemove": "Duplikate automatisch entfernen",
-    "intro": "Finden und entfernen Sie doppelte Fotos in Sekunden — exakte Kopien, skalierte Versionen und fast identische Aufnahmen."
+    "intro": "Finden und entfernen Sie doppelte Fotos in Sekunden — exakte Kopien, skalierte Versionen und fast identische Aufnahmen.",
+    "howItWorks": { "title": "So funktioniert die Duplikatsuche", "step1": { "title": "Fotos zum Vergleichen hinzufügen", "description": "Laden Sie die Sammlung hoch, die Sie aufräumen möchten. Alle Fotos im Stapel werden verglichen." }, "step2": { "title": "Übereinstimmung festlegen", "description": "Bestimmen Sie über die Ähnlichkeit, ob exakte Kopien, skalierte Versionen oder fast gleiche Aufnahmen zählen." }, "step3": { "title": "Beste behalten und herunterladen", "description": "Prüfen Sie jede Duplikatgruppe, entfernen Sie unnötige Kopien und laden Sie die bereinigte Sammlung herunter." } }
   },
   "BgStep": {
     "title": "Hintergründe entfernen",
@@ -1479,7 +1481,8 @@
     "before": "Vorher",
     "after": "Nachher",
     "redoOne": "Dieses Bild wiederholen",
-    "intro": "Verleihen Sie Ihren Produktfotos einen sauberen, professionellen Look. Entfernen Sie den Hintergrund von einem oder hundert Fotos — nichts verlässt Ihr Gerät."
+    "intro": "Verleihen Sie Ihren Produktfotos einen sauberen, professionellen Look. Entfernen Sie den Hintergrund von einem oder hundert Fotos — nichts verlässt Ihr Gerät.",
+    "howItWorks": { "title": "So funktioniert das Entfernen des Hintergrunds", "step1": { "title": "Fotos hochladen", "description": "Fügen Sie ein Bild oder einen ganzen Stapel mit Hintergründen hinzu, die entfernt werden sollen." }, "step2": { "title": "Ergebnis auswählen", "description": "Wählen Sie einen transparenten oder weißen Hintergrund und starten Sie die Entfernung." }, "step3": { "title": "Prüfen und herunterladen", "description": "Sehen Sie die freigestellten Fotos an und laden Sie ein Bild oder den ganzen Stapel herunter." } }
   },
   "CropStep": {
     "title": "Produkte automatisch zuschneiden",
@@ -1495,7 +1498,8 @@
       "description": "Produkte automatisch erkennen und zuschneiden. Quadratische Leinwand, weißer Hintergrund, marktplatzfertige Größen — kostenlos im Browser.",
       "keywords": "Produktfoto zuschneiden, automatischer Bildzuschnitt, quadratische Produktfotos, Zuschneide-Tool online"
     },
-    "intro": "Schneiden Sie Ihre Produktfotos perfekt zu — einzeln oder den ganzen Stapel mit demselben Zuschnitt."
+    "intro": "Schneiden Sie Ihre Produktfotos perfekt zu — einzeln oder den ganzen Stapel mit demselben Zuschnitt.",
+    "howItWorks": { "title": "So funktioniert der Produktzuschnitt", "step1": { "title": "Produktfotos hinzufügen", "description": "Laden Sie ein Foto oder einen Stapel hoch. Das Produkt wird in jedem Bild automatisch gefunden." }, "step2": { "title": "Rahmen festlegen", "description": "Wählen Sie Rand, quadratisches Format, Hintergrund und gewünschte Ausgabegröße." }, "step3": { "title": "Zuschneiden und herunterladen", "description": "Starten Sie den Zuschnitt, prüfen Sie den neuen Rahmen und laden Sie die fertigen Produktfotos herunter." } }
   },
   "ColorizeStep": {
     "title": "Schwarzweißfotos kolorieren",
@@ -1507,7 +1511,8 @@
       "description": "Kolorieren Sie Schwarzweißfotos automatisch mit On-Device-KI. Kostenlos, privat, im Browser — keine Uploads, nichts verlässt Ihren Computer.",
       "keywords": "Foto kolorieren, Schwarzweißfotos einfärben, KI-Fotokolorierung, alte Fotos einfärben online, kostenloser Foto-Kolorierer"
     },
-    "intro": "Erwecken Sie alte Schwarz-Weiß-Fotos mit natürlichen Farben zum Leben — direkt im Browser."
+    "intro": "Erwecken Sie alte Schwarz-Weiß-Fotos mit natürlichen Farben zum Leben — direkt im Browser.",
+    "howItWorks": { "title": "So funktioniert das Kolorieren", "step1": { "title": "Schwarz-Weiß-Foto hochladen", "description": "Wählen Sie ein altes Porträt, Familienfoto oder ein anderes monochromes Bild." }, "step2": { "title": "Farbstärke wählen", "description": "Legen Sie die Farbintensität fest und lassen Sie natürliche Farben hinzufügen." }, "step3": { "title": "Vorschau und Download", "description": "Prüfen Sie das kolorierte Ergebnis, passen Sie die Stärke an und speichern Sie das fertige Foto." } }
   },
   "QualityStep": {
     "title": "Qualitätsprüfung",
@@ -1526,20 +1531,34 @@
     }
   },
   "OcrStep": {
-    "title": "Text aus Bildern extrahieren",
+    "title": "Text aus Bildern & Dokumenten extrahieren",
     "run": "Text extrahieren",
     "downloadZip": "Text herunterladen (ZIP)",
     "noText": "Kein Text gefunden",
-    "editHint": "Überprüfen und bearbeiten Sie den extrahierten Text vor dem Herunterladen.",
+    "editHint": "Überprüfen Sie den formatierten extrahierten Text vor dem Herunterladen.",
     "textFor": "Text für {name}",
     "addDocuments": "PDF-, Word- oder PowerPoint-Dateien hinzufügen",
     "pages": "{count} Seiten",
+    "uploadTitle": "Bilder oder Dokumente hier ablegen",
+    "uploadDescription": "JPG, PNG, WEBP, HEIC, PDF, DOCX oder PPTX — alles wird auf Ihrem Gerät verarbeitet.",
+    "addMoreFiles": "Weitere Dateien hinzufügen",
+    "uploadMoreDescription": "Weitere Bilder oder Dokumente hierher ziehen oder per Klick auswählen.",
+    "allFiles": "ALLE DATEIEN ({current}/{max})",
+    "fileCount": "{count} Dateien",
+    "maxFilesReached": "Maximal {max} Dateien erreicht",
+    "preparingFiles": "Dateien werden vorbereitet…",
+    "noFilesSelected": "Laden Sie ein Bild oder Dokument hoch, um den Text zu extrahieren.",
+    "pageHeading": "Seite {page}",
+    "pageProgress": "Seite {page} von {total}",
+    "slideHeading": "Folie {slide}",
+    "markdownPreview": "Formatierte Vorschau",
     "metadata": {
       "title": "Text aus Bildern extrahieren — Kostenlose Texterkennung für Produktfotos",
       "description": "Text von Etiketten, Verpackungen und Produktfotos direkt im Browser extrahieren. Kein Upload — schnelle, private Texterkennung.",
       "keywords": "Text aus Bild extrahieren, OCR online kostenlos, Bildtext auslesen, Etikettenleser"
     },
-    "intro": "Holen Sie den Text aus Etiketten, Verpackungen, PDFs, Word- und PowerPoint-Dokumenten — und laden Sie alles als übersichtliche Textdateien herunter."
+    "intro": "Holen Sie den Text aus Etiketten, Verpackungen, PDFs, Word- und PowerPoint-Dokumenten — und laden Sie alles als übersichtliche Textdateien herunter.",
+    "howItWorks": { "title": "So funktioniert die Texterkennung", "step1": { "title": "Bilder oder Dokumente hinzufügen", "description": "Laden Sie Fotos, PDFs, Word-Dateien oder PowerPoint-Präsentationen mit Text hoch." }, "step2": { "title": "Text extrahieren und prüfen", "description": "Starten Sie die Erkennung und lesen oder korrigieren Sie danach den gefundenen Text." }, "step3": { "title": "Text herunterladen", "description": "Speichern Sie die geprüften Ergebnisse als übersichtliche Textdateien in einem ZIP." } }
   },
   "CaptionStep": {
     "title": "SEO-Beschriftungen & Dateinamen",
@@ -1548,7 +1567,8 @@
     "seoName": "SEO-Dateiname",
     "editHint": "Beschriftungen entstehen aus erkanntem Objekt, Farbe und Etikettentext.",
     "regenerate": "Neu erzeugen",
-    "intro": "Erhalten Sie suchfreundliche Beschriftungen und Dateinamen für Ihre Produktfotos, erstellt aus dem, was wirklich im Bild ist."
+    "intro": "Erhalten Sie suchfreundliche Beschriftungen und Dateinamen für Ihre Produktfotos, erstellt aus dem, was wirklich im Bild ist.",
+    "howItWorks": { "title": "So funktionieren SEO-Beschriftungen", "step1": { "title": "Produktfotos hochladen", "description": "Fügen Sie Bilder hinzu, die klare, suchfreundliche Beschreibungen und Dateinamen brauchen." }, "step2": { "title": "Beschriftungen und Namen erstellen", "description": "Das Tool betrachtet jedes Foto und erstellt eine hilfreiche Beschriftung und einen SEO-Dateinamen." }, "step3": { "title": "Prüfen und herunterladen", "description": "Bearbeiten Sie den gewünschten Text und laden Sie die umbenannten Fotos und Beschriftungen herunter." } }
   },
   "ResizeStep": {
     "title": "Größe ändern & komprimieren",
@@ -1602,6 +1622,7 @@
       "description": "Übermalen Sie unerwünschte Objekte und entfernen Sie sie mit On-Device-KI-Inpainting aus Ihren Fotos. Kostenlos, privat, im Browser — nichts verlässt Ihren Computer.",
       "keywords": "Objektentfernung, Objekt aus Foto entfernen, Foto-Objekt-Radierer, unerwünschte Objekte online entfernen, kostenloses Objektentfernungs-Tool"
     },
-    "intro": "Übermalen Sie alles, was nicht ins Bild gehört — Preisschilder, Schatten, Unordnung — und es verschwindet."
+    "intro": "Übermalen Sie alles, was nicht ins Bild gehört — Preisschilder, Schatten, Unordnung — und es verschwindet.",
+    "howItWorks": { "title": "So funktioniert das Entfernen von Objekten", "step1": { "title": "Foto hochladen", "description": "Wählen Sie ein Foto mit einem unerwünschten Objekt, einer Person, Stelle oder Ablenkung." }, "step2": { "title": "Unerwünschtes übermalen", "description": "Passen Sie den Pinsel an und bedecken Sie den Bereich. Die Striche lassen sich löschen und neu setzen." }, "step3": { "title": "Entfernen und herunterladen", "description": "Starten Sie die Entfernung, prüfen Sie die reparierte Stelle und laden Sie das bereinigte Foto herunter." } }
   }
 }

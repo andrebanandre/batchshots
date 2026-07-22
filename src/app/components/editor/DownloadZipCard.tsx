@@ -12,6 +12,7 @@ import { useTranslations } from 'next-intl';
 import Button from '../Button';
 import Card from '../Card';
 import { useEditorTools } from '../../contexts/EditorToolsContext';
+import { encodeToTargetSize, resizeAndEncode } from '../../lib/imageOps';
 
 const MIME_TO_EXT: Record<string, string> = {
   'image/jpeg': 'jpg',
@@ -32,7 +33,7 @@ function baseNameFromFilename(filename: string): string {
 
 export default function DownloadZipCard() {
   const t = useTranslations('DownloadZip');
-  const { images } = useEditorTools();
+  const { images, batchDownloadOptions } = useEditorTools();
 
   const [isBuilding, setIsBuilding] = useState(false);
   const [done, setDone] = useState(false);
@@ -51,8 +52,28 @@ export default function DownloadZipCard() {
         const source = image.processedDataUrl ?? image.dataUrl;
         if (!source) continue;
 
-        const response = await fetch(source);
-        const blob = await response.blob();
+        let blob: Blob;
+        if (batchDownloadOptions) {
+          const resizeOptions = {
+            width: batchDownloadOptions.width ?? image.width ?? 10000,
+            height: batchDownloadOptions.height,
+            format: batchDownloadOptions.format,
+            sharpen: false,
+          };
+          blob = batchDownloadOptions.maxFileSizeKb
+            ? await encodeToTargetSize(
+                source,
+                resizeOptions,
+                batchDownloadOptions.maxFileSizeKb * 1024
+              )
+            : await resizeAndEncode(source, {
+                ...resizeOptions,
+                quality: batchDownloadOptions.quality,
+              });
+        } else {
+          const response = await fetch(source);
+          blob = await response.blob();
+        }
 
         const originalExt = extFromFilename(image.file.name);
         const ext = MIME_TO_EXT[blob.type] ?? originalExt;

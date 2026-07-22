@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * Interactive manual crop overlay for the homepage editor's main preview.
+ * Interactive manual crop overlay for the shared main image preview.
  * Pure canvas/DOM math — no DNN, no worker. Renders a draggable + resizable
  * (8-handle) crop rectangle over the currently displayed image, dims the
  * outside area, and exposes aspect-ratio presets + apply/cancel actions.

@@ -7,9 +7,18 @@ import DuplicatesCard from '../../components/editor/DuplicatesCard';
 
 export default function DuplicateFinderPage() {
   const t = useTranslations('ImageDuplicateDetectionPage');
-  const tIntro = useTranslations('DedupeStep');
+  const tTool = useTranslations('DedupeStep');
   return (
-    <ToolStandalone description={tIntro('intro')} title={t('PageTitle')}>
+    <ToolStandalone
+      description={tTool('intro')}
+      title={t('PageTitle')}
+      howItWorksTitle={tTool('howItWorks.title')}
+      howItWorksSteps={[
+        { title: tTool('howItWorks.step1.title'), description: tTool('howItWorks.step1.description') },
+        { title: tTool('howItWorks.step2.title'), description: tTool('howItWorks.step2.description') },
+        { title: tTool('howItWorks.step3.title'), description: tTool('howItWorks.step3.description') },
+      ]}
+    >
       <DuplicatesCard />
     </ToolStandalone>
   );

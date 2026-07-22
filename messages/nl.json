@@ -1513,6 +1513,7 @@
     "imageCount": "{count} afbeeldingen",
     "removeImage": "Afbeelding verwijderen",
     "uploadStandaloneHint": "Afbeeldingen worden lokaal verwerkt en verlaten nooit je apparaat.",
+    "uploadMoreHint": "Sleep of kies maximaal {count} extra afbeeldingen.",
     "standaloneUploadFirst": "Upload afbeeldingen om deze tool te gebruiken.",
     "processAll": "Alles verwerken",
     "processSelected": "Alleen selectie verwerken",
@@ -1543,7 +1544,8 @@
     "exclude": "Uitsluiten",
     "excludedCount": "{count} duplicaten uitgesloten van de batch",
     "autoRemove": "Duplicaten automatisch verwijderen",
-    "intro": "Vind en verwijder dubbele foto's in seconden — exacte kopieën, geschaalde versies en bijna identieke opnamen."
+    "intro": "Vind en verwijder dubbele foto's in seconden — exacte kopieën, geschaalde versies en bijna identieke opnamen.",
+    "howItWorks": { "title": "Zo werkt het zoeken naar duplicaten", "step1": { "title": "Voeg foto's toe om te vergelijken", "description": "Upload de verzameling die je wilt opruimen. De tool vergelijkt elke foto in de batch." }, "step2": { "title": "Kies hoe sterk de overeenkomst is", "description": "Stel de gelijkenis in voor exacte kopieën, verkleinde versies of bijna identieke opnamen." }, "step3": { "title": "Bewaar de beste en download", "description": "Bekijk elke groep, verwijder overbodige kopieën en download de opgeschoonde verzameling." } }
   },
   "BgStep": {
     "title": "Achtergronden verwijderen",
@@ -1557,7 +1559,8 @@
     "before": "Voor",
     "after": "Na",
     "redoOne": "Deze afbeelding opnieuw",
-    "intro": "Geef je productfoto's een strakke, professionele uitstraling. Verwijder de achtergrond van één of honderd foto's — niets verlaat je apparaat."
+    "intro": "Geef je productfoto's een strakke, professionele uitstraling. Verwijder de achtergrond van één of honderd foto's — niets verlaat je apparaat.",
+    "howItWorks": { "title": "Zo werkt achtergrond verwijderen", "step1": { "title": "Upload je foto's", "description": "Voeg één afbeelding of een hele batch toe waarvan je de achtergrond wilt verwijderen." }, "step2": { "title": "Kies het eindresultaat", "description": "Kies een transparante of witte achtergrond en start de verwijdering." }, "step3": { "title": "Controleer en download", "description": "Bekijk de vrijgemaakte foto's en download één afbeelding of de complete batch." } }
   },
   "CropStep": {
     "title": "Producten automatisch bijsnijden",
@@ -1573,7 +1576,8 @@
       "description": "Detecteer en snijd producten automatisch bij. Vierkant canvas, witte achtergrond, marketplace-klare formaten — gratis, in je browser.",
       "keywords": "productfoto bijsnijden, automatisch bijsnijden, vierkante productfoto's, online bijsnijdtool"
     },
-    "intro": "Snijd je productfoto's bij tot het perfecte kader — één voor één of de hele batch met dezelfde uitsnede."
+    "intro": "Snijd je productfoto's bij tot het perfecte kader — één voor één of de hele batch met dezelfde uitsnede.",
+    "howItWorks": { "title": "Zo werkt productfoto's bijsnijden", "step1": { "title": "Voeg je productfoto's toe", "description": "Upload één foto of een batch. Het product wordt in elke afbeelding automatisch gevonden." }, "step2": { "title": "Stel het kader in", "description": "Kies marge, vierkant formaat, achtergrond en gewenste uitvoergrootte." }, "step3": { "title": "Snijd bij en download", "description": "Start het bijsnijden, controleer het nieuwe kader en download je gebruiksklare foto's." } }
   },
   "ColorizeStep": {
     "title": "Zwart-witfoto's inkleuren",
@@ -1585,7 +1589,8 @@
       "description": "Kleur zwart-witfoto's automatisch in met on-device AI. Gratis, privé, in de browser — geen uploads, niets verlaat je computer.",
       "keywords": "foto inkleuren, zwart-witfoto's kleuren, AI fotokleuring, oude foto's online inkleuren, gratis foto inkleuren"
     },
-    "intro": "Breng oude zwart-witfoto's tot leven met natuurlijke kleuren — direct in je browser."
+    "intro": "Breng oude zwart-witfoto's tot leven met natuurlijke kleuren — direct in je browser.",
+    "howItWorks": { "title": "Zo werkt foto's inkleuren", "step1": { "title": "Upload een zwart-witfoto", "description": "Kies een oud portret, familiefoto of een andere monochrome afbeelding." }, "step2": { "title": "Kies de kleurintensiteit", "description": "Stel in hoe levendig het resultaat moet zijn en laat natuurlijke kleuren toevoegen." }, "step3": { "title": "Bekijk en download", "description": "Controleer het ingekleurde resultaat, pas zo nodig de sterkte aan en sla de foto op." } }
   },
   "QualityStep": {
     "title": "Kwaliteitscontrole",
@@ -1604,20 +1609,34 @@
     }
   },
   "OcrStep": {
-    "title": "Tekst uit afbeeldingen halen",
+    "title": "Tekst uit afbeeldingen en documenten halen",
     "run": "Tekst extraheren",
     "downloadZip": "Tekst downloaden (ZIP)",
     "noText": "Geen tekst gevonden",
-    "editHint": "Bekijk en bewerk de geëxtraheerde tekst voordat je downloadt.",
+    "editHint": "Bekijk de opgemaakte geëxtraheerde tekst voordat je downloadt.",
     "textFor": "Tekst voor {name}",
     "addDocuments": "PDF-, Word- of PowerPoint-bestanden toevoegen",
     "pages": "{count} pagina's",
+    "uploadTitle": "Sleep afbeeldingen of documenten hierheen",
+    "uploadDescription": "JPG, PNG, WEBP, HEIC, PDF, DOCX of PPTX — alles wordt op je apparaat verwerkt.",
+    "addMoreFiles": "Meer bestanden toevoegen",
+    "uploadMoreDescription": "Sleep meer afbeeldingen of documenten hierheen of klik om bestanden te kiezen.",
+    "allFiles": "ALLE BESTANDEN ({current}/{max})",
+    "fileCount": "{count} bestanden",
+    "maxFilesReached": "Maximum van {max} bestanden bereikt",
+    "preparingFiles": "Je bestanden worden voorbereid…",
+    "noFilesSelected": "Upload een afbeelding of document om de tekst eruit te halen.",
+    "pageHeading": "Pagina {page}",
+    "pageProgress": "pagina {page} van {total}",
+    "slideHeading": "Dia {slide}",
+    "markdownPreview": "Opgemaakte preview",
     "metadata": {
       "title": "Tekst uit afbeeldingen halen — Gratis tekstextractie voor productfoto's",
       "description": "Haal tekst van labels, verpakkingen en productfoto's rechtstreeks in je browser. Geen upload — snelle, privé tekstextractie.",
       "keywords": "tekst uit afbeelding, OCR online gratis, tekst extraheren uit foto, labellezer"
     },
-    "intro": "Haal de tekst uit labels, verpakkingen, PDF's, Word- en PowerPoint-documenten — en download alles als nette tekstbestanden."
+    "intro": "Haal de tekst uit labels, verpakkingen, PDF's, Word- en PowerPoint-documenten — en download alles als nette tekstbestanden.",
+    "howItWorks": { "title": "Zo werkt tekstextractie", "step1": { "title": "Voeg afbeeldingen of documenten toe", "description": "Upload foto's, pdf's, Word-bestanden of PowerPoint-presentaties met tekst." }, "step2": { "title": "Extraheer en controleer de tekst", "description": "Start de extractie en lees of verbeter daarna de gevonden tekst per bestand." }, "step3": { "title": "Download je tekst", "description": "Sla de gecontroleerde resultaten op als nette tekstbestanden in één ZIP." } }
   },
   "CaptionStep": {
     "title": "SEO-bijschriften & bestandsnamen",
@@ -1626,7 +1645,8 @@
     "seoName": "SEO-bestandsnaam",
     "editHint": "Bijschriften worden opgebouwd uit gedetecteerd object, kleur en labeltekst.",
     "regenerate": "Opnieuw genereren",
-    "intro": "Krijg zoekvriendelijke bijschriften en bestandsnamen voor je productfoto's, gebaseerd op wat er echt op de foto staat."
+    "intro": "Krijg zoekvriendelijke bijschriften en bestandsnamen voor je productfoto's, gebaseerd op wat er echt op de foto staat.",
+    "howItWorks": { "title": "Zo werken SEO-bijschriften", "step1": { "title": "Upload je productfoto's", "description": "Voeg afbeeldingen toe die duidelijke, zoekvriendelijke beschrijvingen en bestandsnamen nodig hebben." }, "step2": { "title": "Maak bijschriften en namen", "description": "De tool bekijkt elke foto en maakt een bruikbaar bijschrift en een SEO-vriendelijke bestandsnaam." }, "step3": { "title": "Controleer en download", "description": "Pas de gewenste tekst aan en download de hernoemde foto's en bijschriften." } }
   },
   "ResizeStep": {
     "title": "Formaat wijzigen & comprimeren",
@@ -1680,6 +1700,7 @@
       "description": "Schilder over ongewenste objecten en verwijder ze uit je foto's met on-device AI-inpainting. Gratis, privé, in de browser — niets verlaat je computer.",
       "keywords": "objectverwijdering, object uit foto verwijderen, foto object gum, ongewenste objecten online verwijderen, gratis objectverwijdering tool"
     },
-    "intro": "Verf over alles wat je niet in beeld wilt — prijskaartjes, schaduwen, rommel — en het verdwijnt."
+    "intro": "Verf over alles wat je niet in beeld wilt — prijskaartjes, schaduwen, rommel — en het verdwijnt.",
+    "howItWorks": { "title": "Zo werkt objecten verwijderen", "step1": { "title": "Upload je foto", "description": "Kies een foto met een ongewenst object, persoon, vlek of afleiding." }, "step2": { "title": "Schilder over wat moet verdwijnen", "description": "Pas het penseel aan en bedek het ongewenste gebied. Je kunt de streken wissen en opnieuw beginnen." }, "step3": { "title": "Verwijder en download", "description": "Start de verwijdering, controleer het herstelde gebied en download je opgeschoonde foto." } }
   }
 }

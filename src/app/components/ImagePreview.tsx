@@ -7,6 +7,7 @@ import CropOverlay, {
   CropAspectKey,
   CropRect,
 } from "./editor/CropOverlay";
+import type { AutoCropPreviewOptions } from "../contexts/EditorToolsContext";
 
 export interface ImageFile {
   id: string;
@@ -28,6 +29,9 @@ export interface ImageFile {
   };
   seoName?: string; // SEO-friendly filename
   originalName?: string; // Original filename for reference
+  /** Non-image files supported by document-oriented standalone tools. */
+  documentType?: "pdf" | "docx" | "pptx";
+  pageCount?: number;
   // ---- tool section artifacts (OpenCV 5 tools) ----
   phash?: string;
   embedding?: Float32Array;
@@ -41,6 +45,8 @@ export interface ImageFile {
   dominantColor?: string;
   classLabel?: string;
   bbox?: import('../types/pipeline').BBox;
+  /** Source retained by auto-crop so settings can be changed without compounding crops. */
+  cropSourceDataUrl?: string;
 }
 
 interface ImagePreviewProps {
@@ -63,6 +69,10 @@ interface ImagePreviewProps {
   onRemoveDuplicate?: (id: string) => void;
   /** Targeted patch applied by the manual crop tool. */
   onUpdateImage?: (id: string, patch: Partial<ImageFile>) => void;
+  /** Optional localized label for mixed image/document collections. */
+  getCollectionLabel?: (current: number, max: number) => string;
+  /** Live output framing used by the standalone product cropper. */
+  cropPreviewOptions?: AutoCropPreviewOptions;
 }
 
 const DEFAULT_CROP_RECT: CropRect = { x: 0.05, y: 0.05, w: 0.9, h: 0.9 };
@@ -126,6 +136,30 @@ function getDisplayUrl(image: ImageFile): string {
   return image.dataUrl || "";
 }
 
+function DocumentIcon({ type, large = false }: { type: NonNullable<ImageFile["documentType"]>; large?: boolean }) {
+  return (
+    <div
+      className={`brutalist-border bg-white flex flex-col items-center justify-center ${
+        large ? "w-32 h-40" : "absolute inset-0 m-3"
+      }`}
+      aria-label={type.toUpperCase()}
+    >
+      <svg
+        viewBox="0 0 48 56"
+        className={large ? "w-16 h-20" : "w-10 h-12"}
+        aria-hidden="true"
+      >
+        <path d="M7 2h23l11 11v41H7z" fill="#fff" stroke="#000" strokeWidth="3" />
+        <path d="M30 2v12h11" fill="#fdc700" stroke="#000" strokeWidth="3" />
+        <path d="M14 25h20M14 33h20M14 41h14" stroke="#4F46E5" strokeWidth="3" />
+      </svg>
+      <span className="mt-2 px-2 py-1 bg-black text-white text-xs font-bold uppercase">
+        {type}
+      </span>
+    </div>
+  );
+}
+
 /**
  * Cluster images into visual groups: a "best" image immediately followed
  * by its duplicates (as ordered by the caller — see page.tsx sort). Images
@@ -167,6 +201,8 @@ export default function ImagePreview({
   onKeepDuplicate,
   onRemoveDuplicate,
   onUpdateImage,
+  getCollectionLabel,
+  cropPreviewOptions,
 }: ImagePreviewProps) {
   const t = useTranslations("Components.ImagePreview");
 
@@ -264,16 +300,20 @@ export default function ImagePreview({
   useEffect(() => {
     localImages.forEach((image) => {
       if (!imageDimensions[image.id]) {
+        const sizeInKB = image.file.size / 1024;
+        const sizeFormatted =
+          sizeInKB >= 1024
+            ? `${(sizeInKB / 1024).toFixed(2)} MB`
+            : `${sizeInKB.toFixed(2)} KB`;
+        if (image.documentType) {
+          setImageDimensions((prev) => ({
+            ...prev,
+            [image.id]: { width: 0, height: 0, size: sizeFormatted },
+          }));
+          return;
+        }
         const img = new window.Image();
         img.onload = () => {
-          // Calculate file size in KB or MB
-          const sizeInBytes = image.file.size;
-          const sizeInKB = sizeInBytes / 1024;
-          const sizeFormatted =
-            sizeInKB >= 1024
-              ? `${(sizeInKB / 1024).toFixed(2)} MB`
-              : `${sizeInKB.toFixed(2)} KB`;
-
           setImageDimensions((prev) => ({
             ...prev,
             [image.id]: {
@@ -482,6 +522,9 @@ export default function ImagePreview({
 
   // Get dimensions of the selected image
   const selectedDimensions = selectedImage && imageDimensions[selectedImage.id];
+  const showCropFramePreview = Boolean(
+    cropPreviewOptions && !cropMode && !selectedImage?.bbox
+  );
 
   // Get file extension from name
   const getFileExtension = (filename: string): string => {
@@ -505,7 +548,7 @@ export default function ImagePreview({
         <div className="mb-6 relative">
           <div className="brutalist-accent-card relative">
             {/* Zoom + crop controls */}
-            <div className="absolute top-2 right-2 z-30 flex gap-2">
+            {!selectedImage.documentType && <div className="absolute top-2 right-2 z-30 flex gap-2">
               {!cropMode && (
                 <>
                   <button
@@ -541,11 +584,11 @@ export default function ImagePreview({
               >
                 {t("cropMode")}
               </button>
-            </div>
+            </div>}
 
             <div
               ref={imageContainerRef}
-              className={`relative aspect-video w-full overflow-hidden touch-none`}
+              className="relative overflow-hidden touch-none"
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -555,28 +598,79 @@ export default function ImagePreview({
               onTouchEnd={handleTouchEnd}
               onWheel={handleWheel}
               style={{
-                cursor: cropMode ? "default" : isDragging ? "grabbing" : "grab",
+                aspectRatio: cropPreviewOptions?.square
+                  ? "1 / 1"
+                  : selectedDimensions
+                  ? `${selectedDimensions.width} / ${selectedDimensions.height}`
+                  : "16 / 9",
+                width: cropPreviewOptions?.square
+                  ? "min(100%, 70vh)"
+                  : "100%",
+                marginInline: "auto",
+                backgroundColor: cropPreviewOptions?.whiteBackground
+                  ? "#ffffff"
+                  : cropPreviewOptions
+                  ? "#f3f4f6"
+                  : undefined,
+                backgroundImage:
+                  cropPreviewOptions && !cropPreviewOptions.whiteBackground
+                    ? "linear-gradient(45deg, #d1d5db 25%, transparent 25%), linear-gradient(-45deg, #d1d5db 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d1d5db 75%), linear-gradient(-45deg, transparent 75%, #d1d5db 75%)"
+                    : undefined,
+                backgroundPosition:
+                  cropPreviewOptions && !cropPreviewOptions.whiteBackground
+                    ? "0 0, 0 12px, 12px -12px, -12px 0px"
+                    : undefined,
+                backgroundSize:
+                  cropPreviewOptions && !cropPreviewOptions.whiteBackground
+                    ? "24px 24px"
+                    : undefined,
+                cursor: selectedImage.documentType
+                  ? "default"
+                  : cropMode
+                  ? "default"
+                  : isDragging
+                  ? "grabbing"
+                  : "grab",
               }}
             >
-              <div
-                className="absolute transition-transform duration-75 ease-out"
-                style={{
-                  transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-                  transformOrigin: "center",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <Image
-                  src={getDisplayUrl(selectedImage)}
-                  alt={selectedImage.file.name}
-                  fill
-                  sizes="100vw"
-                  className="object-contain"
-                  priority
-                  draggable={false}
-                />
-              </div>
+              {selectedImage.documentType ? (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
+                  <DocumentIcon type={selectedImage.documentType} large />
+                </div>
+              ) : (
+                <div
+                  className={`absolute overflow-hidden transition-all duration-150 ease-out ${
+                    showCropFramePreview
+                      ? "border-2 border-dashed border-primary"
+                      : ""
+                  }`}
+                  style={{
+                    transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                    transformOrigin: "center",
+                    inset:
+                      showCropFramePreview
+                        ? `${Math.max(
+                            2,
+                            (cropPreviewOptions?.marginPct ?? 0) * 100
+                          )}%`
+                        : 0,
+                  }}
+                >
+                  <Image
+                    src={getDisplayUrl(selectedImage)}
+                    alt={selectedImage.file.name}
+                    fill
+                    sizes="100vw"
+                    className={
+                      showCropFramePreview && cropPreviewOptions?.square
+                        ? "object-cover"
+                        : "object-contain"
+                    }
+                    priority
+                    draggable={false}
+                  />
+                </div>
+              )}
 
               {cropMode && cropNaturalSize && (
                 <CropOverlay
@@ -594,7 +688,7 @@ export default function ImagePreview({
                 />
               )}
 
-              {!cropMode && (
+              {!cropMode && !selectedImage.documentType && (
                 <>
                   {/* Mobile zoom instructions */}
                   <div className="absolute bottom-2 left-2 brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs p-2 md:hidden">
@@ -665,14 +759,16 @@ export default function ImagePreview({
                       </button>
                     )}
                   </div>
-                  <Button
-                    onClick={() => handleLocalDownloadImage(selectedImage)}
-                    size="sm"
-                    variant="secondary"
-                    disabled={isProcessing}
-                  >
-                    {t("actions.download")}
-                  </Button>
+                  {!selectedImage.documentType && (
+                    <Button
+                      onClick={() => handleLocalDownloadImage(selectedImage)}
+                      size="sm"
+                      variant="secondary"
+                      disabled={isProcessing}
+                    >
+                      {t("actions.download")}
+                    </Button>
+                  )}
                 </div>
               )}
 
@@ -687,7 +783,7 @@ export default function ImagePreview({
                 )}
 
               <div className="text-sm grid grid-cols-2 gap-x-4">
-                {selectedDimensions && (
+                {selectedDimensions && !selectedImage.documentType && (
                   <>
                     <div>
                       <span className="font-bold">
@@ -700,6 +796,12 @@ export default function ImagePreview({
                       {selectedDimensions.size}
                     </div>
                   </>
+                )}
+                {selectedDimensions && selectedImage.documentType && (
+                  <div>
+                    <span className="font-bold">{t("fileInfo.size")} </span>
+                    {selectedDimensions.size}
+                  </div>
                 )}
 
                 {/* Applied preset info */}
@@ -736,7 +838,9 @@ export default function ImagePreview({
 
       {/* Thumbnail Grid */}
       <h3 className="font-bold text-lg uppercase mb-2">
-        {t("allImages", { current: images.length, max: maxImagesAllowed })}
+        {getCollectionLabel
+          ? getCollectionLabel(images.length, maxImagesAllowed)
+          : t("allImages", { current: images.length, max: maxImagesAllowed })}
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {buildDisplayGroups(images).map((group) => {
@@ -758,14 +862,17 @@ export default function ImagePreview({
                 onClick={() => onSelectImage(image.id)}
               >
                 <div className={`relative aspect-square w-full overflow-hidden`}>
-                  {/* Show PNG transparency indicator only in thumbnails */}
-                  <Image
-                    src={getDisplayUrl(image)}
-                    alt={image.file.name}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                    className="object-contain z-10"
-                  />
+                  {image.documentType ? (
+                    <DocumentIcon type={image.documentType} />
+                  ) : (
+                    <Image
+                      src={getDisplayUrl(image)}
+                      alt={image.file.name}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                      className="object-contain z-10"
+                    />
+                  )}
                   {/* Image number indicator */}
                   <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
                     {index + 1}/{maxImagesAllowed}

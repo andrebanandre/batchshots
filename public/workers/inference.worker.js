@@ -459,6 +459,7 @@ async function taskOcr(bitmap, options) {
   rgba.delete();
 
   const texts = [];
+  const recognized = [];
   let blob = null;
   let out = null;
   let probMat = null;
@@ -556,14 +557,27 @@ async function taskOcr(bitmap, options) {
           }
           prev = bestIdx;
         }
-        if (text.trim().length > 0) texts.push(text.trim());
+        if (text.trim().length > 0) {
+          const clean = text.trim();
+          texts.push(clean);
+          recognized.push({ text: clean, box });
+        }
       } finally {
         recRgb.delete();
         if (recBlob) recBlob.delete();
         if (recOut) recOut.delete();
       }
     }
-    return { texts, joined: texts.join(' ') };
+    const heights = recognized.map((item) => item.box.h).sort((a, b) => a - b);
+    const medianHeight = heights.length ? heights[Math.floor(heights.length / 2)] : 0;
+    const markdown = recognized
+      .map(({ text, box }) => {
+        const looksLikeHeading =
+          medianHeight > 0 && box.h >= medianHeight * 1.45 && text.length <= 100;
+        return looksLikeHeading ? `## ${text}` : text;
+      })
+      .join('\n\n');
+    return { texts, joined: texts.join('\n'), markdown };
   } finally {
     src.delete();
     if (blob) blob.delete();

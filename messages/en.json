@@ -1475,6 +1475,7 @@
     "imageCount": "{count} images",
     "removeImage": "Remove image",
     "uploadStandaloneHint": "Images are processed locally and never leave your device.",
+    "uploadMoreHint": "Drag and drop or choose up to {count} more images.",
     "standaloneUploadFirst": "Upload images to start using this tool.",
     "processAll": "Process all",
     "processSelected": "Process selected only",
@@ -1505,7 +1506,13 @@
     "exclude": "Exclude",
     "excludedCount": "{count} duplicates excluded from the batch",
     "autoRemove": "Automatically remove duplicates",
-    "intro": "Find and remove duplicate photos in seconds — exact copies, resized versions and near-identical shots."
+    "intro": "Find and remove duplicate photos in seconds — exact copies, resized versions and near-identical shots.",
+    "howItWorks": {
+      "title": "How duplicate finding works",
+      "step1": { "title": "Add the photos to compare", "description": "Upload the collection you want to clean up. The tool compares every photo in the batch." },
+      "step2": { "title": "Choose how close a match should be", "description": "Use the similarity setting to include exact copies, resized versions or nearly identical shots." },
+      "step3": { "title": "Keep the best and download", "description": "Review each duplicate group, remove the copies you do not need, then download the cleaned collection." }
+    }
   },
   "BgStep": {
     "title": "Remove backgrounds",
@@ -1519,7 +1526,13 @@
     "before": "Before",
     "after": "After",
     "redoOne": "Redo this image",
-    "intro": "Give your product photos a clean, professional look. Remove the background from one photo or a hundred — nothing leaves your device."
+    "intro": "Give your product photos a clean, professional look. Remove the background from one photo or a hundred — nothing leaves your device.",
+    "howItWorks": {
+      "title": "How background removal works",
+      "step1": { "title": "Upload your photos", "description": "Add one image or a whole batch with backgrounds you want to remove." },
+      "step2": { "title": "Choose the finished look", "description": "Pick a transparent background or a clean white one, then remove the backgrounds." },
+      "step3": { "title": "Check and download", "description": "Preview the cut-out photos and download one image or the complete batch." }
+    }
   },
   "CropStep": {
     "title": "Auto-crop products",
@@ -1535,7 +1548,13 @@
       "description": "Automatically detect and crop products in your photos. Square canvas, white background, marketplace-ready sizes — free, in your browser.",
       "keywords": "product photo cropper, auto crop product images, square product photos, crop tool online"
     },
-    "intro": "Crop your product photos to the perfect frame — one at a time or the whole batch with the same crop."
+    "intro": "Crop your product photos to the perfect frame — one at a time or the whole batch with the same crop.",
+    "howItWorks": {
+      "title": "How product cropping works",
+      "step1": { "title": "Add your product photos", "description": "Upload one photo or a batch. The product in each image will be found automatically." },
+      "step2": { "title": "Set the frame", "description": "Choose the margin, square format, background and output size you need." },
+      "step3": { "title": "Crop and download", "description": "Run the crop, check the new framing and download your marketplace-ready photos." }
+    }
   },
   "ColorizeStep": {
     "title": "Colorize Black & White Photos",
@@ -1547,7 +1566,13 @@
       "description": "Automatically colorize black-and-white photos using on-device AI. Free, private, browser-based — no uploads, nothing leaves your computer.",
       "keywords": "photo colorizer, colorize black and white photos, AI photo colorization, add color to old photos online, free photo colorizer"
     },
-    "intro": "Bring old black-and-white photos to life with natural color — right in your browser."
+    "intro": "Bring old black-and-white photos to life with natural color — right in your browser.",
+    "howItWorks": {
+      "title": "How photo colorizing works",
+      "step1": { "title": "Upload a black-and-white photo", "description": "Choose an old portrait, family photo or any monochrome image you want to colorize." },
+      "step2": { "title": "Choose the color strength", "description": "Set how vivid the result should be, then let the tool add natural-looking colors." },
+      "step3": { "title": "Preview and download", "description": "Check the colorized result, adjust the strength if needed and save the finished photo." }
+    }
   },
   "QualityStep": {
     "title": "Quality check",
@@ -1566,20 +1591,39 @@
     }
   },
   "OcrStep": {
-    "title": "Extract Text from Images",
+    "title": "Extract Text from Images & Documents",
     "run": "Extract text",
     "downloadZip": "Download text (ZIP)",
     "noText": "No text found",
-    "editHint": "Review and edit the extracted text before downloading.",
+    "editHint": "Review the formatted extracted text before downloading.",
     "textFor": "Text for {name}",
     "addDocuments": "Add PDF, Word or PowerPoint files",
     "pages": "{count} pages",
+    "uploadTitle": "Drop images or documents here",
+    "uploadDescription": "JPG, PNG, WEBP, HEIC, PDF, DOCX or PPTX — everything is processed on your device.",
+    "addMoreFiles": "Add more files",
+    "uploadMoreDescription": "Drag and drop more images or documents, or click to choose files.",
+    "allFiles": "ALL FILES ({current}/{max})",
+    "fileCount": "{count} files",
+    "maxFilesReached": "Maximum of {max} files reached",
+    "preparingFiles": "Preparing your files…",
+    "noFilesSelected": "Upload an image or document to extract its text.",
+    "pageHeading": "Page {page}",
+    "pageProgress": "page {page} of {total}",
+    "slideHeading": "Slide {slide}",
+    "markdownPreview": "Formatted preview",
     "metadata": {
       "title": "Image Text Extraction — Free Text Extraction for Product Photos",
       "description": "Extract text from labels, packaging and product photos directly in your browser. No upload — fast, private text extraction.",
       "keywords": "image text extraction, OCR online free, extract text from image, label reader"
     },
-    "intro": "Pull the text out of labels, packaging, PDFs, Word and PowerPoint documents — then download it all as neat text files."
+    "intro": "Pull the text out of labels, packaging, PDFs, Word and PowerPoint documents — then download it all as neat text files.",
+    "howItWorks": {
+      "title": "How text extraction works",
+      "step1": { "title": "Add images or documents", "description": "Upload photos, PDFs, Word files or PowerPoint presentations that contain text." },
+      "step2": { "title": "Extract and review the text", "description": "Start extraction, then read and correct the text found in each file." },
+      "step3": { "title": "Download your text", "description": "Save the reviewed results as tidy text files in one ZIP download." }
+    }
   },
   "CaptionStep": {
     "title": "SEO captions & filenames",
@@ -1588,7 +1632,13 @@
     "seoName": "SEO filename",
     "editHint": "Captions are built from detected object, color and label text.",
     "regenerate": "Regenerate",
-    "intro": "Get search-friendly captions and file names for your product photos, built from what's actually in the picture."
+    "intro": "Get search-friendly captions and file names for your product photos, built from what's actually in the picture.",
+    "howItWorks": {
+      "title": "How SEO captions work",
+      "step1": { "title": "Upload your product photos", "description": "Add the images that need clearer, search-friendly descriptions and file names." },
+      "step2": { "title": "Generate captions and names", "description": "The tool looks at each photo and creates a useful caption and an SEO-friendly file name." },
+      "step3": { "title": "Review and download", "description": "Edit any wording you want to change, then download the renamed photos and captions." }
+    }
   },
   "ResizeStep": {
     "title": "Resize & compress",
@@ -1642,6 +1692,12 @@
       "description": "Paint over unwanted objects and remove them from your photos using on-device AI inpainting. Free, private, browser-based — nothing leaves your computer.",
       "keywords": "object removal, remove object from photo, photo object eraser, remove unwanted objects online, free object removal tool"
     },
-    "intro": "Paint over anything you don't want in the picture — price tags, shadows, clutter — and it disappears."
+    "intro": "Paint over anything you don't want in the picture — price tags, shadows, clutter — and it disappears.",
+    "howItWorks": {
+      "title": "How object removal works",
+      "step1": { "title": "Upload your photo", "description": "Choose a photo with an unwanted object, person, mark or distraction." },
+      "step2": { "title": "Paint over what should disappear", "description": "Adjust the brush and cover the unwanted area. You can clear the strokes and try again." },
+      "step3": { "title": "Remove and download", "description": "Run the removal, check the repaired area and download your cleaned photo." }
+    }
   }
 }

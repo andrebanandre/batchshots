@@ -13,6 +13,21 @@ import React, { createContext, ReactNode, useContext } from 'react';
 import { ImageFile } from '../components/ImagePreview';
 import type { Preset } from '../components/PresetsSelector';
 
+export interface BatchDownloadOptions {
+  format: 'jpeg' | 'png' | 'webp';
+  width: number | null;
+  height: number | null;
+  quality: number;
+  maxFileSizeKb: number | null;
+}
+
+export interface AutoCropPreviewOptions {
+  marginPct: number;
+  square: boolean;
+  whiteBackground: boolean;
+  outputSize: number | null;
+}
+
 export interface EditorToolsContextValue {
   images: ImageFile[];
   selectedImageId: string | null;
@@ -25,6 +40,11 @@ export interface EditorToolsContextValue {
   /** Global busy flag (adjustment pipeline or a tool run) */
   isProcessing: boolean;
   setToolBusy: (busy: boolean) => void;
+  /** Optional transform applied while a standalone ZIP is being built. */
+  batchDownloadOptions?: BatchDownloadOptions;
+  setBatchDownloadOptions?: (options: BatchDownloadOptions) => void;
+  autoCropPreviewOptions?: AutoCropPreviewOptions;
+  setAutoCropPreviewOptions?: (options: AutoCropPreviewOptions) => void;
   /**
    * Bake pending adjustments/preset/watermark into full-size results
    * (editor page supplies this; standalone tools may omit it).

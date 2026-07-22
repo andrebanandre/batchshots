@@ -7,9 +7,18 @@ import SeoNamesCard from '../../components/editor/SeoNamesCard';
 
 export default function SeoCaptionPage() {
   const t = useTranslations('ImageSeoGenerationPage');
-  const tIntro = useTranslations('CaptionStep');
+  const tTool = useTranslations('CaptionStep');
   return (
-    <ToolStandalone description={tIntro('intro')} title={t('PageTitle')}>
+    <ToolStandalone
+      description={tTool('intro')}
+      title={t('PageTitle')}
+      howItWorksTitle={tTool('howItWorks.title')}
+      howItWorksSteps={[
+        { title: tTool('howItWorks.step1.title'), description: tTool('howItWorks.step1.description') },
+        { title: tTool('howItWorks.step2.title'), description: tTool('howItWorks.step2.description') },
+        { title: tTool('howItWorks.step3.title'), description: tTool('howItWorks.step3.description') },
+      ]}
+    >
       <SeoNamesCard />
     </ToolStandalone>
   );

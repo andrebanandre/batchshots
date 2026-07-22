@@ -13,18 +13,13 @@ import SectionCard from './SectionCard';
 import { useEditorTools, toolSourceUrl } from '../../contexts/EditorToolsContext';
 import { resizeAndEncode, encodeToTargetSize } from '../../lib/imageOps';
 import { ImageFile } from '../ImagePreview';
-import type { Preset } from '../PresetsSelector';
+import FormatConversionSettings, {
+  defaultFormatConversionOptions,
+} from './FormatConversionSettings';
+import type { BatchDownloadOptions } from '../../contexts/EditorToolsContext';
 
-type ExportFormat = 'jpg' | 'png' | 'webp';
-
-const FORMAT_TO_ENCODE: Record<ExportFormat, 'jpeg' | 'png' | 'webp'> = {
-  jpg: 'jpeg',
-  png: 'png',
-  webp: 'webp',
-};
-
-const EXT_BY_FORMAT: Record<ExportFormat, string> = {
-  jpg: 'jpg',
+const EXT_BY_FORMAT: Record<BatchDownloadOptions['format'], string> = {
+  jpeg: 'jpg',
   png: 'png',
   webp: 'webp',
 };
@@ -33,40 +28,40 @@ function csvEscape(value: string): string {
   return `"${value.replace(/"/g, '""')}"`;
 }
 
-/** Quality supplied by the selected preset takes priority (preset.quality
- * is a 0-100 percentage); otherwise fall back to the previous default. */
 async function itemBlob(
   image: ImageFile,
-  keepOriginals: boolean,
-  format: ExportFormat,
-  currentPreset: Preset | null | undefined,
-  maxFileSizeKb: number | null
+  options: BatchDownloadOptions
 ): Promise<Blob> {
-  if (keepOriginals) return image.file;
   const source = toolSourceUrl(image);
-  const options = {
-    width: currentPreset?.width ?? image.width ?? 4096,
-    height: currentPreset?.height ?? null,
-    format: FORMAT_TO_ENCODE[format],
-    quality: currentPreset ? currentPreset.quality / 100 : 0.9,
+  const resizeOptions = {
+    width: options.width ?? image.width ?? 10000,
+    height: options.height,
+    format: options.format,
     sharpen: false,
   };
-  if (maxFileSizeKb) {
-    return encodeToTargetSize(source, options, maxFileSizeKb * 1024);
+  if (options.maxFileSizeKb) {
+    return encodeToTargetSize(
+      source,
+      resizeOptions,
+      options.maxFileSizeKb * 1024
+    );
   }
-  return resizeAndEncode(source, options);
+  return resizeAndEncode(source, {
+    ...resizeOptions,
+    quality: options.quality,
+  });
 }
 
 export default function ExportCard() {
   const t = useTranslations('ExportStep');
-  const { images, prepareForExport, presetSlot, currentPreset } = useEditorTools();
+  const { images, prepareForExport } = useEditorTools();
 
-  const [format, setFormat] = useState<ExportFormat>('jpg');
+  const [conversionOptions, setConversionOptions] = useState(
+    defaultFormatConversionOptions
+  );
   const [useSeoNames, setUseSeoNames] = useState(true);
   const [renamePattern, setRenamePattern] = useState('');
   const [includeManifest, setIncludeManifest] = useState(false);
-  const [keepOriginals, setKeepOriginals] = useState(false);
-  const [maxFileSize, setMaxFileSize] = useState<number | null>(null);
   const [isBusy, setIsBusy] = useState(false);
   const [done, setDone] = useState(false);
   const [progress, setProgress] = useState('');
@@ -91,7 +86,7 @@ export default function ExportCard() {
       for (let i = 0; i < exportImages.length; i++) {
         const image = exportImages[i];
         setProgress(`${i + 1}/${exportImages.length}`);
-        const blob = await itemBlob(image, keepOriginals, format, currentPreset, maxFileSize);
+        const blob = await itemBlob(image, conversionOptions);
         const originalBase = image.file.name.replace(/\.[^.]+$/, '');
         let base: string;
         if (renamePattern.includes('{n}')) {
@@ -101,9 +96,7 @@ export default function ExportCard() {
         } else {
           base = originalBase;
         }
-        const ext = keepOriginals
-          ? image.file.name.split('.').pop() || 'jpg'
-          : EXT_BY_FORMAT[format];
+        const ext = EXT_BY_FORMAT[conversionOptions.format];
         let name = `${base}.${ext}`;
         for (let suffix = 2; used.has(name); suffix++) {
           name = `${base}-${suffix}.${ext}`;
@@ -146,35 +139,25 @@ export default function ExportCard() {
   return (
     <SectionCard
       title={t('title')}
-      hasAdvanced
       runLabel={isBusy ? t('downloading') : t('download')}
       onRun={downloadZip}
       runDisabled={activeImages.length === 0}
       isBusy={isBusy}
       busyLabel={progress}
     >
-      {(tab) => (
-        <div className="space-y-4">
+      {() => (
+        <div className="space-y-6">
           <p className="font-bold uppercase">
             {t('imagesReady', { count: activeImages.length })}
           </p>
 
-          {tab === 'presets' && <div className="space-y-3">{presetSlot}</div>}
+          <FormatConversionSettings
+            options={conversionOptions}
+            onChange={setConversionOptions}
+          />
 
-          {tab === 'advanced' && (
-            <div className="flex flex-wrap items-center gap-4 text-sm font-bold">
-              <label className="flex items-center gap-1">
-                Format
-                <select
-                  value={format}
-                  onChange={(e) => setFormat(e.target.value as ExportFormat)}
-                  className="brutalist-border px-1 py-0.5 bg-white font-mono"
-                >
-                  <option value="jpg">JPG</option>
-                  <option value="png">PNG</option>
-                  <option value="webp">WEBP</option>
-                </select>
-              </label>
+          <div className="brutalist-border p-3 space-y-3 text-sm font-bold">
+            <div className="flex flex-wrap items-center gap-4">
               <label className="flex items-center gap-1">
                 <input
                   type="checkbox"
@@ -198,28 +181,8 @@ export default function ExportCard() {
                 />
                 {t('includeManifest')}
               </label>
-              <label className="flex items-center gap-1">
-                <input
-                  type="checkbox"
-                  checked={keepOriginals}
-                  onChange={(e) => setKeepOriginals(e.target.checked)}
-                />
-                {t('keepOriginals')}
-              </label>
-              <label className="flex items-center gap-1">
-                Max file size (KB)
-                <input
-                  type="number"
-                  min={1}
-                  value={maxFileSize ?? ''}
-                  onChange={(e) =>
-                    setMaxFileSize(e.target.value ? Number(e.target.value) : null)
-                  }
-                  className="brutalist-border px-2 py-1 bg-white font-mono font-normal w-24"
-                />
-              </label>
             </div>
-          )}
+          </div>
 
           {done && (
             <div className="brutalist-border p-3 bg-green-100 font-bold inline-block">
