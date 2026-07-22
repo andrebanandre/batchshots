@@ -23,6 +23,10 @@
 # production
 /build
 
+# Large browser runtime/model assets hosted on R2
+/public/models/
+/public/js/opencv/
+
 # misc
 .DS_Store
 *.pem

@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import Card from "../components/Card";
+import { Link } from "@/i18n/navigation";
 import Button from "../components/Button";
 import ImagePreview, { ImageFile } from "../components/ImagePreview";
+import type { ImageFormat } from "../lib/imageProcessing";
 import ImageProcessingControls, {
   ImageAdjustments,
   defaultAdjustments,
@@ -17,9 +18,8 @@ import WatermarkControl, {
   WatermarkSettings,
   defaultWatermarkSettings,
 } from "../components/WatermarkControl";
-import DownloadOptions, { ImageFormat } from "../components/DownloadOptions";
-import DownloadDialog from "../components/DownloadDialog";
-import SeoNameGenerator, { SeoImageName } from "../components/SeoNameGenerator";
+import { EditorToolsProvider } from "../contexts/EditorToolsContext";
+import ToolSections from "../components/editor/ToolSections";
 import ImageUploadDropzone from "../components/ImageUploadDropzone";
 import ModelLoadingCard from "../components/ModelLoadingCard";
 // Pro removed
@@ -118,6 +118,37 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [applyToAll, setApplyToAll] = useState(true);
+  const [isToolBusy, setIsToolBusy] = useState(false);
+
+  // Targeted patch helpers shared with the tool section cards
+  const updateImage = (id: string, patch: Partial<ImageFile>) => {
+    setImages((prev) => prev.map((img) => (img.id === id ? { ...img, ...patch } : img)));
+  };
+  /**
+   * Adjustments/watermark/preset must compose ON TOP of tool results
+   * (background removal, crop, colorize, …). Tool outputs are blob: URLs in
+   * processedDataUrl — swap them in as the processing source.
+   */
+  const withToolSource = (image: ImageFile): ImageFile => {
+    if (image.processedDataUrl?.startsWith("blob:")) {
+      return {
+        ...image,
+        dataUrl: image.processedDataUrl,
+        thumbnailDataUrl: image.processedDataUrl,
+      };
+    }
+    return image;
+  };
+
+  const updateImages = (patches: { id: string; patch: Partial<ImageFile> }[]) => {
+    setImages((prev) => {
+      const byId = new Map(patches.map((p) => [p.id, p.patch]));
+      return prev.map((img) => {
+        const patch = byId.get(img.id);
+        return patch ? { ...img, ...patch } : img;
+      });
+    });
+  };
   // const router = useRouter();
 
   // Calculate max images based on pro status
@@ -128,14 +159,8 @@ export default function Home() {
   // Upgrade dialog removed
 
   // Download dialog state
-  const [isDownloadDialogOpen, setIsDownloadDialogOpen] = useState(false);
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [downloadComplete, setDownloadComplete] = useState(false);
-  const [downloadFormat, setDownloadFormat] = useState<LibImageFormat>("jpg");
 
   // SEO name generation state
-  const [seoNames, setSeoNames] = useState<SeoImageName[]>([]);
-  const [isGeneratingSeoNames, setIsGeneratingSeoNames] = useState(false);
 
   // SEO product description state
   // Removed Gemini SEO product description
@@ -229,7 +254,7 @@ export default function Home() {
 
               // Process only thumbnails for preview - much faster
               const { processedThumbnailUrl } = await processImage(
-                image,
+                withToolSource(image),
                 adjustments,
                 currentPreset,
                 watermarkSettings, // Pass watermark settings
@@ -364,11 +389,6 @@ export default function Home() {
     const updatedImages = images.filter((img) => img.id !== imageId);
     setImages(updatedImages);
 
-    // Remove from SEO names list if present
-    setSeoNames((prevSeoNames) =>
-      prevSeoNames.filter((name) => name.id !== imageId)
-    );
-
     // If the deleted image was selected, select another one if available
     if (selectedImageId === imageId) {
       if (updatedImages.length > 0) {
@@ -377,6 +397,27 @@ export default function Home() {
         setSelectedImageId(null);
       }
     }
+  };
+
+  // Bulk-remove images by id (e.g. auto-removed duplicates from DuplicatesCard)
+  const handleRemoveImages = (ids: string[]) => {
+    if (ids.length === 0) return;
+    const idSet = new Set(ids);
+    const updatedImages = images.filter((img) => !idSet.has(img.id));
+    setImages(updatedImages);
+    if (selectedImageId && idSet.has(selectedImageId)) {
+      setSelectedImageId(updatedImages.length > 0 ? updatedImages[0].id : null);
+    }
+  };
+
+  // Keep a flagged duplicate: clear its excluded/duplicateOf marking
+  const handleKeepDuplicate = (imageId: string) => {
+    updateImage(imageId, { excluded: false, duplicateOf: null });
+  };
+
+  // Remove a flagged duplicate from the batch entirely
+  const handleRemoveDuplicate = (imageId: string) => {
+    handleDeleteImage(imageId);
   };
 
   // Handle download - process the full image if needed
@@ -400,7 +441,7 @@ export default function Home() {
       try {
         const currentPreset = getCurrentPreset();
         const { processedDataUrl } = await processImage(
-          image,
+          withToolSource(image),
           adjustments,
           currentPreset,
           watermarkSettings, // Pass watermark settings
@@ -452,47 +493,24 @@ export default function Home() {
     }
   };
 
-  const handleInitiateDownload = (format: ImageFormat) => {
-    // Use the format chosen by the user
-    const selectedFormat = format as LibImageFormat;
-
-    setDownloadFormat(selectedFormat);
-    setDownloadComplete(false);
-    setIsDownloadDialogOpen(true);
-  };
-
-  const handleConfirmDownload = async () => {
-    setIsDownloading(true);
-    await handleDownloadAll(downloadFormat);
-    setIsDownloading(false);
-    setDownloadComplete(true);
-  };
-
-  const handleDownloadAll = async (format: LibImageFormat = "jpg") => {
-    const imagesToDownload = images; // Download all images
-    if (imagesToDownload.length === 0) return;
-
+  /**
+   * Bake current adjustments/preset/watermark into full-size results for
+   * every image the tools have not already replaced (tool outputs — bg
+   * removal, crop — are kept as-is). Used by the Export section.
+   */
+  const prepareForExport = async (): Promise<ImageFile[]> => {
+    if (images.length === 0) return [];
     setIsProcessing(true);
     try {
       const currentPreset = getCurrentPreset();
-
-      // Process full-size versions of all images before download
       const fullyProcessedImages = await Promise.all(
-        imagesToDownload.map(async (image) => {
-          // Process all images
+        images.map(async (image) => {
           const { processedDataUrl, processedThumbnailUrl } =
-            await processImage(
-              image,
-              adjustments,
-              currentPreset,
-              watermarkSettings, // Pass watermark settings
-              true // Process full size
-            );
-
+            await processImage(withToolSource(image), adjustments, currentPreset, watermarkSettings, true);
           return {
             ...image,
-            processedThumbnailUrl, // Keep thumbnail updated too
-            processedDataUrl, // Store full processed URL
+            processedThumbnailUrl,
+            processedDataUrl,
             appliedPreset: currentPreset
               ? {
                   name: currentPreset.name,
@@ -504,61 +522,42 @@ export default function Home() {
           };
         })
       );
-
-      // Update state with processed images (contains processedDataUrl)
       setImages(fullyProcessedImages);
-
-      // Download all the processed images
-      downloadAllImages(fullyProcessedImages, format, true); // Removed adjustments from here as they are baked in
-    } catch (error) {
-      console.error("Error processing images for download all", error);
+      return fullyProcessedImages;
     } finally {
       setIsProcessing(false);
     }
   };
 
-  // Generate SEO-friendly names for images
-  const handleGenerateSeoNames = async (
-    description: string,
-    _recaptchaToken: string,
-    imageCount: number
-  ) => {
-    if (!description.trim() || images.length === 0) return;
-    setIsGeneratingSeoNames(true);
-    try {
-      // Generate simple slug-based names client-side (free, no server)
-      const normalize = (s: string) =>
-        s
-          .toLowerCase()
-          .replace(/[^a-z0-9\s-]/g, "")
-          .trim()
-          .replace(/\s+/g, "-");
-      const base = normalize(description).slice(0, 50) || "image";
-      const count = imageCount || images.length;
-      const generated = Array.from(
-        { length: count },
-        (_, i) => `${base}-${i + 1}`
-      );
-      const newSeoNames: SeoImageName[] = images.map((image, index) => ({
-        id: image.id,
-        originalName: image.file.name,
-        seoName: generated[index] || `${base}-${index + 1}`,
-        description,
-        extension: image.file.name.split(".").pop() || "jpg",
-      }));
-      setSeoNames(newSeoNames);
-      setImages((prev) =>
-        prev.map((img) => {
-          const m = newSeoNames.find((n) => n.id === img.id);
-          return m
-            ? { ...img, seoName: m.seoName, originalName: img.file.name }
-            : img;
-        })
-      );
-    } finally {
-      setIsGeneratingSeoNames(false);
+  /**
+   * Order images for the grid so each "best" image is immediately followed
+   * by its duplicates (as flagged by DuplicatesCard), grouping them
+   * visually. Non-duplicate images keep their original relative order;
+   * duplicates whose best has since been removed fall back to standalone.
+   */
+  const sortedImages = (() => {
+    const idSet = new Set(images.map((img) => img.id));
+    const duplicatesByBest = new Map<string, ImageFile[]>();
+    const standalone: ImageFile[] = [];
+    for (const img of images) {
+      if (img.duplicateOf && idSet.has(img.duplicateOf)) {
+        const list = duplicatesByBest.get(img.duplicateOf) ?? [];
+        list.push(img);
+        duplicatesByBest.set(img.duplicateOf, list);
+      } else {
+        standalone.push(img);
+      }
     }
-  };
+    const result: ImageFile[] = [];
+    for (const img of standalone) {
+      result.push(img);
+      const dups = duplicatesByBest.get(img.id);
+      if (dups) result.push(...dups);
+    }
+    return result;
+  })();
+
+  // Generate SEO-friendly names for images
 
   // Handle reset of all adjustments and watermarks
   const handleReset = () => {
@@ -586,22 +585,6 @@ export default function Home() {
   };
 
   // Handle starting a new bundle after download
-  const handleStartNewBundle = () => {
-    setImages([]);
-    setSelectedImageId(null);
-    setAdjustments(defaultAdjustments);
-    setWatermarkSettings(defaultWatermarkSettings); // Reset watermark
-    setSelectedPreset(null);
-    setCustomPresetSettings(null);
-    setSeoNames([]);
-    // SEO product description removed
-    setIsDownloadDialogOpen(false);
-  };
-
-  // Handle continuing with editing after download
-  const handleContinueEditing = () => {
-    setIsDownloadDialogOpen(false);
-  };
 
   // Handle SEO product description generation
   // No-op: SEO product description removed
@@ -739,7 +722,7 @@ export default function Home() {
                   </div>
 
                   <ImagePreview
-                    images={images}
+                    images={sortedImages}
                     selectedImageId={selectedImageId}
                     onSelectImage={setSelectedImageId}
                     onDownloadImage={handleDownloadImage}
@@ -752,6 +735,9 @@ export default function Home() {
                       applyToAll,
                     }}
                     maxImagesAllowed={MAX_IMAGES}
+                    onKeepDuplicate={handleKeepDuplicate}
+                    onRemoveDuplicate={handleRemoveDuplicate}
+                    onUpdateImage={updateImage}
                   />
 
                   <div className="mb-6 flex justify-between items-center flex-col space-y-4">
@@ -803,28 +789,29 @@ export default function Home() {
                     <WatermarkControl />
                   </ImageProcessingProvider>
 
-                  <Card title={t("imageOptimization")} variant="accent">
-                    <PresetsSelector
-                      presets={getAllPresets()}
-                      selectedPreset={selectedPreset}
-                      onSelectPreset={setSelectedPreset}
-                      onCustomSettingsChange={handleCustomSettingsChange}
-                    />
-                  </Card>
-
-                  <SeoNameGenerator
-                    seoNames={seoNames}
-                    onGenerateSeoNames={handleGenerateSeoNames}
-                    isGenerating={isGeneratingSeoNames}
-                    imageCount={images.length}
-                  />
-
-                  {/* Removed SEO Product Description generator */}
-
-                  <DownloadOptions
-                    onDownload={handleInitiateDownload}
-                    hasSeoProductDescription={false}
-                  />
+                  <EditorToolsProvider
+                    value={{
+                      images,
+                      selectedImageId,
+                      updateImage,
+                      updateImages,
+                      removeImages: handleRemoveImages,
+                      isProcessing: isProcessing || isToolBusy,
+                      setToolBusy: setIsToolBusy,
+                      prepareForExport,
+                      presetSlot: (
+                        <PresetsSelector
+                          presets={getAllPresets()}
+                          selectedPreset={selectedPreset}
+                          onSelectPreset={setSelectedPreset}
+                          onCustomSettingsChange={handleCustomSettingsChange}
+                        />
+                      ),
+                      currentPreset: getCurrentPreset(),
+                    }}
+                  >
+                    <ToolSections />
+                  </EditorToolsProvider>
                 </div>
               </div>
             )}
@@ -832,26 +819,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* Download Dialog */}
-      <DownloadDialog
-        isOpen={isDownloadDialogOpen}
-        onClose={
-          downloadComplete ? handleContinueEditing : handleConfirmDownload
-        }
-        imageCount={images.length}
-        onStartNewBundle={handleStartNewBundle}
-        onContinueEditing={handleContinueEditing}
-        hasAppliedChanges={images.some(
-          (img) => img.processedThumbnailUrl || watermarkSettings.enabled
-        )}
-        appliedPresetName={getCurrentPresetName()}
-        isDownloading={isDownloading}
-        downloadComplete={downloadComplete}
-        formatType={downloadFormat}
-        hasSeoNames={images.some((img) => !!img.seoName)}
-        hasSeoProductDescription={false}
-        hasWatermark={watermarkSettings.enabled}
-      />
 
       {/* Pro Upgrade Dialog */}
       {/* Upgrade dialog removed */}

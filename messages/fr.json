@@ -59,7 +59,8 @@
     "imagesCount": "{current}/{max} images",
     "upgradeFor": "(Passez à PRO pour jusqu'à 100)",
     "imageOptimization": "OPTIMISATION D'IMAGE",
-    "heicConversionFailed": "Échec de la conversion de l'image HEIC : {fileName}. Le format de fichier peut ne pas être pris en charge ou le fichier peut être corrompu."
+    "heicConversionFailed": "Échec de la conversion de l'image HEIC : {fileName}. Le format de fichier peut ne pas être pris en charge ou le fichier peut être corrompu.",
+    "pipelineCta": "Essayez le nouveau pipeline par lots →"
   },
   "Navbar": {
     "imageOptimizer": "Optimiseur d'images",
@@ -75,7 +76,12 @@
     "seoDescription": "Description SEO",
     "imageFormatConvertor": "Convertisseur de format d'image",
     "profile": "Profil",
-    "logout": "Se déconnecter"
+    "logout": "Se déconnecter",
+    "pipeline": "Pipeline",
+    "productPhotoCropper": "Recadrage photo produit",
+    "photoQualityChecker": "Contrôle qualité photo",
+    "imageTextExtraction": "Extraction de texte (OCR)",
+    "photoColorizer": "Colorisation photo"
   },
   "Footer": {
     "about": "Batch Shots vous aide à optimiser rapidement et facilement les images de produits pour le SEO, directement dans votre navigateur.",
@@ -548,7 +554,15 @@
         "download": "TÉLÉCHARGER",
         "reset": "RÉINITIALISER"
       },
-      "allImages": "TOUTES LES IMAGES ({current}/{max})"
+      "allImages": "TOUTES LES IMAGES ({current}/{max})",
+      "duplicateBadge": "Doublon",
+      "keepDuplicate": "Garder",
+      "removeDuplicate": "Supprimer",
+      "cropMode": "Recadrer",
+      "cropApply": "Appliquer le recadrage",
+      "cropApplyAll": "Appliquer à tous",
+      "cropCancel": "Annuler",
+      "cropAspectFree": "Libre"
     },
     "PricingCard": {
       "oneTime": "une fois",
@@ -1181,14 +1195,12 @@
     "AllGroupsAnalyzedReadyDownload": "Tous les {count} groupes de doublons analysés. Prêt à télécharger les {downloadCount} meilleures photos.",
     "AnalysisPartialReadyDownload": "Analyse pour la meilleure sélection partiellement terminée ({processedGroups}/{totalGroups} groupes). Prêt à télécharger {downloadCount} photos (la meilleure disponible sera choisie).",
     "NoImagesProcessedOrGroups": "Aucune photo traitée ou aucun groupe formé pour le moment. Assurez-vous que les photos ont été sélectionnées et que l'analyse IA est terminée.",
-
     "LoaderTitleInitializing": "Initialisation des Outils Intelligents...",
     "LoaderTitleLoadingModel": "Chargement du Cerveau IA...",
     "LoaderTitleQualityTools": "Préparation de l'Analyseur de Qualité...",
     "LoaderDescriptionInitializing": "Préparation pour la détection intelligente des doublons. Veuillez patienter.",
     "LoaderDescriptionLoadingModel": "Notre IA avancée est en train de chauffer. Cela peut prendre un moment.",
     "LoaderDescriptionQualityTools": "Préparation des outils pour des informations détaillées sur la qualité des photos...",
-
     "MainCardTitle": "Trouver & Gérer les Photos en Double",
     "UploadSectionTitle": "Téléchargez Vos Photos",
     "UploadSectionDescription": "Sélectionnez plusieurs photos. Notre IA les analysera intelligemment et regroupera celles qui sont similaires.",
@@ -1200,7 +1212,6 @@
     "SupportedFormats": "Supporte les formats JPG, PNG, WEBP, HEIC",
     "AIStatusLabel": "Statut IA : {status}",
     "QualityAnalyzerStatusLoading": "Analyseur de Qualité : Chargement...",
-
     "SimilarityThresholdTitle": "Paramètre de Similarité",
     "SimilarityThresholdDescription": "Contrôlez à quel point les photos doivent correspondre pour être signalées comme doublons. Des valeurs plus élevées signifient une correspondance plus stricte.",
     "SimilarityLessStrict": "Moins Strict",
@@ -1208,7 +1219,6 @@
     "SimilarityMoreStrict": "Plus Strict",
     "ButtonApplyThreshold": "Appliquer le Paramètre",
     "ButtonApplyThresholdLoading": "Réanalyse en cours...",
-
     "ResultsTitle": "Résultats de la Détection :",
     "DuplicateSetTitle": "Ensemble de Doublons {number} ({count} photos similaires)",
     "ButtonAnalyzeQuality": "Analyser la Qualité",
@@ -1223,14 +1233,11 @@
     "KpiExposure": "Expo.:",
     "ButtonDownload": "Télécharger",
     "ButtonDownloading": "Téléchargement...",
-
     "UniqueImagesTitle": "Photos Uniques ({count} photo(s) sans doublons directs)",
-
     "ButtonAnalyzeAllGroups": "Analyser Tous les Groupes pour la Meilleure Sélection",
     "ButtonAnalyzeAllGroupsLoading": "Analyse de Tous les Groupes...",
     "ButtonDownloadBest": "Télécharger les {count} Meilleures Photos",
     "ButtonDownloadBestLoading": "Préparation du Téléchargement...",
-
     "HowItWorksTitle": "Comment Notre IA Trouve les Doublons",
     "HowItWorksStep1Title": "1. Téléchargez Vos Photos",
     "HowItWorksStep1Desc": "Cliquez sur \"Sélectionner des Photos\" et choisissez les images que vous voulez vérifier. Vous pouvez en sélectionner plusieurs à la fois.",
@@ -1242,7 +1249,6 @@
     "HowItWorksStep4Desc": "Utilisez le curseur de similarité pour contrôler la rigueur de la correspondance. Une valeur plus élevée signifie que les photos doivent être presque identiques pour être signalées comme des doublons.",
     "HowItWorksStep5Title": "5. Examiner & Organiser",
     "HowItWorksStep5Desc": "Les résultats montrent clairement les ensembles de doublons et les photos uniques. Notre IA peut également mettre en évidence la photo de meilleure qualité dans chaque groupe de doublons, vous aidant à décider laquelle conserver.",
-
     "FreeUserLimit": "Les utilisateurs gratuits peuvent téléverser jusqu'à {limit} photos à la fois.",
     "ButtonSelectImagesLimit": "Sélectionner des photos (jusqu'à {limit})",
     "UpgradeMessage": "Passez à PRO pour analyser un nombre illimité de photos en une seule fois.",
@@ -1250,7 +1256,6 @@
     "HowItWorksStep1Free": "Les utilisateurs gratuits sont limités à {limit} photos à la fois.",
     "HowItWorksStep1Pro": "En tant qu'utilisateur PRO, vous pouvez analyser un nombre illimité de photos à la fois.",
     "ProFeatureName": "Analyse de photos illimitée",
-
     "FreeModeTitle": "MODE GRATUIT",
     "FreeModeDescription": "Traitez jusqu'à {limit} photos à la fois. Passez à PRO pour analyser un nombre illimité de photos !",
     "ProModeTitle": "MODE PRO",
@@ -1259,7 +1264,6 @@
     "ProcessingErrors": "Erreurs de traitement",
     "imagesCount": "{current}/{max} images",
     "upgradeFor": "(Passez à PRO pour illimité)",
-
     "UpgradeCardTitle": "PASSER À PRO",
     "UpgradeCardPlanTitle": "FORFAIT PRO",
     "UpgradeCardPlanPrice": "$19.99",
@@ -1270,21 +1274,16 @@
     "UpgradeCardFeature4": "Téléchargement en lot des meilleures photos des ensembles de doublons",
     "UpgradeCardFeature5": "Accès à toutes les autres fonctionnalités PRO (suppression d'arrière-plan, etc.)",
     "UpgradeCardButton": "PASSER À PRO MAINTENANT",
-
     "ProUpgradeTitle": "Passer à Pro pour des photos illimitées",
-
     "SimilarityControlsTitle": "Algorithme de similarité et seuil",
     "SimilarityAlgorithmLabel": "Algorithme de similarité",
     "SimilarityThresholdLabel": "Seuil de similarité",
     "SimilarityThresholdDescDistance": "Des valeurs plus faibles signifient des images plus similaires (métrique de distance)",
     "SimilarityThresholdDescSimilarity": "Des valeurs plus élevées signifient des images plus similaires (métrique de similarité)",
-
     "ProcessingChanges": "Traitement des modifications...",
     "ReanalyzingWithAlgorithm": "Réanalyse avec le nouvel algorithme...",
     "AnalysisCompleteWithAlgorithm": "Analyse terminée avec le nouvel algorithme. {groupSummary}",
-
     "DuplicateAnalysisComplete": "Analyse des doublons terminée",
-
     "VisualizationTitle": "Espace Vectoriel IA",
     "VisualizationDescription": "Visualisez comment l'IA perçoit vos images dans un espace à haute dimension, réduit en 2D grâce à l'algorithme UMAP. Les images similaires se regroupent ensemble.",
     "VisualizationShowButton": "Afficher la Visualisation",
@@ -1387,5 +1386,233 @@
     "FreeUserPlanIndicator": "Forfait gratuit : SEO IA jusqu'à 3 images. Passez à Pro pour l'illimité !",
     "FreePlanInfoBoxTitle": "FORFAIT GRATUIT",
     "ProFeatureUnlimitedImages": "Génération illimitée d'images SEO IA"
+  },
+  "Pipeline": {
+    "metadata": {
+      "title": "Pipeline photo par lots — Traitez 500 photos marketplace à la fois",
+      "description": "Téléversez une fois, puis dédoublonnez, détourez, recadrez automatiquement, contrôlez la qualité, OCR, légendez, redimensionnez et exportez des photos prêtes pour les marketplaces — le tout dans votre navigateur, sans envoi vers un serveur.",
+      "keywords": "éditeur photo par lots, photos marketplace, pipeline photo produit, traitement d'images en masse, éditeur photo navigateur"
+    },
+    "title": "Pipeline photo par lots",
+    "steps": {
+      "upload": "Téléverser",
+      "dedupe": "Doublons",
+      "bg": "Arrière-plan",
+      "crop": "Recadrage",
+      "quality": "Qualité",
+      "ocr": "OCR",
+      "caption": "Légende",
+      "resize": "Taille",
+      "export": "Export"
+    },
+    "stepStatus": {
+      "pending": "En attente",
+      "running": "En cours…",
+      "done": "Terminé",
+      "skipped": "Ignoré",
+      "error": "Erreur"
+    },
+    "back": "Retour",
+    "next": "Suivant",
+    "skip": "Ignorer",
+    "rerun": "Relancer",
+    "rerunConfirm": "Relancer cette étape effacera les résultats de toutes les étapes suivantes. Continuer ?",
+    "uploadTitle": "Déposez vos photos produit ici",
+    "uploadDescription": "Jusqu'à {max} images — JPG, PNG, WEBP, HEIC. Tout reste dans votre navigateur.",
+    "addMoreImages": "Ajouter des images",
+    "maxImagesReached": "Maximum de {max} images atteint",
+    "preparingImages": "Préparation des images… {done}/{total}",
+    "imageCount": "{count} images",
+    "removeImage": "Supprimer l'image",
+    "uploadStandaloneHint": "Les images sont traitées localement et ne quittent jamais votre appareil.",
+    "uploadMoreHint": "Déposez ou choisissez jusqu’à {count} images supplémentaires.",
+    "standaloneUploadFirst": "Téléversez des images pour utiliser cet outil.",
+    "processAll": "Tout traiter",
+    "processSelected": "Traiter la sélection uniquement",
+    "cancel": "Annuler",
+    "modelLoading": "Chargement du modèle IA… {pct}%",
+    "processingError": "Certaines images ont échoué : {count}",
+    "howItWorks": {
+      "title": "Comment ça marche",
+      "step1Title": "Téléversez vos photos",
+      "step1Text": "Déposez une photo ou tout un lot — tout reste sur votre appareil.",
+      "step2Title": "Réglez et lancez",
+      "step2Text": "Choisissez vos réglages et appliquez-les à une photo ou à toutes.",
+      "step3Title": "Téléchargez les résultats",
+      "step3Text": "Enregistrez vos photos finies en un clic."
+    }
+  },
+  "DedupeStep": {
+    "title": "Trouver les photos en double",
+    "run": "Trouver les doublons",
+    "phashPass": "Recherche de copies…",
+    "embedPass": "Comparaison des photos…",
+    "threshold": "Similarité",
+    "groupsFound": "{count} groupes de doublons trouvés",
+    "noDuplicates": "Aucun doublon trouvé — toutes les images sont uniques.",
+    "best": "Meilleure",
+    "duplicate": "Doublon",
+    "keep": "Garder",
+    "exclude": "Exclure",
+    "excludedCount": "{count} doublons exclus du lot",
+    "autoRemove": "Supprimer automatiquement les doublons",
+    "intro": "Trouvez et supprimez les photos en double en quelques secondes — copies exactes, versions redimensionnées et clichés quasi identiques.",
+    "howItWorks": { "title": "Comment fonctionne la recherche de doublons", "step1": { "title": "Ajoutez les photos à comparer", "description": "Importez la collection à nettoyer. L’outil compare toutes les photos du lot." }, "step2": { "title": "Choisissez le niveau de ressemblance", "description": "Réglez la similarité pour inclure les copies exactes, redimensionnées ou presque identiques." }, "step3": { "title": "Gardez les meilleures et téléchargez", "description": "Vérifiez chaque groupe, retirez les copies inutiles puis téléchargez la collection nettoyée." } }
+  },
+  "BgStep": {
+    "title": "Supprimer les arrière-plans",
+    "run": "Supprimer les arrière-plans",
+    "quality": "Qualité",
+    "fast": "Rapide (recommandé)",
+    "hq": "Haute qualité (plus lent)",
+    "output": "Sortie",
+    "transparent": "PNG transparent",
+    "whiteBg": "Fond blanc",
+    "before": "Avant",
+    "after": "Après",
+    "redoOne": "Refaire cette image",
+    "intro": "Donnez à vos photos produit un rendu net et professionnel. Supprimez l'arrière-plan d'une photo ou de cent — rien ne quitte votre appareil.",
+    "howItWorks": { "title": "Comment fonctionne la suppression d’arrière-plan", "step1": { "title": "Importez vos photos", "description": "Ajoutez une image ou tout un lot dont vous souhaitez retirer l’arrière-plan." }, "step2": { "title": "Choisissez le rendu final", "description": "Sélectionnez un arrière-plan transparent ou blanc, puis lancez la suppression." }, "step3": { "title": "Vérifiez et téléchargez", "description": "Prévisualisez les photos détourées et téléchargez une image ou le lot complet." } }
+  },
+  "CropStep": {
+    "title": "Recadrage automatique des produits",
+    "run": "Détecter et recadrer",
+    "margin": "Marge",
+    "square": "Canevas carré",
+    "whiteBackground": "Fond blanc",
+    "outputSize": "Taille de sortie",
+    "noDetection": "Aucun produit détecté — original conservé",
+    "detected": "{label} ({pct}%)",
+    "metadata": {
+      "title": "Recadrage photo produit — Recadrez vos images produit automatiquement",
+      "description": "Détectez et recadrez automatiquement les produits sur vos photos. Canevas carré, fond blanc, tailles prêtes pour les marketplaces — gratuit, dans votre navigateur.",
+      "keywords": "recadrage photo produit, recadrage automatique d'images, photos produit carrées, outil de recadrage en ligne"
+    },
+    "intro": "Recadrez vos photos produit au cadre parfait — une par une ou tout le lot avec le même recadrage.",
+    "howItWorks": { "title": "Comment fonctionne le recadrage produit", "step1": { "title": "Ajoutez vos photos produit", "description": "Importez une photo ou un lot. Le produit est repéré automatiquement dans chaque image." }, "step2": { "title": "Réglez le cadre", "description": "Choisissez la marge, le format carré, l’arrière-plan et la taille de sortie." }, "step3": { "title": "Recadrez et téléchargez", "description": "Lancez le recadrage, vérifiez le nouveau cadre puis téléchargez vos photos prêtes à publier." } }
+  },
+  "ColorizeStep": {
+    "title": "Coloriser les photos noir et blanc",
+    "run": "Coloriser",
+    "blend": "Intensité de la couleur",
+    "hint": "Ajoute des couleurs naturelles aux photos noir et blanc — tout reste sur votre appareil.",
+    "metadata": {
+      "title": "Colorisation de photos — Ajoutez de la couleur aux photos noir et blanc en ligne",
+      "description": "Colorisez automatiquement vos photos noir et blanc grâce à l'IA embarquée. Gratuit, privé, dans le navigateur — aucun envoi, rien ne quitte votre ordinateur.",
+      "keywords": "colorisation photo, coloriser photo noir et blanc, colorisation IA, ajouter de la couleur à une vieille photo en ligne, colorisation photo gratuite"
+    },
+    "intro": "Redonnez vie à vos vieilles photos noir et blanc avec des couleurs naturelles — directement dans votre navigateur.",
+    "howItWorks": { "title": "Comment fonctionne la colorisation", "step1": { "title": "Importez une photo noir et blanc", "description": "Choisissez un ancien portrait, une photo de famille ou toute image monochrome." }, "step2": { "title": "Choisissez l’intensité des couleurs", "description": "Réglez la vivacité souhaitée puis laissez l’outil ajouter des couleurs naturelles." }, "step3": { "title": "Prévisualisez et téléchargez", "description": "Vérifiez le résultat, ajustez l’intensité si besoin et enregistrez la photo." } }
+  },
+  "QualityStep": {
+    "title": "Contrôle qualité",
+    "run": "Vérifier la qualité",
+    "flaggedCount": "{count} images signalées",
+    "noFlags": "Toutes les images ont passé le contrôle qualité.",
+    "excludeFlagged": "Exclure toutes les signalées",
+    "flagBlurry": "Floue",
+    "flagDark": "Trop sombre",
+    "flagOverexposed": "Surexposée",
+    "flagLowRes": "Basse résolution",
+    "metadata": {
+      "title": "Contrôle qualité photo — Détectez les photos produit floues ou ratées",
+      "description": "Signalez automatiquement les photos produit floues, sombres, surexposées ou en basse résolution avant de les publier sur les marketplaces. Outil gratuit dans le navigateur.",
+      "keywords": "contrôle qualité photo, détecteur de photos floues, analyse de qualité d'image, vérification photo produit"
+    }
+  },
+  "OcrStep": {
+    "title": "Extraire le texte des images et documents",
+    "run": "Extraire le texte",
+    "downloadZip": "Télécharger le texte (ZIP)",
+    "noText": "Aucun texte trouvé",
+    "editHint": "Vérifiez le texte extrait et formaté avant de le télécharger.",
+    "textFor": "Texte pour {name}",
+    "addDocuments": "Ajouter des fichiers PDF, Word ou PowerPoint",
+    "pages": "{count} pages",
+    "uploadTitle": "Déposez des images ou documents ici",
+    "uploadDescription": "JPG, PNG, WEBP, HEIC, PDF, DOCX ou PPTX — tout est traité sur votre appareil.",
+    "addMoreFiles": "Ajouter des fichiers",
+    "uploadMoreDescription": "Déposez d’autres images ou documents, ou cliquez pour les choisir.",
+    "allFiles": "TOUS LES FICHIERS ({current}/{max})",
+    "fileCount": "{count} fichiers",
+    "maxFilesReached": "Maximum de {max} fichiers atteint",
+    "preparingFiles": "Préparation de vos fichiers…",
+    "noFilesSelected": "Importez une image ou un document pour en extraire le texte.",
+    "pageHeading": "Page {page}",
+    "pageProgress": "page {page} sur {total}",
+    "slideHeading": "Diapositive {slide}",
+    "markdownPreview": "Aperçu formaté",
+    "metadata": {
+      "title": "Extraction de texte d'image — Extraction de texte gratuite pour photos produit",
+      "description": "Extrayez le texte des étiquettes, emballages et photos produit directement dans votre navigateur. Sans téléversement — extraction de texte rapide et privée.",
+      "keywords": "extraction de texte d'image, OCR en ligne gratuit, extraire texte d'une image, lecteur d'étiquettes"
+    },
+    "intro": "Extrayez le texte des étiquettes, emballages, PDF, documents Word et PowerPoint — puis téléchargez le tout en fichiers texte propres.",
+    "howItWorks": { "title": "Comment fonctionne l’extraction de texte", "step1": { "title": "Ajoutez des images ou documents", "description": "Importez des photos, PDF, fichiers Word ou présentations PowerPoint contenant du texte." }, "step2": { "title": "Extrayez et vérifiez le texte", "description": "Lancez l’extraction, puis relisez et corrigez le texte trouvé dans chaque fichier." }, "step3": { "title": "Téléchargez votre texte", "description": "Enregistrez les résultats vérifiés sous forme de fichiers texte dans un seul ZIP." } }
+  },
+  "CaptionStep": {
+    "title": "Légendes SEO et noms de fichiers",
+    "run": "Générer les légendes",
+    "caption": "Légende",
+    "seoName": "Nom de fichier SEO",
+    "editHint": "Les légendes sont construites à partir de l'objet détecté, de la couleur et du texte d'étiquette.",
+    "regenerate": "Régénérer",
+    "intro": "Obtenez des légendes et noms de fichiers optimisés pour la recherche, créés à partir du contenu réel de la photo.",
+    "howItWorks": { "title": "Comment fonctionnent les légendes SEO", "step1": { "title": "Importez vos photos produit", "description": "Ajoutez les images qui ont besoin de descriptions et de noms de fichiers plus clairs." }, "step2": { "title": "Générez légendes et noms", "description": "L’outil examine chaque photo et crée une légende utile et un nom de fichier adapté au SEO." }, "step3": { "title": "Vérifiez et téléchargez", "description": "Modifiez le texte souhaité, puis téléchargez les photos renommées et leurs légendes." } }
+  },
+  "ResizeStep": {
+    "title": "Redimensionner et compresser",
+    "run": "Appliquer à tout",
+    "preset": "Préréglage marketplace",
+    "format": "Format",
+    "quality": "Qualité",
+    "maxFileSize": "Taille max (Ko, optionnel)",
+    "sharpen": "Légère netteté",
+    "padToExact": "Compléter à la taille exacte",
+    "custom": "Personnalisé",
+    "presetApplied": "{count} images traitées"
+  },
+  "ExportStep": {
+    "title": "Export",
+    "download": "Télécharger le ZIP",
+    "downloading": "Création du ZIP…",
+    "downloadComplete": "Téléchargement prêt !",
+    "useSeoNames": "Utiliser les noms SEO",
+    "renamePattern": "Modèle de renommage (ex. produit-{n})",
+    "includeManifest": "Inclure manifest.csv",
+    "addWatermark": "Ajouter un filigrane",
+    "watermarkText": "Texte du filigrane",
+    "imagesReady": "{count} images prêtes à exporter",
+    "keepOriginals": "Exporter les originaux (sans traitement)",
+    "intro": "Convertissez vos photos en JPG, PNG ou WEBP, redimensionnez-les pour n'importe quelle marketplace et téléchargez tout en un ZIP."
+  },
+  "DownloadZip": {
+    "title": "Télécharger",
+    "download": "Télécharger le ZIP",
+    "building": "Préparation du ZIP…",
+    "done": "Téléchargement prêt !"
+  },
+  "EditorTools": {
+    "applyToAll": "Appliquer à toutes les images",
+    "presetsTab": "Préréglages",
+    "advancedTab": "Avancé",
+    "noImageSelected": "Sélectionnez d'abord une image ou activez « appliquer à tout ».",
+    "done": "Terminé",
+    "failed": "{count} en échec"
+  },
+  "ObjectRemoveStep": {
+    "title": "Supprimer des objets des photos",
+    "run": "Supprimer les zones peintes",
+    "brush": "Taille du pinceau",
+    "clear": "Effacer les traits",
+    "applyAllAreas": "Appliquer les zones peintes à toutes les images",
+    "hint": "Peignez sur tout ce que vous voulez supprimer — tout reste sur votre appareil.",
+    "metadata": {
+      "title": "Suppression d'objets — Supprimez les objets indésirables des photos en ligne",
+      "description": "Peignez sur les objets indésirables et supprimez-les de vos photos grâce à l'inpainting IA embarqué. Gratuit, privé, dans le navigateur — rien ne quitte votre ordinateur.",
+      "keywords": "suppression d'objets, supprimer un objet d'une photo, gomme à objets photo, supprimer des objets indésirables en ligne, outil gratuit de suppression d'objets"
+    },
+    "intro": "Peignez sur tout ce que vous ne voulez pas dans l'image — étiquettes de prix, ombres, désordre — et cela disparaît.",
+    "howItWorks": { "title": "Comment fonctionne la suppression d’objets", "step1": { "title": "Importez votre photo", "description": "Choisissez une photo avec un objet, une personne, une marque ou un détail indésirable." }, "step2": { "title": "Peignez ce qui doit disparaître", "description": "Réglez le pinceau et recouvrez la zone. Vous pouvez effacer les traits et recommencer." }, "step3": { "title": "Supprimez et téléchargez", "description": "Lancez la suppression, vérifiez la zone réparée puis téléchargez la photo nettoyée." } }
   }
 }

@@ -1,8 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Button from "./Button";
 import type { ImageFormat } from "../lib/imageProcessing";
 import { useTranslations } from "next-intl";
+import CropOverlay, {
+  CropAspectKey,
+  CropRect,
+} from "./editor/CropOverlay";
+import type { AutoCropPreviewOptions } from "../contexts/EditorToolsContext";
 
 export interface ImageFile {
   id: string;
@@ -24,6 +29,24 @@ export interface ImageFile {
   };
   seoName?: string; // SEO-friendly filename
   originalName?: string; // Original filename for reference
+  /** Non-image files supported by document-oriented standalone tools. */
+  documentType?: "pdf" | "docx" | "pptx";
+  pageCount?: number;
+  // ---- tool section artifacts (OpenCV 5 tools) ----
+  phash?: string;
+  embedding?: Float32Array;
+  /** id of the kept best image this one duplicates */
+  duplicateOf?: string | null;
+  /** excluded from batch actions & export (duplicates / quality rejects) */
+  excluded?: boolean;
+  quality?: import('../types/pipeline').QualityReport;
+  ocrText?: string;
+  caption?: string;
+  dominantColor?: string;
+  classLabel?: string;
+  bbox?: import('../types/pipeline').BBox;
+  /** Source retained by auto-crop so settings can be changed without compounding crops. */
+  cropSourceDataUrl?: string;
 }
 
 interface ImagePreviewProps {
@@ -40,6 +63,129 @@ interface ImagePreviewProps {
     applyToAll: boolean;
   };
   maxImagesAllowed?: number;
+  /** Keep a flagged duplicate (clears excluded/duplicateOf on it). */
+  onKeepDuplicate?: (id: string) => void;
+  /** Remove a flagged duplicate from the batch entirely. */
+  onRemoveDuplicate?: (id: string) => void;
+  /** Targeted patch applied by the manual crop tool. */
+  onUpdateImage?: (id: string, patch: Partial<ImageFile>) => void;
+  /** Optional localized label for mixed image/document collections. */
+  getCollectionLabel?: (current: number, max: number) => string;
+  /** Live output framing used by the standalone product cropper. */
+  cropPreviewOptions?: AutoCropPreviewOptions;
+}
+
+const DEFAULT_CROP_RECT: CropRect = { x: 0.05, y: 0.05, w: 0.9, h: 0.9 };
+
+/** Loads an image and resolves its natural pixel dimensions. */
+function loadNaturalSize(url: string): Promise<{ width: number; height: number }> {
+  return new Promise((resolve, reject) => {
+    const img = new window.Image();
+    img.onload = () => resolve({ width: img.naturalWidth, height: img.naturalHeight });
+    img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+    img.src = url;
+  });
+}
+
+/** Crops `sourceUrl` to the pixel rect implied by normalized `rect`, returning a blob: URL PNG. */
+async function cropImageToBlobUrl(sourceUrl: string, rect: CropRect): Promise<string> {
+  const response = await fetch(sourceUrl);
+  const blob = await response.blob();
+  const bitmap = await createImageBitmap(blob);
+  try {
+    const sx = Math.round(rect.x * bitmap.width);
+    const sy = Math.round(rect.y * bitmap.height);
+    const sw = Math.max(1, Math.round(rect.w * bitmap.width));
+    const sh = Math.max(1, Math.round(rect.h * bitmap.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = sw;
+    canvas.height = sh;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Canvas 2D context unavailable");
+    ctx.drawImage(bitmap, sx, sy, sw, sh, 0, 0, sw, sh);
+    const outBlob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob((b) => resolve(b), "image/png")
+    );
+    if (!outBlob) throw new Error("Canvas toBlob failed");
+    return URL.createObjectURL(outBlob);
+  } finally {
+    bitmap.close();
+  }
+}
+
+/** Revokes a previous blob: URL, ignoring already-revoked/non-blob values. */
+function revokeIfBlobUrl(url?: string) {
+  if (url && url.startsWith("blob:")) {
+    try {
+      URL.revokeObjectURL(url);
+    } catch {
+      /* noop */
+    }
+  }
+}
+
+// Get the appropriate image URL to display (thumbnail or full)
+function getDisplayUrl(image: ImageFile): string {
+  // Prefer processed thumbnail for previews
+  if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
+  // Fall back to processed full size if available
+  if (image.processedDataUrl) return image.processedDataUrl;
+  // Fall back to thumbnail if available
+  if (image.thumbnailDataUrl) return image.thumbnailDataUrl;
+  // Last resort - original image
+  return image.dataUrl || "";
+}
+
+function DocumentIcon({ type, large = false }: { type: NonNullable<ImageFile["documentType"]>; large?: boolean }) {
+  return (
+    <div
+      className={`brutalist-border bg-white flex flex-col items-center justify-center ${
+        large ? "w-32 h-40" : "absolute inset-0 m-3"
+      }`}
+      aria-label={type.toUpperCase()}
+    >
+      <svg
+        viewBox="0 0 48 56"
+        className={large ? "w-16 h-20" : "w-10 h-12"}
+        aria-hidden="true"
+      >
+        <path d="M7 2h23l11 11v41H7z" fill="#fff" stroke="#000" strokeWidth="3" />
+        <path d="M30 2v12h11" fill="#fdc700" stroke="#000" strokeWidth="3" />
+        <path d="M14 25h20M14 33h20M14 41h14" stroke="#4F46E5" strokeWidth="3" />
+      </svg>
+      <span className="mt-2 px-2 py-1 bg-black text-white text-xs font-bold uppercase">
+        {type}
+      </span>
+    </div>
+  );
+}
+
+/**
+ * Cluster images into visual groups: a "best" image immediately followed
+ * by its duplicates (as ordered by the caller — see page.tsx sort). Images
+ * without a matching preceding "best" render as their own single-item
+ * group.
+ */
+function buildDisplayGroups(images: ImageFile[]): ImageFile[][] {
+  const groups: ImageFile[][] = [];
+  let i = 0;
+  while (i < images.length) {
+    const image = images[i];
+    if (!image.duplicateOf) {
+      const cluster = [image];
+      let j = i + 1;
+      while (j < images.length && images[j].duplicateOf === image.id) {
+        cluster.push(images[j]);
+        j++;
+      }
+      groups.push(cluster);
+      i = j;
+    } else {
+      groups.push([image]);
+      i++;
+    }
+  }
+  return groups;
 }
 
 export default function ImagePreview({
@@ -52,6 +198,11 @@ export default function ImagePreview({
   className = "",
   appliedSettings,
   maxImagesAllowed = 10,
+  onKeepDuplicate,
+  onRemoveDuplicate,
+  onUpdateImage,
+  getCollectionLabel,
+  cropPreviewOptions,
 }: ImagePreviewProps) {
   const t = useTranslations("Components.ImagePreview");
 
@@ -72,10 +223,24 @@ export default function ImagePreview({
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const imageContainerRef = useRef<HTMLDivElement>(null);
 
-  // Reset zoom and position when selected image changes
+  // State for manual crop mode
+  const [cropMode, setCropMode] = useState(false);
+  const [cropRect, setCropRect] = useState<CropRect>(DEFAULT_CROP_RECT);
+  const [cropAspect, setCropAspect] = useState<CropAspectKey>("free");
+  const [cropNaturalSize, setCropNaturalSize] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
+  const [cropBusy, setCropBusy] = useState(false);
+
+  // Reset zoom, position and crop mode when selected image changes
   useEffect(() => {
     setScale(1);
     setPosition({ x: 0, y: 0 });
+    setCropMode(false);
+    setCropRect(DEFAULT_CROP_RECT);
+    setCropAspect("free");
+    setCropNaturalSize(null);
   }, [selectedImageId]);
 
   // Add wheel event listener with passive: false to prevent scrolling
@@ -84,6 +249,7 @@ export default function ImagePreview({
     if (!container) return;
 
     const handleWheelEvent = (e: WheelEvent) => {
+      if (cropMode) return;
       e.preventDefault();
       e.stopPropagation();
 
@@ -101,27 +267,53 @@ export default function ImagePreview({
     return () => {
       container.removeEventListener("wheel", handleWheelEvent);
     };
-  }, []);
+  }, [cropMode]);
 
   // Update local images when prop changes
   useEffect(() => {
     setLocalImages(images);
   }, [images]);
 
+  // Load the natural pixel size of the currently displayed image while in
+  // crop mode, so the overlay can replicate object-contain geometry exactly.
+  useEffect(() => {
+    if (!cropMode) return;
+    const image = localImages.find((img) => img.id === selectedImageId);
+    if (!image) {
+      setCropNaturalSize(null);
+      return;
+    }
+    let cancelled = false;
+    loadNaturalSize(getDisplayUrl(image))
+      .then((size) => {
+        if (!cancelled) setCropNaturalSize(size);
+      })
+      .catch(() => {
+        if (!cancelled) setCropNaturalSize(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [cropMode, selectedImageId, localImages]);
+
   // Effect to calculate dimensions for each image
   useEffect(() => {
     localImages.forEach((image) => {
       if (!imageDimensions[image.id]) {
+        const sizeInKB = image.file.size / 1024;
+        const sizeFormatted =
+          sizeInKB >= 1024
+            ? `${(sizeInKB / 1024).toFixed(2)} MB`
+            : `${sizeInKB.toFixed(2)} KB`;
+        if (image.documentType) {
+          setImageDimensions((prev) => ({
+            ...prev,
+            [image.id]: { width: 0, height: 0, size: sizeFormatted },
+          }));
+          return;
+        }
         const img = new window.Image();
         img.onload = () => {
-          // Calculate file size in KB or MB
-          const sizeInBytes = image.file.size;
-          const sizeInKB = sizeInBytes / 1024;
-          const sizeFormatted =
-            sizeInKB >= 1024
-              ? `${(sizeInKB / 1024).toFixed(2)} MB`
-              : `${sizeInKB.toFixed(2)} KB`;
-
           setImageDimensions((prev) => ({
             ...prev,
             [image.id]: {
@@ -187,14 +379,16 @@ export default function ImagePreview({
     setPosition({ x: 0, y: 0 });
   };
 
-  // Handle mouse/touch events for dragging
+  // Handle mouse/touch events for dragging (disabled while cropping)
   const handleMouseDown = (e: React.MouseEvent) => {
+    if (cropMode) return;
     e.preventDefault();
     setIsDragging(true);
     setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (cropMode) return;
     if (e.touches.length === 1) {
       e.preventDefault();
       setIsDragging(true);
@@ -206,6 +400,7 @@ export default function ImagePreview({
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (cropMode) return;
     if (isDragging) {
       setPosition({
         x: e.clientX - dragStart.x,
@@ -215,6 +410,7 @@ export default function ImagePreview({
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    if (cropMode) return;
     if (isDragging && e.touches.length === 1) {
       e.preventDefault();
       setPosition({
@@ -234,6 +430,7 @@ export default function ImagePreview({
 
   // Handle wheel event for zooming with mouse wheel - keep this as a backup
   const handleWheel = (e: React.WheelEvent) => {
+    if (cropMode) return;
     e.preventDefault();
     e.stopPropagation();
 
@@ -243,6 +440,72 @@ export default function ImagePreview({
       setScale((prev) => Math.max(prev - 0.1, 0.5));
     }
   };
+
+  // Toggle manual crop mode: reset zoom/pan so overlay math (object-contain
+  // against the container) matches what's rendered.
+  const handleToggleCropMode = () => {
+    setCropMode((prev) => {
+      const next = !prev;
+      if (next) {
+        setScale(1);
+        setPosition({ x: 0, y: 0 });
+        setCropRect(DEFAULT_CROP_RECT);
+        setCropAspect("free");
+      }
+      return next;
+    });
+  };
+
+  const handleCropCancel = () => {
+    setCropMode(false);
+  };
+
+  const handleApplyCrop = useCallback(async () => {
+    const image = localImages.find((img) => img.id === selectedImageId);
+    if (!image || !onUpdateImage) return;
+    const source = image.processedDataUrl ?? image.dataUrl;
+    if (!source) return;
+    setCropBusy(true);
+    try {
+      const blobUrl = await cropImageToBlobUrl(source, cropRect);
+      revokeIfBlobUrl(image.processedDataUrl);
+      revokeIfBlobUrl(image.processedThumbnailUrl);
+      onUpdateImage(image.id, {
+        processedDataUrl: blobUrl,
+        processedThumbnailUrl: blobUrl,
+      });
+      setCropMode(false);
+    } catch (error) {
+      console.error("Failed to apply crop", error);
+    } finally {
+      setCropBusy(false);
+    }
+  }, [localImages, selectedImageId, onUpdateImage, cropRect]);
+
+  const handleApplyCropToAll = useCallback(async () => {
+    if (!onUpdateImage) return;
+    setCropBusy(true);
+    try {
+      for (const image of localImages) {
+        const source = image.processedDataUrl ?? image.dataUrl;
+        if (!source) continue;
+        try {
+          const blobUrl = await cropImageToBlobUrl(source, cropRect);
+          revokeIfBlobUrl(image.processedDataUrl);
+          revokeIfBlobUrl(image.processedThumbnailUrl);
+          onUpdateImage(image.id, {
+            processedDataUrl: blobUrl,
+            processedThumbnailUrl: blobUrl,
+          });
+        } catch (error) {
+          console.error(`Failed to apply crop to image ${image.id}`, error);
+        }
+      }
+      setCropMode(false);
+    } finally {
+      setCropBusy(false);
+    }
+  }, [localImages, onUpdateImage, cropRect]);
 
   if (localImages.length === 0) {
     return (
@@ -259,19 +522,9 @@ export default function ImagePreview({
 
   // Get dimensions of the selected image
   const selectedDimensions = selectedImage && imageDimensions[selectedImage.id];
-
-  // Get the appropriate image URL to display (thumbnail or full)
-  const getDisplayUrl = (image: ImageFile) => {
-    // For regular images, use standard priority order
-    // Prefer processed thumbnail for previews
-    if (image.processedThumbnailUrl) return image.processedThumbnailUrl;
-    // Fall back to processed full size if available
-    if (image.processedDataUrl) return image.processedDataUrl;
-    // Fall back to thumbnail if available
-    if (image.thumbnailDataUrl) return image.thumbnailDataUrl;
-    // Last resort - original image
-    return image.dataUrl || "";
-  };
+  const showCropFramePreview = Boolean(
+    cropPreviewOptions && !cropMode && !selectedImage?.bbox
+  );
 
   // Get file extension from name
   const getFileExtension = (filename: string): string => {
@@ -294,34 +547,48 @@ export default function ImagePreview({
       {selectedImage && (
         <div className="mb-6 relative">
           <div className="brutalist-accent-card relative">
-            {/* Zoom controls */}
-            <div className="absolute top-2 right-2 z-10 flex gap-2">
+            {/* Zoom + crop controls */}
+            {!selectedImage.documentType && <div className="absolute top-2 right-2 z-30 flex gap-2">
+              {!cropMode && (
+                <>
+                  <button
+                    onClick={handleZoomIn}
+                    className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
+                    aria-label="Zoom in"
+                  >
+                    +
+                  </button>
+                  <button
+                    onClick={handleZoomOut}
+                    className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
+                    aria-label="Zoom out"
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={handleReset}
+                    className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black w-auto px-2 h-8 flex items-center justify-center text-xs font-bold shadow-brutalist hover:translate-y-[-2px] transition-transform"
+                    aria-label="Reset zoom"
+                  >
+                    RESET
+                  </button>
+                </>
+              )}
               <button
-                onClick={handleZoomIn}
-                className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
-                aria-label="Zoom in"
+                onClick={handleToggleCropMode}
+                className={`brutalist-border border-3 w-auto px-2 h-8 flex items-center justify-center text-xs font-bold shadow-brutalist hover:translate-y-[-2px] transition-transform ${
+                  cropMode ? "bg-primary text-white" : "bg-white text-black"
+                }`}
+                aria-label="Toggle crop mode"
+                aria-pressed={cropMode}
               >
-                +
+                {t("cropMode")}
               </button>
-              <button
-                onClick={handleZoomOut}
-                className="brutalist-border border-3 bg-white text-black w-8 h-8 flex items-center justify-center text-xl shadow-brutalist hover:translate-y-[-2px] transition-transform"
-                aria-label="Zoom out"
-              >
-                -
-              </button>
-              <button
-                onClick={handleReset}
-                className="brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black w-auto px-2 h-8 flex items-center justify-center text-xs font-bold shadow-brutalist hover:translate-y-[-2px] transition-transform"
-                aria-label="Reset zoom"
-              >
-                RESET
-              </button>
-            </div>
+            </div>}
 
             <div
               ref={imageContainerRef}
-              className={`relative aspect-video w-full overflow-hidden cursor-grab touch-none`}
+              className="relative overflow-hidden touch-none"
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
@@ -330,37 +597,110 @@ export default function ImagePreview({
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
               onWheel={handleWheel}
-              style={{ cursor: isDragging ? "grabbing" : "grab" }}
+              style={{
+                aspectRatio: cropPreviewOptions?.square
+                  ? "1 / 1"
+                  : selectedDimensions
+                  ? `${selectedDimensions.width} / ${selectedDimensions.height}`
+                  : "16 / 9",
+                width: cropPreviewOptions?.square
+                  ? "min(100%, 70vh)"
+                  : "100%",
+                marginInline: "auto",
+                backgroundColor: cropPreviewOptions?.whiteBackground
+                  ? "#ffffff"
+                  : cropPreviewOptions
+                  ? "#f3f4f6"
+                  : undefined,
+                backgroundImage:
+                  cropPreviewOptions && !cropPreviewOptions.whiteBackground
+                    ? "linear-gradient(45deg, #d1d5db 25%, transparent 25%), linear-gradient(-45deg, #d1d5db 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d1d5db 75%), linear-gradient(-45deg, transparent 75%, #d1d5db 75%)"
+                    : undefined,
+                backgroundPosition:
+                  cropPreviewOptions && !cropPreviewOptions.whiteBackground
+                    ? "0 0, 0 12px, 12px -12px, -12px 0px"
+                    : undefined,
+                backgroundSize:
+                  cropPreviewOptions && !cropPreviewOptions.whiteBackground
+                    ? "24px 24px"
+                    : undefined,
+                cursor: selectedImage.documentType
+                  ? "default"
+                  : cropMode
+                  ? "default"
+                  : isDragging
+                  ? "grabbing"
+                  : "grab",
+              }}
             >
-              <div
-                className="absolute transition-transform duration-75 ease-out"
-                style={{
-                  transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-                  transformOrigin: "center",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <Image
-                  src={getDisplayUrl(selectedImage)}
-                  alt={selectedImage.file.name}
-                  fill
-                  sizes="100vw"
-                  className="object-contain"
-                  priority
-                  draggable={false}
+              {selectedImage.documentType ? (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-50">
+                  <DocumentIcon type={selectedImage.documentType} large />
+                </div>
+              ) : (
+                <div
+                  className={`absolute overflow-hidden transition-all duration-150 ease-out ${
+                    showCropFramePreview
+                      ? "border-2 border-dashed border-primary"
+                      : ""
+                  }`}
+                  style={{
+                    transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                    transformOrigin: "center",
+                    inset:
+                      showCropFramePreview
+                        ? `${Math.max(
+                            2,
+                            (cropPreviewOptions?.marginPct ?? 0) * 100
+                          )}%`
+                        : 0,
+                  }}
+                >
+                  <Image
+                    src={getDisplayUrl(selectedImage)}
+                    alt={selectedImage.file.name}
+                    fill
+                    sizes="100vw"
+                    className={
+                      showCropFramePreview && cropPreviewOptions?.square
+                        ? "object-cover"
+                        : "object-contain"
+                    }
+                    priority
+                    draggable={false}
+                  />
+                </div>
+              )}
+
+              {cropMode && cropNaturalSize && (
+                <CropOverlay
+                  containerRef={imageContainerRef}
+                  naturalWidth={cropNaturalSize.width}
+                  naturalHeight={cropNaturalSize.height}
+                  rect={cropRect}
+                  onRectChange={setCropRect}
+                  aspect={cropAspect}
+                  onAspectChange={setCropAspect}
+                  onApply={handleApplyCrop}
+                  onApplyAll={handleApplyCropToAll}
+                  onCancel={handleCropCancel}
+                  applyDisabled={cropBusy || !onUpdateImage}
                 />
-              </div>
+              )}
 
-              {/* Mobile zoom instructions */}
-              <div className="absolute bottom-2 left-2 brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs p-2 md:hidden">
-                {t("zoomInstructions")}
-              </div>
+              {!cropMode && !selectedImage.documentType && (
+                <>
+                  {/* Mobile zoom instructions */}
+                  <div className="absolute bottom-2 left-2 brutalist-border border-3 border-l-accent border-t-primary border-r-black border-b-black bg-white text-black text-xs p-2 md:hidden">
+                    {t("zoomInstructions")}
+                  </div>
 
-              {/* Zoom level indicator */}
-              <div className="absolute bottom-2 right-2 brutalist-border border-3 bg-white text-black text-xs p-2">
-                {t("zoomLevel", { scale: Math.round(scale * 100) })}
-              </div>
+                  {/* Zoom level indicator */}
+                  <div className="absolute bottom-2 right-2 brutalist-border border-3 bg-white text-black text-xs p-2">
+                    {t("zoomLevel", { scale: Math.round(scale * 100) })}
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="p-4 flex flex-col space-y-2">
@@ -419,14 +759,16 @@ export default function ImagePreview({
                       </button>
                     )}
                   </div>
-                  <Button
-                    onClick={() => handleLocalDownloadImage(selectedImage)}
-                    size="sm"
-                    variant="secondary"
-                    disabled={isProcessing}
-                  >
-                    {t("actions.download")}
-                  </Button>
+                  {!selectedImage.documentType && (
+                    <Button
+                      onClick={() => handleLocalDownloadImage(selectedImage)}
+                      size="sm"
+                      variant="secondary"
+                      disabled={isProcessing}
+                    >
+                      {t("actions.download")}
+                    </Button>
+                  )}
                 </div>
               )}
 
@@ -441,7 +783,7 @@ export default function ImagePreview({
                 )}
 
               <div className="text-sm grid grid-cols-2 gap-x-4">
-                {selectedDimensions && (
+                {selectedDimensions && !selectedImage.documentType && (
                   <>
                     <div>
                       <span className="font-bold">
@@ -454,6 +796,12 @@ export default function ImagePreview({
                       {selectedDimensions.size}
                     </div>
                   </>
+                )}
+                {selectedDimensions && selectedImage.documentType && (
+                  <div>
+                    <span className="font-bold">{t("fileInfo.size")} </span>
+                    {selectedDimensions.size}
+                  </div>
                 )}
 
                 {/* Applied preset info */}
@@ -490,51 +838,108 @@ export default function ImagePreview({
 
       {/* Thumbnail Grid */}
       <h3 className="font-bold text-lg uppercase mb-2">
-        {t("allImages", { current: images.length, max: maxImagesAllowed })}
+        {getCollectionLabel
+          ? getCollectionLabel(images.length, maxImagesAllowed)
+          : t("allImages", { current: images.length, max: maxImagesAllowed })}
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {images.map((image, index) => {
-          const dimensions = imageDimensions[image.id];
+        {buildDisplayGroups(images).map((group) => {
+          const isCluster = group.length > 1;
+          const groupContent = group.map((image) => {
+            const index = images.indexOf(image);
+            const dimensions = imageDimensions[image.id];
+            const isDuplicate = !!image.duplicateOf;
+            return (
+              <div
+                key={image.id}
+                className={`brutalist-border p-2 cursor-pointer transition-transform hover:translate-y-[-2px] ${
+                  selectedImageId === image.id
+                    ? "border-3 border-l-accent border-t-primary border-r-black border-b-black"
+                    : isDuplicate
+                    ? "border-2 border-amber-500"
+                    : "border-black"
+                }`}
+                onClick={() => onSelectImage(image.id)}
+              >
+                <div className={`relative aspect-square w-full overflow-hidden`}>
+                  {image.documentType ? (
+                    <DocumentIcon type={image.documentType} />
+                  ) : (
+                    <Image
+                      src={getDisplayUrl(image)}
+                      alt={image.file.name}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                      className="object-contain z-10"
+                    />
+                  )}
+                  {/* Image number indicator */}
+                  <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
+                    {index + 1}/{maxImagesAllowed}
+                  </div>
+                  {/* Duplicate badge */}
+                  {isDuplicate && (
+                    <div className="absolute bottom-1 left-1 bg-amber-400 text-black text-[10px] font-bold px-2 py-0.5 rounded-sm z-10 uppercase">
+                      {t("duplicateBadge")}
+                    </div>
+                  )}
+                  {/* Delete button */}
+                  <button
+                    onClick={(e) => handleDelete(e, image.id)}
+                    className="absolute top-1 right-1 brutalist-border border-2 border-black bg-accent text-black text-xs px-2 py-1 shadow-brutalist hover:translate-y-[-2px] transition-transform z-10"
+                    disabled={isProcessing}
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="mt-2 text-xs truncate">
+                  {getDisplayName(image)}
+                </div>
+                {dimensions && (
+                  <div className="mt-1 text-xs">
+                    {dimensions.width} × {dimensions.height}px • {dimensions.size}
+                  </div>
+                )}
+                {isDuplicate && (onKeepDuplicate || onRemoveDuplicate) && (
+                  <div className="mt-2 flex gap-1">
+                    {onKeepDuplicate && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onKeepDuplicate(image.id);
+                        }}
+                        className="flex-1 text-[10px] font-bold brutalist-border bg-white hover:bg-slate-100 py-1"
+                      >
+                        {t("keepDuplicate")}
+                      </button>
+                    )}
+                    {onRemoveDuplicate && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onRemoveDuplicate(image.id);
+                        }}
+                        className="flex-1 text-[10px] font-bold brutalist-border bg-white hover:bg-slate-100 py-1"
+                      >
+                        {t("removeDuplicate")}
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          });
+
+          if (!isCluster) return groupContent[0];
+
           return (
             <div
-              key={image.id}
-              className={`brutalist-border p-2 cursor-pointer transition-transform hover:translate-y-[-2px] ${
-                selectedImageId === image.id
-                  ? "border-3 border-l-accent border-t-primary border-r-black border-b-black"
-                  : "border-black"
-              }`}
-              onClick={() => onSelectImage(image.id)}
+              key={group[0].id}
+              className="col-span-full brutalist-border border-2 border-amber-500 p-2 bg-amber-50"
             >
-              <div className={`relative aspect-square w-full overflow-hidden`}>
-                {/* Show PNG transparency indicator only in thumbnails */}
-                <Image
-                  src={getDisplayUrl(image)}
-                  alt={image.file.name}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-                  className="object-contain z-10"
-                />
-                {/* Image number indicator */}
-                <div className="absolute top-1 left-1 bg-black text-white text-xs px-2 py-1 rounded-sm z-10">
-                  {index + 1}/{maxImagesAllowed}
-                </div>
-                {/* Delete button */}
-                <button
-                  onClick={(e) => handleDelete(e, image.id)}
-                  className="absolute top-1 right-1 brutalist-border border-2 border-black bg-accent text-black text-xs px-2 py-1 shadow-brutalist hover:translate-y-[-2px] transition-transform z-10"
-                  disabled={isProcessing}
-                >
-                  ×
-                </button>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {groupContent}
               </div>
-              <div className="mt-2 text-xs truncate">
-                {getDisplayName(image)}
-              </div>
-              {dimensions && (
-                <div className="mt-1 text-xs">
-                  {dimensions.width} × {dimensions.height}px • {dimensions.size}
-                </div>
-              )}
             </div>
           );
         })}

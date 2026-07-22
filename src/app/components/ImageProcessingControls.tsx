@@ -3,8 +3,6 @@ import Card from "./Card";
 import QuickPresets from "./QuickPresets";
 import { useImageProcessing } from "../contexts/ImageProcessingContext";
 import { useTranslations } from "next-intl";
-import Button from "./Button";
-import { Link } from "@/i18n/navigation";
 import Loader from "./Loader";
 
 export interface ImageAdjustments {
@@ -41,13 +39,8 @@ export default function ImageProcessingControls({
   className = "",
 }: ImageProcessingControlsProps) {
   const t = useTranslations("Components.ImageProcessingControls");
-  const tBackgroundRemoval = useTranslations("Components.BackgroundRemoval");
-  // Object removal removed
-  const tNavbar = useTranslations("Navbar");
 
-  const [activeTab, setActiveTab] = useState<"basic" | "advanced" | "ai">(
-    "basic"
-  );
+  const [activeTab, setActiveTab] = useState<"basic" | "advanced">("basic");
 
   const {
     adjustments,
@@ -158,17 +151,6 @@ export default function ImageProcessingControls({
             >
               {t("advanced")}
             </button>
-            <button
-              onClick={() => setActiveTab("ai")}
-              className={`py-2 px-4 font-bold flex items-center ${
-                activeTab === "ai"
-                  ? "bg-primary text-white"
-                  : "bg-white text-black"
-              }`}
-              disabled={isProcessing}
-            >
-              {t("ai")}
-            </button>
           </div>
         </div>
 
@@ -229,7 +211,7 @@ export default function ImageProcessingControls({
               </div>
             </div>
           </>
-        ) : activeTab === "advanced" ? (
+        ) : (
           <>
             {/* Advanced Controls */}
             <div className="space-y-6">
@@ -368,33 +350,6 @@ export default function ImageProcessingControls({
                   </div>
                 </div>
               </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="space-y-2 mt-4 p-4 bg-white brutalist-border flex flex-col gap-2">
-              <Button
-                as={Link}
-                href="/background-removal"
-                variant="default"
-                fullWidth
-                disabled={isProcessing}
-                target="_blank"
-              >
-                {tBackgroundRemoval("title")}
-              </Button>
-              {/* Object removal removed */}
-              <Button
-                as={Link}
-                href="/ai-photo-duplicate-finder"
-                variant="default"
-                fullWidth
-                disabled={isProcessing}
-                target="_blank"
-              >
-                {tNavbar("aiPhotoDuplicateFinder")}
-              </Button>
-              {/* Gemini tools removed */}
             </div>
           </>
         )}

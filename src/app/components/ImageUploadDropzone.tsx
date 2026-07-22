@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useId, useRef } from "react";
 
 interface ImageUploadDropzoneProps {
   onFilesSelected: (files: FileList) => void;
@@ -20,6 +20,8 @@ export default function ImageUploadDropzone({
   className = "",
 }: ImageUploadDropzoneProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  // Unique per instance — pages may render several dropzones at once
+  const inputId = useId();
 
   const handleDragOver = (e: React.DragEvent<HTMLLabelElement>) => {
     e.preventDefault();
@@ -53,7 +55,7 @@ export default function ImageUploadDropzone({
     <div className={className}>
       <input
         ref={fileInputRef}
-        id="fileInput"
+        id={inputId}
         type="file"
         multiple={multiple}
         accept={accept}
@@ -62,7 +64,7 @@ export default function ImageUploadDropzone({
         disabled={disabled}
       />
       <label
-        htmlFor="fileInput"
+        htmlFor={inputId}
         className={`brutalist-border border-3 border-dotted border-primary flex flex-col items-center justify-center w-full aspect-video bg-gray-50 transition-colors ${
           disabled
             ? "opacity-50 cursor-not-allowed"

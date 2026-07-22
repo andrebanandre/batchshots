@@ -57,6 +57,11 @@ module.exports = {
       return null;
     }
 
+    // Dev-only pages (per-locale) that must never be indexed
+    if (path.includes('/model-check')) {
+      return null;
+    }
+
     // Define all supported locales
     const locales = ['en', 'de', 'nl', 'fr', 'pl', 'cs', 'ru', 'uk'];
 
@@ -111,7 +116,9 @@ module.exports = {
     '/_next/*',
     '/404',
     '/500',
-    '/server-sitemap*'
+    '/server-sitemap*',
+    '/model-check',
+    '/*/model-check'
   ],
 
   // Robots.txt options
